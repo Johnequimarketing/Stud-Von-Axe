@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Vercel project linkage, machine specific
+.vercel/
+
+# Node, only if tooling gets added later
+node_modules/
+
+# The deploy folder is what actually goes public, so it holds ONLY the
+# pages that are safe to serve. The concept files in there are copies of
+# the ones in the project root, produced by deploy/sync.sh, so they are
+# ignored here to stop the same file being tracked twice and drifting.
+#
+# Deliberately NOT ignored: deploy/index.html and deploy/vercel.json.
+deploy/direction-*.html
+deploy/hero-final.html
+
+# Never deploy or commit scratch copies
+preview/

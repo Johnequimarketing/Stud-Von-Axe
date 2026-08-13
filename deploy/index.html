@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Homepage concepts</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1d2e; --navy-deep:#0a1522;
+  --gold:#b28a4d; --gold-soft:#cdae7c;
+  --base:#faf8f4;
+  --serif:"Libre Caslon Display",Georgia,serif;
+  --sans:"Jost","Inter",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --gutter:clamp(22px,5vw,64px);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--base);color:var(--navy);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:clamp(44px,8vh,96px) var(--gutter) clamp(60px,10vh,120px)}
+.mark{display:flex;flex-direction:column;align-items:flex-start;gap:3px;line-height:1;margin-bottom:clamp(34px,6vh,62px)}
+.mark .crown{color:var(--gold);font-size:15px}
+.mark .wm{font-family:var(--serif);font-size:20px;letter-spacing:.16em}
+.mark .wm i{color:var(--gold);font-style:normal;margin:0 .35em}
+.mark .tag{font-family:var(--sans);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+h1{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.08;margin:0 0 18px;font-weight:400}
+.intro{max-width:62ch;color:#4c5867;margin:0 0 clamp(34px,6vh,58px)}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.list{display:grid;gap:18px}
+.item{
+  display:block;background:#fff;border:1px solid rgba(15,29,46,.13);
+  padding:clamp(22px,3vw,32px);transition:border-color .4s ease,transform .4s ease;
+  text-decoration:none;
+}
+.item:hover{border-color:var(--navy);transform:translateY(-2px)}
+.item h2{font-family:var(--serif);font-size:clamp(1.2rem,2.1vw,1.55rem);margin:0 0 8px;font-weight:400}
+.item h2 span{font-family:var(--sans);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:9px}
+.item p{margin:0;color:#4c5867;font-size:16px;max-width:66ch}
+.item .go{
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--navy);margin-top:16px;display:inline-flex;gap:9px;align-items:center;
+  border-bottom:1px solid var(--gold);padding-bottom:5px;
+}
+.note{
+  margin-top:clamp(40px,7vh,72px);padding:22px clamp(20px,3vw,28px);
+  background:var(--navy-deep);color:rgba(255,255,255,.74);
+  font-family:var(--sans);font-size:13.5px;line-height:1.7;
+}
+.note b{color:var(--gold-soft);font-weight:500;letter-spacing:.05em;display:block;margin-bottom:7px}
+.note ul{margin:9px 0 0;padding-left:18px}
+.note li{margin-bottom:5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="mark">
+    <span class="crown">&#9819;</span>
+    <span class="wm">VON<i>|</i>AXE</span>
+    <span class="tag">Breeding and horse trading</span>
+  </div>
+
+  <p class="eyebrow">Homepage concepts</p>
+  <h1>Three directions, one hero</h1>
+  <p class="intro">All three share the same header and hero, which is signed off. What changes below the fold is the typography, the spacing and the way navy and gold carry the structure. Open each on your phone as well as your laptop, the card sections are designed mobile first.</p>
+
+  <div class="list">
+    <a class="item" href="/direction-a-classic">
+      <h2><span>Direction A</span>Classic</h2>
+      <p>Traditional European stud. Restrained and timeless, generous white space, fine navy rules between sections, gold only on small labels and hover. A numbered directory replaces the usual row of three cards for the business lines.</p>
+      <span class="go">Open concept A <span aria-hidden="true">&#8599;</span></span>
+    </a>
+
+    <a class="item" href="/direction-b-editorial">
+      <h2><span>Direction B</span>Modern editorial</h2>
+      <p>Magazine feel. Strong contrast between headline and body, asymmetric layouts, full bleed imagery, navy used as thin frames rather than filled panels so all reading stays on light ground. One foal gets a feature sized card.</p>
+      <span class="go">Open concept B <span aria-hidden="true">&#8599;</span></span>
+    </a>
+
+    <a class="item" href="/direction-c-contemporary">
+      <h2><span>Direction C</span>Contemporary refined</h2>
+      <p>The most modern of the three. Disciplined grid, small caps labels, navy as full structural bands with white cards on top, gold reserved almost entirely for status and interaction. The horses sit in a horizontal scrolling gallery rather than a static grid.</p>
+      <span class="go">Open concept C <span aria-hidden="true">&#8599;</span></span>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>Notes for this round</b>
+    Two things are still coming from the client and are visible in these concepts:
+    <ul>
+      <li>The logo is a typographic stand in. The supplied files are JPEGs with a solid background baked in, so they cannot sit over a photograph. Vector or transparent PNG versions of the light and reversed marks are needed.</li>
+      <li>The gold is a placeholder tone. Every colour is a CSS variable, so the new Pantone is a one line change.</li>
+      <li>Available now shows four horses rather than six. Two listings on the current site use photographs of different horses, so they were held back until correct images arrive.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

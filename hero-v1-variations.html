@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Arena hero, text and card options</title>
+
+<!--
+  ============================================================
+  ARENA (V1) · TEXT POSITIONS + CARD STYLES
+  Two independent axes so they can be mixed:
+    PART 1 · four text placements  (T1 to T4)
+    PART 2 · five card treatments  (S1 to S5)
+  Tell me a pair, e.g. "T3 + S4", and that becomes the hero.
+
+  Header architecture is identical in every option: transparent
+  over the photo, wordmark centred, hairline rule under the nav.
+  The client's real mark is a centred emblem, so it drops
+  straight into this slot when the vector arrives.
+
+  Status is ALWAYS text in the card metadata. It never sits on
+  a photo in any style here, that decision is locked.
+
+  All colour is in the variables below. Change --gold once when
+  the client sends the Pantone.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0f1d2e; --navy-deep:#0a1522;
+  --gold:#b28a4d; --gold-soft:#cdae7c;
+  --base:#faf8f4; --ink:#12212f;
+  --serif:"Libre Caslon Display",Georgia,serif;
+  --serif-alt:"Cormorant Garamond",Georgia,serif;
+  --sans:"Jost","Inter",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--navy-deep);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2{margin:0;font-weight:400}
+
+/* ---------- comparison chrome ---------- */
+.switcher{
+  position:fixed;z-index:999;right:16px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:5px;padding:7px;
+  background:rgba(10,21,34,.92);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+}
+.switcher a{color:rgba(255,255,255,.6);padding:7px 14px;border-radius:100px;transition:all .35s ease;text-align:center}
+.switcher a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.switcher a.on{color:var(--navy);background:var(--gold-soft)}
+.switcher hr{border:0;border-top:1px solid rgba(255,255,255,.16);margin:3px 6px}
+.vlabel{
+  position:absolute;top:0;left:0;z-index:60;background:var(--gold);color:var(--navy);
+  font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;padding:7px 15px;
+}
+.vnote{
+  background:#06101b;color:rgba(255,255,255,.7);font-family:var(--sans);
+  font-size:13.5px;line-height:1.65;padding:20px clamp(20px,5vw,60px);
+}
+.vnote strong{color:var(--gold-soft);font-weight:500;letter-spacing:.05em}
+.parthead{
+  background:var(--base);color:var(--navy);padding:clamp(34px,6vw,64px) clamp(20px,5vw,60px);
+}
+.parthead .k{font-family:var(--sans);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.parthead h2{font-family:var(--serif);font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.1}
+.parthead p{max-width:62ch;margin:14px 0 0;color:#4c5867;font-size:16px}
+
+/* =========================================================
+   SHARED ARENA SHELL
+   ========================================================= */
+.arena{position:relative;min-height:100svh;display:flex;flex-direction:column;background:var(--navy-deep)}
+.arena .bg{position:absolute;inset:0}
+.arena .bg img{width:100%;height:100%;object-fit:cover;object-position:center 32%}
+.arena .bg:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(8,16,26,.6) 0%,rgba(8,16,26,.1) 30%,rgba(8,16,26,.36) 60%,rgba(8,16,26,.94) 100%);
+}
+.arena .hd{position:relative;z-index:20;padding:24px clamp(20px,4vw,52px) 0}
+.arena .hd__row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;color:#fff}
+.arena nav{display:flex;gap:clamp(15px,2.1vw,32px);flex-wrap:wrap}
+.arena nav a{
+  font-family:var(--sans);font-size:13px;letter-spacing:.07em;color:rgba(255,255,255,.8);
+  padding-bottom:3px;border-bottom:1px solid transparent;transition:all .4s ease;
+}
+.arena nav a:hover,.arena nav a.on{color:#fff;border-bottom-color:var(--gold)}
+.arena .hd__end{display:flex;justify-content:flex-end;align-items:center;gap:15px}
+.arena .pill{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.48);color:#fff;padding:10px 22px;border-radius:100px;
+  transition:all .4s ease;white-space:nowrap;
+}
+.arena .pill:hover{background:#fff;color:var(--navy);border-color:#fff}
+.arena .lang{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+.arena .lang b{color:#fff;font-weight:400}
+.arena .rule{position:relative;z-index:20;height:1px;background:rgba(255,255,255,.24);margin:20px clamp(20px,4vw,52px) 0}
+
+.mark{display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1;color:#fff}
+.mark .crown{color:var(--gold)}
+.mark .wm{font-family:var(--serif);font-size:19px;letter-spacing:.16em;white-space:nowrap}
+.mark .wm .bar{color:var(--gold);margin:0 .35em}
+.mark .tag{font-family:var(--sans);font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.7;white-space:nowrap}
+
+.arena .body{position:relative;z-index:20;flex:1;display:flex;flex-direction:column;padding:0 clamp(20px,4vw,52px)}
+.arena .eyebrow{
+  font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+.arena h1{font-family:var(--serif);color:#fff;letter-spacing:-.012em;text-transform:uppercase;line-height:.9}
+.arena .lede{color:rgba(255,255,255,.87);font-size:16.5px;max-width:46ch}
+.arena .arw{
+  font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  border-bottom:1px solid var(--gold);padding-bottom:7px;display:inline-flex;gap:10px;align-items:center;white-space:nowrap;
+}
+.arena .ctas{display:flex;gap:11px;flex-wrap:wrap}
+.arena .ctas a{font-family:var(--sans);font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;padding:14px 28px;border-radius:100px;transition:all .4s ease}
+.arena .ctas .p{background:var(--gold);color:var(--navy)}
+.arena .ctas .p:hover{background:#fff}
+.arena .ctas .s{color:#fff;border:1px solid rgba(255,255,255,.45)}
+.arena .ctas .s:hover{border-color:#fff;background:rgba(255,255,255,.09)}
+
+/* ---- T1 · SPLIT (baseline) ---- */
+#t1 .body{justify-content:center;padding-top:clamp(24px,4vh,50px)}
+#t1 h1{font-size:clamp(2.8rem,10.2vw,9rem)}
+#t1 .h1b{display:block;text-align:right;font-size:clamp(1rem,2.4vw,2.2rem);letter-spacing:.16em;margin-top:.18em;color:rgba(255,255,255,.92)}
+#t1 .foot{position:relative;z-index:20;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;padding:clamp(26px,5vh,54px) clamp(20px,4vw,52px) 20px;flex-wrap:wrap}
+
+/* ---- T2 · CENTRED ---- */
+#t2 .body{justify-content:center;align-items:center;text-align:center;padding-top:clamp(24px,4vh,50px)}
+#t2 .eyebrow{margin-bottom:18px}
+#t2 h1{font-size:clamp(2.4rem,7.4vw,6.4rem);max-width:20ch}
+#t2 .lede{margin:20px auto 0;max-width:52ch}
+#t2 .ctas{justify-content:center;margin-top:26px}
+
+/* ---- T3 · ANCHORED ---- */
+#t3 .body{justify-content:flex-end;padding-bottom:clamp(22px,4vh,40px)}
+#t3 .block{max-width:34ch}
+#t3 .eyebrow{margin-bottom:16px}
+#t3 h1{font-size:clamp(2.3rem,6.2vw,5.2rem)}
+#t3 .lede{margin-top:18px}
+#t3 .ctas{margin-top:24px}
+
+/* ---- T4 · HIGH ---- */
+#t4 .body{justify-content:space-between;padding-top:clamp(22px,4vh,44px)}
+#t4 h1{font-size:clamp(2.6rem,9vw,8.2rem)}
+#t4 .h1b{display:block;font-size:clamp(.95rem,2.1vw,1.9rem);letter-spacing:.18em;margin-top:.2em;color:rgba(255,255,255,.9)}
+#t4 .lower{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;padding-bottom:clamp(18px,3vh,32px)}
+
+/* =========================================================
+   MARQUEE + CARD STYLES
+   ========================================================= */
+.mqwrap{position:relative;z-index:20;padding-bottom:22px}
+.mq{position:relative;overflow:hidden;width:100%}
+.mq__track{display:flex;gap:14px;width:max-content;animation:slide 54s linear infinite;padding:0 clamp(20px,4vw,52px)}
+.mq:hover .mq__track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq__track{animation:none}.mq{overflow-x:auto}}
+
+/* base card bits, shared by every style */
+.hc{flex:0 0 auto;width:188px}
+.hc img{width:100%;height:126px;object-fit:cover}
+.hc__nm{font-family:var(--serif);font-size:14.5px;line-height:1.25;display:block;color:#fff}
+.hc__meta{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62);white-space:nowrap}
+.hc__st{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:4px;color:rgba(255,255,255,.62)}
+.hc__st.sold{color:var(--gold-soft)}
+.dot{display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--gold);vertical-align:middle;margin:0 6px 2px}
+
+/* S1 · BARE */
+.s1 .hc__body{padding-top:9px}
+.s1 .hc__nm{margin-bottom:5px}
+
+/* S2 · GLASS */
+.s2 .hc{
+  background:rgba(255,255,255,.075);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.17);padding:9px;
+}
+.s2 .hc__body{padding:10px 3px 3px}
+.s2 .hc__nm{margin-bottom:5px}
+
+/* S3 · HAIRLINE */
+.s3 .hc{border:1px solid rgba(255,255,255,.26);padding:11px}
+.s3 .hc__body{padding-top:11px;margin-top:11px;border-top:1px solid rgba(255,255,255,.16)}
+.s3 .hc__nm{margin-bottom:5px}
+
+/* S4 · LOT (auction catalogue) */
+.s4 .hc__lot{
+  display:flex;align-items:center;gap:10px;margin-bottom:9px;
+  font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--gold-soft);
+}
+.s4 .hc__lot i{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.s4 .hc__body{padding-top:10px}
+.s4 .hc__nm{margin-bottom:5px}
+.s4 .hc img{height:132px}
+
+/* S5 · ROW (compact, reads well on a phone) */
+.s5 .hc{width:266px;border:1px solid rgba(255,255,255,.2);padding:10px;display:flex;gap:12px;align-items:center}
+.s5 .hc img{width:74px;height:74px;flex:0 0 auto}
+.s5 .hc__body{min-width:0}
+.s5 .hc__nm{font-size:14px;margin-bottom:5px}
+.s5 .hc__meta{white-space:normal}
+
+/* card style showcase (part 2) */
+.showcase{background:var(--navy-deep);position:relative;padding:0 0 8px}
+.showcase .shot{
+  position:relative;padding:clamp(26px,4vw,44px) 0 clamp(22px,3.5vw,34px);
+  border-top:1px solid rgba(255,255,255,.09);
+}
+.showcase .shot:first-of-type{border-top:0}
+.showcase .slabel{
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding:0 clamp(20px,4vw,52px) 18px;
+}
+.showcase .slabel b{
+  font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+}
+.showcase .slabel span{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.6)}
+.showcase .row{display:flex;gap:14px;overflow-x:auto;padding:0 clamp(20px,4vw,52px) 4px;scrollbar-width:thin}
+.showcase .ghost{
+  position:absolute;inset:0;z-index:0;opacity:.16;pointer-events:none;
+  background:url('https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg') center 30%/cover no-repeat;
+}
+.showcase .shot > *{position:relative;z-index:1}
+
+@media (max-width:860px){
+  .arena nav,.arena .lang{display:none}
+  .arena .hd__row{grid-template-columns:1fr auto}
+  #t1 .h1b,#t4 .h1b{text-align:left}
+  #t1 .foot,#t4 .lower{flex-direction:column;align-items:flex-start;gap:18px}
+  .switcher{right:10px;font-size:10px}
+  .switcher a{padding:6px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="parthead">
+  <p class="k">Part one</p>
+  <h2>Where the text sits</h2>
+  <p>Same Arena header in all four, same photo, same cards. The only variable is the position and scale of the type, so you can judge placement on its own. Cards here are the plain style, card treatments are in part two.</p>
+</div>
+
+<!-- ============ T1 · SPLIT ============ -->
+<section class="arena" id="t1">
+  <span class="vlabel">T1 · Split</span>
+  <div class="bg"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg" alt="Sport horse at Stud Von Axe" loading="eager"></div>
+  <header class="hd"><div class="hd__row">
+    <nav><a href="#" class="on">Home</a><a href="#">Horses</a><a href="#">Embryos</a><a href="#">Semen</a><a href="#">News</a></nav>
+    <div class="mark"><span class="crown">&#9819;</span><span class="wm">VON<span class="bar">|</span>AXE</span><span class="tag">Breeding and horse trading</span></div>
+    <div class="hd__end"><span class="lang"><b>EN</b> / IT</span><a href="#" class="pill">Contact us</a></div>
+  </div></header>
+  <div class="rule"></div>
+  <div class="body"><h1>Bred for the<span class="h1b">biggest arenas</span></h1></div>
+  <div class="foot">
+    <p class="lede">Foals, embryos and frozen semen from Desenzano del Garda and our base near Lanaken. Ask about any horse on the list.</p>
+    <a href="#" class="arw">See the horses <span>&#8599;</span></a>
+  </div>
+  <div class="mqwrap"><div class="mq s1"><div class="mq__track" data-cards="s1"></div></div></div>
+</section>
+<p class="vnote"><strong>T1 Split.</strong> The baseline you liked. Headline centred vertically at full width with the second line pushed right, supporting text split across the bottom corners. Biggest type of the four and the horse crosses the letters, which is where the depth comes from.</p>
+
+<!-- ============ T2 · CENTRED ============ -->
+<section class="arena" id="t2">
+  <span class="vlabel">T2 · Centred</span>
+  <div class="bg"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg" alt="Sport horse at Stud Von Axe" loading="lazy"></div>
+  <header class="hd"><div class="hd__row">
+    <nav><a href="#" class="on">Home</a><a href="#">Horses</a><a href="#">Embryos</a><a href="#">Semen</a><a href="#">News</a></nav>
+    <div class="mark"><span class="crown">&#9819;</span><span class="wm">VON<span class="bar">|</span>AXE</span><span class="tag">Breeding and horse trading</span></div>
+    <div class="hd__end"><span class="lang"><b>EN</b> / IT</span><a href="#" class="pill">Contact us</a></div>
+  </div></header>
+  <div class="rule"></div>
+  <div class="body">
+    <p class="eyebrow">Desenzano del Garda &middot; Lanaken</p>
+    <h1>Bred for the biggest arenas</h1>
+    <p class="lede">Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold to breeders in ten countries.</p>
+    <div class="ctas"><a href="#" class="p">View the horses</a><a href="#" class="s">Ask about a horse</a></div>
+  </div>
+  <div class="mqwrap"><div class="mq s1"><div class="mq__track" data-cards="s1"></div></div></div>
+</section>
+<p class="vnote"><strong>T2 Centred.</strong> Formal and symmetrical, the auction catalogue cover approach. Reads as the most composed of the four and it is the safest with any photograph, because nothing depends on where the horse happens to stand. Costs you the overlap effect.</p>
+
+<!-- ============ T3 · ANCHORED ============ -->
+<section class="arena" id="t3">
+  <span class="vlabel">T3 · Anchored</span>
+  <div class="bg"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg" alt="Sport horse at Stud Von Axe" loading="lazy"></div>
+  <header class="hd"><div class="hd__row">
+    <nav><a href="#" class="on">Home</a><a href="#">Horses</a><a href="#">Embryos</a><a href="#">Semen</a><a href="#">News</a></nav>
+    <div class="mark"><span class="crown">&#9819;</span><span class="wm">VON<span class="bar">|</span>AXE</span><span class="tag">Breeding and horse trading</span></div>
+    <div class="hd__end"><span class="lang"><b>EN</b> / IT</span><a href="#" class="pill">Contact us</a></div>
+  </div></header>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="block">
+      <p class="eyebrow">Sport horse breeding</p>
+      <h1>Bred for the biggest arenas</h1>
+      <p class="lede">Foals, embryos and frozen semen from our bases in Italy and Belgium.</p>
+      <div class="ctas"><a href="#" class="p">View the horses</a><a href="#" class="s">Ask about a horse</a></div>
+    </div>
+  </div>
+  <div class="mqwrap"><div class="mq s1"><div class="mq__track" data-cards="s1"></div></div></div>
+</section>
+<p class="vnote"><strong>T3 Anchored.</strong> Everything in one bottom left block at a narrow measure, leaving the whole right side of the frame to the horse. The most photograph led of the four and the easiest to read, because the type sits where the scrim is darkest. My pick if the client keeps swapping the hero image.</p>
+
+<!-- ============ T4 · HIGH ============ -->
+<section class="arena" id="t4">
+  <span class="vlabel">T4 · High</span>
+  <div class="bg"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg" alt="Sport horse at Stud Von Axe" loading="lazy"></div>
+  <header class="hd"><div class="hd__row">
+    <nav><a href="#" class="on">Home</a><a href="#">Horses</a><a href="#">Embryos</a><a href="#">Semen</a><a href="#">News</a></nav>
+    <div class="mark"><span class="crown">&#9819;</span><span class="wm">VON<span class="bar">|</span>AXE</span><span class="tag">Breeding and horse trading</span></div>
+    <div class="hd__end"><span class="lang"><b>EN</b> / IT</span><a href="#" class="pill">Contact us</a></div>
+  </div></header>
+  <div class="rule"></div>
+  <div class="body">
+    <h1>Bred for the<span class="h1b">biggest arenas</span></h1>
+    <div class="lower">
+      <p class="lede">Foals, embryos and frozen semen from Desenzano del Garda and our base near Lanaken. Ask about any horse on the list.</p>
+      <a href="#" class="arw">See the horses <span>&#8599;</span></a>
+    </div>
+  </div>
+  <div class="mqwrap"><div class="mq s1"><div class="mq__track" data-cards="s1"></div></div></div>
+</section>
+<p class="vnote"><strong>T4 High.</strong> Headline pushed up tight under the rule so it reads as a masthead, then a long clear gap before the supporting text at the bottom. Gives the photograph the whole middle of the frame. Most editorial of the four and it needs a photo with something worth looking at in the centre.</p>
+
+<div class="parthead">
+  <p class="k">Part two</p>
+  <h2>How the cards look</h2>
+  <p>Five treatments on the same dark ground the cards actually sit on, so you are judging them in context. Status is text in the metadata in every one, never on the photograph. Pick a text position from part one and a card style here, for example T3 plus S4.</p>
+</div>
+
+<div class="showcase">
+  <div class="shot">
+    <div class="ghost"></div>
+    <div class="slabel"><b>S1 · Bare</b><span>No container at all. Photo, name, metadata. The quietest option and the closest to how a gallery labels work.</span></div>
+    <div class="row s1" data-cards="s1" data-static="1"></div>
+  </div>
+  <div class="shot">
+    <div class="ghost"></div>
+    <div class="slabel"><b>S2 · Glass</b><span>Frosted panel with a fine light border. Lifts the card off a busy photo without adding weight, and it is the most modern of the five.</span></div>
+    <div class="row s2" data-cards="s2" data-static="1"></div>
+  </div>
+  <div class="shot">
+    <div class="ghost"></div>
+    <div class="slabel"><b>S3 · Hairline</b><span>One pixel frame, no fill, with a rule separating photo from text. Restrained and slightly formal, closest to Direction A.</span></div>
+    <div class="row s3" data-cards="s3" data-static="1"></div>
+  </div>
+  <div class="shot">
+    <div class="ghost"></div>
+    <div class="slabel"><b>S4 · Lot</b><span>Auction house treatment. A lot number and a thin rule above each photo. Adds a sense of a curated, numbered list rather than a product grid.</span></div>
+    <div class="row s4" data-cards="s4" data-static="1"></div>
+  </div>
+  <div class="shot">
+    <div class="ghost"></div>
+    <div class="slabel"><b>S5 · Row</b><span>Horizontal, square thumbnail beside the text. Fits far more horses in the same space and is the strongest of the five on a phone.</span></div>
+    <div class="row s5" data-cards="s5" data-static="1"></div>
+  </div>
+</div>
+
+<p class="vnote"><strong>On the two horses missing.</strong> Only four horses appear in these marquees. Hayley and the Mosito embryo are left out on purpose, because on the client's own site their listing photos show different named horses, Ganesh Hero Z and Elvis Ter Putte. A hero marquee is the most visible place on the site to put that mistake.</p>
+
+<nav class="switcher" aria-label="Jump to option">
+  <a href="#t1" class="on">T1</a>
+  <a href="#t2">T2</a>
+  <a href="#t3">T3</a>
+  <a href="#t4">T4</a>
+  <hr>
+  <a href="#cards">Cards</a>
+</nav>
+
+<script>
+/* Real horses. Only the four with photographs we can trust. */
+const HORSES=[
+  {n:"Arkhana Von Axe Z", c:"Foal, colt", y:"2026", s:"Available", sold:false,
+   img:"https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104-400x300.jpg"},
+  {n:"Cortina de Jolie Z", c:"Broodmare", y:"2019", s:"Available", sold:false,
+   img:"https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled-400x300.jpg"},
+  {n:"Charina Von Axe Z", c:"Foal, filly", y:"2026", s:"Sold, GB", sold:true,
+   img:"https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051-400x300.jpg"},
+  {n:"Unguessable Von Axe", c:"Broodmare", y:"2018", s:"Sold, US", sold:true,
+   img:"https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932-400x300.jpg"}
+];
+
+function card(h,style,i,dup){
+  const lot = style==='s4'
+    ? `<div class="hc__lot">${String(i+1).padStart(2,'0')}<i></i></div>` : '';
+  return `<article class="hc"${dup?' aria-hidden="true"':''}>
+    ${lot}
+    <img src="${h.img}" alt="${dup?'':h.n}" loading="lazy">
+    <div class="hc__body">
+      <span class="hc__nm">${h.n}</span>
+      <span class="hc__meta">${h.c}<i class="dot"></i>${h.y}</span>
+      <span class="hc__st${h.sold?' sold':''}">${h.s}</span>
+    </div>
+  </article>`;
+}
+
+/* marquees need the set twice for a seamless loop */
+document.querySelectorAll('.mq__track[data-cards]').forEach(t=>{
+  const st=t.dataset.cards;
+  t.innerHTML = HORSES.map((h,i)=>card(h,st,i,false)).join('')
+              + HORSES.map((h,i)=>card(h,st,i,true)).join('');
+});
+/* showcase rows render once */
+document.querySelectorAll('.row[data-static]').forEach(r=>{
+  const st=r.dataset.cards;
+  r.innerHTML = HORSES.map((h,i)=>card(h,st,i,false)).join('');
+});
+
+/* anchor for the cards section + switcher highlight */
+document.querySelector('.showcase').id='cards';
+
+const secs=[...document.querySelectorAll('.arena')];
+const links=[...document.querySelectorAll('.switcher a')].slice(0,4);
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const i=secs.indexOf(e.target);
+    links.forEach((l,n)=>l.classList.toggle('on',n===i));
+  });
+},{threshold:.5});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
