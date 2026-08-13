@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stud Von Axe · Sport Horse Breeding, Desenzano del Garda</title>
+<meta name="description" content="Stud Von Axe breeds and sells foals, embryos and frozen semen from Desenzano del Garda, Italy, with a second base near Lanaken, Belgium.">
+
+<!-- Google Fonts: Cormorant Garamond for headings, Inter for body copy.
+     One request for the whole page. The header and hero use these same two
+     families, so there is deliberately no second font link below. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  LOGO PLACEHOLDER NOTICE
+  The client's real logo is a horse skull mark split by a vertical rule with a
+  crown above it, delivered so far only as four flattened JPEGs with a baked
+  in background (not usable on top of photography or coloured bands).
+  Image 1 (light background, gold crown and rules, navy mark) is the intended
+  primary logo for light backgrounds. Image 2 (navy background, gold crown
+  and rules, white mark) is the intended reversed logo for dark bands.
+  Until transparent PNG or vector (SVG/AI) versions of Image 1 and Image 2
+  arrive from the client, the wordmark below stands in for both: a small
+  drawn crown glyph, "VON | AXE" set with a vertical rule, and the
+  "BREEDING AND HORSE TRADING" tagline underneath. Swap this markup for the
+  real marks as soon as they land. See .brand and .brand--reversed below.
+-->
+
+<style>
+  /* ============================================================
+     COLOUR TOKENS — every colour used on the page lives here.
+     The gold Pantone is still coming from the client, so every
+     gold reference below points at --color-gold. Swap one value
+     to rebrand the whole page.
+     ============================================================ */
+  :root{
+    --color-navy:        #16213D;   /* primary structural navy */
+    --color-navy-deep:   #0D1526;   /* darkest navy, footer + overlays */
+    --color-navy-soft:   #3A466B;   /* muted navy for secondary text on light */
+    --color-gold:        #B08A34;   /* placeholder gold, swap when Pantone arrives */
+    --color-gold-deep:   #8C6C22;   /* hover / pressed gold */
+    /* Lifted gold for small type on the dark hero. Derived from --color-gold
+       so the Pantone still swaps from one place. The flat value on the first
+       line is only a fallback for engines without color-mix. */
+    --color-gold-soft:   #CDAC72;
+    --color-gold-soft:   color-mix(in srgb, var(--color-gold) 66%, #FFFFFF);
+    --color-base:        #FBF9F4;   /* off white, main background */
+    --color-base-alt:    #F2EEE3;   /* warm secondary background */
+    --color-ink:         #1E2027;   /* body text on light backgrounds */
+    --color-ink-soft:    #5B5F6B;   /* muted text on light backgrounds */
+    --color-white:       #FFFFFF;
+    --color-border:      rgba(22,33,61,0.16);
+    --color-border-soft: rgba(22,33,61,0.09);
+    /* RGB channels of --color-navy-deep, so the hero and card scrims can be
+       mixed at any opacity and still read as the same navy. */
+    --scrim: 13,21,38;
+
+    --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    --font-body: 'Inter', 'Source Sans 3', -apple-system, sans-serif;
+
+    --container: 1220px;
+
+    /* ---- hero scale, one spacing ladder rather than loose margins ---- */
+    --s1: 6px;
+    --s2: 11px;
+    --s3: 18px;
+    --s4: 26px;
+    --gutter: clamp(20px, 4vw, 52px);
+
+    /* The air around the centred hero statement. Applied ONCE above and ONCE
+       below, so the two are equal: .hero__body owns both and .reel adds none
+       of its own. Stacking body padding and reel padding put the type visibly
+       too high. Signed off that the card row may sit lower and run further
+       past the fold to pay for this. */
+    --hero-air: clamp(60px, 10.5vh, 132px);
+
+    --card-gap: 14px;
+    --r-card: 20px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing: border-box; }
+  /* The header sits inside the hero and no longer sticks, so anchors need
+     only a little breathing room rather than a header's worth. */
+  html{ scroll-behavior: smooth; scroll-padding-top: 24px; }
+  body{
+    margin:0;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-ink);
+    background: var(--color-base);
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  h1,h2,h3,h4{ font-family: var(--font-display); font-weight: 500; margin:0; color: var(--color-navy); }
+  p{ margin:0; }
+  .container{ max-width: var(--container); margin:0 auto; padding: 0 24px; }
+  @media (min-width: 768px){ .container{ padding: 0 40px; } }
+  @media (min-width: 1200px){ .container{ padding: 0 56px; } }
+
+  .eyebrow{
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+  .section-head{ max-width: 640px; }
+  .section-head h2{ font-size: clamp(28px, 4vw, 40px); margin-top: 10px; }
+  .section-head p{ color: var(--color-ink-soft); margin-top: 14px; font-size: 17px; }
+
+  .rule{ height:1px; background: var(--color-border); border:0; margin:0; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--font-body); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 14px 26px;
+    border: 1px solid var(--color-navy);
+    color: var(--color-navy);
+    background: transparent;
+    transition: color .5s ease, background .5s ease, border-color .5s ease;
+  }
+  .btn:hover{ background: var(--color-navy); color: var(--color-white); }
+  .btn-solid{ background: var(--color-navy); color: var(--color-white); }
+  .btn-solid:hover{ background: var(--color-navy-deep); border-color: var(--color-navy-deep); color: var(--color-white); }
+  .btn-gold{ border-color: var(--color-gold); color: var(--color-gold-deep); }
+  .btn-gold:hover{ background: var(--color-gold); border-color: var(--color-gold); color: var(--color-white); }
+
+  .link-arrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:15px; letter-spacing:.02em;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 3px;
+    transition: border-color .5s ease, color .5s ease, gap .3s ease;
+  }
+  .link-arrow span{ transition: transform .5s ease; }
+  .link-arrow:hover{ border-color: var(--color-gold); color: var(--color-gold-deep); }
+  .link-arrow:hover span{ transform: translateX(4px); }
+
+  /* ============================================================
+     BRAND / WORDMARK — placeholder for the client's vector logo
+     ============================================================ */
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand__crown{ color: var(--color-gold); flex-shrink:0; }
+  .brand__type{ display:flex; flex-direction:column; line-height:1; }
+  .brand__word{
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--color-navy);
+    white-space: nowrap;
+  }
+  .brand__word em{ font-style:normal; color: var(--color-gold); font-weight:400; margin: 0 6px; }
+  .brand__tagline{
+    font-family: var(--font-body);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+  .brand--reversed .brand__word{ color: var(--color-white); }
+  .brand--reversed .brand__tagline{ color: rgba(255,255,255,0.62); }
+  .brand--large .brand__word{ font-size: 34px; }
+  .brand--large .brand__tagline{ font-size: 10px; margin-top:6px; }
+  .brand--large .brand__crown svg{ width:30px; height:18px; }
+
+  /* ============================================================
+     HEADER + HERO
+     Folded in from hero-final.html, the signed off canonical hero.
+     Typefaces and colours are mapped onto this direction's tokens,
+     everything else is reproduced. Do not undo casually:
+
+     1. Cards are true 3/4 portrait at every size. Card height is never
+        tied to viewport height and never capped with max-height. Two
+        earlier attempts did that and flattened them into landscape.
+     2. Four across on desktop, via the clamp/calc width below. The row
+        is meant to run past the fold. Signed off.
+     3. Card is photography only at rest. Name, category, year and
+        status fade in on hover, over a gradient that also fades in.
+     4. That reveal is scoped to (hover:hover) and (pointer:fine). On
+        touch the text and gradient are ALWAYS visible. There is no
+        hover on a phone and most of this audience is on a phone at a
+        show. Do not remove that media query.
+     5. Cards are links, so the reveal also fires on keyboard focus,
+        with a visible ring. Marquee duplicates are aria-hidden and
+        removed from the tab order.
+     6. The headline is full size. Nothing here shrinks it to force the
+        cards above the fold.
+     ============================================================ */
+  .hero{
+    position:relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display:flex; flex-direction:column;
+    background: var(--color-navy-deep);
+    color: var(--color-white);
+    overflow:hidden;
+  }
+  .hero__bg{ position:absolute; inset:0; }
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:center 32%; }
+  .hero__bg::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(to bottom,
+      rgba(var(--scrim),0.62) 0%,
+      rgba(var(--scrim),0.10) 28%,
+      rgba(var(--scrim),0.42) 60%,
+      rgba(var(--scrim),0.95) 100%);
+  }
+
+  /* ---- header: transparent, nav left, wordmark centred, language and
+         contact right, hairline rule underneath ---- */
+  .hd{ position:relative; z-index:20; padding: var(--s4) var(--gutter) 0; }
+  .hd__row{ display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap: var(--s3); }
+  .hd__start{ display:flex; align-items:center; gap: var(--s3); min-width:0; }
+  .hd nav ul{ display:flex; align-items:center; gap: clamp(15px, 2.1vw, 32px); flex-wrap:wrap; }
+  .hd nav a{
+    font-family: var(--font-body);
+    font-size:13px; letter-spacing:.07em;
+    color: rgba(255,255,255,0.8);
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition: color .4s var(--ease), border-color .4s var(--ease);
+  }
+  .hd nav a:hover,
+  .hd nav a:focus-visible,
+  .hd nav a[aria-current="page"]{ color: var(--color-white); border-bottom-color: var(--color-gold); }
+  .hd__end{ display:flex; justify-content:flex-end; align-items:center; gap: var(--s3); }
+  .lang{ font-family: var(--font-body); font-size:11.5px; letter-spacing:.14em; color: rgba(255,255,255,0.6); white-space:nowrap; }
+  .lang b{ color: var(--color-white); font-weight:500; }
+  .lang span{ opacity:.5; margin:0 4px; }
+  .lang--stack{ display:none; }
+  .pill{
+    font-family: var(--font-body);
+    font-size:12.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    border:1px solid rgba(255,255,255,0.48); color: var(--color-white);
+    padding:10px 22px; border-radius:100px; white-space:nowrap;
+    transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+  }
+  .pill:hover, .pill:focus-visible{ background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
+  .hd__rule{ position:relative; z-index:20; height:1px; background: rgba(255,255,255,0.24); margin: var(--s3) var(--gutter) 0; }
+
+  /* wordmark placeholder, centred because the real mark is a centred emblem */
+  .mark{ display:flex; flex-direction:column; align-items:center; gap:4px; line-height:1; color: var(--color-white); }
+  .mark__crown{ color: var(--color-gold); display:block; }
+  .mark__wm{ font-family: var(--font-display); font-size:22px; font-weight:500; letter-spacing:.12em; white-space:nowrap; }
+  .mark__wm i{ color: var(--color-gold); font-style:normal; margin: 0 .35em; }
+  .mark__tag{
+    font-family: var(--font-body);
+    font-size:7.5px; font-weight:600; letter-spacing:.3em; text-transform:uppercase;
+    color: rgba(255,255,255,0.7); white-space:nowrap;
+  }
+
+  .nav-toggle{
+    display:none; align-items:center; justify-content:center;
+    position:relative; z-index:20;
+    width:38px; height:38px; padding:0;
+    background:none; border:1px solid rgba(255,255,255,0.4); border-radius:100px;
+    color: var(--color-white); font-size:15px; line-height:1; cursor:pointer;
+    transition: background .4s var(--ease), border-color .4s var(--ease);
+  }
+  .nav-toggle:hover{ border-color: var(--color-white); background: rgba(255,255,255,0.09); }
+
+  /* ---- centred statement, equal air above and below from --hero-air ---- */
+  .hero__body{
+    position:relative; z-index:20; flex:1;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center;
+    padding: var(--hero-air) var(--gutter);
+  }
+  .hero .eyebrow{
+    font-family: var(--font-body);
+    font-size:11px; font-weight:600; letter-spacing:.26em; text-transform:uppercase;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 clamp(16px, 2.2vh, 26px);
+  }
+  .hero h1{
+    font-family: var(--font-display); font-weight:500;
+    color: var(--color-white); text-transform:uppercase;
+    font-size: clamp(2.4rem, 7.4vw, 6.4rem);
+    line-height:.95; letter-spacing:.006em;
+    max-width: 20ch; text-wrap: balance;
+  }
+  .hero__lede{
+    color: rgba(255,255,255,0.87);
+    font-size:16.5px; line-height:1.75;
+    max-width: 52ch;
+    margin: clamp(22px, 3vh, 34px) auto 0;
+  }
+  .hero__ctas{ display:flex; gap: var(--s2); flex-wrap:wrap; justify-content:center; margin-top: clamp(26px, 3.6vh, 40px); }
+  .hero .btn{
+    font-size:12.5px; letter-spacing:.11em;
+    padding: 14px 28px; border-radius:100px;
+    border:1px solid transparent; white-space:nowrap;
+    transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+  }
+  .hero .btn--gold{ background: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy-deep); }
+  .hero .btn--gold:hover,
+  .hero .btn--gold:focus-visible{ background: var(--color-white); border-color: var(--color-white); color: var(--color-navy); }
+  .hero .btn--ghost{ background:transparent; color: var(--color-white); border-color: rgba(255,255,255,0.45); }
+  .hero .btn--ghost:hover,
+  .hero .btn--ghost:focus-visible{ border-color: var(--color-white); background: rgba(255,255,255,0.09); color: var(--color-white); }
+
+  /* ============================================================
+     HERO MARQUEE
+     No padding-top here on purpose. .hero__body already owns the gap
+     above the cards, see --hero-air.
+     ============================================================ */
+  .reel{ position:relative; z-index:20; padding-bottom: var(--s4); }
+  .reel__vp{
+    position:relative; overflow:hidden; width:100%;
+    /* soften the edges so cards leaving the frame look intentional
+       instead of chopped off by the viewport */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  }
+  .reel__track{
+    display:flex; gap: var(--card-gap); width: max-content;
+    padding: 0 var(--gutter);
+    animation: reel 64s linear infinite;
+  }
+  .reel__vp:hover .reel__track,
+  .reel__vp:focus-within .reel__track{ animation-play-state: paused; }
+  @keyframes reel{ to{ transform: translateX(-50%); } }
+
+  /* ---- hero card ---- */
+  .card{
+    position:relative; display:block; flex:0 0 auto;
+    /* four across on desktop, never smaller than legible on a phone */
+    width: clamp(248px, calc((100vw - (2 * var(--gutter)) - (3 * var(--card-gap))) / 4), 420px);
+    aspect-ratio: 3 / 4;                 /* true portrait, at every size */
+    border-radius: var(--r-card); overflow:hidden;
+    background: var(--color-navy-deep);
+    border:1px solid rgba(255,255,255,0.09);
+  }
+  .card img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    transition: transform 1.1s var(--ease);
+  }
+  /* Direction A carries the lightest of the three card gradients. */
+  .card::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(to bottom,
+      transparent 38%,
+      rgba(var(--scrim),0.30) 68%,
+      rgba(var(--scrim),0.74) 100%);
+  }
+  .card__body{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding: var(--s3) clamp(16px, 1.6vw, 22px);
+  }
+  .card__nm{
+    font-family: var(--font-display); font-weight:500;
+    font-size: clamp(18px, 1.5vw, 22px); line-height:1.25;
+    display:block; color: var(--color-white); margin-bottom: var(--s1);
+  }
+  .card__meta{
+    font-family: var(--font-body);
+    font-size:10px; font-weight:600; letter-spacing:.17em; text-transform:uppercase;
+    color: rgba(255,255,255,0.78);
+  }
+  /* In this direction the revealed status is a small italic caption, the
+     same voice as the italic status rules in Available now. */
+  .card__st{
+    font-family: var(--font-display); font-style:italic; font-weight:500;
+    font-size:14px; letter-spacing:.02em; text-transform:none;
+    color: var(--color-white);
+  }
+  .card__st--sold{ color: var(--color-gold-soft); }
+  .card__dot{
+    display:inline-block; width:3px; height:3px; border-radius:50%;
+    background: var(--color-gold); vertical-align:middle; margin: 0 7px 2px;
+  }
+  /* Keyboard ring on every device, not only pointer ones. */
+  .card:focus-visible{ outline:1px solid var(--color-gold-soft); outline-offset:3px; }
+
+  /* Reveal on hover, pointer devices only.
+     On touch the text and gradient stay visible, see note 4 up top. */
+  @media (hover:hover) and (pointer:fine){
+    .card__body{
+      opacity:0; transform: translateY(10px);
+      transition: opacity .55s var(--ease), transform .55s var(--ease);
+    }
+    .card::after{ opacity:0; transition: opacity .55s var(--ease); }
+    .card:hover .card__body,
+    .card:focus-visible .card__body{ opacity:1; transform:none; }
+    .card:hover::after,
+    .card:focus-visible::after{ opacity:1; }
+    .card:hover img{ transform: scale(1.04); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .reel__track{ animation:none; }
+    .reel__vp{ overflow-x:auto; }
+    .card img{ transition:none; }
+    .card:hover img{ transform:none; }
+  }
+
+  /* Short screens.
+     This block used to collapse the spacing around the statement to force
+     the card row above the fold, which left the type wedged between the
+     header and the cards. The spacing is left alone now and the cards are
+     simply allowed to sit lower. Nothing here touches the headline. */
+  @media (max-height: 820px){
+    .hero__lede{ font-size:16px; }
+    .reel{ padding-bottom: var(--s3); }
+  }
+
+  /* Nav collapses to a panel while the wordmark stays centred, so the
+     three column header holds at every width. */
+  @media (max-width: 900px){
+    .nav-toggle{ display:flex; }
+    .hd nav{
+      position:fixed; inset:0; z-index:15;
+      background: var(--color-navy-deep);
+      display:flex; flex-direction:column; justify-content:center;
+      padding: 104px var(--gutter) 48px;
+      overflow-y:auto;
+      opacity:0; visibility:hidden; pointer-events:none;
+      transform: translateY(-6px);
+      transition: opacity .4s var(--ease), transform .4s var(--ease), visibility .4s var(--ease);
+    }
+    .hd nav ul{ flex-direction:column; align-items:flex-start; gap:22px; }
+    .hd nav a{
+      font-family: var(--font-display);
+      font-size:27px; letter-spacing:.01em;
+      color: rgba(255,255,255,0.92);
+    }
+    .nav-more{ display:block; }
+    .lang--stack{ display:block; margin-top:40px; }
+    body.nav-open .hd nav{ opacity:1; visibility:visible; pointer-events:auto; transform:none; }
+    body.nav-open .hd{ z-index:40; }
+    body.nav-open{ overflow:hidden; }
+  }
+  @media (min-width: 901px){
+    /* These two live in the panel only, the desktop row keeps five items
+       so it never wraps under the centred wordmark. */
+    .nav-more{ display:none; }
+  }
+
+  @media (max-width: 860px){
+    .hd__end .lang{ display:none; }
+    .reel__vp{
+      -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 40px), transparent 100%);
+      mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 40px), transparent 100%);
+    }
+  }
+
+  @media (max-width: 640px){
+    /* Phone: the header row has to hold a menu button, the centred mark and
+       the contact pill inside 360px, so the tagline steps out. */
+    .hd__row{ gap:12px; }
+    .mark__tag{ display:none; }
+    .pill{ font-size:11.5px; padding:9px 16px; }
+  }
+
+  /* ============================================================
+     WHO THEY ARE — single editorial column with a lede drop cap
+     ============================================================ */
+  .about{ padding: 96px 0; background: var(--color-base); }
+  .about-grid{ display:grid; grid-template-columns: 1fr; gap: 40px; }
+  @media (min-width: 900px){
+    .about-grid{ grid-template-columns: 0.85fr 1.5fr; gap: 72px; align-items:start; }
+  }
+  .about-label{ position: sticky; top: 110px; }
+  .about-label .eyebrow{ display:block; margin-bottom: 14px; }
+  .about-label h2{ font-size: clamp(26px, 3vw, 34px); }
+  .about-copy p{
+    font-size: 18px; color: var(--color-ink); line-height: 1.85;
+    max-width: 62ch;
+  }
+  .about-copy p::first-letter{
+    font-family: var(--font-display);
+    font-size: 64px; font-weight:500; float:left; line-height:0.8;
+    padding: 8px 10px 0 0; color: var(--color-navy);
+  }
+  .about-copy a{ margin-top:22px; }
+
+  /* ============================================================
+     BUSINESS LINES — numbered directory listing, not cards
+     ============================================================ */
+  .offer{ background: var(--color-base-alt); padding: 96px 0; border-top: 1px solid var(--color-border-soft); border-bottom: 1px solid var(--color-border-soft); }
+  .offer-head{ margin-bottom: 56px; }
+  .offer-list{ display:flex; flex-direction:column; }
+  .offer-item{
+    padding: 40px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .offer-item > * + *{ margin-top: 14px; }
+  .offer-list .offer-item:last-child{ border-bottom: 1px solid var(--color-border); }
+  @media (min-width: 860px){
+    .offer-item{
+      display:grid; grid-template-columns: 90px 1.1fr 1fr; gap: 40px; align-items:start;
+    }
+    .offer-item > * + *{ margin-top: 0; }
+  }
+  .offer-num{
+    font-family: var(--font-display); font-style: italic;
+    font-size: 30px; color: var(--color-gold-deep);
+  }
+  .offer-title h3{ font-size: 26px; margin-bottom: 6px; }
+  .offer-title .offer-sub{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; color: var(--color-ink-soft); font-weight:600; }
+  .offer-body p{ color: var(--color-ink-soft); font-size: 16.5px; max-width: 56ch; }
+  .offer-routes{ display:flex; flex-wrap:wrap; gap: 10px 24px; margin-top: 16px; }
+  .offer-routes a{
+    font-size:13px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-gold);
+    padding-bottom:2px;
+    transition: color .4s ease, opacity .4s ease;
+  }
+  .offer-routes a:hover{ color: var(--color-gold-deep); }
+
+  /* ============================================================
+     AVAILABLE NOW — horse cards
+     ============================================================ */
+  .horses{ padding: 96px 0 72px; }
+  .horses-head{
+    display:flex; flex-direction:column; gap:24px;
+    margin-bottom: 48px;
+  }
+  @media (min-width:760px){
+    .horses-head{ flex-direction:row; justify-content:space-between; align-items:flex-end; }
+  }
+  /* Four listings, so the grid stays two by two and never leaves an orphan
+     row. On wide screens it holds a measure instead of stretching, which
+     keeps the photographs at their native scale and the margins generous. */
+  .horse-grid{
+    display:grid; grid-template-columns: 1fr; gap: 44px 32px;
+  }
+  @media (min-width: 640px){ .horse-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1080px){ .horse-grid{ max-width: 920px; gap: 56px 40px; } }
+
+  .horse-card{ display:flex; flex-direction:column; }
+  .horse-image-wrap{
+    aspect-ratio: 4 / 3; overflow:hidden; background: var(--color-base-alt);
+    border: 1px solid var(--color-border);
+  }
+  .horse-image-wrap img{
+    width:100%; height:100%; object-fit:cover;
+    transition: transform .8s ease;
+  }
+  .horse-card:hover .horse-image-wrap img{ transform: scale(1.045); }
+
+  .horse-status-rule{ display:flex; align-items:center; gap:14px; margin: 16px 0 14px; }
+  .horse-status-rule::before{ content:""; flex:1; height:1px; background: var(--color-navy); opacity:.28; }
+  .horse-status-rule .status-text{
+    font-family: var(--font-display); font-style: italic; font-size: 15px;
+    white-space: nowrap; color: var(--color-navy);
+  }
+  .horse-card.is-sold .horse-status-rule .status-text{ color: var(--color-ink-soft); }
+  .horse-card.is-sold .horse-status-rule::before{ opacity:.16; }
+
+  .horse-body h3{ font-size: 21px; margin-bottom: 6px; }
+  .horse-meta{
+    font-size: 12.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color: var(--color-gold-deep); margin-bottom: 10px;
+  }
+  .horse-meta .dot{ color: var(--color-border); margin: 0 8px; font-weight:400; }
+  .horse-genetics{
+    font-size: 13.5px; color: var(--color-ink-soft); line-height:1.6;
+    max-width: 40ch;
+  }
+  .horse-card.is-sold{ opacity: 0.82; }
+
+  .horses-stat{
+    margin-top: 72px; padding-top: 44px; border-top: 1px solid var(--color-border);
+    display:flex; align-items:center; justify-content:center; gap: 22px; text-align:center;
+  }
+  .horses-stat .stat-rule{ flex:1; max-width:120px; height:1px; background: var(--color-border); }
+  .horses-stat p{
+    font-family: var(--font-display); font-style:italic; font-size: 20px; color: var(--color-navy);
+    white-space: nowrap;
+  }
+  @media (max-width:560px){
+    .horses-stat{ flex-direction:column; gap:14px; }
+    .horses-stat .stat-rule{ display:none; }
+  }
+
+  /* ============================================================
+     SEMEN SALES — navy frame band, content stays on light
+     ============================================================ */
+  .band{ padding: 6px 0; background: var(--color-navy); }
+  .band-strip{ padding: 14px 0; text-align:center; }
+  .band-strip .eyebrow{ color: var(--color-gold); }
+  .band-panel{
+    background: var(--color-base);
+    border: 1px solid var(--color-border);
+    margin: 28px 0;
+    padding: 56px 32px;
+  }
+  @media (min-width:900px){ .band-panel{ padding: 72px; } }
+  .semen-grid{ display:grid; grid-template-columns: 1fr; gap: 40px; }
+  @media (min-width:900px){ .semen-grid{ grid-template-columns: 1.2fr 1fr; gap: 64px; align-items:center; } }
+  .semen-grid h2{ font-size: clamp(28px,3.6vw,38px); margin-top:10px; }
+  .semen-grid p{ color: var(--color-ink-soft); font-size:17px; margin-top:18px; max-width: 58ch; }
+  .semen-facts{ border-left: 1px solid var(--color-border); padding-left: 32px; display:flex; flex-direction:column; gap:26px; }
+  @media (max-width:899px){ .semen-facts{ border-left:none; border-top:1px solid var(--color-border); padding-left:0; padding-top:28px; } }
+  .semen-fact .num{ font-family: var(--font-display); font-size:15px; color: var(--color-gold-deep); font-style:italic; }
+  .semen-fact p{ font-size:15px; color: var(--color-ink-soft); margin-top:4px; max-width:34ch; }
+  .semen-cta{ margin-top: 30px; }
+
+  /* ============================================================
+     SERVICES
+     ============================================================ */
+  .services{ padding: 88px 0; }
+  .services-grid{ display:grid; grid-template-columns:1fr; gap: 1px; background: var(--color-border); border:1px solid var(--color-border); margin-top: 48px; }
+  @media (min-width:820px){ .services-grid{ grid-template-columns: repeat(3,1fr); } }
+  .service-item{ background: var(--color-base); padding: 36px 32px; }
+  .service-item .mark{ font-size: 20px; color: var(--color-gold-deep); display:block; margin-bottom:16px; }
+  .service-item h3{ font-size: 20px; margin-bottom:10px; }
+  .service-item p{ font-size: 15.5px; color: var(--color-ink-soft); }
+
+  /* ============================================================
+     NEWS AND RESULTS
+     ============================================================ */
+  .news{ padding: 88px 0; background: var(--color-base-alt); border-top:1px solid var(--color-border-soft); border-bottom:1px solid var(--color-border-soft); }
+  .news-list{ margin-top: 44px; }
+  .news-item{
+    display:grid; grid-template-columns: 90px 1fr; gap: 24px;
+    padding: 30px 0; border-top: 1px solid var(--color-border);
+  }
+  .news-list .news-item:last-child{ border-bottom: 1px solid var(--color-border); }
+  @media (min-width:760px){ .news-item{ grid-template-columns: 120px 1fr; gap:40px; } }
+  .news-date{ font-family: var(--font-display); font-style:italic; color: var(--color-gold-deep); font-size:17px; }
+  .news-body h3{ font-size: 19px; margin-bottom:8px; font-weight:500; }
+  .news-body p{ color: var(--color-ink-soft); font-size:16px; max-width: 62ch; }
+
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+  .contact{ padding: 96px 0; }
+  .contact-grid{ display:grid; grid-template-columns:1fr; gap: 56px; }
+  @media (min-width:900px){ .contact-grid{ grid-template-columns: 0.9fr 1.1fr; gap: 80px; } }
+  .contact-intro p{ color: var(--color-ink-soft); margin-top:18px; max-width: 50ch; }
+  .whatsapp-cta{
+    margin-top: 32px; display:inline-flex; align-items:center; gap:12px;
+    padding: 16px 28px; border:1px solid var(--color-navy);
+    font-weight:600; font-size:14px; letter-spacing:.04em; text-transform:uppercase;
+    transition: background .5s ease, color .5s ease;
+  }
+  .whatsapp-cta:hover{ background: var(--color-navy); color: var(--color-white); }
+  .whatsapp-cta .glyph{ font-size:16px; }
+
+  .contact-form{ display:flex; flex-direction:column; gap: 22px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{ font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color: var(--color-ink-soft); }
+  .field input, .field textarea{
+    font-family: var(--font-body); font-size:16px; color: var(--color-ink);
+    background: var(--color-base); border: 1px solid var(--color-border);
+    padding: 14px 16px; outline:none;
+    transition: border-color .4s ease;
+  }
+  .field input:focus, .field textarea:focus{ border-color: var(--color-gold); }
+  .field textarea{ resize: vertical; min-height: 130px; }
+  .contact-form .btn{ align-self:flex-start; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer{ background: var(--color-navy-deep); color: rgba(255,255,255,0.82); padding: 72px 0 32px; }
+  .footer-top{ display:grid; grid-template-columns: 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  @media (min-width:700px){ .footer-top{ grid-template-columns: 1.3fr 1fr 1fr; } }
+  @media (min-width:1080px){ .footer-top{ grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+  .footer-brand p{ margin-top:20px; font-size:14.5px; color: rgba(255,255,255,0.6); max-width:34ch; }
+  .footer-col h4{
+    color: var(--color-white); font-family: var(--font-body); font-size:12.5px;
+    font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-bottom:20px;
+  }
+  .footer-col ul{ display:flex; flex-direction:column; gap:13px; }
+  .footer-col a, .footer-col address{ font-size:14.5px; color: rgba(255,255,255,0.72); font-style:normal; transition: color .4s ease; }
+  .footer-col a:hover{ color: var(--color-gold); }
+  .footer-col address{ line-height:1.7; }
+
+  .footer-bottom{
+    display:flex; flex-direction:column; gap:20px; padding-top: 32px;
+    font-size:13px; color: rgba(255,255,255,0.5);
+  }
+  @media (min-width:700px){ .footer-bottom{ flex-direction:row; align-items:center; justify-content:space-between; } }
+  .footer-lang{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .footer-lang a{ color: rgba(255,255,255,0.6); font-weight:600; letter-spacing:.05em; font-size:12.5px; }
+  .footer-lang a.active{ color: var(--color-gold); }
+  .footer-social{ display:flex; gap:18px; }
+  .footer-social a{ font-size:12.5px; font-weight:600; letter-spacing:.08em; color: rgba(255,255,255,0.6); }
+  .footer-social a:hover{ color: var(--color-gold); }
+  .footer-partners{ display:flex; gap:18px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     1. HEADER + HERO
+     The signed off canonical hero. The header lives inside it and is
+     transparent over the photograph.
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="hero__bg">
+    <img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg"
+         alt="A Stud Von Axe sport horse at the stable" loading="eager">
+  </div>
+
+  <header class="hd">
+    <div class="hd__row">
+      <div class="hd__start">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+        <nav id="main-nav" aria-label="Main">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li class="nav-more"><a href="#offer">What we offer</a></li>
+            <li><a href="#horses">Horses</a></li>
+            <li><a href="#semen">Semen</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#news">News</a></li>
+            <li class="nav-more"><a href="#contact">Contact</a></li>
+          </ul>
+          <!-- IT and EN are live at launch. FR and DE can be appended here
+               and in the header row without changing either layout. -->
+          <p class="lang lang--stack"><b>EN</b><span>/</span>IT</p>
+        </nav>
+      </div>
+
+      <a class="mark" href="#top" aria-label="Stud Von Axe, home">
+        <span class="mark__crown">
+          <svg width="26" height="15" viewBox="0 0 48 28" aria-hidden="true">
+            <path d="M4 22 L4 9 L14 17 L24 5 L34 17 L44 9 L44 22 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <line x1="2" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="mark__wm">VON<i>|</i>AXE</span>
+        <span class="mark__tag">Breeding and Horse Trading</span>
+      </a>
+
+      <div class="hd__end">
+        <p class="lang"><b>EN</b><span>/</span>IT</p>
+        <a href="#contact" class="pill">Contact us</a>
+      </div>
+    </div>
+  </header>
+  <div class="hd__rule"></div>
+
+  <div class="hero__body">
+    <p class="eyebrow">Desenzano del Garda &middot; Lanaken</p>
+    <h1>Bred for the biggest arenas</h1>
+    <p class="hero__lede">Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold to breeders in ten countries.</p>
+    <div class="hero__ctas">
+      <a href="#horses" class="btn btn--gold">View the horses</a>
+      <a href="#contact" class="btn btn--ghost">Ask about a horse</a>
+    </div>
+  </div>
+
+  <div class="reel">
+    <div class="reel__vp">
+      <div class="reel__track" id="reel"></div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ============================================================
+       2. WHO THEY ARE
+       ============================================================ -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-label">
+        <span class="eyebrow">Who we are</span>
+        <h2>A stud built on bloodlines, not on shortcuts.</h2>
+      </div>
+      <div class="about-copy">
+        <p>Stud Von Axe began with a simple love of horses, and grew into years spent studying the bloodlines that produce them. We chose our broodmares with real discipline, looking for mares that pass on both movement and mind, not just a name on a page. Our embryos are produced in Ontario and carried to term at our second base near Lanaken in Belgium, where every foal is born, raised and prepared before it is offered for sale. We tell clients what we know and what we do not, because a horse bought on trust is the only kind worth buying.</p>
+        <a href="#offer" class="link-arrow">More on what we do <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. THREE BUSINESS LINES
+       ============================================================ -->
+  <section class="offer" id="offer">
+    <div class="container">
+      <div class="offer-head section-head">
+        <span class="eyebrow">What we offer</span>
+        <h2>Three ways to work with us.</h2>
+      </div>
+
+      <div class="offer-list">
+        <div class="offer-item">
+          <div class="offer-num">I.</div>
+          <div class="offer-title">
+            <h3>Foals</h3>
+            <span class="offer-sub">Colts &amp; fillies</span>
+          </div>
+          <div class="offer-body">
+            <p>Foals bred at Stud Von Axe carry bloodlines chosen over years of research, not a single season. Each one is registered and documented, and can be seen in person or reviewed on request before you decide.</p>
+            <div class="offer-routes">
+              <a href="#horses">See available foals &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-item">
+          <div class="offer-num">II.</div>
+          <div class="offer-title">
+            <h3>Embryos</h3>
+            <span class="offer-sub">Frozen &amp; implanted</span>
+          </div>
+          <div class="offer-body">
+            <p>We work two ways. Frozen embryos ship from our Ontario programme to your own vet, anywhere in the world. Implanted embryos are carried at our Belgium base near Lanaken, where you can follow the pregnancy through to a foal on the ground.</p>
+            <div class="offer-routes">
+              <a href="#horses">Frozen embryos &rarr;</a>
+              <a href="#horses">Implanted embryos &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-item">
+          <div class="offer-num">III.</div>
+          <div class="offer-title">
+            <h3>Semen</h3>
+            <span class="offer-sub">Through Avantea</span>
+          </div>
+          <div class="offer-body">
+            <p>New for us this year. Through our partnership with Avantea we now sell frozen semen. Ask us which stallions are currently collecting.</p>
+            <div class="offer-routes">
+              <a href="#semen">Ask about semen &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. AVAILABLE NOW
+       ============================================================ -->
+  <section class="horses" id="horses">
+    <div class="container">
+      <div class="horses-head">
+        <div class="section-head">
+          <span class="eyebrow">Available now</span>
+          <h2>Four horses on our list today.</h2>
+          <p>From a foal on the ground this spring to mares already proven in sport. Ask about any of them, filters and full pedigrees live on request.</p>
+        </div>
+        <a href="#contact" class="link-arrow">Ask about a horse <span>&rarr;</span></a>
+      </div>
+
+      <div class="horse-grid">
+
+        <article class="horse-card">
+          <div class="horse-image-wrap">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104-400x300.jpg" alt="Arkhana Von Axe Z, colt foal">
+          </div>
+          <div class="horse-status-rule"><span class="status-text">Available</span></div>
+          <div class="horse-body">
+            <h3>Arkhana Von Axe Z</h3>
+            <p class="horse-meta">2026<span class="dot">&middot;</span>Foal, Colt</p>
+            <p class="horse-genetics">Aganix du Seigneur Z &times; Cornet Obolensky &times; Calato &times; Darco &times; Chin Chin</p>
+          </div>
+        </article>
+
+        <article class="horse-card">
+          <div class="horse-image-wrap">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled-400x300.jpg" alt="Cortina de Jolie Z, broodmare">
+          </div>
+          <div class="horse-status-rule"><span class="status-text">Available</span></div>
+          <div class="horse-body">
+            <h3>Cortina de Jolie Z</h3>
+            <p class="horse-meta">2019<span class="dot">&middot;</span>Broodmare</p>
+            <p class="horse-genetics">Cornet Obolensky &times; Calato &times; Darco &times; Chin Chin</p>
+          </div>
+        </article>
+
+        <article class="horse-card is-sold">
+          <div class="horse-image-wrap">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051-400x300.jpg" alt="Charina Von Axe Z, filly foal">
+          </div>
+          <div class="horse-status-rule"><span class="status-text">Sold, GB</span></div>
+          <div class="horse-body">
+            <h3>Charina Von Axe Z</h3>
+            <p class="horse-meta">2026<span class="dot">&middot;</span>Foal, Filly</p>
+            <p class="horse-genetics">Chacco Blue &times; Cornet Obolensky &times; Calato &times; Darco &times; Chin Chin</p>
+          </div>
+        </article>
+
+        <article class="horse-card is-sold">
+          <div class="horse-image-wrap">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932-400x300.jpg" alt="Unguessable Von Axe, broodmare">
+          </div>
+          <div class="horse-status-rule"><span class="status-text">Sold, US</span></div>
+          <div class="horse-body">
+            <h3>Unguessable Von Axe</h3>
+            <p class="horse-meta">2018<span class="dot">&middot;</span>Broodmare, Sport</p>
+            <p class="horse-genetics">Untouchable &times; Casall &times; Contender &times; Corrado &times; Cor de la Bryere</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="horses-stat">
+        <span class="stat-rule"></span>
+        <p>Sold to breeders across 10 countries</p>
+        <span class="stat-rule"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. SEMEN SALES
+       ============================================================ -->
+  <section class="band" id="semen">
+    <div class="band-strip">
+      <span class="eyebrow">In partnership with Avantea</span>
+    </div>
+    <div class="container">
+      <div class="band-panel">
+        <div class="semen-grid">
+          <div>
+            <span class="eyebrow">Semen sales</span>
+            <h2>Frozen semen, now available to order.</h2>
+            <p>Through Avantea we now offer frozen semen. It is a new part of what we do, and we are building it properly rather than quickly. Write to us and we will tell you which stallions are currently collecting and what is available this season.</p>
+            <div class="semen-cta">
+              <a href="#contact" class="btn btn-gold">Enquire about semen</a>
+            </div>
+          </div>
+          <div class="semen-facts">
+            <div class="semen-fact">
+              <span class="num">01</span>
+              <p>Sold through Avantea, our partner for this new line.</p>
+            </div>
+            <div class="semen-fact">
+              <span class="num">02</span>
+              <p>Tell us the mare you have in mind and we will come back to you.</p>
+            </div>
+            <div class="semen-fact">
+              <span class="num">03</span>
+              <p>Ask which stallions are collecting now, availability changes through the season.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. SERVICES
+       ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2>Beyond our own horses.</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="mark">&#9670;</span>
+          <h3>Sourcing</h3>
+          <p>We look for the right horse for the right rider, drawing on contacts across Italy and Belgium rather than a public sale list.</p>
+        </div>
+        <div class="service-item">
+          <span class="mark">&#9670;</span>
+          <h3>Mediation</h3>
+          <p>We stand between buyer and seller on a sale we did not originate, so the deal stays fair and clear for both sides.</p>
+        </div>
+        <div class="service-item">
+          <span class="mark">&#9670;</span>
+          <h3>Mares available</h3>
+          <p>Mares for sport or for breeding are offered on the same terms as everything else we sell, with full history shared upfront.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. NEWS AND RESULTS
+       ============================================================ -->
+  <section class="news" id="news">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">News and results</span>
+        <h2>Proof in the ring, not only in the pedigree.</h2>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-date">2024</div>
+          <div class="news-body">
+            <h3>Calleryama wins in Barcelona</h3>
+            <p>Ridden by Gilles Thomas, Calleryama won the Nations Cup in Barcelona and finished second in the CSI3 star at Madrid the same season.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2022</div>
+          <div class="news-body">
+            <h3>Lanaken World Championships</h3>
+            <p>Offspring of our broodmare Cortina de Jolie Z placed at the World Championships for young horses in Lanaken, the clearest sign yet of what that bloodline carries forward.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. CONTACT
+       ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-intro">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Ask about a horse, an embryo or a dose of semen.</h2>
+        <p>We answer most enquiries within a day. If you are at a show or short on time, WhatsApp is the fastest way to reach us directly.</p>
+        <a href="https://wa.me/393495918565" target="_blank" rel="noopener" class="whatsapp-cta">
+          <span class="glyph">&#9742;</span> Message us on WhatsApp
+        </a>
+      </div>
+      <form class="contact-form" action="mailto:studvonaxe@gmail.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="Name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" required placeholder="Tell us which horse, embryo or stallion you are asking about."></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid">Send message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand brand--reversed" aria-label="Stud Von Axe, home">
+          <span class="brand__crown">
+            <svg width="26" height="15" viewBox="0 0 48 28" aria-hidden="true">
+              <path d="M4 22 L4 9 L14 17 L24 5 L34 17 L44 9 L44 22 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+              <line x1="2" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand__type">
+            <span class="brand__word">VON<em>|</em>AXE</span>
+            <span class="brand__tagline">Breeding and Horse Trading</span>
+          </span>
+        </a>
+        <p>Sport horses bred at Desenzano del Garda, Italy, and raised at our second base near Lanaken, Belgium.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#offer">What we offer</a></li>
+          <li><a href="#horses">Horses</a></li>
+          <li><a href="#semen">Semen</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a></li>
+          <li><a href="tel:+393495918565">+39 349 591 8565 (Italy)</a></li>
+          <li><a href="tel:+393483953433">+39 348 395 3433 (Belgium desk)</a></li>
+          <li><address>Via per Arni 30<br>55032 Castelnuovo Garfagnana LU, Italy</address></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/StudVonAxe" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex profile</a></li>
+          <li><a href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo profile</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stud Von Axe. All rights reserved.</span>
+      <div class="footer-lang">
+        <!-- IT and EN live at launch. FR and DE are structurally easy to add
+             as further <a> items in this same list once translations exist. -->
+        <a href="#" class="active">EN</a>
+        <a href="#">IT</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.facebook.com/StudVonAxe" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav panel.
+  (function(){
+    var toggle = document.getElementById('nav-toggle');
+    var nav = document.getElementById('main-nav');
+    if(!toggle || !nav) return;
+    function close(){
+      document.body.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.innerHTML = '&#9776;';
+    }
+    toggle.addEventListener('click', function(){
+      var isOpen = document.body.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      toggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && document.body.classList.contains('nav-open')) close();
+    });
+  })();
+</script>
+
+<script>
+  /* Hero marquee. Same four horses as Available now, with the same real
+     data, so the two never disagree. The list is duplicated once so the
+     track can loop seamlessly, and every duplicate is hidden from
+     assistive technology and taken out of the tab order. */
+  (function(){
+    var track = document.getElementById('reel');
+    if(!track) return;
+
+    var HORSES = [
+      { name:"Arkhana Von Axe Z",   cat:"Foal, colt",  year:"2026", status:"Available", sold:false,
+        img:"https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104-400x300.jpg" },
+      { name:"Cortina de Jolie Z",  cat:"Broodmare",   year:"2019", status:"Available", sold:false,
+        img:"https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled-400x300.jpg" },
+      { name:"Charina Von Axe Z",   cat:"Foal, filly", year:"2026", status:"Sold, GB",  sold:true,
+        img:"https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051-400x300.jpg" },
+      { name:"Unguessable Von Axe", cat:"Broodmare",   year:"2018", status:"Sold, US",  sold:true,
+        img:"https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932-400x300.jpg" }
+    ];
+
+    function card(h, dup){
+      var attrs = dup
+        ? ' aria-hidden="true" tabindex="-1"'
+        : ' aria-label="' + h.name + '. ' + h.cat + ', ' + h.year + '. ' + h.status + '."';
+      return '<a class="card" href="#horses"' + attrs + '>' +
+        '<img src="' + h.img + '" alt="' + (dup ? '' : h.name) + '" loading="lazy">' +
+        '<div class="card__body">' +
+          '<span class="card__nm">' + h.name + '</span>' +
+          '<span class="card__meta">' + h.cat +
+            '<i class="card__dot"></i>' + h.year +
+            '<i class="card__dot"></i>' +
+            '<em class="card__st' + (h.sold ? ' card__st--sold' : '') + '">' + h.status + '</em>' +
+          '</span>' +
+        '</div>' +
+      '</a>';
+    }
+
+    track.innerHTML =
+      HORSES.map(function(h){ return card(h, false); }).join('') +
+      HORSES.map(function(h){ return card(h, true); }).join('');
+  })();
+</script>
+
+</body>
+</html>
