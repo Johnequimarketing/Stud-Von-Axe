@@ -204,41 +204,65 @@ section { position: relative; }
    grid: nav left, wordmark centred (the real mark is a centred emblem,
    which is why the header centres it), language switch and contact
    pill right, hairline rule underneath. */
-.hd { position: relative; z-index: 20; padding: 1.6rem var(--hero-gutter) 0; }
+/* Utility strip. Thin on purpose, sits above the main bar: both bases
+   named and the real phone lines visible before anyone scrolls, closer
+   to how an international facing stud or auction site handles a buyer
+   who wants to call rather than browse. Locations drop out on narrow
+   screens, the phone numbers and language switch stay, a call matters
+   more on a phone than a link to a section already below it. */
+.util {
+  position: relative; z-index: 20;
+  background: rgba(6,12,20,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 0.55rem var(--hero-gutter);
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.4rem 1.1rem;
+  font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.68);
+}
+.util a { transition: color var(--dur-med) var(--ease); }
+.util a:hover { color: var(--color-white); }
+.util__bases { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.util__right { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.util .lang-switch { font-size: 0.68rem; }
+@media (max-width: 1023px) { .util__bases { display: none; } }
+
+/* Main bar, trimmed thinner than the previous pass: less vertical
+   padding, a tighter rule gap, a smaller wordmark. The utility strip
+   above adds its own height back, so the header as a whole is not
+   shorter, but the bar carrying the logo and the actions is. */
+.hd { position: relative; z-index: 20; padding: 1.1rem var(--hero-gutter) 0; }
 .hd__row {
   display: grid; grid-template-columns: 1fr auto;
-  align-items: center; gap: 1.15rem;
+  align-items: center; gap: 1rem;
 }
 .hd__rule {
   position: relative; z-index: 20; height: 1px;
   background: rgba(255,255,255,0.24);
-  margin: 1.15rem var(--hero-gutter) 0;
+  margin: 0.85rem var(--hero-gutter) 0;
 }
 .hd__nav { display: none; }
-.hd__nav ul { display: flex; flex-wrap: wrap; gap: clamp(0.95rem, 2.1vw, 2rem); }
+.hd__nav ul { display: flex; flex-wrap: wrap; gap: clamp(0.9rem, 2vw, 1.85rem); }
+.hd__nav--left ul { justify-content: flex-end; }
 .hd__nav a {
-  font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: rgba(255,255,255,0.8);
   padding-bottom: 0.2rem; border-bottom: 1px solid transparent;
   transition: color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
 }
 .hd__nav a:hover, .hd__nav a[aria-current="page"] { color: var(--color-white); border-bottom-color: var(--color-gold); }
-.hd__end { display: flex; align-items: center; justify-content: flex-end; gap: 1.15rem; }
-.hd .lang-switch { display: none; }
+.hd__end { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; }
 
 .pill {
   display: inline-flex; align-items: center;
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--color-white); border: 1px solid rgba(255,255,255,0.48);
-  padding: 0.65rem 1.35rem; border-radius: 100px; white-space: nowrap;
+  padding: 0.58rem 1.2rem; border-radius: 100px; white-space: nowrap;
   transition: background var(--dur-med) var(--ease), color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
 }
 .pill:hover { background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
 
-.wordmark--hd { gap: 0.3rem; }
-.wordmark--hd .wordmark__crown { width: 20px; }
-.wordmark--hd .wordmark__name { font-size: 1.15rem; letter-spacing: 0.16em; }
-.wordmark--hd .wordmark__tagline { font-size: 0.48rem; letter-spacing: 0.3em; white-space: nowrap; }
+.wordmark--hd { gap: 0.26rem; }
+.wordmark--hd .wordmark__crown { width: 18px; }
+.wordmark--hd .wordmark__name { font-size: 1.05rem; letter-spacing: 0.15em; }
+.wordmark--hd .wordmark__tagline { font-size: 0.44rem; letter-spacing: 0.28em; white-space: nowrap; }
 
 .lang-switch { display: flex; gap: 0.5rem; align-items: center; font-size: 0.72rem; letter-spacing: 0.1em; }
 .lang-switch button { padding: 0.2rem 0.35rem; color: var(--color-ink-faint); transition: color var(--dur-med) var(--ease); }
@@ -287,9 +311,11 @@ section { position: relative; }
 .mobile-menu__close:hover { border-color: var(--color-gold); color: var(--color-gold); }
 
 @media (min-width: 1024px) {
-  .hd__row { grid-template-columns: 1fr auto 1fr; }
+  /* Four columns: the six nav links split three and three around the
+     logo, About Bases Services on the left, Horses Semen News on the
+     right, Contact stays its own column at the far end. */
+  .hd__row { grid-template-columns: 1fr auto 1fr auto; }
   .hd__nav { display: block; }
-  .hd .lang-switch { display: flex; }
   .nav-toggle { display: none; }
   .mobile-menu { display: none; }
 }
@@ -828,9 +854,9 @@ section { position: relative; }
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#bases">Bases</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#horses">Horses</a></li>
       <li><a href="#semen">Semen</a></li>
-      <li><a href="#services">Services</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#instagram">Instagram</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -858,16 +884,33 @@ section { position: relative; }
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
 
+    <!-- Utility strip: both bases named and the real phone lines,
+         visible before anyone scrolls. Locations hide below 1024px,
+         see .util__bases in the stylesheet, the phone numbers and
+         language switch stay. -->
+    <div class="util">
+      <div class="util__bases">
+        <a href="#bases">Desenzano del Garda, Italy</a>
+        <a href="#bases">Lanaken, Belgium</a>
+      </div>
+      <div class="util__right">
+        <a href="tel:+393495918565">IT &#9742; +39 349 591 8565</a>
+        <a href="tel:+393483953433">BE &#9742; +39 348 395 3433</a>
+        <div class="lang-switch lang-switch--on-navy" aria-label="Language">
+          <button type="button" aria-current="true">IT</button>
+          <span class="lang-switch__sep">/</span>
+          <button type="button">EN</button>
+        </div>
+      </div>
+    </div>
+
     <header class="hd">
       <div class="hd__row">
-        <nav class="hd__nav" aria-label="Primary">
+        <nav class="hd__nav hd__nav--left" aria-label="Primary">
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#bases">Bases</a></li>
-            <li><a href="#horses">Horses</a></li>
-            <li><a href="#semen">Semen</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#news">News</a></li>
           </ul>
         </nav>
 
@@ -881,12 +924,15 @@ section { position: relative; }
           </div>
         </a>
 
+        <nav class="hd__nav hd__nav--right" aria-label="Horses and semen">
+          <ul>
+            <li><a href="#horses">Horses</a></li>
+            <li><a href="#semen">Semen</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </nav>
+
         <div class="hd__end">
-          <div class="lang-switch lang-switch--on-navy" aria-label="Language">
-            <button type="button" aria-current="true">IT</button>
-            <span class="lang-switch__sep">/</span>
-            <button type="button">EN</button>
-          </div>
           <a class="pill" href="#contact">Contact us</a>
           <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
             <span></span><span></span><span></span>
