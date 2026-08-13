@@ -68,16 +68,8 @@ input, textarea { font: inherit; color: inherit; }
   --dur-slow: 500ms;
   --dur-med: 320ms;
 
-  /* ---- hero tokens ----
-     --hero-air is the single token for the air around the centred
-     statement. It is applied ONCE above and ONCE below by .hero__body,
-     and the card reel adds none of its own, so the two are equal.
-     Stacking body padding and reel padding on one side only was the
-     original fault and it made the type sit visibly too high. */
-  --hero-air: clamp(60px, 10.5vh, 132px);
+  /* ---- hero tokens ---- */
   --hero-gutter: clamp(20px, 4vw, 52px);
-  --reel-gap: 14px;
-  --reel-radius: 20px;
 }
 
 /* ================= BASE ================= */
@@ -308,11 +300,18 @@ section { position: relative; }
 }
 
 /* ================= HERO =================
-   Full bleed photograph, layered scrim, transparent header, centred
-   statement, and a marquee of portrait cards along the foot. The card
-   row is MEANT to run past the fold. That is signed off and it reads as
-   an invitation to scroll, so nothing here compresses the hero or the
-   headline to force the cards above it. */
+   SUPERSEDED 13 August. This used to be a centred statement with a
+   horse marquee reel running along the foot, chosen in an earlier
+   round. Replaced with a bottom anchored left column and a single
+   switchable photograph: four thumbnails, click one and the
+   background crossfades to that horse while a frosted card updates
+   with its name, category, year, status and the call to action.
+
+   The headline and lede are FIXED and never change with the
+   selection, only the photo and the card do. This is a click
+   interaction, not hover, so unlike the old card reveal there is no
+   pointer vs touch problem to solve, a tap and a click fire the same
+   event and the same markup works everywhere. */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -320,157 +319,96 @@ section { position: relative; }
   background: var(--color-navy-deep);
   color: var(--color-white);
 }
+/* Background is a stack of images, one per horse, crossfading on
+   click. Full resolution originals, not the 400x300 card thumbnails
+   used in Available now, those would be visibly soft at this size. */
 .hero__media { position: absolute; inset: 0; z-index: 0; }
-.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+.hero__media img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  opacity: 0; transition: opacity .8s var(--ease-out);
+}
+.hero__media img.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero__media img { transition: none; } }
 .hero__scrim {
   position: absolute; inset: 0; z-index: 0;
   background: linear-gradient(180deg,
-    rgba(13,22,38,0.62) 0%,
-    rgba(13,22,38,0.10) 28%,
-    rgba(13,22,38,0.42) 60%,
-    rgba(13,22,38,0.95) 100%);
+    rgba(13,22,38,0.55) 0%,
+    rgba(13,22,38,0.08) 26%,
+    rgba(13,22,38,0.4) 58%,
+    rgba(13,22,38,0.94) 100%);
 }
 
-/* ---- centred statement ---- */
+/* ---- bottom anchored statement + switcher row ---- */
 .hero__body {
   position: relative; z-index: 20; flex: 1;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center;
-  padding: var(--hero-air) var(--hero-gutter);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 var(--hero-gutter) clamp(36px, 6vh, 64px);
 }
+.hero__row { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 4vw, 40px); align-items: flex-end; }
 .hero__eyebrow {
   color: rgba(255,255,255,0.75);
   letter-spacing: 0.26em;
-  margin-bottom: clamp(16px, 2.2vh, 26px);
+  margin-bottom: 0.7rem;
 }
 .hero__statement {
   font-family: var(--font-display);
   color: var(--color-white);
   text-transform: uppercase;
-  font-size: clamp(2.4rem, 7.4vw, 6.4rem);
-  line-height: 0.9;
-  letter-spacing: -0.012em;
-  max-width: 20ch;
-  text-wrap: balance;
+  font-size: clamp(2.1rem, 5.6vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 15ch;
 }
 .hero__sub {
   color: rgba(255,255,255,0.87); font-size: 1rem;
-  max-width: 52ch; margin: clamp(22px, 3vh, 34px) auto 0;
+  max-width: 44ch; margin: 1.1rem 0 0;
 }
 .hero__actions {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
-  margin-top: clamp(26px, 3.6vh, 40px);
+  display: flex; flex-wrap: wrap; gap: 0.7rem;
+  margin-top: 1.1rem;
 }
 .hero .btn { border-radius: 100px; }
 .hero .btn--gold:hover { background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
 
-/* ---- marquee ----
-   No padding-top here on purpose. .hero__body already owns the air
-   above the cards, see --hero-air. */
-.reel { position: relative; z-index: 20; padding-bottom: 1.6rem; }
-.reel__vp {
-  position: relative; overflow: hidden; width: 100%;
-  /* soften the edges so cards leaving the frame look intentional
-     rather than chopped off by the viewport */
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+/* ---- switcher card ---- */
+.hero__card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.16); border-radius: 14px;
+  padding: 1.1rem 1.25rem; width: clamp(228px, 22vw, 300px);
 }
-.reel__track {
-  display: flex; align-items: flex-start;
-  gap: var(--reel-gap); width: max-content;
-  padding: 0 var(--hero-gutter);
-  animation: reel 64s linear infinite;
-}
-.reel__vp:hover .reel__track,
-.reel__vp:focus-within .reel__track { animation-play-state: paused; }
-@keyframes reel { to { transform: translateX(-50%); } }
-
-/* ---- reel card ----
-   Named apart from .card on purpose: .card is the white snap scroll
-   card in Available now, a different component in a different section. */
-.reel-card {
-  position: relative; display: block; flex: 0 0 auto;
-  /* four across on desktop, never narrower than legible on a phone */
-  width: clamp(248px, calc((100vw - (2 * var(--hero-gutter)) - (3 * var(--reel-gap))) / 4), 420px);
-  aspect-ratio: 3 / 4;          /* true portrait, at every size. Never
-                                   tie this to viewport height and never
-                                   cap it with max-height. */
-  border-radius: var(--reel-radius); overflow: hidden;
-  background: var(--color-navy-deep);
-  border: 1px solid rgba(255,255,255,0.09);
-}
-.reel-card img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  transition: transform 1.1s var(--ease-out);
-}
-.reel-card::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 34%, rgba(13,22,38,0.52) 64%, rgba(13,22,38,0.92) 100%);
-}
-.reel-card__body {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-  padding: 18px clamp(16px, 1.6vw, 22px);
-}
-.reel-card__name {
+.hero__card-name {
   display: block; font-family: var(--font-display);
-  font-size: clamp(17px, 1.5vw, 21px); line-height: 1.25;
-  color: var(--color-white); margin-bottom: 6px;
+  font-size: 1.15rem; line-height: 1.25; color: var(--color-white); margin-bottom: 0.4rem;
 }
-.reel-card__meta {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px;
-  font-size: 0.625rem; font-weight: 400; letter-spacing: 0.17em; text-transform: uppercase;
-  color: rgba(255,255,255,0.76);
+.hero__card-meta {
+  display: block; font-size: 0.66rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.72); margin-bottom: 1.1rem;
 }
-.reel-card__sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.4); }
-.reel-card__st {
-  font-style: normal;
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  letter-spacing: 0.17em; color: var(--color-white);
-}
-.reel-card__st::before {
-  content: ""; width: 5px; height: 5px; border-radius: 50%;
-  background: var(--color-gold); flex-shrink: 0;
-}
-.reel-card__st--sold { color: var(--color-gold-soft); }
-.reel-card:focus-visible { outline: 1px solid var(--color-gold-soft); outline-offset: 3px; }
+.hero__card-sep { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--color-gold); margin: 0 0.45em 2px; }
+.hero__card-st { font-style: normal; }
+.hero__card-st--sold { color: var(--color-gold-soft); }
 
-/* The reveal is scoped to pointer devices. On touch the text and the
-   gradient are ALWAYS visible: there is no hover on a phone and most of
-   this audience is on a phone at a show. Do not unwrap this. */
-@media (hover: hover) and (pointer: fine) {
-  .reel-card__body {
-    opacity: 0; transform: translateY(10px);
-    transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
-  }
-  .reel-card::after { opacity: 0; transition: opacity 0.55s var(--ease-out); }
-  .reel-card:hover .reel-card__body,
-  .reel-card:focus-visible .reel-card__body { opacity: 1; transform: none; }
-  .reel-card:hover::after,
-  .reel-card:focus-visible::after { opacity: 1; }
-  .reel-card:hover img { transform: scale(1.04); }
+.hero__thumbs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.hero__thumb {
+  position: relative; width: 46px; height: 46px; flex: 0 0 auto;
+  border-radius: 8px; overflow: hidden; border: 2px solid transparent;
+  background: var(--color-navy-deep); transition: border-color 0.35s ease;
 }
+.hero__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.7; transition: opacity 0.35s ease; }
+.hero__thumb:hover img { opacity: 1; }
+.hero__thumb.is-active { border-color: var(--color-gold); }
+.hero__thumb.is-active img { opacity: 1; }
+.hero__thumb:focus-visible { outline: 2px solid var(--color-gold-soft); outline-offset: 2px; }
 
-@media (prefers-reduced-motion: reduce) {
-  .reel__track { animation: none; }
-  .reel__vp { overflow-x: auto; }
-  .reel-card img { transition: none; }
-  .reel-card:hover img { transform: none; }
-}
-
-/* Short screens. This block used to collapse the spacing around the
-   statement to drag the card row above the fold, which wedged the type
-   between the header and the cards. The spacing and the headline are now
-   left alone and the cards simply sit lower. */
 @media (max-height: 820px) {
-  .hero__sub { font-size: 0.97rem; }
-  .reel { padding-bottom: 1.15rem; }
+  .hero__sub { font-size: 0.94rem; }
+  .hero__body { padding-bottom: clamp(26px, 4vh, 44px); }
 }
 
 @media (max-width: 860px) {
-  .reel__vp {
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 40px), transparent 100%);
-    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 40px), transparent 100%);
-  }
+  .hero__row { grid-template-columns: 1fr; }
+  .hero__card { width: 100%; }
 }
 
 /* ================= ABOUT ================= */
@@ -910,8 +848,11 @@ section { position: relative; }
 
   <!-- ================= HERO ================= -->
   <section class="hero">
-    <div class="hero__media">
-      <img src="https://www.studvonaxe.it/wp-content/uploads/2023/10/image-header-va.jpg" alt="A Stud Von Axe sport horse at the stable" loading="eager">
+    <div class="hero__media" id="heroBg">
+      <img data-idx="0" class="is-active" src="https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg" alt="">
+      <img data-idx="1" src="https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled.jpg" alt="">
+      <img data-idx="2" src="https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051.jpg" alt="">
+      <img data-idx="3" src="https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932.jpg" alt="">
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
 
@@ -954,19 +895,23 @@ section { position: relative; }
     <div class="hd__rule" aria-hidden="true"></div>
 
     <div class="hero__body">
-      <p class="eyebrow hero__eyebrow">Desenzano del Garda &middot; Lanaken</p>
-      <h1 class="hero__statement">Bred for the biggest arenas</h1>
-      <p class="hero__sub">Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold to breeders in ten countries.</p>
+      <div class="hero__row">
+        <div class="hero__intro">
+          <p class="eyebrow hero__eyebrow">Desenzano del Garda &middot; Lanaken</p>
+          <h1 class="hero__statement">Bred for the biggest arenas</h1>
+          <p class="hero__sub">Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold to breeders in ten countries.</p>
 
-      <div class="hero__actions">
-        <a class="btn btn--gold" href="#horses">View the horses</a>
-        <a class="btn btn--light" href="#contact">Ask about a horse</a>
-      </div>
-    </div>
+          <div class="hero__actions">
+            <a class="btn btn--gold" href="#contact" id="heroCta">Ask about Arkhana</a>
+            <a class="btn btn--light" href="#horses">View the horses</a>
+          </div>
+        </div>
 
-    <div class="reel">
-      <div class="reel__vp">
-        <div class="reel__track" id="reel"></div>
+        <div class="hero__card" aria-live="polite">
+          <span class="hero__card-name" id="heroName">Arkhana Von Axe Z</span>
+          <span class="hero__card-meta" id="heroMeta">Foal, colt<span class="hero__card-sep"></span>2026<span class="hero__card-sep"></span><em class="hero__card-st">Available</em></span>
+          <div class="hero__thumbs" id="heroThumbs" role="tablist" aria-label="Choose a horse"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1526,49 +1471,62 @@ section { position: relative; }
 </footer>
 
 <script>
-/* ================= HERO MARQUEE =================
-   Real horses from studvonaxe.it. Only the four whose listing
-   photographs actually show the named horse. Hayley VD Berghoeve Z and
-   the Mosito x Carma embryo are left out on purpose: on the client's own
-   site those two listings carry photographs of other horses, and at this
-   card size that would be impossible to miss. Put them back once correct
-   images are supplied. */
+/* ================= HERO SWITCHER =================
+   Real horses from studvonaxe.it, full resolution originals, checked
+   to return 200 before use. Only the four whose listing photographs
+   actually show the named horse. Hayley VD Berghoeve Z and the Mosito
+   x Carma embryo are left out on purpose: on the client's own site
+   those two listings carry photographs of other horses, and at this
+   size that would be impossible to miss. Put them back once correct
+   images are supplied.
+
+   Click a thumbnail: the background crossfades and the card's name,
+   meta, status and the call to action update. The headline and lede
+   are fixed and never change. This is a click, not hover, so unlike
+   the old card reveal there is no touch device problem to solve. */
 (function () {
   var HORSES = [
     { name: 'Arkhana Von Axe Z', cat: 'Foal, colt', year: '2026', status: 'Available', sold: false,
-      img: 'https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104-400x300.jpg' },
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg' },
     { name: 'Cortina de Jolie Z', cat: 'Broodmare', year: '2019', status: 'Available', sold: false,
-      img: 'https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled-400x300.jpg' },
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled.jpg' },
     { name: 'Charina Von Axe Z', cat: 'Foal, filly', year: '2026', status: 'Sold, GB', sold: true,
-      img: 'https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051-400x300.jpg' },
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051.jpg' },
     { name: 'Unguessable Von Axe', cat: 'Broodmare', year: '2018', status: 'Sold, US', sold: true,
-      img: 'https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932-400x300.jpg' }
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932.jpg' }
   ];
 
-  /* Duplicates exist only so the marquee can loop seamlessly, so they are
-     hidden from screen readers and taken out of the tab order. */
-  function card(h, dup) {
-    var attrs = dup
-      ? ' aria-hidden="true" tabindex="-1"'
-      : ' aria-label="' + h.name + '. ' + h.cat + ', ' + h.year + '. ' + h.status + '."';
-    return '<a class="reel-card" href="#horses"' + attrs + '>' +
-      '<img src="' + h.img + '" alt="' + (dup ? '' : h.name) + '" loading="lazy">' +
-      '<div class="reel-card__body">' +
-        '<span class="reel-card__name">' + h.name + '</span>' +
-        '<span class="reel-card__meta">' +
-          '<span>' + h.cat + '</span>' +
-          '<i class="reel-card__sep"></i>' +
-          '<span>' + h.year + '</span>' +
-          '<i class="reel-card__sep"></i>' +
-          '<em class="reel-card__st' + (h.sold ? ' reel-card__st--sold' : '') + '">' + h.status + '</em>' +
-        '</span>' +
-      '</div>' +
-    '</a>';
+  var bg = document.getElementById('heroBg');
+  var thumbsEl = document.getElementById('heroThumbs');
+  var nameEl = document.getElementById('heroName');
+  var metaEl = document.getElementById('heroMeta');
+  var ctaEl = document.getElementById('heroCta');
+
+  thumbsEl.innerHTML = HORSES.map(function (h, i) {
+    return '<button type="button" class="hero__thumb' + (i === 0 ? ' is-active' : '') + '" data-idx="' + i + '" role="tab" aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
+      '<img src="' + h.img + '" alt="' + h.name + '">' +
+    '</button>';
+  }).join('');
+
+  function select(idx) {
+    var h = HORSES[idx];
+    [].forEach.call(bg.querySelectorAll('img'), function (img) {
+      img.classList.toggle('is-active', Number(img.dataset.idx) === idx);
+    });
+    [].forEach.call(thumbsEl.querySelectorAll('.hero__thumb'), function (t) {
+      var active = Number(t.dataset.idx) === idx;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    nameEl.textContent = h.name;
+    metaEl.innerHTML = h.cat + '<span class="hero__card-sep"></span>' + h.year + '<span class="hero__card-sep"></span><em class="hero__card-st' + (h.sold ? ' hero__card-st--sold' : '') + '">' + h.status + '</em>';
+    ctaEl.textContent = (h.sold ? 'Ask about a horse like ' : 'Ask about ') + h.name.split(' ')[0];
   }
 
-  document.getElementById('reel').innerHTML =
-    HORSES.map(function (h) { return card(h, false); }).join('') +
-    HORSES.map(function (h) { return card(h, true); }).join('');
+  thumbsEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.hero__thumb');
+    if (btn) select(Number(btn.dataset.idx));
+  });
 })();
 
 (function () {
