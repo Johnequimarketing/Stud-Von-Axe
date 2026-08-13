@@ -354,10 +354,9 @@ section { position: relative; }
 .hero__statement {
   font-family: var(--font-display);
   color: var(--color-white);
-  text-transform: uppercase;
   font-size: clamp(2.1rem, 5.6vw, 4.6rem);
   line-height: 1.04;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.006em;
   max-width: 15ch;
 }
 .hero__sub {
@@ -375,24 +374,27 @@ section { position: relative; }
 .hero__card {
   background: rgba(255,255,255,0.08); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,0.16); border-radius: 14px;
-  padding: 1.1rem 1.25rem; width: clamp(228px, 22vw, 300px);
+  padding: 1.3rem 1.3rem 1.4rem; width: clamp(260px, 25vw, 340px);
 }
 .hero__card-name {
   display: block; font-family: var(--font-display);
-  font-size: 1.15rem; line-height: 1.25; color: var(--color-white); margin-bottom: 0.4rem;
+  font-size: 1.4rem; line-height: 1.22; color: var(--color-white); margin-bottom: 0.5rem;
 }
 .hero__card-meta {
-  display: block; font-size: 0.66rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(255,255,255,0.72); margin-bottom: 1.1rem;
+  display: block; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.72); margin-bottom: 1rem;
 }
 .hero__card-sep { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--color-gold); margin: 0 0.45em 2px; }
 .hero__card-st { font-style: normal; }
 .hero__card-st--sold { color: var(--color-gold-soft); }
 
-.hero__thumbs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+/* Thumbnails fill the card edge to edge: a four column grid rather than
+   flex-wrap with a fixed pixel size, so there is no leftover frosted
+   space beside them, and they scale up with the wider card. */
+.hero__thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 .hero__thumb {
-  position: relative; width: 46px; height: 46px; flex: 0 0 auto;
-  border-radius: 8px; overflow: hidden; border: 2px solid transparent;
+  position: relative; aspect-ratio: 1; width: 100%;
+  border-radius: 9px; overflow: hidden; border: 2px solid transparent;
   background: var(--color-navy-deep); transition: border-color 0.35s ease;
 }
 .hero__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.7; transition: opacity 0.35s ease; }

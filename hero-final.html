@@ -166,8 +166,8 @@ h1{margin:0;font-weight:400}
   color:rgba(255,255,255,.7);margin:0 0 var(--s2);
 }
 .hero h1{
-  font-family:var(--serif);color:#fff;text-transform:uppercase;
-  font-size:clamp(2.1rem,5.6vw,4.6rem);line-height:1.04;letter-spacing:-.01em;
+  font-family:var(--serif);color:#fff;
+  font-size:clamp(2.1rem,5.6vw,4.6rem);line-height:1.04;letter-spacing:-.006em;
   max-width:15ch;
 }
 .hero__lede{
@@ -190,24 +190,27 @@ h1{margin:0;font-weight:400}
 .hero__card{
   background:rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.16);border-radius:14px;
-  padding:18px 20px;width:clamp(228px,22vw,300px);
+  padding:22px 22px 24px;width:clamp(260px,25vw,340px);
 }
 .hero__card-nm{
-  font-family:var(--serif);font-size:1.15rem;line-height:1.25;
-  display:block;color:#fff;margin-bottom:var(--s1);
+  font-family:var(--serif);font-size:1.4rem;line-height:1.22;
+  display:block;color:#fff;margin-bottom:8px;
 }
 .hero__card-meta{
-  font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(255,255,255,.72);display:block;margin-bottom:var(--s3);
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);display:block;margin-bottom:16px;
 }
 .hero__card-st{font-style:normal}
 .hero__card-st--sold{color:var(--gold-soft)}
 .dot{display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--gold);vertical-align:middle;margin:0 7px 2px}
 
-.hero__thumbs{display:flex;gap:8px;flex-wrap:wrap}
+/* Thumbnails fill the card edge to edge: a four column grid rather than
+   flex-wrap with a fixed pixel size, so there is no leftover frosted
+   space beside them, and they scale up with the wider card. */
+.hero__thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .hero__thumb{
-  position:relative;width:46px;height:46px;flex:0 0 auto;
-  border-radius:8px;overflow:hidden;border:2px solid transparent;
+  position:relative;aspect-ratio:1;width:100%;
+  border-radius:9px;overflow:hidden;border:2px solid transparent;
   background:#0d1622;transition:border-color .35s ease;
 }
 .hero__thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.7;transition:opacity .35s ease}
