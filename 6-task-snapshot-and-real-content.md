@@ -53,6 +53,43 @@ Card images were pulled from the client's own listing pages. Two are worth raisi
 
 Both point at a real design question for the new site: **what does an embryo card show?** There is no photo of an embryo, so the card needs a deliberate answer (sire photo clearly labelled as the sire, damline photo, or a typographic card with no image at all). Worth putting to the client as a design decision rather than letting them keep filling the slot with unrelated competition shots.
 
+## Benchmark against the agency's other stable sites (13 August)
+
+Mark pointed us at six sites the agency has already built and asked us to check what matters on homepages and horse pages:
+
+160foals.com · design-serapo-stables.vercel.app · stal104.equiwebsites.com · palomino-elite.equiwebsites.com · veilingdronten.equiwebsites.com · gugler-templates.vercel.app
+
+Recurring patterns, and whether we had them:
+
+| Pattern | Seen on | Status |
+|---|---|---|
+| HorseTelex live results feed | Stal 104, Gugler | Added as a static mock, real integration pending |
+| Level or jump height per card | Palomino, Stal 104, Gugler, 160foals | **Missing, needs client data** |
+| Instagram feed | Stal 104, Gugler | Added, representative photos only |
+| Facility section | Stal 104, Gugler, Serapo | Added as "the two bases" |
+| Team profiles | Stal 104, Gugler, Serapo | Deferred, needs client content |
+| Process explainer | 160foals, Palomino | Deferred |
+| FAQ | 160foals, Palomino, Veiling Dronten | Deferred |
+| Category tabs on horse block | Stal 104, Palomino | Deferred |
+| Partners / sponsors | Stal 104, Veiling Dronten | Deferred |
+| Two pedigree links per horse | Veiling Dronten | **Was breaking the brief, now fixed** |
+
+Two useful findings:
+
+- The card style chosen for our hero came from **Palomino-Elite**, one of the agency's own sites. The design is house pattern, not an outside import.
+- Stal 104, Palomino and Gugler show **no sold status at all**. Only Veiling Dronten does, and it is an auction with lot numbers and prices. This client wanting sold visible is against the grain, which makes our restrained text treatment the right call rather than a compromise.
+
+## Data still needed from Mark or the client
+
+1. **How the HorseTelex results feed is wired** on Stal 104 and Gugler: API key, widget embed, or scraper. Blocks a real integration; ours is currently a static mock.
+2. **Performance level or jump height per horse.** Every comparable agency site shows this. We cannot invent it.
+3. **Facility photographs** for both bases. Currently using general photos from their existing site.
+4. **Per horse HorseTelex and Hippomundo URLs.** Card link slots are built and wired to the stud profile and Hippomundo homepage as placeholders.
+5. **Instagram API access** or the widget the other sites use, for a real feed rather than a representative grid.
+6. **Correct photographs for Hayley VD Berghoeve Z and the Mosito x Carma embryo** (see above), so they can go back into Available now.
+7. **Team names, roles and photographs**, if a people section is wanted.
+8. Still outstanding: **vector or transparent logo files**, and the **gold Pantone**.
+
 ## Open questions logged from planning
 
 - Any stallion specifics for Avantea, or keep general until the client sends more?

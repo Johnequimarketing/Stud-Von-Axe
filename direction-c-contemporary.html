@@ -504,6 +504,42 @@ section { position: relative; }
   .about__grid { grid-template-columns: 220px 1fr; }
 }
 
+/* ================= THE TWO BASES =================
+   Navy band, white cards on top, same structure as the business
+   lines grid below so the two read as a family. Mobile first:
+   one column, then three from 860px up. Nothing here can overflow
+   because the grid columns are 1fr inside .container. */
+.bases { background: var(--color-navy); color: var(--color-white); }
+.bases .section-head h2 { color: var(--color-white); }
+.bases .section-head p { color: rgba(255,255,255,0.65); }
+.bases__grid {
+  display: grid; gap: 1px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+.bases__card {
+  background: var(--color-white); color: var(--color-ink);
+  display: flex; flex-direction: column;
+  min-width: 0;
+}
+.bases__media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-navy-line); }
+.bases__media img { width: 100%; height: 100%; object-fit: cover; }
+.bases__body {
+  padding: clamp(1.5rem, 2.6vw, 2.25rem);
+  display: flex; flex-direction: column; gap: 0.55rem;
+}
+.bases__body h3 { font-size: 1.3rem; }
+.bases__body p { color: var(--color-ink-soft); font-size: 0.95rem; }
+.bases__place {
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-ink-faint);
+  padding-top: 0.75rem; margin-top: auto;
+  border-top: 1px solid var(--color-navy-line);
+}
+@media (min-width: 860px) {
+  .bases__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ================= BUSINESS LINES ================= */
 .business { background: var(--color-navy); color: var(--color-white); }
 .business .section-head h2 { color: var(--color-white); }
@@ -590,6 +626,31 @@ section { position: relative; }
 .card__status--sold::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold); display: inline-block; }
 .card__ask { margin-top: 0.9rem; }
 
+/* ---- pedigree links ----
+   Sits at the foot of every card body. It is inside the existing
+   flex column, so it grows the card body rather than the media, and
+   because the gallery is a flex row the cards all stay the same
+   height. It adds no width, so the snap scroll is untouched. */
+.card__ped {
+  margin-top: 0.85rem; padding-top: 0.75rem;
+  border-top: 1px solid var(--color-navy-line);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem;
+}
+.card__ped-label {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-ink-faint);
+  flex: 0 0 100%;
+}
+.card__ped-link {
+  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-ink-soft);
+  border-bottom: 1px solid var(--color-navy-line);
+  padding-bottom: 2px;
+  transition: color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
+}
+.card__ped-link:hover,
+.card__ped-link:focus-visible { color: var(--color-gold); border-color: var(--color-gold-line); }
+
 @media (min-width: 640px) { .card { flex: 0 0 46%; } }
 @media (min-width: 1024px) { .card { flex: 0 0 30.5%; } }
 
@@ -636,22 +697,102 @@ section { position: relative; }
   .services__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ================= NEWS ================= */
-.news { background: var(--color-base); }
-.news__list { display: flex; flex-direction: column; }
-.news__row {
-  display: grid; gap: 0.5rem 2rem;
-  padding-block: clamp(1.5rem, 3vw, 2.25rem);
-  border-top: 1px solid var(--color-navy-line);
+/* ================= RESULTS FEED =================
+   Restyled from the old news blog rows into a results table so it sits
+   in the same family as the automated HorseTelex feeds running on the
+   other stable sites. Mobile: each field stacks with its own small caps
+   label. From 900px the labels drop out and the column head row appears,
+   so it reads as a real table. */
+.results { background: var(--color-base); }
+.results__table { border-top: 1px solid var(--color-navy-line); }
+.results__colhead { display: none; }
+.results__row {
+  display: grid; grid-template-columns: 1fr; gap: 0.65rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--color-navy-line);
 }
-.news__row:last-child { border-bottom: 1px solid var(--color-navy-line); }
-.news__tag { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-gold); }
-.news__row h3 { font-size: 1.25rem; margin-top: 0.4rem; }
-.news__row p { color: var(--color-ink-soft); font-size: 0.95rem; margin-top: 0.4rem; }
+.results__cell { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.results__label {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+.results__horse {
+  font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--color-navy); line-height: 1.3;
+}
+.results__value { font-size: 0.93rem; color: var(--color-ink-soft); }
+.results__place {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-navy);
+}
+.results__place--win {
+  color: var(--color-gold);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.results__place--win::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-gold); flex-shrink: 0;
+}
+.results__caption {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex; align-items: baseline; gap: 0.6rem;
+  font-size: 0.85rem; color: var(--color-ink-soft);
+}
+.results__caption span:first-child { color: var(--color-gold); flex-shrink: 0; }
+.results__caption p { max-width: 54ch; }
 
 @media (min-width: 900px) {
-  .news__row { grid-template-columns: 200px 1fr; align-items: baseline; }
-  .news__row h3 { margin-top: 0; }
+  .results__colhead, .results__row {
+    grid-template-columns: 1.2fr 0.9fr 1.5fr 0.7fr;
+    gap: 0.5rem 1.75rem;
+    align-items: baseline;
+  }
+  .results__colhead {
+    display: grid;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--color-navy-line);
+  }
+  .results__colhead span {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .results__label { display: none; }
+  .results__row { padding-block: 1.4rem; }
+}
+
+/* ================= INSTAGRAM =================
+   Representative photographs, not posts. Two columns on a phone,
+   three from 768px, six across from 1200px. Square tiles, so the grid
+   height is predictable and no tile can push the page sideways. */
+.social { background: var(--color-base-dim); }
+.social__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.social__tile {
+  position: relative; display: block;
+  aspect-ratio: 1 / 1; overflow: hidden;
+  background: var(--color-navy-line);
+  min-width: 0;
+}
+.social__tile img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease), opacity var(--dur-med) var(--ease);
+}
+.social__tile:hover img { transform: scale(1.05); opacity: 0.9; }
+.social__tile:focus-visible { outline: 1px solid var(--color-gold); outline-offset: 2px; }
+.social__foot {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem;
+}
+.social__handle { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-ink-faint); }
+
+@media (min-width: 768px) {
+  .social__grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+}
+@media (min-width: 1200px) {
+  .social__grid { grid-template-columns: repeat(6, 1fr); }
 }
 
 /* ================= CONTACT ================= */
@@ -746,10 +887,12 @@ section { position: relative; }
   <nav aria-label="Mobile">
     <ul>
       <li><a href="#about">About</a></li>
+      <li><a href="#bases">Bases</a></li>
       <li><a href="#horses">Horses</a></li>
       <li><a href="#semen">Semen</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#news">News</a></li>
+      <li><a href="#instagram">Instagram</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -777,6 +920,7 @@ section { position: relative; }
         <nav class="hd__nav" aria-label="Primary">
           <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#bases">Bases</a></li>
             <li><a href="#horses">Horses</a></li>
             <li><a href="#semen">Semen</a></li>
             <li><a href="#services">Services</a></li>
@@ -858,11 +1002,65 @@ section { position: relative; }
     </div>
   </section>
 
+  <!-- ================= THE TWO BASES =================
+       PHOTOGRAPHY NOTICE
+       Proper facility photography is still needed from the client. The
+       three images below are general photographs taken from their
+       existing site (studvonaxe.it) and none of them is a verified
+       picture of a specific yard, stable block or paddock. Swap each one
+       for a real photograph of the place it sits under once the client
+       supplies them, and correct the alt text at the same time. -->
+  <section class="bases band-pad" id="bases">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index section-index--on-navy">03</span>
+        <span class="eyebrow eyebrow--on-navy">Where we work</span>
+        <h2>The two bases</h2>
+        <p>One programme, run across two places.</p>
+      </div>
+
+      <div class="bases__grid">
+        <article class="bases__card">
+          <div class="bases__media">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2021/01/0-1-820x546.jpg" alt="A Stud Von Axe horse photographed at the stud" loading="lazy">
+          </div>
+          <div class="bases__body">
+            <h3>Desenzano del Garda</h3>
+            <p>Desenzano del Garda is our home base in Italy, and it is where the whole thing started.</p>
+            <span class="bases__place">Italy</span>
+          </div>
+        </article>
+
+        <article class="bases__card">
+          <div class="bases__media">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2021/01/0-2-820x547.jpg" alt="A Stud Von Axe horse photographed at the stud" loading="lazy">
+          </div>
+          <div class="bases__body">
+            <h3>Close to Lanaken</h3>
+            <p>Our second base sits in Belgium, close to Lanaken. Our vet team implants the embryos there and manages the pregnancies, and the foals are born and raised on the place until they are sold.</p>
+            <span class="bases__place">Belgium</span>
+          </div>
+        </article>
+
+        <article class="bases__card">
+          <div class="bases__media">
+            <img src="https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg" alt="A Stud Von Axe horse photographed at the stud" loading="lazy">
+          </div>
+          <div class="bases__body">
+            <h3>Ontario</h3>
+            <p>The embryos themselves are produced out of Ontario, then brought to Belgium.</p>
+            <span class="bases__place">Where the embryos come from</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= BUSINESS LINES ================= -->
   <section class="business band-pad" id="programme">
     <div class="container">
       <div class="section-head">
-        <span class="section-index section-index--on-navy">03</span>
+        <span class="section-index section-index--on-navy">04</span>
         <span class="eyebrow eyebrow--on-navy">What we do</span>
         <h2>Three ways to work with us</h2>
         <p>Foals, embryos and now frozen semen. Equal parts of the same programme, run from the same two bases.</p>
@@ -904,7 +1102,7 @@ section { position: relative; }
     <div class="container">
       <div class="horses__head">
         <div class="section-head" style="margin-bottom:0;">
-          <span class="section-index">04</span>
+          <span class="section-index">05</span>
           <span class="eyebrow">Available now</span>
           <h2>Currently in the herd</h2>
           <p>A working sample of what is with us today. Ask about any horse, or about one still coming.</p>
@@ -927,6 +1125,18 @@ section { position: relative; }
             <span>Foal, Colt</span><span class="dot">&#8226;</span><span>2026</span><span class="dot">&#8226;</span><span class="card__status">Available</span>
           </div>
           <a class="text-link card__ask" href="#contact"><span>Ask about this horse</span><span class="text-link__arrow">&#8594;</span></a>
+          <!-- PEDIGREE LINKS, PLACEHOLDER TARGETS
+               Both links on every horse, per the brief. For now the
+               HorseTelex link points at the stud's own HorseTelex sponsor
+               profile and the Hippomundo link points at the Hippomundo
+               homepage. Per horse pedigree URLs are still to come from the
+               client. Do not invent them: replace the two hrefs on each
+               card once the client sends the real per horse links. -->
+          <div class="card__ped">
+            <span class="card__ped-label">Pedigree</span>
+            <a class="card__ped-link" href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex</a>
+            <a class="card__ped-link" href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo</a>
+          </div>
         </div>
       </article>
 
@@ -939,6 +1149,11 @@ section { position: relative; }
             <span>Broodmare</span><span class="dot">&#8226;</span><span>2019</span><span class="dot">&#8226;</span><span class="card__status">Available</span>
           </div>
           <a class="text-link card__ask" href="#contact"><span>Ask about this horse</span><span class="text-link__arrow">&#8594;</span></a>
+          <div class="card__ped">
+            <span class="card__ped-label">Pedigree</span>
+            <a class="card__ped-link" href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex</a>
+            <a class="card__ped-link" href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo</a>
+          </div>
         </div>
       </article>
 
@@ -951,6 +1166,11 @@ section { position: relative; }
             <span>Foal, Filly</span><span class="dot">&#8226;</span><span>2026</span><span class="dot">&#8226;</span><span class="card__status card__status--sold">Sold, GB</span>
           </div>
           <a class="text-link card__ask" href="#contact"><span>Ask about a similar horse</span><span class="text-link__arrow">&#8594;</span></a>
+          <div class="card__ped">
+            <span class="card__ped-label">Pedigree</span>
+            <a class="card__ped-link" href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex</a>
+            <a class="card__ped-link" href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo</a>
+          </div>
         </div>
       </article>
 
@@ -963,6 +1183,11 @@ section { position: relative; }
             <span>Broodmare, Sport</span><span class="dot">&#8226;</span><span>2018</span><span class="dot">&#8226;</span><span class="card__status card__status--sold">Sold, US</span>
           </div>
           <a class="text-link card__ask" href="#contact"><span>Ask about a similar horse</span><span class="text-link__arrow">&#8594;</span></a>
+          <div class="card__ped">
+            <span class="card__ped-label">Pedigree</span>
+            <a class="card__ped-link" href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex</a>
+            <a class="card__ped-link" href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo</a>
+          </div>
         </div>
       </article>
 
@@ -981,7 +1206,7 @@ section { position: relative; }
     <div class="container">
       <div class="semen__wrap">
         <div class="semen__copy">
-          <span class="section-index">05</span>
+          <span class="section-index">06</span>
           <span class="eyebrow">New this year</span>
           <h2>Frozen semen, through Avantea</h2>
           <p>We now sell frozen semen through Avantea. It is a new line for us and it is not yet on our current website, but the demand has been there for a while.</p>
@@ -1012,7 +1237,7 @@ section { position: relative; }
   <section class="services band-pad" id="services">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">06</span>
+        <span class="section-index">07</span>
         <span class="eyebrow">Beyond breeding</span>
         <h2>Other ways we help</h2>
       </div>
@@ -1042,29 +1267,140 @@ section { position: relative; }
     </div>
   </section>
 
-  <!-- ================= NEWS ================= -->
-  <section class="news band-pad" id="news">
+  <!-- ================= RESULTS =================
+       STATIC MOCK, NOT LIVE DATA
+       Every row below is typed in by hand. There is no HorseTelex
+       integration behind this section yet: the real automated feed, of
+       the kind running on the agency's other stable sites, is still
+       pending. This must NOT be presented to the client as live data.
+       The only results here are the two real ones the client gave us
+       (Calleryama under Gilles Thomas, and the Cortina de Jolie Z
+       offspring at Lanaken 2022). Do not pad this table with invented
+       placings while it is still static. -->
+  <section class="results band-pad" id="news">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">07</span>
-        <span class="eyebrow">News and results</span>
+        <span class="section-index">08</span>
+        <span class="eyebrow">Results</span>
         <h2>What our horses are doing in sport</h2>
       </div>
-      <div class="news__list">
-        <div class="news__row">
-          <span class="news__tag">Barcelona &amp; Madrid</span>
-          <div>
-            <h3>Calleryama takes the Nations Cup in Barcelona</h3>
-            <p>Ridden by Gilles Thomas, Calleryama won the Nations Cup in Barcelona and finished second at the CSI3 star in Madrid.</p>
+
+      <div class="results__table">
+        <div class="results__colhead" aria-hidden="true">
+          <span>Horse</span>
+          <span>Rider</span>
+          <span>Event</span>
+          <span>Result</span>
+        </div>
+
+        <div class="results__row">
+          <div class="results__cell">
+            <span class="results__label">Horse</span>
+            <span class="results__horse">Calleryama</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Rider</span>
+            <span class="results__value">Gilles Thomas</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Event</span>
+            <span class="results__value">Nations Cup, Barcelona</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Result</span>
+            <span class="results__place results__place--win">Won</span>
           </div>
         </div>
-        <div class="news__row">
-          <span class="news__tag">Lanaken, 2022</span>
-          <div>
-            <h3>Cortina de Jolie Z's offspring place at the World Championships</h3>
-            <p>Foals out of our broodmare Cortina de Jolie Z placed at the 2022 World Championships for Young Horses in Lanaken.</p>
+
+        <div class="results__row">
+          <div class="results__cell">
+            <span class="results__label">Horse</span>
+            <span class="results__horse">Calleryama</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Rider</span>
+            <span class="results__value">Gilles Thomas</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Event</span>
+            <span class="results__value">CSI3 star, Madrid</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Result</span>
+            <span class="results__place">Second</span>
           </div>
         </div>
+
+        <div class="results__row">
+          <div class="results__cell">
+            <span class="results__label">Horse</span>
+            <span class="results__horse">Offspring of Cortina de Jolie Z</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Rider</span>
+            <span class="results__value">Not listed</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Event</span>
+            <span class="results__value">World Championships for Young Horses, Lanaken 2022</span>
+          </div>
+          <div class="results__cell">
+            <span class="results__label">Result</span>
+            <span class="results__place">Placed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="results__caption">
+        <span aria-hidden="true">&#8226;</span>
+        <p>These results are entered by hand for now. The table connects to a live HorseTelex feed once that is wired up, so new placings will appear here on their own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INSTAGRAM =================
+       NOT A REAL EMBED
+       These are six representative photographs from the client's own
+       site, laid out in a grid and each one linking to the account. They
+       are NOT posts: there are deliberately no captions, no like counts,
+       no dates and no post metadata anywhere in this markup, because we
+       have none of that. A genuine live feed needs either the Instagram
+       Basic Display API (an app, a token and a refresh job) or a third
+       party widget such as Behold or LightWidget, and we have neither
+       set up yet. Do not fabricate post data to fill this in. -->
+  <section class="social band-pad" id="instagram">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">09</span>
+        <span class="eyebrow">Instagram</span>
+        <h2>Follow the horses day to day</h2>
+        <p>We post most often on Instagram. The photographs below come from our own archive.</p>
+      </div>
+
+      <div class="social__grid">
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2024/07/NB2_7389-scaled-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2023/06/NB2_5151-scaled-e1716587634328-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2024/06/NB2_5546-scaled-e1718602543264-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2024/07/NB2_6745-scaled-e1745426508989-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2023/07/hyori-6-scaled-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+        <a class="social__tile" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener" aria-label="Stud Von Axe on Instagram">
+          <img src="https://www.studvonaxe.it/wp-content/uploads/2024/04/cosmopolitan-1-400x300.jpg" alt="A Stud Von Axe horse" loading="lazy">
+        </a>
+      </div>
+
+      <div class="social__foot">
+        <a class="btn btn--dark" href="https://www.instagram.com/studvonaxe" target="_blank" rel="noopener">Follow on Instagram</a>
+        <span class="social__handle">@studvonaxe</span>
       </div>
     </div>
   </section>
@@ -1073,7 +1409,7 @@ section { position: relative; }
   <section class="contact band-pad" id="contact">
     <div class="container">
       <div class="section-head">
-        <span class="section-index section-index--on-navy">08</span>
+        <span class="section-index section-index--on-navy">10</span>
         <span class="eyebrow eyebrow--on-navy">Get in touch</span>
         <h2>Ask us about a horse</h2>
         <p>Tell us what you are looking for. We answer ourselves, usually within a day.</p>
@@ -1178,7 +1514,7 @@ section { position: relative; }
       </ul>
       <div class="footer__partners">
         <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener" style="font-size:0.8rem; letter-spacing:0.06em; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:2px;">HorseTelex profile</a>
-        <a href="#" style="font-size:0.8rem; letter-spacing:0.06em; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:2px;">Hippomundo profile</a>
+        <a href="https://www.hippomundo.com" target="_blank" rel="noopener" style="font-size:0.8rem; letter-spacing:0.06em; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:2px;">Hippomundo profile</a>
       </div>
     </div>
   </div>

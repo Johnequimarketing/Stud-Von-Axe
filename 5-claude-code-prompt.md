@@ -52,9 +52,17 @@ Build these sections in this order.
    Close the section with a short stat line stating how many countries their horses have sold to, drawn from the real sold records.
 5. Semen sales. Its own band, introducing Avantea and frozen semen sales, with a clear route to enquire. This is a new business line, not yet on their current site, so give it real presence. Keep the stallion specifics general: no named stallions, an invitation to ask which stallions are currently collecting.
 6. Services. One compact band: sourcing horses for clients, mediation, mares available for sport and breeding. Short.
+
+   Also include a band on the two bases, placed after Who they are: Desenzano del Garda in Italy, the base in Belgium close to Lanaken where the vet team implants the embryos and the foals are born and raised, and embryo production out of Ontario. This is their most concrete difference from other breeders and it deserves more than the sentence it used to get.
+
+   Every horse card carries a HorseTelex link and a Hippomundo link. The brief is explicit that both go on every horse, because some buyers prefer one and some the other, and the client treats it as extra service. Until per horse URLs arrive, point them at the stud HorseTelex profile and the Hippomundo homepage and mark them as placeholders in a comment.
 7. News and results. Real competition results, not sales data: Calleryama, ridden by Gilles Thomas, winning the Barcelona Nations Cup and placing second at Madrid CSI3 star. Offspring of their broodmare Cortina de Jolie Z placing at the Lanaken 2022 World Championships for young horses. This is their sport proof, separate from the sold stat line in the Available now section.
-8. Contact. A short form and a WhatsApp button.
-9. Footer. Navigation, language switcher, social links, contact details, space for HorseTelex and Hippomundo.
+
+   Style this as a competition results feed rather than a news blog, so it sits in the same family as the automated HorseTelex feeds running on Stal 104 and Gugler. It is a static mock for now: say so in a comment, carry a visible caption that results connect to a live feed once wired, and never present it to the client as live data. Do not invent additional results, these two are all we have verified.
+
+8. Instagram. A grid linking out to instagram.com/studvonaxe. Two of the agency's other stable sites run a social feed and the client posts results there. A real embed needs API access we do not have, so use photographs from their own site as representative images. Never write invented captions, like counts or post dates.
+9. Contact. A short form and a WhatsApp button.
+10. Footer. Navigation, language switcher, social links, contact details, space for HorseTelex and Hippomundo.
 
 **Copy rules**
 

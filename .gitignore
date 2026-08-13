@@ -18,3 +18,4 @@ deploy/hero-final.html
 
 # Never deploy or commit scratch copies
 preview/
+.claude/
