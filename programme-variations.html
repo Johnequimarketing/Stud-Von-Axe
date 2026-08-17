@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Breeding Programme, expandable panel variations</title>
+
+<!--
+  ============================================================
+  BREEDING PROGRAMME, EXPANDABLE PANEL VARIATIONS
+  John wants to see the section as an expandable panel, as an
+  alternative to the current pill-tabs-plus-card version that is
+  live on the page. V1 below is that current live version, kept
+  here only as a reference point so the other two can be judged
+  against it directly rather than from memory.
+
+  V2 and V3 are both accordion / expandable-panel takes, same real
+  data, same real copy (Foals / Frozen embryos / Implanted embryos),
+  just two different ways to shape the collapsed row:
+  V2 Classic accordion    — text-only row at rest (numeral, title,
+                            a one-line sub), click to expand a photo
+                            and the full copy underneath, in place.
+  V3 Media row accordion  — a small thumbnail sits in the collapsed
+                            row too, so there is always some image
+                            present even before anything is opened,
+                            expanding to the same full detail.
+
+  No new data. Same three real programmes, same corrected facts
+  already live (frozen embryos collected in Ontario, not Italy;
+  Implanted embryos has no verified photo, so it keeps the same
+  quiet placeholder rather than a misleading stand-in image).
+
+  V4 added from a reference screenshot John shared afterward: a
+  cinematic "step" carousel, dimmed neighbour cards peeking left and
+  right of one enlarged, photo-led active card, a vertical "STEP
+  ONE/TWO/THREE" label on the side cards, and dot pagination below.
+  Same three real programmes again, reframed as three steps in one
+  process rather than three parallel options, which is arguably a
+  more honest framing anyway since foals, frozen embryos and
+  implanted embryos are not really alternatives to each other so
+  much as three different products of the same operation.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#16233f; --navy-deep:#0d1626; --navy-line: rgba(22,35,63,.14);
+  --gold:#b28a4d; --gold-soft:#cdae7c; --gold-line: rgba(178,138,77,.35);
+  --base:#faf7f1; --base-dim:#f2ede2;
+  --white:#fff;
+  --ink:#1b1e24; --ink-soft:#565c68; --ink-faint:#8a8f99;
+  --serif:"Libre Caslon Display",Georgia,serif;
+  --sans:"Jost","Inter",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --gutter:clamp(22px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:420ms;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--base);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%}
+a,button{color:inherit;text-decoration:none;font:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+h2,h3{margin:0;font-weight:400}
+p{margin:0}
+
+.switcher-nav{
+  position:fixed;z-index:999;right:16px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:5px;padding:7px;
+  background:rgba(10,21,34,.92);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+}
+.switcher-nav a{color:rgba(255,255,255,.6);padding:7px 13px;border-radius:100px;transition:all .35s ease;text-align:center}
+.switcher-nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.switcher-nav a.on{color:var(--navy);background:var(--gold-soft)}
+.vlabel{
+  position:absolute;top:0;left:0;z-index:60;background:var(--gold);color:var(--navy-deep);
+  font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;padding:7px 15px;
+}
+.vnote{
+  background:#efe8da;color:var(--ink-soft);font-family:var(--sans);
+  font-size:13.5px;line-height:1.7;padding:22px clamp(20px,5vw,60px);border-top:1px solid rgba(22,35,63,.1);
+}
+.vnote strong{color:var(--navy);font-weight:500;letter-spacing:.02em}
+
+.sec{position:relative;padding:clamp(56px,9vw,110px) var(--gutter);background:var(--base-dim)}
+.sec__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem 2.5rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.index{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;color:var(--ink-faint);display:block;margin-bottom:.5rem}
+.eyebrow{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+h2.title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,1.4rem+2vw,2.7rem);color:var(--navy)}
+
+/* =========================================================
+   V1 · CURRENT LIVE VERSION (pill tabs + two column card)
+   ========================================================= */
+#v1 .tabs{display:flex;flex-wrap:wrap;background:var(--navy-line);border-radius:999px;padding:5px}
+#v1 .tab{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.5rem;border-radius:999px;font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+#v1 .tab-num{font-size:.62rem;color:var(--ink-faint)}
+#v1 .tab[aria-selected="true"]{background:var(--navy);color:#fff}
+#v1 .tab[aria-selected="true"] .tab-num{color:var(--gold-soft)}
+#v1 .card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:18px;overflow:hidden;background:var(--white);box-shadow:0 26px 64px -20px rgba(22,35,63,.28)}
+#v1 .media{position:relative;min-height:clamp(380px,38vw,520px);background:var(--navy-line)}
+#v1 .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease)}
+#v1 .media img.is-active{opacity:1}
+#v1 .media__empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .8s var(--ease);background:var(--navy-deep)}
+#v1 .media__empty.is-active{opacity:1}
+#v1 .media__empty span{font-family:var(--serif);font-size:5rem;color:rgba(255,255,255,.08)}
+#v1 .badge{position:absolute;left:1.5rem;top:1.5rem;z-index:2;display:inline-flex;align-items:baseline;gap:.6rem;padding:.6rem 1.1rem;background:var(--gold);border-radius:999px}
+#v1 .badge strong{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--navy-deep)}
+#v1 .badge span{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(13,22,38,.7)}
+#v1 .body{padding:clamp(1.8rem,3vw,2.6rem)}
+#v1 .p-title{font-family:var(--serif);font-size:1.6rem;color:var(--navy);margin-bottom:.3rem}
+#v1 .sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--gold);margin-bottom:1.1rem}
+#v1 .desc{font-size:.92rem;line-height:1.8;color:var(--ink-soft);margin-bottom:1.2rem}
+#v1 .meta{display:flex;gap:2rem;padding-top:1rem;border-top:1px solid var(--navy-line)}
+#v1 .meta-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+#v1 .meta-value{font-size:.85rem;margin-top:.4rem;color:var(--navy)}
+@media (max-width:760px){ #v1 .card{grid-template-columns:1fr} }
+
+/* =========================================================
+   V2 · CLASSIC ACCORDION, text only row, expands to photo + copy
+   ========================================================= */
+#v2 .acc{border-top:1px solid var(--navy-line)}
+#v2 .item{border-bottom:1px solid var(--navy-line)}
+#v2 .head{
+  width:100%;display:flex;align-items:baseline;gap:clamp(1rem,3vw,2.5rem);
+  padding:clamp(1.3rem,2.6vw,1.9rem) 0;text-align:left;cursor:pointer;
+}
+#v2 .num{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--ink-faint);transition:color var(--dur) var(--ease);flex:0 0 auto;width:2.4ch}
+#v2 .item.is-open .num{color:var(--gold)}
+#v2 .name{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--ink-soft);transition:color var(--dur) var(--ease);flex:1}
+#v2 .item.is-open .name{color:var(--navy)}
+#v2 .sub-line{font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);align-self:center;transition:color var(--dur) var(--ease)}
+#v2 .item.is-open .sub-line{color:var(--gold)}
+#v2 .plus{font-family:var(--sans);font-size:1.2rem;color:var(--gold);transition:transform var(--dur) var(--ease);flex:0 0 auto;align-self:center}
+#v2 .item.is-open .plus{transform:rotate(45deg)}
+#v2 .body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+#v2 .body-inner{display:grid;gap:1.6rem;padding:0 0 clamp(1.8rem,3vw,2.6rem) calc(2.4ch + clamp(1rem,3vw,2.5rem))}
+#v2 .thumb{aspect-ratio:16/9;border-radius:4px;overflow:hidden;background:var(--navy-line)}
+#v2 .thumb img{width:100%;height:100%;object-fit:cover}
+#v2 .thumb--empty{display:flex;align-items:center;justify-content:center;background:var(--navy-deep)}
+#v2 .thumb--empty span{font-family:var(--serif);font-size:2.2rem;color:rgba(255,255,255,.14)}
+#v2 .copy p{color:var(--ink-soft);max-width:60ch;font-size:.95rem;margin-bottom:1rem}
+#v2 .facts{display:flex;gap:2.4rem}
+#v2 .fact-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+#v2 .fact-value{font-size:.85rem;margin-top:.35rem;color:var(--navy)}
+@media (min-width:760px){ #v2 .body-inner{grid-template-columns:1.1fr 1fr;align-items:center} }
+
+/* =========================================================
+   V3 · MEDIA ROW ACCORDION, small thumbnail always visible
+   ========================================================= */
+#v3 .acc{display:flex;flex-direction:column;gap:.9rem}
+#v3 .item{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 12px 30px -18px rgba(22,35,63,.22)}
+#v3 .head{
+  width:100%;display:flex;align-items:center;gap:1.2rem;padding:1.1rem 1.4rem;text-align:left;cursor:pointer;
+}
+#v3 .thumb-sm{flex:0 0 auto;width:64px;height:64px;border-radius:8px;overflow:hidden;background:var(--navy-line)}
+#v3 .thumb-sm img{width:100%;height:100%;object-fit:cover}
+#v3 .thumb-sm--empty{display:flex;align-items:center;justify-content:center;background:var(--navy-deep)}
+#v3 .thumb-sm--empty span{font-family:var(--serif);font-size:1.1rem;color:rgba(255,255,255,.35)}
+#v3 .head-text{flex:1}
+#v3 .num-sm{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.2rem}
+#v3 .name-sm{font-family:var(--serif);font-size:1.25rem;color:var(--navy)}
+#v3 .avail-pill{flex:0 0 auto;font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold-soft);padding:.4rem .8rem;border-radius:999px}
+#v3 .plus-sm{flex:0 0 auto;font-family:var(--sans);font-size:1.3rem;color:var(--gold);transition:transform var(--dur) var(--ease)}
+#v3 .item.is-open .plus-sm{transform:rotate(45deg)}
+#v3 .body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+#v3 .body-inner{display:grid;gap:1.4rem;padding:0 1.4rem 1.6rem}
+#v3 .big-media{aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--navy-line)}
+#v3 .big-media img{width:100%;height:100%;object-fit:cover}
+#v3 .big-media--empty{display:flex;align-items:center;justify-content:center;background:var(--navy-deep)}
+#v3 .big-media--empty span{font-family:var(--serif);font-size:2.4rem;color:rgba(255,255,255,.14)}
+#v3 .copy p{color:var(--ink-soft);max-width:60ch;font-size:.95rem;margin-bottom:1rem}
+#v3 .facts{display:flex;gap:2.4rem}
+#v3 .fact-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+#v3 .fact-value{font-size:.85rem;margin-top:.35rem;color:var(--navy)}
+@media (min-width:760px){ #v3 .body-inner{grid-template-columns:1.2fr 1fr;align-items:center} }
+
+/* =========================================================
+   V4 · CINEMATIC STEP CAROUSEL, dimmed neighbours peek either side
+   ========================================================= */
+#v4{background:var(--navy-deep);color:#fff;overflow:hidden}
+#v4 .index, #v4 .eyebrow{color:rgba(255,255,255,.4)}
+#v4 .title{color:#fff}
+#v4 .carousel{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,20px);height:clamp(380px,54vw,560px)}
+#v4 .slide{
+  position:relative;flex:0 0 auto;height:100%;border-radius:22px;overflow:hidden;cursor:pointer;
+  width:14%;opacity:.4;filter:saturate(.7);
+  transition:width .6s var(--ease),opacity .6s var(--ease),filter .6s var(--ease);
+}
+#v4 .slide.is-active{width:64%;opacity:1;filter:none;cursor:default}
+#v4 .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#v4 .slide__empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+#v4 .slide__empty span{font-family:var(--serif);font-size:4rem;color:rgba(255,255,255,.1)}
+#v4 .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,22,38,.88) 0%,rgba(13,22,38,.15) 46%,rgba(13,22,38,.05) 100%)}
+#v4 .slide__step{
+  position:absolute;z-index:2;font-family:var(--sans);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7);
+}
+#v4 .slide:not(.is-active) .slide__step{right:1.1rem;bottom:1.4rem;writing-mode:vertical-rl}
+#v4 .slide.is-active .slide__step{left:clamp(1.5rem,3vw,2.8rem);top:clamp(1.5rem,3vw,2.5rem);color:var(--gold-soft)}
+#v4 .slide__content{
+  position:absolute;z-index:2;left:clamp(1.5rem,3vw,2.8rem);right:clamp(1.5rem,4vw,4rem);bottom:clamp(1.6rem,3.4vw,3rem);
+  opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease) .15s,transform .5s var(--ease) .15s;
+}
+#v4 .slide.is-active .slide__content{opacity:1;transform:none}
+#v4 .slide__title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,1.1rem+2.2vw,2.6rem);line-height:1.15;margin-bottom:1rem}
+#v4 .slide__title em{font-style:italic;color:var(--gold-soft)}
+#v4 .slide__desc{color:rgba(255,255,255,.78);max-width:52ch;font-size:.98rem;line-height:1.7}
+#v4 .dots{display:flex;justify-content:center;gap:.7rem;margin-top:clamp(1.6rem,3vw,2.4rem)}
+#v4 .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+#v4 .dot.is-active{background:var(--gold);transform:scale(1.3)}
+#v4 .dot:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+@media (max-width:700px){
+  #v4 .slide{display:none}
+  #v4 .slide.is-active{display:block;width:100%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #v1 .media img, #v1 .media__empty, #v2 .body, #v3 .body{transition:none}
+  #v4 .slide, #v4 .slide__content{transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="switcher-nav" id="switcherNav">
+  <a href="#v1" data-idx="0">V1 Current</a>
+  <a href="#v2" data-idx="1">V2 Accordion</a>
+  <a href="#v3" data-idx="2">V3 Media row</a>
+  <a href="#v4" data-idx="3">V4 Step carousel</a>
+</nav>
+
+<!-- ============ V1 · CURRENT LIVE VERSION ============ -->
+<section class="sec" id="v1">
+  <span class="vlabel">V1 · Current live version (pill tabs + card)</span>
+  <div class="sec__head">
+    <div>
+      <span class="index">03 &middot; The breeding programme</span>
+      <h2 class="title">Three ways into the same programme</h2>
+    </div>
+    <div class="tabs" id="v1tabs" role="tablist" aria-label="Choose a programme"></div>
+  </div>
+  <div class="card">
+    <div class="media" id="v1media">
+      <div class="badge"><strong id="v1avail"></strong><span>Availability</span></div>
+    </div>
+    <div class="body">
+      <h3 class="p-title" id="v1title"></h3>
+      <div class="sub" id="v1sub"></div>
+      <p class="desc" id="v1desc"></p>
+      <div class="meta">
+        <div><div class="meta-label">Base</div><div class="meta-value" id="v1base"></div></div>
+        <div><div class="meta-label">Leaves us</div><div class="meta-value" id="v1leaves"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="vnote"><strong>For reference:</strong> this is what is live on the page today, included here only so the two accordion takes can be judged against it directly.</div>
+
+<!-- ============ V2 · CLASSIC ACCORDION ============ -->
+<section class="sec" id="v2">
+  <span class="vlabel">V2 · Classic accordion, text-only row</span>
+  <div class="sec__head">
+    <div>
+      <span class="index">03 &middot; The breeding programme</span>
+      <h2 class="title">Three ways into the same programme</h2>
+    </div>
+  </div>
+  <div class="acc" id="v2acc"></div>
+</section>
+<div class="vnote"><strong>Why this one:</strong> the quietest of the three at rest, just three numbered rows and a title, closest in spirit to how Services already reads on the page. Photo and full copy only appear once someone actually opens a row, so nothing competes for attention up front.</div>
+
+<!-- ============ V3 · MEDIA ROW ACCORDION ============ -->
+<section class="sec" id="v3">
+  <span class="vlabel">V3 · Media row accordion, thumbnail always visible</span>
+  <div class="sec__head">
+    <div>
+      <span class="index">03 &middot; The breeding programme</span>
+      <h2 class="title">Three ways into the same programme</h2>
+    </div>
+  </div>
+  <div class="acc" id="v3acc"></div>
+</section>
+<div class="vnote"><strong>Why this one:</strong> a small photo sits in every row even before anything opens, so the section reads as more visual at rest than V2, closer to how the Herd cards already work. A bit more visual weight per row, worth it if you want the page to feel photo-led throughout rather than text-led between the big image moments.</div>
+
+<!-- ============ V4 · CINEMATIC STEP CAROUSEL ============ -->
+<section class="sec" id="v4">
+  <span class="vlabel">V4 · Cinematic step carousel</span>
+  <div class="sec__head">
+    <div>
+      <span class="index">03 &middot; The breeding programme</span>
+      <h2 class="title">One programme, three steps</h2>
+    </div>
+  </div>
+  <div class="carousel" id="v4carousel"></div>
+  <div class="dots" id="v4dots"></div>
+</section>
+<div class="vnote"><strong>Why this one:</strong> the most cinematic of the four, and it reframes the three programmes as steps in one process rather than parallel options, which fits the real relationship between them (foals, frozen embryos and implanted embryos are all outputs of the same two bases, not competing choices). Click a dimmed side card or a dot to advance. Real tradeoff: this needs real photography for every step to look this good, and Implanted embryos still has none, so its slide keeps the same numeral placeholder used everywhere else, which will look noticeably plainer next to the other two until the client supplies one.</div>
+
+<script>
+(function(){
+  var PROGRAMS = [
+    {
+      num: '01', title: 'Foals', sub: 'Born and raised in Belgium', avail: 'Year round',
+      base: 'Belgium', leaves: 'Halter broken',
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg',
+      imgAlt: 'Arkhana Von Axe Z, a Stud Von Axe foal',
+      desc: 'Born and raised at our Belgian base out of mares chosen for jumping ability and temperament. Colts and fillies leave us halter broken and used to people.'
+    },
+    {
+      num: '02', title: 'Frozen embryos', sub: 'Collected and frozen in Ontario', avail: 'By pairing',
+      base: 'Ontario', leaves: 'With documentation',
+      img: 'https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg',
+      imgAlt: 'A Stud Von Axe horse',
+      desc: 'Collected and frozen in Ontario from our own broodmares. Pairings are made on pedigree and produce, and shipped with full documentation.'
+    },
+    {
+      num: '03', title: 'Implanted embryos', sub: 'Carried by our recipient mares', avail: 'Seasonal',
+      base: 'Belgium', leaves: 'In foal', noPhoto: true,
+      desc: 'Embryos already carried by our recipient mares in Belgium, with the pregnancy managed by our vet team until you take over or we foal it down.'
+    }
+  ];
+
+  /* ---- V1, current live mechanic ---- */
+  (function(){
+    var tabs = document.getElementById('v1tabs');
+    var media = document.getElementById('v1media');
+    var availEl = document.getElementById('v1avail');
+    var titleEl = document.getElementById('v1title');
+    var subEl = document.getElementById('v1sub');
+    var descEl = document.getElementById('v1desc');
+    var baseEl = document.getElementById('v1base');
+    var leavesEl = document.getElementById('v1leaves');
+
+    tabs.innerHTML = PROGRAMS.map(function(p,i){
+      return '<button type="button" class="tab" data-idx="'+i+'" role="tab" aria-selected="'+(i===0)+'"><span class="tab-num">'+p.num+'</span>'+p.title+'</button>';
+    }).join('');
+
+    PROGRAMS.forEach(function(p,i){
+      var layer = p.noPhoto ? document.createElement('div') : document.createElement('img');
+      layer.dataset.idx = i;
+      if (p.noPhoto){ layer.className = 'media__empty'+(i===0?' is-active':''); layer.innerHTML = '<span>'+p.num+'</span>'; }
+      else { layer.className = i===0?'is-active':''; layer.src = p.img; layer.alt = p.imgAlt; }
+      media.appendChild(layer);
+    });
+
+    function select(idx){
+      var p = PROGRAMS[idx];
+      media.querySelectorAll('img, .media__empty').forEach(function(el){ el.classList.toggle('is-active', Number(el.dataset.idx)===idx); });
+      tabs.querySelectorAll('.tab').forEach(function(b){ b.setAttribute('aria-selected', String(Number(b.dataset.idx)===idx)); });
+      availEl.textContent = p.avail; titleEl.textContent = p.title; subEl.textContent = p.sub;
+      descEl.textContent = p.desc; baseEl.textContent = p.base; leavesEl.textContent = p.leaves;
+    }
+    tabs.addEventListener('click', function(e){ var b=e.target.closest('.tab'); if(b) select(Number(b.dataset.idx)); });
+    select(0);
+  })();
+
+  /* ---- V2, classic accordion ---- */
+  (function(){
+    var acc = document.getElementById('v2acc');
+    acc.innerHTML = PROGRAMS.map(function(p,i){
+      var media = p.noPhoto
+        ? '<div class="thumb thumb--empty"><span>'+p.num+'</span></div>'
+        : '<div class="thumb"><img src="'+p.img+'" alt="'+p.imgAlt+'"></div>';
+      return '<div class="item'+(i===0?' is-open':'')+'" data-idx="'+i+'">'+
+        '<button type="button" class="head" aria-expanded="'+(i===0)+'">'+
+          '<span class="num">'+p.num+'</span>'+
+          '<span class="name">'+p.title+'</span>'+
+          '<span class="sub-line">'+p.avail+'</span>'+
+          '<span class="plus">+</span>'+
+        '</button>'+
+        '<div class="body"><div class="body-inner">'+
+          media+
+          '<div class="copy"><p>'+p.desc+'</p>'+
+            '<div class="facts">'+
+              '<div><div class="fact-label">Base</div><div class="fact-value">'+p.base+'</div></div>'+
+              '<div><div class="fact-label">Leaves us</div><div class="fact-value">'+p.leaves+'</div></div>'+
+            '</div>'+
+          '</div>'+
+        '</div></div>'+
+      '</div>';
+    }).join('');
+
+    function layout(){
+      acc.querySelectorAll('.item').forEach(function(item){
+        var body = item.querySelector('.body');
+        var inner = item.querySelector('.body-inner');
+        body.style.maxHeight = item.classList.contains('is-open') ? inner.scrollHeight+'px' : '0px';
+      });
+    }
+    acc.addEventListener('click', function(e){
+      var head = e.target.closest('.head'); if(!head) return;
+      var item = head.closest('.item');
+      var willOpen = !item.classList.contains('is-open');
+      acc.querySelectorAll('.item').forEach(function(i){ i.classList.remove('is-open'); i.querySelector('.head').setAttribute('aria-expanded','false'); });
+      if (willOpen){ item.classList.add('is-open'); head.setAttribute('aria-expanded','true'); }
+      layout();
+    });
+    layout();
+    window.addEventListener('resize', layout);
+  })();
+
+  /* ---- V3, media row accordion ---- */
+  (function(){
+    var acc = document.getElementById('v3acc');
+    acc.innerHTML = PROGRAMS.map(function(p,i){
+      var thumbSm = p.noPhoto
+        ? '<div class="thumb-sm thumb-sm--empty"><span>'+p.num+'</span></div>'
+        : '<div class="thumb-sm"><img src="'+p.img+'" alt="'+p.imgAlt+'"></div>';
+      var bigMedia = p.noPhoto
+        ? '<div class="big-media big-media--empty"><span>'+p.num+'</span></div>'
+        : '<div class="big-media"><img src="'+p.img+'" alt="'+p.imgAlt+'"></div>';
+      return '<div class="item'+(i===0?' is-open':'')+'" data-idx="'+i+'">'+
+        '<button type="button" class="head" aria-expanded="'+(i===0)+'">'+
+          thumbSm+
+          '<span class="head-text"><span class="num-sm">'+p.num+'</span><span class="name-sm">'+p.title+'</span></span>'+
+          '<span class="avail-pill">'+p.avail+'</span>'+
+          '<span class="plus-sm">+</span>'+
+        '</button>'+
+        '<div class="body"><div class="body-inner">'+
+          bigMedia+
+          '<div class="copy"><p>'+p.desc+'</p>'+
+            '<div class="facts">'+
+              '<div><div class="fact-label">Base</div><div class="fact-value">'+p.base+'</div></div>'+
+              '<div><div class="fact-label">Leaves us</div><div class="fact-value">'+p.leaves+'</div></div>'+
+            '</div>'+
+          '</div>'+
+        '</div></div>'+
+      '</div>';
+    }).join('');
+
+    function layout(){
+      acc.querySelectorAll('.item').forEach(function(item){
+        var body = item.querySelector('.body');
+        var inner = item.querySelector('.body-inner');
+        body.style.maxHeight = item.classList.contains('is-open') ? inner.scrollHeight+'px' : '0px';
+      });
+    }
+    acc.addEventListener('click', function(e){
+      var head = e.target.closest('.head'); if(!head) return;
+      var item = head.closest('.item');
+      var willOpen = !item.classList.contains('is-open');
+      acc.querySelectorAll('.item').forEach(function(i){ i.classList.remove('is-open'); i.querySelector('.head').setAttribute('aria-expanded','false'); });
+      if (willOpen){ item.classList.add('is-open'); head.setAttribute('aria-expanded','true'); }
+      layout();
+    });
+    layout();
+    window.addEventListener('resize', layout);
+  })();
+
+  /* ---- V4, cinematic step carousel ---- */
+  (function(){
+    var STEPS = [
+      { label: 'Step One', title: 'Foals, Bred in <em>Belgium</em>.',
+        desc: 'Born and raised at our Belgian base out of mares chosen for jumping ability and temperament. Colts and fillies leave us halter broken and used to people.',
+        img: 'https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg', imgAlt: 'Arkhana Von Axe Z, a Stud Von Axe foal' },
+      { label: 'Step Two', title: 'Frozen Embryos, <em>Collected in Ontario</em>.',
+        desc: 'Collected and frozen in Ontario from our own broodmares. Pairings are made on pedigree and produce, and shipped with full documentation.',
+        img: 'https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg', imgAlt: 'A Stud Von Axe horse' },
+      { label: 'Step Three', title: 'Implanted Embryos, <em>Carried in Belgium</em>.',
+        desc: 'Embryos already carried by our recipient mares in Belgium, with the pregnancy managed by our vet team until you take over or we foal it down.',
+        noPhoto: true, num: '03' }
+    ];
+
+    var carousel = document.getElementById('v4carousel');
+    var dotsEl = document.getElementById('v4dots');
+    var v4current = 0;
+
+    carousel.innerHTML = STEPS.map(function(s, i){
+      var media = s.noPhoto
+        ? '<div class="slide__empty"><span>' + s.num + '</span></div>'
+        : '<img src="' + s.img + '" alt="' + s.imgAlt + '">';
+      return '<div class="slide' + (i === 0 ? ' is-active' : '') + '" data-idx="' + i + '">' +
+        media +
+        '<span class="slide__step">' + s.label + '</span>' +
+        '<div class="slide__content">' +
+          '<h3 class="slide__title">' + s.title + '</h3>' +
+          '<p class="slide__desc">' + s.desc + '</p>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    dotsEl.innerHTML = STEPS.map(function(s, i){
+      return '<button type="button" class="dot' + (i === 0 ? ' is-active' : '') + '" data-idx="' + i + '" aria-label="' + s.label + '"></button>';
+    }).join('');
+
+    function v4select(idx){
+      v4current = idx;
+      carousel.querySelectorAll('.slide').forEach(function(el){ el.classList.toggle('is-active', Number(el.dataset.idx) === idx); });
+      dotsEl.querySelectorAll('.dot').forEach(function(el){ el.classList.toggle('is-active', Number(el.dataset.idx) === idx); });
+    }
+    carousel.addEventListener('click', function(e){
+      var slide = e.target.closest('.slide');
+      if (slide && !slide.classList.contains('is-active')) v4select(Number(slide.dataset.idx));
+    });
+    dotsEl.addEventListener('click', function(e){
+      var dot = e.target.closest('.dot');
+      if (dot) v4select(Number(dot.dataset.idx));
+    });
+  })();
+
+  var navLinks = document.querySelectorAll('.switcher-nav a');
+  var sections = Array.from(navLinks).map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var idx = sections.indexOf(e.target);
+      navLinks.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(function(s){ spy.observe(s); });
+})();
+</script>
+
+</body>
+</html>

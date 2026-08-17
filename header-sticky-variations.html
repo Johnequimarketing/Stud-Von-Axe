@@ -7,35 +7,24 @@
 <meta name="description" content="Stud Von Axe breeds and sells foals, embryos and frozen semen from Desenzano del Garda, Italy and Lanaken, Belgium.">
 
 <!-- ============================================================
-     LOGO NOTICE
-     Update, 14 August: the client's real dark-background mark
-     arrived (transparent PNG, gold crown, white horse-head and
-     wordmark) and replaces the old CSS-built placeholder everywhere
-     on the page. Two exports of the same mark, both in assets/:
-       logo-dark-bg.png            full tall stacked lockup, used in
-                                    the footer where there is room.
-       logo-dark-bg-horizontal.png John's own tighter crop of the
-                                    same file (same width, roughly
-                                    half the height), used in the
-                                    hero's own header and the sticky
-                                    header, where a wide, short mark
-                                    reads far better at small sizes
-                                    than the tall version would.
-     Still outstanding: a light-background version (navy mark) for
-     any future light section that needs a logo, none exists on the
-     page today, every current logo placement sits on a dark band.
+     LOGO PLACEHOLDER NOTICE
+     No usable vector logo exists yet. The client's real logo files
+     are JPEGs with a solid background baked in (a horse skull mark,
+     crown, and VON | AXE wordmark) and cannot sit cleanly over
+     photography. The wordmark built below in CSS/HTML is a stand in
+     for that mark only. Once the client supplies vector or
+     transparent PNG files, swap in:
+       Image 1 (gold crown, navy mark, for light backgrounds) in
+         place of every .wordmark instance on light sections, and
+       Image 2 (gold crown, white mark, for dark bands) in place of
+         every .wordmark--reverse instance on the navy sections
+         (footer, hero overlay).
+     Search this file for ".wordmark" to find every instance.
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Global Reach map, see the CSS/JS comments near .reach for the
-     full reasoning. Same two libraries John's own Claude Design
-     reference used for this section: d3-geo for the projection and
-     topojson-client to turn the world-atlas topology into paths. -->
-<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
 
 <style>
 /* ================= RESET ================= */
@@ -84,7 +73,7 @@ input, textarea { font: inherit; color: inherit; }
   /* How long the hero and marquee stay frozen before the About
      section covers them and they release. See the comment above
      .hero-pin for the full reasoning. */
-  --curtain-reveal: 300vh;
+  --hero-hold: 45vh;
 }
 
 /* ================= BASE ================= */
@@ -141,8 +130,8 @@ p { max-width: var(--measure); }
   margin-bottom: clamp(2rem, 4vw, 3.25rem);
   max-width: 46rem;
 }
-.section-head h2 { font-size: clamp(1.95rem, 1.25rem + 2.9vw, 2.95rem); }
-.section-head p { color: var(--color-ink-soft); font-size: 1.08rem; line-height: 1.7; }
+.section-head h2 { font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.65rem); }
+.section-head p { color: var(--color-ink-soft); font-size: 1rem; }
 
 .section-index {
   font-family: var(--font-body);
@@ -193,6 +182,31 @@ section { position: relative; }
 .text-link--on-navy:hover { color: var(--color-gold-soft); }
 .text-link__arrow { font-size: 0.95em; }
 
+/* ================= WORDMARK (placeholder) ================= */
+.wordmark { display: inline-flex; flex-direction: column; align-items: center; gap: 0.55rem; color: var(--color-navy); }
+.wordmark__crown { width: 30px; height: auto; color: var(--color-gold); }
+.wordmark__name {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.14em;
+}
+.wordmark__rule { width: 1px; height: 1.1em; background: var(--color-gold); display: inline-block; }
+.wordmark__tagline {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+.wordmark--reverse { color: var(--color-white); }
+.wordmark--reverse .wordmark__tagline { color: rgba(255,255,255,0.55); }
+.wordmark--sm { flex-direction: row; gap: 0.6rem; }
+.wordmark--sm .wordmark__crown { width: 20px; }
+.wordmark--sm .wordmark__name { font-size: 1.05rem; gap: 0.45rem; }
+.wordmark--sm .wordmark__tagline { display: none; }
+.wordmark--lg .wordmark__crown { width: 42px; }
+.wordmark--lg .wordmark__name { font-size: clamp(1.8rem, 1rem + 3vw, 2.6rem); }
 
 /* ================= HEADER =================
    Transparent, sits inside the hero over the photograph, three column
@@ -228,11 +242,10 @@ section { position: relative; }
   display: grid; grid-template-columns: 1fr auto;
   align-items: center; gap: 1rem;
 }
-/* Hidden on purpose, kept for later. The sticky header work below
-   solved this a different way, a second condensed bar rather than
-   making this header itself sticky, so this divider was never
-   needed for that. Left in place, still off, in case a future pass
-   wants a hairline under the hero's own header. */
+/* Hidden for now, on purpose. This rule is meant to mark the header as
+   sticky once that behaviour is built, and looks like an unfinished
+   line sitting under a header that does not stick yet. Bring it back
+   (delete the display:none below) when the sticky header work starts. */
 .hd__rule {
   position: relative; z-index: 20; height: 1px;
   background: rgba(255,255,255,0.24);
@@ -240,25 +253,36 @@ section { position: relative; }
   display: none;
 }
 
-/* ================= STICKY HEADER =================
-   Chosen 14 August after comparing four options in
-   header-sticky-variations.html: dark theme, hide-on-scroll-down /
-   reveal-on-scroll-up. A second, condensed header bar, independent
-   of the one inside the hero (which is completely untouched, still
-   transparent over the photo exactly as before). This bar starts
-   hidden above the viewport and slides down once the hero has
-   scrolled out of view, tracked with an IntersectionObserver on
-   .hero. Once visible, it hides itself again on scroll down past a
-   small threshold (so a tiny jitter near the top does not flicker
-   it) and reappears on any scroll up, so it is out of the way while
-   reading but one scroll-up away at all times. */
+/* ================= STICKY HEADER (variations) =================
+   The sticky header work flagged above the now-active .hd__rule.
+   This is a second, condensed header bar, independent of the one
+   inside the hero: the hero's own header is untouched, still the
+   first thing you see, transparent over the photo exactly as before.
+   This bar starts hidden above the viewport and slides down once the
+   hero has scrolled out of view (tracked with the same
+   IntersectionObserver "past hero" pattern used elsewhere in this
+   project's own reference material), so it is never visible at the
+   same time as the real header, only once that one has scrolled away.
+
+   Two independent choices, both switchable here for comparison:
+   THEME   light  — white/ivory bar, navy text, matches most of the
+                    page since it is mostly light past the hero.
+                    (recommended)
+           dark   — navy bar, white text, matches the hero and the
+                    Programme carousel, but fights harder against the
+                    light sections it sits on top of.
+   BEHAVIOUR static      — always visible once shown, never hides
+                    again. Simplest, most predictable, no extra motion.
+                    (recommended, keeps with the brief's own request
+                    for restraint)
+           hide-reveal — hides on scroll down, reappears on scroll up.
+                    Saves vertical space but is one more thing moving
+                    on screen. */
 .sticky-hd {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   padding: 0.8rem var(--hero-gutter);
-  background: rgba(13,22,38,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px -18px rgba(0,0,0,0.5);
   transform: translateY(-100%); opacity: 0; pointer-events: none;
-  transition: transform 0.45s var(--ease-out), opacity 0.3s var(--ease-out);
+  transition: transform 0.45s var(--ease-out), opacity 0.3s var(--ease-out), background var(--dur-med) var(--ease);
 }
 .sticky-hd.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .sticky-hd.is-visible.is-hidden { transform: translateY(-100%); }
@@ -271,26 +295,54 @@ section { position: relative; }
 .sticky-hd__nav ul { display: flex; flex-wrap: wrap; gap: clamp(0.8rem, 1.8vw, 1.6rem); }
 .sticky-hd__nav--left ul { justify-content: flex-start; }
 .sticky-hd__nav a {
-  font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.78);
+  font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
   padding-bottom: 0.2rem; border-bottom: 1px solid transparent;
   transition: color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
 }
-.sticky-hd__nav a:hover { color: var(--color-white); border-color: var(--color-gold); }
 .sticky-hd__right { display: flex; align-items: center; justify-content: flex-end; gap: 1.4rem; }
 .sticky-hd__pill {
   display: inline-flex; align-items: center;
   font-size: 0.66rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--color-white); border: 1px solid rgba(255,255,255,0.4);
-  padding: 0.5rem 1.05rem; border-radius: 100px; white-space: nowrap;
+  border: 1px solid; padding: 0.5rem 1.05rem; border-radius: 100px; white-space: nowrap;
   transition: background var(--dur-med) var(--ease), color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
 }
-.sticky-hd__pill:hover { background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
-.sticky-hd__logo-img { display: block; height: 34px; width: auto; }
+.sticky-hd__logo .wordmark--hd .wordmark__crown { width: 15px; }
+.sticky-hd__logo .wordmark--hd .wordmark__name { font-size: 0.92rem; }
+.sticky-hd__logo .wordmark--hd .wordmark__tagline { display: none; }
 .sticky-hd__toggle { display: flex; }
-.sticky-hd__toggle span { background: var(--color-white); }
 @media (min-width: 1024px) { .sticky-hd__toggle { display: none; } }
 
-@media (prefers-reduced-motion: reduce) { .sticky-hd { transition: none; } }
+.sticky-hd.theme-light { background: rgba(250,247,241,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 30px -18px rgba(22,35,63,0.3); }
+.sticky-hd.theme-light .wordmark { color: var(--color-navy); }
+.sticky-hd.theme-light .sticky-hd__nav a { color: var(--color-ink-soft); }
+.sticky-hd.theme-light .sticky-hd__nav a:hover { color: var(--color-navy); border-color: var(--color-gold); }
+.sticky-hd.theme-light .sticky-hd__pill { color: var(--color-navy); border-color: var(--color-navy-line); }
+.sticky-hd.theme-light .sticky-hd__pill:hover { background: var(--color-navy); color: var(--color-white); border-color: var(--color-navy); }
+.sticky-hd.theme-light .nav-toggle span { background: var(--color-navy); }
+
+.sticky-hd.theme-dark { background: rgba(13,22,38,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 30px -18px rgba(0,0,0,0.5); }
+.sticky-hd.theme-dark .wordmark { color: var(--color-white); }
+.sticky-hd.theme-dark .sticky-hd__nav a { color: rgba(255,255,255,0.78); }
+.sticky-hd.theme-dark .sticky-hd__nav a:hover { color: var(--color-white); border-color: var(--color-gold); }
+.sticky-hd.theme-dark .sticky-hd__pill { color: var(--color-white); border-color: rgba(255,255,255,0.4); }
+.sticky-hd.theme-dark .sticky-hd__pill:hover { background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
+.sticky-hd.theme-dark .nav-toggle span { background: var(--color-white); }
+
+/* ---- comparison switcher, not part of the design itself ---- */
+.hd-switcher {
+  position: fixed; z-index: 999; right: 16px; bottom: 16px;
+  display: flex; flex-direction: column; gap: 4px; padding: 8px;
+  background: rgba(10,21,34,0.94); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+  font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.hd-switcher__label { color: rgba(255,255,255,0.4); padding: 4px 8px 0; font-size: 9px; letter-spacing: 0.16em; }
+.hd-switcher button {
+  color: rgba(255,255,255,0.65); padding: 7px 10px; border-radius: 8px; text-align: left;
+  transition: all 0.25s ease;
+}
+.hd-switcher button:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.hd-switcher button.is-active { color: var(--color-navy); background: var(--color-gold-soft); }
 .hd__nav { display: none; }
 .hd__nav ul { display: flex; flex-wrap: wrap; gap: clamp(0.9rem, 2vw, 1.85rem); }
 /* Pushed to the true left edge of the row, not hugging the logo. The
@@ -323,8 +375,10 @@ section { position: relative; }
 }
 .pill:hover { background: var(--color-white); color: var(--color-navy); border-color: var(--color-white); }
 
-.hd__logo { display: inline-block; }
-.hd__logo-img { display: block; height: 52px; width: auto; }
+.wordmark--hd { gap: 0.26rem; }
+.wordmark--hd .wordmark__crown { width: 18px; }
+.wordmark--hd .wordmark__name { font-size: 1.05rem; letter-spacing: 0.15em; }
+.wordmark--hd .wordmark__tagline { font-size: 0.44rem; letter-spacing: 0.28em; white-space: nowrap; }
 
 .lang-switch { display: flex; gap: 0.5rem; align-items: center; font-size: 0.72rem; letter-spacing: 0.1em; }
 .lang-switch button { padding: 0.2rem 0.35rem; color: var(--color-ink-faint); transition: color var(--dur-med) var(--ease); }
@@ -383,6 +437,11 @@ section { position: relative; }
   .nav-toggle { display: none; }
   .mobile-menu { display: none; }
 }
+/* The tagline would wrap in the narrow centre column of the collapsed
+   header, so it steps out and only the crown and wordmark remain. */
+@media (max-width: 860px) {
+  .wordmark--hd .wordmark__tagline { display: none; }
+}
 
 /* ================= HERO =================
    SUPERSEDED 13 August. This used to be a centred statement with a
@@ -400,7 +459,6 @@ section { position: relative; }
 .hero {
   position: relative;
   min-height: 100svh;
-  overflow: hidden;
   display: flex; flex-direction: column;
   background: var(--color-navy-deep);
   color: var(--color-white);
@@ -414,17 +472,7 @@ section { position: relative; }
    is active, so whichever image crossfades in is always mid cycle,
    never a jump cut back to scale(1). Kept slow and small on purpose,
    per the brief's own rule that interaction and motion should stay
-   restrained, nothing here should read as flashy.
-
-   .hero needs overflow:hidden (added 15 August) because of this zoom:
-   scale(1.06) grows the image symmetrically from its own centre, so
-   at the top of the cycle it is briefly wider and taller than .hero's
-   own box on every side, including the bottom. With nothing clipping
-   it, that sliver of image (and the real grass/greenery in the real
-   photos) bled past the bottom edge, visible as a thin seam right
-   where the hero met the marquee. Clipping it here is the fix, not
-   the scrim: the scrim's gradient was already fully opaque at 100%,
-   it was never a scrim/colour problem. */
+   restrained, nothing here should read as flashy. */
 .hero__media { position: absolute; inset: 0; z-index: 0; }
 .hero__media img {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -436,17 +484,12 @@ section { position: relative; }
 @keyframes heroKenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
 @media (prefers-reduced-motion: reduce) { .hero__media img { transition: none; animation: none; } }
 .hero__scrim {
-  /* Last stop is fully opaque (1, not the previous 0.94): at 94% a
-     sliver of the photo still showed through right at the very
-     bottom edge, creating a visible seam/gap where the hero met the
-     marquee's own solid navy-deep background below it. Full opacity
-     here makes the two meet as one continuous colour. */
   position: absolute; inset: 0; z-index: 0;
   background: linear-gradient(180deg,
     rgba(13,22,38,0.55) 0%,
     rgba(13,22,38,0.08) 26%,
     rgba(13,22,38,0.4) 58%,
-    rgba(13,22,38,1) 100%);
+    rgba(13,22,38,0.94) 100%);
 }
 
 /* ---- bottom anchored statement + switcher row ---- */
@@ -503,12 +546,7 @@ section { position: relative; }
    space beside them, and they scale up with the wider card. */
 .hero__thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 .hero__thumb {
-  /* padding: 0 fixes a real bug, not a style preference: this is a
-     <button>, and without resetting it, the browser's own default
-     button padding (around 1px 6px) shrank the image inward from the
-     rounded frame, leaving the navy background visible at the edges
-     and corners instead of the photo filling it edge to edge. */
-  position: relative; aspect-ratio: 1; width: 100%; padding: 0;
+  position: relative; aspect-ratio: 1; width: 100%;
   border-radius: 9px; overflow: hidden; border: 2px solid transparent;
   background: var(--color-navy-deep); transition: border-color 0.35s ease;
 }
@@ -543,46 +581,23 @@ section { position: relative; }
    it. Get that stacking wrong anywhere below and the hero reappears,
    floating over content further down the page. Given how explicit
    the instruction was to not put the hero at risk, that trade was
-   rejected. Still bounded here, same as before: --curtain-reveal is a
-   fixed amount of extra room, not open-ended.
+   rejected.
 
-   Rebuilt 15 August into a genuine overlapping curtain (previously
-   the hero fully released before About's own pin ever engaged, a
-   sequential hold-then-reveal, not a true overlap). Now .hero-pin
-   holds BOTH sticky layers as direct children: .hero-pin__sticky
-   (hero + marquee, untouched, z-index 1) and .about-reveal__sticky
-   (z-index 2, moved in from what used to be its own separate
-   280vh-tall wrapper, see the JS below .about-reveal__ph for the
-   maths). Two stacked position:sticky children of the same tall
-   wrapper naturally overlap: the second one's normal-flow position
-   sits right after the first, so once you've scrolled past the
-   first's own height it starts sticking too, WHILE the first is
-   still within its own sticky range (which is exactly what
-   --curtain-reveal's length guarantees). Both release at the same
-   point, when the wrapper's extra room runs out. z-index here is now
-   load-bearing, not a one-pixel safety net: it's what keeps About
-   visually on top of the still-present hero for that whole window.
+   Instead: .hero-pin is a plain wrapper, height 100svh plus a fixed
+   --hero-hold of extra room. .hero-pin__sticky (holding the hero and
+   the marquee, both untouched) sticks to top:0 only for as long as
+   that extra room lasts, then releases and scrolls away NATURALLY,
+   the same way any element does once its container has been fully
+   scrolled past. No dependence on z-index ordering elsewhere on the
+   page for correctness, z-index here is only a paint order safety
+   net for the single transitional frame where hero-pin and the About
+   section's own sticky panel might overlap by a pixel.
 
    Disabled under reduced motion and on narrow screens, same reasoning
    as the About reveal: a held, pinned hero is a heavier experience,
    and mobile gets the plain, immediate version instead. */
-.hero-pin { position: relative; height: calc(100svh + var(--curtain-reveal)); }
-/* height:100svh + flex column here, not left to natural content
-   height. Tried two other ways to keep the marquee visible first,
-   worth recording so it isn't retried: (1) sticking the marquee to
-   the viewport BOTTOM instead, overlaying a full-height hero, which
-   visually clipped the horse-card thumbnails since they already sit
-   close to the true bottom edge; (2) leaving the marquee in normal
-   flow below a full-height hero, unreachable by scrolling for as
-   long as hero-pin__sticky is pinned (which is the whole curtain
-   window, see the CSS comment above .hero-pin, not a brief hold like
-   before), so it never actually came into view. Flexing .hero down
-   to fill only the space left after the marquee's own (now slimmed,
-   see .marquee's padding) height reflows the hero's own content to
-   fit, so nothing overlaps or clips, and the marquee is visible the
-   entire time the hero is pinned, not just reachable by scrolling. */
-.hero-pin__sticky { position: sticky; top: 0; z-index: 1; height: 100svh; display: flex; flex-direction: column; }
-.hero-pin__sticky .hero { min-height: 0; flex: 1 1 auto; }
+.hero-pin { position: relative; height: calc(100svh + var(--hero-hold)); }
+.hero-pin__sticky { position: sticky; top: 0; z-index: 1; }
 
 @media (prefers-reduced-motion: reduce), (max-width: 760px) {
   .hero-pin { height: auto; }
@@ -596,7 +611,7 @@ section { position: relative; }
    used here since this duration is deliberately its own, 42s, matching
    the handoff's spec for a slow, unhurried ticker rather than this
    file's snappier UI transitions). */
-.marquee { background: var(--color-navy-deep); overflow: hidden; padding: 14px 0; }
+.marquee { background: var(--color-navy-deep); overflow: hidden; padding: 22px 0; }
 .marquee__track { display: flex; width: max-content; animation: marqueeScroll 42s linear infinite; }
 .marquee__set {
   display: inline-flex; align-items: center; gap: 34px; padding-right: 34px;
@@ -651,34 +666,15 @@ section { position: relative; }
    a heavier, easier to get wrong experience on a phone, so mobile
    gets the same content shown immediately and calmly instead, per
    the plan's own instruction to design mobile intentionally rather
-   than just shrinking the desktop version.
-
-   Restructured 15 August: this used to be its own separate 280vh
-   wrapper placed after .hero-pin in the document, which meant its
-   sticky panel only ever engaged once .hero-pin had already fully
-   released, a sequential hold-then-reveal rather than a genuine
-   overlap. .about-reveal__sticky is now a direct child of .hero-pin
-   itself (see the CSS comment above .hero-pin for why that pairing
-   creates a real overlap window), height and background moved onto
-   it directly since the old outer .about-reveal wrapper is gone.
-   Every visual detail below (bg scale, eyebrow/lead/body/cta fade,
-   the six side photos) is unchanged; only how the panel gets its
-   scroll-linked progress changed, see the JS. */
+   than just shrinking the desktop version. */
+.about-reveal { position: relative; z-index: 2; height: 280vh; background: var(--color-base); }
 .about-reveal__sticky {
   position: sticky; top: 0; height: 100svh; overflow: hidden;
   display: flex; align-items: center; background: var(--color-base);
-  z-index: 2; will-change: transform;
 }
 .about-reveal__bg { position: absolute; inset: 0; background: var(--color-base-dim); transform: scale(1.22); }
 .about-reveal__inner {
-  /* Narrowed from 1080px, 15 August: at the 1080 width the six side
-     photos sat directly under the text at ordinary laptop widths
-     instead of framing it either side, since the text column and the
-     photos were both sized in a way that only cleared each other on
-     very wide monitors. A narrower column plus the tighter photo
-     footprint below (see .about-reveal__ph--*) keeps a real gap
-     between them from about 1000px up. */
-  position: relative; z-index: 1; max-width: 720px; margin: 0 auto;
+  position: relative; z-index: 1; max-width: 1080px; margin: 0 auto;
   padding: 0 var(--hero-gutter); text-align: center;
 }
 .about-reveal__eyebrow {
@@ -688,28 +684,14 @@ section { position: relative; }
   color: var(--color-ink-faint); margin-bottom: 44px;
   opacity: 0.05; filter: blur(9px); transform: translateY(22px);
 }
-/* Real hierarchy, not one giant paragraph: a short lead statement
-   carries the size and weight, the real detail (Ontario, Lanaken, the
-   vet team) reads underneath at body size. The old version ran the
-   entire four-sentence paragraph at up to 50px, which made it tall
-   enough to push the CTA past the bottom edge of the pinned viewport,
-   clipped by .about-reveal__sticky's overflow:hidden, so the button
-   was never visible. Shrinking the bulk of the copy fixes both the
-   hierarchy and the clipping in one move. */
-.about-reveal__lead {
+.about-reveal__text {
   font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(26px, 2.85vw, 42px); line-height: 1.32; letter-spacing: -0.01em;
-  margin: 0 0 20px; color: var(--color-navy); text-wrap: pretty;
+  font-size: clamp(28px, 3.6vw, 50px); line-height: 1.5; letter-spacing: -0.01em;
+  margin: 0; color: var(--color-navy); text-wrap: pretty;
 }
-.about-reveal__lead [data-l] { display: inline-block; will-change: filter, opacity, transform; }
-.about-reveal__body {
-  font-family: var(--font-body); font-weight: 300;
-  font-size: clamp(16px, 1.15vw, 19px); line-height: 1.72;
-  margin: 0 auto; max-width: 62ch; color: var(--color-ink-soft);
-  opacity: 0.05; filter: blur(9px); transform: translateY(22px);
-}
+.about-reveal__text [data-l] { display: inline-block; will-change: filter, opacity, transform; }
 .about-reveal__cta {
-  display: inline-flex; align-items: center; gap: 12px; margin-top: 36px;
+  display: inline-flex; align-items: center; gap: 12px; margin-top: 56px;
   padding: 17px 34px; border: 1px solid var(--color-navy); border-radius: 2px;
   color: var(--color-navy); font-family: var(--font-body); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
   text-decoration: none; transition: background var(--dur-med) var(--ease-out), color var(--dur-med) var(--ease-out);
@@ -717,43 +699,12 @@ section { position: relative; }
 }
 .about-reveal__cta:hover { background: var(--color-navy); color: var(--color-white); }
 
-/* Six real photos, framing the text on both sides. Chosen 14 August
-   after comparing about-variations-4.html and -5.html: each photo
-   reveals on its own as you scroll in (not all together), holds while
-   the text reveals, then the whole group fades out together right
-   before the CTA needs to hold the stage alone.
-
-   Sizes match about-variations-5.html's V1a exactly, 15 August, per
-   John's direct request after comparing the two: same percentages
-   for all six photos as that approved file. One real difference from
-   the demo, worth stating plainly: the demo's own 1000px hide
-   breakpoint has the same overlap risk this section already hit once
-   in production, it just never showed up because the demo was
-   reviewed at a wide window. At these percentages, the widest pair
-   (l2/r2) only clears the 720px text column from about 1333px of
-   real screen width, so the breakpoint here is 1360px (small margin
-   over that minimum), not 1000px. Below 1360px the photos hide rather
-   than risk overlapping the text again. Mobile/reduced-motion
-   fallback below is unaffected either way. */
-.about-reveal__side { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.about-reveal__ph { position: absolute; overflow: hidden; border-radius: 4px; box-shadow: 0 20px 40px -20px rgba(22,35,63,0.35); opacity: 0; }
-.about-reveal__ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.about-reveal__ph--l1 { left: 4%; top: 10%; width: 15%; aspect-ratio: 3 / 4; }
-.about-reveal__ph--l2 { left: 9%; top: 48%; width: 12%; aspect-ratio: 1 / 1; }
-.about-reveal__ph--l3 { left: 2%; top: 74%; width: 11%; aspect-ratio: 4 / 5; }
-.about-reveal__ph--r1 { right: 4%; top: 14%; width: 14%; aspect-ratio: 4 / 5; }
-.about-reveal__ph--r2 { right: 10%; top: 50%; width: 13%; aspect-ratio: 1 / 1; }
-.about-reveal__ph--r3 { right: 3%; top: 76%; width: 12%; aspect-ratio: 3 / 4; }
-@media (max-width: 1360px) { .about-reveal__side { display: none; } }
-
 @media (prefers-reduced-motion: reduce), (max-width: 760px) {
-  .about-reveal__sticky {
-    position: relative; height: auto; padding: clamp(64px, 14vw, 110px) 0;
-    transform: none !important;
-  }
+  .about-reveal { height: auto; }
+  .about-reveal__sticky { position: relative; height: auto; padding: clamp(64px, 14vw, 110px) 0; }
   .about-reveal__bg { display: none; }
-  .about-reveal__eyebrow, .about-reveal__body, .about-reveal__cta { opacity: 1; filter: none; transform: none; }
-  .about-reveal__lead [data-l] { opacity: 1 !important; filter: none !important; }
+  .about-reveal__eyebrow, .about-reveal__cta { opacity: 1; filter: none; transform: none; }
+  .about-reveal__text [data-l] { opacity: 1 !important; filter: none !important; }
 }
 
 /* ================= BREEDING PROGRAMME =================
@@ -801,12 +752,9 @@ section { position: relative; }
   opacity: 0; transform: translateY(10px); transition: opacity .5s var(--ease-out) .15s, transform .5s var(--ease-out) .15s;
 }
 .prog-slide.is-active .prog-slide__content { opacity: 1; transform: none; }
-.prog-slide__title {
-  font-family: var(--font-display); font-weight: 300; color: var(--color-white);
-  font-size: clamp(1.9rem, 1.2rem + 2.8vw, 3.2rem); line-height: 1.15; margin-bottom: 1.1rem;
-}
+.prog-slide__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.6rem); line-height: 1.15; margin-bottom: 1rem; }
 .prog-slide__title em { font-style: italic; color: var(--color-gold-soft); }
-.prog-slide__desc { color: rgba(255,255,255,0.82); max-width: 54ch; font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem); line-height: 1.75; }
+.prog-slide__desc { color: rgba(255,255,255,0.78); max-width: 52ch; font-size: 0.98rem; line-height: 1.7; }
 
 .prog-dots { display: flex; justify-content: center; gap: 0.7rem; margin-top: clamp(1.6rem, 3vw, 2.4rem); }
 .prog-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.28); transition: background var(--dur-med) var(--ease), transform var(--dur-med) var(--ease); }
@@ -834,21 +782,7 @@ section { position: relative; }
    max-height rather than the earlier click-to-open detail dialog.
    Hover has no separate touch handling: on a coarse pointer the name
    and meta at the bottom are already the resting state, the hover
-   reveal is a bonus for a mouse, not the only way to see the basics.
-
-   Refined 15 August, chosen from horses-variations.html's V1 after
-   John compared it against a featured+roster layout and a stud-book
-   ledger take: same grid, same filters, same hover-reveal mechanic,
-   just the finish brought up to the hero/marquee/About Us level.
-   Outlined status tag instead of a solid pill (quieter, reads more
-   like a caption than a sale sticker), an italic serif name to match
-   About Us's own type, a hover lift (not just an image zoom) for a
-   bit more weight, and each card fading/lifting into place as it
-   scrolls into view the first time (see the JS IIFE below, a single
-   IntersectionObserver per card, not a continuous scroll-linked
-   effect like the hero or About, four static cards don't need one),
-   so the grid arrives with the same quality of motion as the rest of
-   the page instead of just being "there" on load. */
+   reveal is a bonus for a mouse, not the only way to see the basics. */
 .herd__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 1.5rem; }
 .herd__filters { display: flex; flex-wrap: wrap; background: var(--color-navy-line); border-radius: 999px; padding: 5px; }
 .herd__filter {
@@ -867,150 +801,45 @@ section { position: relative; }
 }
 .herd__nav button:hover { background: var(--color-navy); color: var(--color-white); border-color: var(--color-navy); }
 
-/* Two rows of four, 15 August: John wants eight slots, but only four
-   horses have verified real data (photos, pedigree, status) right
-   now. Rather than invent four more, the extra slots render as
-   .herd__card--placeholder (see the JS render()), a quiet dashed
-   panel pointing people to ask, not a fake listing. Swap those out
-   for real cards as more horses are added, PER_PAGE already covers
-   up to eight before any padding kicks in. CTA sits centered below
-   either way, see .herd__cta near the reduced-motion query. */
-.herd__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.7rem; }
-.herd__card {
-  position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 3 / 4.1;
-  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
-}
-.herd__card:hover { transform: translateY(-7px); box-shadow: 0 26px 50px -22px rgba(22,35,63,0.4); }
+.herd__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.herd__card { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 3 / 4; }
 .herd__card-media { position: absolute; inset: 0; }
-.herd__card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 900ms var(--ease); }
-.herd__card:hover .herd__card-media img { transform: scale(1.055); }
-.herd__card--sold .herd__card-media img { filter: grayscale(0.4); }
-.herd__card-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,22,38,0) 44%, rgba(13,22,38,0.94) 100%); }
-.herd__card-tag {
-  position: absolute; left: 1.1rem; top: 1.1rem; z-index: 2; display: inline-flex; align-items: center; gap: 0.45rem;
-  padding: 0.42rem 0.9rem; border: 1px solid rgba(255,255,255,0.55); border-radius: 999px; backdrop-filter: blur(6px);
-  font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-white);
+.herd__card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-slow) var(--ease); }
+.herd__card:hover .herd__card-media img { transform: scale(1.06); }
+.herd__card--sold .herd__card-media img { filter: grayscale(0.35); }
+.herd__card-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,35,63,0) 40%, rgba(22,35,63,0.92) 100%); }
+.herd__card-pill {
+  position: absolute; left: 1rem; top: 1rem; z-index: 2;
+  padding: 0.45rem 0.85rem; border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
 }
-.herd__card-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold-soft); display: inline-block; }
-.herd__card--sold .herd__card-tag i { background: rgba(255,255,255,0.5); }
-.herd__card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 1.3rem 1.2rem 1.4rem; color: var(--color-white); }
-.herd__card-name { font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem); color: var(--color-white); margin-bottom: 0.3rem; }
-.herd__card-meta { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
-.herd__card-reveal { max-height: 0; overflow: hidden; transition: max-height 0.45s var(--ease); }
-.herd__card:hover .herd__card-reveal, .herd__card:focus-within .herd__card-reveal { max-height: 170px; }
-.herd__card-rule { width: 26px; height: 1px; background: var(--color-gold-soft); margin: 0.75rem 0; opacity: 0.85; }
-.herd__card-pedigree { font-size: 0.72rem; line-height: 1.6; color: rgba(255,255,255,0.85); }
-.herd__card-pedigree em { display: block; color: rgba(255,255,255,0.55); font-style: normal; margin-top: 0.3rem; }
-.herd__card-links { display: flex; gap: 1rem; margin-top: 0.65rem; }
-.herd__card-links a { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.78); border-bottom: 1px solid rgba(255,255,255,0.4); }
+.herd__card-pill--available { background: var(--color-gold); color: var(--color-navy-deep); }
+.herd__card-pill--reserved { background: rgba(255,255,255,0.92); color: var(--color-navy); }
+.herd__card-pill--sold { background: rgba(13,22,38,0.82); color: rgba(255,255,255,0.75); }
+.herd__card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 1.2rem 1.2rem 1.3rem; color: var(--color-white); }
+.herd__card-name { font-size: 1.25rem; margin-bottom: 0.3rem; }
+.herd__card-meta { font-size: 0.66rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
+.herd__card-reveal { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+.herd__card:hover .herd__card-reveal, .herd__card:focus-within .herd__card-reveal { max-height: 180px; }
+.herd__card-pedigree {
+  display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.72rem; line-height: 1.5; color: rgba(255,255,255,0.82);
+  padding-top: 0.6rem; margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.2);
+}
+.herd__card-pedigree em { color: rgba(255,255,255,0.55); font-style: normal; }
+.herd__card-links { display: flex; gap: 1rem; margin-top: 0.7rem; }
+.herd__card-links a { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.78); border-bottom: 1px solid rgba(255,255,255,0.4); }
 .herd__card-links a:hover, .herd__card-links a:focus-visible { color: var(--color-gold-soft); border-color: var(--color-gold-soft); }
 
-/* Quiet placeholder for the slots past our four real horses, not a
-   fake listing: dashed outline, no photo, no status tag, just a
-   plain-spoken line pointing people to ask. Same card footprint
-   (aspect-ratio, radius) so the grid still reads as one consistent
-   set of eight, and the same hover lift as a real card, just no
-   image-zoom or pedigree reveal since there is nothing behind it. */
-.herd__card--placeholder {
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  border: 1px dashed var(--color-navy-line); background: var(--color-base-dim); padding: 1.5rem;
-}
-.herd__card--placeholder .herd__card-placeholder-text {
-  font-family: var(--font-display); font-style: italic; color: var(--color-ink-soft);
-  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem); line-height: 1.5; max-width: 18ch;
-}
-.herd__card--placeholder .herd__card-placeholder-sub {
-  display: block; font-family: var(--font-body); font-style: normal; font-size: 0.68rem;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-faint); margin-top: 0.6rem;
-}
-
-/* One-shot scroll-in reveal, JS toggles .is-in via IntersectionObserver
-   the first time each card enters view (see the herd JS IIFE). Same
-   blur+fade+lift language as About Us's own reveal, just a single
-   trigger per card rather than a continuous scroll-linked value,
-   which is all four static cards need. */
-.herd__card.reveal { opacity: 0.05; filter: blur(9px); transform: translateY(24px); transition: opacity 0.7s var(--ease-out), filter 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
-.herd__card.reveal.is-in { opacity: 1; filter: blur(0); transform: translateY(0); }
-/* Specificity note: .is-in (three classes) would otherwise beat the
-   plain .herd__card:hover lift (one class, one pseudo-class) once a
-   card has finished revealing, since three classes outrank one class
-   plus a pseudo-class regardless of source order. This rule matches
-   .is-in's own specificity plus :hover so the lift still wins. */
-.herd__card.reveal.is-in:hover { transform: translateY(-7px); }
-@media (prefers-reduced-motion: reduce) {
-  .herd__card.reveal { opacity: 1; filter: none; transform: none; transition: none; }
-  .herd__card, .herd__card-media img { transition: none; }
-}
-
+@media (max-width: 1024px) { .herd__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .herd__grid { grid-template-columns: 1fr; } }
 
-.herd__cta { text-align: center; margin-top: clamp(2.2rem, 4vw, 3rem); }
-
-/* ================= GLOBAL REACH =================
-   Built from John's own Claude Design reference for this section (a
-   real d3-geo/topojson map, not the hand-drawn SVG silhouette an
-   earlier planning pass had proposed instead). Real data only: the
-   ten countries are the same verified figure used everywhere else on
-   this build, split the same way the reference does, seven in Europe
-   and three in the Americas, no per-country sales counts invented,
-   the map only marks that a sale happened there. Was previously a
-   one-line stat inside the Herd section; moved here, its own moment,
-   directly below About, per John's request.
-
-   Rebuilt 15 August into the full-bleed cinematic take, chosen from
-   reach-variations.html's V2 after John compared it against the
-   original split layout and a stat-ledger take: the map is now the
-   entire section, edge to edge, rather than sharing a row with the
-   copy. A deliberate dark beat in an otherwise light, editorial page,
-   closer in spirit to the hero. Same real data, same d3-geo/topojson
-   technique, same tabs and hover-synced country list as before, just
-   the floating card now sits on top of the map instead of beside it. */
-.reach { background: var(--color-navy-deep); color: var(--color-white); overflow: hidden; padding: 0; }
-.reach__stage { position: relative; min-height: clamp(560px, 72vw, 860px); }
-.reach__stage::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(100deg, rgba(13,22,38,0.94) 0%, rgba(13,22,38,0.55) 38%, rgba(13,22,38,0.1) 62%);
+.horses__stat {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--color-navy-line);
+  display: flex; flex-direction: column; gap: 0.6rem;
 }
-.reach__stage.reveal { opacity: 0.05; filter: blur(9px); transform: translateY(24px); transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
-.reach__stage.reveal.is-in { opacity: 1; filter: blur(0); transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .reach__stage.reveal { opacity: 1; filter: none; transform: none; transition: none; } }
-
-.reach__map-wrap { position: absolute; inset: 0; }
-.reach__map { width: 100%; height: 100%; }
-
-.reach__card {
-  position: absolute; left: clamp(1.4rem, 4vw, 4.5rem); top: 50%; z-index: 2;
-  transform: translateY(-50%); max-width: 460px; padding: clamp(1.8rem, 3vw, 2.6rem);
-}
-.reach__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); max-width: 14ch; color: var(--color-white); margin-bottom: 1.1rem; }
-.reach__desc { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.75); max-width: 38ch; margin-bottom: 1.6rem; }
-.reach__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 2rem; max-width: 400px; margin-bottom: 1.8rem; }
-.reach__country { display: flex; align-items: center; gap: 0.7rem; padding: 0.3rem 0; font-size: 0.92rem; color: rgba(255,255,255,0.82); cursor: default; transition: color var(--dur-med) var(--ease); }
-.reach__country.is-hover { color: var(--color-gold-soft); }
-.reach__country-dot { width: 5px; height: 5px; border-radius: 50%; flex: 0 0 5px; background: rgba(255,255,255,0.25); transition: background var(--dur-med) var(--ease); }
-.reach__country.is-hover .reach__country-dot { background: var(--color-gold-soft); }
-
-.reach__tabs { display: flex; gap: 0.5rem; }
-.reach__tab {
-  padding: 0.62rem 1.3rem; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px;
-  font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.75); cursor: pointer;
-  transition: background var(--dur-med) var(--ease), color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
-}
-.reach__tab[aria-pressed="true"] { background: var(--color-gold); color: var(--color-navy-deep); border-color: var(--color-gold); }
-
-.reach__map-label {
-  position: absolute; right: clamp(1.4rem, 3vw, 3rem); bottom: clamp(1.3rem, 2.8vw, 2.2rem); z-index: 2;
-  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55);
-  background: rgba(255,255,255,0.08); backdrop-filter: blur(6px); padding: 0.45rem 0.85rem; border-radius: 999px;
-  transition: color var(--dur-med) var(--ease);
-}
-.reach__map-label.is-hover { color: var(--color-gold-soft); }
-
-@media (max-width: 760px) {
-  .reach__stage::after { background: linear-gradient(180deg, rgba(13,22,38,0.2) 0%, rgba(13,22,38,0.96) 58%); }
-  .reach__card { position: relative; left: auto; top: auto; transform: none; max-width: none; padding: 2rem var(--hero-gutter); }
-}
+.horses__stat p { font-family: var(--font-display); font-size: clamp(1.2rem, 0.9rem + 1vw, 1.6rem); color: var(--color-navy); max-width: 40ch; }
+.horses__countries { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-ink-faint); }
 
 /* ================= SEMEN ================= */
 .semen { background: var(--color-navy); color: var(--color-white); }
@@ -1020,8 +849,8 @@ section { position: relative; }
   padding: clamp(2rem, 4vw, 3.5rem);
 }
 .semen__wrap .eyebrow { color: var(--color-gold); }
-.semen__wrap h2 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.6rem); }
-.semen__copy p { color: var(--color-ink-soft); font-size: 1.05rem; line-height: 1.7; }
+.semen__wrap h2 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.4rem); }
+.semen__copy p { color: var(--color-ink-soft); font-size: 1rem; }
 .semen__copy p + p { margin-top: 1rem; }
 .semen__facts { display: flex; flex-direction: column; gap: 1.4rem; }
 .semen__fact { padding-top: 1.1rem; border-top: 1px solid var(--color-navy-line); }
@@ -1039,8 +868,8 @@ section { position: relative; }
 .services__grid { display: grid; gap: 2rem; }
 .services__item { display: flex; gap: 1rem; }
 .services__mark { font-family: var(--font-display); color: var(--color-gold); font-size: 1.1rem; flex-shrink: 0; }
-.services__item h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
-.services__item p { font-size: 0.98rem; color: var(--color-ink-soft); line-height: 1.65; }
+.services__item h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+.services__item p { font-size: 0.92rem; color: var(--color-ink-soft); }
 
 @media (min-width: 900px) {
   .services__grid { grid-template-columns: repeat(3, 1fr); }
@@ -1144,60 +973,81 @@ section { position: relative; }
   .social__grid { grid-template-columns: repeat(6, 1fr); }
 }
 
+/* ================= CONTACT ================= */
+.contact { background: var(--color-navy); color: var(--color-white); }
+.contact .section-head h2 { color: var(--color-white); }
+.contact .section-head p { color: rgba(255,255,255,0.65); }
+.contact__grid { display: grid; gap: 2.5rem; }
+.contact__form { display: flex; flex-direction: column; gap: 1.25rem; }
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
+.field label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.field input, .field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding: 0.6rem 0.1rem;
+  color: var(--color-white);
+  font-size: 1rem;
+  transition: border-color var(--dur-med) var(--ease);
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.35); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--color-gold); }
+.contact__submit { align-self: flex-start; margin-top: 0.5rem; }
 
-/* ================= FOOTER =================
-   Centered masthead, "ambient glow + scroll reveal" chosen 14 August
-   after comparing footer-variations.html and footer-variations-2.html.
-   A soft radial gold glow breathes behind the logo, and the whole
-   masthead fades and lifts into place as it scrolls into view via
-   IntersectionObserver, fully disabled under prefers-reduced-motion
-   (everything simply appears in place instead). Same real data as
-   the four-column version it replaces: the real logo, real nav,
-   contact and social links, real IT/EN language state, real
-   copyright and address. Nothing invented. */
-.site-footer { background: var(--color-navy-deep); color: rgba(255,255,255,0.75); position: relative; overflow: hidden; }
-.footer__glow {
-  position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 900px; height: 600px;
-  background: radial-gradient(ellipse at center, rgba(178,138,77,0.16) 0%, rgba(178,138,77,0) 68%);
-  pointer-events: none;
+.contact__side { display: flex; flex-direction: column; gap: 2rem; }
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 0.85rem;
+  padding: 1.1rem 1.5rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease);
 }
+.whatsapp-btn:hover { background: rgba(255,255,255,0.12); border-color: var(--color-gold); }
+.whatsapp-btn__icon {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.whatsapp-btn__text strong { display: block; font-size: 0.95rem; }
+.whatsapp-btn__text span { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+.contact__info { display: flex; flex-direction: column; gap: 0.9rem; font-size: 0.92rem; }
+.contact__info a:hover { color: var(--color-gold-soft); }
+.contact__info-label { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.15rem; }
+
+@media (min-width: 900px) {
+  .contact__grid { grid-template-columns: 1.2fr 1fr; }
+}
+
+/* ================= FOOTER ================= */
+.site-footer { background: var(--color-navy-deep); color: rgba(255,255,255,0.75); }
 .footer__top {
-  position: relative; z-index: 1; text-align: center;
-  padding: clamp(4.4rem, 9vw, 6.9rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+  display: grid; gap: 2.75rem;
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer__top [data-reveal] {
-  opacity: 0; transform: translateY(16px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+.footer__col h4 {
+  color: var(--color-white); font-family: var(--font-body); font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1.1rem;
 }
-.site-footer.is-in .footer__top [data-reveal] { opacity: 1; transform: none; }
-.footer__top [data-reveal]:nth-child(1) { transition-delay: 0s; }
-.footer__top [data-reveal]:nth-child(2) { transition-delay: 0.1s; }
-.footer__top [data-reveal]:nth-child(3) { transition-delay: 0.2s; }
-.footer__top [data-reveal]:nth-child(4) { transition-delay: 0.3s; }
-.footer__top [data-reveal]:nth-child(5) { transition-delay: 0.4s; }
-.footer__logo { width: min(200px, 55%); height: auto; margin: 0 auto 1.6rem; }
-.footer__statement {
-  font-family: var(--font-display); font-weight: 300; font-style: italic;
-  font-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.2rem); color: var(--color-white);
-  max-width: 26ch; margin: 0 auto clamp(2.4rem, 5vw, 3.2rem); line-height: 1.5;
-}
-.footer__row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.6rem; }
-.footer__row + .footer__row { margin-top: 1.6rem; }
-.footer__row a, .footer__row span { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.68); }
-.footer__row a:hover { color: var(--color-gold-soft); }
-.footer__row--muted a, .footer__row--muted span { color: rgba(255,255,255,0.45); }
-.footer__lang { display: flex; justify-content: center; gap: 0.85rem; margin: clamp(2.4rem, 4vw, 3.2rem) auto 0; }
-.footer__lang button { font-size: 0.78rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); }
+.footer__col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+.footer__col a, .footer__col span { font-size: 0.9rem; }
+.footer__col a:hover { color: var(--color-gold-soft); }
+.footer__lang { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.footer__lang button { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
 .footer__lang button[aria-current="true"] { color: var(--color-white); border-bottom: 1px solid var(--color-gold); }
 .footer__lang button[disabled] { opacity: 0.35; }
+.footer__note { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 0.75rem; max-width: 28ch; }
+.footer__partners { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-top: 0.75rem; }
 .footer__bottom {
-  position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.14);
-  padding-block: 1.6rem; display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;
-  font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+  padding-block: 1.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.4);
 }
-@media (prefers-reduced-motion: reduce) {
-  .footer__top [data-reveal] { opacity: 1; transform: none; transition: none; }
-}
+
+@media (min-width: 640px) { .footer__top { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .footer__top { grid-template-columns: 1.3fr 1fr 1fr 1.2fr; } }
 
 /* ================= MISC ================= */
 .visually-hidden {
@@ -1234,10 +1084,26 @@ section { position: relative; }
   </div>
 </div>
 
+<!-- ================= STICKY HEADER (comparison switcher) =================
+     Not part of the design, a floating control just for this
+     comparison file, so John can flip between the four combinations
+     of theme (light/dark) and behaviour (static/hide-reveal) live
+     while scrolling, rather than four separate pages. -->
+<div class="hd-switcher" id="hdSwitcher">
+  <span class="hd-switcher__label">Theme</span>
+  <button type="button" data-theme="light" class="is-active">Light</button>
+  <button type="button" data-theme="dark">Dark</button>
+  <span class="hd-switcher__label">Behaviour</span>
+  <button type="button" data-behaviour="static" class="is-active">Static</button>
+  <button type="button" data-behaviour="hide-reveal">Hide / reveal</button>
+</div>
+
 <!-- ================= STICKY HEADER =================
      Condensed second header, independent of the one inside the hero.
-     See the CSS comment above .sticky-hd for the full reasoning. -->
-<div class="sticky-hd" id="stickyHd">
+     Starts hidden above the viewport, slides down once the hero has
+     scrolled out of view. See the CSS comment above .sticky-hd for
+     the full reasoning and the two axes of variation. -->
+<div class="sticky-hd theme-light" id="stickyHd">
   <div class="sticky-hd__row">
     <nav class="sticky-hd__nav sticky-hd__nav--left" aria-label="Primary">
       <ul>
@@ -1247,7 +1113,10 @@ section { position: relative; }
       </ul>
     </nav>
     <a class="sticky-hd__logo" href="#top" aria-label="Stud Von Axe, home">
-      <img src="assets/logo-dark-bg-horizontal.png" alt="Stud Von Axe" class="sticky-hd__logo-img">
+      <div class="wordmark wordmark--hd">
+        <svg class="wordmark__crown" viewBox="0 0 48 28" aria-hidden="true"><path d="M4 22 L4 10 L14 17 L24 6 L34 17 L44 10 L44 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="4" cy="8" r="1.6" fill="currentColor"/><circle cx="24" cy="4" r="1.8" fill="currentColor"/><circle cx="44" cy="8" r="1.6" fill="currentColor"/></svg>
+        <div class="wordmark__name"><span>VON</span><span class="wordmark__rule"></span><span>AXE</span></div>
+      </div>
     </a>
     <div class="sticky-hd__right">
       <nav class="sticky-hd__nav sticky-hd__nav--right" aria-label="Horses and semen">
@@ -1267,14 +1136,12 @@ section { position: relative; }
 
 <main id="top">
 
-  <!-- ================= HERO + ABOUT CURTAIN WRAPPER =================
+  <!-- ================= HERO PIN WRAPPER =================
        Wraps the hero (untouched, not one property inside .hero
-       changed), the marquee, and About's own sticky panel, all as one
-       shared tall scroll container. This is what makes the two
-       overlap for real: see the CSS comment above .hero-pin for the
-       overlap mechanics, and the JS above the closing </body> for how
-       the shared scroll progress splits into About's rise-to-cover
-       slide followed by its content reveal. Bounded, not an unbounded
+       changed) and the marquee so both freeze together while the
+       About section rises up and covers them, matching the design
+       handoff's "curtain" effect. See the CSS comment above
+       .hero-pin for why this is bounded rather than an unbounded
        sticky hero, which was rejected earlier for the real risk of
        permanently gluing the hero over every section below it. -->
   <div class="hero-pin">
@@ -1320,10 +1187,14 @@ section { position: relative; }
           </ul>
         </nav>
 
-        <!-- Real logo, the full lockup shrunk down, per John's choice
-             14 August (see the file-top LOGO PLACEHOLDER NOTICE). -->
-        <a class="hd__logo" href="#top" aria-label="Stud Von Axe, home">
-          <img src="assets/logo-dark-bg-horizontal.png" alt="Stud Von Axe, breeding and horse trading" class="hd__logo-img">
+        <!-- Wordmark placeholder: swap for the client's Image 2 (gold crown,
+             white mark) once vector files arrive. -->
+        <a href="#top" aria-label="Stud Von Axe, home">
+          <div class="wordmark wordmark--hd wordmark--reverse">
+            <svg class="wordmark__crown" viewBox="0 0 48 28" aria-hidden="true"><path d="M4 22 L4 10 L14 17 L24 6 L34 17 L44 10 L44 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="4" cy="8" r="1.6" fill="currentColor"/><circle cx="24" cy="4" r="1.8" fill="currentColor"/><circle cx="44" cy="8" r="1.6" fill="currentColor"/></svg>
+            <div class="wordmark__name"><span>VON</span><span class="wordmark__rule"></span><span>AXE</span></div>
+            <div class="wordmark__tagline">Breeding and horse trading</div>
+          </div>
         </a>
 
         <!-- Right nav and Contact grouped in one flex track, on purpose.
@@ -1409,56 +1280,24 @@ section { position: relative; }
   </div>
 
     </div>
-
-    <!-- ================= ABOUT, OVERLAPPING SCROLL REVEAL =================
-         Rebuilt 15 August into a genuine overlap per John's spec: About's
-         sticky panel is now a direct child of .hero-pin (sibling of
-         .hero-pin__sticky above), not a separate section after it, so it
-         engages while the hero is still stuck underneath instead of
-         waiting for the hero to fully release first. See the CSS comment
-         above .hero-pin for the overlap mechanics and the JS above the
-         closing </body> for how scroll progress splits into a rise-to-
-         cover slide followed by the content reveal (eyebrow/lead/body/cta/
-         photos), all unchanged in substance from the previous version.
-         Disabled under reduced motion and on narrow screens, see the CSS
-         comment above .about-reveal__sticky. -->
-    <div class="about-reveal__sticky" id="about">
-      <div class="about-reveal__bg" aria-hidden="true"></div>
-      <div class="about-reveal__side" id="aboutSide" aria-hidden="true">
-        <div class="about-reveal__ph about-reveal__ph--l1" data-order="0"><img src="https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg" alt="" loading="lazy"></div>
-        <div class="about-reveal__ph about-reveal__ph--r1" data-order="1"><img src="https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled.jpg" alt="" loading="lazy"></div>
-        <div class="about-reveal__ph about-reveal__ph--l2" data-order="2"><img src="https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg" alt="" loading="lazy"></div>
-        <div class="about-reveal__ph about-reveal__ph--r2" data-order="3"><img src="https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932.jpg" alt="" loading="lazy"></div>
-        <div class="about-reveal__ph about-reveal__ph--l3" data-order="4"><img src="https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051.jpg" alt="" loading="lazy"></div>
-        <div class="about-reveal__ph about-reveal__ph--r3" data-order="5"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/06/NB2_5151-scaled-e1716587634328.jpg" alt="" loading="lazy"></div>
-      </div>
-      <div class="about-reveal__inner">
-        <span class="about-reveal__eyebrow">02 &middot; Who we are</span>
-        <p class="about-reveal__lead">Born from a passion for horses in Desenzano del Garda, on Italy's Lake Garda.</p>
-        <p class="about-reveal__body">Years spent studying which bloodlines actually hold up in sport led us to choose every broodmare in our herd on pedigree and produce, not on a season's form. We collect and freeze embryos out of Ontario, then bring them to our base near Lanaken in Belgium, where our vet team manages the implants, carries the pregnancies and raises the foals until they are ready to sell.</p>
-        <a class="about-reveal__cta" href="#programme">Explore the programme <span aria-hidden="true">&#8594;</span></a>
-      </div>
-    </div>
   </div>
 
   <!-- ================= AVAILABLE NOW / HERD =================
-       Moved to directly after About, 15 August, swapping places with
-       Global Reach: John's call, leading with the actual horses reads
-       stronger than leading with a map right after the "who we are"
-       story. See the CSS comment above .herd for the section's own
-       reasoning. Content rendered from real data in the script at the
-       bottom of the page, same pattern as the hero switcher, so there
-       is one source of truth for this copy. PEDIGREE LINKS: both
-       HorseTelex and Hippomundo links per horse, per the brief. The
-       HorseTelex link points at the stud's own HorseTelex sponsor
-       profile and the Hippomundo link points at the Hippomundo
-       homepage; per horse pedigree URLs are still to come from the
-       client, do not invent them. -->
+       Moved to right below the hero, 14 August, per John's request.
+       See the CSS comment above .herd for the reasoning. Content
+       rendered from real data in the script at the bottom of the
+       page, same pattern as the hero switcher, so there is one
+       source of truth for this copy. PEDIGREE LINKS: both HorseTelex
+       and Hippomundo links per horse, per the brief. The HorseTelex
+       link points at the stud's own HorseTelex sponsor profile and
+       the Hippomundo link points at the Hippomundo homepage; per
+       horse pedigree URLs are still to come from the client, do not
+       invent them. -->
   <section class="horses band-pad" id="horses">
     <div class="container container--full">
       <div class="horses__head">
         <div class="section-head" style="margin-bottom:0;">
-          <span class="section-index">03</span>
+          <span class="section-index">02</span>
           <span class="eyebrow">Available now</span>
           <h2>Horses with us today</h2>
           <p>A working sample of what is with us today. Ask about any horse, or about one still coming.</p>
@@ -1474,47 +1313,17 @@ section { position: relative; }
 
       <div class="herd__grid" id="herdGrid" aria-live="polite"></div>
 
-      <div class="herd__cta">
-        <a class="btn btn--dark" href="#contact">Ask about the herd</a>
+      <div class="horses__stat">
+        <p>Sold to breeders across 10 countries, from the United States to Lithuania.</p>
+        <span class="horses__countries">GB &nbsp;&#183;&nbsp; NL &nbsp;&#183;&nbsp; BR &nbsp;&#183;&nbsp; PL &nbsp;&#183;&nbsp; IT &nbsp;&#183;&nbsp; IE &nbsp;&#183;&nbsp; US &nbsp;&#183;&nbsp; AR &nbsp;&#183;&nbsp; BE &nbsp;&#183;&nbsp; LT</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ================= GLOBAL REACH =================
-       Directly after Herd, see the CSS comment above .horses for the
-       reasoning. Rebuilt 15 August into the full-bleed cinematic
-       layout (reach-variations.html's V2): the map is the whole
-       section now, edge to edge, with the copy floating over it on a
-       gradient rather than sitting beside it in its own column. Map
-       drawn at the bottom of the page with d3-geo + topojson, real
-       data rendered from the script there; the two hard-coded lists
-       here are the fallback shown before the map libraries finish
-       loading, and are replaced once JS runs. -->
-  <section class="reach" id="reach">
-    <div class="reach__stage reveal" id="reachStage">
-      <div class="reach__map-wrap">
-        <div class="reach__map" id="reachMap"></div>
-      </div>
-      <div class="reach__card">
-        <div class="section-head" style="margin-bottom:1.6rem;">
-          <span class="section-index section-index--on-navy">04</span>
-          <span class="eyebrow eyebrow--on-navy">Where our horses go</span>
-        </div>
-        <h2 class="reach__title">Sold direct to breeders across ten countries.</h2>
-        <p class="reach__desc">Almost every horse leaves us through a direct conversation with the breeder, not an auction ring.</p>
-        <div class="reach__list" id="reachList"></div>
-        <div class="reach__tabs" id="reachTabs">
-          <button type="button" class="reach__tab" data-region="Europe" aria-pressed="true">Europe</button>
-          <button type="button" class="reach__tab" data-region="Americas" aria-pressed="false">Americas</button>
-        </div>
-      </div>
-      <div class="reach__map-label" id="reachMapLabel">Hover a country</div>
     </div>
   </section>
 
   <!-- ================= BREEDING PROGRAMME =================
-       See the CSS comment above .programme for the reasoning. There
-       is no separate "Where we work" section on this page: the design
+       Moved above Who we are, 14 August, per John's request. See the
+       CSS comment above .programme for the reasoning. There is no
+       separate "Where we work" section on this page: the design
        handoff's own About copy folds Italy and Belgium into that
        paragraph rather than giving locations their own chapter.
        Content rendered from real data in the script at the bottom of
@@ -1522,7 +1331,7 @@ section { position: relative; }
   <section class="programme band-pad" id="programme">
     <div class="container container--full">
       <div class="section-head">
-        <span class="section-index section-index--on-navy">05</span>
+        <span class="section-index section-index--on-navy">03</span>
         <span class="eyebrow eyebrow--on-navy">The breeding programme</span>
         <h2>One programme, three steps</h2>
       </div>
@@ -1531,12 +1340,28 @@ section { position: relative; }
     </div>
   </section>
 
+  <!-- ================= ABOUT, SCROLL-PINNED REVEAL =================
+       See the CSS comment above .about-reveal for the full reasoning,
+       what was adapted from the design handoff and what deliberately
+       was not (its typeface and colour tokens). Disabled under
+       reduced motion and on narrow screens, see the same comment. -->
+  <section class="about-reveal" id="about">
+    <div class="about-reveal__sticky">
+      <div class="about-reveal__bg" aria-hidden="true"></div>
+      <div class="about-reveal__inner">
+        <span class="about-reveal__eyebrow">04 &middot; Who we are</span>
+        <p class="about-reveal__text">Born from a passion for horses in Desenzano del Garda, on Italy's Lake Garda, where Stud Von Axe began. Years spent studying which bloodlines actually hold up in sport led us to choose every broodmare in our herd on pedigree and produce, not on a season's form. We collect and freeze embryos out of Ontario, then bring them to our base near Lanaken in Belgium, where our vet team manages the implants, carries the pregnancies and raises the foals until they are ready to sell.</p>
+        <a class="about-reveal__cta" href="#programme">Explore the programme <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= SEMEN ================= -->
   <section class="semen band-pad" id="semen">
     <div class="container">
       <div class="semen__wrap">
         <div class="semen__copy">
-          <span class="section-index">06</span>
+          <span class="section-index">05</span>
           <span class="eyebrow">New this year</span>
           <h2>Frozen semen, through Avantea</h2>
           <p>We now sell frozen semen through Avantea. It is a new line for us and it is not yet on our current website, but the demand has been there for a while.</p>
@@ -1567,7 +1392,7 @@ section { position: relative; }
   <section class="services band-pad" id="services">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">07</span>
+        <span class="section-index">06</span>
         <span class="eyebrow">Beyond breeding</span>
         <h2>Other ways we help</h2>
       </div>
@@ -1610,7 +1435,7 @@ section { position: relative; }
   <section class="results band-pad" id="news">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">08</span>
+        <span class="section-index">07</span>
         <span class="eyebrow">Results</span>
         <h2>What our horses are doing in sport</h2>
       </div>
@@ -1701,7 +1526,7 @@ section { position: relative; }
   <section class="social band-pad" id="instagram">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">09</span>
+        <span class="section-index">08</span>
         <span class="eyebrow">Instagram</span>
         <h2>Follow the horses day to day</h2>
         <p>We post most often on Instagram. The photographs below come from our own archive.</p>
@@ -1735,61 +1560,122 @@ section { position: relative; }
     </div>
   </section>
 
-  <!-- ================= CONTACT =================
-       Removed 14 August per John's request: users should go directly
-       to a dedicated Contact page rather than an embedded form on the
-       homepage. Every "Contact us" / "Enquire" link across the site
-       still points to #contact for now, that anchor target simply no
-       longer exists here, left that way deliberately (John's choice)
-       until the real Contact page is built and those links can be
-       repointed to it. -->
+  <!-- ================= CONTACT ================= -->
+  <section class="contact band-pad" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index section-index--on-navy">09</span>
+        <span class="eyebrow eyebrow--on-navy">Get in touch</span>
+        <h2>Ask us about a horse</h2>
+        <p>Tell us what you are looking for. We answer ourselves, usually within a day.</p>
+      </div>
+
+      <div class="contact__grid">
+        <form class="contact__form" action="mailto:studvonaxe@gmail.com" method="get">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us which horse, or what you are looking for"></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold contact__submit">Send message</button>
+        </form>
+
+        <div class="contact__side">
+          <a class="whatsapp-btn" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+            <span class="whatsapp-btn__icon">&#9742;</span>
+            <span class="whatsapp-btn__text">
+              <strong>Message us on WhatsApp</strong>
+              <span>Usually the fastest way to reach us</span>
+            </span>
+          </a>
+
+          <div class="contact__info">
+            <div>
+              <span class="contact__info-label">Email</span>
+              <a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a>
+            </div>
+            <div>
+              <span class="contact__info-label">Phone, Italy</span>
+              <a href="tel:+393495918565">+39 349 591 8565</a>
+            </div>
+            <div>
+              <span class="contact__info-label">Phone, Belgium desk</span>
+              <a href="tel:+393483953433">+39 348 395 3433</a>
+            </div>
+            <div>
+              <span class="contact__info-label">Address</span>
+              <span>Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ================= FOOTER =================
-     See the CSS comment above .site-footer for the full reasoning.
-     Real logo: transparent PNG, gold crown and white horse-head mark.
-     Full tall lockup here (assets/logo-dark-bg.png), sized by width
-     rather than height since there is room for it; the header and
-     sticky header use John's tighter horizontal crop instead
-     (assets/logo-dark-bg-horizontal.png), where a short, wide mark
-     reads better at small sizes. -->
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
-  <div class="footer__glow" aria-hidden="true"></div>
   <div class="container footer__top">
-    <img class="footer__logo" data-reveal src="assets/logo-dark-bg.png" alt="Stud Von Axe, breeding and horse trading">
-    <p class="footer__statement" data-reveal>Bred in Italy, raised in Belgium, sold to breeders across ten countries.</p>
-    <div class="footer__row" data-reveal>
-      <a href="#about">About</a>
-      <a href="#horses">Horses</a>
-      <a href="#semen">Semen</a>
-      <a href="#services">Services</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+    <div class="footer__col">
+      <div class="wordmark wordmark--sm wordmark--reverse" style="margin-bottom:1rem;">
+        <svg class="wordmark__crown" viewBox="0 0 48 28" aria-hidden="true"><path d="M4 22 L4 10 L14 17 L24 6 L34 17 L44 10 L44 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="4" cy="8" r="1.6" fill="currentColor"/><circle cx="24" cy="4" r="1.8" fill="currentColor"/><circle cx="44" cy="8" r="1.6" fill="currentColor"/></svg>
+        <div class="wordmark__name"><span>VON</span><span class="wordmark__rule"></span><span>AXE</span></div>
+      </div>
+      <p class="footer__note">Sport horse breeding and trading, from Desenzano del Garda, Italy and Lanaken, Belgium.</p>
+      <div class="footer__lang" style="margin-top:1.25rem;">
+        <button type="button" aria-current="true">IT</button>
+        <button type="button">EN</button>
+        <button type="button" disabled title="Coming later">FR</button>
+        <button type="button" disabled title="Coming later">DE</button>
+      </div>
     </div>
-    <div class="footer__row footer__row--muted" data-reveal>
-      <a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a>
-      <a href="tel:+393495918565">+39 349 591 8565</a>
-      <a href="tel:+393483953433">+39 348 395 3433</a>
+
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#horses">Horses</a></li>
+        <li><a href="#semen">Semen</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="footer__row footer__row--muted" data-reveal>
-      <a href="https://instagram.com/studvonaxe" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://facebook.com/StudVonAxe" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex</a>
-      <a href="https://www.hippomundo.com" target="_blank" rel="noopener">Hippomundo</a>
+
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a></li>
+        <li><a href="tel:+393495918565">+39 349 591 8565 (Italy)</a></li>
+        <li><a href="tel:+393483953433">+39 348 395 3433 (Belgium)</a></li>
+        <li><span>Via per Arni 30, 55032 Castelnuovo Garfagnana LU</span></li>
+      </ul>
     </div>
-    <div class="footer__lang">
-      <button type="button" aria-current="true">IT</button>
-      <button type="button">EN</button>
-      <button type="button" disabled title="Coming later">FR</button>
-      <button type="button" disabled title="Coming later">DE</button>
+
+    <div class="footer__col">
+      <h4>Follow &amp; verify</h4>
+      <ul>
+        <li><a href="https://instagram.com/studvonaxe" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/StudVonAxe" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YouTube</a></li>
+      </ul>
+      <div class="footer__partners">
+        <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener" style="font-size:0.8rem; letter-spacing:0.06em; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:2px;">HorseTelex profile</a>
+        <a href="https://www.hippomundo.com" target="_blank" rel="noopener" style="font-size:0.8rem; letter-spacing:0.06em; border-bottom:1px solid rgba(255,255,255,0.25); padding-bottom:2px;">Hippomundo profile</a>
+      </div>
     </div>
   </div>
 
   <div class="container footer__bottom">
     <span>&#169; 2026 Stud Von Axe. Az. Agr.</span>
-    <span>Via per Arni 30, 55032 Castelnuovo Garfagnana LU</span>
     <span>Site concept, direction C</span>
   </div>
 </footer>
@@ -1809,46 +1695,24 @@ section { position: relative; }
 
    Skipped entirely under prefers-reduced-motion and at 760px or
    narrower: the elements stay at the CSS fallback's fully visible
-   state (see the reduced-motion media query above .about-reveal__sticky)
-   and no scroll listener is attached, so there is no cost for either
-   audience.
-
-   Rebuilt 15 August for a genuine overlap (see the CSS comment above
-   .hero-pin for why the two sticky layers now overlap for real, not
-   just a one-pixel transitional frame). One shared scroll progress,
-   read off .hero-pin's own rect, splits into two local phases for
-   About: SLIDE_FRACTION of its own range drives the panel's
-   translateY from 100% (parked below the viewport, hero fully
-   visible) down to 0% (fully covering it) — the visible "rising to
-   cover" motion John asked for — and the rest re-uses the exact same
-   content-reveal maths as before (bg scale, eyebrow/lead/body/cta
-   fade, the six photos), just fed this later phase's local progress
-   instead of the whole section's. */
+   state (see the reduced-motion media query above .about-reveal) and
+   no scroll listener is attached, so there is no cost for either
+   audience. */
 (function () {
-  var wrap = document.querySelector('.hero-pin');
-  var aboutSticky = document.querySelector('.about-reveal__sticky');
-  if (!wrap || !aboutSticky) return;
+  var section = document.querySelector('.about-reveal');
+  if (!section) return;
 
   var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
              window.matchMedia('(max-width: 760px)').matches;
   if (skip) return;
 
-  var leadEl = aboutSticky.querySelector('.about-reveal__lead');
-  var bodyEl = aboutSticky.querySelector('.about-reveal__body');
-  var bgEl = aboutSticky.querySelector('.about-reveal__bg');
-  var eyebrowEl = aboutSticky.querySelector('.about-reveal__eyebrow');
-  var ctaEl = aboutSticky.querySelector('.about-reveal__cta');
-  var photos = Array.from(aboutSticky.querySelectorAll('.about-reveal__ph'));
-  var photoCount = photos.length;
-  var SLIDE_FRACTION = 0.25;
-  var PHOTO_REVEAL_START = 0.15, PHOTO_REVEAL_END = 0.55;
-  var PHOTO_EXIT_START = 0.78, PHOTO_EXIT_END = 1.0;
+  var textEl = section.querySelector('.about-reveal__text');
+  var bgEl = section.querySelector('.about-reveal__bg');
+  var eyebrowEl = section.querySelector('.about-reveal__eyebrow');
+  var ctaEl = section.querySelector('.about-reveal__cta');
 
-  // Split the lead statement into per-letter spans, once, preserving
-  // word wrapping by keeping each word in its own inline-block
-  // wrapper. Only the short lead gets this treatment now, the longer
-  // body paragraph underneath just fades and lifts in as one block
-  // (see applyFade below), the same way the eyebrow and CTA do.
+  // Split the paragraph into per-letter spans, once, preserving word
+  // wrapping by keeping each word in its own inline-block wrapper.
   (function splitLetters(el) {
     var words = (el.textContent || '').trim().split(/\s+/);
     el.textContent = '';
@@ -1865,9 +1729,9 @@ section { position: relative; }
       el.appendChild(wrap);
       if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
     });
-  })(leadEl);
+  })(textEl);
 
-  var letters = leadEl.querySelectorAll('[data-l]');
+  var letters = textEl.querySelectorAll('[data-l]');
 
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function ease(t) { return 1 - Math.pow(1 - t, 3); }
@@ -1882,24 +1746,8 @@ section { position: relative; }
 
   function paint() {
     var vh = window.innerHeight;
-    var wrapRect = wrap.getBoundingClientRect();
-    var overallP = clamp(-wrapRect.top / Math.max(1, wrapRect.height - vh));
-
-    // About's sticky panel sits right after .hero-pin__sticky in flow,
-    // so it only starts sticking once the hero's own viewport-height
-    // has scrolled past. That point, as a fraction of the wrapper's
-    // whole scrollable range, is vh / (wrapRect.height - vh) — the
-    // same fraction at which the hero's own sticky range ends too, so
-    // renormalizing overallP against it gives About's own local 0-to-1
-    // progress across exactly the window where both layers are stuck
-    // together.
-    var heroFraction = clamp(vh / Math.max(1, wrapRect.height - vh));
-    var aboutP = clamp((overallP - heroFraction) / Math.max(0.0001, 1 - heroFraction));
-
-    var slideT = ease(clamp(aboutP / SLIDE_FRACTION));
-    aboutSticky.style.transform = 'translateY(' + ((1 - slideT) * 100).toFixed(2) + '%)';
-
-    var p = clamp((aboutP - SLIDE_FRACTION) / (1 - SLIDE_FRACTION));
+    var r = section.getBoundingClientRect();
+    var p = clamp(-r.top / Math.max(1, r.height - vh));
 
     var tbg = ease(clamp(p / 0.55));
     bgEl.style.transform = 'scale(' + (1.22 - 0.22 * tbg).toFixed(3) + ')';
@@ -1917,24 +1765,7 @@ section { position: relative; }
       s.style.opacity = (0.14 + t * 0.86).toFixed(3);
     });
 
-    applyFade(bodyEl, p, 0.3, 0.46);
-
     applyFade(ctaEl, p, 0.3, 0.62);
-
-    // Six real photos: each reveals on its own as you scroll in (not
-    // all together), staggered by its data-order, then the whole
-    // group fades out together late, so the CTA holds the stage
-    // alone for the last stretch. See about-variations-4.html and
-    // -5.html for the earlier rounds this was chosen from.
-    var revealSlice = (PHOTO_REVEAL_END - PHOTO_REVEAL_START) / photoCount;
-    photos.forEach(function (el) {
-      var order = parseInt(el.dataset.order, 10);
-      var rStart = PHOTO_REVEAL_START + order * revealSlice * 0.7;
-      var tIn = ease(clamp((p - rStart) / (revealSlice * 1.4)));
-      var tOut = ease(clamp((p - PHOTO_EXIT_START) / (PHOTO_EXIT_END - PHOTO_EXIT_START)));
-      el.style.opacity = (tIn * (1 - tOut)).toFixed(3);
-      el.style.transform = 'translateY(' + ((1 - tIn) * 36).toFixed(1) + 'px)';
-    });
   }
 
   var raf = null;
@@ -2073,16 +1904,21 @@ section { position: relative; }
 
 })();
 
-/* ================= STICKY HEADER =================
-   "Past hero" detection via IntersectionObserver toggles .is-visible
-   once the hero scrolls fully out of view. On top of that, a scroll-
-   direction check hides the bar again on scroll down past a small
-   threshold and brings it back on any scroll up. */
+/* ================= STICKY HEADER (comparison logic) =================
+   "Past hero" detection via IntersectionObserver, the same technique
+   already referenced in this project's own design-handoff material,
+   toggles .is-visible once the hero scrolls fully out of view.
+   Behaviour mode adds a scroll-direction check on top: hide-reveal
+   slides the bar away on scroll down past a small threshold (so a
+   tiny jitter near the top does not flicker it) and brings it back on
+   any scroll up. Static mode never adds .is-hidden. */
 (function () {
   var bar = document.getElementById('stickyHd');
   var hero = document.querySelector('.hero');
-  if (!bar || !hero) return;
+  var switcher = document.getElementById('hdSwitcher');
+  if (!bar || !hero || !switcher) return;
 
+  var behaviour = 'static';
   var lastY = window.scrollY;
 
   var heroIO = new IntersectionObserver(function (entries) {
@@ -2092,14 +1928,32 @@ section { position: relative; }
   }, { threshold: 0 });
   heroIO.observe(hero);
 
-  window.addEventListener('scroll', function () {
+  function onScroll() {
+    if (behaviour !== 'hide-reveal') { bar.classList.remove('is-hidden'); lastY = window.scrollY; return; }
     var y = window.scrollY;
     var delta = y - lastY;
     if (Math.abs(delta) > 6) {
       bar.classList.toggle('is-hidden', delta > 0 && y > 80);
       lastY = y;
     }
-  }, { passive: true });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  switcher.addEventListener('click', function (e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.dataset.theme) {
+      switcher.querySelectorAll('[data-theme]').forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+      bar.classList.remove('theme-light', 'theme-dark');
+      bar.classList.add('theme-' + btn.dataset.theme);
+    }
+    if (btn.dataset.behaviour) {
+      switcher.querySelectorAll('[data-behaviour]').forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+      behaviour = btn.dataset.behaviour;
+      bar.classList.remove('is-hidden');
+      lastY = window.scrollY;
+    }
+  });
 })();
 
 /* ================= HERD =================
@@ -2112,11 +1966,9 @@ section { position: relative; }
    rather than inventing a specific dam. Location is Belgium for
    horses still with us (foals and broodmares are kept at the Belgian
    base regardless of the company's Italian origin) or the verified
-   buyer's country for the two already sold. Paging is eight at a
-   time and loops, though with only four real horses total it mostly
-   matters once more are added. Grid is two rows of four either way;
-   see placeholderHtml() and the CSS comment above .herd__grid for
-   how the remaining slots are padded honestly rather than invented. */
+   buyer's country for the two already sold. Paging is four at a time
+   and loops, matching the handoff, though with only four real horses
+   total it mostly matters once a filter narrows the list. */
 (function () {
   var HORSES = [
     { name: 'Arkhana Von Axe Z', year: '2026', sex: 'Colt', type: 'Foal', status: 'AVAILABLE', location: 'Belgium',
@@ -2137,7 +1989,7 @@ section { position: relative; }
       img: 'https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932-400x300.jpg' }
   ];
   var FILTERS = ['All', 'Available', 'Sold'];
-  var PER_PAGE = 8;
+  var PER_PAGE = 4;
 
   var filtersEl = document.getElementById('herdFilters');
   var gridEl = document.getElementById('herdGrid');
@@ -2156,20 +2008,23 @@ section { position: relative; }
     return HORSES;
   }
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function pillClass(status) {
+    if (status === 'SOLD') return 'herd__card-pill--sold';
+    if (status === 'RESERVED') return 'herd__card-pill--reserved';
+    return 'herd__card-pill--available';
+  }
 
-  function cardHtml(h, i) {
-    return '<article class="herd__card reveal' + (h.status === 'SOLD' ? ' herd__card--sold' : '') + '" style="transition-delay:' + (i * 70) + 'ms" tabindex="0">' +
+  function cardHtml(h) {
+    return '<article class="herd__card' + (h.status === 'SOLD' ? ' herd__card--sold' : '') + '" tabindex="0">' +
       '<div class="herd__card-media"><img src="' + h.img + '" alt="' + h.name + '" loading="lazy"></div>' +
       '<div class="herd__card-scrim" aria-hidden="true"></div>' +
-      '<span class="herd__card-tag"><i></i>' + h.status + '</span>' +
+      '<span class="herd__card-pill ' + pillClass(h.status) + '">' + h.status + '</span>' +
       '<div class="herd__card-body">' +
         '<h3 class="herd__card-name">' + h.name + '</h3>' +
         '<div class="herd__card-meta">' + h.year + ' &middot; ' + h.sex + ' &middot; ' + h.location + '</div>' +
         '<div class="herd__card-reveal">' +
-          '<div class="herd__card-rule"></div>' +
           '<div class="herd__card-pedigree">' +
-            h.pedigree +
+            '<span>' + h.pedigree + '</span>' +
             '<em>Sire ' + h.sire + ' &middot; Dam line ' + h.damLine + '</em>' +
           '</div>' +
           '<div class="herd__card-links">' +
@@ -2181,40 +2036,13 @@ section { position: relative; }
     '</article>';
   }
 
-  function placeholderHtml(i) {
-    return '<div class="herd__card herd__card--placeholder reveal" style="transition-delay:' + (i * 70) + 'ms" aria-hidden="true">' +
-      '<span class="herd__card-placeholder-text">More on the way' +
-        '<span class="herd__card-placeholder-sub">Ask about one still coming</span>' +
-      '</span>' +
-    '</div>';
-  }
-
-  // One-shot per card, not a continuous scroll-linked value like the
-  // hero/About: four static cards just need to fade/lift in the first
-  // time they're scrolled to, see the CSS comment above .herd__card.
-  function observeReveal() {
-    if (reduceMotion) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.2 });
-    gridEl.querySelectorAll('.herd__card').forEach(function (card) { io.observe(card); });
-  }
-
   function render() {
     var list = filteredList();
     var n = list.length || 1;
     var start = loopIndex(pageStart, n);
     var shown = [];
     for (var i = 0; i < Math.min(PER_PAGE, list.length); i++) shown.push(list[loopIndex(start + i, n)]);
-    var html = shown.map(cardHtml).join('');
-    // Pad out to a full two rows of four with quiet placeholders when
-    // there aren't yet eight real horses to fill it, see the CSS
-    // comment above .herd__grid.
-    for (var p = shown.length; p < PER_PAGE; p++) html += placeholderHtml(p);
-    gridEl.innerHTML = html;
-    observeReveal();
+    gridEl.innerHTML = shown.map(cardHtml).join('');
   }
 
   filtersEl.innerHTML = FILTERS.map(function (label, i) {
@@ -2301,188 +2129,6 @@ section { position: relative; }
     var dot = e.target.closest('.prog-dot');
     if (dot) select(Number(dot.dataset.idx));
   });
-})();
-
-/* ================= GLOBAL REACH MAP =================
-   Real data only: the same ten verified countries used everywhere
-   else on this build (sold to breeders across ten countries), split
-   Europe/Americas exactly as John's own Claude Design reference did.
-   No per-country counts, the map only marks that a sale happened
-   there, nothing about how many. Built with d3-geo + topojson against
-   the public world-atlas topology, same two libraries the reference
-   used, loaded via the two script tags in <head>. If those fail to
-   load (offline, blocked CDN), the section still shows the real
-   headline, description and country list, just without the map
-   graphic, since renderMap() simply never runs. */
-(function () {
-  var REGIONS = {
-    Europe: { sold: ['United Kingdom', 'Ireland', 'Netherlands', 'Belgium', 'Italy', 'Poland', 'Lithuania'], box: [[-10.8, 35.8], [27, 58.8]] },
-    Americas: { sold: ['United States of America', 'Brazil', 'Argentina'], box: [[-122, -55.5], [-34, 50]], boost: 1 }
-  };
-  var DISPLAY_NAME = { 'United Kingdom': 'Great Britain', 'United States of America': 'United States' };
-
-  var mapEl = document.getElementById('reachMap');
-  var listEl = document.getElementById('reachList');
-  var tabsEl = document.getElementById('reachTabs');
-  var labelEl = document.getElementById('reachMapLabel');
-  if (!mapEl || !listEl || !tabsEl) return;
-
-  var region = 'Europe';
-  var hovered = null;
-  var feats = null;
-  var centroids = {};
-
-  function displayName(n) { return DISPLAY_NAME[n] || n; }
-
-  function renderList() {
-    listEl.innerHTML = REGIONS[region].sold.map(function (n) {
-      return '<div class="reach__country" data-name="' + n + '">' +
-        '<span class="reach__country-dot"></span><span>' + displayName(n) + '</span>' +
-      '</div>';
-    }).join('');
-    listEl.querySelectorAll('.reach__country').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { setHovered(el.dataset.name); });
-      el.addEventListener('mouseleave', function () { setHovered(null); });
-    });
-  }
-
-  function setRegion(r) {
-    region = r;
-    hovered = null;
-    tabsEl.querySelectorAll('.reach__tab').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.region === r));
-    });
-    renderList();
-    renderMap();
-  }
-
-  function setHovered(name) {
-    hovered = name;
-    paintHover();
-  }
-
-  async function drawMap() {
-    for (var i = 0; i < 60 && (!window.d3 || !window.topojson); i++) {
-      await new Promise(function (resolve) { setTimeout(resolve, 100); });
-    }
-    if (!window.d3 || !window.topojson) return;
-    if (!feats) {
-      var topo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json');
-      feats = topojson.feature(topo, topo.objects.countries).features;
-    }
-    renderMap();
-    new ResizeObserver(function () { renderMap(); }).observe(mapEl);
-  }
-
-  function renderMap() {
-    if (!mapEl || !feats) return;
-    var w = mapEl.clientWidth, h = mapEl.clientHeight;
-    if (!w || !h) return;
-    var r = REGIONS[region];
-    var sold = new Set(r.sold);
-    var soldFeats = feats.filter(function (f) { return sold.has(f.properties.name); });
-    var box = r.box;
-    var frame = { type: 'Polygon', coordinates: [[[box[0][0], box[0][1]], [box[0][0], box[1][1]], [box[1][0], box[1][1]], [box[1][0], box[0][1]], [box[0][0], box[0][1]]]] };
-    function inBox(feat) {
-      var fb = d3.geoBounds(feat);
-      return fb[1][0] >= box[0][0] && fb[0][0] <= box[1][0] && fb[1][1] >= box[0][1] && fb[0][1] <= box[1][1];
-    }
-
-    mapEl.innerHTML = '';
-    mapEl.style.position = 'relative';
-    var svg = d3.select(mapEl).append('svg').attr('width', w).attr('height', h).style('display', 'block').style('overflow', 'hidden');
-    var proj = d3.geoMercator().fitExtent([[4, 4], [w - 4, h - 4]], frame);
-    if (r.boost) {
-      var fc = { type: 'FeatureCollection', features: soldFeats };
-      proj.fitExtent([[4, 4], [w - 4, h - 4]], fc);
-    }
-    var path = d3.geoPath(proj);
-    var near = feats.filter(inBox);
-
-    svg.append('g').selectAll('path').data(near).join('path')
-      .attr('d', path)
-      .attr('fill', function (d) { return sold.has(d.properties.name) ? 'var(--color-navy)' : 'rgba(255,255,255,0.12)'; })
-      .attr('fill-opacity', function (d) { return sold.has(d.properties.name) ? 1 : 0.5; })
-      .attr('stroke', 'var(--color-navy-deep)')
-      .attr('stroke-width', function (d) { return sold.has(d.properties.name) ? 1 : 0.7; })
-      .attr('stroke-linejoin', 'round')
-      .attr('data-name', function (d) { return d.properties.name; });
-
-    centroids = {};
-    soldFeats.forEach(function (d) { centroids[d.properties.name] = path.centroid(d); });
-
-    var markers = svg.append('g').selectAll('g').data(soldFeats).join('g')
-      .attr('transform', function (d) { var c = path.centroid(d); return 'translate(' + c[0] + ',' + c[1] + ')'; })
-      .style('cursor', 'pointer')
-      .on('mouseenter', function (ev, d) { setHovered(d.properties.name); })
-      .on('mouseleave', function () { setHovered(null); });
-    markers.append('circle').attr('r', 16).attr('fill', 'transparent');
-    markers.append('circle').attr('r', 3.2).attr('fill', 'var(--color-gold)').attr('stroke', 'var(--color-navy)').attr('stroke-width', 1).attr('data-dot', function (d) { return d.properties.name; });
-
-    paintHover();
-  }
-
-  function paintHover() {
-    if (!mapEl) return;
-    mapEl.querySelectorAll('path[data-name]').forEach(function (p) {
-      var name = p.getAttribute('data-name');
-      var isSold = REGIONS[region].sold.indexOf(name) !== -1;
-      if (!isSold) return;
-      p.setAttribute('fill', hovered === name ? 'var(--color-gold)' : 'var(--color-navy)');
-    });
-    mapEl.querySelectorAll('circle[data-dot]').forEach(function (c) {
-      var on = hovered === c.getAttribute('data-dot');
-      c.setAttribute('r', on ? 5 : 3.2);
-      c.setAttribute('fill', on ? 'var(--color-navy)' : 'var(--color-gold)');
-    });
-    listEl.querySelectorAll('.reach__country').forEach(function (el) {
-      el.classList.toggle('is-hover', hovered === el.dataset.name);
-    });
-    if (labelEl) {
-      labelEl.textContent = hovered ? displayName(hovered) : 'Hover a country';
-      labelEl.classList.toggle('is-hover', !!hovered);
-    }
-  }
-
-  tabsEl.addEventListener('click', function (e) {
-    var btn = e.target.closest('.reach__tab');
-    if (btn) setRegion(btn.dataset.region);
-  });
-
-  renderList();
-  drawMap();
-})();
-
-/* ================= GLOBAL REACH REVEAL =================
-   Adds .is-in the first time .reach__stage scrolls into view, same
-   one-shot pattern as the footer reveal below and Herd's own cards:
-   the CSS's reduced-motion override already shows everything in
-   place regardless, so this never matters for that audience. */
-(function () {
-  var stage = document.getElementById('reachStage');
-  if (!stage) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { stage.classList.add('is-in'); io.unobserve(stage); }
-    });
-  }, { threshold: 0.15 });
-  io.observe(stage);
-})();
-
-/* ================= FOOTER REVEAL =================
-   Adds .is-in once the footer scrolls into view, which the CSS uses
-   to fade and lift the masthead into place. Reduced motion shows
-   everything already in place, this observer just never matters
-   there since the CSS override wins regardless. */
-(function () {
-  var footer = document.querySelector('.site-footer');
-  if (!footer) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) footer.classList.add('is-in');
-    });
-  }, { threshold: 0.25 });
-  io.observe(footer);
 })();
 </script>
 

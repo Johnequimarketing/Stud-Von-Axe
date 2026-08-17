@@ -107,13 +107,18 @@ h1{margin:0;font-weight:400}
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:var(--navy-deep)}
 
 /* Background is now a stack of images, one per horse, crossfading
-   on click. Only .is-active is visible. */
+   on click. Only .is-active is visible. Ken Burns: a slow, continuous
+   breathing zoom, scale 1 to 1.06 and back, 18s per direction, kept
+   on every layer so whichever image crossfades in is always mid
+   cycle rather than jump-cutting back to scale(1). */
 .hero__bg{position:absolute;inset:0}
 .hero__bg img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
   opacity:0;transition:opacity .8s var(--ease);
+  animation:heroKenBurns 18s ease-in-out infinite alternate;
 }
 .hero__bg img.is-active{opacity:1}
+@keyframes heroKenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
 .hero__bg::after{
   content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(to bottom,
@@ -122,7 +127,7 @@ h1{margin:0;font-weight:400}
     rgba(8,16,26,.4) 58%,
     rgba(8,16,26,.94) 100%);
 }
-@media (prefers-reduced-motion:reduce){ .hero__bg img{transition:none} }
+@media (prefers-reduced-motion:reduce){ .hero__bg img{transition:none;animation:none} }
 
 /* ---- header ---- */
 .hd{position:relative;z-index:20;padding:var(--s4) var(--gutter) 0}
@@ -330,10 +335,43 @@ function select(idx){
   ctaEl.textContent = h.sold ? `Ask about a horse like ${h.name.split(' ')[0]}` : `Ask about ${h.name.split(' ')[0]}`;
 }
 
+/* Autoplay: advances every 7s, pauses on hover/focus and resumes on
+   leave, stops for good the moment someone picks a horse themselves.
+   Off entirely under reduced motion, same as the Ken Burns zoom. */
+let current = 0;
+let autoplayId = null;
+let manuallyStopped = false;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function startAutoplay(){
+  if (reduceMotion || manuallyStopped || autoplayId) return;
+  autoplayId = setInterval(() => { current = (current + 1) % HORSES.length; select(current); }, 7000);
+}
+function pauseAutoplay(){
+  if (autoplayId) { clearInterval(autoplayId); autoplayId = null; }
+}
+function stopAutoplayForGood(){
+  manuallyStopped = true;
+  pauseAutoplay();
+}
+
 thumbsEl.addEventListener('click', e => {
   const btn = e.target.closest('.hero__thumb');
-  if (btn) select(Number(btn.dataset.idx));
+  if (btn) { stopAutoplayForGood(); current = Number(btn.dataset.idx); select(current); }
 });
+
+if (!reduceMotion) {
+  const heroCard = document.querySelector('.hero__card');
+  startAutoplay();
+  if (heroCard) {
+    heroCard.addEventListener('pointerenter', pauseAutoplay);
+    heroCard.addEventListener('pointerleave', startAutoplay);
+    heroCard.addEventListener('focusin', pauseAutoplay);
+    heroCard.addEventListener('focusout', startAutoplay);
+  }
+  thumbsEl.addEventListener('pointerenter', pauseAutoplay);
+  thumbsEl.addEventListener('pointerleave', startAutoplay);
+}
 </script>
 </body>
 </html>

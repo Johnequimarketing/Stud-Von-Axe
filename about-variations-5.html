@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · About, sequential photo reveal</title>
+
+<!--
+  ============================================================
+  ABOUT SECTION, SEQUENTIAL PHOTO REVEAL
+  Follow-up to about-variations-4.html's V1 (parallax collage, all
+  six photos fading in together). John liked V1 but wants the photos
+  to reveal one at a time as you scroll in, not all at once, then
+  disappear again once the text has fully revealed, so the text gets
+  the stage to itself right before the section releases into
+  Programme. Same real six photos, same real text, same underlying
+  reveal math as every round before this, just a different timeline:
+
+  Old V1 timeline:  all six fade in together across one window.
+  New timeline:     0.15-0.55  photos reveal one at a time, staggered
+                     0.35-1.0  text reveals (unchanged from before)
+                     0.78-1.0  photos disappear again
+
+  V1a All fade out together   — the six hold until late, then fade
+                                out as one group in the last stretch,
+                                a clean "curtain closes" moment.
+  V1b Reverse unwind exit     — the six exit one at a time too, in
+                                reverse order from how they entered
+                                (last one in is first one out), a
+                                bookend feel rather than a single cut.
+
+  Both hidden below 1000px width, same as before, phones keep the
+  text-only version.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#16233f; --navy-deep:#0d1626; --navy-line: rgba(22,35,63,.14);
+  --gold:#b28a4d; --gold-soft:#cdae7c;
+  --base:#faf7f1; --base-dim:#f2ede2;
+  --ink:#1b1e24; --ink-soft:#565c68; --ink-faint:#8a8f99;
+  --serif:"Libre Caslon Display",Georgia,serif;
+  --sans:"Jost","Inter",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --gutter:clamp(22px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--base);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+img{display:block;max-width:100%}
+a,button{color:inherit;text-decoration:none;font:inherit}
+
+.switcher-nav{
+  position:fixed;z-index:999;right:16px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:5px;padding:7px;
+  background:rgba(10,21,34,.94);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+}
+.switcher-nav a{color:rgba(255,255,255,.6);padding:7px 13px;border-radius:100px;transition:all .35s ease;text-align:center}
+.switcher-nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.switcher-nav a.on{color:var(--navy);background:var(--gold-soft)}
+.vlabel{
+  position:absolute;top:0;left:0;z-index:60;background:var(--gold);color:var(--navy-deep);
+  font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;padding:7px 15px;
+}
+.vnote{
+  background:#efe8da;color:var(--ink-soft);font-family:var(--sans);
+  font-size:13.5px;line-height:1.7;padding:22px clamp(20px,5vw,60px);
+}
+.vnote strong{color:var(--navy);font-weight:500;letter-spacing:.02em}
+.spacer{position:relative;background:var(--base);padding:80px var(--gutter);color:#8a8f99;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+.progress-hint{position:fixed;left:16px;bottom:16px;z-index:999;background:rgba(10,21,34,.9);color:rgba(255,255,255,.75);font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:100px;pointer-events:none}
+
+.pin{position:relative;height:280vh;background:var(--base)}
+.pin__sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--base)}
+.pin__bg{position:absolute;inset:0;background:var(--base-dim);transform:scale(1.22)}
+.pin__inner{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:0 var(--gutter);text-align:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;padding:9px 20px;border:1px solid var(--navy-line);border-radius:999px;
+  font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:32px;
+}
+.lead{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.85vw,42px);line-height:1.32;letter-spacing:-.01em;margin:0 0 18px;color:var(--navy)}
+.lead [data-l]{display:inline-block;will-change:filter,opacity,transform}
+.body-copy{font-family:var(--body);font-weight:300;font-size:clamp(16px,1.15vw,19px);line-height:1.72;margin:0 auto;max-width:56ch;color:var(--ink-soft)}
+.cta{
+  display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:17px 34px;border:1px solid var(--navy);border-radius:2px;
+  color:var(--navy);font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+}
+.cta:hover{background:var(--navy);color:#fff}
+
+.side{position:absolute;inset:0;z-index:1;pointer-events:none}
+.side .ph{position:absolute;overflow:hidden;border-radius:4px;box-shadow:0 20px 40px -20px rgba(22,35,63,.35);opacity:0}
+.side .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.side .l1{left:4%;top:10%;width:15%;aspect-ratio:3/4}
+.side .l2{left:9%;top:48%;width:12%;aspect-ratio:1/1}
+.side .l3{left:2%;top:74%;width:11%;aspect-ratio:4/5}
+.side .r1{right:4%;top:14%;width:14%;aspect-ratio:4/5}
+.side .r2{right:10%;top:50%;width:13%;aspect-ratio:1/1}
+.side .r3{right:3%;top:76%;width:12%;aspect-ratio:3/4}
+@media (max-width:1000px){ .side{display:none} }
+</style>
+</head>
+<body>
+
+<nav class="switcher-nav" id="switcherNav">
+  <a href="#v1a" data-idx="0">V1a Fade together</a>
+  <a href="#v1b" data-idx="1">V1b Reverse unwind</a>
+</nav>
+<div class="progress-hint" id="progressHint">scroll progress: 0%</div>
+
+<div class="spacer">Scroll very slowly — each photo now has its own moment, then they clear away before the CTA holds the stage</div>
+
+<!-- ============ V1a · ALL FADE OUT TOGETHER ============ -->
+<section class="pin" id="v1a" data-exit="together">
+  <span class="vlabel">V1a &middot; Reveal one at a time, then all fade out together</span>
+  <div class="pin__sticky">
+    <div class="pin__bg" data-bg></div>
+    <div class="side" data-side>
+      <div class="ph l1" data-order="0"><img src="https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg" alt=""></div>
+      <div class="ph r1" data-order="1"><img src="https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled.jpg" alt=""></div>
+      <div class="ph l2" data-order="2"><img src="https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg" alt=""></div>
+      <div class="ph r2" data-order="3"><img src="https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932.jpg" alt=""></div>
+      <div class="ph l3" data-order="4"><img src="https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051.jpg" alt=""></div>
+      <div class="ph r3" data-order="5"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/06/NB2_5151-scaled-e1716587634328.jpg" alt=""></div>
+    </div>
+    <div class="pin__inner">
+      <span class="eyebrow" data-eyebrow>04 &middot; Who we are</span>
+      <p class="lead" data-lead>Born from a passion for horses in Desenzano del Garda, on Italy's Lake Garda.</p>
+      <p class="body-copy" data-body>Years spent studying which bloodlines actually hold up in sport led us to choose every broodmare in our herd on pedigree and produce, not on a season's form. We collect and freeze embryos out of Ontario, then bring them to our base near Lanaken in Belgium, where our vet team manages the implants, carries the pregnancies and raises the foals until they are ready to sell.</p>
+      <a class="cta" data-cta href="#">Explore the programme <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+<div class="vnote"><strong>Why this one:</strong> the six photos each get their own moment coming in (roughly one every 8% of the scroll), then hold together while the text finishes revealing, then all six fade out as one group right at the end, like a curtain closing, leaving just the text and CTA alone for the last stretch before the section releases.</div>
+
+<div class="spacer">Scroll</div>
+
+<!-- ============ V1b · REVERSE UNWIND EXIT ============ -->
+<section class="pin" id="v1b" data-exit="reverse">
+  <span class="vlabel">V1b &middot; Reveal one at a time, exit in reverse order</span>
+  <div class="pin__sticky">
+    <div class="pin__bg" data-bg></div>
+    <div class="side" data-side>
+      <div class="ph l1" data-order="0"><img src="https://www.studvonaxe.it/wp-content/uploads/2026/04/e2c30f92-7f9a-47d7-b9a4-fb5919abf104.jpg" alt=""></div>
+      <div class="ph r1" data-order="1"><img src="https://www.studvonaxe.it/wp-content/uploads/2024/04/NB2_4850-scaled.jpg" alt=""></div>
+      <div class="ph l2" data-order="2"><img src="https://www.studvonaxe.it/wp-content/uploads/2021/02/C8U6563_2.jpg" alt=""></div>
+      <div class="ph r2" data-order="3"><img src="https://www.studvonaxe.it/wp-content/uploads/2022/05/unguessable-12-scaled-e1739207394932.jpg" alt=""></div>
+      <div class="ph l3" data-order="4"><img src="https://www.studvonaxe.it/wp-content/uploads/2025/07/IMG_2051.jpg" alt=""></div>
+      <div class="ph r3" data-order="5"><img src="https://www.studvonaxe.it/wp-content/uploads/2023/06/NB2_5151-scaled-e1716587634328.jpg" alt=""></div>
+    </div>
+    <div class="pin__inner">
+      <span class="eyebrow" data-eyebrow>04 &middot; Who we are</span>
+      <p class="lead" data-lead>Born from a passion for horses in Desenzano del Garda, on Italy's Lake Garda.</p>
+      <p class="body-copy" data-body>Years spent studying which bloodlines actually hold up in sport led us to choose every broodmare in our herd on pedigree and produce, not on a season's form. We collect and freeze embryos out of Ontario, then bring them to our base near Lanaken in Belgium, where our vet team manages the implants, carries the pregnancies and raises the foals until they are ready to sell.</p>
+      <a class="cta" data-cta href="#">Explore the programme <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+<div class="vnote"><strong>Why this one:</strong> same one-at-a-time entrance, but the exit mirrors it: the last photo to arrive is the first to leave, working backward until the first photo (Arkhana) is the last one standing before it too clears. A bookend feel rather than a single cut, at the cost of being a slightly longer, busier exit than V1a's single clean fade.</div>
+
+<script>
+(function(){
+  function clamp(v){ return v<0?0:v>1?1:v; }
+  function ease(t){ return 1-Math.pow(1-t,3); }
+  function applyFade(el,p,start,range){
+    var pp = start ? clamp((p-start)/(1-start)) : p;
+    var t = ease(clamp((pp-range)/0.42));
+    el.style.filter = 'blur('+((1-t)*9).toFixed(2)+'px)';
+    el.style.opacity = (0.05+t*0.95).toFixed(3);
+    el.style.transform = 'translateY('+((1-t)*22).toFixed(1)+'px)';
+  }
+  function splitLetters(el){
+    var words = (el.textContent||'').trim().split(/\s+/);
+    el.textContent = '';
+    words.forEach(function(word,wi){
+      var wrap = document.createElement('span');
+      wrap.style.cssText = 'display:inline-block;white-space:nowrap';
+      word.split('').forEach(function(ch){
+        var s = document.createElement('span');
+        s.setAttribute('data-l','');
+        s.textContent = ch;
+        s.style.cssText = 'display:inline-block;will-change:filter,opacity,transform';
+        wrap.appendChild(s);
+      });
+      el.appendChild(wrap);
+      if (wi < words.length-1) el.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  var REVEAL_START = 0.15, REVEAL_END = 0.55;
+  var EXIT_START = 0.78, EXIT_END = 1.0;
+
+  function setupPin(section){
+    var bg = section.querySelector('[data-bg]');
+    var eyebrow = section.querySelector('[data-eyebrow]');
+    var lead = section.querySelector('[data-lead]');
+    var body = section.querySelector('[data-body]');
+    var cta = section.querySelector('[data-cta]');
+    var exitMode = section.dataset.exit;
+    splitLetters(lead);
+    var letters = lead.querySelectorAll('[data-l]');
+    var photos = Array.from(section.querySelectorAll('.ph'));
+    var total = photos.length;
+
+    function paint(){
+      var vh = window.innerHeight;
+      var r = section.getBoundingClientRect();
+      var p = clamp(-r.top / Math.max(1, r.height - vh));
+
+      var tbg = ease(clamp(p/0.55));
+      bg.style.transform = 'scale('+(1.22-0.22*tbg).toFixed(3)+')';
+
+      applyFade(eyebrow, p, 0.3, 0);
+      var startLetters = 0.42;
+      var ppLetters = clamp((p-startLetters)/(1-startLetters));
+      var n = letters.length||1, span=0.5, hold=1-span;
+      letters.forEach(function(s,i){
+        var from = (i/n)*hold;
+        var t = ease(clamp((ppLetters-from)/span));
+        s.style.filter = 'blur('+((1-t)*8).toFixed(2)+'px)';
+        s.style.opacity = (0.14+t*0.86).toFixed(3);
+      });
+      applyFade(body, p, 0.3, 0.46);
+      applyFade(cta, p, 0.3, 0.62);
+
+      var revealSlice = (REVEAL_END - REVEAL_START) / total;
+      var exitSlice = (EXIT_END - EXIT_START) / total;
+
+      photos.forEach(function(el){
+        var order = parseInt(el.dataset.order, 10);
+
+        var rStart = REVEAL_START + order * revealSlice * 0.7;
+        var tIn = ease(clamp((p - rStart) / (revealSlice * 1.4)));
+
+        var exitOrder = exitMode === 'reverse' ? (total - 1 - order) : 0;
+        var eStart = exitMode === 'reverse' ? (EXIT_START + exitOrder * exitSlice) : EXIT_START;
+        var eRange = exitMode === 'reverse' ? exitSlice * 1.3 : (EXIT_END - EXIT_START);
+        var tOut = ease(clamp((p - eStart) / eRange));
+
+        var opacity = tIn * (1 - tOut);
+        el.style.opacity = opacity.toFixed(3);
+        var drift = (1 - tIn) * 36;
+        el.style.transform = 'translateY(' + drift.toFixed(1) + 'px)';
+      });
+
+      var hint = document.getElementById('progressHint');
+      if (hint && section === currentVisible()) hint.textContent = 'scroll progress: ' + Math.round(p*100) + '%';
+    }
+
+    function currentVisible(){
+      var r = section.getBoundingClientRect();
+      return (r.top < window.innerHeight && r.bottom > 0) ? section : null;
+    }
+
+    var raf = null;
+    function onScroll(){ if (raf) return; raf = requestAnimationFrame(function(){ raf=null; paint(); }); }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    paint();
+  }
+
+  ['#v1a', '#v1b'].forEach(function(sel){ setupPin(document.querySelector(sel)); });
+
+  var navLinks = document.querySelectorAll('.switcher-nav a');
+  var sections = Array.from(navLinks).map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var idx = sections.indexOf(e.target);
+      navLinks.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(function(s){ spy.observe(s); });
+})();
+</script>
+
+</body>
+</html>
