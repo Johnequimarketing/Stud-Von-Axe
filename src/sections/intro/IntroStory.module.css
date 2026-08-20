@@ -1,0 +1,241 @@
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* ---- Plate and card --------------------------------------------------
+   The photograph carries the journey line, so the chapters on the right
+   stay free of any second photograph or motif. */
+.plate {
+  position: relative;
+  /* Room for the card breaking past the bottom edge before the section
+     padding takes over, so it never touches the container's edge. */
+  margin-bottom: var(--space-6);
+}
+
+.figure {
+  --figure-ratio: 4 / 3;
+}
+
+.card {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-5);
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  border-radius: var(--radius-md);
+}
+
+.cardQuote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.375rem, 1.4vw + 1rem, 1.75rem);
+  line-height: var(--leading-title);
+}
+
+.cardCaption {
+  margin-top: var(--space-3);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-dark-muted);
+}
+
+/* A tinted card rather than loose text beside the photo, echoing the
+   panel-and-photo pairing from the reference sites without borrowing
+   their exact composition. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 20px 44px -32px color-mix(in srgb, var(--raw-navy) 40%, transparent);
+}
+
+/* ---- Chapter control ----------------------------------------------
+   A segmented group in the house rounded square, not a pill strip. */
+.chapterNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-block: var(--space-5) var(--space-5);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--raw-white);
+}
+
+.chapterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  color: var(--color-text-muted);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7em 1em;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.chapterButton:hover {
+  color: var(--color-text);
+}
+
+.chapterButton[data-active='true'] {
+  background: var(--color-primary);
+  color: var(--color-dark-text);
+}
+
+.chapterNumber {
+  color: var(--color-accent-ink);
+  font-size: var(--text-meta);
+}
+
+.chapterButton[data-active='true'] .chapterNumber {
+  color: var(--color-accent);
+}
+
+/* ---- Chapter body -------------------------------------------------- */
+.chapterBody {
+  min-height: 11em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chapterBody {
+    animation: chapter-in 420ms var(--ease);
+  }
+
+  @keyframes chapter-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.quote {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-title);
+  line-height: var(--leading-title);
+  /* Hang the opening quote mark so the words stay on the margin. */
+  text-indent: -0.45em;
+  max-width: 20ch;
+}
+
+/* The quote is already italic serif, so the accent word distinguishes
+   itself by colour alone, matching the reference's treatment. */
+.quoteAccent {
+  color: var(--color-accent-ink);
+}
+
+.body {
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+/* ---- Foot ----------------------------------------------------------- */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  /* Lighter than the standard border token: the chapter nav and the card
+     already carry visible lines nearby, so this one only needs to
+     register as a soft separator, not another rule competing for
+     attention. */
+  border-top: 1px solid color-mix(in srgb, var(--raw-navy) 8%, transparent);
+}
+
+/* The arrow alone is enough of a cue; the underline under the label was
+   redundant here, sitting immediately below the "Adriano & Elisabetta"
+   attribution which is already italic and clearly a name, not a link. */
+.footCta span:first-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.attribution {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lead);
+}
+
+.role {
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+@media (min-width: 900px) {
+  /* No columns, no gap: the panel overlaps the photograph directly, so
+     there is nothing sitting in the middle of the composition. */
+  .grid {
+    display: block;
+    position: relative;
+  }
+
+  /* Shorter than the earlier 5/6 portrait: the source photo is a square
+     crop, and at portrait proportions the image rendered taller than a
+     typical viewport, so scrolling to the section never showed the whole
+     photograph at once. A landscape ratio trims the top and bottom of the
+     source instead of the sides, keeping the full width and fitting the
+     image comfortably inside the screen.
+
+     6/5 rather than 4/3: at this column's width, 6/5 renders a touch
+     taller than the panel's own intrinsic height, so the photo reads as
+     the slightly larger of the two rather than the smaller. */
+  .figure {
+    --figure-ratio: 6 / 5;
+  }
+
+  /* Overlaps the photograph's lower left corner and breaks slightly past
+     its edge, so the plate reads as one composition rather than an image
+     with a caption stacked underneath. */
+  .plate {
+    width: 56%;
+    margin-bottom: 0;
+  }
+
+  .card {
+    position: absolute;
+    left: calc(var(--space-6) * -1);
+    bottom: var(--space-6);
+    width: min(20rem, 78%);
+    margin: 0;
+    box-shadow: 0 24px 48px -28px color-mix(in srgb, var(--raw-navy) 70%, transparent);
+  }
+
+  /* The panel sits in front of the photograph rather than beside it: it
+     overlaps the photo's right edge and continues past it, vertically
+     centered on the composition, so the photo shows through only on its
+     own left, top and bottom. */
+  .panel {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 55%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: var(--space-7);
+  }
+}

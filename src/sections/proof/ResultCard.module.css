@@ -1,0 +1,106 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--raw-white);
+  /* The soft lift the brief asks for, in place of a border. */
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--raw-navy) 6%, transparent),
+    0 12px 28px -18px color-mix(in srgb, var(--raw-navy) 22%, transparent);
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* The placing is the card's headline: display serif, gold, with the ordinal
+   raised as a proper superior rather than scaled down text. */
+.placing {
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--color-accent-ink);
+}
+
+.ordinal {
+  font-size: 0.42em;
+  font-style: italic;
+  vertical-align: super;
+  margin-left: 0.08em;
+}
+
+.country {
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.date {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+/* Sans, tracked and uppercase: the one place a horse's name is set in the
+   label face rather than the display serif, so the feed rows read as data
+   and never compete with the section heading. */
+.horse {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.sire {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+/* Content packs to the top rather than pushing the detail to the card's
+   foot. Pinning it to the bottom aligned the rule across a row, but a card
+   the feed gave no date, sire or score then had a hole in its middle, which
+   reads as missing content rather than as a short card. Sparse rows are the
+   norm here, so the void matters more than the alignment. */
+.detail {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.class {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.score {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--color-accent-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.rider {
+  margin-top: var(--space-3);
+  font-size: var(--text-small);
+  color: var(--color-text);
+}
+
+.with {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-accent-ink);
+}

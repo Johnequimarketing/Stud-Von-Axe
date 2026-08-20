@@ -1,0 +1,37 @@
+.heading {
+  font-size: var(--text-hero);
+  line-height: var(--leading-tight);
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.accent {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.intro {
+  max-width: 50ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Over photography the outline button needs white type and a white edge. */
+.onDark :global(a) {
+  color: var(--raw-white);
+  border-color: color-mix(in srgb, var(--raw-white) 45%, transparent);
+}
+
+.onDark :global(a:first-child) {
+  color: var(--raw-navy);
+  border-color: transparent;
+}
+
+.onDark :global(a:last-child:hover) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}

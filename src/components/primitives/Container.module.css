@@ -1,0 +1,9 @@
+/* Content never stretches: it caps and the margins grow instead. */
+.container {
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.prose {
+  width: min(var(--container-prose), 100% - (var(--gutter) * 2));
+}

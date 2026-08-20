@@ -1,0 +1,316 @@
+/* All user-facing copy. Adding Italian later means adding copy.it.ts
+   with the same shape: no component changes. */
+
+export const copy = {
+  brand: {
+    name: 'Stud Von Axe',
+    tagline: 'Breeding and horse trading',
+  },
+
+  nav: {
+    foals: 'Foals',
+    embryos: 'Embryos',
+    semen: 'Semen',
+    results: 'Results',
+    news: 'News',
+    contact: 'Contact',
+    enquire: 'Enquire',
+    menu: 'Menu',
+    close: 'Close',
+    skip: 'Skip to content',
+  },
+
+  hero: {
+    /* Single statement, one accent word set in italic gold. */
+    headingBefore: 'Showjumping bloodlines,',
+    headingAccent: 'proven',
+    headingAfter: 'in sport.',
+    intro:
+      'An Italian breeding programme producing foals and embryos from mares selected on pedigree and produce. Sold direct, never through auction.',
+    primaryCta: 'See what is available',
+    secondaryCta: 'Contact us',
+  },
+
+  intro: {
+    eyebrow: 'The stud',
+    heading: 'Born from a great passion for horses.',
+    cta: 'More about the stud',
+
+    /* Chaptered telling of the stud's story, one fact per chapter, all
+       drawn from the client briefing or their own site. */
+    chapters: [
+      {
+        id: 'beginning',
+        number: '01',
+        label: 'The beginning',
+        quote: 'Born from a great passion for horses.',
+        quoteAccent: 'passion',
+        body: 'Stud Von Axe is the result of many years spent on the best German farms and of extensive research into the best international families. That knowledge became the standard every broodmare here still has to meet.',
+      },
+      {
+        id: 'our-way',
+        number: '02',
+        label: 'Our way',
+        quote: 'Pedigree and produce, nothing else.',
+        quoteAccent: 'produce',
+        body: 'Mares are selected on what they are and what they have produced. Our relationship with our customers is based on honesty and absolute transparency in all our sales.',
+      },
+      {
+        id: 'today',
+        number: '03',
+        label: 'Today',
+        quote: 'From Italy to the world, direct.',
+        quoteAccent: 'world',
+        body: 'Every pairing begins in Italy. Our team in Belgium manages the pregnancies and raises each foal until it is ready to leave. Every horse is sold direct, never through auction.',
+      },
+    ],
+    /* TODO client-confirm: principals' full names and titles before any
+       formal attribution appears. First names are already public on the
+       site's contact page. */
+    attribution: 'Adriano & Elisabetta',
+    attributionRole: 'Stud Von Axe',
+
+    /* Card text for the badge and card floating over the photograph. */
+    cardQuote: 'From Italy, to the world.',
+    cardCaption: 'ITALY · BELGIUM · SOLD DIRECT',
+  },
+
+  offer: {
+    eyebrow: 'What we offer',
+    heading: 'Three ways into the programme.',
+    headingAccent: 'programme',
+    lines: [
+      {
+        id: 'foals',
+        number: '01',
+        title: 'Foals',
+        description:
+          'Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament.',
+        href: '#available',
+        cta: 'See the foals',
+      },
+      {
+        id: 'embryos',
+        number: '02',
+        title: 'Embryos',
+        description:
+          'Frozen and implanted, from our own damlines. Pairings made on pedigree and produce.',
+        href: '#bloodlines',
+        cta: 'See the pairings',
+      },
+      {
+        id: 'semen',
+        number: '03',
+        title: 'Semen',
+        description:
+          'Frozen semen through Avantea in Cremona, shipped across the EU and for export.',
+        href: '#semen',
+        cta: 'About semen sales',
+      },
+    ],
+  },
+
+  available: {
+    eyebrow: 'Available now',
+    heading: 'Horses with us today.',
+    headingAccent: 'today',
+    featuredLabel: 'Featured',
+    intro:
+      'Foals and broodmares with us now, sold direct rather than through auction.',
+    filters: [
+      { id: 'all', label: 'All horses' },
+      { id: 'foal', label: 'Foals' },
+      { id: 'broodmare', label: 'Broodmares' },
+    ],
+    filterLabel: 'Filter the catalogue',
+    prevLabel: 'Previous horses',
+    nextLabel: 'Next horses',
+    /* The brief asks each card to name its own destination: "View [name]'s
+       page". The horse's short name keeps it to one line on a 300px card. */
+    cardCta: 'View',
+    seeAll: 'See all horses',
+    enquire: 'Enquire',
+    enquireAbout: 'Enquire about',
+    /* Not rendered. Labels for the per-horse pedigree links, which are a
+       client dependency: the site only has profile level URLs so far. */
+    horsetelex: 'HorseTelex',
+    hippomundo: 'Hippomundo',
+  },
+
+  bloodlines: {
+    eyebrow: 'Embryos',
+    heading: 'The blood never lies.',
+    headingAccent: 'blood',
+    bodyShort:
+      'Pairings made on pedigree and produce, from damlines we have built and kept.',
+    frozenLabel: 'Frozen',
+    expectedLabel: 'Expected',
+    pairingWord: 'pairing',
+    pairingWordPlural: 'pairings',
+    pairingsCta: 'See the pairings',
+    damlineSelectLabel: 'Choose a damline',
+    /* Labels for the compact spec row. Every value under them is counted
+       from the pairing data, never written here. */
+    specPairings: 'Pairings',
+    specForm: 'Form',
+    specAvailable: 'Available',
+
+    /* Not rendered on the homepage. The section deliberately carries a name,
+       a pedigree, one line and three counted facts, so these were cut from
+       it. They are real approved copy and the embryo detail pages will want
+       them, and this repo has no version control to recover them from, so
+       they stay here rather than being deleted. */
+    body: 'Pairings are made on pedigree and produce, from damlines we have built and kept. An embryo carries the same decisions as a foal, made a year earlier.',
+    frozenNote:
+      'Frozen embryos are flushed and stored, shipped with full documentation.',
+    expectedNote:
+      'Expected embryos are already carried by our recipient mares in Belgium, with the pregnancy managed by our vet team.',
+  },
+
+  semen: {
+    eyebrow: 'Semen sales',
+    heading: 'Semen, through Avantea.',
+    headingAccent: 'Avantea',
+    /* Short on purpose: the three panels below carry the form, the centre
+       and the reach, so the description carries only the credibility and
+       the one caveat that explains why no stallions are named. */
+    body: "Handled through one of Europe's reference centres for equine reproduction, with stallion availability on request.",
+    cta: 'Ask about availability',
+
+    /* The same three facts recast as a journey for the Route concept: no
+       fact appears here that is not already in `specs`. The last step is
+       the ask, which is why its text is the availability caveat. */
+    routeSteps: [
+      { label: 'Frozen', text: 'At the Avantea laboratory in Cremona', icon: 'frozen' },
+      { label: 'Shipped', text: 'Across the EU and for export', icon: 'export' },
+      { label: 'To your mare', text: 'Stallion availability on request', icon: 'node' },
+    ],
+
+    /* Not rendered: the section became a route, so these three facts are
+       carried by `routeSteps` instead. Kept for a semen detail page, where
+       a spec table is the right shape. `icon` names an entry in the Icon
+       primitive, paired in content so it is a decision rather than array
+       order. TODO client-confirm: no stallion names are published yet. */
+    specs: [
+      { label: 'Form', value: 'Frozen', icon: 'frozen' },
+      { label: 'Centre', value: 'Avantea, Cremona', icon: 'laboratory' },
+      { label: 'Shipping', value: 'EU and export', icon: 'export' },
+    ],
+  },
+
+  proof: {
+    /* TODO client-confirm: this kicker and the intro claim the feed is live
+       and automatic. Neither is true until the Horsetelex plugin is wired,
+       so both are a promise the site should not make before then. */
+    liveLabel: 'Live data · Horsetelex',
+    heading: 'Our horses in the ring.',
+    headingAccent: 'in the ring',
+    intro:
+      'The latest international results from the horses in our collection, updated automatically through Horsetelex.',
+    allResults: 'All results',
+    /* Joining words inside a result card. */
+    by: 'by',
+    with: 'with',
+    /* Shown in place of the cards until the feed is connected, so the
+       section never sits empty and never fakes a row. */
+    awaiting: 'Results appear here as soon as the feed is connected.',
+
+    /* Not rendered by the live results design. Kept because they are real
+       approved copy and this repo has no version control to recover them
+       from. */
+    resultsLabel: 'Also of note',
+    reachLabel: 'Von Axe horses are with breeders and riders in',
+  },
+
+  bases: {
+    eyebrow: 'The two bases',
+    heading: 'Italy and Belgium.',
+    headingAccent: 'Belgium',
+    /* Derived from the audited base roles, nothing more: no distance, no
+       founding dates, no acreage. */
+    body: 'One programme across two yards.',
+    /* Not rendered: written for a people-led concept that lost the bases
+       round. A team or about page will want them, so they stay. First names
+       are public on the client's contact page. */
+    peopleNames: 'Adriano & Elisabetta',
+    peopleRole: 'The programme is theirs: every pairing, both yards.',
+  },
+
+  news: {
+    eyebrow: 'News',
+    heading: 'From the stud.',
+    headingAccent: 'stud',
+    readMore: 'Read',
+    viewAll: 'All news',
+    prevLabel: 'Previous stories',
+    nextLabel: 'Next stories',
+  },
+
+  contact: {
+    eyebrow: 'Get in touch',
+    heading: 'Ask about a horse.',
+    headingAccent: 'horse',
+    /* Two short lines: this is the page's closing ask, not a form. */
+    body: 'Tell us what you are looking for and we will come back to you directly. We are happy to arrange a visit to either base.',
+    cta: 'Contact us',
+    /* WhatsApp is the one channel the footer does not carry, so it is the
+       CTA's single alternative. The phones and email live in the footer
+       directly beneath the section. */
+    directLabel: 'Or message us on',
+    whatsapp: 'WhatsApp',
+    /* Real, already public on the client's own site. */
+    contacts: [
+      { name: 'Elisabetta', phone: '+39 349 591 8565', tel: '+393495918565' },
+      { name: 'Adriano', phone: '+39 348 395 3433', tel: '+393483953433' },
+    ],
+    email: 'studvonaxe@gmail.com',
+    /* TODO client-confirm: which line should the WhatsApp button use? */
+    whatsappNumber: '393495918565',
+
+    /* Not rendered. These were the enquiry form's labels, and the form was
+       removed because it posted nowhere. Kept for a real contact page, and
+       because this repo has no version control to recover them from. */
+    nameLabel: 'Name',
+    emailLabel: 'Email',
+    messageLabel: 'Message',
+    messagePlaceholder: 'Which horse or pairing are you interested in?',
+    submit: 'Send enquiry',
+  },
+
+  footer: {
+    navHeading: 'Navigate',
+    contactHeading: 'Contact',
+    pedigreeHeading: 'Pedigrees',
+    followHeading: 'Follow',
+    social: [
+      { label: 'Instagram', href: 'https://www.instagram.com/studvonaxe/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/StudVonAxe/' },
+      {
+        label: 'YouTube',
+        href: 'https://www.youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg',
+      },
+    ],
+    /* TODO client-confirm: per-horse pedigree URLs. These are the
+       profile-level pages. */
+    pedigreeLinks: [
+      {
+        label: 'HorseTelex',
+        href: 'https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe',
+      },
+      { label: 'Hippomundo', href: 'https://www.hippomundo.com/' },
+    ],
+    legal: 'Stud Von Axe Az. Agr. s.s.',
+    language: { current: 'EN', other: 'IT' },
+  },
+
+  status: {
+    /* `available` is not rendered: every horse in the catalogue section is
+       available, so a badge saying so on all of them was noise. Kept for a
+       detail page and for the day a mixed run needs it. */
+    available: 'Available',
+    reserved: 'Reserved',
+    sold: 'Sold',
+  },
+} as const
+
+export type Copy = typeof copy

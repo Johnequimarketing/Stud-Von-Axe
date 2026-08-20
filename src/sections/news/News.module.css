@@ -1,0 +1,18 @@
+/* Heading and the way out share the line: the section is a teaser, so its
+   exit sits at eye level rather than after the run. */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  margin-top: var(--space-4);
+}
+
+.viewAll {
+  margin-bottom: var(--space-2);
+}

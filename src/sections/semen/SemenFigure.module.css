@@ -1,0 +1,22 @@
+.figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--figure-radius, var(--radius-md));
+  background: var(--color-surface);
+  aspect-ratio: var(--figure-ratio, 21 / 9);
+}
+
+.figure picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The plaits sit along the top of the crop, so the frame holds the upper
+     part of the image rather than centring on plain shoulder. */
+  object-position: var(--figure-position, 50% 32%);
+}

@@ -1,0 +1,121 @@
+/* Centred throughout: the route reads as a journey down the middle of the
+   page, and the button lands on the same centre line. */
+.head {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.heading {
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.body {
+  color: var(--color-text-muted);
+  margin-inline: auto;
+  max-width: 46ch;
+}
+
+/* ---- The route -------------------------------------------------------
+   A hairline running through gold nodes: the pedigree separator device at
+   section scale. Each node is a ring filled with the page ground, so the
+   rule appears to pass behind three marks without any of them being an
+   image. */
+.route {
+  list-style: none;
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-7) 0 0;
+  padding: 0;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-accent-ink);
+}
+
+/* The connector is drawn per step, from this node to the next, rather than
+   as one rule across the whole list: a single span overshot the last node
+   by 323px at 1280, because a node sits at its column's centre and not at
+   the container's edge. The last step draws nothing, so the path ends
+   exactly on its final mark.
+
+   Vertical by default, and only in the gap between steps. Running it from
+   the foot of one ring to the next put the rule straight through two lines
+   of centred text, because on a phone the label and body sit below the node
+   rather than beside it. */
+.step::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  bottom: calc(var(--space-6) * -1);
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: var(--color-border-strong);
+}
+
+.step:last-child::after {
+  content: none;
+}
+
+.stepLabel {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: var(--leading-title);
+}
+
+.stepBody {
+  margin-top: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  max-width: 28ch;
+  margin-inline: auto;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 900px) {
+  .route {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  /* Horizontal: each segment runs from its own node's centre to the next
+     node's centre, which is half a column plus the grid gap away. */
+  .step::after {
+    top: calc(1.5rem - 0.5px);
+    bottom: auto;
+    left: 50%;
+    right: calc((50% + var(--space-6)) * -1);
+    width: auto;
+    height: 1px;
+    transform: none;
+  }
+
+  .action {
+    margin-top: var(--space-7);
+  }
+}

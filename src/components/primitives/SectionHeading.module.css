@@ -1,0 +1,21 @@
+.heading {
+  font-size: var(--text-heading);
+  line-height: var(--leading-title);
+  margin-top: var(--space-4);
+}
+
+/* The darker gold ink rather than the raw accent: at heading sizes the
+   raw gold only just clears 3:1 on ivory, and the ink variant keeps the
+   same warmth with real margin. */
+.accent {
+  color: var(--color-accent-ink);
+  font-style: italic;
+}
+
+/* The ink variant exists for ivory. On a dark ground it is the wrong end
+   of the mix: it measures 3.22:1 there, scraping past the large text floor
+   only because the heading is 55px. The raw gold is the right choice on
+   navy and clears it comfortably. */
+:global([data-theme='inverse']) .accent {
+  color: var(--color-accent);
+}

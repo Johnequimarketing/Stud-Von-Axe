@@ -1,0 +1,125 @@
+.carousel {
+  /* The track bleeds to the viewport edge on the right so a card is
+     visibly cut off, which is the affordance that says "more this way".
+     Negative margin plus matching padding keeps the first card aligned to
+     the container while letting the run overflow. */
+  margin-right: calc(var(--gutter) * -1);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-right: var(--gutter);
+}
+
+/* ---- Filter ---------------------------------------------------------
+   The same segmented control as the stud section's chapters, so the two
+   interactive sections share one vocabulary. */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--raw-white);
+}
+
+.filterButton {
+  background: none;
+  border: none;
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  color: var(--color-text-muted);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7em 1em;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.filterButton:hover {
+  color: var(--color-text);
+}
+
+.filterButton[data-active='true'] {
+  background: var(--color-primary);
+  color: var(--color-dark-text);
+}
+
+/* ---- Arrows ---------------------------------------------------------- */
+.arrows {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* Shown rather than hidden: the control keeps its place so the row does
+   not reflow when a filter happens to fit. */
+.arrow:disabled {
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---- Track ----------------------------------------------------------- */
+.track {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--gutter) 0 0;
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Keeps the horizontal scroll inside the track: without this the page
+     itself reports overflow. */
+  overscroll-behavior-x: contain;
+  /* The browser would otherwise try to hold the reader's place when the
+     filtered card list changes, which fights the reset to the start. */
+  overflow-anchor: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  /* Past the container width there is no edge to bleed into, so the run
+     sits inside the container like every other section. */
+  .carousel {
+    margin-right: 0;
+  }
+
+  .controls,
+  .track {
+    padding-right: 0;
+  }
+}

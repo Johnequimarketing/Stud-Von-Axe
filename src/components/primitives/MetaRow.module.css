@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-6);
+}
+
+.pair {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  color: var(--color-text);
+}
+
+:global([data-theme='inverse']) .label {
+  color: var(--color-dark-muted);
+}
+
+:global([data-theme='inverse']) .value {
+  color: var(--color-dark-text);
+}

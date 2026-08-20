@@ -1,0 +1,58 @@
+/* The genetics lockup: serif names, gold separators, breaks only
+   between generations. Hanging indent keeps wrapped lines readable. */
+
+.pedigree {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+  text-wrap: pretty;
+}
+
+/* Each generation travels as one unit. */
+.group {
+  display: inline;
+}
+
+.name {
+  white-space: nowrap;
+}
+
+.separator {
+  color: var(--color-accent-ink);
+  font-style: normal;
+  padding: 0 0.28em;
+  /* The separator is the only place a line may break. */
+  white-space: normal;
+}
+
+.meta {
+  font-size: var(--text-small);
+}
+
+.body {
+  font-size: var(--text-body);
+}
+
+.lead {
+  font-size: var(--text-lead);
+  color: var(--color-text);
+}
+
+/* On dark ground the muted tone would drop below contrast. */
+:global([data-theme='inverse']) .pedigree {
+  color: var(--color-dark-muted);
+}
+
+:global([data-theme='inverse']) .lead {
+  color: var(--color-dark-text);
+}
+
+/* The ink variant of the gold exists to clear contrast on ivory. On navy
+   it is the wrong end of the mix and the cross goes nearly invisible, so
+   the raw gold takes over. */
+:global([data-theme='inverse']) .separator {
+  color: var(--color-accent);
+}

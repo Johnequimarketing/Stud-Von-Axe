@@ -1,0 +1,82 @@
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--raw-white);
+  /* Five names still overflow a phone, so the control scrolls rather than
+     wrapping into a block that pushes the card down the page. */
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  flex: 0 0 auto;
+  padding: 0.7em 1em;
+  min-height: 44px;
+  border: none;
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease), color var(--dur)
+      var(--ease);
+}
+
+.tab:hover {
+  color: var(--color-text);
+}
+
+.number {
+  font-size: 0.6875rem;
+  opacity: 0.65;
+}
+
+.tab[data-active='true'] {
+  background: var(--color-primary);
+  color: var(--color-dark-text);
+}
+
+.tab[data-active='true'] .number {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+/* On a dark ground the shell inverts: the control is drawn from the ground
+   itself rather than from white, and the active segment goes gold. */
+:global([data-theme='inverse']) .tabs {
+  border-color: color-mix(in srgb, var(--raw-ivory) 18%, transparent);
+  background: color-mix(in srgb, var(--raw-ivory) 6%, transparent);
+}
+
+:global([data-theme='inverse']) .tab {
+  color: var(--color-dark-muted);
+}
+
+:global([data-theme='inverse']) .tab:hover {
+  color: var(--color-dark-text);
+}
+
+:global([data-theme='inverse']) .tab[data-active='true'] {
+  background: var(--color-accent);
+  color: var(--raw-navy);
+}
+
+:global([data-theme='inverse']) .tab[data-active='true'] .number {
+  color: var(--raw-navy);
+  opacity: 0.7;
+}

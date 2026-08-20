@@ -1,0 +1,27 @@
+.section {
+  padding-block: var(--space-section);
+  /* Anchored sections must clear the sticky header. */
+  scroll-margin-top: var(--header-height);
+}
+
+.base {
+  background: var(--color-bg);
+}
+
+/* The one tinted band on the page. */
+.surface {
+  background: var(--color-surface);
+}
+
+/* The footer and the embryo section. Never carries long body copy: the
+   embryo section holds a name, a pedigree, one line and three counted
+   facts, which is the most that belongs on this ground. */
+.inverse {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+/* Full-bleed sections handle their own insets. */
+.flush {
+  padding-block: 0;
+}

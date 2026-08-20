@@ -1,0 +1,95 @@
+.skip {
+  position: absolute;
+  top: -100px;
+  left: var(--gutter);
+  z-index: 100;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+}
+
+.skip:focus {
+  top: var(--space-3);
+}
+
+.wrap {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  padding: clamp(0.6rem, 1.2vw, 1rem) var(--gutter);
+  pointer-events: none;
+}
+
+/* The shell keeps the same geometry at every scroll position. Only its
+   surface changes, so the transition never touches layout and cannot
+   stutter: width, padding and radius all stay put, and the browser
+   animates colour and shadow on the compositor. */
+.shell {
+  --hd-fg: var(--raw-white);
+  --hd-fg-muted: color-mix(in srgb, var(--raw-white) 74%, transparent);
+  --hd-border: color-mix(in srgb, var(--raw-white) 42%, transparent);
+  --hd-accent: var(--color-accent);
+
+  pointer-events: auto;
+  width: min(var(--container-max), 100%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: 0.5rem 0.6rem 0.5rem clamp(0.9rem, 1.4vw, 1.35rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  background: transparent;
+  transition:
+    background-color 480ms var(--ease),
+    border-color 480ms var(--ease),
+    box-shadow 480ms var(--ease),
+    backdrop-filter 480ms var(--ease);
+}
+
+/* Over the photograph, before scrolling: a faint dark glass so the white
+   type holds against a bright part of the image. */
+.overPhoto {
+  background: color-mix(in srgb, var(--raw-navy-deep) 34%, transparent);
+  border-color: color-mix(in srgb, var(--raw-white) 12%, transparent);
+  backdrop-filter: blur(10px) saturate(115%);
+}
+
+/* Scrolled, or floating over an ivory hero: the light surface. */
+.light {
+  --hd-fg: var(--color-text);
+  --hd-fg-muted: var(--color-text-muted);
+  --hd-border: var(--color-border-strong);
+  --hd-accent: var(--color-accent-ink);
+
+  background: color-mix(in srgb, var(--color-bg) 90%, transparent);
+  border-color: var(--color-border);
+  backdrop-filter: blur(12px) saturate(115%);
+  box-shadow: 0 14px 34px -24px color-mix(in srgb, var(--raw-navy) 62%, transparent);
+}
+
+/* Floating over a hero that is already ivory there is nothing to separate
+   from and nothing worth blurring, so the surface drops away. */
+.lightFlat {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.nav {
+  flex: 1 1 auto;
+}
+
+.nav :global(ul) {
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex: none;
+}

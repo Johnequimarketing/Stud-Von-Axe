@@ -1,0 +1,132 @@
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* ---- The intro card --------------------------------------------------- */
+/* Reveal renders the grid item, so the cell rules live on it and the card
+   inside just fills it. */
+.introCell,
+.cardCell {
+  display: flex;
+}
+
+.introCell > *,
+.cardCell > * {
+  flex: 1;
+}
+
+.intro {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-dark-bg);
+}
+
+/* Layered washes rather than a flat navy block, per the build brief: a gold
+   bloom behind the heading, a diagonal lift, and a vignette to close it. */
+.washes {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      70% 80% at 15% 25%,
+      color-mix(in srgb, var(--raw-gold) 12%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      130deg,
+      color-mix(in srgb, var(--raw-ivory) 6%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      130% 130% at 60% 40%,
+      transparent 40%,
+      color-mix(in srgb, var(--raw-navy-deep) 50%, transparent)
+    );
+}
+
+.introInner {
+  position: relative;
+}
+
+/* The live kicker, with the gold dot the mockup uses as its status light. */
+.live {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-dark-text);
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
+.heading {
+  margin-top: var(--space-4);
+  color: var(--color-dark-text);
+}
+
+.introBody {
+  margin-top: var(--space-4);
+  color: var(--color-dark-muted);
+  max-width: 44ch;
+}
+
+/* ---- The cards ------------------------------------------------------- */
+.cards {
+  list-style: none;
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+}
+
+.awaiting {
+  align-self: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.action {
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 700px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  /* The bento from the mockup: the intro card takes two of three columns on
+     the first row and the cards flow into the cells around it. The list
+     dissolves into the section grid so the cards become its direct items;
+     without that they would sit in their own grid below and leave the third
+     cell of the first row empty. */
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .introCell {
+    grid-column: span 2;
+  }
+
+  .intro {
+    padding: var(--space-7);
+  }
+
+  .cards {
+    display: contents;
+  }
+}

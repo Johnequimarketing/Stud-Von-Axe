@@ -1,0 +1,243 @@
+/* Shared header pieces. Colour comes from the shell via two custom
+   properties the variants set: --hd-fg and --hd-fg-muted. */
+
+.brand {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 108px;
+}
+
+.brandWhite,
+.brandInk {
+  display: block;
+  width: 100%;
+  /* height:auto is required: without it the img's height attribute wins
+     and the shell grows tall enough for the pill radius to read as a
+     circle. */
+  height: auto;
+  aspect-ratio: 600 / 264;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.brandWhite[data-hidden='true'] {
+  opacity: 0;
+}
+
+.brandInk {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: var(--color-primary);
+  mask-image: var(--logo-src);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: left center;
+  -webkit-mask-image: var(--logo-src);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+}
+
+.brandInk[data-visible='true'] {
+  opacity: 1;
+}
+
+/* ---- Navigation --------------------------------------------------- */
+.nav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  list-style: none;
+  padding: 0;
+}
+
+.navLink {
+  font-size: var(--text-small);
+  color: var(--hd-fg);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.navLink:hover {
+  color: var(--hd-accent);
+  border-bottom-color: var(--hd-accent);
+}
+
+/* ---- Controls ----------------------------------------------------- */
+.language {
+  display: none;
+  align-items: center;
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  color: var(--hd-fg-muted);
+}
+
+.langDivider {
+  padding: 0 0.4em;
+  opacity: 0.5;
+}
+
+.langLink {
+  color: var(--hd-fg-muted);
+}
+
+.langLink:hover {
+  color: var(--hd-accent);
+}
+
+.enquire {
+  display: none;
+  align-items: center;
+  background: var(--color-accent);
+  color: var(--raw-navy);
+  font-size: var(--text-small);
+  font-weight: 500;
+  padding: 0.65em 1.35em;
+  min-height: 42px;
+  border-radius: var(--radius-control);
+  white-space: nowrap;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.enquire:hover {
+  background: var(--raw-gold-soft);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: none;
+  border: 1px solid var(--hd-border);
+  border-radius: var(--radius-control);
+  color: var(--hd-fg);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  padding: 0.7em 1.1em;
+  min-height: 44px;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.menuButton:hover {
+  border-color: var(--hd-accent);
+}
+
+.menuBars {
+  display: grid;
+  gap: var(--space-1);
+  width: 16px;
+}
+
+.menuBars span {
+  display: block;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--dur) var(--ease);
+}
+
+.menuBars span[data-open='true']:first-child {
+  transform: translateY(2.5px) rotate(9deg);
+}
+
+.menuBars span[data-open='true']:last-child {
+  transform: translateY(-2.5px) rotate(-9deg);
+}
+
+/* ---- Mobile menu -------------------------------------------------
+   Closed by default: a bare `display: flex` would beat the `hidden`
+   attribute and leave the panel permanently open.                   */
+.mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: var(--color-bg);
+  padding: calc(var(--header-height) + var(--space-6)) var(--gutter) var(--space-7);
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.mobileMenuOpen {
+  display: flex;
+}
+
+.mobileList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--color-text);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobileFoot {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.mobileFoot .language {
+  display: flex;
+  color: var(--color-text-muted);
+}
+
+.mobileFoot .langLink {
+  color: var(--color-text-muted);
+}
+
+.mobileWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  background: var(--color-accent);
+  color: var(--raw-navy);
+  font-size: var(--text-small);
+  font-weight: 500;
+  border-radius: var(--radius-control);
+  padding: 0.9em 1.4em;
+}
+
+@media (min-width: 768px) {
+  .brand {
+    width: 120px;
+  }
+
+  .language {
+    display: flex;
+  }
+
+  .enquire {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1100px) {
+  .nav {
+    display: block;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}

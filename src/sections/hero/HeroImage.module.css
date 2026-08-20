@@ -1,0 +1,21 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  /* Holds the frame while the photograph decodes. */
+  background: var(--raw-navy-deep);
+}
+
+/* <picture> is inline by default, so an img height of 100% would resolve
+   against an auto-height parent and fall back to the intrinsic ratio. */
+.wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

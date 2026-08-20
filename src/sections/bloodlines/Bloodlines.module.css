@@ -1,0 +1,127 @@
+.top {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  margin-top: var(--space-4);
+  font-style: italic;
+}
+
+
+.intro {
+  margin-top: var(--space-4);
+  color: var(--color-dark-muted);
+  max-width: 46ch;
+}
+
+/* The stud's own line about this family. Kept to one line's worth of
+   measure so it stays a caption rather than becoming a paragraph. */
+.note {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-dark-text);
+  max-width: 42ch;
+}
+
+/* ---- Card ------------------------------------------------------------ */
+/* On a dark section the card cannot be a darker box, so it is drawn as a
+   slightly lifted plane out of the same ground. */
+.card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--raw-ivory) 14%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--raw-ivory) 5%, transparent);
+}
+
+.media {
+  position: relative;
+}
+
+.figure {
+  --figure-ratio: 4 / 3;
+  border-radius: 0;
+}
+
+.chip {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  padding: 0.5em 0.9em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--raw-navy);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.chipValue {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+}
+
+.damName {
+  font-size: clamp(1.625rem, 1.8vw + 1.1rem, 2.125rem);
+  line-height: var(--leading-title);
+  color: var(--color-dark-text);
+}
+
+.pedigree {
+  margin-top: var(--space-2);
+}
+
+.specs {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--raw-ivory) 14%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 900px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: var(--space-6);
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+    align-items: stretch;
+    min-height: 26rem;
+  }
+
+  .figure {
+    --figure-ratio: auto;
+    height: 100%;
+  }
+
+  .panel {
+    padding: var(--space-6);
+    justify-content: center;
+  }
+}

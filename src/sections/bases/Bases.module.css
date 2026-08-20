@@ -1,0 +1,127 @@
+.bento {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stageCell,
+.cardCell {
+  display: flex;
+}
+
+.stageCell > *,
+.cardCell > * {
+  flex: 1;
+}
+
+/* ---- The photographic moment ------------------------------------------ */
+.stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.figure {
+  --figure-ratio: 4 / 5;
+  --figure-radius: 0;
+  height: 100%;
+}
+
+/* The navy card floats over the photograph's lower left, the same overlap
+   language as the stud section's journey card. Solid, not glass: it holds
+   the section heading, which must not depend on what the photo does. */
+.card {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  right: var(--space-4);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-dark-bg);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+}
+
+.heading {
+  margin-top: var(--space-3);
+  color: var(--color-dark-text);
+}
+
+.body {
+  margin-top: var(--space-3);
+  color: var(--color-dark-muted);
+}
+
+/* ---- The base cards ---------------------------------------------------- */
+.stack {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.base {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+}
+
+.base[data-tone='dark'] {
+  background: var(--color-dark-bg);
+}
+
+.base[data-tone='light'] {
+  background: var(--color-surface);
+}
+
+.region {
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+}
+
+.base[data-tone='dark'] .region {
+  color: var(--color-accent);
+}
+
+.place {
+  margin-top: var(--space-3);
+  font-size: clamp(1.5rem, 1.6vw + 1rem, 2rem);
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.base[data-tone='dark'] .place {
+  color: var(--color-dark-text);
+}
+
+.role {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  max-width: 34ch;
+}
+
+.base[data-tone='dark'] .role {
+  color: var(--color-dark-muted);
+}
+
+@media (min-width: 900px) {
+  .bento {
+    grid-template-columns: minmax(0, 58%) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  /* Wide enough for the section headline at its full size. It was shrunk
+     to 40px here to fit a narrower card, which broke the one rule every
+     other section keeps: one heading size across the page. The card grew
+     instead, and the headline wraps to two lines. */
+  .card {
+    right: auto;
+    max-width: 31rem;
+    left: var(--space-5);
+    bottom: var(--space-5);
+  }
+}

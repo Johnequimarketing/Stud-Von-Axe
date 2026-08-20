@@ -1,0 +1,73 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-control);
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.arrow {
+  transition: transform var(--dur) var(--ease);
+}
+
+.cta:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Primary action. Gold ground with navy text keeps contrast well above
+   AA: gold is never used as text at this size. */
+.solid {
+  background: var(--color-accent);
+  color: var(--raw-navy);
+  padding: 0.9em 1.5em;
+  min-height: 44px;
+}
+
+.solid:hover {
+  background: var(--raw-gold-soft);
+}
+
+.outline {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  padding: 0.9em 1.5em;
+  min-height: 44px;
+}
+
+.outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* The solid and outline variants set a 44px floor; this one did not, so
+   every "See all" link on the page measured 40 to 43px on a phone, under
+   the minimum the project claims. They are the way out of each section, so
+   they are among the likeliest taps on the site. */
+.text {
+  color: var(--color-text);
+  padding-block: var(--space-2);
+  min-height: 44px;
+}
+
+.text .label {
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+.text:hover {
+  color: var(--color-accent-ink);
+}
+
+:global([data-theme='inverse']) .text,
+:global([data-theme='inverse']) .outline {
+  color: var(--color-dark-text);
+}
+
+:global([data-theme='inverse']) .outline {
+  border-color: var(--color-dark-border);
+}

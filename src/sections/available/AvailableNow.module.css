@@ -1,0 +1,17 @@
+.head {
+  margin-bottom: var(--space-7);
+  max-width: var(--container-prose);
+}
+
+.heading {
+  margin-top: var(--space-4);
+}
+
+.intro {
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+}
+
+.seeAll {
+  margin-top: var(--space-6);
+}

@@ -1,0 +1,100 @@
+/* A contained navy plate, not a full width band. The footer is navy too, so
+   a full width section would run into it: the inset keeps an ivory gutter
+   around the card and lets it read as a plate. */
+.plate {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-7) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-dark-bg);
+}
+
+/* Layered washes rather than a flat fill, per the build brief: a gold bloom
+   behind the heading, a cool lift across the diagonal, and a vignette to
+   close the corners. Flat navy at this size reads as a dead block. */
+.washes {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      65% 75% at 50% 12%,
+      color-mix(in srgb, var(--raw-gold) 14%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--raw-ivory) 7%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 120% at 50% 45%,
+      transparent 45%,
+      color-mix(in srgb, var(--raw-navy-deep) 60%, transparent)
+    );
+}
+
+/* Centred: this is the last thing before the footer, and a closing ask
+   reads better on the centre line than pushed to one side. */
+.band {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+}
+
+.heading {
+  margin-block: var(--space-3) var(--space-4);
+  max-width: 24ch;
+  color: var(--color-dark-text);
+}
+
+.body {
+  color: var(--color-dark-muted);
+  max-width: 52ch;
+}
+
+.action {
+  margin-top: var(--space-6);
+}
+
+/* One quiet alternative under the button. The phone numbers and email that
+   used to sit here were removed: the footer directly beneath renders them
+   from the same copy keys, so repeating them made this read as a second
+   footer stacked on the real one. */
+.alt {
+  margin-top: var(--space-5);
+  font-size: var(--text-small);
+  color: var(--color-dark-muted);
+}
+
+/* 44px minimum touch target: the underline is `text-decoration` rather
+   than a bottom border, because a border sits at the edge of the padding
+   box and the padding needed to reach 44px pulls it off the text. */
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  color: var(--color-dark-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color var(--dur) var(--ease);
+}
+
+.whatsapp:hover {
+  color: var(--raw-gold-soft);
+}
+
+@media (min-width: 700px) {
+  .plate {
+    padding: var(--space-8) var(--space-7);
+  }
+}

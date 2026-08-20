@@ -1,0 +1,139 @@
+.item {
+  /* Fixed width so the track's snap points are predictable and the arrows
+     can page by exactly one card. */
+  flex: 0 0 80vw;
+  max-width: 380px;
+  scroll-snap-align: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--raw-white);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--raw-navy) 6%, transparent),
+    0 12px 28px -18px color-mix(in srgb, var(--raw-navy) 22%, transparent);
+  transition: transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+/* ---- Media ------------------------------------------------------------ */
+.media,
+.stand {
+  aspect-ratio: 16 / 10;
+}
+
+.media {
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease);
+}
+
+/* The stand-in: the pedigree mark on navy, never a lookalike photo. */
+.stand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      80% 90% at 22% 25%,
+      color-mix(in srgb, var(--raw-gold) 12%, transparent),
+      transparent 70%
+    ),
+    var(--color-dark-bg);
+}
+
+.standMark {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-accent);
+}
+
+/* ---- Body -------------------------------------------------------------- */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding: var(--space-5);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.excerpt {
+  margin-top: var(--space-3);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+}
+
+.arrow {
+  transition: transform var(--dur) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--raw-navy) 8%, transparent),
+      0 18px 36px -18px color-mix(in srgb, var(--raw-navy) 30%, transparent);
+  }
+
+  .card:hover img {
+    transform: scale(1.04);
+  }
+
+  .card:hover .arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card img,
+  .arrow {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover img,
+  .card:hover .arrow {
+    transform: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    flex-basis: 360px;
+  }
+}

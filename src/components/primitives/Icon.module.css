@@ -1,0 +1,6 @@
+.icon {
+  display: block;
+  flex: 0 0 auto;
+  /* Optical alignment: a 24 unit grid sits slightly high next to small caps. */
+  margin-top: -1px;
+}

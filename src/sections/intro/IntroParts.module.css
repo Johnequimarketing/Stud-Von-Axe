@@ -1,0 +1,50 @@
+.figure {
+  margin: 0;
+}
+
+/* The proportion is driven by a custom property so each layout can set
+   it from its own stylesheet. A descendant selector would not work: CSS
+   Modules would hash `.media` to a class this element does not carry. */
+.media {
+  overflow: hidden;
+  border-radius: var(--figure-radius, var(--radius-md));
+  background: var(--color-surface);
+  aspect-ratio: var(--figure-ratio, 4 / 3);
+}
+
+.media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A slow, small lift so the section feels alive without moving much. */
+  transition: transform 900ms var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .figure:hover .img {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img {
+    transition: none;
+  }
+
+  .figure:hover .img {
+    transform: none;
+  }
+}
+
+.caption {
+  margin-top: var(--space-3);
+  font-size: var(--text-meta);
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
