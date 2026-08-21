@@ -1,1 +1,1 @@
-export { HeaderTenuta as Header } from './HeaderTenuta'
+export { HeaderCielo as Header } from './HeaderCielo'

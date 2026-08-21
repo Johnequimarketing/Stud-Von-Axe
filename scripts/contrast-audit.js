@@ -61,9 +61,18 @@ function photoUnder(img, rect){
   cv.width=14;cv.height=14;
   try{ctx.drawImage(img,sx,sy,sw,sh,0,0,14,14)}catch(e){return null}
   let d;try{d=ctx.getImageData(0,0,14,14).data}catch(e){return null}
-  let best=null,bl=-1;
-  for(let i=0;i<d.length;i+=4){const p=[d[i],d[i+1],d[i+2],1],L=lum(p);if(L>bl){bl=L;best=p}}
-  return best;
+  /* BOTH extremes, not just the brightest. Brightest-only was right when
+     every photo carried light type (its worst case). Direction D sets dark
+     ink over photography, where the worst case is the DARKEST pixel, and
+     brightest-only silently flattered it. The caller measures against
+     whichever extreme gives the worse ratio for its foreground. */
+  let bright=null,bl=-1,dark=null,dl=2;
+  for(let i=0;i<d.length;i+=4){
+    const p=[d[i],d[i+1],d[i+2],1],L=lum(p);
+    if(L>bl){bl=L;bright=p}
+    if(L<dl){dl=L;dark=p}
+  }
+  return bright ? {bright, dark} : null;
 }
 
 /* Split a computed background-image into its individual gradient functions.
@@ -228,12 +237,15 @@ function bgOf(el, section){
     if(img && n.contains(img)) break;
     n=n.parentElement;
   }
-  let base;
-  if(opaque) base=opaque;
+  /* Photo grounds carry TWO candidate bases (brightest and darkest pixel)
+     so the caller can take whichever is worse for its foreground. Solid
+     and default grounds carry one. */
+  let bases;
+  if(opaque) bases=[opaque];
   else {
     const photo = img ? photoUnder(img, rect) : null;
     if(photo){
-      base=photo;
+      bases=[photo.bright, photo.dark];
       /* Every gradient of every overlay covering this point, composited in
          CSS paint order: within one background-image the first gradient
          listed paints on top, so they are applied last to first. */
@@ -256,15 +268,18 @@ function bgOf(el, section){
                flattering 21:1 for white type. */
             const cols=grads[i].match(/(?:rgba?|color)\([^)]*\)/g) || [];
             const col=parse(cols.find(c=>parse(c)[3]>0) || cols[0] || '#0b1626');
-            base=over([col[0],col[1],col[2],a], base);
+            bases=bases.map(b=>over([col[0],col[1],col[2],a], b));
           }
         }
       }
     } else {
-      base = el.closest('[data-theme="inverse"]') ? [16,26,48,1] : [251,249,244,1];
+      bases = [el.closest('[data-theme="inverse"]') ? [16,26,48,1] : [251,249,244,1]];
     }
   }
-  return layers.reverse().reduce((acc,l)=>over(l,acc), base);
+  /* Reverse ONCE outside the map: reverse() mutates, so calling it per
+     candidate would flip the layer order back and forth. */
+  const ordered=layers.slice().reverse();
+  return bases.map(base=>ordered.reduce((acc,l)=>over(l,acc), base));
 }
 
 window.__audit = function(selector){
@@ -286,8 +301,15 @@ window.__audit = function(selector){
     if(!txt) continue;
     const size=parseFloat(cs.fontSize), w=+cs.fontWeight||400;
     const need=(size>=24||(size>=18.66&&w>=700))?3:4.5;
-    const bg=bgOf(el, section);
-    const r=ratio(parse(cs.color), bg);
+    /* Worst case across the candidate grounds: dark ink fails on the
+       darkest photo pixel, light ink on the brightest. */
+    const fg=parse(cs.color);
+    const bgs=bgOf(el, section);
+    let bg=bgs[0], r=ratio(fg, bgs[0]);
+    for(const cand of bgs.slice(1)){
+      const cr=ratio(fg, cand);
+      if(cr<r){ r=cr; bg=cand }
+    }
     out.push({t:txt.slice(0,22), size:+size.toFixed(1), r:+r.toFixed(2), need, pass:r>=need, bg:bg.slice(0,3).map(Math.round)});
   }
   return out;

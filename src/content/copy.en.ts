@@ -365,6 +365,47 @@ export const copy = {
     },
   },
 
+  /* ---- Direction D: "Cielo" ------------------------------------------
+     The airy pastel fold: a stacked display statement over a soft sky
+     ground, the photograph melting up into it, and a frosted glass
+     feature bar. Every line is approved copy or an audited fact restated;
+     nothing new is claimed. */
+  cielo: {
+    arrival: {
+      location: 'Desenzano del Garda · Italia',
+      /* The client's own tagline, stacked as the display statement. */
+      headlineTop: 'The blood',
+      headlineBottom: 'never lies.',
+      subTop: 'Italian showjumping bloodlines,',
+      subBottom: 'proven in sport',
+      cta: 'See what is available',
+      photoAlt: 'A dark bay foal standing in a summer field at the Belgian base',
+      /* The glass bar: four audited facts, one line each. */
+      features: [
+        {
+          icon: 'node',
+          title: 'Proven damlines',
+          text: 'Pairings on pedigree and produce',
+        },
+        {
+          icon: 'arch',
+          title: 'Two bases',
+          text: 'Italy and Belgium, one programme',
+        },
+        {
+          icon: 'seal',
+          title: 'Sold direct',
+          text: 'Never through auction',
+        },
+        {
+          icon: 'export',
+          title: 'EU and export',
+          text: 'Semen through Avantea, Cremona',
+        },
+      ],
+    },
+  },
+
   footer: {
     navHeading: 'Navigate',
     contactHeading: 'Contact',

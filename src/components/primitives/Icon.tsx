@@ -8,7 +8,7 @@ import styles from './Icon.module.css'
  * weight and one 24 unit grid, so they read as one family and can never
  * drift the way a mixed icon set does.
  */
-export type IconName = 'frozen' | 'laboratory' | 'export' | 'node'
+export type IconName = 'frozen' | 'laboratory' | 'export' | 'node' | 'arch' | 'seal'
 
 const PATHS: Record<IconName, JSX.Element> = {
   /* Frozen: three crossing strokes. The first draft added tick marks at
@@ -43,6 +43,21 @@ const PATHS: Record<IconName, JSX.Element> = {
     <>
       <circle cx="12" cy="12" r="2.6" />
       <path d="M12 3v6.4M12 14.6V21" />
+    </>
+  ),
+  /* Arch: the stable door, standing for the yards themselves. */
+  arch: (
+    <>
+      <path d="M5 20.5v-8a7 7 0 0114 0v8" />
+      <path d="M3.5 20.5h17" />
+    </>
+  ),
+  /* Seal: a plain wax-seal rosette, for the direct sale promise. Drawn as
+     a circle over ribbon tails; anything more literal muddied at 20px. */
+  seal: (
+    <>
+      <circle cx="12" cy="9.5" r="6" />
+      <path d="M9 14.7L7.5 20.5l4.5-2.4 4.5 2.4-1.5-5.8" />
     </>
   ),
 }

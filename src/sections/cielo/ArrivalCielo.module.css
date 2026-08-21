@@ -1,0 +1,293 @@
+/* Direction D "Cielo": the airy pastel fold.
+   The palette lives here as local custom properties while the direction is
+   only a fold; if D is chosen these promote to tokens.css and the rest of
+   the page inherits them. */
+
+/* The palette holds the airy pastel atmosphere, but the INKS are the
+   brand's own: the logo navy carries the headline and the logo gold
+   carries the CTA. Nothing green-cast survives. */
+.hero {
+  --cielo-sky: #dfe8ef; /* pale powder blue, the top of the frame */
+  --cielo-air: #eef0e9; /* where sky meets the field's atmosphere */
+  --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
+  --cielo-ink: #16233f; /* THE BRAND NAVY, straight from the logo */
+  --cielo-ink-soft: color-mix(in srgb, #16233f 80%, #dfe8ef);
+  --cielo-gold: #b28a4d; /* THE BRAND GOLD, the CTA fill */
+  --cielo-gold-soft: #c9a874;
+  /* Gold as display INK: the raw gold reads 2.3:1 on the pale sky, so the
+     accent line takes the gold pulled toward navy, the same move as the
+     other directions' accent-ink. An even 50 is the measured floor: 66%
+     gold still read 2.37:1 against the brightest sky behind the glyphs. */
+  --cielo-gold-ink: color-mix(in srgb, #b28a4d 50%, #16233f);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  /* The sky is the section's own ground: type never depends on the
+     photograph. */
+  background: linear-gradient(
+    180deg,
+    var(--cielo-sky) 0%,
+    var(--cielo-air) 46%,
+    var(--cielo-cloud) 100%
+  );
+  color: var(--cielo-ink);
+}
+
+/* ---- The type block ---------------------------------------------------- */
+.head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: calc(var(--header-height) + var(--space-6)) var(--gutter) 0;
+}
+
+.head > * + * {
+  margin-top: var(--space-4);
+}
+
+.location {
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--cielo-ink-soft);
+}
+
+/* The display statement: Fraunces at its heaviest, stacked and tight, the
+   chunky-serif read of the reference. Ink on the sky ground, which clears
+   AA where the reference's white-on-sky measures near 2:1. */
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9.5vw, 8.25rem);
+  font-weight: 640;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cielo-ink);
+}
+
+.displayLine {
+  display: block;
+}
+
+/* The client's own tagline carries the brand's two colours: navy line,
+   gold line. */
+.displayGold {
+  color: var(--cielo-gold-ink);
+}
+
+.sub {
+  font-size: var(--text-small);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--cielo-ink-soft);
+}
+
+.subStrong {
+  font-weight: 600;
+  color: var(--cielo-ink);
+}
+
+/* The gold pill: the brand's own accent as the fold's one warm note. */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  margin-top: var(--space-5);
+  padding: 1em 2.4em;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-gold);
+  color: var(--cielo-ink);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--cielo-ink) 55%, transparent);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.cta:hover {
+  background: var(--cielo-gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -18px color-mix(in srgb, var(--cielo-ink) 60%, transparent);
+}
+
+/* ---- The photograph ---------------------------------------------------- */
+/* The reference's subject is small in its frame; ours fills 70% of the
+   source, so a full-bleed cover puts a giant ghosted foal behind the type
+   and everything reads as fog. Instead the photograph renders at its own
+   scale: a bottom-centred figure whose edges dissolve into the section's
+   atmosphere through one elliptical mask. The sky ground around it is the
+   section's own gradient, so the display type never touches photography. */
+/* Desktop: an absolute backdrop layer, bottom-centred. Phones: the figure
+   flows BELOW the type instead, because a stacked glass bar would bury an
+   absolutely positioned foal entirely. */
+.stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.stage picture {
+  display: block;
+  width: min(600px, 84vw, 76svh);
+}
+
+@media (max-width: 699px) {
+  .stage {
+    position: static;
+    order: 2;
+    margin-top: calc(var(--space-6) * -1);
+  }
+
+  .stage picture {
+    width: min(440px, 104vw);
+  }
+
+  .veil {
+    display: none;
+  }
+}
+
+.stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Two intersecting fades melt the sides and the top into the sky while
+     the bottom stays solid under the glass bar. A mask, not painted
+     overlays, because the ground behind is a gradient no painted patch
+     would match exactly. Browsers without mask-composite keep the radial
+     fallback declared first. */
+  -webkit-mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
+  mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(180deg, transparent 3%, #000 44%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(180deg, transparent 3%, #000 44%);
+  mask-composite: intersect;
+}
+
+/* A quiet safety veil across the type zone: the masked figure's top can
+   still reach the sub line on short viewports, and small text needs the
+   full 4.5:1. */
+.veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--cielo-sky) 85%, transparent) 0%,
+    color-mix(in srgb, var(--cielo-air) 55%, transparent) 34%,
+    transparent 52%
+  );
+}
+
+/* ---- The frosted glass bar ---------------------------------------------
+   The effect the direction is built around: real backdrop blur over the
+   grass, a translucent ivory fill strong enough that ink measures on it,
+   and a bright inner ring that sells the frozen edge. */
+.barWrap {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: var(--space-7) var(--gutter) var(--space-5);
+}
+
+/* Phones: the bar follows the figure, riding up over the grass at its
+   bottom edge so the glass still has photography to frost. */
+@media (max-width: 699px) {
+  .barWrap {
+    order: 3;
+    margin-top: calc(var(--space-8) * -1.4);
+    padding-top: 0;
+  }
+
+  .head {
+    order: 1;
+  }
+}
+
+.bar {
+  list-style: none;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5);
+  max-width: var(--container-max);
+  display: grid;
+  gap: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--cielo-cloud) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, #ffffff 55%, transparent),
+    0 24px 48px -28px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* The icon ring: a smaller glass disc inside the glass, the reference's
+   own gesture. */
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, #ffffff 46%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 65%, transparent);
+  color: var(--cielo-ink);
+}
+
+.featureText {
+  display: grid;
+  gap: 2px;
+}
+
+.featureTitle {
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cielo-ink);
+}
+
+.featureLine {
+  font-size: var(--text-meta);
+  color: var(--cielo-ink-soft);
+}
+
+@media (min-width: 700px) {
+  .bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .bar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: var(--space-5) var(--space-6);
+  }
+}
+
+
+
+/* Without backdrop support the fill goes solid so ink stays measured. */
+@supports not (backdrop-filter: blur(1px)) {
+  .bar {
+    background: color-mix(in srgb, var(--cielo-cloud) 94%, transparent);
+  }
+}
