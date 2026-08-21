@@ -385,6 +385,12 @@ export const copy = {
       originRole: 'Italy',
       raisedRole: 'Belgium',
       listLabel: 'Placed horses and their destinations',
+      /* Concept D's plate. The body is the section's own fact stated
+         plainly: both yards, and horses now standing abroad. */
+      plateBody:
+        'Every pairing begins in Italy and every foal is raised in Belgium. The produce goes on from there, and horses bred here now stand with riders and breeders abroad.',
+      plateCta: 'Ask about a horse',
+      photoAlt: 'A horse and rider competing at an outdoor showjumping venue',
     },
 
     /* The horses carousel reuses the approved horses copy (label,

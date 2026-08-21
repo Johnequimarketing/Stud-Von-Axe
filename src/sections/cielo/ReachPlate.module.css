@@ -1,0 +1,159 @@
+/* Concept D: the contained navy plate. */
+
+.section {
+  padding-block: var(--space-section);
+}
+
+/* Radius is larger than the page's 24px plate value on purpose: this
+   plate is the widest object on the page, and 24px on a 1140 box reads
+   almost square. */
+.plate {
+  border-radius: 36px;
+  background: var(--cielo-ink);
+  padding: clamp(var(--space-6), 4vw, var(--space-8));
+  display: grid;
+  gap: var(--space-7);
+  color: var(--cielo-cloud);
+  box-shadow: 0 40px 80px -50px color-mix(in srgb, var(--cielo-ink) 70%, transparent);
+}
+
+/* ---- Copy -------------------------------------------------------------- */
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.copy > * + * {
+  margin-top: var(--space-5);
+}
+
+/* The label takes the soft gold, not the raw gold: raw gold on navy
+   measures 4.55:1, which passes small text by a hair and leaves nothing
+   for the Pantone swap to move into. */
+.plaque {
+  color: var(--cielo-gold-soft);
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw + 1rem, 3.5rem);
+  font-weight: 320;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--cielo-gold-soft);
+}
+
+.body {
+  color: color-mix(in srgb, var(--cielo-cloud) 78%, var(--cielo-ink));
+  max-width: 46ch;
+}
+
+/* ---- The counted reach ------------------------------------------------- */
+.reach {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.count {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.countValue {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 320;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--cielo-gold-soft);
+  vertical-align: -0.08em;
+  margin-right: 0.25em;
+}
+
+.countries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+.country {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cielo-gold-soft);
+}
+
+/* The ghost pill, the same control the fold's hero pairs with its solid
+   one. */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-top: var(--space-6);
+  padding: 0.85em 1.9em;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--cielo-cloud) 45%, transparent);
+  color: var(--cielo-cloud);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.cta:hover {
+  background: var(--cielo-cloud);
+  border-color: var(--cielo-cloud);
+  color: var(--cielo-ink);
+}
+
+/* ---- The photograph ---------------------------------------------------- */
+.figure {
+  overflow: hidden;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--cielo-cloud) 12%, transparent);
+  aspect-ratio: 5 / 4;
+}
+
+.figure picture,
+.figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.figure img {
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+@media (min-width: 900px) {
+  .plate {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  /* The photograph fills the plate's height rather than keeping a ratio,
+     so the two columns end level however long the copy runs. */
+  .figure {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}

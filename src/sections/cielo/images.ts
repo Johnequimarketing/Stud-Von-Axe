@@ -16,6 +16,12 @@ import type { Picture } from '@/sections/hero/images'
 import deckFoal from '@/assets/img/intro-foal-star.jpg?w=440;640;880&format=avif;webp;jpeg&as=picture'
 import deckYard from '@/assets/img/bases-yard.jpg?w=440;640;799&format=avif;webp;jpeg&as=picture'
 
+/* The reach plate's photograph: a horse and rider competing, which is
+   what "to the world" actually looks like. Used uncaptioned and never
+   attached to a named horse, so the provenance rule is satisfied even
+   though the source filename names one. */
+import reachSport from '@/assets/img/results-unguessable.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
+
 export const cieloImages = {
   /** Dark bay foal standing in profile in a bright summer field. */
   field: fieldFoal as Picture,
@@ -23,4 +29,6 @@ export const cieloImages = {
   banner: banner as Picture,
   /** The stud section's instax deck, in stack order. */
   deck: [deckFoal, deckYard] as Picture[],
+  /** The reach plate: horse and rider out competing. */
+  reach: reachSport as Picture,
 }
