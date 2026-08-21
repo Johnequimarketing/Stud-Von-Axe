@@ -371,6 +371,17 @@ export const copy = {
      feature bar. Every line is approved copy or an audited fact restated;
      nothing new is claimed. */
   cielo: {
+    /* The horses carousel reuses the approved horses copy (label,
+       heading, intro, view, seeAll); only the carousel's own controls are
+       new here. */
+    horses: {
+      prev: 'Previous horses',
+      next: 'Next horses',
+      /* The run wraps, so the controls never dead end. Announced on the
+         region so a keyboard user knows before they reach the last card. */
+      regionLabel: 'Horses, a looping run',
+    },
+
     /* The stud section reuses the approved estate copy wholesale (label,
        heading, body, yards): only what the instax deck adds is new. */
     estate: {

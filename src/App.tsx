@@ -2,9 +2,9 @@ import { Header } from './components/header'
 import { Footer } from './components/Footer'
 import { ArrivalCielo } from './sections/cielo/ArrivalCielo'
 import { EstateCielo } from './sections/cielo/EstateCielo'
+import { HorsesCielo } from './sections/cielo/HorsesCielo'
 import {
   Statement,
-  Horses,
   Terra,
   Programme,
   ProofStrip,
@@ -24,7 +24,7 @@ export function App() {
         <ArrivalCielo />
         <Statement />
         <EstateCielo />
-        <Horses />
+        <HorsesCielo />
         <Terra />
         <Programme />
         <ProofStrip />

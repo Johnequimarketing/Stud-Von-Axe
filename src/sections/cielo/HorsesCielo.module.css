@@ -1,0 +1,265 @@
+/* The horses: a looping run of cards. */
+
+.section {
+  padding-block: var(--space-section);
+  color: var(--cielo-ink);
+}
+
+/* ---- Head -------------------------------------------------------------- */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw + 1rem, 3.5rem);
+  font-weight: 320;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 20ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--cielo-gold-ink);
+}
+
+.intro {
+  margin-top: var(--space-4);
+  color: var(--cielo-ink-soft);
+  max-width: 42ch;
+}
+
+/* ---- Controls ---------------------------------------------------------- */
+.controls {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* The arrows wear the fold's frosted glass, so the page's one interactive
+   surface language runs through this section too. */
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-glass);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 14%, transparent);
+  color: var(--cielo-ink);
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.arrow:hover {
+  background: var(--cielo-paper);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 28%, transparent);
+}
+
+/* ---- The run ----------------------------------------------------------
+   Native scroll snap. The track is padded by the gutter rather than
+   contained, so the first card lines up with the copy above while the run
+   itself bleeds off the right edge. */
+.track {
+  /* One value drives the run's inset: the content padding that puts the
+     first card under the heading, AND the scroll padding that the snap
+     origin honours. Padding alone is not enough: with scroll-snap-type
+     the browser snaps the first card to the scrollport's own edge and
+     scrolls the padding straight out of view, which put card one hard
+     against the viewport while the heading sat 150px in. */
+  --run-inset: var(--gutter);
+
+  list-style: none;
+  margin: 0;
+  padding-inline: var(--run-inset);
+  scroll-padding-inline: var(--run-inset);
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Keeps the horizontal throw inside the track: without it the page
+     itself reports overflow. */
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 min(320px, 74vw);
+  scroll-snap-align: start;
+}
+
+/* The last card snaps by its END edge. With every card snapping by its
+   start, the run's true end is not a snap point, so mandatory snapping
+   parked the scroller short of it and the arrows could never tell they
+   had reached the end: the wrap round never fired. */
+.item:last-child {
+  scroll-snap-align: end;
+}
+
+@media (min-width: 1240px) {
+  /* Past the container width the run lines up with the container instead
+     of the viewport, so it never drifts away from the heading. */
+  .track {
+    --run-inset: max(var(--gutter), (100vw - var(--container-max)) / 2);
+  }
+}
+
+/* ---- The card ---------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.7rem;
+  border-radius: 18px;
+  background: var(--cielo-paper);
+  box-shadow: 0 18px 40px -26px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 52px -24px color-mix(in srgb, var(--cielo-ink) 55%, transparent);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--cielo-ink);
+  outline-offset: 3px;
+}
+
+.window {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--cielo-sky);
+  aspect-ratio: 4 / 5;
+}
+
+.window picture,
+.window img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.window img {
+  object-fit: cover;
+  /* Horses carry their heads high in these frames, so the crop favours
+     the top rather than the centre. */
+  object-position: 50% 32%;
+  transition: transform var(--dur) var(--ease);
+}
+
+.card:hover .window img {
+  transform: scale(1.04);
+}
+
+/* The status chip rides the photograph's corner on the fold's glass, so
+   it never competes with the name below. */
+.chip {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: 0.4em 0.9em;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--cielo-cloud) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  backdrop-filter: blur(10px) saturate(1.4);
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cielo-ink);
+  white-space: nowrap;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-4) 0.3rem var(--space-2);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  margin-top: var(--space-2);
+  font-size: var(--text-meta);
+  color: var(--cielo-ink-soft);
+}
+
+.view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cielo-gold-ink);
+}
+
+.viewArrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.card:hover .viewArrow,
+.seeAll:hover .viewArrow {
+  transform: translateX(4px);
+}
+
+/* ---- Out of the section ------------------------------------------------ */
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  margin-top: var(--space-6);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--cielo-ink);
+}
+
+.seeAllLabel {
+  border-bottom: 1px solid color-mix(in srgb, var(--cielo-ink) 40%, transparent);
+  padding-bottom: 2px;
+}
+
+@media (max-width: 699px) {
+  /* The arrows drop on a touch screen: the run is dragged there, and two
+     52px buttons under the heading only ate space. */
+  .controls {
+    display: none;
+  }
+
+  .item {
+    flex-basis: 74vw;
+  }
+}
