@@ -5,12 +5,8 @@ import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
 import { ReachPlate } from './sections/cielo/ReachPlate'
 import { ProgrammeCielo } from './sections/cielo/ProgrammeCielo'
-import {
-  Statement,
-  ProofStrip,
-  Gallery,
-  Invitation,
-} from './sections/tenuta'
+import { GalleryMosaic } from './sections/cielo/GalleryMosaic'
+import { Statement, ProofStrip, Invitation } from './sections/tenuta'
 
 /* Direction D: Cielo, built step by step. Step 1 is the fold: the airy
    pastel arrival and the glass header. The sections below the fold are
@@ -28,7 +24,7 @@ export function App() {
         <ReachPlate />
         <ProgrammeCielo />
         <ProofStrip />
-        <Gallery />
+        <GalleryMosaic />
         <Invitation />
       </main>
       <Footer />

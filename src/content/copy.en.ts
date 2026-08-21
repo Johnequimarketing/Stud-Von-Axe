@@ -410,6 +410,19 @@ export const copy = {
       },
     },
 
+    /* The gallery. Captions name a horse ONLY where the photograph is
+       verified as that horse under the provenance rule; everything else
+       gets a subject description or no caption at all. The Instagram
+       handle and URL are the client's own, already public in the footer. */
+    gallery: {
+      label: 'Gallery',
+      heading: 'From the yards.',
+      headingAccent: 'yards',
+      follow: 'Follow on Instagram',
+      handle: '@studvonaxe',
+      instagramUrl: 'https://www.instagram.com/studvonaxe/',
+    },
+
     /* The reach section. The statement and caption are the approved
        journey lines; every number beside them is counted from the
        placements at render time. */

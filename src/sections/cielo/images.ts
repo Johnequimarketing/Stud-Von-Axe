@@ -29,6 +29,12 @@ import progFoal from '@/assets/img/offer-foal.jpg?w=560;760;1040&format=avif;web
 import progEmbryo from '@/assets/img/offer-embryo.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
 import progSemen from '@/assets/img/offer-semen.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
 
+/* The gallery pool. Named-horse frames reuse the verified catalogue
+   photography (horsePictures) so nothing here re-imports it; these two
+   are the frames only the gallery uses. */
+import galleryNeck from '@/assets/img/semen-detail.jpg?w=560;900;1280&format=avif;webp;jpeg&as=picture'
+import galleryContouch from '@/assets/img/results-contouch.jpg?w=480;760;1170&format=avif;webp;jpeg&as=picture'
+
 export const cieloImages = {
   /** Dark bay foal standing in profile in a bright summer field. */
   field: fieldFoal as Picture,
@@ -38,6 +44,9 @@ export const cieloImages = {
   deck: [deckFoal, deckYard] as Picture[],
   /** The reach plate: horse and rider out competing. */
   reach: reachSport as Picture,
+  /** Gallery-only frames. */
+  galleryNeck: galleryNeck as Picture,
+  galleryContouch: galleryContouch as Picture,
   /** The programme panels, keyed by the copy's own line ids. */
   programme: {
     foals: progFoal as Picture,
