@@ -29,9 +29,6 @@ export function ArrivalCielo() {
     <section id="top" className={styles.hero} aria-label={copy.brand.name}>
       {/* The type block, on the sky ground. */}
       <div className={styles.head}>
-        <Reveal>
-          <p className={styles.location}>{t.location}</p>
-        </Reveal>
         <Reveal delay={120}>
           <h1 className={styles.display}>
             <span className={styles.displayLine}>{t.headlineTop}</span>

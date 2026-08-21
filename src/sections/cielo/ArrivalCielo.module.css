@@ -54,20 +54,12 @@
   margin-top: var(--space-4);
 }
 
-.location {
-  font-size: var(--text-label);
-  font-weight: 500;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--cielo-ink-soft);
-}
-
 /* The display statement: Fraunces at its heaviest, stacked and tight, the
    chunky-serif read of the reference. Ink on the sky ground, which clears
    AA where the reference's white-on-sky measures near 2:1. */
 .display {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 9.5vw, 8.25rem);
+  font-size: clamp(2.5rem, 7.2vw, 6.25rem);
   font-weight: 640;
   line-height: 0.98;
   letter-spacing: 0.01em;
@@ -86,7 +78,7 @@
 }
 
 .sub {
-  font-size: var(--text-small);
+  font-size: var(--text-meta);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.7;
