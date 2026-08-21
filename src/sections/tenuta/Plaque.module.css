@@ -1,0 +1,40 @@
+.plaque {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* The short rule above the label: 2.5em of hairline, always the ink of the
+   label itself so the device survives with the accent removed. */
+.plaque::before {
+  content: '';
+  width: 2.5em;
+  height: 1px;
+  background: currentColor;
+}
+
+.ink {
+  color: var(--color-text-muted);
+}
+
+.bone {
+  color: var(--color-dark-text);
+}
+
+.row {
+  display: inline;
+}
+
+.index {
+  color: var(--color-accent-ink);
+}
+
+.bone .index {
+  color: var(--color-dark-text);
+}

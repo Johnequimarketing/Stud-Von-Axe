@@ -1,0 +1,60 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 78svh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: var(--space-8);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.figure {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  --figure-ratio: auto;
+  --figure-position: 60% 55%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* One bottom-weighted grade, warm near-black, deep enough that bone type
+   clears AA against the brightest grass pixel behind it. */
+.gradeBase {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    2deg,
+    color-mix(in srgb, #171310 90%, transparent) 0%,
+    color-mix(in srgb, #171310 78%, transparent) 30%,
+    color-mix(in srgb, #171310 30%, transparent) 62%,
+    transparent 88%
+  );
+}
+
+.inner {
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.inner > * + * {
+  margin-top: var(--space-5);
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-size: var(--text-statement);
+  font-weight: 320;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--color-dark-text);
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-tint);
+}

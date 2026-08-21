@@ -50,9 +50,9 @@
   color: var(--color-dark-text);
 }
 
-/* The ink variant of the gold exists to clear contrast on ivory. On navy
-   it is the wrong end of the mix and the cross goes nearly invisible, so
-   the raw gold takes over. */
+/* The ink variant of the accent exists to clear contrast on the light
+   ground. On a dark plate it is the wrong end of the mix and the cross
+   goes nearly invisible, so the lifted tint takes over. */
 :global([data-theme='inverse']) .separator {
-  color: var(--color-accent);
+  color: var(--color-accent-tint, var(--color-accent));
 }

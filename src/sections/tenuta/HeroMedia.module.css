@@ -1,0 +1,38 @@
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.video,
+.still,
+.still img {
+  width: 100%;
+  height: 100%;
+}
+
+.video,
+.still img {
+  object-fit: cover;
+  object-position: var(--figure-position, 50% 50%);
+}
+
+/* The Ken Burns treatment: a 28 second drift from 1.06 to 1, run once.
+   Slow enough to be felt rather than seen, and it settles instead of
+   looping because a hero that never stops moving reads as a screensaver. */
+@media (prefers-reduced-motion: no-preference) {
+  .still img {
+    animation: settle 28s var(--ease) both;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

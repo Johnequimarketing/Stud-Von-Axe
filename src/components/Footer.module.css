@@ -38,6 +38,10 @@
 }
 
 .link {
+  /* Inline flex so the touch target can be grown to 44px on phones without
+     moving the text off the column's left edge. */
+  display: inline-flex;
+  align-items: center;
   font-size: var(--text-small);
   color: var(--color-dark-text);
   border-bottom: 1px solid transparent;
@@ -74,8 +78,28 @@
   opacity: 0.5;
 }
 
+.langLink {
+  display: inline-flex;
+  align-items: center;
+}
+
 .langLink:hover {
   color: var(--color-accent);
+}
+
+/* ---- Touch targets ---------------------------------------------------
+   A 15px link is a 17px tall target. Below the tablet breakpoint every
+   footer link grows to 44px and the row gap goes to zero, so the column
+   gets taller by the padding rather than by padding plus gap. */
+@media (max-width: 767px) {
+  .list {
+    gap: 0;
+  }
+
+  .link,
+  .langLink {
+    min-height: 44px;
+  }
 }
 
 @media (min-width: 768px) {

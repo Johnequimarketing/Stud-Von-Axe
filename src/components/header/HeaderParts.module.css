@@ -92,22 +92,29 @@
   color: var(--hd-accent);
 }
 
+/* A ghost rectangle in the shell's own ink: over the hero it is a bone
+   rule on the photograph, on the scrolled bar an espresso rule on bone.
+   Direction C has exactly one filled button (the invitation) and this is
+   deliberately not it. */
 .enquire {
   display: none;
   align-items: center;
-  background: var(--color-accent);
-  color: var(--raw-navy);
+  background: none;
+  border: 1px solid var(--hd-border);
+  color: var(--hd-fg);
   font-size: var(--text-small);
   font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   padding: 0.65em 1.35em;
   min-height: 42px;
   border-radius: var(--radius-control);
   white-space: nowrap;
-  transition: background-color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
 .enquire:hover {
-  background: var(--raw-gold-soft);
+  border-color: var(--hd-fg);
 }
 
 .menuButton {
@@ -206,8 +213,8 @@
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  background: var(--color-accent);
-  color: var(--raw-navy);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   font-size: var(--text-small);
   font-weight: 500;
   border-radius: var(--radius-control);

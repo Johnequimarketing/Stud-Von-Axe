@@ -1,0 +1,98 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-bg);
+}
+
+/* The closing plate goes dark, Mark's final-CTA gesture on four of his
+   five sites: a generous dark plate, centred, with pill actions. */
+.plate {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--space-7), 8vw, 7rem) var(--space-6);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+}
+
+.plate > * + * {
+  margin-top: var(--space-5);
+}
+
+/* The plaque centres with its rule, one shared device everywhere. */
+.plaque {
+  align-items: center;
+}
+
+.heading {
+  font-size: var(--text-heading);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-tint);
+}
+
+.body {
+  color: var(--color-dark-muted);
+  max-width: 44ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* The paired pills: solid bone, ghost bone, mirroring the hero pair so
+   the page opens and closes on the same gesture. */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: 0.85em 1.9em;
+  border-radius: var(--radius-pill);
+  background: var(--color-dark-text);
+  color: var(--color-primary);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.cta:hover {
+  background: var(--color-surface);
+}
+
+.ctaArrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.85em 1.9em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-dark-text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.whatsapp:hover {
+  border-color: var(--color-dark-text);
+}

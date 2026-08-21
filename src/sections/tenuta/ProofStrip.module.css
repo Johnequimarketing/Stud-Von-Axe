@@ -1,0 +1,110 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-bg);
+}
+
+/* ---- The bento ---------------------------------------------------------
+   Phones: intro card then the result cards, one column. Desktop: three
+   columns, the intro spanning two cells so the dark card anchors the
+   composition the way it does on Mark's sites. */
+.bento {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.intro {
+  height: 100%;
+  border-radius: var(--radius-lg);
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.heading {
+  font-size: var(--text-title);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-tint);
+}
+
+.allResults {
+  margin-top: auto;
+}
+
+/* ---- The result cards --------------------------------------------------- */
+.card {
+  height: 100%;
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: var(--space-5);
+}
+
+.card > * + * {
+  margin-top: var(--space-2);
+}
+
+.placing {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 2vw + 1.6rem, 3rem);
+  font-weight: 340;
+  line-height: 1;
+}
+
+.ordinal {
+  font-size: 0.42em;
+  font-style: italic;
+  vertical-align: super;
+  color: var(--color-accent-ink);
+}
+
+.horse {
+  padding-top: var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta,
+.rider {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.rider em {
+  font-family: var(--font-display);
+}
+
+@media (min-width: 760px) {
+  .bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .introCell {
+    grid-column: 1 / span 2;
+  }
+
+  .intro {
+    padding: var(--space-7);
+  }
+
+  /* Cells are Reveal wrappers; stretch them so every card fills its row. */
+  .bento > * {
+    display: flex;
+  }
+
+  .bento > * > * {
+    flex: 1;
+  }
+}

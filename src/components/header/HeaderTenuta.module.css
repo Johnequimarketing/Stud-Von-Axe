@@ -1,0 +1,64 @@
+.skip {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 60;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+  transform: none;
+}
+
+/* The bar. Fixed, full width, geometry constant: only the surface custom
+   properties crossfade between the two states. */
+.bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-height);
+  transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    backdrop-filter var(--dur) var(--ease);
+}
+
+.inner {
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ---- The two surfaces ------------------------------------------------- */
+/* Clear: floating on the hero's top wash, bone inks. */
+.bar[data-surface='clear'] {
+  --hd-fg: var(--color-dark-text);
+  --hd-fg-muted: var(--color-dark-muted);
+  --hd-border: color-mix(in srgb, var(--raw-bone) 45%, transparent);
+  --hd-accent: var(--color-dark-text);
+  background: transparent;
+}
+
+/* Bone glass: once the page scrolls, or over a light hero. */
+.bar[data-surface='bone'] {
+  --hd-fg: var(--color-text);
+  --hd-fg-muted: var(--color-text-muted);
+  --hd-border: var(--color-border-strong);
+  --hd-accent: var(--color-accent-ink);
+  background: color-mix(in srgb, var(--raw-bone) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--color-border);
+}

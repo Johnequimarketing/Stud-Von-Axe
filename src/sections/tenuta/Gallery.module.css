@@ -1,0 +1,71 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-bg);
+}
+
+.head {
+  margin-bottom: var(--space-6);
+}
+
+/* Phones: the wide frame, then the two small frames side by side, then the
+   tall one. Desktop: a 12-column asymmetric spread over two rows. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.cellWide {
+  grid-column: 1 / -1;
+}
+
+.cellTall {
+  grid-column: 1 / -1;
+}
+
+.photoWide {
+  --figure-ratio: 16 / 10;
+}
+
+.photoTall {
+  --figure-ratio: 3 / 4;
+  --figure-position: 50% 40%;
+}
+
+.photoSmall {
+  --figure-ratio: 1 / 1;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: min-content;
+    gap: var(--space-5);
+  }
+
+  .cellWide {
+    grid-column: 1 / span 8;
+  }
+
+  /* The tall frame spans both rows and stretches to fill them, which is
+     what makes the spread asymmetric instead of two matched rows. */
+  .cellTall {
+    grid-column: 9 / span 4;
+    grid-row: 1 / span 2;
+    display: flex;
+  }
+
+  .photoTall {
+    --figure-ratio: auto;
+    flex: 1;
+    height: auto;
+  }
+
+  .cellSmall {
+    grid-column: 1 / span 4;
+  }
+
+  .cellSmallB {
+    grid-column: 5 / span 4;
+  }
+}

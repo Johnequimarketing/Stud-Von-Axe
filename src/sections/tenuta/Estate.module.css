@@ -1,0 +1,124 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-bg);
+}
+
+.split {
+  display: grid;
+  gap: 0;
+}
+
+.figure {
+  --figure-ratio: 4 / 3;
+  --figure-position: 50% 42%;
+}
+
+/* The stone panel. On phones it simply follows the photograph; from 900px
+   it climbs onto the image's right edge so the two read as one composed
+   spread rather than a row of two blocks. */
+.panel {
+  background: var(--color-surface);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+}
+
+.panel > * + * {
+  margin-top: var(--space-5);
+}
+
+.heading {
+  font-size: var(--text-heading);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-ink);
+}
+
+.body {
+  color: var(--color-text-muted);
+  max-width: 46ch;
+}
+
+.yards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-5);
+}
+
+/* Each yard row opens on the accent node dot, the checklist gesture from
+   Mark's facility sections. */
+.yard {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.yard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
+.yardPlace {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 380;
+}
+
+.yardRegion {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  margin-left: var(--space-2);
+}
+
+.yardRole {
+  margin-top: var(--space-1);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+  }
+
+  .figure {
+    --figure-ratio: 3 / 4;
+  }
+
+  .figureCell {
+    grid-column: 1 / span 1;
+    grid-row: 1;
+  }
+
+  /* The overlap: the panel's cell starts inside the image column's last
+     tenth, which is the negative-margin trick Elementor containers do
+     natively. */
+  .panelCell {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: calc(var(--space-8) * -1);
+    position: relative;
+  }
+
+  .panel {
+    padding: var(--space-7);
+  }
+}

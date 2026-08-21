@@ -1,64 +1,81 @@
 /* ============================================================
-   Stud Von Axe: design tokens
+   Stud Von Axe: design tokens. DIRECTION C: LA TENUTA.
    The ONLY place raw colour values are allowed to exist.
    Components consume the semantic layer exclusively.
+
+   Concept 3 of 3. A warm natural palette: bone ground, warm
+   near-black ink, stone surfaces, one muted olive accent. Navy
+   and gold exit this direction entirely (gold survives only
+   inside the logo artwork). The page must survive with the
+   accent removed: luxury comes from type, composition,
+   photography and spacing, never from the accent.
+
+   Every value here must be reproducible in the Elementor
+   rebuild as an Elementor Global (colour or font). Keep the
+   list short on purpose. docs/elementor-build-map.md carries
+   the mapping.
    ============================================================ */
 
 :root {
   /* ---- Raw palette ------------------------------------------------
-     Placeholders taken from the current brand until the client's
-     Pantone arrives. --raw-gold is the single swap point.           */
-  --raw-ivory: #fbf9f4;
-  --raw-paper: #f4f0e6;
-  --raw-navy: #16233f;
-  --raw-navy-deep: #101a30;
-  --raw-gold: #b28a4d; /* <<< SWAP THE CLIENT PANTONE HERE */
-  --raw-gold-soft: #c9a874;
-  --raw-ink: #1e2430;
+     --raw-accent is the single swap point for the client's final
+     accent choice. */
+  --raw-bone: #f4f0e7;
+  --raw-stone: #e8e1d3;
+  --raw-espresso: #262019;
+  --raw-umber: #57493a;
+  --raw-accent: #5f5a3a; /* <<< SWAP THE CLIENT ACCENT HERE */
   --raw-white: #ffffff;
 
   /* ---- Semantic colour -------------------------------------------- */
-  --color-bg: var(--raw-ivory);
-  --color-surface: var(--raw-paper);
-  --color-primary: var(--raw-navy);
-
-  /* Gold has two jobs and they need different values.
-     --color-accent is for fills, rules, and text on dark grounds.
-     --color-accent-ink is gold AS TEXT on the light base: the brand gold
-     only reaches 3.0:1 on ivory, which fails AA at label sizes, so it is
-     mixed toward navy to clear 4.5:1 on both light grounds. Both derive
-     from --raw-gold, so the Pantone swap still happens in one place. */
-  --color-accent: var(--raw-gold);
-  --color-accent-ink: color-mix(in srgb, var(--raw-gold) 66%, var(--raw-navy));
-
-  --color-text: var(--raw-ink);
-  --color-text-muted: color-mix(in srgb, var(--raw-ink) 70%, var(--raw-ivory));
-  --color-border: color-mix(in srgb, var(--raw-navy) 16%, transparent);
-  --color-border-strong: color-mix(in srgb, var(--raw-navy) 30%, transparent);
-  --color-dark-bg: var(--raw-navy-deep);
-  --color-dark-text: #ede9df;
-  --color-dark-muted: color-mix(in srgb, #ede9df 62%, var(--raw-navy-deep));
-  --color-dark-border: color-mix(in srgb, #ede9df 18%, transparent);
-  --color-focus: var(--raw-navy);
+  --color-bg: var(--raw-bone);
+  --color-surface: var(--raw-stone);
+  --color-card: var(--raw-white);
+  --color-primary: var(--raw-espresso);
+  --color-on-primary: var(--raw-bone);
+  --color-accent: var(--raw-accent);
+  /* Accent as text at label sizes. The raw olive clears AA on bone with
+     room to spare; the token still exists so the swap stays one place if
+     the client's accent lands lighter and needs mixing toward espresso. */
+  --color-accent-ink: var(--raw-accent);
+  /* The accent word on DARK grounds (hero, Terra, the espresso plates):
+     the raw olive disappears against near-black, so the same accent is
+     lifted toward bone. Still derived from the one swap point. */
+  --color-accent-tint: color-mix(in srgb, var(--raw-accent) 38%, var(--raw-bone));
+  --color-text: var(--raw-espresso);
+  --color-text-muted: var(--raw-umber);
+  --color-border: color-mix(in srgb, var(--raw-espresso) 16%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--raw-espresso) 34%, transparent);
+  /* The dark plane: photograph grades and the footer resolve to warm
+     near-black, never navy. */
+  --color-dark-bg: #1b1712;
+  --color-dark-text: var(--raw-bone);
+  --color-dark-muted: color-mix(in srgb, var(--raw-bone) 72%, #1b1712);
+  --color-dark-border: color-mix(in srgb, var(--raw-bone) 22%, transparent);
+  --color-focus: var(--raw-accent);
 
   /* ---- Type ------------------------------------------------------- */
-  --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-body: 'Archivo Variable', 'Archivo', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans Variable', 'Instrument Sans', system-ui, -apple-system, sans-serif;
 
-  --text-meta: 0.8125rem;   /* 13px: smallest permitted */
+  /* A varied scale is this direction's release from the one-size
+     headline rule. Discipline lives in the scale itself: statement
+     appears exactly twice on the page, hero once, and everything else
+     picks from heading down. */
+  --text-label: 0.75rem;    /* 12px: plaque labels, wide tracked */
+  --text-meta: 0.8125rem;   /* 13px: smallest running text */
   --text-small: 0.9375rem;  /* 15px */
-  --text-body: clamp(1.0625rem, 0.35vw + 1rem, 1.125rem); /* 17 → 18px */
+  --text-body: clamp(1.0625rem, 0.35vw + 1rem, 1.125rem); /* 17 to 18px */
   --text-lead: clamp(1.1875rem, 0.6vw + 1.05rem, 1.375rem);
-  --text-title: clamp(1.875rem, 2.2vw + 1.2rem, 2.5rem);
-  /* Every section headline shares this one size, peaking at 55px. */
-  --text-heading: clamp(2.125rem, 2.8vw + 1.3rem, 3.4375rem);
-  --text-display: clamp(2.25rem, 3.4vw + 1.4rem, 3.75rem);
-  --text-hero: clamp(2.5rem, 4.4vw + 1.4rem, 4.5rem);
+  --text-title: clamp(1.625rem, 1.4vw + 1.1rem, 2.125rem);
+  --text-heading: clamp(2rem, 2.6vw + 1.2rem, 3.5rem);
+  --text-hero: clamp(2.625rem, 4.8vw + 1.5rem, 5.5rem);
+  --text-statement: clamp(2.375rem, 6.6vw + 1rem, 7.25rem);
 
-  --leading-tight: 1.08;
-  --leading-title: 1.15;
+  --leading-tight: 1.04;
+  --leading-title: 1.14;
   --leading-body: 1.62;
-  --tracking-label: 0.14em;
+  --tracking-label: 0.22em;
 
   /* ---- Space ------------------------------------------------------ */
   --space-1: 0.25rem;
@@ -69,26 +86,28 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4rem;
-  --space-section: clamp(4.5rem, 9vw, 8.5rem);
+  --space-section: clamp(5rem, 10vw, 9.5rem);
 
   /* ---- Shape ------------------------------------------------------
-     One family of rounded squares, tightening as elements get smaller so
-     the curvature reads as the same shape at every size. Nothing is a
-     full pill. Status labels and rules carry no shape at all, because
-     they are pure typography. */
-  --radius-sm: 4px; /* photography, thumbnails */
-  --radius-control: 14px; /* buttons, inputs, controls */
-  --radius-md: 16px; /* framed panels, form panels */
-  --radius-lg: 20px; /* the header shell */
-  --radius-pill: 999px; /* status chips only, kept scarce on purpose */
+     Mark's radius family, read off his own sites: photography softly
+     rounded, cards a step softer, plates generous, buttons and chips
+     full pills. One family, tightening as elements get smaller. */
+  --radius-sm: 12px; /* photography */
+  --radius-md: 16px; /* cards */
+  --radius-lg: 24px; /* contained plates */
+  --radius-control: 999px; /* buttons are pills in this language */
+  --radius-pill: 999px; /* chips */
 
   /* ---- Layout ----------------------------------------------------- */
-  --container-max: 1240px;
-  --container-prose: 68ch;
-  --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --header-height: 68px;
+  --container-max: 1280px;
+  --container-prose: 66ch;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --header-height: 72px;
 
-  /* ---- Motion ----------------------------------------------------- */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --dur: 420ms;
+  /* ---- Motion ------------------------------------------------------
+     One timing for everything. The Elementor rebuild standardises on
+     these exact values, so nothing in this codebase may invent its own. */
+  --ease: cubic-bezier(0.32, 0.08, 0.24, 1);
+  --dur: 650ms;
+  --dur-fast: 300ms;
 }

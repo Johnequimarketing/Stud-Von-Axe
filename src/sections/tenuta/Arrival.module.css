@@ -1,0 +1,127 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: calc(var(--header-height) + var(--space-7)) var(--space-8);
+  color: var(--color-dark-text);
+  isolation: isolate;
+  overflow: hidden;
+  /* The focal point for HeroMedia: the grey's head sits left of centre. */
+  --figure-position: 26% center;
+}
+
+/* The base grade carries the words; warm near-black, never navy. The last
+   stops resolve to the page bone so the frame hands off to the ground
+   without a line. */
+.gradeBase {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    4deg,
+    var(--raw-bone) 0%,
+    color-mix(in srgb, #171310 88%, transparent) 5%,
+    color-mix(in srgb, #171310 82%, transparent) 30%,
+    color-mix(in srgb, #171310 55%, transparent) 58%,
+    transparent 86%
+  );
+}
+
+/* A quiet top wash so the transparent header's bone ink always clears the
+   sky. */
+.gradeTop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #171310 52%, transparent) 0%,
+    transparent 24%
+  );
+}
+
+.inner {
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.inner > * + * {
+  margin-top: var(--space-5);
+}
+
+.heading {
+  font-size: var(--text-hero);
+  font-weight: 340;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+  max-width: 14ch;
+}
+
+/* The accent word, in the lifted accent for dark grounds: Mark colours
+   the hero's word on every one of his sites. */
+.headingAccent {
+  font-style: italic;
+  font-weight: 340;
+  color: var(--color-accent-tint);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* The solid pill: bone on the photograph, so it reads as the one bright
+   control in the frame. */
+.pillSolid {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: 0.85em 1.7em;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.pillSolid:hover {
+  background: var(--color-surface);
+}
+
+.pillGhost {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.85em 1.7em;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--raw-bone) 55%, transparent);
+  color: var(--color-dark-text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.pillGhost:hover {
+  border-color: var(--color-dark-text);
+}
+
+.ctaArrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.pillSolid:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    --figure-position: 50% 30%;
+  }
+}

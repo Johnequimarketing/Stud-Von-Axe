@@ -1,0 +1,175 @@
+/* The programme sits on stone: the page's one tinted band, so the three
+   blocks read as one chapter. */
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-surface);
+}
+
+.head {
+  margin-bottom: var(--space-8);
+}
+
+.heading {
+  margin-top: var(--space-4);
+  font-size: var(--text-heading);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-ink);
+}
+
+/* ---- The blocks --------------------------------------------------------- */
+.block,
+.embryoBlock {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-7);
+}
+
+.block {
+  border-top: 1px solid var(--color-border);
+}
+
+/* The embryo plate: the page's one dark surface, Mark's alternating-plate
+   rhythm. Bone inks, generous radius, its own padding instead of the
+   hairline the photographic blocks use. */
+.embryoBlock {
+  margin-block: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+.embryoBlock .blockBody {
+  color: var(--color-dark-muted);
+}
+
+.embryoBlock .lockupPedigree {
+  color: var(--color-dark-muted);
+}
+
+/* Accent inks lift toward bone on the dark plate: the raw olive is
+   invisible against near-black. */
+.embryoBlock .number,
+.embryoBlock .lockupCross {
+  color: var(--color-accent-tint);
+}
+
+.blockText > * + * {
+  margin-top: var(--space-4);
+}
+
+.number {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-accent-ink);
+}
+
+.blockTitle {
+  font-size: var(--text-title);
+  font-weight: 340;
+  letter-spacing: -0.01em;
+}
+
+.blockBody {
+  color: var(--color-text-muted);
+  max-width: 40ch;
+}
+
+.blockPhoto {
+  --figure-ratio: 4 / 3;
+}
+
+/* ---- The embryo lockup ---------------------------------------------------
+   No photograph on purpose. The genetics are set large enough to carry the
+   block the way the photographs carry theirs. */
+.lockup {
+  align-self: center;
+}
+
+.lockup > * + * {
+  margin-top: var(--space-4);
+}
+
+.lockupLine {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  text-wrap: balance;
+}
+
+.lockupCross {
+  color: var(--color-accent-ink);
+}
+
+.lockupPedigree {
+  font-size: var(--text-small);
+}
+
+/* Mark's stat mini-cards: three small lifted cards, serif number over a
+   tracked label. */
+.stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.stat {
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--raw-bone) 8%, transparent);
+  border: 1px solid var(--color-dark-border);
+  padding: var(--space-4);
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 340;
+  line-height: 1;
+}
+
+.statLabel {
+  margin-top: var(--space-2);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-dark-muted);
+}
+
+@media (min-width: 900px) {
+  .block,
+  .embryoBlock {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  /* Semen flips: text right, image left, so the three compositions run
+     right, centre, left down the page. */
+  .block[data-flip='true'] .blockText {
+    order: 2;
+  }
+
+  .block[data-flip='true'] .blockPhoto {
+    order: 1;
+  }
+
+  /* The embryo plate indents rather than mirrors, its own composition. */
+  .embryoBlock {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    padding: var(--space-7);
+  }
+}

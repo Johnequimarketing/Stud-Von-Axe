@@ -2,12 +2,13 @@ import { copy } from '@/content'
 import logoHorizontal from '@/assets/brand/logo-horizontal-light.webp'
 import styles from './HeaderParts.module.css'
 
+/* Direction C's map: fewer destinations, named for the page's own
+   chapters. The old per-product anchors live inside #programme now. */
 export const NAV_LINKS = [
-  { label: copy.nav.foals, href: '#available' },
-  { label: copy.nav.embryos, href: '#bloodlines' },
-  { label: copy.nav.semen, href: '#semen' },
+  { label: copy.tenuta.estate.label, href: '#stud' },
+  { label: copy.tenuta.horses.label, href: '#horses' },
+  { label: copy.tenuta.programme.label, href: '#programme' },
   { label: copy.nav.results, href: '#results' },
-  { label: copy.nav.news, href: '#news' },
 ]
 
 /**

@@ -277,6 +277,94 @@ export const copy = {
     submit: 'Send enquiry',
   },
 
+  /* ---- Direction C: La Tenuta -----------------------------------------
+     Copy for the third homepage direction. Every line here is either
+     approved copy reused from the blocks above, a fact audited from the
+     client's own site, or a neutral invitation. Nothing new is claimed. */
+  tenuta: {
+    arrival: {
+      /* The stud's own base, already public on the client's contact page. */
+      location: 'Desenzano del Garda · Italia',
+      cta: 'Discover the horses',
+    },
+
+    statement: {
+      /* The client's own words, from the stud story above. */
+      before: 'Born from a great',
+      accent: 'passion',
+      after: 'for horses.',
+      support:
+        'The result of many years spent on the best German farms and of extensive research into the best international families.',
+    },
+
+    estate: {
+      label: 'The stud',
+      heading: 'One programme across two yards.',
+      headingAccent: 'two yards',
+      /* Condensed from the three approved chapters, word for word where it
+         matters. */
+      body: 'Mares are selected on what they are and what they have produced. Every pairing begins in Italy, our team in Belgium manages the pregnancies and raises each foal until it is ready to leave, and every horse is sold direct, never through auction.',
+      cta: 'More about the stud',
+      yards: [
+        {
+          place: 'Desenzano del Garda',
+          region: 'Italia',
+          role: 'Where the pairings are made and the embryos begin.',
+        },
+        {
+          place: 'Lanaken',
+          region: 'Belgio',
+          role: 'Where the pregnancies are managed and the foals are raised.',
+        },
+      ],
+    },
+
+    horses: {
+      label: 'The horses',
+      /* The client's own chapter quote, and exactly what this section
+         shows: the horses standing here and the produce already sold. */
+      heading: 'Pedigree and produce.',
+      headingAccent: 'produce',
+      intro:
+        'Foals and broodmares from the programme, and where they have gone.',
+      view: 'View',
+      seeAll: 'See all horses',
+      soldWord: 'Sold',
+      listLabel: 'Choose a horse',
+    },
+
+    terra: {
+      /* The approved journey-card line and caption, at full size. */
+      statement: 'From Italy, to the world.',
+      statementAccent: 'world',
+      caption: 'Italy · Belgium · Sold direct',
+    },
+
+    programme: {
+      label: 'The programme',
+      /* The approved offer heading. Block titles, descriptions and the
+         semen facts are read from `offer` and `semen` above, never
+         duplicated here. */
+      pairingsCta: 'Ask about the pairings',
+      /* The embryo stats are counted from the pairing data at render
+         time, never written here. */
+      statPairings: 'Pairings',
+      statDamlines: 'Damlines',
+      statExpected: 'Expected',
+    },
+
+    proof: {
+      label: 'Results',
+      /* TODO client-confirm: same caveat as `proof` above. The feed is not
+         live until the Horsetelex plugin is wired. */
+      source: 'Horsetelex',
+    },
+
+    gallery: {
+      label: 'From the yards',
+    },
+  },
+
   footer: {
     navHeading: 'Navigate',
     contactHeading: 'Contact',

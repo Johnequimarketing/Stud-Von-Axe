@@ -1,31 +1,35 @@
 import { Header } from './components/header'
 import { Footer } from './components/Footer'
-import { Hero } from './sections/hero'
-import { Intro } from './sections/intro'
-import { OfferIndex } from './sections/offer'
-import { AvailableNow } from './sections/available'
-import { Bloodlines } from './sections/bloodlines'
-import { SemenBand } from './sections/semen'
-import { Proof } from './sections/proof'
-import { Bases } from './sections/bases'
-import { News } from './sections/news'
-import { Contact } from './sections/contact'
+import {
+  Arrival,
+  Statement,
+  Estate,
+  Horses,
+  Terra,
+  Programme,
+  ProofStrip,
+  Gallery,
+  Invitation,
+} from './sections/tenuta'
 
+/* Direction C: La Tenuta. The page is the emotional journey the brief
+   names: arrival, discovery, connection, trust, desire, action. The old
+   section folders stay on disk for the other directions but nothing here
+   imports them, so they tree-shake out of this build. */
 export function App() {
   return (
     <>
       <Header />
       <main id="main">
-        <Hero />
-        <Intro />
-        <OfferIndex />
-        <AvailableNow />
-        <Bloodlines />
-        <SemenBand />
-        <Proof />
-        <Bases />
-        <News />
-        <Contact />
+        <Arrival />
+        <Statement />
+        <Estate />
+        <Horses />
+        <Terra />
+        <Programme />
+        <ProofStrip />
+        <Gallery />
+        <Invitation />
       </main>
       <Footer />
     </>

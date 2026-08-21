@@ -1,0 +1,40 @@
+.figure {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  aspect-ratio: var(--figure-ratio, 4 / 5);
+  background: var(--color-surface);
+}
+
+.figure picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--figure-position, 50% 50%);
+}
+
+/* The slow zoom: scale on the image, never the frame, so nothing around
+   the photograph moves. One timing token, like every transition on the
+   page. */
+.figure[data-hover='scale'] img {
+  transition: transform var(--dur) var(--ease);
+}
+
+.figure[data-hover='scale']:hover img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure[data-hover='scale'] img {
+    transition: none;
+  }
+
+  .figure[data-hover='scale']:hover img {
+    transform: none;
+  }
+}

@@ -19,17 +19,17 @@
   transform: translateX(3px);
 }
 
-/* Primary action. Gold ground with navy text keeps contrast well above
-   AA: gold is never used as text at this size. */
+/* Primary action: an espresso pill with bone type, this direction's one
+   filled button treatment. */
 .solid {
-  background: var(--color-accent);
-  color: var(--raw-navy);
-  padding: 0.9em 1.5em;
-  min-height: 44px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 0.9em 1.7em;
+  min-height: 48px;
 }
 
 .solid:hover {
-  background: var(--raw-gold-soft);
+  background: var(--color-text-muted);
 }
 
 .outline {

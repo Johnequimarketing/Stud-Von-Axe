@@ -86,8 +86,8 @@ a {
     opacity: 0;
     transform: translateY(12px);
     transition:
-      opacity 560ms var(--ease) var(--reveal-delay, 0ms),
-      transform 560ms var(--ease) var(--reveal-delay, 0ms);
+      opacity var(--dur) var(--ease) var(--reveal-delay, 0ms),
+      transform var(--dur) var(--ease) var(--reveal-delay, 0ms);
   }
 
   .js [data-reveal][data-revealed='true'] {

@@ -1,5 +1,65 @@
 # Stud Von Axe: homepage
 
+> ## Branch note: Direction C, "La Tenuta"
+>
+> This branch is **homepage direction 3 of 3** for Mark's review. Direction
+> A ("Linea di Sangue") lives on `v2-homepage` and is documented in the rest
+> of this file; Direction B ("Notturno") lives on `direction-b-notturno`.
+> The content layer, provenance rules, derived counts, audit tooling and
+> launch blockers are all shared; this branch is a full presentational
+> redesign, not a retheme.
+>
+> ### The idea
+>
+> Modern Luxury Equestrian: the stud as a luxury Italian equestrian
+> destination. Warm natural palette (bone ground, stone surfaces, warm
+> near-black ink, one muted olive accent, no navy and no gold), Fraunces +
+> Instrument Sans, and the page rebuilt around an emotional journey:
+> arrival, discovery, connection, trust, desire, action. The news section
+> leaves this homepage; the bases section is absorbed into the stud story.
+>
+> ### Calibrated to Mark's own design language
+>
+> Mid-build, five sites Mark designed were shared as the target taste. The
+> surfaces were recalibrated to his recurring signatures: serif headlines
+> with one italic accent word, numbered plaque eyebrows ("01 · The stud"),
+> contained plates at 24px radius alternating light and dark, stat
+> mini-card trios with every number counted from data, one quiet meta chip
+> per horse, his results bento (dark intro card + white ordinal cards),
+> and paired solid/ghost pill buttons. What stayed from the first pass:
+> the palette, the type, the journey structure, the full-bleed cinematic
+> hero and Terra statements, and the interactive horse selector.
+>
+> ### What is new on this branch
+>
+> - `src/sections/tenuta/`: all nine sections. The old section folders stay
+>   on disk for A/B but are unimported here, so they tree-shake out.
+> - The horses section is an interactive discovery experience: a name
+>   tablist (hover previews, click/arrow selects, wrap-around, visible
+>   focus) crossfading one large portrait, with a scroll-snap gallery as
+>   the redesigned mobile interaction. The cast is decided by the photo
+>   provenance rule: only the six horses with verified large photographs.
+> - The hero and the closing plate are **video-ready**: `HeroMedia` renders
+>   a muted looping video when a source is configured and the photograph
+>   until then. No footage exists yet; it is an open client dependency, and
+>   no stock video is used in its place.
+> - `--raw-accent` is the single accent swap point; `--color-accent-tint`
+>   derives the readable version for dark grounds from it.
+> - **The production site will be WordPress + Elementor + Unlimited
+>   Elements.** Every interaction here was chosen to be faithfully
+>   recreatable there, and `docs/elementor-build-map.md` carries the
+>   per-section recipe (globals, widgets, custom CSS, and the ~40 line
+>   selector script).
+>
+> ### Verified on this branch
+>
+> Contrast audited with the patched `scripts/contrast-audit.js` across all
+> eleven regions at 1280/768/390 plus the selector states: 0 failures. No
+> page overflow at any width, no interactive target under 44px at 390,
+> keyboard operation of the selector confirmed, reduced motion kills the
+> hero zoom, the reveals and the hover scales.
+
+
 A fresh homepage for Stud Von Axe, Italian breeder of showjumping sport horses.
 Single page, anchor navigation, built with Vite + React + TypeScript and deployed
 to Vercel.

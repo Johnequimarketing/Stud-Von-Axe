@@ -1,0 +1,239 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--color-bg);
+}
+
+/* ---- Desktop: list beside stage --------------------------------------- */
+.head {
+  margin-bottom: var(--space-7);
+}
+
+.grid {
+  display: none;
+}
+
+.heading {
+  margin-top: var(--space-4);
+  max-width: 18ch;
+  font-size: var(--text-heading);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--color-accent-ink);
+}
+
+.intro {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  max-width: 38ch;
+}
+
+.names {
+  display: grid;
+  border-top: 1px solid var(--color-border);
+}
+
+.name {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-3) 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 340;
+  line-height: var(--leading-title);
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) var(--ease), padding-left var(--dur-fast) var(--ease);
+}
+
+.nameIndex {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-accent-ink);
+}
+
+.name:hover {
+  color: var(--color-text);
+}
+
+/* The selected name takes full ink and steps right: the list itself is the
+   control, so its state has to be legible without colour. */
+.name[data-active] {
+  color: var(--color-text);
+  padding-left: var(--space-3);
+}
+
+/* ---- The stage --------------------------------------------------------- */
+.stage {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.portraits {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+}
+
+.portrait {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.portrait[data-active] {
+  opacity: 1;
+}
+
+.portraitPhoto {
+  --figure-ratio: auto;
+  height: 100%;
+}
+
+/* ---- The meta strip ---------------------------------------------------- */
+.metaStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+
+/* Re-keyed on selection, so the text fades in with the portrait. */
+@media (prefers-reduced-motion: no-preference) {
+  .metaText {
+    animation: metaIn var(--dur) var(--ease);
+  }
+}
+
+@keyframes metaIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.metaName {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 380;
+}
+
+.metaLine {
+  margin-top: var(--space-1);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+/* The one chip: quiet stone ground, Mark's meta-chip gesture. Sold chips
+   carry the destination country, the page's proof of reach. */
+.chip {
+  display: inline-block;
+  vertical-align: 0.25em;
+  margin-left: var(--space-3);
+  padding: 0.35em 0.9em;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.view {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.view:hover {
+  color: var(--color-accent-ink);
+}
+
+/* ---- Mobile: the scroll-snap rail -------------------------------------- */
+.rail {
+  margin-right: calc(var(--gutter) * -1);
+}
+
+.railTrack {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--gutter) 0 0;
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.railTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.railItem {
+  flex: 0 0 82%;
+  scroll-snap-align: start;
+}
+
+.railPhoto {
+  --figure-ratio: 4 / 4.4;
+  margin-bottom: var(--space-4);
+}
+
+.railFoot {
+  margin-top: var(--space-6);
+}
+
+/* ---- The breakpoint swap ------------------------------------------------
+   Two structures, one visible at a time. The hidden one's images are lazy,
+   so they never load: display:none removes the box and a boxless lazy
+   image never intersects. */
+@media (min-width: 900px) {
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .rail {
+    display: none;
+  }
+
+  .listSide {
+    display: grid;
+    gap: var(--space-6);
+    /* The list holds still while the taller stage runs beside it. */
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+  }
+}

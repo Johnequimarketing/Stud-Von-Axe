@@ -55,21 +55,7 @@ export const horsePictures: Record<string, Picture> = {
   'dourkhet-von-axe-z': dourkhet as Picture,
 }
 
-/* Each horse's own page on the client's live site.
-   TODO client-confirm: these become internal detail routes once those
-   pages exist; for now the card opens the client's current listing. */
-const BASE = 'https://www.studvonaxe.it/en/cavalli'
-
-export const horseDetailUrls: Record<string, string> = {
-  'arkhana-von-axe-z': `${BASE}/aganix-du-seigneur-z-x-cortina-de-jolie-z-3/`,
-  'cortina-de-jolie-z': `${BASE}/cortina-de-jolie-z-2/`,
-  'cabri-vd-berghoeve-z': `${BASE}/cabri-vd-berghoeve-z-2/`,
-  'agousha-vd-berghoeve-z': `${BASE}/agousha-vd-berghoeve-z-2/`,
-  'carma-vd-berghoeve-z': `${BASE}/carma-vd-bergheove-z-2/`,
-  'charina-von-axe-z': `${BASE}/chacco-blue-x-cortina-de-jolie-z-2/`,
-  'unique-touch-von-axe-z': `${BASE}/united-touch-x-cortina-de-jolie-z/`,
-  'electra-von-axe-z': `${BASE}/emerald-vant-ruytershof-x-agousha-vd-berghoeve-z/`,
-  'dune-von-axe-z': `${BASE}/diamant-de-semilly-x-hypnotic-jt-z-2/`,
-  'coolrock-von-axe-z': `${BASE}/chacco-blue-x-halifax-van-het-kluizebos-x-carthago-4/`,
-  'dourkhet-von-axe-z': `${BASE}/dourkhan-hero-z-x-cortina-de-jolie-z-6/`,
-}
+/* Moved to the content layer so other directions can link to a horse's
+   page without importing this file's photography. Re-exported here so
+   nothing that already imports it moves. */
+export { horseDetailUrls } from '@/content/horseDetailUrls'
