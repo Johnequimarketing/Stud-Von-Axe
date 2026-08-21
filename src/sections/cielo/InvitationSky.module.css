@@ -1,6 +1,9 @@
 /* Full bleed on purpose: the sky is weather, not a card. */
 .section {
-  padding-block: clamp(var(--space-8), 14vw, 11rem);
+  /* Still the most generous section, because emptiness is this
+     concept's point, but 14vw put 176px above and below a three line
+     block. */
+  padding-block: clamp(var(--space-7), 8vw, 7rem);
   background: linear-gradient(
     180deg,
     var(--cielo-air) 0%,

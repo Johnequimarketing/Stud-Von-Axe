@@ -36,7 +36,7 @@
 .selector {
   display: grid;
   gap: var(--space-4);
-  margin-block: var(--space-7) var(--space-6);
+  margin-block: var(--space-6) var(--space-5);
 }
 
 .card {

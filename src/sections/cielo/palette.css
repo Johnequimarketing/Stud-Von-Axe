@@ -20,13 +20,19 @@
   --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
   --cielo-paper: #ffffff; /* instax frames, lifted cards */
 
-  --cielo-ink: #16233f; /* THE BRAND NAVY */
-  --cielo-ink-soft: color-mix(in srgb, #16233f 90%, #dfe8ef);
-  --cielo-gold: #b28a4d; /* THE BRAND GOLD */
-  --cielo-gold-soft: #c9a874;
-  /* Gold as display INK on a pale ground: the raw gold reads 2.3:1, so
-     type-weight gold is pulled halfway to navy. Measured floor. */
-  --cielo-gold-ink: color-mix(in srgb, #b28a4d 50%, #16233f);
+  /* THE BRAND COLOURS, from the client's own palette and the navy they
+     use dominantly on their Facebook and Instagram graphics. These two
+     hexes are the swap point: everything below derives from them. */
+  --cielo-ink: #0d1d36; /* brand navy */
+  --cielo-ink-graphic: #0b1b34; /* the navy on their social graphics */
+  --cielo-gold: #b57f24; /* brand gold */
+
+  --cielo-ink-soft: color-mix(in srgb, var(--cielo-ink) 90%, #dfe8ef);
+  --cielo-gold-soft: color-mix(in srgb, var(--cielo-gold) 62%, #ffffff);
+  /* Gold as display INK on a pale ground: the raw brand gold reads about
+     3.1:1 at body size, so type-weight gold is pulled toward the navy.
+     Measured, not guessed. */
+  --cielo-gold-ink: color-mix(in srgb, var(--cielo-gold) 46%, var(--cielo-ink));
 
   /* Controls are soft SQUARES, not pills: the logo is angular, and every
      button, chip and tag follows it. One token so the whole direction

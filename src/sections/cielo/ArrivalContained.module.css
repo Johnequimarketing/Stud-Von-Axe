@@ -1,4 +1,6 @@
 .hero {
+  --cielo-band-h: min(38svh, 300px);
+
   /* The fold's frame: one shared inset on every side, so the plate is
      near full bleed with an even sliver of ground around it. The header
      floats transparent inside the same frame. */
@@ -178,13 +180,28 @@
    down into the plate's pale ground, and the type sits below it on that
    ground in INK. No text touches photography at all on a phone. */
 @media (max-width: 699px) {
+  /* The band gets a real height and the type centres in what is left,
+     instead of the band sitting at the top of a full viewport plate with
+     the type at the bottom and 560px of empty ground between them.
+     300px is not arbitrary: visible width = plateW * ih / (iw * bandH),
+     so a 300px band on a 390 plate shows 58% of a 1024x434 frame, which
+     is exactly the span the horse and rider occupy. Taller shows less. */
+  .plate {
+    justify-content: center;
+    padding-top: var(--cielo-band-h);
+  }
+
   .media {
     inset: 0 0 auto 0;
+    height: var(--cielo-band-h);
   }
 
   .media img {
-    -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
+    height: 100%;
+    object-fit: cover;
+    object-position: 66% 45%;
+    -webkit-mask-image: linear-gradient(180deg, #000 66%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 66%, transparent 100%);
   }
 
   /* The plate's ground stays PALE all the way down on a phone, because

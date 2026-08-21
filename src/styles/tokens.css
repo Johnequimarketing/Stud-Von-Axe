@@ -86,7 +86,12 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4rem;
-  --space-section: clamp(5rem, 10vw, 9.5rem);
+  /* The page's vertical rhythm. Adjacent sections each carry this top AND
+     bottom, so the gap BETWEEN two sections is double it: at 10vw that
+     was 288px of dead ground at 1440, which is what read as endless white
+     space. Halved, so the same rhythm lands near 150px between sections
+     and still breathes on a phone. */
+  --space-section: clamp(3rem, 5.5vw, 5.5rem);
 
   /* ---- Shape ------------------------------------------------------
      Mark's radius family, read off his own sites: photography softly
