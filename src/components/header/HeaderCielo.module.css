@@ -19,9 +19,6 @@
 }
 
 .bar {
-  --cielo-cloud: #f7f4ec;
-  --cielo-ink: #16233f; /* the brand navy */
-  --cielo-ink-soft: color-mix(in srgb, #16233f 90%, #dfe8ef);
   /* The masked logo fills from --color-primary; on this fold it must be
      the brand navy, not the page tokens' espresso. */
   --color-primary: var(--cielo-ink);
@@ -42,9 +39,9 @@
 
 /* On scroll the whole bar takes the glass the pill already wears. */
 .bar[data-surface='glass'] {
-  background: color-mix(in srgb, var(--cielo-cloud) 66%, transparent);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
-  backdrop-filter: blur(18px) saturate(1.5);
+  background: var(--cielo-glass);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
   box-shadow:
     inset 0 -1px 0 color-mix(in srgb, #ffffff 45%, transparent),
     0 18px 40px -30px color-mix(in srgb, var(--cielo-ink) 50%, transparent);
@@ -98,9 +95,9 @@
   padding: 0.7em 1.6em;
   border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--cielo-cloud) 55%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  backdrop-filter: blur(14px) saturate(1.5);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 60%, transparent);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
+  box-shadow: inset 0 0 0 1px var(--cielo-glass-ring);
   color: var(--cielo-ink);
   font-size: var(--text-meta);
   font-weight: 600;

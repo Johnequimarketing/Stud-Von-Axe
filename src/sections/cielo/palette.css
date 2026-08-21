@@ -1,0 +1,32 @@
+/* Direction D "Cielo": the shared palette.
+ *
+ * A plain stylesheet rather than a CSS Module on purpose: custom
+ * properties have to be readable by several Module files (the header, the
+ * hero, every section), and Modules hash their selectors per file so they
+ * cannot share a scope. Anything carrying `data-cielo` gets the palette.
+ *
+ * The atmosphere is pastel; the INKS are the brand's own, straight from
+ * the logo. Nothing here is invented: --cielo-ink is the logo navy and
+ * --cielo-gold is the logo gold, so the Pantone swap stays one place.
+ */
+
+[data-cielo] {
+  --cielo-sky: #dfe8ef; /* pale powder blue, the top of the frame */
+  --cielo-air: #eef0e9; /* where sky meets the field's atmosphere */
+  --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
+  --cielo-paper: #ffffff; /* instax frames, lifted cards */
+
+  --cielo-ink: #16233f; /* THE BRAND NAVY */
+  --cielo-ink-soft: color-mix(in srgb, #16233f 90%, #dfe8ef);
+  --cielo-gold: #b28a4d; /* THE BRAND GOLD */
+  --cielo-gold-soft: #c9a874;
+  /* Gold as display INK on a pale ground: the raw gold reads 2.3:1, so
+     type-weight gold is pulled halfway to navy. Measured floor. */
+  --cielo-gold-ink: color-mix(in srgb, #b28a4d 50%, #16233f);
+
+  /* The frosted glass recipe, one definition for every surface that
+     wears it. */
+  --cielo-glass: color-mix(in srgb, var(--cielo-cloud) 72%, transparent);
+  --cielo-glass-ring: color-mix(in srgb, #ffffff 55%, transparent);
+  --cielo-glass-blur: blur(18px) saturate(1.5);
+}

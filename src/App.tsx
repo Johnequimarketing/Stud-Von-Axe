@@ -1,9 +1,9 @@
 import { Header } from './components/header'
 import { Footer } from './components/Footer'
 import { ArrivalCielo } from './sections/cielo/ArrivalCielo'
+import { EstateCielo } from './sections/cielo/EstateCielo'
 import {
   Statement,
-  Estate,
   Horses,
   Terra,
   Programme,
@@ -23,7 +23,7 @@ export function App() {
       <main id="main">
         <ArrivalCielo />
         <Statement />
-        <Estate />
+        <EstateCielo />
         <Horses />
         <Terra />
         <Programme />

@@ -8,7 +8,14 @@ import styles from './Icon.module.css'
  * weight and one 24 unit grid, so they read as one family and can never
  * drift the way a mixed icon set does.
  */
-export type IconName = 'frozen' | 'laboratory' | 'export' | 'node' | 'arch' | 'seal'
+export type IconName =
+  | 'frozen'
+  | 'laboratory'
+  | 'export'
+  | 'node'
+  | 'arch'
+  | 'seal'
+  | 'swap'
 
 const PATHS: Record<IconName, JSX.Element> = {
   /* Frozen: three crossing strokes. The first draft added tick marks at
@@ -50,6 +57,15 @@ const PATHS: Record<IconName, JSX.Element> = {
     <>
       <path d="M5 20.5v-8a7 7 0 0114 0v8" />
       <path d="M3.5 20.5h17" />
+    </>
+  ),
+  /* Swap: two offset corners with an arrow, the shuffle of a photo deck.
+     A pair of circular arrows read as "reload" at this size, so the mark
+     is squared to say "the card behind comes forward" instead. */
+  swap: (
+    <>
+      <path d="M4 8.5h11.5l-3-3" />
+      <path d="M20 15.5H8.5l3 3" />
     </>
   ),
   /* Seal: a plain wax-seal rosette, for the direct sale promise. Drawn as

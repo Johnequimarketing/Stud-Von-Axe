@@ -4,6 +4,7 @@ import type { IconName } from '@/components/primitives'
 import { useDeclareHeroTone } from '@/sections/hero/useDeclareHeroTone'
 import { cieloImages } from './images'
 import styles from './ArrivalCielo.module.css'
+import './palette.css'
 
 /**
  * Direction D's fold: the airy pastel composition. A soft sky gradient is
@@ -26,7 +27,7 @@ export function ArrivalCielo() {
   useDeclareHeroTone('light')
 
   return (
-    <section id="top" className={styles.hero} aria-label={copy.brand.name}>
+    <section id="top" data-cielo className={styles.hero} aria-label={copy.brand.name}>
       {/* The type block, on the sky ground. */}
       <div className={styles.head}>
         <Reveal delay={120}>

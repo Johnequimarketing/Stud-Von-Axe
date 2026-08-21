@@ -8,6 +8,7 @@ import {
 } from './HeaderParts'
 import { useHeaderState } from './useHeaderState'
 import styles from './HeaderCielo.module.css'
+import '@/sections/cielo/palette.css'
 
 /**
  * Direction D's header, after the reference's fold: logo left, nav
@@ -24,7 +25,7 @@ export function HeaderCielo() {
         {copy.nav.skip}
       </a>
 
-      <header className={styles.bar} data-surface={scrolled ? 'glass' : 'clear'}>
+      <header data-cielo className={styles.bar} data-surface={scrolled ? 'glass' : 'clear'}>
         <div className={styles.inner}>
           <BrandMark light />
           <HeaderNav className={styles.nav} />

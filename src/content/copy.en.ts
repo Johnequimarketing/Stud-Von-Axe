@@ -371,6 +371,22 @@ export const copy = {
      feature bar. Every line is approved copy or an audited fact restated;
      nothing new is claimed. */
   cielo: {
+    /* The stud section reuses the approved estate copy wholesale (label,
+       heading, body, yards): only what the instax deck adds is new. */
+    estate: {
+      /* Captions describe the SUBJECT, never a place or a horse: these two
+         photographs came from the client's own site and neither can be
+         tied to a named horse or a named yard on the provenance rule. */
+      photos: [
+        { caption: 'Mare and foal', alt: 'A mare standing with her foal in a paddock' },
+        { caption: 'The yard', alt: 'Horses in a stable yard on a bright day' },
+      ],
+      swapLabel: 'Show the next photograph',
+      /* Read by screen readers when the deck changes, so the swap is not
+         a silent visual event. */
+      nowShowing: (caption: string) => `Now showing: ${caption}`,
+    },
+
     arrival: {
       location: 'Desenzano del Garda · Italia',
       /* The client's own tagline, stacked as the display statement. */
