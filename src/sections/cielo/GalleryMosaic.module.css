@@ -63,7 +63,7 @@
   left: var(--space-3);
   bottom: var(--space-3);
   padding: 0.4em 0.9em;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-chip);
   background: color-mix(in srgb, var(--cielo-cloud) 88%, transparent);
   -webkit-backdrop-filter: blur(10px) saturate(1.4);
   backdrop-filter: blur(10px) saturate(1.4);

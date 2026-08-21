@@ -107,7 +107,7 @@
   min-height: 48px;
   margin-top: var(--space-6);
   padding: 0.85em 1.9em;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-control);
   border: 1px solid color-mix(in srgb, var(--cielo-cloud) 45%, transparent);
   color: var(--cielo-cloud);
   font-size: var(--text-small);

@@ -269,7 +269,7 @@
   justify-content: center;
   width: 26px;
   height: 26px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-chip);
   background: color-mix(in srgb, var(--cielo-ink) 8%, transparent);
   color: var(--cielo-ink);
 }

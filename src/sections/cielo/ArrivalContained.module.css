@@ -1,0 +1,146 @@
+.hero {
+  /* The header floats transparent OVER the plate's top, so the fold only
+     leaves a sliver of ground above the rounded corners. */
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-5);
+  background: var(--cielo-air);
+}
+
+/* The plate: the whole fold as one rounded object on the ground, and
+   deliberately WIDER than the page's 1140 measure: the hero owns the
+   fold, so it outgrows every section beneath it. */
+.plate {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(var(--container-max) + 10rem, 100% - (var(--gutter) * 1.2));
+  margin-inline: auto;
+  min-height: min(92svh, 880px);
+  border-radius: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 40px 80px -50px color-mix(in srgb, var(--cielo-ink) 70%, transparent);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 42% 30%;
+}
+
+/* Bottom-weighted grade: the type sits INSIDE the frame on the darkened
+   grass, so its ink is bone and its ground is this wash, measured. */
+.grade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--cielo-ink) 18%, transparent) 0%,
+    transparent 30%,
+    transparent 44%,
+    color-mix(in srgb, var(--cielo-ink) 78%, transparent) 100%
+  );
+}
+
+.content {
+  padding: 0 clamp(var(--space-5), 4vw, var(--space-8));
+  color: var(--cielo-cloud);
+}
+
+.content > * + * {
+  margin-top: var(--space-4);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+  font-weight: 340;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+
+.displayGold {
+  font-style: italic;
+  color: var(--cielo-gold-soft);
+}
+
+.hang {
+  margin-right: -0.3em;
+}
+
+.sub {
+  font-size: var(--text-small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cielo-cloud) 88%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.solid {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.85em 1.8em;
+  border-radius: var(--cielo-radius-control);
+  background: var(--cielo-gold);
+  color: var(--cielo-ink);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.solid:hover {
+  background: var(--cielo-gold-soft);
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.85em 1.8em;
+  border-radius: var(--cielo-radius-control);
+  border: 1px solid color-mix(in srgb, var(--cielo-cloud) 55%, transparent);
+  color: var(--cielo-cloud);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.ghost:hover {
+  border-color: var(--cielo-cloud);
+}
+
+.barWrap {
+  padding: var(--space-6) clamp(var(--space-4), 2.5vw, var(--space-6))
+    clamp(var(--space-4), 2.5vw, var(--space-6));
+}
+
+/* Phones: the banner cannot hold type AND subjects in a portrait crop,
+   so the content compresses and the mobile source (the foal) carries it. */
+@media (max-width: 699px) {
+  .plate {
+    min-height: 84svh;
+  }
+
+  .media img {
+    object-position: 50% 60%;
+  }
+}

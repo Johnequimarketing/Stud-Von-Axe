@@ -95,7 +95,7 @@
   --radius-sm: 12px; /* photography */
   --radius-md: 16px; /* cards */
   --radius-lg: 24px; /* contained plates */
-  --radius-control: 999px; /* buttons are pills in this language */
+  --radius-control: 12px; /* soft square: the logo is angular, so controls are too */
   --radius-pill: 999px; /* chips */
 
   /* ---- Layout ----------------------------------------------------- */

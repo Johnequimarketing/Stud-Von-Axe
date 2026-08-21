@@ -225,7 +225,7 @@
 
 .tag {
   padding: 0.5em 1em;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-chip);
   background: var(--cielo-paper);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 14%, transparent);
   font-family: var(--font-body);

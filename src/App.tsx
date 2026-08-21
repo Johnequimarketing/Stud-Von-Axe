@@ -1,6 +1,6 @@
 import { Header } from './components/header'
 import { Footer } from './components/Footer'
-import { ArrivalCielo } from './sections/cielo/ArrivalCielo'
+import { ArrivalContained } from './sections/cielo/ArrivalContained'
 import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
 import { ReachPlate } from './sections/cielo/ReachPlate'
@@ -9,16 +9,15 @@ import { GalleryMosaic } from './sections/cielo/GalleryMosaic'
 import { InvitationSky } from './sections/cielo/InvitationSky'
 import { Statement, ProofStrip } from './sections/tenuta'
 
-/* Direction D: Cielo, built step by step. Step 1 is the fold: the airy
-   pastel arrival and the glass header. The sections below the fold are
-   still Direction C's while D grows; they get their own treatment once
-   the fold is approved. */
+/* Direction D: Cielo. The fold is the contained hero under the
+   transparent-to-glass header. Statement and ProofStrip are still
+   Direction C's. */
 export function App() {
   return (
     <>
       <Header />
       <main id="main">
-        <ArrivalCielo />
+        <ArrivalContained />
         <Statement />
         <EstateCielo />
         <HorsesCielo />

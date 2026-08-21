@@ -57,7 +57,7 @@
   align-items: center;
   min-height: 52px;
   padding: 0.9em 2.2em;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-control);
   background: var(--cielo-gold);
   color: var(--cielo-ink);
   font-size: var(--text-small);

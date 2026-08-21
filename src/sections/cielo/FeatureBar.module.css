@@ -1,0 +1,82 @@
+/* The frosted glass feature bar, shared by every hero concept. Needs a
+   data-cielo ancestor for the palette. `data-inset` tightens it for use
+   INSIDE a contained plate, where the plate's own padding does the
+   breathing. */
+.bar {
+  list-style: none;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5);
+  max-width: var(--container-max);
+  display: grid;
+  gap: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--cielo-glass);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
+  box-shadow:
+    inset 0 0 0 1px var(--cielo-glass-ring),
+    0 24px 48px -28px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* The icon ring: a smaller glass disc inside the glass, the reference's
+   own gesture. */
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--cielo-radius-control);
+  background: color-mix(in srgb, #ffffff 46%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 65%, transparent);
+  color: var(--cielo-ink);
+}
+
+.featureText {
+  display: grid;
+  gap: 2px;
+}
+
+.featureTitle {
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cielo-ink);
+}
+
+.featureLine {
+  font-size: var(--text-meta);
+  color: var(--cielo-ink-soft);
+}
+
+@media (min-width: 700px) {
+  .bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .bar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: var(--space-5) var(--space-6);
+  }
+}
+
+/* Without backdrop support the fill goes solid so ink stays measured. */
+@supports not (backdrop-filter: blur(1px)) {
+  .bar {
+    background: color-mix(in srgb, var(--cielo-cloud) 94%, transparent);
+  }
+}
+
+.bar[data-inset='true'] {
+  padding: var(--space-4);
+}

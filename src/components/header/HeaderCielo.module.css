@@ -93,7 +93,7 @@
   align-items: center;
   min-height: 44px;
   padding: 0.7em 1.6em;
-  border-radius: var(--radius-pill);
+  border-radius: var(--cielo-radius-control);
   background: color-mix(in srgb, var(--cielo-cloud) 55%, transparent);
   -webkit-backdrop-filter: var(--cielo-glass-blur);
   backdrop-filter: var(--cielo-glass-blur);
