@@ -3,10 +3,10 @@ import { Footer } from './components/Footer'
 import { ArrivalCielo } from './sections/cielo/ArrivalCielo'
 import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
-import { ReachPicker } from './sections/cielo/ReachPicker'
+import { ReachPlate } from './sections/cielo/ReachPlate'
+import { ProgrammeCielo } from './sections/cielo/ProgrammeCielo'
 import {
   Statement,
-  Programme,
   ProofStrip,
   Gallery,
   Invitation,
@@ -25,8 +25,8 @@ export function App() {
         <Statement />
         <EstateCielo />
         <HorsesCielo />
-        <ReachPicker />
-        <Programme />
+        <ReachPlate />
+        <ProgrammeCielo />
         <ProofStrip />
         <Gallery />
         <Invitation />

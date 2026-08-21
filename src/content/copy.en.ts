@@ -371,6 +371,45 @@ export const copy = {
      feature bar. Every line is approved copy or an audited fact restated;
      nothing new is claimed. */
   cielo: {
+    /* The programme, as a numbered selector: three cards choose which
+       panel shows. Titles, descriptions and CTAs are reused from the
+       approved `offer` block; only the panels' own labels and tags are
+       new. Every tag restates an audited fact, and the embryo tags are
+       COUNTED from pairings.ts at render, never written. */
+    programme: {
+      label: 'The programme',
+      heading: 'Three ways into the programme.',
+      headingAccent: 'programme',
+      intro:
+        'Foals raised in Belgium, embryos from our own damlines, and frozen semen through Avantea.',
+      selectLabel: 'Choose part of the programme',
+      seeAll: 'Ask about the programme',
+      panels: {
+        foals: {
+          eyebrow: 'Foals',
+          meta: 'Lanaken, Belgium',
+          /* Sourced from the approved offer line: "Born and raised at our
+             Belgian base, out of mares chosen for jumping ability and
+             temperament." */
+          tags: ['Belgian base', 'Raised on site', 'Out of our own mares'],
+          photoAlt: 'A dark bay foal standing in a summer field',
+        },
+        embryos: {
+          eyebrow: 'Embryos',
+          meta: 'From our own damlines',
+          /* Tags are counted at render; see ProgrammeCielo. */
+          tags: ['Frozen or implanted'],
+          photoAlt: 'A mare standing with her foal in a paddock',
+        },
+        semen: {
+          eyebrow: 'Semen',
+          meta: 'Avantea, Cremona',
+          tags: ['Frozen', 'Avantea, Cremona', 'EU and export', 'On request'],
+          photoAlt: 'A plaited horse neck and shoulder in close up',
+        },
+      },
+    },
+
     /* The reach section. The statement and caption are the approved
        journey lines; every number beside them is counted from the
        placements at render time. */
@@ -378,12 +417,7 @@ export const copy = {
       label: 'Reach',
       statement: 'From Italy, to the world.',
       statementAccent: 'world',
-      lead: 'Where the produce has gone.',
       countriesWord: 'countries',
-      originLabel: 'Desenzano del Garda',
-      raisedLabel: 'Lanaken',
-      originRole: 'Italy',
-      raisedRole: 'Belgium',
       listLabel: 'Placed horses and their destinations',
       /* Concept D's plate. The body is the section's own fact stated
          plainly: both yards, and horses now standing abroad. */

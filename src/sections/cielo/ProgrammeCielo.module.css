@@ -1,0 +1,287 @@
+/* The programme: a numbered selector over one panel. */
+
+.section {
+  padding-block: var(--space-section);
+  color: var(--cielo-ink);
+}
+
+.head > * + * {
+  margin-top: var(--space-4);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw + 1rem, 3.5rem);
+  font-weight: 320;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 20ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--cielo-gold-ink);
+}
+
+.intro {
+  color: var(--cielo-ink-soft);
+  max-width: 52ch;
+}
+
+/* ---- The selector -------------------------------------------------------
+   Three cards in the reference's shape: thumbnail, name and meta, and an
+   oversized ghosted numeral riding the right edge. The active card fills
+   navy; the rest stay white. */
+.selector {
+  display: grid;
+  gap: var(--space-4);
+  margin-block: var(--space-7) var(--space-6);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  overflow: hidden;
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: 18px;
+  background: var(--cielo-paper);
+  box-shadow: 0 16px 36px -26px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+  color: var(--cielo-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--cielo-ink);
+  outline-offset: 3px;
+}
+
+.card[aria-selected='true'] {
+  background: var(--cielo-ink);
+  color: var(--cielo-cloud);
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--cielo-sky);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.cardMeta {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cielo-gold-ink);
+}
+
+.card[aria-selected='true'] .cardMeta {
+  color: var(--cielo-gold-soft);
+}
+
+/* The ghosted numeral. aria-hidden decoration, so its low contrast is a
+   choice rather than a failure: it rides half off the card's edge the way
+   the reference draws it. */
+.cardNumber {
+  position: absolute;
+  right: -0.12em;
+  bottom: -0.34em;
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, currentColor 12%, transparent);
+  pointer-events: none;
+}
+
+/* ---- The panel ---------------------------------------------------------- */
+.panel {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.panel:focus {
+  outline: none;
+}
+
+.figure {
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--cielo-sky);
+  aspect-ratio: 5 / 4;
+  /* The key on this element remounts it per selection, so the fade runs
+     once each time the panel changes. */
+  animation: panelIn var(--dur) var(--ease);
+}
+
+.figure picture,
+.figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.figure img {
+  object-fit: cover;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  animation: panelIn var(--dur) var(--ease);
+}
+
+.detail > * + * {
+  margin-top: var(--space-4);
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure,
+  .detail {
+    animation: none;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--cielo-gold-ink);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.4vw + 0.9rem, 2.5rem);
+  font-weight: 340;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.body {
+  color: var(--cielo-ink-soft);
+  max-width: 44ch;
+}
+
+/* The fact tags, in the reference's pill row. White pills on the pale
+   ground, ink text: facts, not buttons, so no hover. */
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  padding: 0.5em 1em;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-paper);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 14%, transparent);
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.cta,
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--cielo-ink);
+}
+
+.cta {
+  margin-top: var(--space-5);
+}
+
+.seeAll {
+  margin-top: var(--space-6);
+}
+
+.ctaLabel,
+.seeAllLabel {
+  border-bottom: 1px solid color-mix(in srgb, var(--cielo-ink) 40%, transparent);
+  padding-bottom: 2px;
+}
+
+.ctaArrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.cta:hover .ctaArrow,
+.seeAll:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+@media (min-width: 800px) {
+  .selector {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .panel {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: stretch;
+  }
+
+  .figure {
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+}

@@ -22,6 +22,13 @@ import deckYard from '@/assets/img/bases-yard.jpg?w=440;640;799&format=avif;webp
    though the source filename names one. */
 import reachSport from '@/assets/img/results-unguessable.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
 
+/* The programme's three panels. Foals and semen keep the photographs the
+   other directions use; the embryo panel takes the mare-and-foal frame,
+   uncaptioned, because the mares ARE where an embryo comes from. */
+import progFoal from '@/assets/img/offer-foal.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
+import progEmbryo from '@/assets/img/offer-embryo.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
+import progSemen from '@/assets/img/offer-semen.jpg?w=560;760;1040&format=avif;webp;jpeg&as=picture'
+
 export const cieloImages = {
   /** Dark bay foal standing in profile in a bright summer field. */
   field: fieldFoal as Picture,
@@ -31,4 +38,10 @@ export const cieloImages = {
   deck: [deckFoal, deckYard] as Picture[],
   /** The reach plate: horse and rider out competing. */
   reach: reachSport as Picture,
+  /** The programme panels, keyed by the copy's own line ids. */
+  programme: {
+    foals: progFoal as Picture,
+    embryos: progEmbryo as Picture,
+    semen: progSemen as Picture,
+  } as Record<string, Picture>,
 }
