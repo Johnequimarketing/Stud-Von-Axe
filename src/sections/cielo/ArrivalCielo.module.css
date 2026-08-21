@@ -147,12 +147,20 @@
 .stage img {
   display: block;
   /* The open meadow between the two horse groups sits at 53% of the
-     source frame, not 50%, so a straight fit put the centred type
-     visibly off the photograph's own axis. Oversizing by 6% and pulling
-     left recentres the gap under the headline; the sliver it crops from
-     the mare's tail is less than 2% of the frame. */
-  width: 106%;
-  margin-left: -5.3%;
+     source frame, not 50%, so a straight fit put the centred type off the
+     photograph's own axis. The frame is widened and pulled left to bring
+     that gap to the centre: with a box of width k and left offset m, the
+     source point f lands at m + f*k, so 0.53 reaches 0.50 when k is 1.10
+     and m is -8.3%. Left edge sits at -8.3%, right at 101.7%, so the band
+     still covers the viewport at both ends.
+
+     max-width: none is REQUIRED. The global reset caps images at 100%,
+     which silently clamped the widened frame back to viewport width while
+     the negative margin still shifted it: that left a hard 95px gap of
+     bare sky down the right edge of the band. */
+  width: 110%;
+  max-width: none;
+  margin-left: -8.3%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 100%;
@@ -196,6 +204,7 @@
 
   .stage img {
     width: 100%;
+    max-width: 100%;
     margin-left: 0;
     height: auto;
     object-fit: unset;
