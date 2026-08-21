@@ -20,8 +20,7 @@
   gap: var(--space-4);
 }
 
-/* The icon ring: a smaller glass disc inside the glass, the reference's
-   own gesture. */
+/* The icon chip: a quiet tinted disc, the reference's own gesture. */
 .featureIcon {
   display: inline-flex;
   align-items: center;
@@ -30,8 +29,11 @@
   width: 46px;
   height: 46px;
   border-radius: var(--cielo-radius-control);
-  background: color-mix(in srgb, #ffffff 46%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 65%, transparent);
+  /* Navy tint, not white frost. The bar became paper (#ffffff), and a
+     46% white disc with a 65% white ring composites to exactly #ffffff
+     over it, so both were drawn white on white and never appeared. */
+  background: color-mix(in srgb, var(--cielo-ink) 7%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 14%, transparent);
   color: var(--cielo-ink);
 }
 
@@ -66,9 +68,10 @@
   }
 }
 
-/* Without backdrop support the fill goes solid so ink stays measured. */
-@supports not (backdrop-filter: blur(1px)) {
-  .bar {
-    background: color-mix(in srgb, var(--cielo-cloud) 94%, transparent);
-  }
-}
+/* NOTE: a @supports not (backdrop-filter) fallback used to sit here from
+   when this bar was glass. It was left behind when the bar became paper,
+   and being the last rule in the file it repainted the card ivory on any
+   engine without unprefixed backdrop-filter (Safari before 18), where
+   --cielo-air is deliberately the page ground, so the card dissolved into
+   the page. The bar declares no backdrop-filter now, so the guard is
+   gone with it. */

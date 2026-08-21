@@ -43,12 +43,27 @@
   position: absolute;
   inset: auto 0 0 0;
   z-index: -2;
+  /* The band's height comes from the plate's WIDTH (its own ratio) while
+     the plate's height comes from the viewport. On short and wide
+     viewports the band therefore grows TALLER than the plate and
+     overflow:hidden cut its top off mid mask fade, leaving a hard edge
+     under the header and slicing the rider: measured 42px clipped at
+     2560x1080, and 1440x650 cleared it by only 6px. Declaring the ratio
+     here and capping the height means the box can never exceed the plate:
+     it keeps its natural ratio when there is room, and crops
+     horizontally (never vertically) when there is not. */
+  aspect-ratio: 1024 / 434;
+  max-height: 100%;
 }
 
 .media img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  /* Only bites once the cap engages, and then it favours the horse and
+     rider, who occupy the right of the frame. */
+  object-position: 66% 50%;
   /* The band's top edge butted against the sky as a hard line. A MASK
      fades the photograph into whatever ground is actually behind it, so
      no colour has to be matched to the plate's gradient at a height that
