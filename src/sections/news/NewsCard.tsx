@@ -42,15 +42,19 @@ export function NewsCard({ item }: { item: NewsItem }) {
             </picture>
           </div>
         ) : (
-          /* No verified photograph of this story's subject exists, so the
-             headline carries the card. */
-          <div className={styles.stand} data-theme="inverse" aria-hidden="true">
-            <span className={styles.standMark}>×</span>
+          /* No verified photograph of this story's subject exists. The
+             headline is set large on the panel instead of a lone gold mark,
+             which read as a broken image. */
+          <div className={styles.stand}>
+            <p className={styles.standKicker}>{copy.news.eyebrow}</p>
+            <p className={styles.standTitle}>{item.title}</p>
           </div>
         )}
 
         <div className={styles.body}>
-          <h3 className={styles.title}>{item.title}</h3>
+          {/* The stand-in panel already sets this headline large, so
+              repeating it here would print the same words twice. */}
+          {picture ? <h3 className={styles.title}>{item.title}</h3> : null}
           <p className={styles.excerpt}>{item.excerpt}</p>
           <span className={styles.cta}>
             {copy.news.readMore}

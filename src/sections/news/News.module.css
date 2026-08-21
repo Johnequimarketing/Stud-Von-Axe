@@ -1,3 +1,21 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* A cool lift from the right, so news does not repeat the semen section's
+   centred gold pool directly above it. */
+.wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    250deg,
+    color-mix(in srgb, var(--raw-ivory) 6%, transparent),
+    transparent 55%
+  );
+}
+
 /* Heading and the way out share the line: the section is a teaser, so its
    exit sits at eye level rather than after the run. */
 .head {

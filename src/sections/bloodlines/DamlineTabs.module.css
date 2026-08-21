@@ -4,7 +4,7 @@
   padding: var(--space-1);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
-  background: var(--raw-white);
+  background: var(--color-card);
   /* Five names still overflow a phone, so the control scrolls rather than
      wrapping into a block that pushes the card down the page. */
   overflow-x: auto;
@@ -48,12 +48,14 @@
 
 .tab[data-active='true'] {
   background: var(--color-primary);
-  color: var(--color-dark-text);
+  color: var(--color-on-primary);
 }
 
+/* The fill is gold now, so the numeral takes the ink of the fill and earns
+   its quiet from opacity instead of a second colour. */
 .tab[data-active='true'] .number {
-  color: var(--color-accent);
-  opacity: 1;
+  color: var(--color-on-primary);
+  opacity: 0.7;
 }
 
 /* On a dark ground the shell inverts: the control is drawn from the ground

@@ -24,7 +24,18 @@ html {
 }
 
 body {
-  background: var(--color-bg);
+  /* Notturno's ground: the base navy plus one very quiet gold bloom pinned
+     to the viewport, so scrolling the page moves content THROUGH the light
+     rather than dragging the light along with it. Fixed attachment is the
+     whole point; a scrolling bloom reads as a stripe. */
+  background:
+    radial-gradient(
+      70% 50% at 12% 0%,
+      color-mix(in srgb, var(--raw-gold) 7%, transparent),
+      transparent 70%
+    )
+    fixed,
+    var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-body);
@@ -107,4 +118,10 @@ a {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* Gold on navy, so selecting text stays inside the palette. */
+::selection {
+  background: var(--color-accent);
+  color: var(--raw-navy);
 }

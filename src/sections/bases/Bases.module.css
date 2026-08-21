@@ -14,10 +14,13 @@
 }
 
 /* ---- The photographic moment ------------------------------------------ */
+/* The arch again, Notturno's signature crop, here at its largest. The
+   overlay card sits on the square footing at the bottom, so the round only
+   ever eats sky and hedge. */
 .stage {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: 100vw 100vw var(--radius-lg) var(--radius-lg);
 }
 
 .figure {
@@ -67,12 +70,45 @@
   border-radius: var(--radius-lg);
 }
 
+/* Each yard gets its own quiet identity: a gold bloom for Italy, a cooler
+   ivory lift for Belgium. Flat rectangles on a flat dark ground read as
+   placeholders. */
 .base[data-tone='dark'] {
-  background: var(--color-dark-bg);
+  background:
+    radial-gradient(
+      75% 85% at 18% 18%,
+      color-mix(in srgb, var(--raw-gold) 14%, transparent),
+      transparent 70%
+    ),
+    var(--color-dark-bg);
+  box-shadow: inset 0 0 0 1px var(--color-border);
 }
 
 .base[data-tone='light'] {
-  background: var(--color-surface);
+  background:
+    linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--raw-ivory) 8%, transparent),
+      transparent 60%
+    ),
+    var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+/* The pedigree node before the region, tying the two yards to the one
+   device the rest of the page uses. */
+.region {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.region::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
 }
 
 .region {

@@ -5,8 +5,8 @@
  *   fetch('/scripts/contrast-audit.js').then(r=>r.text()).then(eval)
  *   __audit('#semen').filter(x => !x.pass)
  *
- * Four things here exist because getting them wrong produced false results
- * during the build, in both directions:
+ * The guards below exist because getting each one wrong produced a false
+ * result during the build, in both directions:
  *
  * 1. An element's own background is checked first, by walking ancestors for
  *    the first solid paint. Without it a filled gold button measures its
@@ -25,7 +25,12 @@
  *    clipped out of an `overflow:hidden` ancestor, such as a collapsed
  *    reveal panel. Both keep a real rect and a real colour, and both
  *    produced confident failures for text nobody can see.
- * 6. Colours must be sampled only after transitions settle. Anything with a
+ * 6. A gradient layer's colour is its first NON transparent stop. CSS
+ *    happily writes the transparent stop first, and taking the literal
+ *    first colour function made the hero vignette read as opaque black:
+ *    white headings over the photograph reported 21:1 instead of their real
+ *    ratio, which is the most flattering possible answer.
+ * 7. Colours must be sampled only after transitions settle. Anything with a
  *    colour transition, tab controls especially, gives phantom failures
  *    mid-animation: one label measured 4.41:1 while settling and 8.84:1 at
  *    rest. Allow ~900ms after any click before auditing.
@@ -243,7 +248,14 @@ function bgOf(el, section){
         for(let i=grads.length-1;i>=0;i--){
           const a=gradientAlphaAt(grads[i], gb, cx, cy);
           if(a>0){
-            const col=parse(grads[i].match(/(?:rgba?|color)\([^)]*\)/)?.[0] || '#0b1626');
+            /* The layer's colour is the first stop that is NOT fully
+               transparent. Taking the literal first colour function was
+               wrong for any gradient written transparent-stop-first: the
+               hero vignette starts on `rgba(0, 0, 0, 0)`, so every heading
+               over the photograph composited toward BLACK and reported a
+               flattering 21:1 for white type. */
+            const cols=grads[i].match(/(?:rgba?|color)\([^)]*\)/g) || [];
+            const col=parse(cols.find(c=>parse(c)[3]>0) || cols[0] || '#0b1626');
             base=over([col[0],col[1],col[2],a], base);
           }
         }

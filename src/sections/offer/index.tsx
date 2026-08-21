@@ -1,1 +1,1 @@
-export { OfferTriptych as OfferIndex } from './OfferTriptych'
+export { OfferIndex } from './OfferIndex'

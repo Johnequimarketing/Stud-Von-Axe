@@ -42,7 +42,7 @@ export function Contact() {
     <Section id="contact" labelledBy="contact-heading">
       <Container>
         <Reveal>
-          <div className={styles.plate} data-theme="inverse">
+          <div className={styles.plate}>
             <div className={styles.washes} aria-hidden="true" />
 
             <div className={styles.band}>
@@ -58,7 +58,12 @@ export function Contact() {
               <p className={styles.body}>{copy.contact.body}</p>
 
               <div className={styles.action}>
-                <CTALink href={CONTACT_HREF} variant="solid" external>
+                <CTALink
+                  href={CONTACT_HREF}
+                  variant="solid"
+                  external
+                  className={styles.cta}
+                >
                   {copy.contact.cta}
                 </CTALink>
               </div>

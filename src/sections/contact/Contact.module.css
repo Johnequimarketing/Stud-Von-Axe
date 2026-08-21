@@ -1,35 +1,32 @@
-/* A contained navy plate, not a full width band. The footer is navy too, so
-   a full width section would run into it: the inset keeps an ivory gutter
-   around the card and lets it read as a plate. */
+/* Notturno's one bright moment: the closing ask on a contained GOLD plate.
+   On Direction A this was navy, because the page was cream and the footer
+   navy. Here the whole page is navy, so a navy plate would disappear into
+   it and gold is the only ground that makes the ask arrive.
+   Contained rather than full bleed so it reads as a plate, with the page
+   ground visible around it. */
 .plate {
   position: relative;
   overflow: hidden;
   padding: var(--space-7) var(--space-5);
   border-radius: var(--radius-lg);
-  background: var(--color-dark-bg);
+  background: var(--raw-gold);
 }
 
-/* Layered washes rather than a flat fill, per the build brief: a gold bloom
-   behind the heading, a cool lift across the diagonal, and a vignette to
-   close the corners. Flat navy at this size reads as a dead block. */
+/* Layered washes rather than a flat fill: flat gold at this size reads as a
+   brassy slab. A warm lift from the top left and a navy pool bottom right. */
 .washes {
   position: absolute;
   inset: 0;
   background:
     radial-gradient(
-      65% 75% at 50% 12%,
-      color-mix(in srgb, var(--raw-gold) 14%, transparent),
-      transparent 70%
-    ),
-    linear-gradient(
-      160deg,
-      color-mix(in srgb, var(--raw-ivory) 7%, transparent),
-      transparent 55%
+      70% 80% at 12% 8%,
+      color-mix(in srgb, var(--raw-gold-soft) 65%, transparent),
+      transparent 65%
     ),
     radial-gradient(
-      120% 120% at 50% 45%,
-      transparent 45%,
-      color-mix(in srgb, var(--raw-navy-deep) 60%, transparent)
+      80% 90% at 88% 100%,
+      color-mix(in srgb, var(--raw-navy) 22%, transparent),
+      transparent 70%
     );
 }
 
@@ -43,23 +40,45 @@
   text-align: center;
 }
 
+/* Full navy for every ink on this plate, small labels included. Softening
+   them toward the gold measured 3.24:1 at 13px the first time this plate
+   was built: mixing an ink toward its own ground is what kills contrast.
+   They earn their quiet from size and tracking instead. */
 .eyebrow {
-  color: var(--color-accent);
+  color: var(--raw-navy);
 }
 
 .heading {
   margin-block: var(--space-3) var(--space-4);
   max-width: 24ch;
-  color: var(--color-dark-text);
+  color: var(--raw-navy);
+}
+
+/* The accent word is gold everywhere else, which on gold is gold on gold.
+   It carries on its italic alone in the deeper navy. */
+.plate .heading :global(em) {
+  color: var(--raw-navy-deep);
 }
 
 .body {
-  color: var(--color-dark-muted);
+  color: var(--raw-navy);
   max-width: 52ch;
 }
 
 .action {
   margin-top: var(--space-6);
+}
+
+/* Gold on gold would vanish: the primary action inverts to navy with gold
+   type. Two classes deep, so it beats the CTALink primitive's own `solid`. */
+.plate .cta {
+  background: var(--raw-navy);
+  color: var(--raw-gold-soft);
+}
+
+.plate .cta:hover {
+  background: var(--raw-navy-deep);
+  color: var(--color-dark-text);
 }
 
 /* One quiet alternative under the button. The phone numbers and email that
@@ -69,7 +88,7 @@
 .alt {
   margin-top: var(--space-5);
   font-size: var(--text-small);
-  color: var(--color-dark-muted);
+  color: var(--raw-navy);
 }
 
 /* 44px minimum touch target: the underline is `text-decoration` rather
@@ -81,16 +100,16 @@
   min-height: 44px;
   font-family: var(--font-display);
   font-size: 1.0625rem;
-  color: var(--color-dark-text);
+  color: var(--raw-navy);
   text-decoration: underline;
-  text-decoration-color: var(--color-accent);
+  text-decoration-color: color-mix(in srgb, var(--raw-navy) 45%, transparent);
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
   transition: color var(--dur) var(--ease);
 }
 
 .whatsapp:hover {
-  color: var(--raw-gold-soft);
+  text-decoration-color: var(--raw-navy);
 }
 
 @media (min-width: 700px) {

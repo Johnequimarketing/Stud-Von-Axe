@@ -1,7 +1,16 @@
 /* ============================================================
-   Stud Von Axe: design tokens
+   Stud Von Axe: design tokens. DIRECTION B: NOTTURNO.
    The ONLY place raw colour values are allowed to exist.
    Components consume the semantic layer exclusively.
+
+   This branch inverts Direction A: the page base is deep navy and
+   ivory is the ink. The raw palette is identical on both branches,
+   so the Pantone swap point is unchanged. Three semantic tokens
+   change JOB here, not just value:
+   - --color-accent-ink   gold as text on the DARK base (the ivory
+                          tuned mix all but disappears on navy)
+   - --color-card         card ground (white on A, lifted navy here)
+   - --color-on-primary   text on the active/primary fill
    ============================================================ */
 
 :root {
@@ -17,29 +26,35 @@
   --raw-ink: #1e2430;
   --raw-white: #ffffff;
 
-  /* ---- Semantic colour -------------------------------------------- */
-  --color-bg: var(--raw-ivory);
-  --color-surface: var(--raw-paper);
-  --color-primary: var(--raw-navy);
+  /* ---- Semantic colour --------------------------------------------
+     Notturno: the base sits slightly LIGHTER than --color-dark-bg, so
+     dark panels, typographic stands and the footer still read as
+     deeper planes on it. */
+  --color-bg: color-mix(in srgb, var(--raw-navy) 55%, var(--raw-navy-deep));
+  --color-surface: color-mix(in srgb, #ede9df 7%, var(--raw-navy-deep));
+  --color-card: color-mix(in srgb, #ede9df 9%, var(--raw-navy-deep));
+  --color-primary: var(--raw-gold);
+  --color-on-primary: var(--raw-navy);
 
   /* Gold has two jobs and they need different values.
-     --color-accent is for fills, rules, and text on dark grounds.
-     --color-accent-ink is gold AS TEXT on the light base: the brand gold
-     only reaches 3.0:1 on ivory, which fails AA at label sizes, so it is
-     mixed toward navy to clear 4.5:1 on both light grounds. Both derive
-     from --raw-gold, so the Pantone swap still happens in one place. */
+     --color-accent is for fills, rules, and large gold type.
+     --color-accent-ink is gold AS TEXT at label sizes. On Direction A's
+     ivory that meant mixing the brand gold toward navy to clear 4.5:1;
+     here the ground is navy, so the same job needs the opposite move and
+     it takes the soft gold. Both derive from --raw-gold, so the Pantone
+     swap still happens in one place. */
   --color-accent: var(--raw-gold);
-  --color-accent-ink: color-mix(in srgb, var(--raw-gold) 66%, var(--raw-navy));
+  --color-accent-ink: var(--raw-gold-soft);
 
-  --color-text: var(--raw-ink);
-  --color-text-muted: color-mix(in srgb, var(--raw-ink) 70%, var(--raw-ivory));
-  --color-border: color-mix(in srgb, var(--raw-navy) 16%, transparent);
-  --color-border-strong: color-mix(in srgb, var(--raw-navy) 30%, transparent);
+  --color-text: var(--color-dark-text);
+  --color-text-muted: var(--color-dark-muted);
+  --color-border: color-mix(in srgb, #ede9df 14%, transparent);
+  --color-border-strong: color-mix(in srgb, #ede9df 26%, transparent);
   --color-dark-bg: var(--raw-navy-deep);
   --color-dark-text: #ede9df;
-  --color-dark-muted: color-mix(in srgb, #ede9df 62%, var(--raw-navy-deep));
+  --color-dark-muted: color-mix(in srgb, #ede9df 68%, var(--raw-navy-deep));
   --color-dark-border: color-mix(in srgb, #ede9df 18%, transparent);
-  --color-focus: var(--raw-navy);
+  --color-focus: var(--raw-gold);
 
   /* ---- Type ------------------------------------------------------- */
   --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
@@ -53,7 +68,7 @@
   /* Every section headline shares this one size, peaking at 55px. */
   --text-heading: clamp(2.125rem, 2.8vw + 1.3rem, 3.4375rem);
   --text-display: clamp(2.25rem, 3.4vw + 1.4rem, 3.75rem);
-  --text-hero: clamp(2.5rem, 4.4vw + 1.4rem, 4.5rem);
+  --text-hero: clamp(2.5rem, 4.6vw + 1.4rem, 5rem);
 
   --leading-tight: 1.08;
   --leading-title: 1.15;

@@ -30,6 +30,9 @@ export function HeroFull() {
           light top wash so the header reads, and a soft vignette to hold
           the eye in the frame. */}
       <div className={styles.grade} aria-hidden="true" />
+      {/* The last strip of the frame, resolved to the page ground so the hero
+         does not end on a line. */}
+      <div className={styles.foot} aria-hidden="true" />
 
       <div className={styles.inner}>
         <HeroHeading />

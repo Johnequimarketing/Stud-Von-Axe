@@ -64,7 +64,7 @@
   padding: var(--space-1);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
-  background: var(--raw-white);
+  background: var(--color-card);
 }
 
 .chapterButton {
@@ -91,7 +91,7 @@
 
 .chapterButton[data-active='true'] {
   background: var(--color-primary);
-  color: var(--color-dark-text);
+  color: var(--color-on-primary);
 }
 
 .chapterNumber {
@@ -99,8 +99,10 @@
   font-size: var(--text-meta);
 }
 
+/* Gold numeral on the gold fill would vanish: it takes the fill's ink. */
 .chapterButton[data-active='true'] .chapterNumber {
-  color: var(--color-accent);
+  color: var(--color-on-primary);
+  opacity: 0.7;
 }
 
 /* ---- Chapter body -------------------------------------------------- */

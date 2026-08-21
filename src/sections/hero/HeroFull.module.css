@@ -62,6 +62,23 @@
       );
 }
 
+/* Notturno joins the hero to the page. The base wash bottoms out near
+   --raw-navy-deep and the page ground is a lighter mix of the same navy, so
+   the two met at a visible horizontal line under the buttons. This strip
+   resolves the last of the frame to the ground colour exactly.
+
+   It is a real element and not a pseudo on .grade for one reason: the
+   contrast auditor walks elements, so a gradient parked on a pseudo is a
+   paint layer it cannot see. Anything that changes what sits behind type
+   has to be measurable. */
+.foot {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: -1;
+  height: 10%;
+  background: linear-gradient(0deg, var(--color-bg) 0%, transparent 100%);
+}
+
 .inner {
   width: min(var(--container-max), 100% - (var(--gutter) * 2));
   margin-inline: auto;
@@ -73,6 +90,10 @@
 
 .intro {
   color: color-mix(in srgb, var(--raw-white) 86%, transparent);
+  /* Tightened for the larger display size: the statement grew to 5rem on
+     this direction and a wide intro under it flattened the contrast in
+     scale between them. */
+  max-width: 40ch;
 }
 
 @media (min-width: 768px) {

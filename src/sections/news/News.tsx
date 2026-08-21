@@ -22,7 +22,8 @@ const ALL_NEWS_HREF = 'https://www.studvonaxe.it/en/homepage/'
  */
 export function News() {
   return (
-    <Section id="news" labelledBy="news-heading">
+    <Section id="news" labelledBy="news-heading" className={styles.section}>
+      <div className={styles.wash} aria-hidden="true" />
       <Container>
         <Reveal>
           <div className={styles.head}>

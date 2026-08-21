@@ -1,5 +1,94 @@
 # Stud Von Axe: homepage
 
+> ## Branch note: Direction B, "Notturno"
+>
+> This branch is **homepage direction 2 of 3** for Mark's review. Direction A,
+> "Linea di Sangue", lives on `v2-homepage` and is documented in the rest of
+> this file. Everything below still applies: same content layer, same
+> provenance rules, same derived counts, same audit tooling, same launch
+> blockers. Notturno changes **presentation only**, plus five layout rebuilds
+> listed at the end of this note.
+>
+> ### The idea
+>
+> Direction A is a light editorial page with dark moments. Notturno inverts it:
+> the whole page is deep navy, photography glows out of the dark, gold works
+> full time instead of as an accent, and ivory is the ink. Rhythm comes from
+> per-section washes, lifted panels and one bright moment (the gold contact
+> plate) rather than from alternating cream and navy bands.
+>
+> ### Three semantic tokens change JOB, not just value
+>
+> The raw palette is byte for byte identical on both branches, so the Pantone
+> swap point (`--raw-gold`) is unchanged. What changes is what three semantic
+> tokens are *for*:
+>
+> | Token | Direction A | Notturno | Why the job changes |
+> | --- | --- | --- | --- |
+> | `--color-accent-ink` | gold mixed toward navy | `--raw-gold-soft` | This token is "gold AS TEXT at label sizes". On ivory that meant darkening the gold to clear 4.5:1; on navy the same requirement needs the opposite move. |
+> | `--color-card` | `--raw-white` | navy lifted 9% toward ivory | Card ground. A white card on a navy page is a different design, not this one. |
+> | `--color-on-primary` | `--color-dark-text` | `--raw-navy` | Text on the primary fill. `--color-primary` is gold here, so its ink has to be navy or the active segment of every control is gold on gold. |
+>
+> `--color-bg` is deliberately *lighter* than `--color-dark-bg`: a page base of
+> `color-mix(in srgb, var(--raw-navy) 55%, var(--raw-navy-deep))` leaves the
+> footer, the dark panels and the typographic stands still reading as deeper
+> planes on it. A flat single navy would have flattened all of them.
+>
+> ### The signature motif
+>
+> The build brief asks for one visual motif repeated through the page. Notturno's
+> is the **arch**: a full half round on a square footing, the stable door
+> proportion, built from `border-radius: 100vw 100vw <radius> <radius>` so no
+> mask is needed and the element stays a plain figure. It is used twice
+> structurally, in the offer section and on the bases photograph. Twice is
+> enough to read as a motif; arching every image would turn it into a texture.
+>
+> ### Layout rebuilds, not a retheme
+>
+> Five things were rebuilt rather than recoloured, weakest first:
+>
+> 1. **Offer** (`src/sections/offer/OfferIndex.tsx`) replaced the triptych. The
+>    triptych showed three photographs with one word each and hid its content
+>    behind hover, which reads thin in any screenshot. It is now a contained
+>    plate: numbered index rows (01 Foals / 02 Embryos / 03 Semen) with gold
+>    numerals, a one line description always visible, an arrow per row, and one
+>    arch cropped photograph. `object-position: 90% 50%` on that figure is
+>    computed, not guessed: the source is landscape, the arch is 4/5 so cover
+>    crops horizontally only, and the foal's muzzle sits at about 93% of the
+>    frame width.
+> 2. **News fallback card**: a lone gold `x` on navy read as a broken image. The
+>    panel now carries the story's headline set large, the same logic as the
+>    horse card's typographic stand, and the card body drops its title so the
+>    headline is never printed twice.
+> 3. **Base cards** got per card washes (a gold bloom for Italy, a cooler ivory
+>    lift for Belgium) and the gold node dot before the region kicker. Flat
+>    rectangles on a flat dark ground read as placeholders.
+> 4. **Cards get a 1px ivory ring** (`--color-border`) so a dark card separates
+>    from the dark base at all. Hover lift is unchanged.
+> 5. **Hero** display max went 4.5rem to 5rem, the intro tightened to 40ch, and
+>    the frame no longer ends on a line: `.foot` in `HeroFull.module.css`
+>    resolves the last 10% of the hero to `--color-bg` exactly. That strip is a
+>    real element and not a pseudo on `.grade` on purpose, because the contrast
+>    auditor walks elements and cannot see a paint layer parked on a pseudo.
+>
+> ### Accessibility notes specific to this direction
+>
+> - Audited with `scripts/contrast-audit.js` across all 12 regions at 1280, 768
+>   and 390, plus every state of the three segmented controls: **0 failures**.
+> - The gold contact plate is the tightest surface on the page. Small labels on
+>   it measure 4.93:1 against a 4.5:1 requirement, so nothing on that plate may
+>   be softened in tone. Its accent word earns its emphasis from italic and
+>   `--raw-navy-deep` (5.47:1), not from a lighter ink.
+> - Footer links grow to a 44px target below 768px and the list gap goes to
+>   zero, so the column gets taller by the padding rather than by padding plus
+>   gap.
+> - Fixing the auditor was part of this branch: a gradient layer's colour is now
+>   its first NON transparent stop. The hero vignette is written
+>   `rgba(0, 0, 0, 0)` first, and taking the literal first colour function
+>   composited every heading over the photograph toward black, reporting a
+>   flattering 21:1 for white type instead of its real 17.29:1.
+
+
 A fresh homepage for Stud Von Axe, Italian breeder of showjumping sport horses.
 Single page, anchor navigation, built with Vite + React + TypeScript and deployed
 to Vercel.

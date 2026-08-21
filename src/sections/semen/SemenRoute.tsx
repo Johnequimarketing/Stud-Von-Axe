@@ -32,7 +32,8 @@ export function SemenSection() {
   const steps = copy.semen.routeSteps
 
   return (
-    <Section id="semen" labelledBy="semen-heading">
+    <Section id="semen" labelledBy="semen-heading" className={styles.section}>
+      <div className={styles.wash} aria-hidden="true" />
       <Container>
         <Reveal>
           <div className={styles.head}>

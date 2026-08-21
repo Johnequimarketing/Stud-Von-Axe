@@ -57,7 +57,11 @@
   backdrop-filter: blur(10px) saturate(115%);
 }
 
-/* Scrolled, or floating over an ivory hero: the light surface. */
+/* Scrolled, or floating over a light hero: the page-ground surface. Every
+   value here derives from tokens, so on Notturno this resolves to navy
+   glass with ivory type without a single change. The class name still says
+   `light` because it means "the page ground surface", which is what it is
+   on both directions. */
 .light {
   --hd-fg: var(--color-text);
   --hd-fg-muted: var(--color-text-muted);
@@ -67,7 +71,9 @@
   background: color-mix(in srgb, var(--color-bg) 90%, transparent);
   border-color: var(--color-border);
   backdrop-filter: blur(12px) saturate(115%);
-  box-shadow: 0 14px 34px -24px color-mix(in srgb, var(--raw-navy) 62%, transparent);
+  /* Deeper than the page base, or it would be invisible: on Notturno the
+     ground is navy, so a navy shadow does nothing. */
+  box-shadow: 0 14px 34px -24px color-mix(in srgb, var(--raw-navy-deep) 82%, transparent);
 }
 
 /* Floating over a hero that is already ivory there is nothing to separate

@@ -1,3 +1,22 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Each dark section carries a quiet wash of its own, or the page reads as
+   one flat navy field from top to bottom. This one pools light behind the
+   route, where the nodes sit. */
+.wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 55% at 50% 62%,
+    color-mix(in srgb, var(--raw-gold) 9%, transparent),
+    transparent 70%
+  );
+}
+
 /* Centred throughout: the route reads as a journey down the middle of the
    page, and the button lands on the same centre line. */
 .head {
