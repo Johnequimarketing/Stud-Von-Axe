@@ -132,10 +132,14 @@
   width: 100%;
   max-width: 520px;
   margin-inline: auto;
-  /* The print behind is offset right and rotated, so the composition is
-     wider than the front print. This padding reserves that room INSIDE
-     the deck's own box, which is what keeps the fan off the gutter at
-     every width: at 390 the unreserved version pushed the page to 447.
+  /* Which way the stack fans: 1 is rightward, -1 leftward. Every
+     transform below is written against it, so the whole composition
+     mirrors from one value. */
+  --fan: 1;
+  /* The print behind is offset sideways and rotated, so the composition
+     is wider than the front print. This padding reserves that room
+     INSIDE the deck's own box, which is what keeps the fan off the gutter
+     at every width: at 390 the unreserved version pushed the page to 447.
      The hint sits in the same content box, so it stays centred on the
      stack rather than on the padded box. */
   padding-right: 22%;
@@ -172,7 +176,7 @@
 /* The print on top: square to the reader, barely tilted, fully lit. */
 .frame[data-depth='0'] {
   z-index: 2;
-  transform: rotate(-3.5deg) translate(-3%, 1%);
+  transform: rotate(calc(-3.5deg * var(--fan))) translate(calc(-3% * var(--fan)), 1%);
   box-shadow: 0 26px 50px -22px color-mix(in srgb, var(--cielo-ink) 55%, transparent);
 }
 
@@ -181,26 +185,29 @@
    photograph shows, which is what says "there is another one here". */
 .frame[data-depth='1'] {
   z-index: 1;
-  transform: rotate(8deg) translate(19%, -9%) scale(0.94);
+  transform: rotate(calc(8deg * var(--fan))) translate(calc(19% * var(--fan)), -9%)
+    scale(0.94);
   box-shadow: 0 18px 34px -20px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
   filter: brightness(0.95) saturate(0.9);
 }
 
-/* Only the front print carries the swap mark. On the print behind, the
-   chin's right edge is the one part still showing, so its mark read as a
-   second stray button. */
-.frame:not([data-depth='0']) .swapMark {
+/* Only the front print carries its label and mark. Whichever side the
+   stack fans, part of the print behind is visible, and on that print the
+   chin showed a clipped half caption and a stray second button. A blank
+   chin is also what a real stacked print looks like. */
+.frame:not([data-depth='0']) .chin {
   opacity: 0;
 }
 
 /* Hover lifts the whole deck a touch: the front print straightens, the
    one behind fans further out and brightens. */
 .stack:hover .frame[data-depth='0'] {
-  transform: rotate(-2deg) translate(-3%, -0.5%);
+  transform: rotate(calc(-2deg * var(--fan))) translate(calc(-3% * var(--fan)), -0.5%);
 }
 
 .stack:hover .frame[data-depth='1'] {
-  transform: rotate(9.5deg) translate(22%, -11%) scale(0.95);
+  transform: rotate(calc(9.5deg * var(--fan))) translate(calc(22% * var(--fan)), -11%)
+    scale(0.95);
   filter: none;
 }
 
@@ -284,13 +291,32 @@
 }
 
 @media (min-width: 900px) {
+  /* Prints left, copy right. The swap is done with `order` rather than by
+     reordering the markup, so the heading stays the first thing in the
+     document and a screen reader still meets the section's name before
+     its photographs. */
   .split {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
     gap: var(--space-8);
   }
 
+  .deckCell {
+    order: 1;
+  }
+
+  .copyCell {
+    order: 2;
+  }
+
+  /* The prints sit on the left now, so the stack fans OUTWARD, away from
+     the copy, the way the reference does it. The reserved room moves to
+     the same side as the fan, which keeps the composition flush to the
+     container edge without ever crossing it. */
   .deck {
+    --fan: -1;
     margin-inline: 0 auto;
+    padding-right: 0;
+    padding-left: 22%;
   }
 }
 
