@@ -1,0 +1,147 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(var(--space-8), 12vw, 9rem);
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
+/* Block, not flex. The plate sits inside a Reveal wrapper, so a
+   justify-content on this element aligned the WRAPPER and left the plate
+   floating mid frame. Plain flow puts it against the container's left
+   edge, which is where the photograph has open grass: the foal's head and
+   neck stay clear on the right. */
+.inner {
+  position: relative;
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+/* The plate. Opaque enough that every ink on it measures against the
+   plate itself rather than against whatever the photograph happens to be
+   doing behind it. */
+.plate {
+  width: min(560px, 100%);
+  padding: clamp(var(--space-6), 4vw, var(--space-8));
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--cielo-cloud) 86%, transparent);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
+  box-shadow:
+    inset 0 0 0 1px var(--cielo-glass-ring),
+    0 30px 60px -30px color-mix(in srgb, var(--cielo-ink) 55%, transparent);
+  color: var(--cielo-ink);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .plate {
+    background: color-mix(in srgb, var(--cielo-cloud) 97%, transparent);
+  }
+}
+
+.plate > * + * {
+  margin-top: var(--space-5);
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw + 1rem, 3.25rem);
+  font-weight: 320;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 16ch;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--cielo-gold-ink);
+}
+
+/* ---- The two yards ----------------------------------------------------- */
+.facts {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.yard {
+  position: relative;
+  padding-left: var(--space-5);
+  display: grid;
+  gap: 2px;
+}
+
+.yard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-gold);
+}
+
+.yardName {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+}
+
+.yardRole,
+.country {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cielo-gold-ink);
+}
+
+/* ---- The counted reach ------------------------------------------------- */
+.reach {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.count {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.countValue {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 320;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--cielo-gold-ink);
+  vertical-align: -0.08em;
+  margin-right: 0.25em;
+}
+
+.countries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}

@@ -371,6 +371,22 @@ export const copy = {
      feature bar. Every line is approved copy or an audited fact restated;
      nothing new is claimed. */
   cielo: {
+    /* The reach section. The statement and caption are the approved
+       journey lines; every number beside them is counted from the
+       placements at render time. */
+    reach: {
+      label: 'Reach',
+      statement: 'From Italy, to the world.',
+      statementAccent: 'world',
+      lead: 'Where the produce has gone.',
+      countriesWord: 'countries',
+      originLabel: 'Desenzano del Garda',
+      raisedLabel: 'Lanaken',
+      originRole: 'Italy',
+      raisedRole: 'Belgium',
+      listLabel: 'Placed horses and their destinations',
+    },
+
     /* The horses carousel reuses the approved horses copy (label,
        heading, intro, view, seeAll); only the carousel's own controls are
        new here. */

@@ -1,0 +1,52 @@
+/* Review scaffolding only. Deliberately unstyled in the page's language
+   so nobody mistakes it for the design. */
+.wrap {
+  outline: 2px dashed color-mix(in srgb, #16233f 30%, transparent);
+  outline-offset: -8px;
+}
+
+.bar {
+  width: min(1140px, 100% - 2.5rem);
+  margin-inline: auto;
+  padding: 1.25rem 0 0;
+  font-family: var(--font-body);
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #16233f 70%, #ffffff);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.button {
+  min-height: 44px;
+  padding: 0.5em 1em;
+  border: 1px dashed color-mix(in srgb, #16233f 40%, transparent);
+  border-radius: 6px;
+  background: none;
+  color: #16233f;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button[aria-pressed='true'] {
+  background: #16233f;
+  border-style: solid;
+  color: #f7f4ec;
+}
+
+.note {
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, #16233f 75%, #ffffff);
+}

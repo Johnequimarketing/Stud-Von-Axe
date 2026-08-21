@@ -3,9 +3,9 @@ import { Footer } from './components/Footer'
 import { ArrivalCielo } from './sections/cielo/ArrivalCielo'
 import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
+import { ReachPicker } from './sections/cielo/ReachPicker'
 import {
   Statement,
-  Terra,
   Programme,
   ProofStrip,
   Gallery,
@@ -25,7 +25,7 @@ export function App() {
         <Statement />
         <EstateCielo />
         <HorsesCielo />
-        <Terra />
+        <ReachPicker />
         <Programme />
         <ProofStrip />
         <Gallery />
