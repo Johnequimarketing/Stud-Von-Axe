@@ -14,3 +14,4 @@ raw-images/
 *.pdf
 *.docx
 *.zip
+.env*
