@@ -77,6 +77,13 @@
   color: var(--cielo-gold-ink);
 }
 
+/* Hanging terminal punctuation: the negative margin removes the glyph's
+   advance from the line box, so centred lines centre on their WORDS and
+   the period or comma hangs past the edge. */
+.hang {
+  margin-right: -0.3em;
+}
+
 .sub {
   font-size: var(--text-meta);
   letter-spacing: 0.14em;
@@ -128,6 +135,7 @@
      banner never climbs into the type zone on wide short viewports. The
      cover crop below trims the banner's own sky first. */
   height: min(42.4vw, 52svh);
+  overflow: hidden;
 }
 
 .stage picture {
@@ -138,7 +146,13 @@
 
 .stage img {
   display: block;
-  width: 100%;
+  /* The open meadow between the two horse groups sits at 53% of the
+     source frame, not 50%, so a straight fit put the centred type
+     visibly off the photograph's own axis. Oversizing by 6% and pulling
+     left recentres the gap under the headline; the sliver it crops from
+     the mare's tail is less than 2% of the frame. */
+  width: 106%;
+  margin-left: -5.3%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 100%;
@@ -181,6 +195,8 @@
   }
 
   .stage img {
+    width: 100%;
+    margin-left: 0;
     height: auto;
     object-fit: unset;
   }

@@ -33,13 +33,18 @@ export function ArrivalCielo() {
           <h1 className={styles.display}>
             <span className={styles.displayLine}>{t.headlineTop}</span>
             <span className={[styles.displayLine, styles.displayGold].join(' ')}>
-              {t.headlineBottom}
+              {/* The period hangs: at display size its advance pulls the
+                  centred line visibly left of the words above it, so it
+                  stops counting toward the centring. */}
+              {t.headlineBottom.replace(/\.$/, '')}
+              <span className={styles.hang}>.</span>
             </span>
           </h1>
         </Reveal>
         <Reveal delay={220}>
           <p className={styles.sub}>
-            {t.subTop}
+            {t.subTop.replace(/,$/, '')}
+            <span className={styles.hang}>,</span>
             <br />
             <strong className={styles.subStrong}>{t.subBottom}</strong>
           </p>
