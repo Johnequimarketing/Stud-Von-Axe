@@ -248,8 +248,15 @@ function bgOf(el, section){
       bases=[photo.bright, photo.dark];
       /* Every gradient of every overlay covering this point, composited in
          CSS paint order: within one background-image the first gradient
-         listed paints on top, so they are applied last to first. */
-      const cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
+         listed paints on top, so they are applied last to first.
+         The sample point is the centre of the glyph-photo INTERSECTION,
+         not of the whole glyph rect: when only the bottom sliver of a
+         heading grazes a photograph, the photo ground applies exactly
+         there, and sampling overlays at the heading's own centre missed a
+         veil that fully covers the sliver. */
+      const ib=img.getBoundingClientRect();
+      const cx=(Math.max(rect.left,ib.left)+Math.min(rect.right,ib.right))/2;
+      const cy=(Math.max(rect.top,ib.top)+Math.min(rect.bottom,ib.bottom))/2;
       for(const g of section.querySelectorAll('*')){
         const gcs=getComputedStyle(g);
         if(!gcs.backgroundImage.includes('gradient')) continue;

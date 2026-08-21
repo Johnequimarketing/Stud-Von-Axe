@@ -54,15 +54,28 @@ export function ArrivalCielo() {
         </Reveal>
       </div>
 
-      {/* The photograph, rising into the sky. */}
+      {/* The photography. Art-directed per breakpoint: desktop gets the
+          wide pasture banner (mare and foal left, jumper right, the centre
+          open for the type and the glass bar); a 2.36:1 banner dies in a
+          phone crop, so phones keep the foal figure. One <picture> with
+          media queries, so only the matching source ever downloads. */}
       <div className={styles.stage}>
         <picture>
+          {Object.entries(cieloImages.banner.sources).map(([format, srcSet]) => (
+            <source
+              key={format}
+              media="(min-width: 700px)"
+              type={`image/${format}`}
+              srcSet={srcSet}
+              sizes="100vw"
+            />
+          ))}
           {Object.entries(cieloImages.field.sources).map(([format, srcSet]) => (
             <source
               key={format}
               type={`image/${format}`}
               srcSet={srcSet}
-              sizes="100vw"
+              sizes="104vw"
             />
           ))}
           <img
@@ -73,8 +86,8 @@ export function ArrivalCielo() {
             fetchPriority="high"
           />
         </picture>
-        {/* The veil: the sky ground colour fading out, so field and sky
-            read as one continuous atmosphere. */}
+        {/* The blend: the sky ground colour dissolving into the banner's
+            own sky, so photograph and atmosphere read as one. */}
         <div className={styles.veil} aria-hidden="true" />
       </div>
 

@@ -21,7 +21,7 @@
 .bar {
   --cielo-cloud: #f7f4ec;
   --cielo-ink: #16233f; /* the brand navy */
-  --cielo-ink-soft: color-mix(in srgb, #16233f 80%, #dfe8ef);
+  --cielo-ink-soft: color-mix(in srgb, #16233f 90%, #dfe8ef);
   /* The masked logo fills from --color-primary; on this fold it must be
      the brand navy, not the page tokens' espresso. */
   --color-primary: var(--cielo-ink);

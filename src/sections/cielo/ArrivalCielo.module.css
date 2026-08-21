@@ -11,7 +11,7 @@
   --cielo-air: #eef0e9; /* where sky meets the field's atmosphere */
   --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
   --cielo-ink: #16233f; /* THE BRAND NAVY, straight from the logo */
-  --cielo-ink-soft: color-mix(in srgb, #16233f 80%, #dfe8ef);
+  --cielo-ink-soft: color-mix(in srgb, #16233f 90%, #dfe8ef);
   --cielo-gold: #b28a4d; /* THE BRAND GOLD, the CTA fill */
   --cielo-gold-soft: #c9a874;
   /* Gold as display INK: the raw gold reads 2.3:1 on the pale sky, so the
@@ -28,11 +28,16 @@
   isolation: isolate;
   /* The sky is the section's own ground: type never depends on the
      photograph. */
+  /* Constant below 40% on purpose: the banner's top edge lands somewhere
+     in that zone depending on viewport, and the veil that melts the
+     photograph into the atmosphere can only match a ground that is one
+     colour wherever the edge falls. A varying ground put a visible seam
+     exactly at the banner's top. */
   background: linear-gradient(
     180deg,
     var(--cielo-sky) 0%,
-    var(--cielo-air) 46%,
-    var(--cielo-cloud) 100%
+    var(--cielo-air) 40%,
+    var(--cielo-air) 100%
   );
   color: var(--cielo-ink);
 }
@@ -117,77 +122,91 @@
   box-shadow: 0 20px 40px -18px color-mix(in srgb, var(--cielo-ink) 60%, transparent);
 }
 
-/* ---- The photograph ---------------------------------------------------- */
-/* The reference's subject is small in its frame; ours fills 70% of the
-   source, so a full-bleed cover puts a giant ghosted foal behind the type
-   and everything reads as fog. Instead the photograph renders at its own
-   scale: a bottom-centred figure whose edges dissolve into the section's
-   atmosphere through one elliptical mask. The sky ground around it is the
-   section's own gradient, so the display type never touches photography. */
-/* Desktop: an absolute backdrop layer, bottom-centred. Phones: the figure
-   flows BELOW the type instead, because a stacked glass bar would bury an
-   absolutely positioned foal entirely. */
+/* ---- The photography ---------------------------------------------------- */
+/* Desktop: the wide pasture banner as a full-width band anchored to the
+   bottom of the fold, its own sky melting up into the section's sky
+   through the veil. Its subjects flank left and right, so the centre
+   stays open for the type and the glass bar: the composition the
+   reference is built on. */
 .stage {
   position: absolute;
-  inset: 0;
+  inset: auto 0 0 0;
   z-index: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  /* Natural banner height (42.4vw at its 2.36:1 ratio), capped so the
+     banner never climbs into the type zone on wide short viewports. The
+     cover crop below trims the banner's own sky first. */
+  height: min(42.4vw, 52svh);
 }
 
 .stage picture {
   display: block;
-  width: min(600px, 84vw, 76svh);
-}
-
-@media (max-width: 699px) {
-  .stage {
-    position: static;
-    order: 2;
-    margin-top: calc(var(--space-6) * -1);
-  }
-
-  .stage picture {
-    width: min(440px, 104vw);
-  }
-
-  .veil {
-    display: none;
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .stage img {
   display: block;
   width: 100%;
-  height: auto;
-  /* Two intersecting fades melt the sides and the top into the sky while
-     the bottom stays solid under the glass bar. A mask, not painted
-     overlays, because the ground behind is a gradient no painted patch
-     would match exactly. Browsers without mask-composite keep the radial
-     fallback declared first. */
-  -webkit-mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
-  mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
-    linear-gradient(180deg, transparent 3%, #000 44%);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
-    linear-gradient(180deg, transparent 3%, #000 44%);
-  mask-composite: intersect;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
 }
 
-/* A quiet safety veil across the type zone: the masked figure's top can
-   still reach the sub line on short viewports, and small text needs the
-   full 4.5:1. */
+/* The veil covers the banner's top: its photographed sky resolves into
+   the section's own, and the type never depends on the photograph. A real
+   element, painted over the image, so the contrast auditor sees it. */
 .veil {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--cielo-sky) 85%, transparent) 0%,
-    color-mix(in srgb, var(--cielo-air) 55%, transparent) 34%,
-    transparent 52%
+    var(--cielo-air) 0%,
+    color-mix(in srgb, var(--cielo-air) 80%, transparent) 20%,
+    color-mix(in srgb, var(--cielo-air) 40%, transparent) 40%,
+    transparent 58%
   );
+}
+
+/* Phones: the banner's 2.36:1 frame cannot survive a portrait crop, so
+   the foal figure returns, flowing below the type with two intersecting
+   mask fades melting it into the atmosphere. A mask, not painted
+   overlays, because the ground behind is a gradient no painted patch
+   would match exactly; browsers without mask-composite keep the radial
+   fallback declared first. */
+@media (max-width: 699px) {
+  .stage {
+    position: static;
+    order: 2;
+    margin-top: calc(var(--space-6) * -1);
+    display: flex;
+    justify-content: center;
+    height: auto;
+  }
+
+  .stage picture {
+    width: min(440px, 104vw);
+    height: auto;
+  }
+
+  .stage img {
+    height: auto;
+    object-fit: unset;
+  }
+
+  .stage img {
+    -webkit-mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
+    mask-image: radial-gradient(135% 128% at 50% 100%, #000 42%, transparent 74%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 3%, #000 44%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 3%, #000 44%);
+    mask-composite: intersect;
+  }
+
+  .veil {
+    display: none;
+  }
 }
 
 /* ---- The frosted glass bar ---------------------------------------------
