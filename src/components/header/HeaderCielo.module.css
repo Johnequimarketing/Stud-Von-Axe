@@ -43,7 +43,10 @@
    rounded glass bar. Soft square, not a pill, following the logo. */
 .inner {
   pointer-events: auto;
-  width: calc(100% - (var(--cielo-fold-inset) * 2));
+  /* Capped at the page's own measure rather than the plate's full width,
+     so the shell reads as a contained bar inside the fold instead of a
+     rail spanning it. */
+  width: min(var(--container-max), 100% - (var(--cielo-fold-inset) * 4));
   min-height: var(--header-height);
   margin-inline: auto;
   padding-inline: clamp(var(--space-4), 2vw, var(--space-6));

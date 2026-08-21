@@ -78,14 +78,20 @@
     ),
     linear-gradient(
       0deg,
-      color-mix(in srgb, var(--cielo-ink) 88%, transparent) 0%,
-      color-mix(in srgb, var(--cielo-ink) 55%, transparent) 22%,
-      transparent 48%
+      color-mix(in srgb, var(--cielo-ink) 92%, transparent) 0%,
+      color-mix(in srgb, var(--cielo-ink) 84%, transparent) 26%,
+      color-mix(in srgb, var(--cielo-ink) 45%, transparent) 50%,
+      transparent 68%
     );
 }
 
+/* The bottom padding is NOT optional. While the facts bar lived inside
+   the plate it supplied this space; once the bar moved out to its own
+   section the type block sat flush on the plate's bottom edge, buttons
+   grazing the rounded corner. */
 .content {
-  padding: 0 clamp(var(--space-5), 4vw, var(--space-8));
+  padding: 0 clamp(var(--space-5), 4vw, var(--space-8))
+    clamp(var(--space-7), 6vw, 5rem);
   color: var(--cielo-cloud);
 }
 
