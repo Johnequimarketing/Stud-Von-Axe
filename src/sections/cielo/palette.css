@@ -12,7 +12,11 @@
 
 [data-cielo] {
   --cielo-sky: #dfe8ef; /* pale powder blue, the top of the frame */
-  --cielo-air: #eef0e9; /* where sky meets the field's atmosphere */
+  /* Where sky meets the field's atmosphere. This is deliberately the SAME
+     value as the page ground, so the fold's gradient resolves into the
+     page instead of ending on a seam, and no section needs a background
+     of its own. */
+  --cielo-air: #f4f0e7;
   --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
   --cielo-paper: #ffffff; /* instax frames, lifted cards */
 

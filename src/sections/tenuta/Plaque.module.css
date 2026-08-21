@@ -19,6 +19,10 @@
   background: currentColor;
 }
 
+.plaque[data-rule='off']::before {
+  display: none;
+}
+
 .ink {
   color: var(--color-text-muted);
 }

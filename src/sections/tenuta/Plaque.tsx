@@ -13,17 +13,24 @@ export function Plaque({
   children,
   index,
   tone = 'ink',
+  rule = true,
   className,
 }: {
   children: string
   /** Section number in page order, rendered "01 ·" before the label. */
   index?: number
+  /** The short decorative rule above the label. Off where the section is
+      already quiet enough without another line in it. */
+  rule?: boolean
   /** 'ink' on light grounds, 'bone' over photographs and dark planes. */
   tone?: 'ink' | 'bone'
   className?: string
 }) {
   return (
-    <p className={[styles.plaque, styles[tone], className].filter(Boolean).join(' ')}>
+    <p
+      className={[styles.plaque, styles[tone], className].filter(Boolean).join(' ')}
+      data-rule={rule ? undefined : 'off'}
+    >
       {/* The rule is the flex column's first row (the ::before), so the
           number and label share one row beneath it. */}
       <span className={styles.row}>

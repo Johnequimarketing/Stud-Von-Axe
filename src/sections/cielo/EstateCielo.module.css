@@ -2,7 +2,8 @@
 
 .section {
   padding-block: var(--space-section);
-  background: var(--cielo-air);
+  /* No background of its own. The page ground already IS the fold's
+     atmosphere, so a section colour here only ever showed up as a band. */
   color: var(--cielo-ink);
   /* Safety net, not the fix: the deck below reserves room for the fanned
      print so nothing should reach this. `clip` rather than `hidden`
@@ -23,18 +24,21 @@
   margin-top: var(--space-5);
 }
 
+ /* One heading style for the whole page: light Fraunces, mixed case,
+    tight leading, one italic accent word. This was uppercase at weight
+    560 and read as a different typeface next to the other sections. */
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 3.4vw + 0.9rem, 3.25rem);
-  font-weight: 560;
+  font-size: clamp(2rem, 3.6vw + 1rem, 3.5rem);
+  font-weight: 320;
   line-height: 1.06;
-  letter-spacing: -0.005em;
-  text-transform: uppercase;
-  max-width: 18ch;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 20ch;
 }
 
 .accent {
-  font-style: normal;
+  font-style: italic;
   color: var(--cielo-gold-ink);
 }
 
@@ -43,14 +47,19 @@
   max-width: 48ch;
 }
 
-/* The two yards, on the same node dot the fold's glass bar uses. */
+/* The two yards. No rule above them: the space does that job, so it has
+   to be more than the paragraph rhythm or the list reads as another
+   paragraph. */
 .yards {
   list-style: none;
-  margin: 0;
-  padding-top: var(--space-5);
+  margin-top: var(--space-6);
+  padding: 0;
   display: grid;
-  gap: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--cielo-ink) 16%, transparent);
+  gap: var(--space-5);
+}
+
+.copy > .yards + * {
+  margin-top: var(--space-6);
 }
 
 .yard {
@@ -121,7 +130,7 @@
 .deck {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 520px;
   margin-inline: auto;
   /* The print behind is offset right and rotated, so the composition is
      wider than the front print. This padding reserves that room INSIDE
@@ -152,8 +161,8 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  padding: 0.7rem 0.7rem 0;
-  border-radius: 3px;
+  padding: 0.85rem 0.85rem 0;
+  border-radius: 18px;
   background: var(--cielo-paper);
   transform-origin: 50% 90%;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
@@ -210,7 +219,7 @@
 .window {
   display: block;
   overflow: hidden;
-  border-radius: 1px;
+  border-radius: 12px;
   background: var(--cielo-sky);
   aspect-ratio: 1 / 1;
 }
@@ -276,7 +285,7 @@
 
 @media (min-width: 900px) {
   .split {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
     gap: var(--space-8);
   }
 
@@ -289,7 +298,7 @@
    angle on a narrower stack costs more of the gutter. */
 @media (max-width: 899px) {
   .deck {
-    max-width: 360px;
+    max-width: 420px;
   }
 
   .frame[data-depth='0'] {

@@ -53,7 +53,7 @@
 
 .heading {
   font-size: var(--text-hero);
-  font-weight: 340;
+  font-weight: 320;
   line-height: var(--leading-tight);
   letter-spacing: -0.015em;
   max-width: 14ch;

@@ -99,7 +99,7 @@
   --radius-pill: 999px; /* chips */
 
   /* ---- Layout ----------------------------------------------------- */
-  --container-max: 1280px;
+  --container-max: 1140px;
   --container-prose: 66ch;
   --gutter: clamp(1.25rem, 4vw, 4rem);
   --header-height: 72px;

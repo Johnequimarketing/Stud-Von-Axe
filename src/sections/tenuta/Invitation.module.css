@@ -26,9 +26,9 @@
 
 .heading {
   font-size: var(--text-heading);
-  font-weight: 340;
-  line-height: var(--leading-title);
-  letter-spacing: -0.01em;
+  font-weight: 320;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 
 .accent {

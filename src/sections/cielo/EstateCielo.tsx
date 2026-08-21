@@ -44,7 +44,9 @@ export function EstateCielo() {
         <div className={styles.split}>
           <Reveal className={styles.copyCell}>
             <div className={styles.copy}>
-              <Plaque index={1}>{e.label}</Plaque>
+              <Plaque index={1} rule={false}>
+                {e.label}
+              </Plaque>
               <h2 id="estate-heading" className={styles.heading}>
                 <Accented
                   text={e.heading}
@@ -104,7 +106,7 @@ export function EstateCielo() {
                                 key={format}
                                 type={`image/${format}`}
                                 srcSet={srcSet}
-                                sizes="(min-width: 900px) 420px, 78vw"
+                                sizes="(min-width: 900px) 420px, 82vw"
                               />
                             ),
                           )}

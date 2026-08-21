@@ -13,8 +13,8 @@ import type { Picture } from '@/sections/hero/images'
 
 /* The stud deck: two photographs from the client's own site. Square-ish
    crops, because the instax frame is square. */
-import deckFoal from '@/assets/img/intro-foal-star.jpg?w=520;760;1040&format=avif;webp;jpeg&as=picture'
-import deckYard from '@/assets/img/bases-yard.jpg?w=520;760&format=avif;webp;jpeg&as=picture'
+import deckFoal from '@/assets/img/intro-foal-star.jpg?w=440;640;880&format=avif;webp;jpeg&as=picture'
+import deckYard from '@/assets/img/bases-yard.jpg?w=440;640;799&format=avif;webp;jpeg&as=picture'
 
 export const cieloImages = {
   /** Dark bay foal standing in profile in a bright summer field. */
