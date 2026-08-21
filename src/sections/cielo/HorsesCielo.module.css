@@ -63,9 +63,67 @@
     box-shadow var(--dur-fast) var(--ease);
 }
 
-.arrow:hover {
+.arrow:hover:not(:disabled) {
   background: var(--cielo-paper);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 28%, transparent);
+}
+
+/* Kept in place rather than hidden, so filtering a run down to something
+   that fits does not make the head jump. */
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---- The filter -------------------------------------------------------
+   Pills, matching the fold's control language. The active chip fills with
+   navy rather than tinting, because a tinted ink on a pale ground is the
+   one thing that has failed contrast on this project every time it has
+   been tried. */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.chipButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 44px;
+  padding: 0.6em 1.3em;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-paper);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 16%, transparent);
+  color: var(--cielo-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.chipButton:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cielo-ink) 34%, transparent);
+}
+
+.chipButton[aria-pressed='true'] {
+  background: var(--cielo-ink);
+  box-shadow: none;
+  color: var(--cielo-cloud);
+}
+
+/* The count earns its quiet from SIZE, not from a lighter ink: softening
+   it toward its own ground is what breaks contrast. */
+.chipCount {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
 /* ---- The run ----------------------------------------------------------

@@ -1,11 +1,15 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { copy } from '@/content'
 import {
   featuredFoal,
   availableMares,
   recentPlacements,
 } from '@/content/horses'
-import { COUNTRY_NAMES, type Horse } from '@/content/types'
+import {
+  COUNTRY_NAMES,
+  type Horse,
+  type HorseCategory,
+} from '@/content/types'
 import { horseDetailUrls } from '@/content/horseDetailUrls'
 import { horsePictures } from '@/sections/available/images'
 import { Container, Reveal } from '@/components/primitives'
@@ -18,6 +22,13 @@ import './palette.css'
  * The horses, as a looping run of cards. One card per horse: photograph,
  * name, one meta line, a status chip, and its own link out. The run wraps
  * at both ends, so the controls never dead end.
+ *
+ * Filtered by category, the taxonomy the client will actually manage in
+ * WordPress. Counts beside each chip are derived from the catalogue, and a
+ * category with nothing in it renders no chip, so the run can never be
+ * filtered down to an empty state. Choosing a filter returns the run to
+ * its first card, otherwise the reader lands mid row in a set they have
+ * not seen.
  *
  * The scroller is native CSS scroll snap, not a JS carousel: it drags on
  * a touch screen, throws with a trackpad, and the arrows only ever call
@@ -39,6 +50,12 @@ import './palette.css'
    gone abroad. */
 const ALL: Horse[] = [featuredFoal, ...availableMares, ...recentPlacements]
 const cast = ALL.filter((h) => h.id in horsePictures)
+
+/* Chip order is fixed here rather than taken from the data, so adding a
+   horse can never reshuffle the filter bar. */
+const CATEGORY_ORDER: HorseCategory[] = ['foal', 'broodmare', 'sport-horse']
+
+type Filter = 'all' | HorseCategory
 
 const SEXES: Record<string, string> = {
   colt: 'Colt',
@@ -67,6 +84,51 @@ export function HorsesCielo() {
   const t = copy.tenuta.horses
   const c = copy.cielo.horses
   const trackRef = useRef<HTMLUListElement>(null)
+  const [filter, setFilter] = useState<Filter>('all')
+  const [scrollable, setScrollable] = useState(true)
+
+  const chips = useMemo(() => {
+    const counted = CATEGORY_ORDER.map((id) => ({
+      id: id as Filter,
+      label: c.categories[id],
+      count: cast.filter((h) => h.category === id).length,
+    })).filter((chip) => chip.count > 0)
+
+    return [
+      { id: 'all' as Filter, label: c.filterAll, count: cast.length },
+      ...counted,
+    ]
+  }, [c])
+
+  const visible = useMemo(
+    () => (filter === 'all' ? cast : cast.filter((h) => h.category === filter)),
+    [filter],
+  )
+
+  /* Back to the first card whenever the run changes. */
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    track.scrollTo({
+      left: 0,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth',
+    })
+  }, [filter])
+
+  /* Arrows on a run that fits are dead controls, so they are measured
+     rather than assumed: the count that fits changes with the viewport as
+     well as with the filter. */
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const measure = () => setScrollable(track.scrollWidth - track.clientWidth > 2)
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [visible.length])
 
   const step = useCallback((direction: 1 | -1) => {
     const track = trackRef.current
@@ -125,6 +187,7 @@ export function HorsesCielo() {
                 className={styles.arrow}
                 onClick={() => step(-1)}
                 aria-label={c.prev}
+                disabled={!scrollable}
               >
                 <span aria-hidden="true">←</span>
               </button>
@@ -133,10 +196,28 @@ export function HorsesCielo() {
                 className={styles.arrow}
                 onClick={() => step(1)}
                 aria-label={c.next}
+                disabled={!scrollable}
               >
                 <span aria-hidden="true">→</span>
               </button>
             </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <div className={styles.filters} role="group" aria-label={c.filterLabel}>
+            {chips.map((chip) => (
+              <button
+                key={chip.id}
+                type="button"
+                className={styles.chipButton}
+                aria-pressed={filter === chip.id}
+                onClick={() => setFilter(chip.id)}
+              >
+                {chip.label}
+                <span className={styles.chipCount}>{chip.count}</span>
+              </button>
+            ))}
           </div>
         </Reveal>
       </Container>
@@ -151,7 +232,7 @@ export function HorsesCielo() {
           role="list"
           aria-label={c.regionLabel}
         >
-          {cast.map((horse) => {
+          {visible.map((horse) => {
             const picture = horsePictures[horse.id]
             const href = horseDetailUrls[horse.id]
 
@@ -204,6 +285,9 @@ export function HorsesCielo() {
       </Reveal>
 
       <Container>
+        <p className="visually-hidden" aria-live="polite">
+          {c.resultCount(visible.length)}
+        </p>
         <Reveal delay={200}>
           <a className={styles.seeAll} href="#contact">
             <span className={styles.seeAllLabel}>{t.seeAll}</span>

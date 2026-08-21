@@ -380,6 +380,19 @@ export const copy = {
       /* The run wraps, so the controls never dead end. Announced on the
          region so a keyboard user knows before they reach the last card. */
       regionLabel: 'Horses, a looping run',
+
+      /* The category filter. Labels only: every count beside them is
+         derived from the catalogue at render time, never written here, and
+         a bucket with nothing in it never renders a chip at all. */
+      filterLabel: 'Filter by type',
+      filterAll: 'All horses',
+      categories: {
+        foal: 'Foals',
+        broodmare: 'Broodmares',
+        'sport-horse': 'Sport horses',
+      },
+      /* Spoken after a filter changes, so the swap is not silent. */
+      resultCount: (n: number) => (n === 1 ? '1 horse' : `${n} horses`),
     },
 
     /* The stud section reuses the approved estate copy wholesale (label,
