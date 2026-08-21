@@ -11,24 +11,24 @@
  */
 
 [data-cielo] {
-  --cielo-sky: #dfe8ef; /* pale powder blue, the top of the frame */
+  --cielo-sky: var(--raw-sky); /* pale powder blue, the top of the frame */
   /* Where sky meets the field's atmosphere. This is deliberately the SAME
      value as the page ground, so the fold's gradient resolves into the
      page instead of ending on a seam, and no section needs a background
      of its own. */
-  --cielo-air: #f4f0e7;
-  --cielo-cloud: #f7f4ec; /* warm ivory, the glass tint */
-  --cielo-paper: #ffffff; /* instax frames, lifted cards */
+  --cielo-air: var(--raw-bone);
+  --cielo-cloud: color-mix(in srgb, var(--raw-bone) 70%, var(--raw-white));
+  --cielo-paper: var(--raw-white); /* instax frames, lifted cards */
 
-  /* THE BRAND COLOURS, from the client's own palette and the navy they
-     use dominantly on their Facebook and Instagram graphics. These two
-     hexes are the swap point: everything below derives from them. */
-  --cielo-ink: #0d1d36; /* brand navy */
-  --cielo-ink-graphic: #0b1b34; /* the navy on their social graphics */
-  --cielo-gold: #b57f24; /* brand gold */
+  /* The brand colours come from tokens.css, which is the project's one
+     swap point. Nothing here redefines a hex: this file only names the
+     JOBS those colours do inside the fold. */
+  --cielo-ink: var(--raw-navy);
+  --cielo-ink-graphic: var(--raw-navy-graphic);
+  --cielo-gold: var(--raw-gold);
 
-  --cielo-ink-soft: color-mix(in srgb, var(--cielo-ink) 90%, #dfe8ef);
-  --cielo-gold-soft: color-mix(in srgb, var(--cielo-gold) 62%, #ffffff);
+  --cielo-ink-soft: color-mix(in srgb, var(--cielo-ink) 90%, var(--raw-sky));
+  --cielo-gold-soft: color-mix(in srgb, var(--cielo-gold) 62%, var(--raw-white));
   /* Gold as display INK on a pale ground: the raw brand gold reads about
      3.1:1 at body size, so type-weight gold is pulled toward the navy.
      Measured, not guessed. */

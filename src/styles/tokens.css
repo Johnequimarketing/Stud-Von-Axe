@@ -17,42 +17,51 @@
    ============================================================ */
 
 :root {
-  /* ---- Raw palette ------------------------------------------------
-     --raw-accent is the single swap point for the client's final
-     accent choice. */
-  --raw-bone: #f4f0e7;
-  --raw-stone: #e8e1d3;
-  --raw-espresso: #262019;
-  --raw-umber: #57493a;
-  --raw-accent: #5f5a3a; /* <<< SWAP THE CLIENT ACCENT HERE */
+  /* ---- Brand palette ----------------------------------------------
+     THE SWAP POINT for the whole project. These are the client's own
+     colours: the navy and gold from their palette, plus the slightly
+     deeper navy they use dominantly on their Facebook and Instagram
+     graphics. sections/cielo/palette.css consumes these same variables,
+     so the page has ONE source of brand colour, not two. */
+  --raw-navy: #0d1d36; /* <<< brand navy */
+  --raw-navy-graphic: #0b1b34; /* the navy on their social graphics */
+  --raw-gold: #b57f24; /* <<< brand gold */
+  --raw-bone: #f4f0e7; /* warm ivory page ground */
+  --raw-sky: #dfe8ef; /* pale blue, tinted surfaces */
   --raw-white: #ffffff;
 
   /* ---- Semantic colour -------------------------------------------- */
   --color-bg: var(--raw-bone);
-  --color-surface: var(--raw-stone);
+  --color-surface: var(--raw-sky);
   --color-card: var(--raw-white);
-  --color-primary: var(--raw-espresso);
+  --color-primary: var(--raw-navy);
   --color-on-primary: var(--raw-bone);
-  --color-accent: var(--raw-accent);
-  /* Accent as text at label sizes. The raw olive clears AA on bone with
-     room to spare; the token still exists so the swap stays one place if
-     the client's accent lands lighter and needs mixing toward espresso. */
-  --color-accent-ink: var(--raw-accent);
-  /* The accent word on DARK grounds (hero, Terra, the espresso plates):
-     the raw olive disappears against near-black, so the same accent is
-     lifted toward bone. Still derived from the one swap point. */
-  --color-accent-tint: color-mix(in srgb, var(--raw-accent) 38%, var(--raw-bone));
-  --color-text: var(--raw-espresso);
-  --color-text-muted: var(--raw-umber);
-  --color-border: color-mix(in srgb, var(--raw-espresso) 16%, transparent);
-  --color-border-strong: color-mix(in srgb, var(--raw-espresso) 34%, transparent);
-  /* The dark plane: photograph grades and the footer resolve to warm
-     near-black, never navy. */
-  --color-dark-bg: #1b1712;
+  --color-accent: var(--raw-gold);
+  /* Gold as TEXT at label sizes. The raw brand gold reads about 3.1:1 on
+     the ivory ground, under the 4.5:1 floor for small text, so type
+     weight gold is pulled toward the navy. Measured, not guessed. */
+  --color-accent-ink: color-mix(in srgb, var(--raw-gold) 46%, var(--raw-navy));
+  /* The same accent on DARK grounds, where the move is the opposite one:
+     lifted toward white so it separates from the navy behind it. */
+  --color-accent-tint: color-mix(in srgb, var(--raw-gold) 62%, var(--raw-white));
+  --color-text: var(--raw-navy);
+  --color-text-muted: color-mix(in srgb, var(--raw-navy) 78%, var(--raw-sky));
+  --color-border: color-mix(in srgb, var(--raw-navy) 16%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--raw-navy) 34%, transparent);
+  /* The dark plane: plates, the results card and the footer all resolve
+     to the brand's own graphic navy. */
+  --color-dark-bg: var(--raw-navy-graphic);
   --color-dark-text: var(--raw-bone);
-  --color-dark-muted: color-mix(in srgb, var(--raw-bone) 72%, #1b1712);
+  --color-dark-muted: color-mix(in srgb, var(--raw-bone) 74%, var(--raw-navy-graphic));
   --color-dark-border: color-mix(in srgb, var(--raw-bone) 22%, transparent);
-  --color-focus: var(--raw-accent);
+  --color-focus: var(--raw-gold);
+
+  /* Aliases for the direction folders that are on disk but unimported.
+     They keep those files valid without a second palette existing. */
+  --raw-stone: var(--raw-sky);
+  --raw-espresso: var(--raw-navy);
+  --raw-umber: var(--color-text-muted);
+  --raw-accent: var(--raw-gold);
 
   /* ---- Type ------------------------------------------------------- */
   --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
