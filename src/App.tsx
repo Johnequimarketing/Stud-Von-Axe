@@ -1,6 +1,7 @@
 import { Header } from './components/header'
 import { Footer } from './components/Footer'
 import { ArrivalContained } from './sections/cielo/ArrivalContained'
+import { FactsStrip } from './sections/cielo/FactsStrip'
 import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
 import { ReachPlate } from './sections/cielo/ReachPlate'
@@ -18,6 +19,7 @@ export function App() {
       <Header />
       <main id="main">
         <ArrivalContained />
+        <FactsStrip />
         <Statement />
         <EstateCielo />
         <HorsesCielo />

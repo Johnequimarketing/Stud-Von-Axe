@@ -1,21 +1,30 @@
 .hero {
-  /* The header floats transparent OVER the plate's top, so the fold only
-     leaves a sliver of ground above the rounded corners. */
-  padding-top: var(--space-3);
-  padding-bottom: var(--space-5);
+  /* The fold's frame: one shared inset on every side, so the plate is
+     near full bleed with an even sliver of ground around it. The header
+     floats transparent inside the same frame. */
+  padding: var(--cielo-fold-inset);
   background: var(--cielo-air);
 }
 
-/* The plate: the whole fold as one rounded object on the ground, and
-   deliberately WIDER than the page's 1140 measure: the hero owns the
-   fold, so it outgrows every section beneath it. */
+/* The plate: the whole fold as one rounded object filling the frame. The
+   sky gradient is the plate's OWN ground, so the area above the
+   photograph's band is atmosphere rather than stretched picture. */
 .plate {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  width: min(var(--container-max) + 10rem, 100% - (var(--gutter) * 1.2));
-  margin-inline: auto;
-  min-height: min(92svh, 880px);
+  width: 100%;
+  /* Constant below 30%: the band's top lands somewhere in that zone
+     depending on viewport, and the photograph's mask fades into whatever
+     is there, so it has to be ONE colour wherever the edge falls. */
+  background: linear-gradient(
+    180deg,
+    var(--cielo-sky) 0%,
+    color-mix(in srgb, var(--cielo-sky) 45%, var(--cielo-air)) 30%,
+    color-mix(in srgb, var(--cielo-sky) 45%, var(--cielo-air)) 100%
+  );
+  /* The plate IS the fold: the full viewport minus its frame. */
+  min-height: calc(100svh - (var(--cielo-fold-inset) * 2));
   border-radius: 36px;
   display: flex;
   flex-direction: column;
@@ -23,18 +32,28 @@
   box-shadow: 0 40px 80px -50px color-mix(in srgb, var(--cielo-ink) 70%, transparent);
 }
 
+/* The photograph as a bottom-anchored BAND at its own ratio, not a cover
+   fill. The source is 1024x434: covering a 1382x842 plate needs a 1.94x
+   upscale and shows only 70% of the frame, which is why the horse read as
+   enormous and cut. At its own ratio the same file upscales 1.35x and the
+   whole jump is visible, with the plate's sky carrying the space above. */
 .media {
   position: absolute;
-  inset: 0;
+  inset: auto 0 0 0;
   z-index: -2;
 }
 
 .media img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 42% 30%;
+  height: auto;
+  /* The band's top edge butted against the sky as a hard line. A MASK
+     fades the photograph into whatever ground is actually behind it, so
+     no colour has to be matched to the plate's gradient at a height that
+     changes with the viewport. No text sits in this zone, so the fade is
+     purely decorative. */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 26%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 26%);
 }
 
 /* Bottom-weighted grade: the type sits INSIDE the frame on the darkened
@@ -43,13 +62,26 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--cielo-ink) 18%, transparent) 0%,
-    transparent 30%,
-    transparent 44%,
-    color-mix(in srgb, var(--cielo-ink) 78%, transparent) 100%
-  );
+  /* LIGHT at the top, dark at the foot: the top wash brightens whatever
+     the photograph puts under the header, the foot wash carries the bone
+     type. TWO gradients, one colour each, never one gradient running
+     light to dark: a mixed-colour gradient is one layer to the contrast
+     auditor, which composited the light colour at the dark stop's alpha
+     and reported bone type at 1.38:1 on a ground that is actually near
+     black. One colour per layer keeps the model truthful. */
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cielo-sky) 92%, transparent) 0%,
+      color-mix(in srgb, var(--cielo-sky) 40%, transparent) 18%,
+      transparent 38%
+    ),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--cielo-ink) 88%, transparent) 0%,
+      color-mix(in srgb, var(--cielo-ink) 55%, transparent) 22%,
+      transparent 48%
+    );
 }
 
 .content {
@@ -72,7 +104,10 @@
 
 .displayGold {
   font-style: italic;
-  color: var(--cielo-gold-soft);
+  /* Lifted past gold-soft: the raw soft gold measured 2.1:1 on the veiled
+     grass at display size, and 70% still landed at 2.97 against a 3.0
+     floor. Still derived from the swap point. */
+  color: color-mix(in srgb, var(--cielo-gold-soft) 52%, #ffffff);
 }
 
 .hang {
@@ -128,19 +163,65 @@
   border-color: var(--cielo-cloud);
 }
 
-.barWrap {
-  padding: var(--space-6) clamp(var(--space-4), 2.5vw, var(--space-6))
-    clamp(var(--space-4), 2.5vw, var(--space-6));
-}
-
 /* Phones: the banner cannot hold type AND subjects in a portrait crop,
-   so the content compresses and the mobile source (the foal) carries it. */
+   so the mobile source (the foal) carries it. */
+/* Phones invert the composition, because cover is arithmetically hopeless
+   here: a 2.36:1 source in a 390x820 plate shows 20% of its width, so
+   every object-position lands on a torso, headless whichever way it is
+   nudged. Instead the photograph bands the TOP at its own ratio, fading
+   down into the plate's pale ground, and the type sits below it on that
+   ground in INK. No text touches photography at all on a phone. */
 @media (max-width: 699px) {
-  .plate {
-    min-height: 84svh;
+  .media {
+    inset: 0 0 auto 0;
   }
 
   .media img {
-    object-position: 50% 60%;
+    -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
   }
+
+  /* The plate's ground stays PALE all the way down on a phone, because
+     the ink type sits on it: the desktop gradient's lower half is a
+     sky/air mix that reads navy under 76px type. */
+  .plate {
+    background: linear-gradient(
+      180deg,
+      var(--cielo-sky) 0%,
+      var(--cielo-air) 34%,
+      var(--cielo-air) 100%
+    );
+  }
+
+  /* No wash: the type is on the ground, not on the picture. */
+  .grade {
+    background: none;
+  }
+
+  .content {
+    color: var(--cielo-ink);
+  }
+
+  .displayGold {
+    color: var(--cielo-gold-ink);
+  }
+
+  .sub {
+    color: var(--cielo-ink-soft);
+  }
+
+  .ghost {
+    border-color: color-mix(in srgb, var(--cielo-ink) 35%, transparent);
+    color: var(--cielo-ink);
+  }
+
+  .ghost:hover {
+    border-color: var(--cielo-ink);
+  }
+
+  /* NOTE: an earlier revision deepened .grade's wash here for the old
+     cover crop. It is gone on purpose: this composition puts no text on
+     the picture, so a wash would only muddy the pale ground the ink type
+     needs. Two rules for one selector in one media query, and the later
+     one silently won. */
 }

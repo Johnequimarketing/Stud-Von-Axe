@@ -2,7 +2,6 @@ import { copy } from '@/content'
 import { Reveal } from '@/components/primitives'
 import { useDeclareHeroTone } from '@/sections/hero/useDeclareHeroTone'
 import { cieloImages } from './images'
-import { FeatureBar } from './FeatureBar'
 import styles from './ArrivalContained.module.css'
 import './palette.css'
 
@@ -11,8 +10,8 @@ import './palette.css'
  * sites card their heroes, sized past the page's 1140 measure because the
  * hero owns the fold. The transparent header floats over the plate's top;
  * its glass only arrives on scroll. The banner fills the plate, a
- * bottom-weighted veil carries the type INSIDE the frame, and the glass
- * bar sits inset on the plate's foot.
+ * bottom-weighted veil carries the type inside the frame. The four facts
+ * are their own section below the fold (FactsStrip).
  *
  * The type sits on the veiled lower half in bone, which is measured
  * against the darkened grass, not assumed.
@@ -24,24 +23,19 @@ export function ArrivalContained() {
   return (
     <section id="top" data-cielo className={styles.hero} aria-label={copy.brand.name}>
       <div className={styles.plate}>
+        {/* One source at every width. Art directing a second, taller
+            photograph here put a headless torso on phones: the fold's own
+            picture is the jump, and a portrait crop of it keeps the horse
+            whole. Decorative, because the fold's meaning is the heading. */}
         <picture className={styles.media}>
           {Object.entries(cieloImages.banner.sources).map(([format, srcSet]) => (
-            <source
-              key={format}
-              media="(min-width: 700px)"
-              type={`image/${format}`}
-              srcSet={srcSet}
-              sizes="100vw"
-            />
-          ))}
-          {Object.entries(cieloImages.field.sources).map(([format, srcSet]) => (
             <source key={format} type={`image/${format}`} srcSet={srcSet} sizes="100vw" />
           ))}
           <img
-            src={cieloImages.field.img.src}
-            width={cieloImages.field.img.w}
-            height={cieloImages.field.img.h}
-            alt={t.photoAlt}
+            src={cieloImages.banner.img.src}
+            width={cieloImages.banner.img.w}
+            height={cieloImages.banner.img.h}
+            alt=""
             fetchPriority="high"
           />
         </picture>
@@ -77,11 +71,6 @@ export function ArrivalContained() {
           </Reveal>
         </div>
 
-        <div className={styles.barWrap}>
-          <Reveal delay={300}>
-            <FeatureBar inset />
-          </Reveal>
-        </div>
       </div>
     </section>
   )

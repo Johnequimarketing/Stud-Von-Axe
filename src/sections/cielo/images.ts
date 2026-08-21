@@ -3,12 +3,13 @@
    Served as a responsive avif/webp/jpeg set by vite-imagetools. */
 
 import fieldFoal from '@/assets/img/offer-foal.jpg?w=760;1140;1520;2048;2560&format=avif;webp;jpeg&as=picture'
-/* TODO client-confirm: the desktop banner is AI GENERATED (supplied by the
-   user, produced with Gemini). It is a mood background, never attached to
-   a named horse, but a breeder fronting the site with AI horses needs the
-   client's explicit sign-off, and the 1584px source is soft on 2x
-   displays. Replace with commissioned photography when it exists. */
-import banner from '@/assets/img/cielo-hero-banner.jpg?w=760;1140;1584&format=avif;webp;jpeg&as=picture'
+/* TODO client-confirm: the desktop hero background is AI GENERATED
+   (supplied by the user, same generated series as the banner it
+   replaced). It is a mood background, never attached to a named horse,
+   but a breeder fronting the site with an AI horse needs the client's
+   explicit sign-off, and the 1024px source is soft at full bleed on any
+   modern display. Replace with commissioned photography when it exists. */
+import banner from '@/assets/img/cielo-hero-jump.jpg?w=760;1024&format=avif;webp;jpeg&as=picture'
 import type { Picture } from '@/sections/hero/images'
 
 /* The stud deck: two photographs from the client's own site. Square-ish
@@ -38,7 +39,7 @@ import galleryContouch from '@/assets/img/results-contouch.jpg?w=480;760;1170&fo
 export const cieloImages = {
   /** Dark bay foal standing in profile in a bright summer field. */
   field: fieldFoal as Picture,
-  /** The wide pasture banner: mare and foal left, jumper right. */
+  /** The hero background: horse and rider over a rustic fence. */
   banner: banner as Picture,
   /** The stud section's instax deck, in stack order. */
   deck: [deckFoal, deckYard] as Picture[],

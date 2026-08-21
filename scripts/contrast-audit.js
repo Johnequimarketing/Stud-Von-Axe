@@ -3,7 +3,8 @@
  * into `public/`, which would ship a dev tool in the production build:
  *
  *   fetch('/scripts/contrast-audit.js').then(r=>r.text()).then(eval)
- *   __audit('#semen').filter(x => !x.pass)
+ *   await __audit('#semen').then(a => a.filter(x => !x.pass))
+ *   (async since the bitmap sampler: see the note on coded-frame padding)
  *
  * The guards below exist because getting each one wrong produced a false
  * result during the build, in both directions:
@@ -11,9 +12,12 @@
  * 1. An element's own background is checked first, by walking ancestors for
  *    the first solid paint. Without it a filled gold button measures its
  *    text against the photograph behind the button, and reads 1.04:1.
- * 2. Text is only treated as sitting on an image when its GLYPH rect
- *    actually intersects the image. Measuring element boxes flags stretched
- *    grid cells whose text is nowhere near the picture.
+ * 2. Text is only treated as sitting on an image when a real part of its
+ *    LINE actually covers the image: per line fragment, and a third of the
+ *    line's height at that. Element boxes flag stretched grid cells whose
+ *    text is nowhere near the picture; a text node's union box bridges an
+ *    inline image the sentence wraps around; and a bare intersection test
+ *    counts the blank leading under a descender as text on a photograph.
  * 3. Over a photograph it samples the real pixels and takes the BRIGHTEST
  *    one in the region, not the mean, then composites any gradient overlay
  *    at that element's own height by reading the gradient's own stops.
@@ -30,7 +34,15 @@
  *    first colour function made the hero vignette read as opaque black:
  *    white headings over the photograph reported 21:1 instead of their real
  *    ratio, which is the most flattering possible answer.
- * 7. Colours must be sampled only after transitions settle. Anything with a
+ * 7. `transparent` in a computed gradient is rgba(0, 0, 0, 0), which the
+ *    stop parser must read as alpha 0: the old keyword-or-slash parse fell
+ *    through to alpha 1, so every gradient ending in transparent
+ *    composited as ending OPAQUE in its layer colour.
+ * 8. Photo pixels are sampled from createImageBitmap, never the <img>:
+ *    Chromium reports an AVIF's natural size from the padded coded frame
+ *    and canvas reads beyond the clean aperture return transparent black,
+ *    so element-based sampling read a phantom zone on padded files.
+ * 9. Colours must be sampled only after transitions settle. Anything with a
  *    colour transition, tab controls especially, gives phantom failures
  *    mid-animation: one label measured 4.41:1 while settling and 8.84:1 at
  *    rest. Allow ~900ms after any click before auditing.
@@ -43,12 +55,45 @@ function parse(c){const cv=document.createElement('canvas');cv.width=cv.height=1
 function over(f,b){const a=f[3];return [f[0]*a+b[0]*(1-a), f[1]*a+b[1]*(1-a), f[2]*a+b[2]*(1-a),1]}
 function intersects(a,b){return a.right>b.left && a.left<b.right && a.bottom>b.top && a.top<b.bottom}
 
+/* Does this line of text actually SIT ON that box, or merely graze it?
+   A line box carries leading above the ascender and below the descender
+   that holds no ink, so a 2px touch is not text on a photograph: the
+   statement's first line overlapped its inline picture by exactly that
+   and reported 1.25:1 for glyphs nowhere near it. A real overlap has to
+   cover a third of the line's height and more than a couple of pixels
+   across. */
+function sitsOn(rect, box){
+  const oh=Math.min(rect.bottom,box.bottom)-Math.max(rect.top,box.top);
+  const ow=Math.min(rect.right,box.right)-Math.max(rect.left,box.left);
+  if(oh<=0 || ow<=0) return false;
+  return oh >= Math.min(rect.height, box.height) * 0.34 && ow > 2;
+}
+
 const cv=document.createElement('canvas'), ctx=cv.getContext('2d');
 /* Brightest real pixel of the image under `rect`, honouring object-fit
    cover and object-position. Worst case, not the mean: light text has to
    survive the lightest part of what is behind it. */
-function photoUnder(img, rect){
-  const box=img.getBoundingClientRect(), iw=img.naturalWidth, ih=img.naturalHeight;
+/* Sampling goes through createImageBitmap, NOT the <img> element.
+   Chromium reports an AVIF's naturalWidth/Height from the padded coded
+   frame (a 1024x434 file measured 1440x610 here), and canvas reads beyond
+   the clean aperture return transparent black. The element displays
+   correctly; only the sampling path sees the padding, so every mapped
+   coordinate landed in the phantom zone and the auditor reported bone
+   type at 1.0:1 against a ground it had never actually read. Bitmaps
+   decode through the clean-aperture path with true dimensions. */
+const bitmapCache=new WeakMap();
+async function bitmapOf(img){
+  if(bitmapCache.has(img)) return bitmapCache.get(img);
+  const p=createImageBitmap(img).catch(()=>null);
+  bitmapCache.set(img,p);
+  return p;
+}
+
+async function photoUnder(img, rect){
+  const box=img.getBoundingClientRect();
+  const bmp=await bitmapOf(img);
+  if(!bmp) return null;
+  const iw=bmp.width, ih=bmp.height;
   if(!iw || !intersects(rect, box)) return null;
   const s=Math.max(box.width/iw, box.height/ih);
   const pos=getComputedStyle(img).objectPosition.split(' ');
@@ -59,7 +104,7 @@ function photoUnder(img, rect){
   const sx=Math.max(0,(left-box.left-ox)/s), sy=Math.max(0,(top-box.top-oy)/s);
   const sw=Math.max(1,Math.min(iw-sx,(right-left)/s)), sh=Math.max(1,Math.min(ih-sy,(bottom-top)/s));
   cv.width=14;cv.height=14;
-  try{ctx.drawImage(img,sx,sy,sw,sh,0,0,14,14)}catch(e){return null}
+  try{ctx.drawImage(bmp,sx,sy,sw,sh,0,0,14,14)}catch(e){return null}
   let d;try{d=ctx.getImageData(0,0,14,14).data}catch(e){return null}
   /* BOTH extremes, not just the brightest. Brightest-only was right when
      every photo carried light type (its worst case). Direction D sets dark
@@ -104,10 +149,19 @@ function splitArgs(inner){
   return out;
 }
 
+/* A stop's alpha. The keyword check alone is NOT enough: computed style
+   serialises `transparent` as rgba(0, 0, 0, 0), which has no slash form,
+   so the old fallthrough returned alpha 1 and every gradient that ended
+   in transparent was composited as ending OPAQUE in its layer colour. A
+   light wash over a dark grade then read as a solid light ground under
+   dark type: bone on near-black reported 1.0:1 against pure cloud. */
 function alphaOfStop(stop){
   if(/transparent/.test(stop)) return 0;
-  const m=stop.match(/\/\s*([\d.]+)\s*\)/);
-  return m ? +m[1] : 1;
+  const slash=stop.match(/\/\s*([\d.]+%?)\s*\)/);
+  if(slash) return slash[1].endsWith('%') ? parseFloat(slash[1])/100 : +slash[1];
+  const rgba=stop.match(/rgba?\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*(?:,\s*([\d.]+)\s*)?\)/);
+  if(rgba) return rgba[1]===undefined ? 1 : +rgba[1];
+  return 1;
 }
 
 /* Interpolate one gradient's alpha at a normalized progress t in [0,1]. */
@@ -179,23 +233,41 @@ function gradientAlphaAt(grad, box, x, y){
   return alphaAlong(rest, Math.max(0,Math.min(1,t)));
 }
 
-/* The rect of the actual glyphs, not the element box. A grid cell can
-   stretch far past its text, which makes text look as if it sits on a
-   photograph it never touches. */
-function glyphRect(el){
+/* The rects of the actual glyphs, one per LINE FRAGMENT.
+   Three levels of wrongness were fixed here in turn. An element box
+   stretches far past its text, so a grid cell looked like it sat on a
+   photograph. A text node's bounding box is the union of its lines, so a
+   sentence that WRAPS AROUND an inline image encloses that image: the
+   statement's line rect "sat on" a picture no glyph touches and reported
+   ink on near-black at 1.2:1. Range.getClientRects() returns one rect per
+   rendered line, which is what a reader actually sees. */
+function glyphRects(el){
   const range=document.createRange();
-  let best=null;
+  const rects=[];
   for(const n of el.childNodes){
     if(n.nodeType!==3 || !n.textContent.trim()) continue;
     range.selectNodeContents(n);
-    const r=range.getBoundingClientRect();
-    if(!r.width && !r.height) continue;
-    best = best ? {
-      left:Math.min(best.left,r.left), top:Math.min(best.top,r.top),
-      right:Math.max(best.right,r.right), bottom:Math.max(best.bottom,r.bottom),
-    } : {left:r.left, top:r.top, right:r.right, bottom:r.bottom};
+    for(const r of range.getClientRects()){
+      if(r.width < 1 || r.height < 1) continue;
+      rects.push({left:r.left, top:r.top, right:r.right, bottom:r.bottom,
+        width:r.width, height:r.height});
+    }
   }
-  if(!best) return el.getBoundingClientRect();
+  if(!rects.length){
+    const r=el.getBoundingClientRect();
+    rects.push({left:r.left, top:r.top, right:r.right, bottom:r.bottom,
+      width:r.width, height:r.height});
+  }
+  return rects;
+}
+
+function glyphRect(el){
+  const rs=glyphRects(el);
+  let best=rs[0];
+  for(const r of rs.slice(1)){
+    best={left:Math.min(best.left,r.left), top:Math.min(best.top,r.top),
+      right:Math.max(best.right,r.right), bottom:Math.max(best.bottom,r.bottom)};
+  }
   return {...best, width:best.right-best.left, height:best.bottom-best.top};
 }
 
@@ -217,14 +289,13 @@ function clippedOut(el){
   return false;
 }
 
-function bgOf(el, section){
-  const rect=glyphRect(el);
+async function bgOf(el, section, rect){
   /* The image behind THIS element, not the section's first one. A carousel
      has one photograph per card, and assuming the first meant every card
      after the first was measured against the page ground instead of its own
      picture, which silently passed everything. */
   const img=[...section.querySelectorAll('img')].find((candidate) =>
-    intersects(rect, candidate.getBoundingClientRect()),
+    sitsOn(rect, candidate.getBoundingClientRect()),
   ) || null;
   const layers=[];
   let n=el, opaque=null;
@@ -243,7 +314,7 @@ function bgOf(el, section){
   let bases;
   if(opaque) bases=[opaque];
   else {
-    const photo = img ? photoUnder(img, rect) : null;
+    const photo = img ? await photoUnder(img, rect) : null;
     if(photo){
       bases=[photo.bright, photo.dark];
       /* Every gradient of every overlay covering this point, composited in
@@ -289,7 +360,7 @@ function bgOf(el, section){
   return bases.map(base=>ordered.reduce((acc,l)=>over(l,acc), base));
 }
 
-window.__audit = function(selector){
+window.__audit = async function(selector){
   const section=document.querySelector(selector);
   const out=[];
   for(const el of section.querySelectorAll('*')){
@@ -308,18 +379,22 @@ window.__audit = function(selector){
     if(!txt) continue;
     const size=parseFloat(cs.fontSize), w=+cs.fontWeight||400;
     const need=(size>=24||(size>=18.66&&w>=700))?3:4.5;
-    /* Worst case across the candidate grounds: dark ink fails on the
-       darkest photo pixel, light ink on the brightest. */
+    /* Worst case across every text node's own rect and both candidate
+       grounds: dark ink fails on the darkest photo pixel, light ink on
+       the brightest. */
     const fg=parse(cs.color);
-    const bgs=bgOf(el, section);
-    let bg=bgs[0], r=ratio(fg, bgs[0]);
-    for(const cand of bgs.slice(1)){
-      const cr=ratio(fg, cand);
-      if(cr<r){ r=cr; bg=cand }
+    let bg=null, r=Infinity;
+    for(const rect of glyphRects(el)){
+      const bgs=await bgOf(el, section, rect);
+      for(const cand of bgs){
+        const cr=ratio(fg, cand);
+        if(cr<r){ r=cr; bg=cand }
+      }
     }
     out.push({t:txt.slice(0,22), size:+size.toFixed(1), r:+r.toFixed(2), need, pass:r>=need, bg:bg.slice(0,3).map(Math.round)});
   }
   return out;
 };
+window.__auditVersion='bmp1';
 return 'audit ready';
 })()

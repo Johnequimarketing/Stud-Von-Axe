@@ -1,7 +1,5 @@
-/* The frosted glass feature bar, shared by every hero concept. Needs a
-   data-cielo ancestor for the palette. `data-inset` tightens it for use
-   INSIDE a contained plate, where the plate's own padding does the
-   breathing. */
+/* The feature bar: a paper card on the page ground below the fold.
+   Needs a data-cielo ancestor for the palette. */
 .bar {
   list-style: none;
   margin: 0 auto;
@@ -10,12 +8,10 @@
   display: grid;
   gap: var(--space-4);
   border-radius: var(--radius-lg);
-  background: var(--cielo-glass);
-  -webkit-backdrop-filter: var(--cielo-glass-blur);
-  backdrop-filter: var(--cielo-glass-blur);
-  box-shadow:
-    inset 0 0 0 1px var(--cielo-glass-ring),
-    0 24px 48px -28px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+  /* Paper, not glass: the bar sits on the page ground now, and glass with
+     nothing behind it to frost is just a grey rectangle. */
+  background: var(--cielo-paper);
+  box-shadow: 0 24px 48px -32px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
 }
 
 .feature {
@@ -75,8 +71,4 @@
   .bar {
     background: color-mix(in srgb, var(--cielo-cloud) 94%, transparent);
   }
-}
-
-.bar[data-inset='true'] {
-  padding: var(--space-4);
 }

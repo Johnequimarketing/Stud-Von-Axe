@@ -1,0 +1,4 @@
+.section {
+  padding-top: clamp(var(--space-6), 5vw, var(--space-8));
+  color: var(--cielo-ink);
+}

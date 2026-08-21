@@ -27,40 +27,47 @@
      fold is light. */
   --hd-fg: var(--cielo-ink);
   --hd-fg-muted: var(--cielo-ink-soft);
-  --hd-border: color-mix(in srgb, var(--cielo-ink) 22%, transparent);
+  --hd-border: color-mix(in srgb, var(--cielo-ink) 45%, transparent);
   --hd-accent: var(--cielo-ink);
 
+  /* The fixed layer is only a positioner: it starts at the fold's own
+     inset so the contained shell inside it aligns with the hero plate's
+     edges exactly. */
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: var(--cielo-fold-inset) 0 auto 0;
   z-index: 50;
-  height: var(--header-height);
-  transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  pointer-events: none;
 }
 
-/* On scroll the whole bar takes the glass the pill already wears. */
-.bar[data-surface='glass'] {
-  background: var(--cielo-glass);
-  -webkit-backdrop-filter: var(--cielo-glass-blur);
-  backdrop-filter: var(--cielo-glass-blur);
-  box-shadow:
-    inset 0 -1px 0 color-mix(in srgb, #ffffff 45%, transparent),
-    0 18px 40px -30px color-mix(in srgb, var(--cielo-ink) 50%, transparent);
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  .bar[data-surface='glass'] {
-    background: color-mix(in srgb, var(--cielo-cloud) 96%, transparent);
-  }
-}
-
+/* The contained shell: invisible at rest, and on scroll it becomes a
+   rounded glass bar. Soft square, not a pill, following the logo. */
 .inner {
-  width: min(var(--container-max), 100% - (var(--gutter) * 2));
-  height: 100%;
+  pointer-events: auto;
+  width: calc(100% - (var(--cielo-fold-inset) * 2));
+  min-height: var(--header-height);
   margin-inline: auto;
+  padding-inline: clamp(var(--space-4), 2vw, var(--space-6));
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
+  border-radius: var(--cielo-radius-control);
+  transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.bar[data-surface='glass'] .inner {
+  background: var(--cielo-glass);
+  -webkit-backdrop-filter: var(--cielo-glass-blur);
+  backdrop-filter: var(--cielo-glass-blur);
+  box-shadow:
+    inset 0 0 0 1px var(--cielo-glass-ring),
+    0 18px 40px -30px color-mix(in srgb, var(--cielo-ink) 50%, transparent);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .bar[data-surface='glass'] .inner {
+    background: color-mix(in srgb, var(--cielo-cloud) 96%, transparent);
+  }
 }
 
 /* The reference centres its nav; a real grid keeps it centred regardless

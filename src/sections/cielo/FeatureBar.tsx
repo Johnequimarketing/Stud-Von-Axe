@@ -4,15 +4,13 @@ import type { IconName } from '@/components/primitives'
 import styles from './FeatureBar.module.css'
 
 /**
- * The frosted glass feature bar: four audited facts on the fold's glass.
- * Extracted so every hero concept carries the identical bar rather than
- * three drifting copies.
+ * The feature bar: four audited facts on one paper card below the fold.
  */
-export function FeatureBar({ inset = false }: { inset?: boolean }) {
+export function FeatureBar() {
   const t = copy.cielo.arrival
 
   return (
-    <ul className={styles.bar} data-inset={inset ? 'true' : undefined} role="list">
+    <ul className={styles.bar} role="list">
       {t.features.map((f) => (
         <li key={f.title} className={styles.feature}>
           <span className={styles.featureIcon} aria-hidden="true">
