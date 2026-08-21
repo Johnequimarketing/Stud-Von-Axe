@@ -69,26 +69,24 @@
 }
 
 /* ---- The run ----------------------------------------------------------
-   Native scroll snap. The track is padded by the gutter rather than
-   contained, so the first card lines up with the copy above while the run
-   itself bleeds off the right edge. */
+   Native scroll snap, held to the same 1140 measure as every other
+   section. It bled to the viewport edge in the first build, which meant
+   cards ran out past the content width the rest of the page keeps: the
+   run now clips at the container edge instead, and the part card showing
+   there is still the affordance that says the row continues. */
 .track {
-  /* One value drives the run's inset: the content padding that puts the
-     first card under the heading, AND the scroll padding that the snap
-     origin honours. Padding alone is not enough: with scroll-snap-type
-     the browser snaps the first card to the scrollport's own edge and
-     scrolls the padding straight out of view, which put card one hard
-     against the viewport while the heading sat 150px in. */
-  --run-inset: var(--gutter);
-
   list-style: none;
-  margin: 0;
-  padding-inline: var(--run-inset);
-  scroll-padding-inline: var(--run-inset);
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+  padding-inline: 0;
   display: flex;
   gap: var(--space-5);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  /* overflow-x: auto makes the block axis a scrollport too, so it would
+     clip the cards' drop shadow and their 6px hover lift. This is the
+     room for both. */
+  padding-block: 8px 26px;
   /* Keeps the horizontal throw inside the track: without it the page
      itself reports overflow. */
   overscroll-behavior-x: contain;
@@ -111,14 +109,6 @@
    had reached the end: the wrap round never fired. */
 .item:last-child {
   scroll-snap-align: end;
-}
-
-@media (min-width: 1240px) {
-  /* Past the container width the run lines up with the container instead
-     of the viewport, so it never drifts away from the heading. */
-  .track {
-    --run-inset: max(var(--gutter), (100vw - var(--container-max)) / 2);
-  }
 }
 
 /* ---- The card ---------------------------------------------------------- */
@@ -240,7 +230,7 @@
   align-items: center;
   gap: var(--space-3);
   min-height: 44px;
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
   font-size: var(--text-small);
   font-weight: 600;
   letter-spacing: 0.06em;
