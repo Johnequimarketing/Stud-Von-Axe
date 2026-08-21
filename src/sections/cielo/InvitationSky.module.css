@@ -1,0 +1,88 @@
+/* Full bleed on purpose: the sky is weather, not a card. */
+.section {
+  padding-block: clamp(var(--space-8), 14vw, 11rem);
+  background: linear-gradient(
+    180deg,
+    var(--cielo-air) 0%,
+    var(--cielo-sky) 55%,
+    var(--cielo-air) 100%
+  );
+  color: var(--cielo-ink);
+}
+
+.inner {
+  width: min(var(--container-max), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.inner > * + * {
+  margin-top: var(--space-5);
+}
+
+.plaque {
+  align-items: center;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.8vw + 1rem, 5.5rem);
+  font-weight: 320;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--cielo-gold-ink);
+}
+
+.body {
+  color: var(--cielo-ink-soft);
+  max-width: 44ch;
+}
+
+.actions {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.solid {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0.9em 2.2em;
+  border-radius: var(--radius-pill);
+  background: var(--cielo-gold);
+  color: var(--cielo-ink);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 16px 36px -20px color-mix(in srgb, var(--cielo-ink) 50%, transparent);
+  transition: background-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.solid:hover {
+  background: var(--cielo-gold-soft);
+  transform: translateY(-2px);
+}
+
+.direct {
+  font-size: var(--text-small);
+  color: var(--cielo-ink-soft);
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--cielo-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

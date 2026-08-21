@@ -410,6 +410,13 @@ export const copy = {
       },
     },
 
+    /* The closing ask. Everything here reuses the approved contact copy
+       (heading, body, CTA, WhatsApp, the two public phone numbers); only
+       the section label is new. */
+    invitation: {
+      label: 'Contact',
+    },
+
     /* The gallery. Captions name a horse ONLY where the photograph is
        verified as that horse under the provenance rule; everything else
        gets a subject description or no caption at all. The Instagram
