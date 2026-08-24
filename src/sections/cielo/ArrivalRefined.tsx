@@ -68,6 +68,9 @@ export function ArrivalRefined() {
   useDeclareHeroTone('dark')
 
   const horse = CAST[active]
+  /* No visible "featured horse" label: the reference has none, and the
+     card's own position and switcher make its job obvious. The string
+     stays in the copy layer as the region's accessible name. */
 
   return (
     <section id="top" data-cielo className={styles.hero} aria-label={copy.brand.name}>
@@ -125,8 +128,7 @@ export function ArrivalRefined() {
 
           {/* ---- The featured horse ---- */}
           <Reveal delay={340} className={styles.cardCell}>
-            <div className={styles.card}>
-              <p className={styles.cardLabel}>{t.featuredLabel}</p>
+            <div className={styles.card} role="group" aria-label={t.featuredLabel}>
               <a
                 className={styles.cardName}
                 href={horseDetailUrls[horse.id]}

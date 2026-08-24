@@ -54,7 +54,14 @@
   );
 }
 
+/* The content sits in its OWN container inside the plate, not just in the
+   plate's padding. The reference holds a 1280 measure centred in the
+   plate and pads it 48px, which puts the statement 118px in from the
+   plate's edge; padding alone put it at 48px and everything hugged the
+   corner. */
 .body {
+  width: min(1280px, 100%);
+  margin-inline: auto;
   display: grid;
   gap: var(--space-6);
   padding: 0 clamp(var(--space-5), 3.4vw, 3rem) clamp(var(--space-6), 4vw, 3.6rem);
@@ -165,22 +172,14 @@
   }
 }
 
-.cardLabel {
-  font-family: var(--cielo-font-display);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cielo-gold-soft);
-}
-
-/* A 23px line is a 25px tap target. inline-flex with a 44px floor grows
-   the hit area without moving the type, and the label's own margin comes
-   off to keep the card's rhythm. */
+/* A 23px line is a 25px target: fine for a mouse (AA asks 24px) but not
+   for a finger, so the 44px floor lands under `pointer: coarse` only.
+   Applying it everywhere added 19px to the card on desktop and pushed it
+   38px past the reference's height. */
 .cardName {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  margin-top: var(--space-2);
   font-family: var(--cielo-font-serif);
   font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.4375rem);
   font-weight: 400;
@@ -223,6 +222,13 @@
 .cardStatus {
   font-style: normal;
   color: var(--cielo-gold-soft);
+}
+
+@media (pointer: coarse) {
+  .cardName {
+    min-height: 44px;
+    margin-top: 0;
+  }
 }
 
 /* ---- The switcher ------------------------------------------------------- */
