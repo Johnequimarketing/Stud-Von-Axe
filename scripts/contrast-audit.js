@@ -42,7 +42,12 @@
  *    Chromium reports an AVIF's natural size from the padded coded frame
  *    and canvas reads beyond the clean aperture return transparent black,
  *    so element-based sampling read a phantom zone on padded files.
- * 9. Colours must be sampled only after transitions settle. Anything with a
+ * 9. An ancestor containing the intersecting image is checked BEFORE its
+ *    own background colour. A photograph inside a plate that also paints
+ *    an opaque ground sits between that ground and the text, so stopping
+ *    the walk at the plate skips the photograph and reports a flat, and
+ *    flattering, ground.
+ * 10. Colours must be sampled only after transitions settle. Anything with a
  *    colour transition, tab controls especially, gives phantom failures
  *    mid-animation: one label measured 4.41:1 while settling and 8.84:1 at
  *    rest. Allow ~900ms after any click before auditing.
@@ -300,12 +305,20 @@ async function bgOf(el, section, rect){
   const layers=[];
   let n=el, opaque=null;
   while(n && n!==document.documentElement){
+    /* An ancestor that CONTAINS the intersecting image is checked FIRST,
+       before its own background colour. A full bleed photograph inside a
+       plate that also paints an opaque ground (a guard against a load
+       flash) sits BETWEEN that ground and the text, so the plate's colour
+       is not what the text is on. Testing opacity first stopped the walk
+       at the plate and skipped the photograph entirely: the hero's eyebrow
+       and lede reported a flat navy ground and passed at 15:1 while
+       actually sitting on a sunlit hedge. */
+    if(img && n.contains(img) && n !== el) break;
     const c=parse(getComputedStyle(n).backgroundColor);
     /* An ancestor that paints solid is the ground: stop there. This is what
        makes a filled button measure against its own fill. */
     if(c[3]>0.85){ opaque=c; break }
     if(c[3]>0) layers.push(c);
-    if(img && n.contains(img)) break;
     n=n.parentElement;
   }
   /* Photo grounds carry TWO candidate bases (brightest and darkest pixel)

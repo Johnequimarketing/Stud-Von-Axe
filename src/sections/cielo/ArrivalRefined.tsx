@@ -75,26 +75,19 @@ export function ArrivalRefined() {
   return (
     <section id="top" data-cielo className={styles.hero} aria-label={copy.brand.name}>
       <div className={styles.plate}>
+        {/* ONE photograph at every width now, so there is no art directed
+            pair to keep honest and the crop is the reference's own. */}
         <picture className={styles.media}>
           {Object.entries(cieloImages.banner.sources).map(([format, srcSet]) => (
-            <source
-              key={format}
-              media="(min-width: 700px)"
-              type={`image/${format}`}
-              srcSet={srcSet}
-              sizes="100vw"
-            />
-          ))}
-          {Object.entries(cieloImages.field.sources).map(([format, srcSet]) => (
             <source key={format} type={`image/${format}`} srcSet={srcSet} sizes="100vw" />
           ))}
-          {/* Decorative: the two art directed sources show different
-              scenes, so no single alt is honest for both, and the fold's
-              meaning lives in the statement beside it. */}
+          {/* Decorative on purpose: the statement carries the fold's
+              meaning, and the horse in frame is named and linked by the
+              card beside it, which is the accessible route to him. */}
           <img
-            src={cieloImages.field.img.src}
-            width={cieloImages.field.img.w}
-            height={cieloImages.field.img.h}
+            src={cieloImages.banner.img.src}
+            width={cieloImages.banner.img.w}
+            height={cieloImages.banner.img.h}
             alt=""
             fetchPriority="high"
           />

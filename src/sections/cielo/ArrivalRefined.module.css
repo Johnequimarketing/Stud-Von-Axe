@@ -33,7 +33,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 42%;
+  /* The reference's own crop. */
+  object-position: 50% 30%;
 }
 
 /* ONE scrim, ONE colour, four stops: dark at the crown so the header's
@@ -48,8 +49,9 @@
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--cielo-ink) 52%, transparent) 0%,
-    color-mix(in srgb, var(--cielo-ink) 8%, transparent) 30%,
-    color-mix(in srgb, var(--cielo-ink) 46%, transparent) 62%,
+    color-mix(in srgb, var(--cielo-ink) 10%, transparent) 26%,
+    color-mix(in srgb, var(--cielo-ink) 38%, transparent) 46%,
+    color-mix(in srgb, var(--cielo-ink) 80%, transparent) 70%,
     color-mix(in srgb, var(--cielo-ink) 96%, transparent) 100%
   );
 }
@@ -78,7 +80,10 @@
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--cielo-cloud) 78%, transparent);
+  /* Opaque, not 78%: a translucent ink over a photograph reads weakly and
+     measures optimistically, because its own alpha is ignored when the
+     ratio is taken. */
+  color: var(--cielo-cloud);
 }
 
 /* Jost semibold upright, tight, with ONE serif italic accent word. */
@@ -288,14 +293,25 @@
   }
 }
 
-/* Phones: the card sits under the statement, and the mobile source (the
-   foal) carries the frame. */
+/* Phones: the card sits under the statement and spans the column. */
 @media (max-width: 699px) {
-  .media img {
-    object-position: 50% 46%;
-  }
-
   .card {
     width: 100%;
+  }
+
+  /* The stack is taller here, so the type begins at 35% of the plate
+     rather than the 51% it sits at on desktop, which put the eyebrow and
+     the accent word in the scrim's clear zone over sunlit hedge: measured
+     2.23:1 and 2.37:1. The ramp starts earlier and harder to cover the
+     whole type block. */
+  .scrim {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cielo-ink) 45%, transparent) 0%,
+      color-mix(in srgb, var(--cielo-ink) 18%, transparent) 22%,
+      color-mix(in srgb, var(--cielo-ink) 62%, transparent) 34%,
+      color-mix(in srgb, var(--cielo-ink) 88%, transparent) 60%,
+      color-mix(in srgb, var(--cielo-ink) 97%, transparent) 100%
+    );
   }
 }

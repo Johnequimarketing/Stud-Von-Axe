@@ -2,14 +2,13 @@
    audited source as the offer/Terra sections on the other directions).
    Served as a responsive avif/webp/jpeg set by vite-imagetools. */
 
-import fieldFoal from '@/assets/img/offer-foal.jpg?w=760;1140;1520;2048;2560&format=avif;webp;jpeg&as=picture'
-/* TODO client-confirm: the desktop hero background is AI GENERATED
-   (supplied by the user, same generated series as the banner it
-   replaced). It is a mood background, never attached to a named horse,
-   but a breeder fronting the site with an AI horse needs the client's
-   explicit sign-off, and the 1024px source is soft at full bleed on any
-   modern display. Replace with commissioned photography when it exists. */
-import banner from '@/assets/img/cielo-hero-jump.jpg?w=760;1024&format=avif;webp;jpeg&as=picture'
+/* The hero background: Arkhana's own verified photograph, the same file
+   the refined reference uses (byte identical, checked by md5 against
+   their served asset). Real client photography, so the AI generated
+   frames that used to sit here are gone from the fold entirely and no
+   sign-off question hangs over the first thing a visitor sees. It is the
+   foal the featured card opens on, so photograph and card agree. */
+import banner from '@/assets/img/horse-arkhana.jpg?w=760;1024;1280&format=avif;webp;jpeg&as=picture'
 import type { Picture } from '@/sections/hero/images'
 
 /* The stud deck: two photographs from the client's own site. Square-ish
@@ -37,9 +36,7 @@ import galleryNeck from '@/assets/img/semen-detail.jpg?w=560;900;1280&format=avi
 import galleryContouch from '@/assets/img/results-contouch.jpg?w=480;760;1170&format=avif;webp;jpeg&as=picture'
 
 export const cieloImages = {
-  /** Dark bay foal standing in profile in a bright summer field. */
-  field: fieldFoal as Picture,
-  /** The hero background: horse and rider over a rustic fence. */
+  /** The hero background: Arkhana Von Axe Z, verified client photo. */
   banner: banner as Picture,
   /** The stud section's instax deck, in stack order. */
   deck: [deckFoal, deckYard] as Picture[],
