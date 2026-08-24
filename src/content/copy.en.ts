@@ -488,8 +488,22 @@ export const copy = {
     },
 
     arrival: {
-      location: 'Desenzano del Garda · Italia',
-      /* The client's own tagline, stacked as the display statement. */
+      /* Both bases, which is what the fold's eyebrow names. Public on the
+         client's own contact page. */
+      location: 'Desenzano del Garda · Lanaken',
+      /* The statement: sans upright, one serif italic accent word. The
+         claim is the client's own, and it is about the sport rather than
+         about a placing, so nothing here needs a result to back it. */
+      statement: 'Bred for the biggest',
+      statementAccent: 'arenas',
+      /* Two lines, both audited: the three products, the two bases, and
+         the destinations that the reach section counts. */
+      lede: 'Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold direct to breeders across Europe and beyond.',
+      /* The featured card's own label and the switcher's accessible name. */
+      featuredLabel: 'Featured horse',
+      switcherLabel: 'Choose a horse to feature',
+      /* Kept: the previous fold's statement, still real approved copy and
+         the client's own tagline, for a section that wants it later. */
       headlineTop: 'The blood',
       headlineBottom: 'never lies.',
       subTop: 'Italian showjumping bloodlines,',

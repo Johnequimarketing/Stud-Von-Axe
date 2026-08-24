@@ -1,6 +1,6 @@
 import { Header } from './components/header'
 import { Footer } from './components/Footer'
-import { ArrivalContained } from './sections/cielo/ArrivalContained'
+import { ArrivalRefined } from './sections/cielo/ArrivalRefined'
 import { FactsStrip } from './sections/cielo/FactsStrip'
 import { EstateCielo } from './sections/cielo/EstateCielo'
 import { HorsesCielo } from './sections/cielo/HorsesCielo'
@@ -18,7 +18,7 @@ export function App() {
     <>
       <Header />
       <main id="main">
-        <ArrivalContained />
+        <ArrivalRefined />
         <FactsStrip />
         <Statement />
         <EstateCielo />

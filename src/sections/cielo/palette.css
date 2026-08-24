@@ -41,8 +41,19 @@
   --cielo-radius-chip: 8px;
 
   /* The fold's frame: the hero plate and the contained header both inset
-     from the viewport by this one value, so their edges always align. */
-  --cielo-fold-inset: clamp(10px, 2vw, 32px);
+     from the viewport by this one value, so their edges always align.
+     The reference sits at a flat 10px, which reads as a hairline mount
+     rather than a margin. */
+  --cielo-fold-inset: clamp(10px, 0.9vw, 14px);
+
+  /* The fold's own type. Jost for the statement and every control, Libre
+     Caslon for the accent word and horse names. */
+  --cielo-font-display: 'Jost Variable', 'Jost', system-ui, sans-serif;
+  --cielo-font-serif: 'Libre Caslon Display', Georgia, serif;
+  --cielo-font-serif-italic: 'Libre Caslon Text', Georgia, serif;
+
+  /* The plate's own radius, from the reference. */
+  --cielo-radius-plate: 22px;
 
   /* The frosted glass recipe, one definition for every surface that
      wears it. */

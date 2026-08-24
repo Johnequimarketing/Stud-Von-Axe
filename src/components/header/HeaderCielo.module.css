@@ -41,36 +41,39 @@
 
 /* The contained shell: invisible at rest, and on scroll it becomes a
    rounded glass bar. Soft square, not a pill, following the logo. */
+/* The floating capsule. Unlike the previous bar it carries its surface
+   from the FIRST frame, because the fold behind it is now a dark
+   photograph: a transparent header there would put navy ink on navy. */
 .inner {
   pointer-events: auto;
-  /* Capped at the page's own measure rather than the plate's full width,
-     so the shell reads as a contained bar inside the fold instead of a
-     rail spanning it. */
-  width: min(var(--container-max), 100% - (var(--cielo-fold-inset) * 4));
-  min-height: var(--header-height);
+  width: min(var(--container-max), 100% - (var(--cielo-fold-inset) * 6));
+  min-height: 64px;
   margin-inline: auto;
-  padding-inline: clamp(var(--space-4), 2vw, var(--space-6));
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
+  /* Soft square, not the reference's full pill: the logo is angular and
+     the user asked the header to stop being a capsule. */
   border-radius: var(--cielo-radius-control);
-  transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-
-.bar[data-surface='glass'] .inner {
-  background: var(--cielo-glass);
-  -webkit-backdrop-filter: var(--cielo-glass-blur);
-  backdrop-filter: var(--cielo-glass-blur);
-  box-shadow:
-    inset 0 0 0 1px var(--cielo-glass-ring),
-    0 18px 40px -30px color-mix(in srgb, var(--cielo-ink) 50%, transparent);
+  background: color-mix(in srgb, var(--cielo-cloud) 94%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--cielo-ink) 45%, transparent);
+  transition: box-shadow var(--dur) var(--ease);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
-  .bar[data-surface='glass'] .inner {
-    background: color-mix(in srgb, var(--cielo-cloud) 96%, transparent);
+  .inner {
+    background: color-mix(in srgb, var(--cielo-cloud) 99%, transparent);
   }
+}
+
+/* Scroll only deepens the shadow: the surface never changes, so the bar
+   cannot flash as the fold leaves. */
+.bar[data-surface='glass'] .inner {
+  box-shadow: 0 20px 44px -20px color-mix(in srgb, var(--cielo-ink) 55%, transparent);
 }
 
 /* The reference centres its nav; a real grid keeps it centred regardless

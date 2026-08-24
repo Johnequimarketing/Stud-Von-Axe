@@ -1,0 +1,295 @@
+/* The fold, after the refined reference: one navy plate held a hairline in
+   from the viewport, statement bottom left, featured horse bottom right. */
+
+.hero {
+  padding: var(--cielo-fold-inset);
+  background: var(--cielo-air);
+}
+
+.plate {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  min-height: calc(100svh - (var(--cielo-fold-inset) * 2));
+  border-radius: var(--cielo-radius-plate);
+  /* The navy IS the plate's ground, so the scrim has a colour to resolve
+     into and a slow image load never flashes the page ivory. */
+  background: var(--cielo-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 42%;
+}
+
+/* ONE scrim, ONE colour, four stops: dark at the crown so the header's
+   ink reads, clear through the middle where the horse lives, dark again at
+   the foot to carry the statement. Single colour per layer on purpose,
+   because a gradient that changes colour mid ramp is one layer to the
+   contrast auditor and it composites the wrong end. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--cielo-ink) 52%, transparent) 0%,
+    color-mix(in srgb, var(--cielo-ink) 8%, transparent) 30%,
+    color-mix(in srgb, var(--cielo-ink) 46%, transparent) 62%,
+    color-mix(in srgb, var(--cielo-ink) 96%, transparent) 100%
+  );
+}
+
+.body {
+  display: grid;
+  gap: var(--space-6);
+  padding: 0 clamp(var(--space-5), 3.4vw, 3rem) clamp(var(--space-6), 4vw, 3.6rem);
+}
+
+/* ---- The statement ------------------------------------------------------ */
+.statementBlock > * + * {
+  margin-top: var(--space-4);
+}
+
+.eyebrow {
+  font-family: var(--cielo-font-display);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cielo-cloud) 78%, transparent);
+}
+
+/* Jost semibold upright, tight, with ONE serif italic accent word. */
+.statement {
+  font-family: var(--cielo-font-display);
+  font-size: clamp(2.5rem, 5.9vw, 5.3125rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--raw-white);
+  max-width: 15ch;
+  text-wrap: balance;
+}
+
+/* The true italic cut, not a faux oblique: Libre Caslon Display ships
+   400 normal only, and a synthesised shear is obvious on a display serif
+   at this size, so the accent takes Libre Caslon Text's real italic. */
+.accent {
+  font-family: var(--cielo-font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cielo-gold-soft);
+}
+
+.lede {
+  font-family: var(--cielo-font-display);
+  font-size: var(--text-small);
+  font-weight: 300;
+  line-height: 1.62;
+  color: color-mix(in srgb, var(--cielo-cloud) 88%, transparent);
+  max-width: 46ch;
+}
+
+/* ---- Controls ----------------------------------------------------------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.gold,
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.95em 2em;
+  /* The soft square from the logo, not the reference's full pill. */
+  border-radius: var(--cielo-radius-control);
+  font-family: var(--cielo-font-display);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.gold {
+  background: var(--cielo-gold);
+  color: var(--cielo-ink);
+}
+
+.gold:hover {
+  background: var(--cielo-gold-soft);
+}
+
+.ghost {
+  border: 1px solid color-mix(in srgb, var(--raw-white) 45%, transparent);
+  color: var(--raw-white);
+}
+
+.ghost:hover {
+  border-color: var(--raw-white);
+  background: color-mix(in srgb, var(--raw-white) 10%, transparent);
+}
+
+/* ---- The featured horse ------------------------------------------------- */
+.card {
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-radius: var(--cielo-radius-plate);
+  background: color-mix(in srgb, var(--cielo-ink) 62%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--raw-white) 14%, transparent);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .card {
+    background: color-mix(in srgb, var(--cielo-ink) 88%, transparent);
+  }
+}
+
+.cardLabel {
+  font-family: var(--cielo-font-display);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cielo-gold-soft);
+}
+
+/* A 23px line is a 25px tap target. inline-flex with a 44px floor grows
+   the hit area without moving the type, and the label's own margin comes
+   off to keep the card's rhythm. */
+.cardName {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--cielo-font-serif);
+  font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.4375rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--raw-white);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.cardName:hover {
+  border-bottom-color: color-mix(in srgb, var(--raw-white) 60%, transparent);
+}
+
+.cardMeta {
+  margin-top: var(--space-3);
+  font-family: var(--cielo-font-display);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* 82% rather than the reference's 72%: 72% of white over this plate
+     measures under the 4.5:1 floor at 11px. */
+  color: color-mix(in srgb, var(--raw-white) 82%, transparent);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cielo-gold-soft);
+}
+
+.cardStatus {
+  font-style: normal;
+  color: var(--cielo-gold-soft);
+}
+
+/* ---- The switcher ------------------------------------------------------- */
+.thumbs {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.thumb {
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--raw-white) 10%, transparent);
+  cursor: pointer;
+  /* The unselected thumbs step back on opacity, never on size: a
+     transform here made the row jitter as the selection moved. */
+  opacity: 0.55;
+  transition: opacity var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+}
+
+.thumb[aria-selected='true'] {
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--cielo-gold-soft);
+}
+
+.thumb:focus-visible {
+  outline: 2px solid var(--raw-white);
+  outline-offset: 2px;
+}
+
+/* ---- Desktop composition ------------------------------------------------ */
+@media (min-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: var(--space-8);
+  }
+
+  .card {
+    width: 340px;
+  }
+}
+
+/* Phones: the card sits under the statement, and the mobile source (the
+   foal) carries the frame. */
+@media (max-width: 699px) {
+  .media img {
+    object-position: 50% 46%;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
