@@ -84,7 +84,43 @@ Heading widget, text `01 · The stud`, label typography, plus:
 
 ## Sections, in page order
 
-### 1. Arrival (hero)
+### 1. Arrival (hero): CURRENT BUILD
+
+The fold is a dark navy plate held ~10px in from the viewport at 22px
+radius, one scrim over it, statement bottom left, featured horse card
+bottom right whose four thumbnails switch BOTH the card's facts and the
+full bleed background.
+
+- Plate: one container, navy background, 22px radius, min-height
+  `calc(100svh - inset*2)`. Content inside sits in its own 1280 centred
+  container plus 48px padding: padding alone puts the statement 48px from
+  the plate edge instead of the 118px the design wants.
+- Backdrops: one image per horse, absolutely stacked, all `opacity: 0`
+  except the active one, transition on opacity 650ms.
+  **The gotcha:** a stacked image at `opacity: 0` is never loaded by
+  Chromium, because it is not rendered. Measured: the second, third and
+  fourth frames stayed at `naturalWidth: 0` forever and switching horse
+  showed a bare navy plate. Do not "fix" this by nudging opacity to
+  0.01, which loads them but leaves ghost layers veiling the active
+  frame. Warm them with real `<link rel="preload" as="image">` tags
+  carrying `imagesrcset` + `imagesizes`, injected on idle so they do not
+  compete with the first paint. In Elementor this is a small snippet in
+  the page's custom code, or the theme's `wp_head`.
+- Scrim: ONE gradient, ONE colour, several stops. A gradient that changes
+  colour mid ramp cannot be reasoned about for contrast. The type sits at
+  ~51% of the plate on desktop but ~35% on a phone, because the stack is
+  taller, so the mobile ramp starts earlier and harder. Both were
+  measured, not guessed: the desktop ramp put the eyebrow at 2.23:1 on a
+  phone before the override existed.
+- Switcher semantics: `role="tablist"` with `role="tab"` thumbs,
+  `aria-selected`, roving `tabIndex`, arrow keys that MOVE FOCUS as well
+  as selection, and the card's facts in a screen reader sentence of their
+  own because the visible separators are decorative dots.
+- Type: Jost 600 for the statement, one Libre Caslon **Text** italic
+  accent word (Display ships no italic, so an italic from it is a faux
+  oblique and shears visibly at 85px).
+
+### 1b. Arrival, earlier notes
 - Full-height container (100svh), background **video-ready**: Elementor
   background video with the photograph as fallback/poster. Until footage
   arrives, background image + a one-shot slow zoom (scale 1.06 → 1 over

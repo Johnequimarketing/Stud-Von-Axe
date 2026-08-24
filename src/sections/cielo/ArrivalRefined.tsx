@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { copy } from '@/content'
 import {
   featuredFoal,
@@ -34,9 +34,12 @@ import './palette.css'
  * The switcher is the same ~12 line class toggle as the stud deck; the
  * build map carries it.
  */
+/* The cast is whichever horses have a hero sized verified photograph, in
+   story order. Driven by the backdrop map rather than a slice, so a horse
+   can only be featured if the fold actually has a picture big enough to
+   carry it. */
 const CAST: Horse[] = [featuredFoal, ...availableMares, ...recentPlacements]
-  .filter((h) => h.id in horsePictures)
-  .slice(0, 4)
+  .filter((h) => h.id in cieloImages.backdrops && h.id in horsePictures)
 
 const SEXES: Record<string, string> = {
   colt: 'Colt',
@@ -67,6 +70,49 @@ export function ArrivalRefined() {
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([])
   useDeclareHeroTone('dark')
 
+  /* Warm the backdrops nobody has asked for yet.
+     A stacked backdrop at opacity 0 is NOT loaded by the browser: it is
+     not rendered, so Chromium never even runs resource selection on it.
+     Measured here, the second, third and fourth frames sat at
+     naturalWidth 0 indefinitely, and switching horse showed the bare
+     navy plate. Nudging one to opacity 0.01 loaded it at once, which
+     confirms the cause but leaves three ghost layers veiling the active
+     frame. So the stack keeps a clean opacity 0 and the files are warmed
+     through the platform's own preload instead, on idle so they never
+     compete with the first paint. */
+  useEffect(() => {
+    let links: HTMLLinkElement[] = []
+    const warm = () => {
+      links = CAST.slice(1).map((h) => {
+        const picture = cieloImages.backdrops[h.id]
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.as = 'image'
+        link.href = picture.img.src
+        const avif = picture.sources.avif ?? Object.values(picture.sources)[0]
+        if (avif) {
+          link.setAttribute('imagesrcset', avif)
+          link.setAttribute('imagesizes', '100vw')
+        }
+        document.head.appendChild(link)
+        return link
+      })
+    }
+
+    /* requestIdleCallback is unimplemented in Safari, so the timeout is a
+       real branch rather than defensive noise. */
+    const canIdle = typeof window.requestIdleCallback === 'function'
+    const handle = canIdle
+      ? window.requestIdleCallback(warm, { timeout: 2000 })
+      : window.setTimeout(warm, 1200)
+
+    return () => {
+      if (canIdle) window.cancelIdleCallback(handle as number)
+      else window.clearTimeout(handle as number)
+      links.forEach((l) => l.remove())
+    }
+  }, [])
+
   const horse = CAST[active]
   /* No visible "featured horse" label: the reference has none, and the
      card's own position and switcher make its job obvious. The string
@@ -75,23 +121,42 @@ export function ArrivalRefined() {
   return (
     <section id="top" data-cielo className={styles.hero} aria-label={copy.brand.name}>
       <div className={styles.plate}>
-        {/* ONE photograph at every width now, so there is no art directed
-            pair to keep honest and the crop is the reference's own. */}
-        <picture className={styles.media}>
-          {Object.entries(cieloImages.banner.sources).map(([format, srcSet]) => (
-            <source key={format} type={`image/${format}`} srcSet={srcSet} sizes="100vw" />
-          ))}
-          {/* Decorative on purpose: the statement carries the fold's
-              meaning, and the horse in frame is named and linked by the
-              card beside it, which is the accessible route to him. */}
-          <img
-            src={cieloImages.banner.img.src}
-            width={cieloImages.banner.img.w}
-            height={cieloImages.banner.img.h}
-            alt=""
-            fetchPriority="high"
-          />
-        </picture>
+        {/* One backdrop per horse, stacked and cross faded on opacity as
+            the switcher moves, so the frame always shows the horse the
+            card names. All of them are decorative: the card names and
+            links the horse, which is the accessible route to him.
+
+            Only the first carries high fetch priority. The rest are low,
+            so the one that paints the fold wins the network and the
+            others arrive before anybody can reach the switcher, without
+            four hero sized files competing for the first paint. */}
+        <div className={styles.media}>
+          {CAST.map((h, i) => {
+            const picture = cieloImages.backdrops[h.id]
+            return (
+              <picture key={h.id} className={styles.backdrop} data-active={i === active}>
+                {Object.entries(picture.sources).map(([format, srcSet]) => (
+                  <source key={format} type={`image/${format}`} srcSet={srcSet} sizes="100vw" />
+                ))}
+                <img
+                  src={picture.img.src}
+                  width={picture.img.w}
+                  height={picture.img.h}
+                  alt=""
+                  decoding="async"
+                  /* Spread with the lowercase attribute name. React 18's
+                     runtime does not recognise camelCase fetchPriority and
+                     logs a warning for it, while the TS DOM types only
+                     accept the camelCase form, so neither spelling is
+                     both quiet and typed. The spread satisfies both. */
+                  {...({
+                    fetchpriority: i === 0 ? 'high' : 'low',
+                  } as Record<string, string>)}
+                />
+              </picture>
+            )
+          })}
+        </div>
         <div className={styles.scrim} aria-hidden="true" />
 
         <div className={styles.body}>

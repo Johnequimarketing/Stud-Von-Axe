@@ -2,13 +2,24 @@
    audited source as the offer/Terra sections on the other directions).
    Served as a responsive avif/webp/jpeg set by vite-imagetools. */
 
-/* The hero background: Arkhana's own verified photograph, the same file
-   the refined reference uses (byte identical, checked by md5 against
-   their served asset). Real client photography, so the AI generated
-   frames that used to sit here are gone from the fold entirely and no
-   sign-off question hangs over the first thing a visitor sees. It is the
-   foal the featured card opens on, so photograph and card agree. */
-import banner from '@/assets/img/horse-arkhana.jpg?w=760;1024;1280&format=avif;webp;jpeg&as=picture'
+/* The hero backdrops: one per featured horse, cross faded as the card's
+   switcher moves, which is what the refined reference does.
+   
+   Each horse gets ITS OWN verified photograph, from the provenance record
+   in sections/available/images.ts. The reference pairs two of its horses
+   with generically named files (NB2_4850, IMG_2051) that nothing ties to
+   those horses, and the provenance rule forbids that: a photo may name a
+   horse only if it came from that horse's own listing.
+   
+   The cast is also limited by SOURCE WIDTH. A full bleed hero is 1440 and
+   up, so a 1280 source is the floor here and the widths below never
+   upscale past their own file. That excludes Agousha (840), Charina (831)
+   and Unique Touch (1152): all verified, none large enough to carry the
+   fold without going soft. */
+import backdropArkhana from '@/assets/img/horse-arkhana.jpg?w=760;1024;1280&format=avif;webp;jpeg&as=picture'
+import backdropCortina from '@/assets/img/horse-cortina.jpg?w=760;1280;1920;2048&format=avif;webp;jpeg&as=picture'
+import backdropCabri from '@/assets/img/horse-cabri.jpg?w=760;1280;1920;2560&format=avif;webp;jpeg&as=picture'
+import backdropDune from '@/assets/img/horse-dune.jpg?w=760;1280;1920;2478&format=avif;webp;jpeg&as=picture'
 import type { Picture } from '@/sections/hero/images'
 
 /* The stud deck: two photographs from the client's own site. Square-ish
@@ -36,8 +47,14 @@ import galleryNeck from '@/assets/img/semen-detail.jpg?w=560;900;1280&format=avi
 import galleryContouch from '@/assets/img/results-contouch.jpg?w=480;760;1170&format=avif;webp;jpeg&as=picture'
 
 export const cieloImages = {
-  /** The hero background: Arkhana Von Axe Z, verified client photo. */
-  banner: banner as Picture,
+  /** Hero backdrops keyed by horse id, in the fold's story order:
+      the available foal, two broodmares, then produce placed abroad. */
+  backdrops: {
+    'arkhana-von-axe-z': backdropArkhana as Picture,
+    'cortina-de-jolie-z': backdropCortina as Picture,
+    'cabri-vd-berghoeve-z': backdropCabri as Picture,
+    'dune-von-axe-z': backdropDune as Picture,
+  } as Record<string, Picture>,
   /** The stud section's instax deck, in stack order. */
   deck: [deckFoal, deckYard] as Picture[],
   /** The reach plate: horse and rider out competing. */

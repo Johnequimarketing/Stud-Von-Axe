@@ -23,7 +23,11 @@ export function Statement() {
           {/* Real text, not aria-hidden: the empty-alt image between the
               words is silent for screen readers, so the sentence reads
               straight through it. */}
-          <p className={styles.statement}>
+          {/* A div, not a p: the inline photograph renders a div, and a
+              div inside a p is invalid, which makes the browser reparent
+              the nodes. The section already carries the sentence as its
+              aria-label. */}
+          <div className={styles.statement}>
             {s.before}{' '}
             <span className={styles.inset}>
               <Photo
@@ -34,7 +38,7 @@ export function Statement() {
               />
             </span>{' '}
             <em className={styles.accent}>{s.accent}</em> {s.after}
-          </p>
+          </div>
         </Reveal>
         <Reveal delay={140}>
           <p className={styles.support}>{s.support}</p>

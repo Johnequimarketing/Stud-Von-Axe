@@ -109,12 +109,7 @@ export function HorsesCielo() {
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
-    track.scrollTo({
-      left: 0,
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ? 'auto'
-        : 'smooth',
-    })
+    track.scrollTo({ left: 0, behavior: 'auto' })
   }, [filter])
 
   /* Arrows on a run that fits are dead controls, so they are measured
@@ -138,10 +133,10 @@ export function HorsesCielo() {
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0
     const distance = card ? card.getBoundingClientRect().width + gap : 320
     const max = track.scrollWidth - track.clientWidth
-    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)')
-      .matches
-      ? 'auto'
-      : 'smooth'
+    /* 'auto' means "use the computed scroll-behavior", which the track
+       declares as smooth and the reduced motion rule can override. No
+       matchMedia branch needed here. */
+    const behavior = 'auto' as const
 
     /* The wrap. A 2px tolerance because scrollLeft is fractional on
        zoomed and high density displays, so an exact comparison never
@@ -181,43 +176,24 @@ export function HorsesCielo() {
               <p className={styles.intro}>{t.intro}</p>
             </div>
 
-            <div className={styles.controls}>
-              <button
-                type="button"
-                className={styles.arrow}
-                onClick={() => step(-1)}
-                aria-label={c.prev}
-                disabled={!scrollable}
-              >
-                <span aria-hidden="true">←</span>
-              </button>
-              <button
-                type="button"
-                className={styles.arrow}
-                onClick={() => step(1)}
-                aria-label={c.next}
-                disabled={!scrollable}
-              >
-                <span aria-hidden="true">→</span>
-              </button>
+            <div
+              className={styles.filters}
+              role="group"
+              aria-label={c.filterLabel}
+            >
+              {chips.map((chip) => (
+                <button
+                  key={chip.id}
+                  type="button"
+                  className={styles.chipButton}
+                  aria-pressed={filter === chip.id}
+                  onClick={() => setFilter(chip.id)}
+                >
+                  {chip.label}
+                  <span className={styles.chipCount}>{chip.count}</span>
+                </button>
+              ))}
             </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={80}>
-          <div className={styles.filters} role="group" aria-label={c.filterLabel}>
-            {chips.map((chip) => (
-              <button
-                key={chip.id}
-                type="button"
-                className={styles.chipButton}
-                aria-pressed={filter === chip.id}
-                onClick={() => setFilter(chip.id)}
-              >
-                {chip.label}
-                <span className={styles.chipCount}>{chip.count}</span>
-              </button>
-            ))}
           </div>
         </Reveal>
       </Container>
@@ -288,13 +264,39 @@ export function HorsesCielo() {
         <p className="visually-hidden" aria-live="polite">
           {c.resultCount(visible.length)}
         </p>
-        <Reveal delay={200}>
-          <a className={styles.seeAll} href="#contact">
-            <span className={styles.seeAllLabel}>{t.seeAll}</span>
-            <span className={styles.viewArrow} aria-hidden="true">
-              →
-            </span>
-          </a>
+        {/* One row closes the section: the way out on the left, the run's
+            controls on the right, where a reader's hand already is after
+            dragging the cards. */}
+        <Reveal delay={160}>
+          <div className={styles.foot}>
+            <a className={styles.seeAll} href="#contact">
+              <span className={styles.seeAllLabel}>{t.seeAll}</span>
+              <span className={styles.viewArrow} aria-hidden="true">
+                →
+              </span>
+            </a>
+
+            <div className={styles.controls}>
+              <button
+                type="button"
+                className={styles.arrow}
+                onClick={() => step(-1)}
+                aria-label={c.prev}
+                disabled={!scrollable}
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <button
+                type="button"
+                className={styles.arrow}
+                onClick={() => step(1)}
+                aria-label={c.next}
+                disabled={!scrollable}
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </Reveal>
       </Container>
     </section>

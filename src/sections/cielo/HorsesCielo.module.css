@@ -15,6 +15,16 @@
   margin-bottom: var(--space-6);
 }
 
+/* The filter sits at the head's right, where the arrows used to. On a
+   narrow head it wraps under the copy and aligns left with it, rather
+   than stranding itself against the right edge. */
+@media (min-width: 900px) {
+  .filters {
+    justify-content: flex-end;
+    max-width: 50%;
+  }
+}
+
 .heading {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.6vw + 1rem, 3.5rem);
@@ -84,7 +94,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
 }
 
 .chipButton {
@@ -141,6 +150,17 @@
   gap: var(--space-5);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  /* The engine animates programmatic scrolls rather than the JS asking
+     for it per call, so reduced motion is handled in ONE place: the
+     global prefers-reduced-motion rule forces scroll-behavior to auto and
+     the arrows become instant with no JS branch.
+
+     (An earlier comment here blamed Chromium for dropping smooth scrolls
+     on mandatory snap containers. That was wrong: the arrows measured 0px
+     because the browser pane running the test was occluded, and Chromium
+     does not animate scrolls in a hidden tab. Kept as a note because the
+     false reading cost real time.) */
+  scroll-behavior: smooth;
   /* overflow-x: auto makes the block axis a scrollport too, so it would
      clip the cards' drop shadow and their 6px hover lift. This is the
      room for both. */
@@ -282,13 +302,22 @@
   transform: translateX(4px);
 }
 
-/* ---- Out of the section ------------------------------------------------ */
+/* ---- The closing row --------------------------------------------------
+   Way out on the left, run controls on the right. */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
 .seeAll {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
   min-height: 44px;
-  margin-top: var(--space-4);
   font-size: var(--text-small);
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -301,8 +330,8 @@
 }
 
 @media (max-width: 699px) {
-  /* The arrows drop on a touch screen: the run is dragged there, and two
-     52px buttons under the heading only ate space. */
+  /* The arrows drop on a touch screen: the run is dragged there, so the
+     closing row is just the way out. */
   .controls {
     display: none;
   }

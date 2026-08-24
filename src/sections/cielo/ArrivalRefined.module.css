@@ -25,10 +25,25 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  display: block;
 }
 
-.media img {
+/* The stack: every backdrop fills the plate, only the active one is
+   opaque. Opacity rather than display, so the change can cross fade, and
+   opacity survives the reduced motion guard because a fade is not
+   motion. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.backdrop[data-active='true'] {
+  opacity: 1;
+}
+
+.backdrop img {
   display: block;
   width: 100%;
   height: 100%;
