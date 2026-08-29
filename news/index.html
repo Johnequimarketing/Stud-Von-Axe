@@ -121,15 +121,34 @@
   .btn-gold:hover{ background:var(--color-white); border-color:var(--color-white); }
   @media (max-width:720px){ .hd__nav{ display:none; } }
 
-  /* ---- the archive grid, the homepage's news card ---- */
-  .arch{ padding:clamp(2.6rem,6vw,4.4rem) 0 clamp(3rem,7vw,5rem); }
+  /* ---- the archive hero: a covered photograph, the homepage's own
+          veil recipe. Heavy on the left where the type sits, open on the
+          right where the picture is worth seeing. ---- */
+  .nhero{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:clamp(320px, 44vh, 460px);
+    display:grid; align-items:end;
+    background:var(--color-navy-deep);
+  }
+  .nhero__bg{ position:absolute; inset:0; z-index:0; }
+  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .nhero__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(100deg,
+      rgba(6,12,20,.92) 0%, rgba(10,21,38,.82) 44%, rgba(10,21,38,.45) 100%);
+  }
+  .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); }
+  .nhero .plaque{ color:var(--color-gold); }
   .arch__h{
     margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3.4vw + 1rem,3.1rem); line-height:1.05;
-    letter-spacing:-.02em; color:var(--color-navy); max-width:16ch;
+    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
+    letter-spacing:-.02em; color:var(--color-white); max-width:16ch; text-wrap:balance;
   }
   .arch__h em{ font-style:italic; color:var(--color-gold); }
-  .arch__intro{ margin:.9rem 0 0; color:var(--color-ink-soft); max-width:60ch; }
+  .arch__intro{ margin:.9rem 0 0; color:rgba(255,255,255,.78); max-width:56ch; font-size:15.5px; }
+
+  /* ---- the archive grid, the homepage's news card ---- */
+  .arch{ padding:clamp(2rem,4.5vw,3.2rem) 0 clamp(3rem,7vw,5rem); }
   .arch__grid{
     display:grid; gap:var(--card-gap); margin-top:clamp(1.8rem,3.5vw,2.6rem);
   }
@@ -279,11 +298,19 @@
     <a href="../#contact" class="btn-gold">Contact us</a>
   </div>
 </header>
+<section class="nhero">
+  <div class="nhero__bg" aria-hidden="true">
+    <img src="../assets/img/hero-cortina-wide.jpg" alt="" fetchpriority="high">
+  </div>
+  <div class="nhero__veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="plaque">News and results</p>
+    <h1 class="arch__h">The latest from <em>both yards</em>.</h1>
+    <p class="arch__intro">Results in the ring, horses sold, and news from Desenzano and Lanaken.
+    Every item here is one the stud published itself.</p>
+  </div>
+</section>
 <main class="wrap arch">
-  <p class="plaque">News and results</p>
-  <h1 class="arch__h">The latest from <em>both yards</em>.</h1>
-  <p class="arch__intro">Results in the ring, horses sold, and news from Desenzano and Lanaken.
-  Every item here is one the stud published itself.</p>
   <ul class="arch__grid">
       <li><a class="nw__card" href="contouch-top-price">
         <span class="nw__win">
