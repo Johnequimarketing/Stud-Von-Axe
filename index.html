@@ -303,12 +303,16 @@
     margin-inline:auto;
     display:flex; align-items:center; justify-content:space-between; gap:1.1rem;
     padding:.5rem clamp(1rem,2vw,1.6rem);
-    border-radius:var(--plate-radius);
+    /* Bottom corners only: the bar sits tight against the top of the
+       screen, so rounding the top would leave two slivers of photograph
+       above it. It hangs down from the edge, the way the logo plate hangs
+       down from the bar. */
+    border-radius:0 0 var(--plate-radius) var(--plate-radius);
     transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
   }
   .hd.is-pinned .hd__row{
     background:var(--color-base);
-    box-shadow:inset 0 0 0 1px var(--color-line), 0 14px 34px -22px rgba(10,21,38,.5);
+    box-shadow:0 14px 34px -22px rgba(10,21,38,.5);
   }
 
   /* The real logo. Two files, one per ground, so neither is ever

@@ -14,7 +14,13 @@ var NEWS = [
     eyebrow: 'Your Auction',
     title: 'Contouch SVA takes the top price',
     titleOriginal: 'NEWS: Contouch SVA top price at Your Auction!',
+    /* provenance only, never rendered: it points at the site this one replaces */
     source: 'https://www.studvonaxe.it/en/news-evoque-von-axe-z-is-sold-for-27-000-euros/',
+    facts: [
+      { k: 'Sold for', v: '€150,000' },
+      { k: 'At', v: 'Your Auction, top price' },
+      { k: 'Pedigree', v: 'Conthargos x Toulon x Cento' }
+    ],
     excerpt: 'Sold for €150,000, the highest price of the auction. We sold him at five and always thought he would be a superstar.',
     img: 'assets/img/results-contouch.jpg',
     ph: false,
@@ -35,6 +41,11 @@ var NEWS = [
     title: 'Calleryama wins the Nations Cup of Barcelona',
     titleOriginal: 'News: Results of Calleryama!',
     source: 'https://www.studvonaxe.it/en/news-diacco-blue-sva-leaves-for-germany/',
+    facts: [
+      { k: 'Result', v: 'Won the Nations Cup of Barcelona' },
+      { k: 'Rider', v: 'Gilles Thomas' },
+      { k: 'Pedigree', v: 'Casall x Contender x Corrado' }
+    ],
     excerpt: 'Ridden by Gilles Thomas. A great mare with an amazing family, and the dam of our Unguessable Von Axe.',
     img: 'assets/img/news-calleryama.jpg',
     ph: false,
@@ -54,6 +65,11 @@ var NEWS = [
     title: 'Results from Lanaken',
     titleOriginal: 'New in!! Cortina de Jolie Z',
     source: 'https://www.studvonaxe.it/en/news-a-loving-mother/',
+    facts: [
+      { k: 'Cortina’s first colt', v: '€40,000 at Zangersheide' },
+      { k: 'Two foals, Hypnotic line', v: '€54,000 and €57,000' },
+      { k: 'Where', v: 'World Championships for young horses' }
+    ],
     excerpt: 'The first colt out of Cortina de Jolie Z sold for €40,000, and the family kept proving itself all weekend.',
     img: 'assets/img/news-lanaken.jpg',
     ph: false,
@@ -78,6 +94,10 @@ var NEWS = [
     title: 'ICSI semen available for breeders',
     titleOriginal: 'NEWS: ICSI semen avaible for breeders!',
     source: 'https://www.studvonaxe.it/news-contouch-sva-in-spagna/',
+    facts: [
+      { k: 'For', v: 'Breeders doing OPU-ICSI' },
+      { k: 'On request', v: 'The catalogue of stallions' }
+    ],
     excerpt: 'Doing OPU-ICSI with your mares? Ask us for the catalogue of stallions you can use.',
     img: 'assets/img/semen-detail.jpg',
     ph: true,

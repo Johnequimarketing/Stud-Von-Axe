@@ -75,7 +75,13 @@ const CSS = homeCss + `
      their own: no dark hero there, so the header is solid ivory from the
      first pixel, wearing the pinned colours permanently. */
   .hd--solid{ height:auto; position:sticky; top:0; }
-  .hd--solid .hd__row{ background:var(--color-base); box-shadow:0 1px 0 var(--color-line); }
+  /* On the singles the page ground is ivory too, so an ivory plate is
+     invisible: it reads as a full width bar again. White, like every other
+     card on this site, and the plate is a plate. */
+  .hd--solid .hd__row{
+    background:var(--color-white);
+    box-shadow:0 14px 34px -24px rgba(10,21,38,.5);
+  }
   .hd--solid .brand{ box-shadow:none; }
   .hd--solid .primary-nav a, .hd--solid .nav-toggle, .hd--solid .lang-switch button,
   .hd--solid .lang-switch .sep, .hd--solid .lang-switch .lang-soon{
@@ -179,33 +185,69 @@ const CSS = homeCss + `
     margin:0; font-family:var(--font-body); font-size:10px; font-weight:700;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
   }
-  .art__railV{ margin:.45rem 0 0; font-family:var(--font-display); font-size:1.15rem;
-    line-height:1.2; color:var(--color-navy); }
-  .art__railL{ margin:1rem 0 0; padding-top:.9rem; border-top:1px solid var(--color-line);
-    font-size:13px; color:var(--color-ink-soft); }
-  .art__railL a{ color:var(--color-navy); }
+  .art__facts{ margin:.9rem 0 0; display:grid; gap:.8rem; }
+  .art__facts > div{ padding-top:.8rem; border-top:1px solid var(--color-line); }
+  .art__facts > div:first-child{ padding-top:0; border-top:0; }
+  .art__facts dt{
+    font-family:var(--font-body); font-size:11px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--color-ink-soft);
+  }
+  .art__facts dd{
+    margin:.25rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:1.1rem; line-height:1.25; color:var(--color-navy);
+  }
+  .art__railGo{
+    display:inline-flex; align-items:center; gap:.45rem; margin-top:1.1rem;
+    padding-top:.9rem; border-top:1px solid var(--color-line); width:100%;
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; color:var(--color-navy);
+    text-decoration:none;
+  }
+  .art__railGo span{ transition:transform .3s var(--ease); }
+  .art__railGo:hover span{ transform:translateX(4px); }
 
-  /* prev and next between stories */
+  /* ---- prev and next ----
+     The same card the archive uses, laid on its side: the photograph on
+     one end, the label and the title on the other, mirrored so the pair
+     reads outward from the middle of the page. */
   .art__nav{
     display:grid; gap:var(--card-gap); margin-top:clamp(2rem,4vw,3rem);
     padding-top:clamp(1.4rem,3vw,2rem); border-top:1px solid var(--color-line);
   }
   @media (min-width:680px){ .art__nav{ grid-template-columns:1fr 1fr; } }
   .art__navA{
-    display:block; text-decoration:none; padding:1rem 1.2rem;
-    border-radius:var(--card-radius); background:var(--color-white);
-    box-shadow:inset 0 0 0 1px var(--color-line);
-    transition:box-shadow .3s var(--ease), transform .3s var(--ease);
+    display:flex; align-items:stretch; gap:0; overflow:hidden;
+    text-decoration:none; border-radius:var(--card-radius);
+    background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 16px 38px -26px rgba(10,21,38,.45);
+    transition:box-shadow .35s var(--ease), transform .35s var(--ease);
   }
-  .art__navA:hover{
-    transform:translateY(-3px);
-    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent);
+  .art__navA:hover, .art__navA:focus-visible{
+    transform:translateY(-4px);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent),
+               0 26px 52px -24px rgba(10,21,38,.55);
   }
-  .art__navA--next{ text-align:right; }
-  .art__navK{ display:block; font-size:10px; font-weight:700; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); }
-  .art__navT{ display:block; margin-top:.3rem; font-family:var(--font-display);
-    font-size:1.05rem; color:var(--color-navy); line-height:1.2; }
+  .art__navPic{ position:relative; flex:0 0 clamp(84px,11vw,120px); overflow:hidden; }
+  .art__navPic img{
+    width:100%; height:100%; object-fit:cover;
+    transform:scale(1.04); transition:transform 1.1s var(--ease);
+  }
+  .art__navA:hover .art__navPic img{ transform:scale(1.1); }
+  .art__navTxt{
+    flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(.9rem,1.8vw,1.15rem) clamp(1rem,2vw,1.3rem);
+  }
+  .art__navA--next{ flex-direction:row-reverse; text-align:right; }
+  .art__navK{
+    display:block; font-family:var(--font-body); font-size:10px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .art__navT{
+    display:block; margin-top:.35rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1rem,1.3vw,1.15rem); color:var(--color-navy); line-height:1.2;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .art__navA, .art__navPic img{ transition:none; }
+  }
 `;
 
 const head = (title, desc, slug) => `<meta charset="utf-8">
@@ -316,6 +358,10 @@ NEWS.forEach((n, i) => {
   const prev = NEWS[(i - 1 + NEWS.length) % NEWS.length];
   const next = NEWS[(i + 1) % NEWS.length];
   const body = n.body.map((p) => `      <p>${esc(p)}</p>`).join('\n');
+  /* Facts come straight out of the story's own sentences; nothing is
+     computed or inferred, so a story without them simply has none. */
+  const facts = (n.facts || []).map((f) =>
+    `        <div><dt>${esc(f.k)}</dt><dd>${esc(f.v)}</dd></div>`).join('\n');
   writeFileSync(join(root, 'news', `${n.slug}.html`), `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -344,11 +390,11 @@ ${headerSolid}
 ${body}
     </div>
     <aside class="art__rail">
-      <p class="art__railK">About this story</p>
-      <p class="art__railV">Published by Stud Von Axe</p>
-      <p class="art__railL">Every item on this page is one the stud put out itself.
-        <a href="${n.source}" target="_blank" rel="noopener">Read the original &#8599;</a></p>
-      <p class="art__railL"><a href="/news">All news and results &rarr;</a></p>
+      <p class="art__railK">In this story</p>
+      <dl class="art__facts">
+${facts}
+      </dl>
+      <a class="art__railGo" href="/news">All news and results <span aria-hidden="true">&rarr;</span></a>
     </aside>
   </div>
 
@@ -371,12 +417,18 @@ ${body}
 
   <nav class="art__nav" aria-label="More news">
     <a class="art__navA" href="/news/${prev.slug}">
-      <span class="art__navK">&larr; Previous</span>
-      <span class="art__navT">${esc(prev.title)}</span>
+      <span class="art__navPic"><img src="/${prev.img}" alt="" loading="lazy"></span>
+      <span class="art__navTxt">
+        <span class="art__navK">&larr; Previous</span>
+        <span class="art__navT">${esc(prev.title)}</span>
+      </span>
     </a>
     <a class="art__navA art__navA--next" href="/news/${next.slug}">
-      <span class="art__navK">Next &rarr;</span>
-      <span class="art__navT">${esc(next.title)}</span>
+      <span class="art__navPic"><img src="/${next.img}" alt="" loading="lazy"></span>
+      <span class="art__navTxt">
+        <span class="art__navK">Next &rarr;</span>
+        <span class="art__navT">${esc(next.title)}</span>
+      </span>
     </a>
   </nav>
 </main>
