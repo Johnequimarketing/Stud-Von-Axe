@@ -13,9 +13,9 @@
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, header, footer, head, navScript } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript } from './lib/shell.mjs';
 
-const CSS = homeCss + pageHeroCss + `
+const CSS = homeCss + pageHeroCss + storyCss + `
   /* ── about page only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the very top and the header hangs over it, so the
@@ -28,20 +28,8 @@ const CSS = homeCss + pageHeroCss + `
      needs almost no crop at all. */
   .abhero .nhero__bg img{ object-position:50% 46%; }
 
-  /* ---- the story: the picture on the left, words on the right ----
-     Mark's order, and the mirror of the homepage's about section, so the
-     two do not read as the same block twice.
-     The section carries the watermark the same way that one does, which is
-     why it is relative and clipped: .stud__mark comes from the homepage
-     sheet above and bleeds off the right edge. */
-  .abst{
-    position:relative; isolation:isolate; overflow-x:clip;
-    padding-block:clamp(3.2rem,6vw,5rem);
-  }
-  .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
-  @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }
-  .abst__col{ min-width:0; }
-
+  /* The story block (.abst) lives in lib/shell.mjs: the horse pages wear
+     the same one. */
   /* ---- the picture, fading between three ----
      One frame, three photographs stacked in it, crossfading. A frame with
      a ratio rather than a picture on its own proportions, because three
@@ -83,15 +71,6 @@ const CSS = homeCss + pageHeroCss + `
   @media (prefers-reduced-motion: reduce){
     .abfade img{ transition:none; }
   }
-  .abst__h{
-    margin:.7rem 0 1.2rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.8rem,2.6vw + .9rem,2.9rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-ink); max-width:15ch; text-wrap:balance;
-  }
-  .abst__h em{ font-style:italic; color:var(--color-gold); }
-  .abst__lead{ margin:0 0 1rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:52ch; }
-  .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
-  .abst__body b{ font-weight:700; color:var(--color-ink); }
   /* ---- the two places ----
      Named as places, never as yards: Lanaken is where the programme runs,
      not a second address on a sign. Two countries, one programme. */

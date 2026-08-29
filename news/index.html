@@ -1746,7 +1746,7 @@
   /* ---- the archive hero: a covered photograph, the homepage veil ---- */
   .nhero{
     position:relative; isolation:isolate; overflow:hidden;
-    min-height:clamp(320px, 44vh, 460px);
+    min-height:clamp(400px, 52vh, 520px);
     display:grid; align-items:end;
     background:var(--color-navy-deep);
   }
@@ -1754,10 +1754,17 @@
   .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
   /* Type crosses the whole width, so the veil is a foot gradient: open at
      the head where the braids read, closing downward under the type. */
+  /* A foot gradient, and the stops are measured rather than eyeballed.
+     The gold eyebrow sits about 60% down this hero, where the first version
+     left the picture bright: it measured 1.7:1 against a house floor of 3
+     for gold on a dark ground, on all four archives and on the news page
+     that has worn this veil since it was written. Re-measure if a hero
+     photograph is ever swapped for a lighter one. */
   .nhero__veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .42) 0%, rgba(var(--veil-rgb), .62) 45%, rgba(var(--veil-rgb), .9) 100%);
+      rgba(var(--veil-rgb), .46) 0%, rgba(var(--veil-rgb), .52) 28%,
+      rgba(var(--veil-rgb), .86) 50%, rgba(var(--veil-rgb), .96) 100%);
   }
   .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
   /* Title left, intro right, on one baseline: the homepage section head,
@@ -1898,19 +1905,19 @@
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
         <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
              mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Until each has a page of its own, every item
-             points at the section that holds that content today, so no
-             link in this menu goes anywhere it cannot deliver.
+             Home is the mark. Each of the four now has an archive of its
+             own, built from their site's own listings, so these go to
+             pages rather than to a section further down.
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. About went the same way
              on 29 Aug: it was already in the footer's Navigate column, and
              taking it off the bar buys the row the room it was short of. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
-          <a href="/#horses">Breeding mares</a>
-          <a href="/#programme">Foals</a>
-          <a href="/#programme">Embryos</a>
-          <a href="/#horses">Sport horses</a>
+          <a href="/breeding-mares">Breeding mares</a>
+          <a href="/foals">Foals</a>
+          <a href="/embryos">Embryos</a>
+          <a href="/sport-horses">Sport horses</a>
         </nav>
       </div>
 
@@ -2036,10 +2043,10 @@
       <div class="footer-col">
         <h2 class="footer-h">Navigate</h2>
         <ul>
-          <li><a href="/#horses">Breeding mares</a></li>
-          <li><a href="/#programme">Foals</a></li>
-          <li><a href="/#programme">Embryos</a></li>
-          <li><a href="/#horses">Sport horses</a></li>
+          <li><a href="/breeding-mares">Breeding mares</a></li>
+          <li><a href="/foals">Foals</a></li>
+          <li><a href="/embryos">Embryos</a></li>
+          <li><a href="/sport-horses">Sport horses</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/news">News</a></li>

@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heaven vd Berghoeve Z | Stud Von Axe</title>
+<meta name="description" content="Out of World Equestrian Games winner Liscalgot! HEARTBREAKER X FOR PLEASURE X TOUCHDOWN">
+<!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.studvonaxe.it/breeding-mares/heaven-vd-berghoeve-z">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stud Von Axe">
+<meta property="og:title" content="Heaven vd Berghoeve Z">
+<meta property="og:description" content="Out of World Equestrian Games winner Liscalgot! HEARTBREAKER X FOR PLEASURE X TOUCHDOWN">
+<meta property="og:image" content="https://www.studvonaxe.it/assets/img/horses/heaven-vd-berghoeve-z-1.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemPage","name":"Heaven vd Berghoeve Z"}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     0. TOKENS
+     Every colour lives here. The gold value is a placeholder for
+     the Pantone the client still has to send over — change --color-gold
+     in this one place and every gold reference in the page updates.
+     ============================================================ */
+  :root{
+    /* Sampled from the supplied logo files on 29 Aug: the horizontal logo
+       is #0d1d36 and the head icon #0b1d36, so the page navy is the logo's
+       own navy rather than a near miss. */
+    --color-navy:        #0d1d36;
+    --color-navy-deep:   #0a1526;
+    /* The components of navy-deep, for the veils, scrims and shadows that
+       need it with an alpha. Written once here so a dark treatment can
+       never quietly become black: several of them were rgba(6,12,20),
+       which is not this palette, and on a photograph it reads as black.
+       Mark, 29 Aug: "we werken met donkerblauw niet met zwart". */
+    --veil-rgb:          10, 21, 38;
+    --color-navy-soft:   #2c4468;
+    /* The head icon's gold, sampled from the file. NOTE: the horizontal
+       logo carries a different, more orange gold (#b57f24). The two supplied
+       files do not agree with each other, so one of them is wrong.
+       TODO client-confirm: which gold is the Pantone, and fix the odd file. */
+    --color-gold:        #b59148;
+    /* derived from --color-gold so the Pantone swap stays a one line change */
+    --color-gold-soft:   color-mix(in srgb, var(--color-gold) 15%, transparent);
+    /* the gold hover, derived so the Pantone swap stays one line */
+    --color-gold-lift:   color-mix(in srgb, var(--color-gold) 82%, #ffffff);
+    --color-base:        #faf7f2;
+    --color-base-alt:    #f1ebe0;
+    --color-ink:         #14202e;
+    --color-ink-soft:    #4d5761;
+    --color-white:       #ffffff;
+    --color-line:        #14202e1f;
+    --color-line-invert: #ffffff2b;
+    /* the footer's off white, the one ink that is not pure white on navy */
+    --color-ink-invert:  #eef1f5;
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+
+    --wrap: 1280px;
+    --gap-section: clamp(4rem, 9vw, 9rem);
+    --ease: cubic-bezier(.25,.1,.25,1);
+
+    /* one page gutter, shared by .wrap and by the hero and its card reel,
+       so the hero lines up with everything below it */
+    --gutter: clamp(1.25rem, 5vw, 3.5rem);
+
+    /* The air around the centred hero statement. Applied ONCE, by
+       .hero__body, which owns the gap above and below. The card reel adds
+       no padding of its own, so the two gaps stay equal. */
+    --hero-air: clamp(60px, 10.5vh, 132px);
+
+    /* Height the sticky header reserves, and gives back to the hero. */
+
+    --card-gap: 14px;
+    /* The page's shape language. It was square at 2px; these three values
+       turn every card, plate and photograph together. */
+    --card-radius: 18px;
+    --plate-radius: 26px;
+    --img-radius: 14px;
+    --ctl-radius: 10px;
+
+    /* How far the ivory tray bites into the hero, and the tray's own shape. */
+    --cut: 96px;
+    /* the smaller cut, used where a plate overlaps the section under it */
+    --cut-band: clamp(2.5rem, 4.5vw, 4rem);
+    /* How far the menu plate hangs below the top edge. The logo plate
+       stays glued to the top and is taller than this, so the two cross:
+       a vertical plate through a horizontal one. */
+    /* The header's three measures. The plate is taller than the bar on
+       purpose: that difference is what makes them cross. The bar has a
+       fixed height so the taller plate overflows it instead of stretching
+       it, which it would otherwise do, being the tallest item in the row. */
+    --hd-top:   clamp(10px, 1.6vh, 22px);
+    --hd-bar:   clamp(52px, 6vh, 62px);
+    --hd-plate: clamp(74px, 8.6vh, 92px);
+    --tray-radius: 34px;
+    --tray-pad: clamp(14px, 1.5vw, 22px);
+  }
+
+  /* ============================================================
+     1. RESET + BASE
+     ============================================================ */
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body,h1,h2,h3,h4,p,figure,blockquote{ margin:0; }
+  ul{ list-style:none; margin:0; padding:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  button{ font:inherit; background:none; border:none; cursor:pointer; color:inherit; }
+  input,textarea{ font:inherit; }
+
+  body{
+    font-family:var(--font-body);
+    font-size:18px;
+    line-height:1.65;
+    color:var(--color-ink);
+    background:var(--color-base);
+    -webkit-font-smoothing:antialiased;
+    /* clip, not hidden: hidden would turn body into a scroll container and
+       break the sticky column in the About section */
+    overflow-x:clip;
+  }
+
+  section[id]{ scroll-margin-top:88px; }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:500;
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    color:var(--color-ink);
+  }
+
+  /* ---- the eyebrow ----
+     ONE recipe for every section opener, light ground or dark: Manrope 700,
+     11px, .22em, gold. It was six different things before, from an unstyled
+     18px paragraph to a 12.5px navy label. Card labels are a step smaller
+     and share everything else, so the hierarchy is size alone.
+     Chosen with Mark on 29 Aug: the page's sans over the design system's
+     serif, and gold on every ground rather than white on photographs. */
+  .eyebrow, .plaque, .sv__kick, .hero-eyebrow, .stud__capKick, .pgr__count,
+  .footer-col .footer-h{
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:11px;
+    line-height:1.2;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--color-gold);
+  }
+  /* the card label: same recipe, one step down */
+  .nw__v, .em__f{
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--color-gold);
+  }
+
+  .mark{
+    background:linear-gradient(to bottom, transparent 62%, var(--color-gold-soft) 62%);
+  }
+
+  .measure{ max-width:38em; }
+
+  .wrap{
+    width:100%;
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding-left:var(--gutter);
+    padding-right:var(--gutter);
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.02em;
+    padding:.95em 1.6em;
+    border-radius:var(--ctl-radius);
+    transition:background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), opacity .5s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--color-navy);
+    color:var(--color-white);
+    border:1px solid var(--color-navy);
+  }
+  .btn-primary:hover{ background:var(--color-navy-deep); border-color:var(--color-navy-deep); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--color-white);
+    border:1px solid var(--color-line-invert);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,.1); border-color:var(--color-white); }
+  .btn-outline-dark{
+    background:transparent;
+    color:var(--color-navy);
+    border:1px solid var(--color-navy);
+  }
+  .btn-outline-dark:hover{ background:var(--color-navy); color:var(--color-white); }
+  .btn-whatsapp{
+    background:var(--color-navy);
+    color:var(--color-white);
+    border:1px solid var(--color-navy);
+  }
+  .btn-whatsapp:hover{ background:var(--color-navy-deep); }
+  .btn-gold{
+    background:var(--color-gold);
+    color:var(--color-navy-deep);
+    border:1px solid var(--color-gold);
+  }
+  .btn-gold:hover{ background:var(--color-white); border-color:var(--color-white); color:var(--color-navy); }
+  /* pill shape, used by the hero pair and the header Contact button */
+  .btn-pill{
+    border-radius:100px;
+    font-size:12.5px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase;
+    padding:1.1em 1.9em;
+  }
+  .btn-sm{ font-size:12.5px; padding:.95em 1.6em; }
+
+
+  /* ============================================================
+     3. HEADER / NAV
+     Transparent, sitting on the hero photograph. Three columns:
+     nav left, centred wordmark, language switcher plus Contact pill
+     right, with a hairline rule beneath the row.
+     ============================================================ */
+  /* Sticky rather than parked on the hero: the bar travels down with the
+     page and then pins to the top. It keeps its own height in flow and
+     the hero is pulled back up underneath it by the negative margin, so
+     the photograph still starts at the very top of the page. */
+  .hd{
+    position:sticky; top:0; z-index:40;
+    /* Zero height: the bar paints over the hero without ever occupying
+       flow, so no negative margin has to match it and no sub pixel
+       rounding can leave a strip above the photograph. */
+    height:0;
+  }
+  /* Thin bar. The centred logo no longer sets its height: it hangs below
+     the bar on its own plate, which is why the bar can be this shallow
+     while the mark stays full size. */
+  /* The bar is a plate held off the edges, not a band across them: the
+     page is built out of rounded plates and the header is now one of them.
+     Held to the page gutter so it lines up with every .wrap below it, and
+     rounded with --plate-radius rather than a full pill, which is what the
+     stylesheet prescribes for a surface this size. */
+  /* No scrim. A gradient across the top of the hero reads as a band with
+     a visible edge running the width of the header, which is the fade Mark
+     saw over the bar. The mark and the menu carry their own shadow instead:
+     it sits on the letterforms, not on the photograph, so the header stays
+     transparent over the hero whatever picture is behind it. Measured: the
+     brightest pixel behind the centred logo is pure white, the rider's
+     breeches, so the mark cannot be left bare. */
+  .hd:not(.is-pinned) .brand__ondark{
+    filter:drop-shadow(0 1px 2px rgba(var(--veil-rgb), .5)) drop-shadow(0 3px 14px rgba(var(--veil-rgb), .45));
+  }
+  .hd:not(.is-pinned) .primary-nav a,
+  .hd:not(.is-pinned) .nav-toggle,
+  .hd:not(.is-pinned) .lang-switch{
+    text-shadow:0 1px 2px rgba(var(--veil-rgb), .55), 0 2px 12px rgba(var(--veil-rgb), .4);
+  }
+  .hd__row{
+    position:relative; z-index:1;
+    /* Not the containing block any more: the mark is anchored to .hd so it
+       stays against the top of the page while this plate drops away from
+       it. Moved with a transform rather than a margin: .hd is zero height
+       on purpose, and a top margin on its child collapses through it and
+       drags the header itself down, taking the mark with it. */
+    transform:translateY(var(--hd-top));
+    /* The one change: a plate held off the edges instead of a band across
+       them, on the page gutter so its edge lines up with the content
+       below, rounded with the stylesheet's own plate radius. Everything
+       else is exactly as it was. */
+    width:min(var(--wrap), 100% - (2 * var(--gutter)));
+    margin-inline:auto;
+    display:flex; align-items:center; justify-content:space-between; gap:1.1rem;
+    height:var(--hd-bar);
+    padding-inline:clamp(1rem,2vw,1.6rem);
+    /* All four corners. Bottom-only was right while the bar sat against
+       the top of the screen; it does not any more, there is air above it,
+       and a plate floating in that air with square shoulders reads as a
+       band that has been cut off. */
+    border-radius:var(--plate-radius);
+    transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
+  }
+  .hd.is-pinned .hd__row{
+    background:var(--color-base);
+    box-shadow:0 14px 34px -22px rgba(var(--veil-rgb), .5);
+  }
+
+  /* The real logo. Two files, one per ground, so neither is ever
+     recoloured with a filter: the white mark would vanish on the pinned
+     ivory bar and the navy one on the photograph. */
+  /* The logo hangs from the bar on an ivory plate, rounded at its FOOT:
+     the mirror of the topics tray, which is rounded at its head and cuts
+     into the hero from below. Absolutely placed, so a full size mark can
+     never set the bar's height, which is what lets the bar be this thin.
+     The plate is ivory at every scroll position, so the mark is always the
+     navy file and is never swapped or recoloured. */
+  /* Anchored to the header, not to the menu plate, so it keeps its top
+     edge flush with the page while the plate hangs below it. Above the
+     plate in the stack, so the two read as one shape crossing another. */
+  /* A plate taller than the bar it sits in, centred on it by align-self,
+     so it reaches past the bar top and bottom and the two read as one
+     shape crossing another. Centred by the layout rather than by a number
+     that would have to be kept in step with the bar's height. */
+  .brand{
+    position:relative; z-index:3; align-self:center;
+    display:grid; place-items:center; line-height:0;
+    height:var(--hd-plate); padding-inline:clamp(1rem,1.8vw,1.5rem);
+    border-radius:var(--card-radius);
+    /* No ground over the hero: the white mark stands on the photograph
+       itself. The plate arrives with the pin, below. */
+    background:transparent;
+    transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
+  }
+  /* Both marks in one cell, so the plate is sized by the artwork and the
+     two can cross fade without either one moving. */
+  .brand img{
+    grid-area:1 / 1; display:block; width:clamp(120px, 11vw, 152px); height:auto;
+    transition:opacity .25s var(--ease);
+  }
+  .brand__onlight{ opacity:0; }
+  .hd.is-pinned .brand__ondark{ opacity:0; }
+  .hd.is-pinned .brand__onlight{ opacity:1; }
+  /* Pinned: the plate arrives, in the same fill as the bar so the seam
+     between them disappears and only the rounded foot reads. */
+  .hd.is-pinned .brand{
+    background:var(--color-base);
+    /* No shadow. The plate and the bar are the same ivory, so a shadow on
+       the plate only draws a seam across the bar it is meant to cross. */
+  }
+
+  /* Once pinned the bar is ivory, so everything on it turns to ink. */
+  .hd.is-pinned .primary-nav a,
+  .hd.is-pinned .nav-toggle,
+  .hd.is-pinned .lang-switch button,
+  .hd.is-pinned .lang-switch .sep,
+  .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); }
+  /* The two that the line above cannot reach: the active language sets its
+     own white, later in the sheet and at the same weight, and the greyed
+     ones carry white at low opacity. Both were invisible on the ivory bar.
+     Caught in a render of the pinned state, not in the file. */
+  .hd.is-pinned .lang-switch button[aria-current="true"]{ color:var(--color-navy); }
+  .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); opacity:.42; }
+  .hd.is-pinned .lang-switch .sep{ color:color-mix(in srgb, var(--color-ink) 30%, transparent); }
+  .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .hd.is-pinned .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+  .hd.is-pinned .hd__rule{ opacity:0; }
+  /* Equal shares of the leftover room, which is what actually centres the
+     mark: space-between only centres a middle item when the two outer
+     groups happen to be the same width. */
+  .hd__start{ display:flex; align-items:center; min-width:0; flex:1 1 0; }
+  .hd__end{ display:flex; align-items:center; justify-content:flex-end; gap:1.35rem; flex:1 1 0; min-width:0; }
+  .hd__rule{
+    position:relative; z-index:20; height:1px;
+    background:var(--color-line-invert);
+    margin:0 var(--gutter);
+    transition:opacity .3s var(--ease);
+  }
+
+  /* nowrap, deliberately. Wrapping looks like a fix and is not: a second
+     row of links appears under the first and pushes into the hero rather
+     than handing over to the drawer. Better that it cannot wrap at all and
+     the breakpoint below is the only thing that decides. */
+  .primary-nav{ display:flex; align-items:center; gap:1.25rem; flex-wrap:nowrap; }
+  .primary-nav a{
+    /* The page's serif, not the body sans: the mark beside it is set in
+       capitals of the same kind, and so is every heading below. */
+    font-family:var(--font-display);
+    font-size:15px; font-weight:400; letter-spacing:.005em;
+    color:var(--color-white); white-space:nowrap;
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition:border-color .4s var(--ease), color .4s var(--ease);
+  }
+  .primary-nav a:hover,
+  .primary-nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
+
+  .lang-switch{ display:flex; align-items:center; gap:.5rem; font-size:13px; font-weight:700; letter-spacing:.06em; }
+  .lang-switch button{ color:#ffffffa8; padding:.15rem .1rem; }
+  .lang-switch button[aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
+  .lang-switch .lang-soon{ color:var(--color-white); opacity:.38; cursor:not-allowed; }
+  .lang-switch .sep{ color:#ffffff4d; }
+
+  .nav-toggle{
+    display:none;
+    font-size:22px; line-height:1;
+    color:var(--color-white);
+  }
+
+
+  /* Five items beside a centred wordmark stop fitting on one line well
+     above the phone breakpoint, so the drawer takes over here rather than
+     at 860px. Measured after document.fonts.ready, with the real serif:
+     they need 426px and the space beside the mark is 455px at 1301 and
+     tops out at 497px. About came off the bar on 29 Aug and that room went
+     into the gaps rather than into another item. The gap is a flat rem
+     rather than a vw: one that grows with the screen ate the clearance on
+     a 1920 monitor, where the bar has stopped growing because it is capped
+     at the content width.
+     Measuring before the webfont lands reads 20px narrower and puts this
+     line in the wrong place, which is how it ended up at 1240. */
+  @media (max-width: 1300px){
+    .primary-nav{
+      position:absolute; left:0; right:0;
+      /* opens just below the hairline rule, so the rule stays visible */
+      top:calc(100% + 1.15rem + 1px);
+      background:var(--color-base);
+      flex-direction:column; align-items:flex-start;
+      padding:1.4rem var(--gutter) 1.8rem;
+      border-bottom:1px solid var(--color-line);
+      transform:translateY(-8px);
+      opacity:0; visibility:hidden; pointer-events:none;
+      transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
+    }
+    .primary-nav.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
+    .primary-nav a{
+      padding:.6rem 0; width:100%; font-size:15px;
+      color:var(--color-ink); border-bottom:1px solid var(--color-line);
+    }
+    .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
+    .nav-toggle{ display:block; }
+  }
+
+  @media (max-width: 860px){
+    .lang-switch{ display:none; }
+    .hd__row{ gap:.75rem; }
+    .hd__end{ gap:.75rem; }
+  }
+  @media (max-width: 560px){
+    .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
+    /* The plate is narrower than the old full width bar, so at this width
+       the hanging mark ran into the toggle and the button. It keeps its
+       shape and simply takes less room. */
+    .hd__row{ padding-inline:.6rem; }
+    .brand{ padding-inline:.6rem; }
+    .brand img{ width:96px; }
+    .hd .btn-sm{ font-size:10.5px; padding:.75em 1em; }
+  }
+
+  /* ============================================================
+     4. HERO
+     Full bleed photograph with a layered scrim, a centred statement,
+     and a marquee of portrait horse cards along the foot.
+
+     DECISIONS BAKED IN, do not undo casually:
+
+      1. Cards are true 3/4 portrait at every size. Two earlier attempts
+         tied card height to the viewport and flattened them into
+         landscape boxes. Never height driven, never a max-height.
+      2. Four cards across on desktop. The row runs past the fold on
+         purpose, signed off, it reads as an invitation to scroll.
+      3. Card is photography only at rest. Name, category, year and
+         status fade in on hover, over a gradient that fades in too.
+      4. The reveal is scoped to (hover:hover) and (pointer:fine). On
+         touch the text and gradient are ALWAYS visible. There is no
+         hover on a phone and most of this audience is on a phone at a
+         show. Do not remove that media query.
+      5. Cards are links, so the reveal also fires on keyboard focus,
+         with a visible focus ring.
+      6. The headline is full size. An earlier build capped it to force
+         everything above the fold and it read as a downgrade. No
+         height based query touches it.
+      7. The air above and below the statement is one token, --hero-air,
+         applied once by .hero__body. The reel adds no padding of its
+         own, so the two gaps stay equal.
+     ============================================================ */
+  .hero{
+    position:relative; min-height:100svh; padding-bottom:var(--cut);
+    display:flex; flex-direction:column;
+    background:var(--color-navy-deep);
+  }
+  .hero__bg{ position:absolute; inset:0; }
+    /* Pushed right so the mare sits left of the centred statement rather
+     than directly behind it. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
+  /* An even navy veil across the WHOLE frame, not a gradient that only
+     bites at the foot. The old ramp dropped to 10% at 28%, which let the
+     photograph's own detail fight the centred statement. It deepens over
+     the last quarter so the topic plaques still have a dark base. */
+  .hero__bg::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .70) 0%,
+      rgba(var(--veil-rgb), .64) 42%,
+      rgba(var(--veil-rgb), .72) 74%,
+      rgba(var(--veil-rgb), .90) 100%);
+  }
+
+  /* ---------- centred statement ---------- */
+  .hero__body{
+    position:relative; z-index:20; flex:1;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center;
+    /* Clear of the bar, which now carries the mark inside it. */
+    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
+  }
+  /* Type comes from the one eyebrow rule; only the spacing is local. */
+  .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
+  .hero-heading{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(2.4rem, 7.4vw, 6.4rem);
+    line-height:.9; letter-spacing:-0.015em;
+    text-transform:uppercase;
+    color:var(--color-white);
+    max-width:20ch; text-wrap:balance;
+  }
+  /* gold as a thin marker under the word carrying the claim */
+  .hero-heading .hero-mark{
+    display:inline-block;
+    border-bottom:max(2px, .028em) solid var(--color-gold);
+  }
+  .hero-sub{
+    margin-top:clamp(1.4rem, 3vh, 2.1rem);
+    font-size:clamp(1rem, 1.6vw, 1.15rem);
+    max-width:52ch;
+    color:#f2ede4dd;
+  }
+  .hero-actions{
+    margin-top:clamp(1.6rem, 3.6vh, 2.5rem);
+    display:flex; gap:.7rem; flex-wrap:wrap; justify-content:center;
+  }
+
+  /* ---------- horse marquee ---------- */
+  /* No padding-top here on purpose: .hero__body already owns the gap
+     above the cards, see --hero-air. */
+  .reel{ position:relative; z-index:20; padding-bottom:1.65rem; }
+  .reel__vp{
+    position:relative; overflow:hidden; width:100%;
+    /* soften the edges so cards leaving the frame look intentional
+       instead of chopped off by the viewport */
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 64px,#000 calc(100% - 64px),transparent 100%);
+    mask-image:linear-gradient(to right,transparent 0,#000 64px,#000 calc(100% - 64px),transparent 100%);
+  }
+  .reel__track{
+    display:flex; gap:var(--card-gap); width:max-content;
+    padding:0 var(--gutter);
+    animation:reel 64s linear infinite;
+  }
+  .reel__vp:hover .reel__track,
+  .reel__vp:focus-within .reel__track{ animation-play-state:paused; }
+  @keyframes reel{ to{ transform:translateX(-50%); } }
+
+  /* ============================================================
+     THE FOUR TOPICS
+     The page ground rises into the hero as a tray with rounded top
+     corners, and the cards sit inside it as a snap run: four in view on
+     desktop, the rest one swipe away. The card itself is paper, with a
+     white mount around the photograph and the words underneath.
+     ============================================================ */
+  .topics-tray{
+    position:relative; z-index:30;
+    width:min(calc(var(--wrap) + (2 * var(--tray-pad))), 100% - (2 * var(--gutter)));
+    margin:calc(-1 * var(--cut)) auto 0;
+    padding:var(--tray-pad);
+    background:var(--color-base);
+    border-radius:var(--tray-radius) var(--tray-radius) 0 0;
+  }
+
+  /* A native snap run, not a transform carousel: draggable on touch and
+     keyboard scrollable, so it works before any JS loads. */
+  .topics{
+    display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    /* overflow-x:auto makes the BLOCK axis a scrollport too, so the track
+       clips whatever leaves it vertically. The resting shadow reaches
+       16 + 38 - 22 = 32px below a card and the hover shadow 58px. This is
+       the room both need, and the negative margin gives the surplus back
+       so the tray does not grow an ivory gap. */
+    padding:10px 0 62px;
+    margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .topics::-webkit-scrollbar{ display:none; }
+  .topic{
+    flex:0 0 calc((100% - (3 * var(--card-gap))) / 4);
+    scroll-snap-align:start;
+    position:relative; display:block; overflow:hidden; isolation:isolate;
+    min-height:clamp(272px, 27vh, 300px);
+    padding:clamp(1.05rem, 2vw, 1.5rem);
+    border-radius:var(--card-radius);
+    background:var(--color-navy-deep);
+    box-shadow:0 16px 38px -22px rgba(var(--veil-rgb), .5);
+    text-decoration:none;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .topic:last-child{ scroll-snap-align:end; }
+  .topic:hover, .topic:focus-visible{
+    transform:translateY(-6px);
+    box-shadow:0 26px 52px -20px rgba(var(--veil-rgb), .6);
+  }
+  .topic:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
+  /* The photograph fills the card rather than sitting in a mount. */
+  .topic__win{
+    position:absolute; inset:0; z-index:0; display:block; overflow:hidden;
+  }
+  .topic__win img{
+    display:block; width:100%; height:100%; object-fit:cover;
+    transform:scale(1.03);
+    transition:transform 1.4s var(--ease);
+  }
+  .topic:hover .topic__win img, .topic:focus-visible .topic__win img{ transform:scale(1.08); }
+  /* One gradient: near clear at the head so the picture shows, deep navy at
+     the foot so the words never fight it. */
+  .topic__win::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .10) 0%, rgba(var(--veil-rgb), .30) 38%,
+      rgba(var(--veil-rgb), .78) 70%, rgba(var(--veil-rgb), .94) 100%);
+    transition:background .45s var(--ease);
+  }
+  .topic:hover .topic__win::after, .topic:focus-visible .topic__win::after{
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .16) 0%, rgba(var(--veil-rgb), .42) 34%,
+      rgba(var(--veil-rgb), .86) 64%, rgba(var(--veil-rgb), .96) 100%);
+  }
+
+  /* The gold hairline draws itself across the head, echoing the rule under
+     ARENAS in the statement above. Inset so it follows the rounding rather
+     than being cut off in the corner. Drawn by the card itself, so the
+     markup needs no extra element. */
+  .topic::before{
+    content:""; position:absolute; top:0; left:var(--card-radius); z-index:3;
+    height:2px; width:0; background:var(--color-gold);
+    transition:width .55s var(--ease);
+  }
+  .topic:hover::before, .topic:focus-visible::before{
+    width:calc(100% - (2 * var(--card-radius)));
+  }
+
+  /* Anchored to the foot and absolutely placed, so the hover sentence grows
+     UPWARD inside the card. That is what keeps the card, and with it the
+     whole tray, exactly the same height whether you are hovering or not. */
+  .topic__body{
+    position:absolute; z-index:2; display:block;
+    left:clamp(1.05rem, 2vw, 1.5rem); right:clamp(1.05rem, 2vw, 1.5rem);
+    bottom:clamp(1.05rem, 2vw, 1.5rem);
+    padding:0;
+  }
+  .topic__t{
+    display:block; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.15rem, 1.5vw, 1.5rem); line-height:1.1; letter-spacing:-.005em;
+    color:var(--color-white);
+  }
+  .topic__m{
+    display:block; margin-top:.28rem; padding-top:.5rem;
+    border-top:1px solid var(--color-line-invert);
+    font-family:var(--font-body); font-size:11px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .topic__more{
+    display:block; overflow:hidden; max-height:0; opacity:0;
+    font-family:var(--font-body); font-size:13px; line-height:1.5;
+    color:rgba(255,255,255,.82);
+    transition:max-height .45s var(--ease), opacity .35s var(--ease), margin-top .45s var(--ease);
+  }
+  .topic:hover .topic__more, .topic:focus-visible .topic__more{
+    max-height:9em; opacity:1; margin-top:.6rem;
+  }
+  /* Collapsed, not just invisible. At opacity 0 it still occupied its own
+     line, which pushed the title and the meta up off the foot of the card
+     and left a gap underneath them. */
+  .topic__go{
+    display:flex; align-items:center; gap:.5em; overflow:hidden;
+    max-height:0; margin-top:0; opacity:0;
+    font-family:var(--font-body); font-size:11px; font-weight:700;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--color-gold);
+    transition:max-height .4s var(--ease), margin-top .4s var(--ease), opacity .4s var(--ease);
+  }
+  .topic:hover .topic__go, .topic:focus-visible .topic__go{
+    max-height:2.4em; margin-top:.7rem; opacity:1;
+  }
+  .topic__go .a{ transition:transform .3s var(--ease); }
+  .topic:hover .topic__go .a{ transform:translateX(4px); }
+
+  /* The arrows ride the tray's edges. Hidden where the run is dragged. */
+  .topics-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:5;
+    width:44px; height:44px; border-radius:50%; cursor:pointer;
+    border:1px solid var(--color-line);
+    background:var(--color-white); color:var(--color-navy);
+    font-size:16px; line-height:1;
+    box-shadow:0 8px 22px -10px rgba(var(--veil-rgb), .4);
+    transition:background .3s var(--ease), color .3s var(--ease), opacity .3s var(--ease);
+  }
+  .topics-arrow:hover{ background:var(--color-navy); color:var(--color-white); }
+  .topics-arrow--prev{ left:calc(-1 * (22px + var(--tray-pad) / 2)); }
+  .topics-arrow--next{ right:calc(-1 * (22px + var(--tray-pad) / 2)); }
+  /* Kept in place rather than hidden at the ends, so the tray does not
+     jump when the run reaches a boundary. */
+  .topics-arrow[disabled]{ opacity:.3; cursor:default; }
+  .topics-arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
+  @media (max-width: 1180px){ .topics-arrow{ display:none; } }
+  @media (max-width: 1100px){ .topic{ flex-basis:calc((100% - (2 * var(--card-gap))) / 3); } }
+  @media (max-width: 900px){  .topic{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){  .topic{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){
+    .topic, .topic__win img, .topic__win::after, .topic__more, .topic__go, .topic__go .a{ transition:none; }
+  }
+
+  /* ============================================================
+     5. THE STUD
+     Photograph one side in its own mount, words the other. The caption
+     and the controls live UNDER the picture rather than over it, so
+     nothing is laid across the horse. Generous air on all sides: this
+     section follows a dense slider and needs the room to breathe.
+     ============================================================ */
+  .stud{
+    position:relative; isolation:isolate;
+    /* Less air at the foot than at the head: the horses grid below opens
+       with its own generous top padding, so the two were stacking up. */
+    padding:clamp(5rem, 10vw, 9.5rem) 0 clamp(3rem, 6vw, 5.5rem);
+    /* the mark bleeds off the right edge and is clipped here */
+    overflow-x:clip;
+  }
+  /* The head icon as a watermark beside the copy column. The supplied navy
+     file, at five percent, so it is a texture in the paper rather than a
+     second logo competing with the one in the header. */
+  .stud__mark{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    width:clamp(190px, 26vw, 400px); opacity:.05;
+  }
+  .stud__mark img{ width:100%; height:auto; display:block; }
+  /* Stated on the grid itself, never as .stud > *, which would carry the
+     same specificity as .stud__mark and drop the watermark into the flow. */
+  .stud__grid{
+    position:relative; z-index:1;
+    display:grid; gap:clamp(2.5rem, 6vw, 5.5rem); align-items:center;
+  }
+  @media (min-width:960px){ .stud__grid{ grid-template-columns:1fr 1fr; } }
+
+  /* ---- the photo card ---- */
+  .stud__card{ border-radius:var(--plate-radius); }
+  .stud__win{ position:relative; overflow:hidden; background:var(--color-base-alt); }
+  .stud__win img{ width:100%; height:100%; object-fit:cover; object-position:50% 32%; }
+  /* The identity pill. It names the stud on every frame, which is what
+     keeps the card reading as one object while its picture changes. */
+  .stud__badge{
+    position:absolute; top:1rem; left:1rem; z-index:2;
+    display:flex; align-items:center; gap:.7rem;
+    background:var(--color-white); border-radius:999px;
+    padding:.45rem 1rem .45rem .45rem;
+    box-shadow:0 12px 28px -16px rgba(var(--veil-rgb), .55);
+  }
+  .stud__badge > img{
+    width:34px; height:34px; flex:none; object-fit:contain;
+    background:var(--color-navy-deep); border-radius:50%; padding:5px;
+  }
+  .stud__badge b{
+    display:block; font-family:var(--font-display); font-weight:400;
+    font-size:14px; line-height:1.15; color:var(--color-navy);
+  }
+  .stud__badge span span, .stud__badge > span > span{
+    display:block; font-family:var(--font-body); font-size:10px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-ink-soft);
+  }
+  .stud__cap{
+    display:flex; flex-wrap:wrap; gap:1.2rem; align-items:flex-end;
+    justify-content:space-between;
+  }
+  .stud__capKick{ margin:0 0 .4rem; }
+  .stud__capBody{ margin:0; font-size:13.5px; color:var(--color-ink-soft); max-width:36ch; }
+  .stud__arrows{ display:flex; gap:.6rem; }
+  .stud__arrow{
+    width:44px; height:44px; border-radius:50%; cursor:pointer; flex:none;
+    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
+    display:inline-flex; align-items:center; justify-content:center; font-size:15px;
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .stud__arrow:hover{ background:var(--color-navy); color:var(--color-white); }
+  .stud__arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
+  /* ---- the copy ---- */
+  .stud__copy > * + *{ margin-top:1.15rem; }
+  .stud__h{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem, 3.4vw + 1rem, 3.2rem); line-height:1.04; letter-spacing:-.02em;
+    color:var(--color-navy); margin:.5rem 0 0; text-wrap:balance;
+  }
+  /* The second line steps back rather than changing colour outright, so the
+     two halves still read as one sentence. */
+  .stud__h .soft{ color:color-mix(in srgb, var(--color-navy) 36%, var(--color-base)); }
+  .stud__lead{ font-size:18px; color:var(--color-ink); max-width:48ch; }
+  .stud__body{ font-size:16px; color:var(--color-ink-soft); max-width:50ch; }
+  .stud__body b{ font-weight:700; color:var(--color-navy); }
+
+  .stud__plate{
+    display:flex; flex-wrap:wrap; gap:1.2rem; align-items:center; justify-content:space-between;
+    background:var(--color-navy-deep); color:var(--color-white);
+    border-radius:var(--card-radius); padding:1.25rem 1.4rem; margin-top:2rem;
+  }
+  .stud__plate b{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.15rem; }
+  .stud__plate span{
+    display:block; margin-top:.2rem; font-size:13.5px;
+    color:rgba(255,255,255,.72); max-width:42ch;
+  }
+  .stud__pill{
+    display:inline-flex; align-items:center; gap:.55em; white-space:nowrap;
+    background:var(--color-gold); color:var(--color-navy);
+    border-radius:var(--ctl-radius); padding:.75em 1.3em; text-decoration:none;
+    font-family:var(--font-body); font-size:11.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase;
+  }
+  .stud__pill .a{ transition:transform .3s var(--ease); }
+  .stud__pill:hover .a{ transform:translateX(4px); }
+
+  .stud-fade{ animation:studFade .5s var(--ease); }
+  @keyframes studFade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce){
+    .stud-fade{ animation:none; }
+    .stud__arrow, .stud__pill .a{ transition:none; }
+  }
+
+
+  /* ============================================================
+     THE HORSES
+     The paper card again, so the catalogue and the fold speak the same
+     language. Sold horses stay in the run with the country they went to:
+     that is the reach, and it is the alternative to the flags the client
+     asked us to replace.
+     ============================================================ */
+  .hz{ padding:clamp(4rem, 8vw, 7rem) 0 0; }
+  .hz__head{
+    display:flex; flex-wrap:wrap; gap:clamp(1.4rem,3vw,2.4rem);
+    align-items:flex-end; justify-content:space-between;
+  }
+  .hz__h{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem, 3.4vw + 1rem, 3.1rem); line-height:1.05;
+    letter-spacing:-.02em; color:var(--color-navy); margin:.5rem 0 0; max-width:16ch;
+  }
+  .hz__h em{ font-style:italic; color:var(--color-gold); }
+  .hz__intro{ margin:.8rem 0 0; color:var(--color-ink-soft); max-width:42ch; }
+
+  /* ---- filters ---- */
+  .hz__filters{ display:flex; flex-wrap:wrap; gap:.6rem; }
+  .hz__chip{
+    display:inline-flex; align-items:center; gap:.6em; cursor:pointer;
+    min-height:44px; padding:.55em 1.15em; border-radius:var(--ctl-radius);
+    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
+    font-family:var(--font-body); font-size:11.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; white-space:nowrap;
+    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .hz__chip:hover{ border-color:var(--color-navy); }
+  /* The active chip FILLS rather than tints. A tinted ink on a pale ground
+     is the one thing that has failed contrast on this project every time. */
+  .hz__chip[aria-pressed="true"]{
+    background:var(--color-navy-deep); border-color:var(--color-navy-deep); color:var(--color-white);
+  }
+  /* The count earns its quiet from size, not from a lighter ink. */
+  .hz__chip .c{ font-size:10px; opacity:.72; }
+
+  /* ---- the grid ----
+     A grid rather than a run, so all eight are on the page at once and
+     nothing is hidden behind a swipe. Capped at eight: past that the
+     section starts competing with the catalogue page it points at. */
+  .hz__grid{
+    display:grid; gap:var(--card-gap);
+    /* Three, not four. Six cards then make two complete rows, and each
+       photograph gets noticeably more room. On four columns six would
+       leave two empty cells. */
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    margin-top:clamp(1.8rem,3vw,2.6rem);
+  }
+  .hz__grid > li{ display:flex; }
+  .hz__card{
+    width:100%; display:block; text-decoration:none;
+    border-radius:var(--card-radius);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .hz__card:hover{ transform:translateY(-6px); box-shadow:0 26px 52px -20px rgba(var(--veil-rgb), .5); }
+  .hz__card:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .hz__win{ overflow:hidden; }
+  .hz__win img{
+    width:100%; height:100%; object-fit:cover; object-position:50% 30%;
+    transition:transform 1.4s var(--ease);
+  }
+  .hz__card:hover .hz__win img{ transform:scale(1.06); }
+  /* No photograph may name a horse unless it came from that horse's own
+     listing, so two of them carry their pedigree instead. */
+  .hz__win.typo{ display:flex; align-items:center; justify-content:center; padding:2.6rem 1.2rem 1.2rem; }
+  .hz__win.typo p{
+    margin:0; text-align:center; font-family:var(--font-display); font-style:italic;
+    font-size:1rem; line-height:1.55; color:var(--color-gold);
+  }
+
+  /* The status chip. Absolutely placed, so it rides the photograph and, on
+     the typographic cards, sits over the pedigree instead of joining it. */
+  .hz__tag{
+    position:absolute; top:10px; left:10px; z-index:2;
+    display:inline-flex; align-items:center; gap:.5em;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:rgba(250,247,242,.92);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    font-family:var(--font-body); font-size:10.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-navy);
+  }
+  /* Sold reads darker than available on purpose: it is a fact about the
+     horse, not an invitation, so it should not compete with the ones that
+     are still for sale. */
+  .hz__tag--sold{
+    background:rgba(var(--veil-rgb), .82); color:var(--color-white); padding-left:.42em;
+  }
+  .hz__tag--sold .to{ color:var(--color-gold); }
+  /* A hairline and a soft corner, so the flag reads as a little enamel
+     badge rather than clip art stuck on the photograph. */
+  .hz__flag{
+    display:inline-block; width:18px; height:12px; flex:none;
+    border-radius:2.5px; overflow:hidden; line-height:0;
+    box-shadow:0 0 0 1px rgba(255,255,255,.34), 0 1px 3px rgba(0,0,0,.35);
+  }
+  .hz__flag svg{ display:block; width:100%; height:100%; }
+  /* A stand-in frame is labelled on the card itself. Nothing unlabelled
+     ever stands in for a horse we cannot yet show. */
+  /* Top right, opposite the status chip. At the foot it landed across the
+     horse's name and pedigree line on a card in the programme run. */
+  .hz__ph{
+    position:absolute; right:10px; top:10px; z-index:2;
+    padding:.36em .75em; border-radius:999px;
+    background:rgba(var(--veil-rgb), .72);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+    font-family:var(--font-body); font-size:9px; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.82);
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+  }
+  .hz__body{ display:flex; flex-direction:column; flex:1; padding:.95rem .35rem 1.05rem; }
+  .hz__name{
+    display:block;
+    font-family:var(--font-display); font-weight:400; font-size:1.1rem;
+    line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+  }
+  .hz__meta{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-body); font-size:12.5px; color:var(--color-ink-soft);
+  }
+  .hz__view{
+    display:inline-flex; align-items:center; gap:.5em;
+    margin-top:auto; padding-top:.8rem;
+    font-family:var(--font-body); font-size:11px; font-weight:700;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--color-navy);
+  }
+  .hz__view .a{ transition:transform .3s var(--ease); }
+  .hz__card:hover .hz__view .a{ transform:translateX(4px); }
+
+  /* ---- the banner ----
+     Navy, so the section closes on the same material the fold and the
+     footer are made of, and the one link out sits where the eye lands
+     after the last row of cards. */
+  /* The mirror of the topics tray. There the page ground rises into the
+     hero with rounded top corners; here it hangs down into the services
+     band with rounded bottom ones, so the ivory itself is what cuts in and
+     the banner keeps a margin of page around it on all four sides. */
+  .hz-tray{
+    position:relative; z-index:3;
+    width:min(calc(var(--wrap) + (2 * var(--tray-pad))), 100% - (2 * var(--gutter)));
+    margin:clamp(1.6rem,3vw,2.4rem) auto calc(-1 * var(--cut-band));
+    padding:var(--tray-pad);
+    background:var(--color-base);
+    border-radius:0 0 var(--tray-radius) var(--tray-radius);
+  }
+  .hz__banner{
+    display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center; justify-content:space-between;
+    margin-top:clamp(1.6rem,3vw,2.4rem);
+    padding:clamp(1.3rem,2.4vw,1.9rem) clamp(1.4rem,2.6vw,2.2rem);
+    background:var(--color-navy-deep); color:var(--color-white);
+    border-radius:var(--card-radius);
+  }
+  .hz__banner b{
+    display:block; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
+  }
+  .hz__banner span{
+    display:block; margin-top:.3rem; font-size:14px;
+    color:rgba(255,255,255,.72); max-width:52ch;
+  }
+  .hz__cta{
+    display:inline-flex; align-items:center; gap:.55em; white-space:nowrap;
+    background:var(--color-gold); color:var(--color-navy);
+    border-radius:var(--ctl-radius); padding:.85em 1.5em; text-decoration:none;
+    font-family:var(--font-body); font-size:11.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase;
+    transition:background .3s var(--ease);
+  }
+  .hz__cta:hover{ background:var(--color-gold-lift); }
+  .hz__cta .a{ transition:transform .3s var(--ease); }
+  .hz__cta:hover .a{ transform:translateX(4px); }
+
+  @media (max-width:1100px){ .hz__grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  @media (max-width:820px){  .hz__grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  @media (max-width:520px){  .hz__grid{ grid-template-columns:1fr; } }
+  @media (prefers-reduced-motion: reduce){
+    .hz__card, .hz__win img, .hz__view .a, .hz__cta, .hz__cta .a, .hz__chip{ transition:none; }
+  }
+
+
+
+  /* ============================================================
+     SERVICES
+     Full bleed on purpose: this is the one place the page stops holding a
+     container, which is what makes it read as a change of subject rather
+     than another block on the same ivory ground.
+     ============================================================ */
+  .sv{
+    position:relative; isolation:isolate; overflow:hidden;
+    /* Breaks out of any parent width without needing a wrapper element. */
+    width:100vw; margin-inline:calc(50% - 50vw);
+    /* room at the top for the tray that hangs into it */
+    padding:calc(var(--cut-band) + clamp(3rem, 6vw, 5rem)) 0 clamp(3.5rem, 7vw, 6rem);
+    /* Nine tenths of the viewport. svh rather than vh, so the mobile
+       address bar collapsing does not change the height mid scroll. */
+    min-height:90svh;
+    display:grid; align-items:center;
+    background:var(--color-navy-deep);
+  }
+  /* The backdrop IS the service. Opening a row changes the whole wall behind
+     the section, so there is no second photo frame competing with the one
+     picture, and the column simply floats on it. */
+  .sv__bg{ position:absolute; inset:0; z-index:0; }
+  .sv__bg img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 38%;
+    opacity:0; transition:opacity .95s var(--ease), transform 8s var(--ease);
+  }
+  .sv__bg img.is-on{ opacity:1; transform:scale(1.05); }
+  /* Heavy where the type sits, open where the photograph is worth seeing.
+     Measured, not guessed: white body copy needs the left end this dark. */
+  .sv__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(105deg,
+      rgba(var(--veil-rgb), .95) 0%, rgba(var(--veil-rgb), .86) 40%, rgba(var(--veil-rgb), .66) 100%);
+  }
+  /* One column means the type crosses the whole frame, so the diagonal veil
+     stops working and an even one takes over. */
+  @media (max-width:899px){
+    .sv__veil{
+      background:linear-gradient(180deg,
+        rgba(var(--veil-rgb), .9) 0%, rgba(var(--veil-rgb), .86) 50%, rgba(var(--veil-rgb), .92) 100%);
+    }
+  }
+  .sv__inner{
+    position:relative; z-index:2;
+    display:grid; gap:clamp(2rem,4vw,3.5rem);
+  }
+  @media (min-width:900px){
+    .sv__inner{ grid-template-columns:1fr 1.05fr; align-items:center; }
+  }
+  .sv__kick{ margin:0; }
+  .sv__h{
+    margin:.6rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.9rem, 3vw + 1rem, 3rem); line-height:1.04; letter-spacing:-.02em;
+    color:var(--color-white); max-width:14ch; text-wrap:balance;
+  }
+  .sv__h em{ font-style:italic; color:var(--color-gold); }
+  .sv__sub{
+    margin:1rem 0 0; max-width:44ch; font-size:16px; color:rgba(255,255,255,.76);
+  }
+  .sv__acts{
+    display:flex; flex-wrap:wrap; gap:.7rem;
+    margin-top:clamp(1.6rem,3vw,2.2rem);
+  }
+
+  .sv__list{ list-style:none; margin:0; padding:0; display:grid; gap:.7rem; }
+  /* The same dark glass the hero cards and the status chips wear, so the
+     three services join the page's material instead of inventing a fourth. */
+  .sv__item{
+    border-radius:var(--card-radius);
+    padding:clamp(1rem,1.9vw,1.3rem) clamp(1.1rem,2vw,1.5rem);
+    background:rgba(var(--veil-rgb), .52);
+    -webkit-backdrop-filter:blur(14px) saturate(1.3); backdrop-filter:blur(14px) saturate(1.3);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);
+    transition:background .4s var(--ease), box-shadow .4s var(--ease), transform .4s var(--ease);
+  }
+  .sv__item:hover{ background:rgba(var(--veil-rgb), .66); }
+  .sv__item.is-open{
+    background:rgba(var(--veil-rgb), .72);
+    box-shadow:inset 0 0 0 1px rgba(179,146,79,.55), 0 18px 40px -26px rgba(0,0,0,.8);
+    transform:translateX(6px);
+  }
+  .sv__row{
+    width:100%; display:block; text-align:left; cursor:pointer;
+    background:none; border:0; padding:0;
+  }
+  .sv__top{ display:flex; align-items:baseline; gap:1rem; }
+  .sv__no{
+    font-family:var(--font-display); font-size:.95rem;
+    color:var(--color-gold); letter-spacing:.06em;
+  }
+  .sv__t{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.25rem,1.9vw,1.75rem); line-height:1.14;
+    color:rgba(255,255,255,.62); transition:color .4s var(--ease);
+  }
+  .sv__row:hover .sv__t, .sv__item.is-open .sv__t{ color:var(--color-white); }
+  /* Collapsed means zero height AND zero margin: an invisible element that
+     still owns space is the oldest bug on this page. */
+  .sv__p{
+    max-height:0; opacity:0; overflow:hidden; margin:0;
+    transition:max-height .55s var(--ease), opacity .45s var(--ease), margin .55s var(--ease);
+  }
+  .sv__p p{ margin:0; font-size:15px; color:rgba(255,255,255,.74); max-width:46ch; }
+  .sv__item.is-open .sv__p{ max-height:11em; opacity:1; margin-top:.7rem; }
+  @media (prefers-reduced-motion: reduce){
+    .sv__bg img{ transition:opacity .001s; }
+    .sv__bg img.is-on{ transform:none; }
+    .sv__item, .sv__p, .sv__t{ transition:none; }
+    .sv__item.is-open{ transform:none; }
+  }
+
+
+  /* ============================================================
+     THE PROGRAMME
+     Three routes on hairlines rather than three more cards: the page
+     already has two card runs above this, and what matters here is the
+     comparison, not the photography.
+     ============================================================ */
+  .pg{ padding-block:clamp(4rem, 8vw, 7rem); }
+  .pg__head{
+    display:grid; gap:clamp(1.2rem,3vw,2.4rem); align-items:end;
+  }
+  @media (min-width:900px){ .pg__head{ grid-template-columns:1.1fr .9fr; } }
+  .pg__h{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem, 3.4vw + 1rem, 3.1rem); line-height:1.05;
+    letter-spacing:-.02em; color:var(--color-navy); margin:.5rem 0 0; max-width:17ch;
+  }
+  .pg__h em{ font-style:italic; color:var(--color-gold); }
+  .pg__intro{ margin:0; color:var(--color-ink-soft); max-width:46ch; }
+
+  /* Four across, and the first one is not a horse: it is the section. The
+     title, the line and the button live inside a card, so nothing is left
+     standing loose on the page ground above the run. The embryo row is the
+     mirror of it, with the fixed card on the right. */
+  .pgr{
+    display:grid; gap:var(--card-gap); align-items:stretch;
+    margin-top:clamp(2.4rem,5vw,3.6rem);
+  }
+  /* A grid item is min-width:auto by default, which lets a scroll track
+     stretch its column instead of scrolling inside it. */
+  .pgr > *{ min-width:0; }
+  .pgr + .pgr{ margin-top:var(--card-gap); }
+  @media (min-width:900px){
+    .pgr{ grid-template-columns:1fr 3fr; }
+    .pgr--rev{ grid-template-columns:3fr 1fr; }
+  }
+  .pgr__fix{
+    display:flex; flex-direction:column; justify-content:center;
+    min-height:clamp(320px, 27vw, 400px);
+    padding:clamp(1.2rem,2vw,1.7rem);
+    border-radius:var(--card-radius);
+    background:var(--color-navy-deep); color:var(--color-white);
+    box-shadow:0 16px 38px -22px rgba(var(--veil-rgb), .5);
+  }
+  .pgr__t{
+    margin:0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,2.2vw,2rem); line-height:1.05; letter-spacing:-.02em;
+    /* The reset gives h1 to h4 the ink colour, which beats anything the card
+       merely passes down. On navy that heading was all but invisible. */
+    color:var(--color-white);
+  }
+  .pgr__d{ margin:.7rem 0 0; font-size:14px; color:rgba(255,255,255,.74); }
+  .pgr__cta{
+    display:inline-flex; align-items:center; gap:.55em; align-self:flex-start;
+    margin-top:1.2rem; padding:.85em 1.4em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy-deep); text-decoration:none;
+    font-family:var(--font-body); font-size:11px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase;
+    transition:background .3s var(--ease);
+  }
+  .pgr__cta:hover{ background:var(--color-white); }
+  .pgr__cta .a{ transition:transform .3s var(--ease); }
+  .pgr__cta:hover .a{ transform:translateX(4px); }
+
+  .pgr__wrap{ position:relative; min-width:0; }
+  .pgr__run{
+    display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    /* overflow-x:auto makes the BLOCK axis a scrollport too, so a card's
+       shadow is cut off unless the room is given here. Resting reach is
+       32px and hover 58px; the negative margin hands the surplus back. */
+    padding:10px 2px 62px; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .pgr__run::-webkit-scrollbar{ display:none; }
+  /* Exactly three beside the fixed card, so the row reads as four. */
+  .pgr__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex;
+  }
+  .pgr__run > li:last-child{ scroll-snap-align:end; }
+  .pgr__wrap .topics-arrow--prev{ left:-22px; }
+  .pgr__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width:899px){ .pgr__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width:560px){ .pgr__run > li{ flex-basis:84%; } }
+
+  /* ---- the closing plate ----
+     One box under the embryos: photograph inside it rather than behind the
+     whole band, so the section still ends on the page ground. The gold rule
+     breaks the top edge, the way the rule under the hero statement does. */
+  /* ---- the invitation ----
+     A contained plate between the two runs, the same width and the same
+     rounding as the cards around it. It breaks the section in half without
+     breaking the page's edges, which a full bleed band did badly here. */
+  .pcta{
+    position:relative; isolation:isolate; overflow:hidden;
+    margin-block:clamp(2.4rem,5vw,3.6rem);
+    border-radius:var(--plate-radius);
+    padding:clamp(1.8rem,4vw,3.2rem);
+    background:var(--color-navy-deep); color:var(--color-white);
+    display:grid; gap:clamp(1.4rem,3vw,2.6rem); align-items:center;
+  }
+  @media (min-width:900px){ .pcta{ grid-template-columns:1.3fr .7fr; } }
+  .pcta__bg{ position:absolute; inset:0; z-index:0; }
+  .pcta__bg img{ width:100%; height:100%; object-fit:cover; object-position:72% 42%; }
+  /* Open on the right where the picture reads, closed under the type. */
+  .pcta__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(100deg,
+      rgba(var(--veil-rgb), .92) 0%, rgba(var(--veil-rgb), .84) 44%, rgba(var(--veil-rgb), .5) 100%);
+  }
+  /* The backdrop and the veil are absolutely placed; this lifts only the
+     CONTENT above them. Written as :not() because .pcta > * carries the same
+     specificity as .pcta__bg and, coming later, would beat it. */
+  .pcta > :not(.pcta__bg):not(.pcta__veil){ position:relative; z-index:2; min-width:0; }
+  /* A paragraph, not a heading: the invitation is a call to action inside
+     the programme, and as an h2 it broke that section's outline. */
+  .pcta__h{
+    margin:0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.7rem,2.6vw + .8rem,2.8rem); line-height:1.04; letter-spacing:-.02em;
+    color:var(--color-white); max-width:15ch; text-wrap:balance;
+  }
+  .pcta__h em{ font-style:italic; color:var(--color-gold); }
+  .pcta__d{ margin:.9rem 0 0; font-size:15.5px; color:rgba(255,255,255,.76); max-width:46ch; }
+  .pcta__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
+
+  /* ============================================================
+     NEWS
+     Photograph in a box, the headline under it, two lines under that.
+     A run rather than a grid: the record grows, and a grid would have to
+     be redesigned every time a result is added.
+     ============================================================ */
+  .nw{ position:relative; isolation:isolate; overflow-x:clip;
+       padding-block:clamp(3.5rem, 7vw, 6rem); }
+  /* The same watermark as the about section, on the same side, so the two
+     read as one gesture rather than two decorations. */
+  .nw__mark{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    width:clamp(190px, 26vw, 400px); opacity:.05;
+  }
+  .nw__mark img{ width:100%; height:auto; display:block; }
+  /* On the wrap itself, never as .nw > *: same specificity as .nw__mark. */
+  .nw > .wrap{ position:relative; z-index:1; }
+  .nw__head{
+    display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+    gap:.8rem 1.6rem;
+  }
+  .nw__h{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem, 3.4vw + 1rem, 3.1rem); line-height:1.05;
+    letter-spacing:-.02em; color:var(--color-navy); max-width:16ch;
+  }
+  .nw__h em{ font-style:italic; color:var(--color-gold); }
+  /* Beside the headline rather than under it, so the head of this section
+     reads the same way the programme's head does. */
+  .nw__intro{ margin:0; color:var(--color-ink-soft); max-width:46ch; }
+  @media (min-width:900px){
+    .nw__head{ display:grid; grid-template-columns:1.1fr .9fr; align-items:end; gap:clamp(1.4rem,3vw,2.6rem); }
+  }
+  .nw__wrap{ position:relative; min-width:0; }
+  .nw__run{
+    display:flex; gap:var(--card-gap); margin-top:clamp(1.6rem,3vw,2.4rem);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    /* overflow-x:auto makes the block axis a scrollport too: the resting
+       shadow reaches 32px below a card and the hover shadow 58px. */
+    padding:10px 2px 62px; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .nw__run::-webkit-scrollbar{ display:none; }
+  /* Three and a bit, so the cut card says the record continues. */
+  .nw__run > li{
+    flex:0 0 calc((100% - (2.4 * var(--card-gap))) / 3.2);
+    scroll-snap-align:start; display:flex;
+  }
+  .nw__run > li:last-child{ scroll-snap-align:end; }
+  .nw__wrap .topics-arrow--prev{ left:-22px; }
+  .nw__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width:899px){ .nw__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2.1); } }
+  @media (max-width:560px){ .nw__run > li{ flex-basis:86%; } }
+
+  .nw__card{
+    display:flex; flex-direction:column; width:100%; text-decoration:none;
+    border-radius:var(--card-radius); background:var(--color-white); overflow:hidden;
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 16px 38px -22px rgba(var(--veil-rgb), .5);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .nw__card:hover, .nw__card:focus-visible{
+    transform:translateY(-6px);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent),
+               0 26px 52px -20px rgba(var(--veil-rgb), .6);
+  }
+  .nw__win{ position:relative; display:block; aspect-ratio:16/10; overflow:hidden; }
+  .nw__win img{
+    width:100%; height:100%; object-fit:cover;
+    transform:scale(1.03); transition:transform 1.4s var(--ease);
+  }
+
+  .nw__body{ display:flex; flex-direction:column; flex:1; padding:clamp(1.05rem,2vw,1.4rem); }
+  .nw__v{ display:block; }
+  .nw__t{
+    display:block; margin:.6rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.1rem,1.5vw,1.3rem); line-height:1.14; color:var(--color-navy);
+  }
+  .nw__d{ display:block; margin-top:.5rem; font-size:14px; color:var(--color-ink-soft); }
+  .nw__go{
+    display:block; margin-top:auto; padding-top:1rem;
+    font-family:var(--font-body); font-size:12.5px; font-weight:700;
+    letter-spacing:.06em; color:var(--color-navy);
+  }
+  .nw__go .a{ display:inline-block; transition:transform .3s var(--ease); }
+  .nw__card:hover .nw__go .a{ transform:translateX(4px); }
+  .nw__card:hover .nw__win img{ transform:scale(1.08); }
+
+  @media (prefers-reduced-motion: reduce){
+    .nw__card, .nw__win img, .nw__go .a{ transition:none; }
+  }
+
+  /* The counts. Audited from the content, not rounded up for effect. */
+
+  /* ============================================================
+     7. AVAILABLE NOW
+     ============================================================ */
+  .horses{ padding:var(--gap-section) 0; }
+  .section-head{
+    display:flex; flex-direction:column; gap:1rem;
+    margin-bottom:clamp(2.2rem, 5vw, 3.5rem);
+  }
+  .section-head h2{ font-size:clamp(2.1rem, 4.6vw, 3.4rem); }
+  .section-head-row{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap;
+  }
+  .section-head p.measure{ color:var(--color-ink-soft); }
+
+  .horse-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2.4rem;
+  }
+  @media (min-width:700px){
+    .horse-grid{ grid-template-columns:repeat(2,1fr); gap:2.6rem 2rem; }
+  }
+  /* Four horses: the feature takes a full row of its own, the other three
+     sit beneath it, so nothing is left with an empty cell beside it. */
+  @media (min-width:1200px){
+    .horse-grid{ grid-template-columns:repeat(3,1fr); gap:3rem 2.4rem; }
+    .horse-card--feature{ grid-column:1 / -1; }
+    .horse-card--feature .horse-media{ aspect-ratio:2/1; }
+    .horse-card--feature .horse-name{ font-size:clamp(1.6rem, 2.6vw, 2.2rem); }
+    .horse-card--feature .horse-genetics{ font-size:15px; }
+  }
+
+  .horse-card{ display:flex; flex-direction:column; }
+  .horse-media{
+    position:relative; width:100%; aspect-ratio:4/3;
+    overflow:hidden; background:var(--color-base-alt);
+    border:1px solid var(--color-line);
+    border-radius:var(--img-radius);
+  }
+  .horse-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform 1.1s var(--ease);
+  }
+  .horse-card:hover .horse-media img{ transform:scale(1.035); }
+
+  .horse-body{ padding-top:1.15rem; }
+  .horse-name{ font-size:clamp(1.25rem, 2vw, 1.5rem); font-weight:500; }
+  .horse-genetics{
+    margin-top:.5rem;
+    font-size:13.5px; letter-spacing:.01em; line-height:1.55;
+    color:var(--color-ink-soft);
+  }
+  .horse-meta{
+    margin-top:.9rem;
+    display:flex; flex-wrap:wrap; align-items:center; gap:.5em .7em;
+    font-size:13px; font-weight:600; letter-spacing:.02em;
+  }
+  .horse-meta .dot{ color:var(--color-line); font-weight:400; }
+  .horse-category{ color:var(--color-navy-soft); }
+  .horse-year{ color:var(--color-ink-soft); font-weight:500; }
+  .status-available{ color:var(--color-navy); }
+  .status-available::before{ content:"●"; color:var(--color-gold); font-size:8px; margin-right:.45em; vertical-align:middle; }
+  .status-sold{
+    font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--color-ink);
+  }
+
+  .horse-footer{
+    margin-top:1.1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    padding-top:1rem; border-top:1px solid var(--color-line);
+  }
+  .horse-cta{ font-size:13.5px; font-weight:700; letter-spacing:.03em; color:var(--color-navy); border-bottom:1px solid var(--color-gold); padding-bottom:1px; transition:opacity .4s var(--ease); }
+  .horse-cta:hover{ opacity:.65; }
+  /* a sold horse still earns an enquiry, it just changes the question */
+  .horse-cta--similar{ color:var(--color-ink-soft); }
+
+  .horses-stat{
+    margin-top:clamp(2.6rem,6vw,4rem);
+    padding-top:1.8rem; border-top:1px solid var(--color-line);
+    display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap;
+  }
+  .horses-stat .num{ font-family:var(--font-display); font-style:italic; font-size:clamp(2.2rem,4vw,3rem); color:var(--color-navy); }
+  .horses-stat .txt{ font-size:15px; color:var(--color-ink-soft); letter-spacing:.02em; }
+
+  /* ============================================================
+     8. BANDS (semen / services) — navy as frame, content stays light
+     ============================================================ */
+  .band-frame{ background:var(--color-navy); padding:clamp(1rem,3vw,2.2rem) 0; }
+  .band-panel{
+    background:var(--color-base);
+    padding:clamp(2.6rem,6vw,4.5rem) clamp(1.25rem,5vw,3.5rem);
+  }
+  .band-grid{ display:grid; grid-template-columns:1fr; gap:2.4rem; max-width:var(--wrap); margin:0 auto; }
+  @media (min-width:960px){ .band-grid{ grid-template-columns:1fr 1fr; gap:4rem; align-items:center; } }
+
+
+  .services-panel{ padding:clamp(2.6rem,6vw,4rem) clamp(1.25rem,5vw,3.5rem); }
+  .services-head{ margin-bottom:2.2rem; }
+  .services-head h2{ font-size:clamp(1.9rem,3.6vw,2.5rem); }
+  .services-grid{ display:grid; grid-template-columns:1fr; gap:2rem; max-width:var(--wrap); margin:0 auto; }
+  @media (min-width:800px){ .services-grid{ grid-template-columns:repeat(3,1fr); gap:2.4rem; } }
+  .service-item{ display:flex; flex-direction:column; gap:.6rem; }
+  .service-glyph{ font-size:20px; color:var(--color-gold); }
+  .service-item h4{ font-size:18px; font-weight:600; font-family:var(--font-body); letter-spacing:.01em; }
+  .service-item p{ font-size:16px; color:var(--color-ink-soft); }
+
+  /* ============================================================
+     9. NEWS AND RESULTS
+     ============================================================ */
+
+  /* ============================================================
+     10. CONTACT
+     ============================================================ */
+  .contact{ padding:var(--gap-section) 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
+  /* One box: the people on a navy panel, the form on paper beside them. The
+     two names are the point of the section, so they sit on the dark half
+     where nothing competes with them. */
+  .contact-box{
+    display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 30px 70px -46px rgba(var(--veil-rgb), .5);
+  }
+  @media (min-width:900px){ .contact-box{ grid-template-columns:.85fr 1.15fr; } }
+  .contact-side{
+    background:var(--color-navy-deep); color:var(--color-white);
+    padding:clamp(1.6rem,3.4vw,2.6rem);
+    display:flex; flex-direction:column; justify-content:space-between; gap:clamp(1.8rem,4vw,2.6rem);
+  }
+  .contact-side h2{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.6rem,2.4vw,2.1rem); line-height:1.04; letter-spacing:-.02em;
+    max-width:13ch;
+    /* The reset gives h1 to h4 the ink colour, which beats anything the
+       panel merely passes down. */
+    color:var(--color-white);
+  }
+  .contact-side h2 em{ font-style:italic; color:var(--color-gold); }
+  .contact-lead{ margin:.9rem 0 0; font-size:15px; color:rgba(255,255,255,.74); max-width:34ch; }
+  .contact-people{ display:grid; }
+  .contact-p{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding-block:.85rem; border-top:1px solid var(--color-line-invert);
+    text-decoration:none; transition:padding-left .35s var(--ease);
+  }
+  .contact-p:hover{ padding-left:.5rem; }
+  .contact-pn{ font-family:var(--font-display); font-weight:400; font-size:1.1rem; color:var(--color-white); }
+  .contact-pv{
+    font-family:var(--font-body); font-size:12.5px; font-weight:700; letter-spacing:.06em;
+    color:var(--color-gold); white-space:nowrap;
+  }
+
+  .contact-form{
+    padding:clamp(1.6rem,3.4vw,2.6rem);
+    /* Centred rather than top aligned: the navy panel beside it is taller,
+       and a form pinned to the top left a hole under it. */
+    display:grid; gap:1rem; align-content:center;
+  }
+  .form-pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .form-pair{ grid-template-columns:1fr 1fr; } }
+  .form-row{ display:flex; flex-direction:column; gap:.4rem; }
+  .form-row label{ font-family:var(--font-body); font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--color-ink-soft); }
+  .form-row input, .form-row textarea, .form-row select{
+    font:inherit; font-size:15px; color:var(--color-ink);
+    background:var(--color-base);
+    border:1px solid var(--color-line);
+    padding:.85em 1em;
+    border-radius:var(--ctl-radius);
+    transition:border-color .35s var(--ease);
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus{ outline:none; border-color:var(--color-navy); }
+  /* The native arrow is drawn by the platform and cannot be styled, so the
+     control keeps it and simply leaves room for it. */
+  .form-row select{ appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding-right:2.6em;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.15em) 55%, calc(100% - .8em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat; }
+  .form-row textarea{ resize:vertical; min-height:120px; }
+  .contact-form .btn{ justify-self:start; margin-top:.3rem; }
+  .form-note{ font-size:13px; color:var(--color-ink-soft); display:none; }
+  .form-note.is-visible{ display:block; }
+
+  /* ============================================================
+     11. FOOTER (navy band — structural, not body copy)
+     ============================================================ */
+  .site-footer{ background:var(--color-navy); color:var(--color-ink-invert); }
+  /* The head icon blown up behind the columns. It is the supplied file,
+     not a drawn stand in: no mark on this site is ever invented. */
+  .site-footer{ position:relative; isolation:isolate; overflow:hidden; }
+  .footer-ghost{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:clamp(-2rem, 1vw, 3rem); top:50%; transform:translateY(-50%);
+    width:clamp(180px, 24vw, 320px); opacity:.09;
+  }
+  .footer-ghost img{ width:100%; height:auto; display:block; }
+  /* Lift only the CONTENT above the watermark. `.site-footer > *` carries
+     the same specificity as `.footer-ghost` and, coming later, would beat it
+     and drop the icon into the flow as a 340px tall block at the top. */
+  .site-footer > :not(.footer-ghost){ position:relative; z-index:1; }
+  /* The white logo, from the supplied file. */
+  .footer-logo{ display:inline-block; }
+  .footer-logo img{ width:clamp(150px, 16vw, 190px); height:auto; }
+  /* The languages as a pill rather than a row of initials. */
+  .footer-pill{
+    display:inline-flex; gap:.35rem; margin-top:1.4rem; padding:.35rem;
+    border-radius:100px; background:rgba(255,255,255,.07);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+  }
+  .footer-pill button, .footer-pill span{
+    padding:.45em 1em; border-radius:100px; border:0; background:none; cursor:pointer;
+    font-family:var(--font-body); font-size:10.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6);
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .footer-pill button[aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
+  .footer-pill .lang-soon{ opacity:.4; cursor:not-allowed; }
+  .footer-top{ padding:clamp(3rem,7vw,5rem) 0 clamp(2.2rem,5vw,3rem); border-bottom:1px solid var(--color-line-invert); }
+  .footer-grid{ display:grid; grid-template-columns:1fr; gap:2.6rem; }
+  @media (min-width:760px){ .footer-grid{ grid-template-columns:1.3fr 1fr 1fr 1fr; gap:2.2rem; } }
+  .footer-col .footer-h{ margin-bottom:1.1rem; }
+  .footer-col ul{ display:flex; flex-direction:column; gap:.7rem; }
+  .footer-col a{ font-size:14.5px; color:var(--color-ink-invert); opacity:.92; transition:opacity .35s var(--ease); }
+  .footer-col a:hover{ opacity:.6; }
+  .footer-about p{ font-size:14.5px; color:#ffffffb0; max-width:32ch; margin-top:1rem; }
+  .footer-bottom{ padding:1.6rem 0 2.2rem; display:flex; flex-wrap:wrap; gap:1rem 2rem; align-items:center; justify-content:space-between; }
+  .footer-partners{ display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; font-size:12.5px; color:#ffffff8f; }
+  .footer-partners a{ color:#ffffffb5; border-bottom:1px solid transparent; }
+  .footer-partners a:hover{ border-color:var(--color-gold); }
+  .footer-copy{ font-size:12.5px; color:#ffffff70; }
+  .footer-made{ display:inline-block; margin-left:.9rem; padding-left:.9rem;
+                border-left:1px solid var(--color-line-invert); }
+  .footer-made a{ color:#ffffffb5; border-bottom:1px solid transparent; }
+  .footer-made a:hover{ border-color:var(--color-gold); }
+  @media (max-width:560px){
+    .footer-made{ display:block; margin:.5rem 0 0; padding:0; border-left:0; }
+  }
+  .footer-socials{ display:flex; gap:1rem; }
+  .footer-socials a{ font-size:13px; letter-spacing:.05em; }
+
+  /* ============================================================
+     12. UTILITIES
+     ============================================================ */
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ============================================================
+     GLASS CARDS
+     The horse cards and the about card wear the fold's glass rather than
+     a white paper mount: the photograph fills the card and the words sit
+     on a gradient at its foot. Kept as one block on purpose, so the two
+     places that share this treatment stay in step with each other and
+     with the hero slider above them.
+     ============================================================ */
+
+  /* ---- the horse cards ---- */
+  .hz__card{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:clamp(320px, 27vw, 400px);
+    padding:0;
+    background:var(--color-navy-deep);
+    box-shadow:0 16px 38px -22px rgba(var(--veil-rgb), .5);
+  }
+  .hz__card:hover{ box-shadow:0 26px 52px -20px rgba(var(--veil-rgb), .62); }
+  /* The photograph stops being a framed object and becomes the card. */
+  .hz__win{
+    position:absolute; inset:0; z-index:0;
+    aspect-ratio:auto; border-radius:0; background:none;
+  }
+  .hz__win img{ object-position:50% 30%; }
+  /* One gradient: near clear at the head so the horse shows, deep navy at
+     the foot so the name never fights the picture. */
+  .hz__win::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .06) 0%, rgba(var(--veil-rgb), .24) 34%,
+      rgba(var(--veil-rgb), .74) 68%, rgba(var(--veil-rgb), .94) 100%);
+  }
+  /* Anchored to the foot, so nothing below it can move. */
+  .hz__body{
+    position:absolute; z-index:2; inset:auto 0 0 0;
+    display:block; padding:1.05rem 1.1rem 1.05rem;
+  }
+  .hz__name{ color:var(--color-white); font-size:1.15rem; }
+  .hz__meta{
+    color:rgba(255,255,255,.74);
+    margin-top:.3rem; padding-top:.5rem;
+    border-top:1px solid var(--color-line-invert);
+  }
+  .hz__view{
+    color:var(--color-gold); padding-top:0;
+    /* Block level, not inline. An inline element still generates a line box
+       in its parent even at zero height, which left a full line of air
+       under the meta: measured 46px to the card's foot instead of 17. */
+    display:flex; width:max-content;
+    overflow:hidden; max-height:0; margin-top:0; opacity:0;
+    transition:max-height .4s var(--ease), margin-top .4s var(--ease), opacity .4s var(--ease);
+  }
+  .hz__card:hover .hz__view, .hz__card:focus-visible .hz__view{
+    max-height:2.4em; margin-top:.7rem; opacity:1;
+  }
+  /* The gold hairline draws itself, the same gesture as the hero slider.
+     Inset so it follows the rounding instead of being cut in the corner. */
+  .hz__card::before{
+    content:""; position:absolute; top:0; left:var(--card-radius); z-index:3;
+    height:2px; width:0; background:var(--color-gold);
+    transition:width .55s var(--ease);
+  }
+  .hz__card:hover::before, .hz__card:focus-visible::before{
+    width:calc(100% - (2 * var(--card-radius)));
+  }
+  /* On glass the pale chip would disappear into a bright sky, so the
+     available state takes the same dark treatment as sold. */
+  /* Both statuses sit on the same dark glass now: a pale chip vanished
+     into a bright sky. They are told apart by their INK, not by their
+     ground, and available takes the gold so the horses that are still for
+     sale are the ones that catch the eye.
+     This rule comes after .hz__tag--sold and matches it just as tightly,
+     so the sold colour is restated below rather than left to lose. */
+  /* The status chip, redrawn. Smaller and tighter than a filled block,
+     on the fold's own glass, with a hairline ring so it reads as an object
+     resting on the photograph rather than a label pasted onto it.
+     This rule comes after .hz__tag--sold and matches it just as tightly,
+     so the sold ink is restated below rather than left to lose. */
+  .hz__tag{
+    top:12px; left:12px;
+    gap:.55em; padding:.42em .8em;
+    border-radius:999px;
+    background:rgba(var(--veil-rgb), .62);
+    -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.18), 0 2px 10px rgba(0,0,0,.28);
+    font-size:9.5px; font-weight:700; letter-spacing:.16em;
+    color:rgba(255,255,255,.92);
+  }
+  /* Available carries a small live dot rather than a heavier ground: the
+     horses still for sale should read first, without shouting. */
+  .hz__tag:not(.hz__tag--sold)::before{
+    content:""; width:5px; height:5px; border-radius:50%; flex:none;
+    background:var(--color-gold);
+    box-shadow:0 0 0 3px rgba(179,146,79,.26);
+  }
+  .hz__tag--sold{
+    color:rgba(255,255,255,.82);
+    background:rgba(var(--veil-rgb), .72);
+  }
+  /* Smaller with the chip, and squared off just enough to still read as a
+     flag inside a pill. */
+  .hz__flag{
+    width:16px; height:11px; border-radius:2px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.28);
+  }
+  /* ---- the about card ---- */
+  .stud__card{
+    position:relative; overflow:hidden; isolation:isolate;
+    padding:0; background:var(--color-navy-deep);
+    box-shadow:0 34px 76px -44px rgba(var(--veil-rgb), .6);
+  }
+  .stud__win{ border-radius:0; aspect-ratio:4/4.6; }
+  .stud__win::after{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .10) 0%, rgba(var(--veil-rgb), .22) 40%,
+      rgba(var(--veil-rgb), .72) 72%, rgba(var(--veil-rgb), .95) 100%);
+  }
+  /* The identity pill wears the fold's glass rather than white paper. */
+  .stud__badge{
+    z-index:3;
+    background:rgba(var(--veil-rgb), .62);
+    -webkit-backdrop-filter:blur(14px) saturate(1.3); backdrop-filter:blur(14px) saturate(1.3);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);
+  }
+  .stud__badge b{ color:var(--color-white); }
+  .stud__badge > span > span{ color:rgba(255,255,255,.72); }
+  /* The caption and the controls move off the white apron and onto the
+     photograph's own foot. */
+  .stud__cap{
+    position:absolute; z-index:3; inset:auto 0 0 0;
+    padding:1.2rem 1.3rem 1.3rem;
+  }
+  .stud__capBody{ color:rgba(255,255,255,.82); }
+  .stud__arrow{
+    background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.34);
+    color:var(--color-white);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  }
+  .stud__arrow:hover{ background:var(--color-white); color:var(--color-navy); }
+
+  @media (prefers-reduced-motion: reduce){
+    .hz__card::before, .hz__view{ transition:none; }
+  }
+
+  /* ---- the archive hero: a covered photograph, the homepage veil ---- */
+  .nhero{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:clamp(400px, 52vh, 520px);
+    display:grid; align-items:end;
+    background:var(--color-navy-deep);
+  }
+  .nhero__bg{ position:absolute; inset:0; z-index:0; }
+  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
+  /* Type crosses the whole width, so the veil is a foot gradient: open at
+     the head where the braids read, closing downward under the type. */
+  /* A foot gradient, and the stops are measured rather than eyeballed.
+     The gold eyebrow sits about 60% down this hero, where the first version
+     left the picture bright: it measured 1.7:1 against a house floor of 3
+     for gold on a dark ground, on all four archives and on the news page
+     that has worn this veil since it was written. Re-measure if a hero
+     photograph is ever swapped for a lighter one. */
+  .nhero__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), .46) 0%, rgba(var(--veil-rgb), .52) 28%,
+      rgba(var(--veil-rgb), .86) 50%, rgba(var(--veil-rgb), .96) 100%);
+  }
+  .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
+  /* Title left, intro right, on one baseline: the homepage section head,
+     brought onto the photograph. */
+  .nhero__grid{ display:grid; gap:clamp(1.2rem,3vw,2.6rem); align-items:end; }
+  @media (min-width:820px){ .nhero__grid{ grid-template-columns:1.1fr .9fr; } }
+  .arch__h{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
+    letter-spacing:-.02em; color:var(--color-white); max-width:16ch; text-wrap:balance;
+  }
+  .arch__h em{ font-style:italic; color:var(--color-gold); }
+  .arch__intro{ margin:0; color:rgba(255,255,255,.78); max-width:48ch; font-size:15.5px; }
+
+
+  /* ---- the story: the picture on the left, words on the right ----
+     Mark's order, and the mirror of the homepage's about section, so the
+     two do not read as the same block twice.
+     The section carries the watermark the same way that one does, which is
+     why it is relative and clipped: .stud__mark comes from the homepage
+     sheet above and bleeds off the right edge. */
+  .abst{
+    position:relative; isolation:isolate; overflow-x:clip;
+    padding-block:clamp(3.2rem,6vw,5rem);
+  }
+  .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
+  @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }
+  .abst__col{ min-width:0; }
+  .abst__h{
+    margin:.7rem 0 1.2rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.8rem,2.6vw + .9rem,2.9rem); line-height:1.04;
+    letter-spacing:-.02em; color:var(--color-ink); max-width:15ch; text-wrap:balance;
+  }
+  .abst__h em{ font-style:italic; color:var(--color-gold); }
+  .abst__lead{ margin:0 0 1rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:52ch; }
+  .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
+  .abst__body b{ font-weight:700; color:var(--color-ink); }
+
+  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
+
+  /* The hero starts at the top of the page and the header hangs over it. */
+  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
+
+  /* The archive grid is the homepage's own .hz__grid, given the room a page
+     has and the homepage section does not: four across instead of three. */
+  .arch{ padding-block:clamp(2.6rem,5vw,4rem); }
+  .abcta{ padding-bottom:clamp(3.2rem,6vw,5rem); }
+  .arch__count{
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
+  }
+  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
+
+  /* ── the horse's own page ──────────────────────────────────────────────
+     No dark hero here. A horse photograph stands or is square, and a wide
+     strip keeps a fifth of it: the rule the about page's hero taught. So
+     the picture keeps its own proportions on the left and the horse's name
+     and figures stand beside it, which is also how the reference pages Mark
+     sent are laid out. The header wears its pinned colours from the first
+     pixel because there is no photograph behind it. */
+  .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
+  .hp__grid{ display:grid; gap:clamp(1.8rem,4vw,3.4rem); align-items:start; }
+  @media (min-width:900px){ .hp__grid{ grid-template-columns:.92fr 1.08fr; } }
+  .hp__col{ min-width:0; }
+  .hp__pic{
+    border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb), .55);
+    position:relative;
+  }
+  .hp__pic img{ display:block; width:100%; height:auto; }
+  .hp__pic .hz__tag{ position:absolute; top:14px; left:14px; }
+  .hp__back{
+    display:inline-flex; align-items:center; gap:.5rem; margin-bottom:1rem;
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-ink-soft);
+    transition:color .35s var(--ease);
+  }
+  .hp__back:hover{ color:var(--color-navy); }
+  .hp__h{
+    margin:.5rem 0 .4rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
+    color:var(--color-ink);
+  }
+  .hp__cross{
+    margin:0 0 1.2rem; font-family:var(--font-display); font-style:italic;
+    font-size:1.05rem; color:var(--color-gold);
+  }
+  .hp__lead{ margin:0 0 1.6rem; font-size:17px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
+
+  /* The figures. The two places on the about page, widened: a row of
+     hairline columns, and a field their site left empty is left out rather
+     than shown as a dash. */
+  .hp__facts{
+    display:grid; gap:1rem 1.6rem; margin:0 0 1.8rem;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    padding-top:1.4rem; border-top:1px solid var(--color-line);
+  }
+  @media (min-width:560px){ .hp__facts{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+  .hp__k{
+    display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem;
+  }
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem; color:var(--color-ink); }
+  .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
+  /* The ghost button is drawn for a navy plate. On the ivory ground it was
+     white on ivory, which is the one thing this project has a hard rule
+     about. Same treatment the pinned header gives it. */
+  .hp__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .hp__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+
+  /* ── the pedigree ──────────────────────────────────────────────────────
+     The one component on this site that had to be drawn from scratch, and
+     it is drawn as the page's navy plate rather than as a table: four
+     columns, each generation half the height of the one before it, which is
+     what a pedigree is. Rows span rather than nest, so there is no table
+     markup to fight on a phone.
+     Below 760px it scrolls sideways in its own box rather than folding,
+     because a pedigree folded into one column is no longer a pedigree. */
+  .ped{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .ped__plate{
+    border-radius:var(--plate-radius); background:var(--color-navy-deep);
+    padding:clamp(1.6rem,3.4vw,2.6rem);
+    overflow-x:auto;
+  }
+  .ped__h{
+    margin:0 0 1.4rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05;
+    color:var(--color-white);
+  }
+  .ped__h em{ font-style:italic; color:var(--color-gold); }
+  .ped__grid{
+    display:grid; grid-template-columns:repeat(4, minmax(150px, 1fr));
+    gap:.4rem; min-width:640px;
+  }
+  .ped__cell{
+    display:flex; align-items:center; min-width:0;
+    padding:.7rem .9rem; border-radius:10px;
+    background:rgba(255,255,255,.055);
+    font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
+    color:var(--color-white);
+  }
+  .ped__cell--self{ background:var(--color-gold); color:var(--color-navy); font-size:1.05rem; }
+  .ped__cell--sire{ background:rgba(255,255,255,.10); }
+  .ped__cell--third{ font-size:.82rem; color:rgba(255,255,255,.72); }
+  .ped__note{
+    margin:1.2rem 0 0; font-size:13px; color:rgba(255,255,255,.6);
+  }
+
+  /* The remaining photographs of this horse. Two or more, or the section is
+     not drawn: a gallery of one is just a picture. */
+  .hgal{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .hgal__grid{ display:grid; gap:clamp(.8rem,1.4vw,1.1rem); grid-template-columns:repeat(2, 1fr); }
+  @media (min-width:900px){ .hgal__grid.is-three{ grid-template-columns:repeat(3, 1fr); } }
+  .hgal__f{ border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
+  .hgal__f img{ display:block; width:100%; height:auto; }
+
+  /* More from the same group: the homepage card again, three of them. */
+  .hmore{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .hmore__head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    flex-wrap:wrap; margin-bottom:1.4rem;
+  }
+  .hmore__h{
+    margin:0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.4rem,1.6vw + .8rem,1.9rem); color:var(--color-ink);
+  }
+  .hmore__h em{ font-style:italic; color:var(--color-gold); }
+  .hmore__all{
+    font-family:var(--font-body); font-weight:700; font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--color-navy);
+    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease);
+  }
+  .hmore__all:hover{ gap:.8rem; }
+  .hmore__all .a{ color:var(--color-gold); }
+  @media (min-width:900px){ .hmore .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
+
+
+</style>
+</head>
+<body>
+  <header class="hd is-pinned" id="site-header">
+    <div class="hd__row">
+      <div class="hd__start">
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
+        <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
+             mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
+             Home is the mark. Each of the four now has an archive of its
+             own, built from their site's own listings, so these go to
+             pages rather than to a section further down.
+             Results is gone: it was never on their list, and the news
+             lives in the footer where Mark put it. About went the same way
+             on 29 Aug: it was already in the footer's Navigate column, and
+             taking it off the bar buys the row the room it was short of. -->
+        <nav class="primary-nav" id="primary-nav" aria-label="Main">
+          <a href="/#top">Home</a>
+          <a href="/breeding-mares">Breeding mares</a>
+          <a href="/foals">Foals</a>
+          <a href="/embryos">Embryos</a>
+          <a href="/sport-horses">Sport horses</a>
+        </nav>
+      </div>
+
+      <a href="/#top" class="brand" aria-label="Stud Von Axe home">
+        <!-- Two marks, one per ground, which is what the two supplied files
+             are for. Over the hero the white one stands on the photograph
+             with no plate behind it; once the hero is behind the bar the
+             navy one takes over on ivory. Only one is ever visible, so the
+             second is hidden from screen readers rather than read twice. -->
+        <!-- TODO client-confirm: the white file Mark added on 29 Aug is
+             missing the V of VON. Checked against the source: the fault is
+             in the supplied artwork, not in the resize. Until a corrected
+             export arrives this keeps the white file that is complete.
+             Never repaired here: the mark is theirs. -->
+        <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
+             alt="Von Axe, breeding and horse trading" width="600" height="264">
+        <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
+             alt="" aria-hidden="true" width="520" height="244">
+      </a>
+
+      <div class="hd__end">
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" aria-current="true">EN</button>
+          <span class="sep">/</span>
+          <button type="button">IT</button>
+          <span class="sep">/</span>
+          <span class="lang-soon" title="Coming later">FR</span>
+          <span class="sep">/</span>
+          <span class="lang-soon" title="Coming later">DE</span>
+        </div>
+        <a href="/#contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
+      </div>
+    </div>
+  </header>
+
+<main id="main">
+
+  <section class="hp">
+    <div class="wrap hp__grid">
+      <div class="hp__col">
+        <div class="hp__pic"><img src="/assets/img/horses/heaven-vd-berghoeve-z-1.jpg" alt="Heaven vd Berghoeve Z" fetchpriority="high"><span class="hz__tag hz__tag--sold">Sold</span></div>
+      </div>
+      <div class="hp__col">
+        <a class="hp__back" href="/breeding-mares"><span aria-hidden="true">&larr;</span> Breeding mares</a>
+        <h1 class="hp__h">Heaven vd Berghoeve Z</h1>
+        <p class="hp__cross">Heartbreaker x For Pleasure x Touchdown</p>
+        <p class="hp__lead">Out of World Equestrian Games winner Liscalgot!</p>
+        <div class="hp__facts">
+          <div><span class="hp__k">Born</span><span class="hp__v">2022</span></div>
+          <div><span class="hp__k">Sex</span><span class="hp__v">Mare</span></div>
+          <div><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
+          <div><span class="hp__k">Status</span><span class="hp__v">Sold</span></div>
+        </div>
+        <div class="hp__acts">
+          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
+          <a href="https://www.horsetelex.com/horses/pedigree/2544471/heaven-vd-berghoeve-z" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">Pedigree on Horsetelex</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="ped">
+    <div class="wrap">
+      <div class="ped__plate">
+        <h2 class="ped__h">Three generations <em>deep</em></h2>
+        <div class="ped__grid">
+          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Heaven vd Berghoeve Z</div>
+          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Heartbreaker</div><div class="ped__cell " style="grid-row: span 2">Nimmerdor</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Farn</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Ramonaa</div><div class="ped__cell " style="grid-row: span 2">Bacarole</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Silvano</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Orchidee</div>
+          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Calgot Pleasure</div><div class="ped__cell " style="grid-row: span 2">For Pleasure</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Furioso II</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Gigantin</div><div class="ped__cell " style="grid-row: span 2">Liscalgot</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Touchdown</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Tulla’S Pride</div>
+        </div>
+        <p class="ped__note">The full pedigree is on
+          <a href="https://www.horsetelex.com/horses/pedigree/2544471/heaven-vd-berghoeve-z" target="_blank" rel="noopener" style="color:var(--color-gold)">Horsetelex</a>.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="hmore">
+    <div class="wrap">
+      <div class="hmore__head">
+        <h2 class="hmore__h">More <em>mares</em></h2>
+        <a class="hmore__all" href="/breeding-mares">All mares <span class="a" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="hz__grid">
+        <li><a class="hz__card" href="/breeding-mares/unguessable-von-axe"><span class="hz__win"><img src="/assets/img/horses/unguessable-von-axe-1.jpg" alt="Unguessable Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unguessable Von Axe</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/cardesse-von-axe"><span class="hz__win"><img src="/assets/img/horses/cardesse-von-axe-1.jpg" alt="Cardesse Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cardesse Von Axe</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/hayley-vd-berghoeve-z"><span class="hz__win typo"><p>HEARTBREAKER X DIAMANT DE SEMILLY X DARCO X CHIN CHIN</p><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Hayley vd Berghoeve Z</span><span class="hz__meta">2024 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="abcta">
+    <div class="wrap">
+      <div class="pcta">
+        <div class="pcta__bg" aria-hidden="true">
+          <img src="/assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
+        </div>
+        <div class="pcta__veil" aria-hidden="true"></div>
+        <div>
+          <p class="pcta__h">Interested in <em>Heaven vd Berghoeve Z</em>?</p>
+          <p class="pcta__d">Ask us anything about the family behind this one, what the line has
+          produced, or what it takes to bring it home. We answer plainly.</p>
+        </div>
+        <div class="pcta__acts">
+          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
+          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="footer-ghost" aria-hidden="true">
+    <img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="">
+  </div>
+  <div class="footer-top">
+    <div class="wrap footer-grid">
+      <div class="footer-about">
+        <a class="footer-logo" href="/#top" aria-label="Stud Von Axe home">
+          <img src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
+               alt="Von Axe, breeding and horse trading" width="190" height="84">
+        </a>
+        <p>Sport horse breeding between Desenzano del Garda, Italy, and Lanaken, Belgium.</p>
+        <div class="footer-pill" role="group" aria-label="Language">
+          <button type="button" aria-current="true">EN</button>
+          <button type="button">IT</button>
+          <span class="lang-soon" title="Coming later">FR</span>
+          <span class="lang-soon" title="Coming later">DE</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-h">Navigate</h2>
+        <ul>
+          <li><a href="/breeding-mares">Breeding mares</a></li>
+          <li><a href="/foals">Foals</a></li>
+          <li><a href="/embryos">Embryos</a></li>
+          <li><a href="/sport-horses">Sport horses</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-h">Contact</h2>
+        <ul>
+          <li><a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a></li>
+          <li><a href="tel:+393495918565">Elisabetta &#9743; +39 349 591 8565</a></li>
+          <li><a href="tel:+393483953433">Adriano &#9743; +39 348 395 3433</a></li>
+          <li style="opacity:.85; font-size:14px;">Desenzano del Garda, Italy<br>Lanaken, Belgium</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-h">Follow</h2>
+        <ul class="footer-socials" style="flex-direction:column; gap:.7rem;">
+          <li><a href="https://instagram.com/studvonaxe" target="_blank" rel="noopener">Instagram &#8599;</a></li>
+          <li><a href="https://facebook.com/StudVonAxe" target="_blank" rel="noopener">Facebook &#8599;</a></li>
+          <li><a href="https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YouTube &#8599;</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <p class="footer-copy">&#169; 2026 Stud Von Axe. All rights reserved.
+      <span class="footer-made">Made by <a href="https://equimarketing.com" target="_blank" rel="noopener">EquiMarketing</a></span></p>
+    <div class="footer-partners">
+      <span>Listed on</span>
+      <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex &#8599;</a>
+      <span>Hippomundo (logo to follow)</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var hd = document.querySelector('.hd');
+  var row = hd && hd.querySelector('.hd__row');
+  var hero = document.querySelector('.nhero, .ahero, .abhero');
+  if(hd && row && hero){
+    var onScroll = function(){
+      hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
+  var toggle = document.getElementById('nav-toggle');
+  var nav = document.getElementById('primary-nav');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.innerHTML = open ? '&#10005;' : '&#9776;';
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '&#9776;';
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -24,6 +24,7 @@ export const relink = (html) => html
   .replace(/href="#/g, 'href="/#')
   .replace(/href="news\/"/g, 'href="/news"')
   .replace(/href="about\/"/g, 'href="/about"')
+  .replace(/href="(breeding-mares|foals|embryos|sport-horses)\/"/g, 'href="/$1"')
   .replace(/(src|href)="assets\//g, '$1="/assets/')
   .replace(/href="index.html"/g, 'href="/"');
 
@@ -113,7 +114,7 @@ export const pageHeroCss = `
   /* ---- the archive hero: a covered photograph, the homepage veil ---- */
   .nhero{
     position:relative; isolation:isolate; overflow:hidden;
-    min-height:clamp(320px, 44vh, 460px);
+    min-height:clamp(400px, 52vh, 520px);
     display:grid; align-items:end;
     background:var(--color-navy-deep);
   }
@@ -121,10 +122,17 @@ export const pageHeroCss = `
   .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
   /* Type crosses the whole width, so the veil is a foot gradient: open at
      the head where the braids read, closing downward under the type. */
+  /* A foot gradient, and the stops are measured rather than eyeballed.
+     The gold eyebrow sits about 60% down this hero, where the first version
+     left the picture bright: it measured 1.7:1 against a house floor of 3
+     for gold on a dark ground, on all four archives and on the news page
+     that has worn this veil since it was written. Re-measure if a hero
+     photograph is ever swapped for a lighter one. */
   .nhero__veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .42) 0%, rgba(var(--veil-rgb), .62) 45%, rgba(var(--veil-rgb), .9) 100%);
+      rgba(var(--veil-rgb), .46) 0%, rgba(var(--veil-rgb), .52) 28%,
+      rgba(var(--veil-rgb), .86) 50%, rgba(var(--veil-rgb), .96) 100%);
   }
   .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
   /* Title left, intro right, on one baseline: the homepage section head,
@@ -139,4 +147,31 @@ export const pageHeroCss = `
   .arch__h em{ font-style:italic; color:var(--color-gold); }
   .arch__intro{ margin:0; color:rgba(255,255,255,.78); max-width:48ch; font-size:15.5px; }
 
+`;
+
+/* ---- the story block: words one side, a photograph the other ----
+   Written once here because the about page and every horse page wear it. ---- */
+export const storyCss = `
+  /* ---- the story: the picture on the left, words on the right ----
+     Mark's order, and the mirror of the homepage's about section, so the
+     two do not read as the same block twice.
+     The section carries the watermark the same way that one does, which is
+     why it is relative and clipped: .stud__mark comes from the homepage
+     sheet above and bleeds off the right edge. */
+  .abst{
+    position:relative; isolation:isolate; overflow-x:clip;
+    padding-block:clamp(3.2rem,6vw,5rem);
+  }
+  .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
+  @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }
+  .abst__col{ min-width:0; }
+  .abst__h{
+    margin:.7rem 0 1.2rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.8rem,2.6vw + .9rem,2.9rem); line-height:1.04;
+    letter-spacing:-.02em; color:var(--color-ink); max-width:15ch; text-wrap:balance;
+  }
+  .abst__h em{ font-style:italic; color:var(--color-gold); }
+  .abst__lead{ margin:0 0 1rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:52ch; }
+  .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
+  .abst__body b{ font-weight:700; color:var(--color-ink); }
 `;
