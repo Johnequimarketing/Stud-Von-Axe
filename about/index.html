@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Stud Von Axe">
 <meta property="og:title" content="About">
 <meta property="og:description" content="Stud Von Axe was born from a passion for horses: mares chosen after years on the best German farms, every cross begun in Desenzano del Garda and every foal carried and raised in Lanaken.">
-<meta property="og:image" content="https://www.studvonaxe.it/assets/img/hero-neck-wide.jpg">
+<meta property="og:image" content="https://www.studvonaxe.it/assets/img/about-hero.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AboutPage","name":"About","publisher":{"@type":"Organization","name":"Stud Von Axe"}}
 </script>
@@ -1771,6 +1771,12 @@
   /* The hero starts at the very top and the header hangs over it, so the
      type has to clear the bar. Same figure as the news pages. */
   .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
+  /* The hero is a wide strip, so only a wide photograph survives it. The
+     first two tried here were nearly square and the crop left a band of
+     neck and nothing else. This one is 2.25:1 from their own old homepage,
+     the horse to the right and green behind the type on the left, so it
+     needs almost no crop at all. */
+  .abhero .nhero__bg img{ object-position:50% 46%; }
 
   /* ---- the story: the picture on the left, words on the right ----
      Mark's order, and the mirror of the homepage's about section, so the
@@ -1913,7 +1919,7 @@
        site, so it is the one line on this page that needs no explaining. -->
   <section class="nhero abhero">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/hero-neck-wide.jpg" alt="" fetchpriority="high" width="1920" height="1093">
+      <img src="/assets/img/about-hero.jpg" alt="" fetchpriority="high" width="1920" height="855">
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
@@ -1946,8 +1952,8 @@
                width="799" height="1200">
           <img src="/assets/img/intro-foal-star.jpg" alt="A foal in the field" loading="lazy"
                width="1200" height="1200">
-          <img src="/assets/img/hero-grey.jpg" alt="A horse at the stud" loading="lazy"
-               width="1200" height="1124">
+          <img src="/assets/img/hero-embryos.jpg" alt="A mare with her foal" loading="lazy"
+               width="1920" height="1734">
           <div class="abfade__dots" role="tablist" aria-label="Photographs">
             <button class="abfade__dot" type="button" role="tab" aria-current="true" aria-label="Photograph 1"></button>
             <button class="abfade__dot" type="button" role="tab" aria-current="false" aria-label="Photograph 2"></button>
