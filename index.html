@@ -303,21 +303,21 @@
      Held to the page gutter so it lines up with every .wrap below it, and
      rounded with --plate-radius rather than a full pill, which is what the
      stylesheet prescribes for a surface this size. */
-  /* A scrim across the top of the hero, not a plate behind the mark.
-     Measured: the brightest pixel behind the centred logo was pure white,
-     the rider's breeches, which puts the white mark at 1.00:1 against its
-     own background. A gradient from the top edge gives the mark, the menu
-     and the language switch a ground they can be read on whatever the
-     photograph does, without giving the bar a fill. It goes with the pin,
-     when the bar takes a real ground of its own. */
-  .hd::before{
-    content:""; position:absolute; z-index:0; inset:0 0 auto;
-    height:calc(var(--hd-top) + var(--hd-plate) + 26px);
-    background:linear-gradient(180deg, rgba(6,12,20,.58) 0%, rgba(6,12,20,.5) 52%, rgba(6,12,20,.24) 78%, transparent 100%);
-    pointer-events:none;
-    transition:opacity .3s var(--ease);
+  /* No scrim. A gradient across the top of the hero reads as a band with
+     a visible edge running the width of the header, which is the fade Mark
+     saw over the bar. The mark and the menu carry their own shadow instead:
+     it sits on the letterforms, not on the photograph, so the header stays
+     transparent over the hero whatever picture is behind it. Measured: the
+     brightest pixel behind the centred logo is pure white, the rider's
+     breeches, so the mark cannot be left bare. */
+  .hd:not(.is-pinned) .brand__ondark{
+    filter:drop-shadow(0 1px 2px rgba(6,12,20,.5)) drop-shadow(0 3px 14px rgba(6,12,20,.45));
   }
-  .hd.is-pinned::before{ opacity:0; }
+  .hd:not(.is-pinned) .primary-nav a,
+  .hd:not(.is-pinned) .nav-toggle,
+  .hd:not(.is-pinned) .lang-switch{
+    text-shadow:0 1px 2px rgba(6,12,20,.55), 0 2px 12px rgba(6,12,20,.4);
+  }
   .hd__row{
     position:relative; z-index:1;
     /* Not the containing block any more: the mark is anchored to .hd so it
@@ -335,11 +335,11 @@
     display:flex; align-items:center; justify-content:space-between; gap:1.1rem;
     height:var(--hd-bar);
     padding-inline:clamp(1rem,2vw,1.6rem);
-    /* Bottom corners only: the bar sits tight against the top of the
-       screen, so rounding the top would leave two slivers of photograph
-       above it. It hangs down from the edge, the way the logo plate hangs
-       down from the bar. */
-    border-radius:0 0 var(--plate-radius) var(--plate-radius);
+    /* All four corners. Bottom-only was right while the bar sat against
+       the top of the screen; it does not any more, there is air above it,
+       and a plate floating in that air with square shoulders reads as a
+       band that has been cut off. */
+    border-radius:var(--plate-radius);
     transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
   }
   .hd.is-pinned .hd__row{
@@ -386,7 +386,8 @@
      between them disappears and only the rounded foot reads. */
   .hd.is-pinned .brand{
     background:var(--color-base);
-    box-shadow:0 12px 24px -20px rgba(10,21,38,.35);
+    /* No shadow. The plate and the bar are the same ivory, so a shadow on
+       the plate only draws a seam across the bar it is meant to cross. */
   }
 
   /* Once pinned the bar is ivory, so everything on it turns to ink. */
@@ -395,6 +396,13 @@
   .hd.is-pinned .lang-switch button,
   .hd.is-pinned .lang-switch .sep,
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); }
+  /* The two that the line above cannot reach: the active language sets its
+     own white, later in the sheet and at the same weight, and the greyed
+     ones carry white at low opacity. Both were invisible on the ivory bar.
+     Caught in a render of the pinned state, not in the file. */
+  .hd.is-pinned .lang-switch button[aria-current="true"]{ color:var(--color-navy); }
+  .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); opacity:.42; }
+  .hd.is-pinned .lang-switch .sep{ color:color-mix(in srgb, var(--color-ink) 30%, transparent); }
   .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .hd.is-pinned .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
   .hd.is-pinned .hd__rule{ opacity:0; }
@@ -410,9 +418,16 @@
     transition:opacity .3s var(--ease);
   }
 
-  .primary-nav{ display:flex; align-items:center; gap:clamp(.9rem, 1.5vw, 1.6rem); flex-wrap:wrap; }
+  /* nowrap, deliberately. Wrapping looks like a fix and is not: a second
+     row of links appears under the first and pushes into the hero rather
+     than handing over to the drawer. Better that it cannot wrap at all and
+     the breakpoint below is the only thing that decides. */
+  .primary-nav{ display:flex; align-items:center; gap:1rem; flex-wrap:nowrap; }
   .primary-nav a{
-    font-size:15px; font-weight:600; letter-spacing:.03em;
+    /* The page's serif, not the body sans: the mark beside it is set in
+       capitals of the same kind, and so is every heading below. */
+    font-family:var(--font-display);
+    font-size:15px; font-weight:400; letter-spacing:.005em;
     color:var(--color-white); white-space:nowrap;
     padding-bottom:3px;
     border-bottom:1px solid transparent;
@@ -434,10 +449,13 @@
   }
 
 
-  /* Six nav items either side of a centred wordmark stop fitting on one
-     line well above the phone breakpoint, so the drawer takes over here
-     rather than at 860px. */
-  @media (max-width: 1240px){
+  /* Five nav items beside a centred wordmark stop fitting on one line well
+     above the phone breakpoint, so the drawer takes over here rather than
+     at 860px. Measured after document.fonts.ready, with the real serif:
+     the menu needs 434px and the space beside the mark is 455px at 1300.
+     Measuring before the webfont lands reads 20px narrower and puts this
+     line in the wrong place, which is how it ended up at 1240. */
+  @media (max-width: 1380px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -1784,6 +1802,7 @@
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
+          <a href="#top">Home</a>
           <a href="#horses">Breeding mares</a>
           <a href="#programme">Foals</a>
           <a href="#programme">Embryos</a>

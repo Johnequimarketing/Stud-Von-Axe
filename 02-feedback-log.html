@@ -106,6 +106,28 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">No veil, no glow, no gradient over the hero to make the header readable</p>
+    <p class="said">He said: <q>zit er ook een fade om de logo achtergrond? want volgens mij zie ik die
+    fade of rand ook over de horizontale banner van de header, dat wil ik niet</q>. A gradient laid across
+    the top of the hero reads as a band with an edge, running the full width, however soft it is made.</p>
+    <p class="check">Checked by eye on a render, and by rule: readability over a photograph is bought on
+    the elements themselves, a drop shadow on the mark and a text shadow on the menu, never on the
+    picture. Both go the moment the bar takes a ground of its own.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Home belongs in the menu, and the menu is set in the page's own serif</p>
+    <p class="said">He said: <q>ik mis home in de header btw?</q> and <q>de menu items mogen ook in de
+    fonts van de website</q>. The mark is a home link, but a link nobody can see is not a menu item.</p>
+    <p class="check">Checked: the menu is measured after <code>document.fonts.ready</code>, with the real
+    serif and with Home in the row, at every width from the breakpoint to 2560. Measuring before the
+    webfont lands reads about 20px narrow and puts the breakpoint in the wrong place, which is exactly
+    how the row came to wrap under itself at 1280.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">An eyebrow never carries a number or a dash in front of it</p>
     <p class="said">He said: <q>eyebrows wil ik nooit een strepje of nummer voor hebben</q>. It had already
     been a rule once and crept back in through a plaque pattern.</p>
