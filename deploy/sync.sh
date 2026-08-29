@@ -1,27 +1,46 @@
 #!/usr/bin/env bash
-# Copy only the client facing pages into deploy/, then deploy that folder.
+# Copy the site, and ONLY the site, into deploy/ before publishing it.
 #
-# Why a folder and not the project root: the root holds the briefing docs,
-# which contain the client's phone numbers, street address, VAT number and
-# our internal notes about the slipped deadline. Deploying the root would
-# put all of that on a public URL. Only what is copied below goes out.
+# Why a folder and not the project root: the root holds the briefing
+# documents, which carry the client's phone numbers, street address, VAT
+# number and our own notes about the slipped deadline. It also holds four
+# internal working documents: the design system, the build checklist, the
+# feedback log with Mark's own words in it, and a photo library that links
+# to 215 originals. None of that belongs on a public URL.
+#
+# So this copies by whitelist, never by exclusion. A file that is not named
+# here does not go out, which is the only way round that stays safe when
+# someone adds a file and forgets about this script.
 
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(dirname "$here")"
 
-for f in direction-a-classic.html direction-b-editorial.html direction-c-contemporary.html; do
-  if [[ ! -f "$root/$f" ]]; then
-    echo "missing: $f" >&2
+# ── the page ──────────────────────────────────────────────────────────
+cp "$root/index.html" "$here/index.html"
+echo "copied index.html"
+
+# ── only the assets the page actually references ──────────────────────
+# Read out of index.html rather than copying the whole folder, so an
+# unused or unreleased photograph can never reach the internet by sitting
+# in the same directory as one that is used.
+mkdir -p "$here/assets/img" "$here/assets/logo"
+rm -f "$here/assets/img/"* "$here/assets/logo/"*
+count=0
+while IFS= read -r ref; do
+  if [[ -f "$root/$ref" ]]; then
+    cp "$root/$ref" "$here/$ref"
+    count=$((count + 1))
+  else
+    echo "MISSING asset, refusing to publish: $ref" >&2
     exit 1
   fi
-  cp "$root/$f" "$here/$f"
-  echo "copied $f"
-done
+done < <(grep -oE 'assets/(img|logo)/[A-Za-z0-9._-]+' "$root/index.html" | sort -u)
+echo "copied $count assets"
 
 echo
 echo "deploy/ now contains:"
-ls -1 "$here"
+(cd "$here" && find . -type f -not -path './.vercel/*' | sed 's|^\./|  |' | sort)
 echo
 echo "next: cd '$here' && vercel --prod"

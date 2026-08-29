@@ -47,3 +47,8 @@ _archive/
 
 # Local server noise
 logs/
+
+# The deploy folder is built by sync.sh from index.html. The copies are
+# not tracked: one file, one place.
+deploy/assets/
+deploy/index.html
