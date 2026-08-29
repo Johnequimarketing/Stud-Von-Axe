@@ -84,6 +84,10 @@
     --cut: 96px;
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
+    /* How far the menu plate hangs below the top edge. The logo plate
+       stays glued to the top and is taller than this, so the two cross:
+       a vertical plate through a horizontal one. */
+    --hd-drop: clamp(16px, 2.4vh, 30px);
     --tray-radius: 34px;
     --tray-pad: clamp(14px, 1.5vw, 22px);
   }
@@ -242,7 +246,12 @@
      rounded with --plate-radius rather than a full pill, which is what the
      stylesheet prescribes for a surface this size. */
   .hd__row{
-    position:relative;
+    /* Not the containing block any more: the mark is anchored to .hd so it
+       stays against the top of the page while this plate drops away from
+       it. Moved with a transform rather than a margin: .hd is zero height
+       on purpose, and a top margin on its child collapses through it and
+       drags the header itself down, taking the mark with it. */
+    transform:translateY(var(--hd-drop));
     /* The one change: a plate held off the edges instead of a band across
        them, on the page gutter so its edge lines up with the content
        below, rounded with the stylesheet's own plate radius. Everything
@@ -272,10 +281,19 @@
      never set the bar's height, which is what lets the bar be this thin.
      The plate is ivory at every scroll position, so the mark is always the
      navy file and is never swapped or recoloured. */
+  /* Anchored to the header, not to the menu plate, so it keeps its top
+     edge flush with the page while the plate hangs below it. Above the
+     plate in the stack, so the two read as one shape crossing another. */
   .brand{
     position:absolute; left:50%; top:0; transform:translateX(-50%);
-    z-index:2; display:block; line-height:0;
-    padding:.6rem 1.6rem .8rem;
+    z-index:3; display:block; line-height:0;
+    padding:.7rem 1.6rem .9rem;
+    /* It has to reach past the plate for the two to read as one shape
+       crossing another. On a narrow screen the logo stops shrinking before
+       the plate does, so without this the mark ended above the plate's
+       bottom edge and the cross fell apart. */
+    min-height:calc(var(--hd-drop) + 66px);
+    box-sizing:border-box;
     background:var(--color-base);
     border-radius:0 0 var(--card-radius) var(--card-radius);
     box-shadow:0 12px 28px -18px rgba(10,21,38,.6);
@@ -1810,6 +1828,13 @@
 </head>
 <body>
   <header class="hd" id="site-header">
+    <!-- Outside the menu plate on purpose. The plate is moved down with a
+         transform, and a transform makes an element the containing block
+         for its absolutely positioned children, which dragged the mark
+         down with it. Out here it stays flush with the top of the page. -->
+    <a href="/#top" class="brand" aria-label="Stud Von Axe home">
+      <img src="/assets/logo/logo-horizontal-onlight.png" data-ground="light" alt="Von Axe, breeding and horse trading" width="168" height="56">
+    </a>
     <div class="hd__row">
       <div class="hd__start">
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
@@ -1821,10 +1846,6 @@
           <a href="/#news">Results</a>
         </nav>
       </div>
-
-      <a href="/#top" class="brand" aria-label="Stud Von Axe home">
-        <img src="/assets/logo/logo-horizontal-onlight.png" data-ground="light"  alt="Von Axe, breeding and horse trading" width="168" height="56">
-      </a>
 
       <div class="hd__end">
         <div class="lang-switch" aria-label="Language">
