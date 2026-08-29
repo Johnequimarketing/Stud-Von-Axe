@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Design System</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Internal working document, not a page of the site. -->
+<meta name="internal-doc" content="true">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   STUD VON AXE · DESIGN TOKENS
+   The single source of truth. Every page for this brand copies
+   this :root block verbatim. Change the brand here, and only here.
+   Raw palette values come from the logo and from the audited
+   Cielo direction (v2-d-cielo). Nothing is invented.
+   ============================================================ */
+:root{
+/* ══════════════════════════════════════════════════════════════════════
+   THE TOKENS
+   Copied from index.html, which is the source of truth. The homepage was
+   built first and settled these values in the browser; this document
+   follows it rather than the other way round. Change a value here only
+   when it has already changed there.
+   ══════════════════════════════════════════════════════════════════════ */
+
+  /* Sampled from the supplied logo files on 29 Aug: the horizontal logo
+     is #0d1d36 and the head icon #0b1d36, so the page navy is the logo's
+     own navy rather than a near miss. */
+  --color-navy:        #0d1d36;
+  --color-navy-deep:   #0a1526;
+  --color-navy-soft:   #2c4468;
+  /* The head icon's gold, sampled from the file. NOTE: the horizontal
+     logo carries a different, more orange gold (#b57f24). The two supplied
+     files do not agree with each other, so one of them is wrong.
+     TODO client-confirm: which gold is the Pantone, and fix the odd file. */
+  --color-gold:        #b59148;
+  /* derived from --color-gold so the Pantone swap stays a one line change */
+  --color-gold-soft:   color-mix(in srgb, var(--color-gold) 15%, transparent);
+  /* the gold hover, derived so the Pantone swap stays one line */
+  --color-gold-lift:   color-mix(in srgb, var(--color-gold) 82%, #ffffff);
+  --color-base:        #faf7f2;
+  --color-base-alt:    #f1ebe0;
+  --color-ink:         #14202e;
+  --color-ink-soft:    #4d5761;
+  --color-white:       #ffffff;
+  --color-line:        #14202e1f;
+  --color-line-invert: #ffffff2b;
+  /* the footer's off white, the one ink that is not pure white on navy */
+  --color-ink-invert:  #eef1f5;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  --wrap: 1280px;
+  --gap-section: clamp(4rem, 9vw, 9rem);
+  --ease: cubic-bezier(.25,.1,.25,1);
+
+  /* one page gutter, shared by .wrap and by the hero and its card reel,
+     so the hero lines up with everything below it */
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+
+  /* The air around the centred hero statement. Applied ONCE, by
+     .hero__body, which owns the gap above and below. The card reel adds
+     no padding of its own, so the two gaps stay equal. */
+  --hero-air: clamp(60px, 10.5vh, 132px);
+
+  /* Height the sticky header reserves, and gives back to the hero. */
+
+  --card-gap: 14px;
+  /* The page's shape language. It was square at 2px; these three values
+     turn every card, plate and photograph together. */
+  --card-radius: 18px;
+  --plate-radius: 26px;
+  --img-radius: 14px;
+  --ctl-radius: 10px;
+
+  /* How far the ivory tray bites into the hero, and the tray's own shape. */
+  --cut: 96px;
+  /* the smaller cut, used where a plate overlaps the section under it */
+  --cut-band: clamp(2.5rem, 4.5vw, 4rem);
+  --tray-radius: 34px;
+  --tray-pad: clamp(14px, 1.5vw, 22px);
+  /* ── The names this document's own examples were written against, mapped
+        onto the tokens above so nothing here holds a second opinion about
+        a value. Left in place because renaming them would rewrite ninety
+        odd declarations for no gain. ── */
+  --navy:         var(--color-navy);
+  --navy-graphic: var(--color-navy-deep);
+  --gold:         var(--color-gold);
+  --bone:         var(--color-base);
+  --sky:          var(--color-base-alt);
+  --white:        var(--color-white);
+
+  /* The display face is the SERIF here, as on the homepage: Fraunces for
+     titles and the one italic accent word, Manrope for everything a reader
+     scans rather than reads. Fraunces carries a real italic, so no accent
+     word is ever a synthesised shear. */
+  --font-serif:        var(--font-display);
+  --font-serif-italic: var(--font-display);
+
+  /* Feedback. Proposed, not brand: the client site has none. */
+  --success:      #3d6b4f;
+  --error:        #a03c2e;
+  --warning:      #8a6a1d;
+
+  /* Semantic: what each colour is FOR. Components use these, never the raws. */
+  --bg:            var(--color-base);
+  --surface:       var(--color-base-alt);
+  --card:          var(--color-white);
+  --text:          var(--color-ink);
+  --text-muted:    var(--color-ink-soft);
+  --accent:        var(--color-gold);
+  --accent-ink:    color-mix(in srgb, var(--color-gold) 46%, var(--color-navy));
+  --gold-soft:     color-mix(in srgb, var(--color-gold) 62%, var(--color-white));
+  --border:        var(--color-line);
+  --border-strong: color-mix(in srgb, var(--color-navy) 34%, transparent);
+  --dark-bg:       var(--color-navy-deep);
+  --dark-text:     var(--color-ink-invert);
+  --dark-muted:    color-mix(in srgb, var(--color-ink-invert) 74%, var(--color-navy-deep));
+  --dark-border:   var(--color-line-invert);
+  --focus:         var(--color-gold);
+
+  /* Frosted glass, one recipe for every surface that wears it. Measured off
+     the horse cards on the homepage. */
+  --glass:      rgba(10,21,38,.62);
+  --glass-ring: rgba(255,255,255,.16);
+  --glass-blur: blur(14px) saturate(1.3);
+
+  /* Type scale and the rest, unchanged. */
+  --text-label:     .75rem;
+  --text-meta:      .8125rem;
+  --text-small:     .9375rem;
+  --text-body:      clamp(1.0625rem, .35vw + 1rem, 1.125rem);
+  --text-lead:      clamp(1.1875rem, .6vw + 1.05rem, 1.375rem);
+  --text-title:     clamp(1.625rem, 1.4vw + 1.1rem, 2.125rem);
+  --text-heading:   clamp(2rem, 2.6vw + 1.2rem, 3.5rem);
+  --text-hero:      clamp(2.625rem, 4.8vw + 1.5rem, 5.5rem);
+  --text-statement: clamp(2.375rem, 6.6vw + 1rem, 7.25rem);
+  --leading-tight:  1.04;
+  --leading-title:  1.14;
+  --leading-body:   1.62;
+  --tracking-label: .22em;
+
+  /* Space */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem;  --space-7: 3rem;   --space-8: 4rem;
+  --space-section: clamp(3.5rem, 6.5vw, 6.5rem);
+
+  /* Shape. Controls are soft squares, not pills: the logo is angular. */
+  --radius-sm:      12px;  /* photography */
+  --radius-md:      16px;  /* cards */
+  --radius-plate:   22px;  /* plates, hero */
+  --radius-control: 12px;  /* buttons, inputs */
+  --radius-chip:    8px;   /* tags, chips */
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--navy) 6%, transparent), 0 2px 6px color-mix(in srgb, var(--navy) 5%, transparent);
+  --shadow:    0 4px 14px color-mix(in srgb, var(--navy) 8%, transparent), 0 8px 28px color-mix(in srgb, var(--navy) 6%, transparent);
+  --shadow-lg: 0 18px 50px color-mix(in srgb, var(--navy) 14%, transparent);
+
+  /* Motion. One ease, two durations. Reveal is fade plus a 12px rise, once. */
+  --ease:     cubic-bezier(0.32, 0.08, 0.24, 1);
+  --dur:      650ms;
+  --dur-fast: 300ms;
+
+  /* Layout */
+  --container:  1140px;
+  --prose:      66ch;
+  --gutter:     clamp(1.25rem, 4vw, 4rem);
+  --fold-inset: clamp(10px, .9vw, 14px);
+}
+
+/* ============================================================
+   Document chrome (the stylesheet page itself)
+   ============================================================ */
+*{box-sizing:border-box}
+/* Form controls do not inherit type by default and were rendering in Arial. */
+input,select,textarea,button{font:inherit}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-body); font-weight:400;
+  font-size:var(--text-body); line-height:var(--leading-body);
+}
+a{color:inherit}
+img{max-width:100%; display:block}
+.layout{display:grid; grid-template-columns:230px 1fr; max-width:1440px; margin:0 auto}
+@media (max-width: 900px){ .layout{grid-template-columns:1fr} .sidenav{display:none} }
+
+.sidenav{
+  position:sticky; top:0; align-self:start; height:100dvh; overflow-y:auto;
+  padding:var(--space-6) var(--space-4); border-right:1px solid var(--border);
+}
+.sidenav .mark{margin-bottom:var(--space-5)}
+.sidenav a{
+  display:block; padding:.32em 0; text-decoration:none;
+  font-size:var(--text-meta); font-weight:400; color:var(--text-muted);
+}
+.sidenav a:hover{color:var(--text)}
+.sidenav .group{
+  margin:var(--space-4) 0 var(--space-1); font-size:var(--text-label);
+  font-weight:500; letter-spacing:var(--tracking-label); text-transform:uppercase;
+  color:var(--accent-ink);
+}
+main{padding:var(--space-7) var(--gutter) var(--space-8); min-width:0}
+section.ds{margin-bottom:var(--space-8); scroll-margin-top:var(--space-6)}
+
+h1{font-family:var(--font-serif); font-weight:400; font-size:var(--text-hero); line-height:var(--leading-tight); margin:0 0 var(--space-4); letter-spacing:-.01em}
+h2.ds-title{
+  font-family:var(--font-serif); font-weight:400; font-size:var(--text-title);
+  line-height:var(--leading-title); margin:0 0 var(--space-2);
+  padding-top:var(--space-5); border-top:1px solid var(--border);
+}
+h3{font-family:var(--font-body); font-weight:500; font-size:var(--text-body); margin:var(--space-5) 0 var(--space-2)}
+.ds-note{color:var(--text-muted); max-width:var(--prose); margin:0 0 var(--space-4)}
+code{font-size:.85em; background:var(--card); border:1px solid var(--border); border-radius:6px; padding:.08em .45em}
+pre{background:var(--navy); color:var(--bone); border-radius:var(--radius-md); padding:var(--space-4) var(--space-5); overflow-x:auto; font-size:.85rem; line-height:1.55}
+pre code{background:none; border:0; padding:0; color:inherit}
+table{border-collapse:collapse; width:100%; font-size:var(--text-small); font-weight:400}
+th{font-family:var(--font-body); font-weight:500; font-size:var(--text-label); letter-spacing:.12em; text-transform:uppercase; text-align:left; color:var(--text-muted)}
+th,td{padding:.55em .8em; border-bottom:1px solid var(--border); vertical-align:middle}
+.specimen{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--space-5); margin:var(--space-3) 0}
+.specimen.dark{background:var(--dark-bg); color:var(--dark-text); border-color:transparent}
+.specimen.surface{background:var(--surface)}
+.row{display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center}
+
+/* ============================================================
+   BRAND COMPONENTS (the reusable part)
+   ============================================================ */
+
+/* Eyebrow plaque: number, dot, label. Never a dash in front. */
+/* Decided with Mark on 29 Aug 2026: the eyebrow is the SANS, not the serif,
+   and it is gold on every ground including photographs. The serif version
+   below was the earlier specification and lost, because every section on the
+   working page already used the sans and gold gives the accent one job:
+   marking where a section begins. */
+.plaque{
+  display:inline-flex; align-items:baseline; gap:.6em;
+  font-family:var(--font-body); font-size:11px; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--accent-ink);
+}
+.plaque .n{color:var(--text-muted)}
+.dark .plaque, .on-dark.plaque{color:var(--gold)}
+.dark .plaque .n{color:var(--dark-muted)}
+
+/* Section heading: serif upright with ONE italic accent word. */
+.sect-h{
+  font-family:var(--font-serif); font-weight:400; font-size:var(--text-heading);
+  line-height:var(--leading-title); margin:.35em 0 .4em; letter-spacing:-.01em;
+}
+.sect-h em{font-family:var(--font-serif-italic); font-style:italic; color:var(--accent-ink)}
+.dark .sect-h em{color:var(--gold-soft)}
+
+/* Buttons: soft squares, Manrope 700 uppercase. Gold carries NAVY ink,
+   never white (white on gold is 3.2:1 and fails AA). */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.6em;
+  min-height:48px; padding:.95em 2em; border:0; cursor:pointer;
+  border-radius:var(--radius-control); text-decoration:none;
+  font-family:var(--font-body); font-size:var(--text-label); font-weight:500;
+  letter-spacing:.125em; text-transform:uppercase;
+  transition:background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.btn-gold{background:var(--accent); color:var(--navy)}
+.btn-gold:hover{background:var(--gold-soft)}
+.btn-navy{background:var(--navy); color:var(--bone)}
+.btn-navy:hover{background:color-mix(in srgb, var(--navy) 84%, var(--sky))}
+.btn-outline{border:1px solid var(--border-strong); color:var(--text); background:transparent}
+.btn-outline:hover{border-color:var(--navy)}
+.btn-ghost-dark{border:1px solid color-mix(in srgb, var(--white) 45%, transparent); color:var(--white); background:transparent}
+.btn-ghost-dark:hover{border-color:var(--white)}
+.btn-sm{min-height:40px; padding:.7em 1.4em}
+.btn-lg{min-height:56px; padding:1.1em 2.6em}
+.btn[disabled]{opacity:.45; cursor:not-allowed}
+.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--focus); outline-offset:2px;
+}
+
+/* Text CTA: label plus arrow, underline grows on hover. */
+.cta-line{
+  display:inline-flex; align-items:center; gap:.5em; text-decoration:none;
+  font-family:var(--font-body); font-size:var(--text-meta); font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--accent-ink);
+  border-bottom:1px solid transparent; padding-bottom:2px;
+  transition:border-color var(--dur-fast) var(--ease);
+}
+.cta-line:hover{border-color:var(--accent-ink)}
+.dark .cta-line{color:var(--gold-soft)}
+.dark .cta-line:hover{border-color:var(--gold-soft)}
+
+/* Chips and status */
+.chip{
+  display:inline-flex; align-items:center; gap:.45em; padding:.35em .8em;
+  border:1px solid var(--border-strong); border-radius:var(--radius-chip);
+  font-family:var(--font-body); font-size:var(--text-label); font-weight:400;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--text);
+}
+.chip.gold{border-color:var(--accent); color:var(--accent-ink)}
+.dark .chip{border-color:var(--dark-border); color:var(--dark-text)}
+.status-sold{font-family:var(--font-body); font-size:var(--text-label); letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted)}
+
+/* Horse card */
+.horse-card{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md);
+  overflow:hidden; max-width:320px; transition:box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.horse-card:hover{box-shadow:var(--shadow); transform:translateY(-3px)}
+.horse-card img{width:100%; aspect-ratio:4/3.4; object-fit:cover}
+.horse-card .pad{padding:var(--space-4) var(--space-5) var(--space-5)}
+.horse-card .name{font-family:var(--font-serif); font-size:var(--text-lead); line-height:var(--leading-title); margin:0 0 .3em}
+.horse-card .meta{font-size:var(--text-meta); font-weight:400; color:var(--text-muted); display:flex; gap:.55em; align-items:center; flex-wrap:wrap}
+.horse-card .meta .d{width:3px; height:3px; border-radius:50%; background:var(--accent)}
+/* Typographic variant: for horses whose listing has no valid photo. */
+.horse-card.typo .ped{font-family:var(--font-serif-italic); font-style:italic; font-size:var(--text-lead); color:var(--accent-ink); padding:var(--space-6) var(--space-5) 0}
+
+/* Glass card (the hero banner) */
+.glass-card{
+  border-radius:var(--radius-plate); padding:var(--space-5);
+  background:var(--glass); -webkit-backdrop-filter:var(--glass-blur); backdrop-filter:var(--glass-blur);
+  box-shadow:inset 0 0 0 1px var(--glass-ring); color:var(--white); max-width:360px;
+}
+@supports not (backdrop-filter: blur(1px)){ .glass-card{background:color-mix(in srgb, var(--navy) 88%, transparent)} }
+
+/* News card */
+.news-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--space-5); max-width:360px; display:block; text-decoration:none; transition:box-shadow var(--dur-fast) var(--ease)}
+.news-card:hover{box-shadow:var(--shadow)}
+.news-card .kick{font-size:var(--text-label); font-weight:500; letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--accent-ink); margin:0 0 .6em}
+.news-card h4{font-family:var(--font-serif); font-weight:400; font-size:var(--text-lead); line-height:var(--leading-title); margin:0 0 .4em}
+.news-card p{font-weight:400; font-size:var(--text-small); color:var(--text-muted); margin:0}
+
+/* Result row: oversized serif ordinal beside the fact. */
+.result-row{display:flex; gap:var(--space-5); align-items:baseline; padding:var(--space-4) 0; border-bottom:1px solid var(--border); max-width:640px}
+.result-row .ord{font-family:var(--font-serif); font-size:var(--text-heading); line-height:1; color:var(--accent-ink); min-width:1.6em}
+.result-row .what{font-weight:400}
+.result-row .what small{display:block; color:var(--text-muted); font-size:var(--text-meta)}
+
+/* Trust strip */
+.trust{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:var(--space-4); background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--space-5)}
+.trust .item{display:flex; gap:.8em; align-items:baseline}
+.trust .ic{color:var(--accent-ink); font-size:1.1em}
+.trust b{display:block; font-weight:500; font-size:var(--text-small)}
+.trust span{font-weight:400; font-size:var(--text-meta); color:var(--text-muted)}
+
+/* Forms */
+.field{display:block; max-width:380px; margin-bottom:var(--space-4)}
+.field label{display:block; font-size:var(--text-label); font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.5em}
+.field input,.field select,.field textarea{
+  width:100%; padding:.85em 1em; border:1px solid var(--border-strong);
+  border-radius:var(--radius-control); background:var(--card); color:var(--text);
+  font-family:var(--font-body); font-weight:400; font-size:var(--text-small);
+  transition:border-color var(--dur-fast) var(--ease);
+}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--navy)}
+.field input[disabled]{opacity:.5; background:var(--surface)}
+.field.err input{border-color:var(--error)}
+.field .msg{font-size:var(--text-meta); font-weight:400; color:var(--error); margin-top:.4em}
+.checkline{display:flex; gap:.6em; align-items:center; font-weight:400; font-size:var(--text-small)}
+.checkline input{width:18px; height:18px; accent-color:var(--navy)}
+
+/* Tabs */
+.tabs{display:flex; gap:var(--space-2); border:1px solid var(--border-strong); border-radius:var(--radius-control); padding:4px; width:max-content; background:var(--card)}
+.tabs [role=tab]{
+  border:0; background:transparent; cursor:pointer; padding:.6em 1.2em;
+  border-radius:calc(var(--radius-control) - 4px);
+  font-family:var(--font-body); font-size:var(--text-label); font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);
+  transition:background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.tabs [role=tab][aria-selected=true]{background:var(--accent); color:var(--navy)}
+.tabpanel{padding:var(--space-4) 0; font-weight:400; max-width:var(--prose)}
+
+/* Accordion */
+.acc{border-top:1px solid var(--border); max-width:640px}
+.acc details{border-bottom:1px solid var(--border)}
+.acc summary{
+  cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;
+  padding:var(--space-4) 0; font-family:var(--font-serif); font-size:var(--text-lead);
+}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+"; font-family:var(--font-body); font-weight:400; font-size:1.4em; color:var(--accent-ink); transition:transform var(--dur-fast) var(--ease)}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc .body{padding:0 0 var(--space-4); font-weight:400; color:var(--text-muted); max-width:56ch}
+
+/* Contrast table swatches */
+.pair{display:inline-flex; align-items:center; justify-content:center; min-width:120px; padding:.5em 1em; border-radius:var(--radius-chip); font-weight:400; font-size:var(--text-small); border:1px solid var(--border)}
+.badge{display:inline-block; padding:.2em .6em; border-radius:var(--radius-chip); font-size:var(--text-label); font-weight:500; letter-spacing:.06em}
+.badge.pass{background:color-mix(in srgb, var(--success) 14%, var(--white)); color:var(--success)}
+.badge.large{background:color-mix(in srgb, var(--warning) 14%, var(--white)); color:var(--warning)}
+.badge.fail{background:color-mix(in srgb, var(--error) 12%, var(--white)); color:var(--error)}
+.sw{display:inline-block; width:1.05em; height:1.05em; border-radius:4px; border:1px solid var(--border); vertical-align:-.18em; margin-right:.45em}
+
+/* Mini hero slider demo */
+.hero-demo{position:relative; border-radius:var(--radius-plate); overflow:hidden; min-height:420px; display:flex; align-items:flex-end; justify-content:flex-end; padding:var(--space-5); background:var(--navy)}
+.hero-demo .bd{position:absolute; inset:0; opacity:0; transition:opacity var(--dur) var(--ease), transform calc(var(--dur) * 2) var(--ease); transform:translateX(24px) scale(1.04)}
+.hero-demo .bd.on{opacity:1; transform:translateX(0) scale(1.04)}
+.hero-demo .bd img{width:100%; height:100%; object-fit:cover}
+.hero-demo .scrim{position:absolute; inset:0; background:linear-gradient(180deg, color-mix(in srgb, var(--navy) 42%, transparent) 0%, color-mix(in srgb, var(--navy) 10%, transparent) 30%, color-mix(in srgb, var(--navy) 38%, transparent) 62%, color-mix(in srgb, var(--navy) 82%, transparent) 100%)}
+.hero-demo .glass-card{position:relative}
+.hero-demo .sv-title{font-family:var(--font-serif); font-size:var(--text-title); margin:0 0 .25em; line-height:var(--leading-title)}
+.hero-demo .sv-text{font-weight:300; font-size:var(--text-small); color:color-mix(in srgb, var(--white) 86%, transparent); margin:0 0 var(--space-3)}
+.svc-tabs{display:flex; gap:var(--space-2); margin-top:var(--space-4)}
+.svc-tab{position:relative; width:56px; height:56px; border-radius:var(--radius-control); overflow:hidden; border:0; padding:0; cursor:pointer; opacity:.55; background:color-mix(in srgb, var(--white) 10%, transparent); transition:opacity var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease)}
+.svc-tab img{width:100%; height:100%; object-fit:cover}
+.svc-tab:hover{opacity:.85}
+.svc-tab[aria-selected=true]{opacity:1; box-shadow:0 0 0 2px var(--gold-soft)}
+.svc-tab .num{position:absolute; inset-inline:0; bottom:0; font-size:10px; font-weight:500; letter-spacing:.1em; text-align:center; color:var(--white); background:linear-gradient(transparent, color-mix(in srgb, var(--navy) 75%, transparent)); padding:.9em 0 .25em}
+
+/* States */
+.skeleton{position:relative; overflow:hidden; background:color-mix(in srgb, var(--navy) 7%, var(--bone)); border-radius:var(--radius-chip); min-height:1em}
+.skeleton::after{content:""; position:absolute; inset:0; transform:translateX(-100%); background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--white) 55%, transparent), transparent); animation:shimmer 1.6s infinite}
+@keyframes shimmer{100%{transform:translateX(100%)}}
+@media (prefers-reduced-motion: reduce){ .skeleton::after{animation:none} }
+
+/* Cookie banner pattern */
+.cookie{display:flex; flex-wrap:wrap; gap:var(--space-4); align-items:center; justify-content:space-between; background:var(--navy); color:var(--bone); border-radius:var(--radius-md); padding:var(--space-4) var(--space-5); max-width:760px}
+.cookie p{margin:0; font-weight:300; font-size:var(--text-small); max-width:46ch}
+
+/* Token table */
+.token-table code{white-space:nowrap}
+footer.ds-footer{border-top:1px solid var(--border); padding-top:var(--space-5); color:var(--text-muted); font-size:var(--text-meta); font-weight:400}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="sidenav" aria-label="Sections">
+  <div class="mark"><img src="assets/logo/logo-stacked-onlight.png" data-ground="light" alt="Von Axe, breeding and horse trading" width="110"></div>
+  <div class="group">Foundation</div>
+  <a href="#intro">Core choices</a>
+  <a href="#logo">Logo</a>
+  <a href="#colour">Colour and contrast</a>
+  <a href="#type">Typography</a>
+  <a href="#space">Spacing</a>
+  <a href="#shape">Radius and shadow</a>
+  <a href="#motion">Motion</a>
+  <div class="group">Voice</div>
+  <a href="#tone">Tone of voice</a>
+  <a href="#writing">Writing rules</a>
+  <div class="group">Components</div>
+  <a href="#buttons">Buttons</a>
+  <a href="#plaque">Eyebrow and headings</a>
+  <a href="#chips">Chips and status</a>
+  <a href="#cards">Cards</a>
+  <a href="#trust">Trust strip</a>
+  <a href="#forms">Forms</a>
+  <a href="#tabs">Tabs and accordion</a>
+  <a href="#heroslider">Hero service slider</a>
+  <div class="group">Patterns</div>
+  <a href="#imagery">Imagery</a>
+  <a href="#lightdark">Light and dark</a>
+  <a href="#states">States and cookie</a>
+  <a href="#icons">Icons</a>
+  <div class="group">Reference</div>
+  <a href="#decisions">Decisions and flags</a>
+  <a href="#tokens">Token table</a>
+</nav>
+
+<main>
+  <p class="plaque">Design system</p>
+  <h1>One brand, one <em style="font-family:var(--font-serif-italic); font-style:italic; color:var(--accent-ink)">truth</em>.</h1>
+  <p class="ds-note">Every page, mail or advert for Stud Von Axe starts from this document. The tokens at the top of this file are the brand: copy the <code>:root</code> block verbatim, never retype a value. The motto on their own site says it best. The blood never lies, and neither should the stylesheet.</p>
+
+  <!-- ================= CORE ================= -->
+  <section class="ds" id="intro">
+    <h2 class="ds-title">Core choices</h2>
+    <table>
+      <tr><th>Choice</th><th>Value</th><th>Why</th></tr>
+      <tr><td>Page ground</td><td><span class="sw" style="background:var(--bone)"></span><code>--color-base #faf7f2</code></td><td>Light backgrounds carry content, per the client's brand rule</td></tr>
+      <tr><td>Primary ink</td><td><span class="sw" style="background:var(--navy)"></span><code>--color-navy #0d1d36</code></td><td>Sampled from the logo file itself. Structure, headings, body</td></tr>
+      <tr><td>Accent</td><td><span class="sw" style="background:var(--gold)"></span><code>--color-gold #b59148</code></td><td>Sampled from the head icon. The horizontal logo file carries a different gold, #b57f24, so one of the two files is wrong. Open with the client</td></tr>
+      <tr><td>Titles</td><td>Fraunces</td><td>Serif display, 400 upright. Optical sizing carries it from 18px to 80px</td></tr>
+      <tr><td>Italic accent</td><td>Fraunces italic</td><td>A real italic, so no accent word is ever a synthesised shear</td></tr>
+      <tr><td>Everything else</td><td>Manrope 400 to 800</td><td>Body, eyebrows, labels, controls, meta lines</td></tr>
+      <tr><td>Controls</td><td>Soft squares, 12px</td><td>The logo is angular, so buttons and chips follow it. No pills</td></tr>
+      <tr><td>Accessibility floor</td><td>WCAG AA</td><td>Measured live in this page, not estimated</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= LOGO ================= -->
+  <section class="ds" id="logo">
+    <h2 class="ds-title">Logo</h2>
+    <p class="ds-note">One mark: horse skull, blaze with three nodes, crown, wordmark VON | AXE. Gold touches only the crown and the rule lines. The current files are raster with baked backgrounds. Vector versions are with the client, chase before production.</p>
+    <div class="row">
+      <div class="specimen" style="flex:1; min-width:260px; text-align:center"><img src="assets/logo/logo-horizontal-onlight.png" data-ground="light" alt="Von Axe horizontal logo, navy version for light backgrounds" style="margin:0 auto; max-width:280px"><p style="margin:var(--space-3) 0 0; font-size:var(--text-meta); font-weight:400; color:var(--text-muted)"><code>logo-horizontal-onlight.png</code></p></div>
+      <div class="specimen dark" style="flex:1; min-width:260px; text-align:center"><img src="assets/logo/logo-horizontal-ondark.webp" data-ground="dark" alt="Von Axe horizontal logo, white version for dark backgrounds" style="margin:0 auto; max-width:280px"><p style="margin:var(--space-3) 0 0; font-size:var(--text-meta); font-weight:400; color:var(--dark-muted)"><code style="background:transparent; border-color:var(--dark-border); color:var(--dark-text)">logo-horizontal-ondark.webp</code></p></div>
+    </div>
+    <table>
+      <tr><th>Rule</th><th>Detail</th></tr>
+      <tr><td><b>Which file, which ground</b></td><td><b><code>-onlight</code> (navy mark) only on the page ground, the alternate ground or white. <code>-ondark</code> (white mark) only on navy. A white logo on a light ground is invisible, so the filename names its ground and the audit enforces it.</b></td></tr>
+      <tr><td>Clear space</td><td>Height of the crown on all sides</td></tr>
+      <tr><td>Minimum width</td><td>140px horizontal, 90px stacked, favicon uses the skull mark alone</td></tr>
+      <tr><td>Never</td><td>Recolour, stretch, rotate, drop shadows, place on busy photo areas without a scrim</td></tr>
+      <tr><td>Derived, not supplied</td><td>The client only sent the white reverse version. The navy <code>-onlight</code> files are derived from it: white ink mapped to navy, gold accent kept, alpha preserved</td></tr>
+      <tr><td>[CHECK MARK]</td><td>Vector (SVG or AI) of both primary versions, requested from client</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= COLOUR ================= -->
+  <section class="ds" id="colour">
+    <h2 class="ds-title">Colour and contrast</h2>
+    <p class="ds-note">Two layers: a raw palette (the only hex values in the codebase) and semantic tokens that name the job. Components only ever use the semantic layer. The contrast column below is computed live by this page from the rendered colours, so what you read here is what a browser actually shows.</p>
+    <h3>Raw palette</h3>
+    <table id="raw-table">
+      <tr><th>Swatch</th><th>Token</th><th>Hex</th><th>Job</th></tr>
+      <tr><td><span class="sw" style="background:var(--color-navy)"></span></td><td><code>--color-navy</code></td><td>#0d1d36</td><td>Primary ink, dark plates. Sampled from the logo</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-navy-deep)"></span></td><td><code>--color-navy-deep</code></td><td>#0a1526</td><td>The darkest ground: hero, bands, footer</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-navy-soft)"></span></td><td><code>--color-navy-soft</code></td><td>#2c4468</td><td>Muted structural ink</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-gold)"></span></td><td><code>--color-gold</code></td><td>#b59148</td><td>Accent. Sampled from the head icon</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-base)"></span></td><td><code>--color-base</code></td><td>#faf7f2</td><td>Page ground</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-base-alt)"></span></td><td><code>--color-base-alt</code></td><td>#f1ebe0</td><td>The one tinted band per page. Warm, not blue</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-ink)"></span></td><td><code>--color-ink</code></td><td>#14202e</td><td>Body copy</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-ink-soft)"></span></td><td><code>--color-ink-soft</code></td><td>#4d5761</td><td>Muted body copy</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-ink-invert)"></span></td><td><code>--color-ink-invert</code></td><td>#eef1f5</td><td>The footer's off white</td></tr>
+      <tr><td><span class="sw" style="background:var(--color-white); border-color:var(--border-strong)"></span></td><td><code>--color-white</code></td><td>#ffffff</td><td>Cards, lifted paper</td></tr>
+    </table>
+    <h3>Measured contrast</h3>
+    <p class="ds-note">AA needs 4.5:1 for normal text and 3:1 for large text (24px, or 19px bold). Rows that fail are listed on purpose: they document what we must never do.</p>
+    <table id="contrast-table">
+      <tr><th>Sample</th><th>Pair</th><th>Ratio</th><th>Verdict</th></tr>
+    </table>
+  </section>
+
+  <!-- ================= TYPE ================= -->
+  <section class="ds" id="type">
+    <h2 class="ds-title">Typography</h2>
+    <p class="ds-note">Manrope carries the page. Fraunces speaks only in titles, horse names and the one italic accent word per heading. Never more than one accent word. Load exactly: <code>Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500</code> and <code>Manrope:wght@400;500;600;700;800</code>, with <code>display=swap</code>.</p>
+    <div class="specimen">
+      <p style="font-family:var(--font-serif); font-weight:400; font-size:var(--text-statement); line-height:var(--leading-tight); margin:0">Bred for the biggest <em style="font-family:var(--font-serif-italic); font-style:italic; color:var(--accent-ink)">arenas</em></p>
+      <p style="margin:.4em 0 0; color:var(--text-muted); font-size:var(--text-meta); font-weight:400"><code>--text-statement</code> &middot; Fraunces 400 with one italic accent word</p>
+    </div>
+    <table>
+      <tr><th>Token</th><th>Size</th><th>Face</th><th>Sample</th></tr>
+      <tr><td><code>--text-hero</code></td><td>clamp(2.625rem, 4.8vw + 1.5rem, 5.5rem)</td><td>Caslon Display 400</td><td style="font-family:var(--font-serif); font-size:var(--text-hero); line-height:1.04">Arkhana</td></tr>
+      <tr><td><code>--text-heading</code></td><td>clamp(2rem, 2.6vw + 1.2rem, 3.5rem)</td><td>Caslon Display 400</td><td style="font-family:var(--font-serif); font-size:var(--text-heading); line-height:1.1">Horses with us today.</td></tr>
+      <tr><td><code>--text-title</code></td><td>clamp(1.625rem, 1.4vw + 1.1rem, 2.125rem)</td><td>Caslon Display 400</td><td style="font-family:var(--font-serif); font-size:var(--text-title)">Cortina de Jolie Z</td></tr>
+      <tr><td><code>--text-lead</code></td><td>clamp(1.1875rem, .6vw + 1.05rem, 1.375rem)</td><td>Manrope 400</td><td style="font-size:var(--text-lead)">Foals, embryos and frozen semen.</td></tr>
+      <tr><td><code>--text-body</code></td><td>clamp(1.0625rem, .35vw + 1rem, 1.125rem)</td><td>Manrope 400</td><td>Our relationship with our customers is based on honesty.</td></tr>
+      <tr><td><code>--text-small</code></td><td>.9375rem</td><td>Manrope 400</td><td style="font-size:var(--text-small); font-weight:400">Sold direct, never through auction.</td></tr>
+      <tr><td><code>--text-meta</code></td><td>.8125rem</td><td>Manrope 400</td><td style="font-size:var(--text-meta); font-weight:400; color:var(--text-muted)">Colt · 2026 · Available</td></tr>
+      <tr><td><code>--text-label</code></td><td>.75rem</td><td>Manrope 700, tracked .22em, uppercase</td><td style="font-size:var(--text-label); font-weight:500; letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--accent-ink)">Available now</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= SPACE ================= -->
+  <section class="ds" id="space">
+    <h2 class="ds-title">Spacing</h2>
+    <p class="ds-note">Eight steps plus one sectional rhythm. Between sections use <code>--space-section</code>, inside components stay on the scale. Never a bare pixel value.</p>
+    <table>
+      <tr><th>Token</th><th>Value</th><th>Bar</th></tr>
+      <tr><td><code>--space-1</code></td><td>.25rem</td><td><div style="height:10px;width:4px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-2</code></td><td>.5rem</td><td><div style="height:10px;width:8px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-3</code></td><td>.75rem</td><td><div style="height:10px;width:12px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-4</code></td><td>1rem</td><td><div style="height:10px;width:16px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-5</code></td><td>1.5rem</td><td><div style="height:10px;width:24px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-6</code></td><td>2rem</td><td><div style="height:10px;width:32px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-7</code></td><td>3rem</td><td><div style="height:10px;width:48px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-8</code></td><td>4rem</td><td><div style="height:10px;width:64px;background:var(--accent)"></div></td></tr>
+      <tr><td><code>--space-section</code></td><td>clamp(3.5rem, 6.5vw, 6.5rem)</td><td><div style="height:10px;width:96px;background:var(--navy)"></div></td></tr>
+    </table>
+  </section>
+
+  <!-- ================= SHAPE ================= -->
+  <section class="ds" id="shape">
+    <h2 class="ds-title">Radius and shadow</h2>
+    <p class="ds-note">A deliberate radius scale, not one value. Photography 12, cards 16, plates 22, controls 12, chips 8. The logo is angular, so nothing is a full pill.</p>
+    <div class="row">
+      <div class="specimen" style="width:130px; text-align:center; border-radius:var(--radius-sm)"><b>12</b><br><small>photo</small></div>
+      <div class="specimen" style="width:130px; text-align:center; border-radius:var(--radius-md)"><b>16</b><br><small>card</small></div>
+      <div class="specimen" style="width:130px; text-align:center; border-radius:var(--radius-plate)"><b>22</b><br><small>plate</small></div>
+      <div class="specimen" style="width:130px; text-align:center; border-radius:var(--radius-chip)"><b>8</b><br><small>chip</small></div>
+    </div>
+    <div class="row" style="margin-top:var(--space-4)">
+      <div class="specimen" style="box-shadow:var(--shadow-sm); border:0">shadow-sm</div>
+      <div class="specimen" style="box-shadow:var(--shadow); border:0">shadow</div>
+      <div class="specimen" style="box-shadow:var(--shadow-lg); border:0">shadow-lg</div>
+    </div>
+  </section>
+
+  <!-- ================= MOTION ================= -->
+  <section class="ds" id="motion">
+    <h2 class="ds-title">Motion</h2>
+    <table>
+      <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      <tr><td><code>--ease</code></td><td>cubic-bezier(0.32, 0.08, 0.24, 1)</td><td>Everything</td></tr>
+      <tr><td><code>--dur</code></td><td>650ms</td><td>Scene changes: hero crossfade, panel swaps</td></tr>
+      <tr><td><code>--dur-fast</code></td><td>300ms</td><td>Hover, focus, small state</td></tr>
+    </table>
+    <p class="ds-note">Reveal on scroll is a single fade with a 12px rise, once, never re-triggered. Respect <code>prefers-reduced-motion</code> everywhere: reveals render instantly and the hero autoplay never starts. The one exception to the brand's "nothing moves on its own" principle is the hero service slider, at Mark's explicit request, and it is documented under Decisions.</p>
+  </section>
+
+  <!-- ================= TONE ================= -->
+  <section class="ds" id="tone">
+    <h2 class="ds-title">Tone of voice</h2>
+    <p class="ds-note">Researched on studvonaxe.it (homepage and about page, August 2026). The brand speaks as <b>we</b>, with warm pride backed by hard facts. Their own words set the register.</p>
+    <table>
+      <tr><th>Trait</th><th>Their own evidence</th></tr>
+      <tr><td>Motto</td><td>"THE BLOOD NEVER LIES"</td></tr>
+      <tr><td>Values</td><td>"honesty and absolute transparency in all our sales"</td></tr>
+      <tr><td>Origin</td><td>"born from a great passion for horses", "many years spent on the best German farms"</td></tr>
+      <tr><td>Pride</td><td>"Proud of our Stud Von Axe's horses around the world", "A great mare with an amazing family!"</td></tr>
+      <tr><td>Facts</td><td>Pedigrees in brackets "(Casall x Contender x Corrado)", real prices, real placings</td></tr>
+    </table>
+    <h3>The register in practice</h3>
+    <table>
+      <tr><th>Place</th><th>Example sentence, ready to use</th></tr>
+      <tr><td>Hero</td><td>Bred for the biggest arenas.</td></tr>
+      <tr><td>Section head</td><td>Horses with us today.</td></tr>
+      <tr><td>Body</td><td>Every cross begins in Italy. Our team in Belgium raises each foal until it is ready to leave.</td></tr>
+      <tr><td>Trust line</td><td>Sold direct, never through auction.</td></tr>
+      <tr><td>Button</td><td>Ask about Arkhana</td></tr>
+      <tr><td>Result</td><td>Contouch SVA (Conthargos x Toulon x Cento) sold for 150,000 euro, the top price of the auction.</td></tr>
+    </table>
+    <p class="ds-note">Short headlines. Slightly longer narrative body. First person plural. Pride is allowed, exaggeration is not: every claim must trace to a result, a price or the client's own words.</p>
+  </section>
+
+  <!-- ================= WRITING ================= -->
+  <section class="ds" id="writing">
+    <h2 class="ds-title">Writing rules</h2>
+    <table>
+      <tr><th>Rule</th><th>Wrong</th><th>Right</th></tr>
+      <tr><td>No long dashes as a style pause</td><td data-audit-exempt>Our mares, our choice — always.</td><td>Our mares, our choice. Always.</td></tr>
+      <tr><td>No decorative dash before an eyebrow</td><td data-audit-exempt>&ndash; AVAILABLE NOW</td><td>AVAILABLE NOW</td></tr>
+      <tr><td><b>No number before an eyebrow either</b></td><td data-audit-exempt>01 &middot; THE STUD</td><td>THE STUD</td></tr>
+      <tr><td>Write ranges out</td><td data-audit-exempt>Foals of 2024-2026</td><td>Foals from 2024 to 2026</td></tr>
+      <tr><td>Human English</td><td data-audit-exempt>Leveraging elite genetics for seamless results</td><td>We breed from mares we know, and we sell direct</td></tr>
+      <tr><td>Never invent</td><td>Over 40 years of tradition</td><td>[CHECK MARK: founding year] or leave it out</td></tr>
+    </table>
+    <p class="ds-note" data-audit-exempt>Words we avoid: innovative, solutions, seamless, effortless, world class, elite (unless quoting the client). Words that belong: damline, cross, produce, studbook, colt, filly, broodmare, direct. Words we replaced: pairing became cross, mediation became brokering, on the record became news and results.</p>
+  </section>
+
+  <!-- ================= BUTTONS ================= -->
+  <section class="ds" id="buttons">
+    <h2 class="ds-title">Buttons</h2>
+    <p class="ds-note">Soft squares in Manrope 700 uppercase. Gold always carries navy ink: white on gold is about 3.2:1 and fails AA, measured above. On dark grounds use the ghost.</p>
+    <div class="row">
+      <button class="btn btn-gold">Ask about a horse</button>
+      <button class="btn btn-navy">See all horses</button>
+      <button class="btn btn-outline">All results</button>
+      <button class="btn btn-gold" disabled>Disabled</button>
+    </div>
+    <div class="specimen dark"><div class="row">
+      <button class="btn btn-gold">Contact us</button>
+      <button class="btn btn-ghost-dark">See the horses</button>
+    </div></div>
+    <div class="row">
+      <button class="btn btn-gold btn-sm">Small</button>
+      <button class="btn btn-gold">Default</button>
+      <button class="btn btn-gold btn-lg">Large</button>
+      <a class="cta-line" href="#buttons">See the foals <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ================= PLAQUE ================= -->
+  <section class="ds" id="plaque">
+    <h2 class="ds-title">Eyebrow and section heading</h2>
+    <p class="ds-note">Every section opens with the plaque: number, middle dot, label. Then a serif heading with exactly one italic accent word. Never more than one.</p>
+    <div class="specimen">
+      <p class="plaque">Available now</p>
+      <h3 class="sect-h" style="margin-bottom:0">Horses with us <em>today</em>.</h3>
+    </div>
+    <div class="specimen dark">
+      <p class="plaque">The programme</p>
+      <h3 class="sect-h" style="margin-bottom:0">One programme across <em>two yards</em>.</h3>
+    </div>
+  </section>
+
+  <!-- ================= CHIPS ================= -->
+  <section class="ds" id="chips">
+    <h2 class="ds-title">Chips and status</h2>
+    <div class="row">
+      <span class="chip">Belgian base</span>
+      <span class="chip gold">Featured</span>
+      <span class="chip">15 crosses</span>
+      <span class="status-sold">Sold · GB</span>
+    </div>
+    <p class="ds-note">Sold status is quiet text naming the destination country. It doubles as proof of reach: no flags, no ribbons, no invented country counts.</p>
+  </section>
+
+  <!-- ================= CARDS ================= -->
+  <section class="ds" id="cards">
+    <h2 class="ds-title">Cards</h2>
+    <h3>Horse card, with photo</h3>
+    <div class="row">
+      <article class="horse-card">
+        <img src="assets/img/horse-cortina.jpg" alt="Cortina de Jolie Z, a dappled grey mare">
+        <div class="pad">
+          <h3 class="name">Cortina de Jolie Z</h3>
+          <p class="meta"><span>2019</span><span class="d"></span><span>Mare</span><span class="d"></span><span>Cornet Obolensky</span></p>
+        </div>
+      </article>
+      <article class="horse-card typo">
+        <p class="ped">Comme il Faut<br>× Nabab de Reve<br>× Jalisco B</p>
+        <div class="pad">
+          <h3 class="name">Carma vd Berghoeve Z</h3>
+          <p class="meta"><span>2024</span><span class="d"></span><span>Mare</span></p>
+        </div>
+      </article>
+    </div>
+    <p class="ds-note">The typographic variant is not a fallback of laziness, it is the provenance rule: a photo may only name a horse when it comes from that horse's own listing. Carma and Electra have no valid photo, so their pedigree becomes the picture.</p>
+    <h3>News card</h3>
+    <a class="news-card" href="https://www.studvonaxe.it/en/homepage/">
+      <p class="kick">Auction</p>
+      <h3>Contouch SVA takes top price at Your Auction</h3>
+      <p>Sold for 150,000 euro, the highest price of the auction, and now competing internationally.</p>
+    </a>
+    <h3>Result row</h3>
+    <div class="result-row"><span class="ord">1st</span><p class="what">Calleryama wins the Nations Cup of Barcelona<small>Casall x Contender x Corrado · dam of Unguessable Von Axe</small></p></div>
+    <h3>Glass card (hero banner)</h3>
+    <div class="specimen dark" style="background:url('assets/img/hero-foals.jpg') center/cover">
+      <div class="glass-card">
+        <h3 style="font-family:var(--font-serif); font-size:var(--text-title); margin:0 0 .25em">Foals</h3>
+        <p style="font-weight:300; font-size:var(--text-small); margin:0 0 var(--space-3); color:color-mix(in srgb, var(--white) 86%, transparent)">Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament.</p>
+        <a class="cta-line" style="color:var(--gold-soft)" href="#cards">See the foals <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="ds" id="trust">
+    <h2 class="ds-title">Trust strip</h2>
+    <div class="trust">
+      <div class="item"><span class="ic" aria-hidden="true">◈</span><div><b>Proven damlines</b><span>Crosses on pedigree and produce</span></div></div>
+      <div class="item"><span class="ic" aria-hidden="true">◎</span><div><b>Two bases</b><span>Italy and Belgium, one programme</span></div></div>
+      <div class="item"><span class="ic" aria-hidden="true">✓</span><div><b>Sold direct</b><span>Never through auction</span></div></div>
+      <div class="item"><span class="ic" aria-hidden="true">↗</span><div><b>EU and export</b><span>Semen through Avantea, Cremona</span></div></div>
+    </div>
+  </section>
+
+  <!-- ================= FORMS ================= -->
+  <section class="ds" id="forms">
+    <h2 class="ds-title">Forms</h2>
+    <div class="row" style="align-items:flex-start">
+      <div style="flex:1; min-width:280px">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" placeholder="Your name"></div>
+        <div class="field"><label for="f-int">Interested in</label><select id="f-int"><option>A foal</option><option>An embryo</option><option>Frozen semen</option><option>A sport horse</option></select></div>
+        <div class="field err"><label for="f-mail">Email</label><input id="f-mail" type="email" value="not-an-email" aria-invalid="true" aria-describedby="f-mail-msg"><p class="msg" id="f-mail-msg">That address does not look complete.</p></div>
+      </div>
+      <div style="flex:1; min-width:280px">
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" rows="4" placeholder="Which horse are you asking about?"></textarea></div>
+        <div class="field"><label for="f-dis">Disabled</label><input id="f-dis" type="text" disabled value="Not available"></div>
+        <label class="checkline"><input type="checkbox" checked> Keep me posted on new foals</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TABS/ACCORDION ================= -->
+  <section class="ds" id="tabs">
+    <h2 class="ds-title">Tabs and accordion</h2>
+    <div class="tabs" role="tablist" aria-label="Catalogue filter">
+      <button role="tab" aria-selected="true" aria-controls="tp-all" id="tb-all">All horses</button>
+      <button role="tab" aria-selected="false" aria-controls="tp-foal" id="tb-foal" tabindex="-1">Foals</button>
+      <button role="tab" aria-selected="false" aria-controls="tp-mare" id="tb-mare" tabindex="-1">Broodmares</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="tp-all" aria-labelledby="tb-all">Every horse currently with us, foals and broodmares together.</div>
+    <div class="tabpanel" role="tabpanel" id="tp-foal" aria-labelledby="tb-foal" hidden>Foals born at the Belgian base, sold direct.</div>
+    <div class="tabpanel" role="tabpanel" id="tp-mare" aria-labelledby="tb-mare" hidden>The broodmare band behind the programme.</div>
+    <h3>Accordion</h3>
+    <div class="acc">
+      <details><summary>How does a semen order work?</summary><div class="body">Frozen semen ships through Avantea in Cremona, across the EU and for export. Ask us for the current terms per stallion.</div></details>
+      <details><summary>Can we visit the horses?</summary><div class="body">Yes. The crosses are made in Italy and the foals are raised in Belgium, tell us what you want to see and we plan it.</div></details>
+    </div>
+  </section>
+
+  <!-- ================= HERO SLIDER ================= -->
+  <section class="ds" id="heroslider">
+    <h2 class="ds-title">Hero service slider</h2>
+    <p class="ds-note">The homepage hero in miniature, fully working. The backdrop drifts in as it crossfades (650ms), the glass banner carries the active service, the tabs are a real ARIA tablist: arrow keys move focus with selection, Home and End jump. Autoplay runs at 6 seconds, pauses on hover and focus, stops for good after a click, and never starts under <code>prefers-reduced-motion</code>.</p>
+    <div class="hero-demo" id="ds-hero">
+      <div class="bd on"><img src="assets/img/hero-foals.jpg" alt=""></div>
+      <div class="bd"><img src="assets/img/hero-embryos.jpg" alt=""></div>
+      <div class="bd"><img src="assets/img/hero-semen.jpg" alt=""></div>
+      <div class="bd"><img src="assets/img/hero-sport.jpg" alt=""></div>
+      <div class="scrim" aria-hidden="true"></div>
+      <div class="glass-card" role="group" aria-label="Featured service">
+        <h3 class="sv-title" id="ds-sv-title">Foals</h3>
+        <p class="sv-text" id="ds-sv-text">Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament.</p>
+        <a class="cta-line" style="color:var(--gold-soft)" id="ds-sv-cta" href="#heroslider">See the foals <span aria-hidden="true">→</span></a>
+        <div class="svc-tabs" role="tablist" aria-label="Choose a service to feature"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IMAGERY ================= -->
+  <section class="ds" id="imagery">
+    <h2 class="ds-title">Imagery</h2>
+    <p class="ds-note">Photography carries the living horses; typography carries the genetics. All photos come from the client's own listings, optimised to 1200px (sections) or 1920px (hero), JPG quality 82, everything under 500 KB. Every photo sits in a 12px radius. Full-bleed backdrops need at least a 1280px source: Agousha, Charina and Unique Touch stay card-size only.</p>
+    <div class="row">
+      <img src="assets/img/intro-foal-star.jpg" alt="A mare with her foal in a paddock" style="width:220px; border-radius:var(--radius-sm)">
+      <img src="assets/img/semen-detail.jpg" alt="A plaited neck in close up" style="width:220px; border-radius:var(--radius-sm)">
+      <img src="assets/img/results-unguessable.jpg" alt="A horse and rider clearing a fence in competition" style="width:220px; border-radius:var(--radius-sm)">
+    </div>
+  </section>
+
+  <!-- ================= LIGHT/DARK ================= -->
+  <section class="ds" id="lightdark">
+    <h2 class="ds-title">Light and dark sections</h2>
+    <p class="ds-note">The ivory ground carries the page. Dark navy moments are rationed: the hero, at most two content bands, and the footer, and no two dark grounds may ever touch. One tinted band per page at most, and it is the warm alternate rather than a blue. Gold is never a ground, only an accent.</p>
+    <div class="specimen" style="padding:var(--space-2)">
+      <div style="display:flex; flex-direction:column; gap:4px">
+        <div style="background:var(--navy); color:var(--bone); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Hero (dark)</div>
+        <div style="background:var(--bone); border:1px solid var(--border); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">About (light)</div>
+        <div style="background:var(--white); border:1px solid var(--border); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Services (cards on light)</div>
+        <div style="background:var(--navy); color:var(--bone); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Sport horses (dark plate)</div>
+        <div style="background:var(--bone); border:1px solid var(--border); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Foals and broodmares (light)</div>
+        <div style="background:var(--surface); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">News (sky tint, the one tinted band)</div>
+        <div style="background:var(--bone); border:1px solid var(--border); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Instagram and contact (light)</div>
+        <div style="background:var(--navy-graphic); color:var(--bone); border-radius:8px; padding:.5em 1em; font-size:var(--text-meta)">Footer (dark)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATES ================= -->
+  <section class="ds" id="states">
+    <h2 class="ds-title">States, 404 and cookie banner</h2>
+    <h3>Loading</h3>
+    <div class="row"><div class="skeleton" style="width:220px; height:150px"></div><div style="flex:1; min-width:200px"><div class="skeleton" style="height:1.2em; margin-bottom:.5em; max-width:60%"></div><div class="skeleton" style="height:.9em; max-width:85%"></div></div></div>
+    <h3>Empty and error</h3>
+    <div class="specimen" style="text-align:center; max-width:420px"><p style="font-family:var(--font-serif); font-size:var(--text-lead); margin:0 0 .3em">Nothing here right now.</p><p style="font-weight:400; color:var(--text-muted); font-size:var(--text-small); margin:0 0 var(--space-4)">New foals arrive through the season. Ask us what is coming.</p><button class="btn btn-gold btn-sm">Contact us</button></div>
+    <h3>404 pattern</h3>
+    <div class="specimen" style="text-align:center"><p class="plaque" style="justify-content:center">Not found</p><p style="font-family:var(--font-serif); font-size:var(--text-title); margin:.3em 0">This page has left the yard.</p><a class="cta-line" href="#states">Back to the homepage <span aria-hidden="true">→</span></a></div>
+    <h3>Cookie banner</h3>
+    <div class="cookie"><p>We use a few cookies to see how the site is used. No tracking before you agree.</p><span style="display:flex; gap:.6em"><button class="btn btn-gold btn-sm">Accept</button><button class="btn btn-ghost-dark btn-sm">Decline</button></span></div>
+  </section>
+
+  <!-- ================= ICONS ================= -->
+  <section class="ds" id="icons">
+    <h2 class="ds-title">Icons</h2>
+    <p class="ds-note">House rule from the project brief: unicode characters only, no icon libraries. This overrules the generic process default (Lucide). The full working set:</p>
+    <table>
+      <tr><th>Glyph</th><th>Name</th><th>Use</th></tr>
+      <tr><td style="font-size:1.2em">→</td><td>arrow</td><td>Text CTAs</td></tr>
+      <tr><td style="font-size:1.2em">↗</td><td>external</td><td>Links leaving the page</td></tr>
+      <tr><td style="font-size:1.2em">◈</td><td>node</td><td>Damlines, genetics</td></tr>
+      <tr><td style="font-size:1.2em">◎</td><td>arch</td><td>The two bases</td></tr>
+      <tr><td style="font-size:1.2em">✓</td><td>check</td><td>Trust facts</td></tr>
+      <tr><td style="font-size:1.2em">·</td><td>dot</td><td>Meta separators</td></tr>
+      <tr><td style="font-size:1.2em">♔</td><td>crown</td><td>Sparingly, the logo's crown moment</td></tr>
+      <tr><td style="font-size:1.2em">✕</td><td>close</td><td>Dismiss</td></tr>
+      <tr><td style="font-size:1.2em">☰</td><td>menu</td><td>Mobile nav</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= DECISIONS ================= -->
+  <section class="ds" id="decisions">
+    <h2 class="ds-title">Decisions and flags</h2>
+    <table>
+      <tr><th>Decision</th><th>Status</th></tr>
+      <tr><td>Hero autoplay (6s, pause on hover and focus, stop after click, off under reduced motion) deviates from the briefing principle "nothing moves on its own"</td><td>Mark's explicit choice, 25 Aug 2026</td></tr>
+      <tr><td>Bases named Desenzano del Garda and Lanaken (the old site's Castelnuovo address predates the 2026 briefing)</td><td>Assumption, follows the newer briefing</td></tr>
+      <tr><td>Sport horses service copy is newly written, not on the client site yet</td><td>[CHECK MARK: sport horses wording]</td></tr>
+      <tr><td>Instagram section is a static grid linking to the real profile, no embedded feed</td><td>Feed embed is a later WordPress step</td></tr>
+      <tr><td>Vector logo and gold Pantone</td><td>[CHECK MARK: with client]</td></tr>
+      <tr><td>Feedback colours (success, error, warning) are proposed, the client brand has none</td><td>Proposed</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= TOKENS ================= -->
+  <section class="ds" id="tokens">
+    <h2 class="ds-title">Token table</h2>
+    <p class="ds-note">The complete <code>:root</code>, ready to copy. This is the same block that powers this very page.</p>
+    <pre id="token-dump"><code></code></pre>
+  </section>
+
+  <footer class="ds-footer">
+    <p>Stud Von Axe design system · built from the audited Cielo direction and studvonaxe.it · local working document, not for the client</p>
+  </footer>
+</main>
+</div>
+
+<script>
+/* ── Live WCAG contrast, measured from the rendered page ── */
+(function(){
+  const cs = getComputedStyle(document.documentElement);
+  const probe = document.createElement('div');
+  document.body.appendChild(probe);
+  function resolve(expr){
+    probe.style.color = expr;
+    const m = getComputedStyle(probe).color.match(/[\d.]+/g).map(Number);
+    return m.slice(0,3);
+  }
+  function lum([r,g,b]){
+    const f = c => { c/=255; return c<=.04045 ? c/12.92 : Math.pow((c+.055)/1.055, 2.4); };
+    return .2126*f(r) + .7152*f(g) + .0722*f(b);
+  }
+  function ratio(fg,bg){
+    const [a,b] = [lum(resolve(fg)), lum(resolve(bg))].sort((x,y)=>y-x);
+    return (a+.05)/(b+.05);
+  }
+  const pairs = [
+    ['Body text',        'var(--navy)',       'var(--bone)'],
+    ['Muted text',       'var(--text-muted)', 'var(--bone)'],
+    ['Gold as text ink', 'var(--accent-ink)', 'var(--bone)'],
+    ['Raw gold as text', 'var(--gold)',       'var(--bone)'],
+    ['Ink on sky band',  'var(--navy)',       'var(--sky)'],
+    ['Ink on card',      'var(--navy)',       'var(--white)'],
+    ['Dark body',        'var(--bone)',       'var(--navy-graphic)'],
+    ['Dark muted',       'var(--dark-muted)', 'var(--navy-graphic)'],
+    ['Gold soft on dark','var(--gold-soft)',  'var(--navy-graphic)'],
+    ['White on navy',    'var(--white)',      'var(--navy)'],
+    ['Button: navy on gold', 'var(--navy)',   'var(--gold)'],
+    ['Never: white on gold', 'var(--white)',  'var(--gold)'],
+  ];
+  const table = document.getElementById('contrast-table');
+  for (const [label, fg, bg] of pairs){
+    const r = ratio(fg,bg);
+    const verdict = r >= 4.5 ? ['pass','AA'] : r >= 3 ? ['large','AA large only'] : ['fail','fails AA'];
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      `<td><span class="pair" style="color:${fg}; background:${bg}">Sample</span></td>`+
+      `<td>${label}</td><td>${r.toFixed(2)}:1</td>`+
+      `<td><span class="badge ${verdict[0]}">${verdict[1]}</span></td>`;
+    table.appendChild(tr);
+  }
+  probe.remove();
+})();
+
+/* ── Token dump: read the :root block out of this stylesheet ── */
+(function(){
+  let out = ':root{\n';
+  for (const sheet of document.styleSheets){
+    let rules;
+    try { rules = sheet.cssRules; } catch { continue; } /* cross-origin (fonts) */
+    for (const rule of rules){
+      if (rule.selectorText === ':root'){
+        for (const prop of rule.style){
+          out += `  ${prop}: ${rule.style.getPropertyValue(prop).trim()};\n`;
+        }
+      }
+    }
+  }
+  out += '}';
+  document.querySelector('#token-dump code').textContent = out;
+})();
+
+/* ── Tabs (design system demo) ── */
+(function(){
+  const list = document.querySelector('.tabs');
+  const tabs = [...list.querySelectorAll('[role=tab]')];
+  function select(tab){
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  list.addEventListener('click', e => { const t = e.target.closest('[role=tab]'); if (t) select(t); });
+  list.addEventListener('keydown', e => {
+    const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!dir) return;
+    e.preventDefault();
+    const i = tabs.indexOf(document.activeElement);
+    const next = tabs[(i + dir + tabs.length) % tabs.length];
+    select(next); next.focus();
+  });
+})();
+
+/* ── Hero service slider (mini, same engine as the homepage) ── */
+(function(){
+  const SERVICES = [
+    { id:'foals',   num:'01', title:'Foals',        text:'Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament.', cta:'See the foals',     href:'#heroslider', thumb:'assets/img/thumb-foals.jpg' },
+    { id:'embryos', num:'02', title:'Embryos',      text:'Frozen and implanted, from our own damlines. Crosses made on pedigree and produce.',           cta:'See the crosses',  href:'#heroslider', thumb:'assets/img/thumb-embryos.jpg' },
+    { id:'semen',   num:'03', title:'Semen',        text:'Frozen semen through Avantea in Cremona, shipped across the EU and for export.',                cta:'About semen sales', href:'#heroslider', thumb:'assets/img/thumb-semen.jpg' },
+    { id:'sport',   num:'04', title:'Sport horses', text:'Horses from the programme now proving themselves in sport, and mares available for sport and breeding.', cta:'See the results', href:'#heroslider', thumb:'assets/img/thumb-sport.jpg' },
+  ];
+  const root = document.getElementById('ds-hero');
+  const backs = [...root.querySelectorAll('.bd')];
+  const list = root.querySelector('.svc-tabs');
+  const title = document.getElementById('ds-sv-title');
+  const text = document.getElementById('ds-sv-text');
+  const cta = document.getElementById('ds-sv-cta');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let active = 0, timer = null, stopped = reduced;
+
+  SERVICES.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'svc-tab'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', i === 0);
+    b.setAttribute('aria-label', s.title);
+    b.tabIndex = i === 0 ? 0 : -1;
+    b.innerHTML = `<img src="${s.thumb}" alt=""><span class="num" aria-hidden="true">${s.num}</span>`;
+    b.addEventListener('click', () => { stop(); select(i); });
+    b.addEventListener('keydown', e => {
+      let next = null;
+      if (e.key === 'ArrowRight') next = (active + 1) % SERVICES.length;
+      if (e.key === 'ArrowLeft')  next = (active - 1 + SERVICES.length) % SERVICES.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End')  next = SERVICES.length - 1;
+      if (next === null) return;
+      e.preventDefault(); stop(); select(next);
+      list.children[next].focus();
+    });
+    list.appendChild(b);
+  });
+
+  function select(i){
+    active = i;
+    backs.forEach((el, j) => el.classList.toggle('on', j === i));
+    [...list.children].forEach((t, j) => {
+      t.setAttribute('aria-selected', j === i);
+      t.tabIndex = j === i ? 0 : -1;
+    });
+    const s = SERVICES[i];
+    title.textContent = s.title;
+    text.textContent = s.text;
+    cta.firstChild.textContent = s.cta + ' ';
+    cta.href = s.href;
+  }
+  function tick(){ if (!stopped) select((active + 1) % SERVICES.length); }
+  function start(){ if (!stopped && !timer) timer = setInterval(tick, 6000); }
+  function pause(){ clearInterval(timer); timer = null; }
+  function stop(){ stopped = true; pause(); }
+  root.addEventListener('pointerenter', pause);
+  root.addEventListener('pointerleave', () => start());
+  root.addEventListener('focusin', pause);
+  root.addEventListener('focusout', () => start());
+  start();
+})();
+</script>
+</body>
+</html>

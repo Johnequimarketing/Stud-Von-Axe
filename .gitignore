@@ -19,3 +19,31 @@ deploy/hero-final.html
 # Never deploy or commit scratch copies
 preview/
 .claude/
+
+# ── Working material, deliberately not in the repository ──────────────
+# These were all local-only excludes until now. They belong in .gitignore
+# so John gets the same rules instead of discovering them by accident.
+
+# The React explorations live on their own branches, checked out as git
+# worktrees inside this folder. They must never be committed onto main.
+v2-b-notturno/
+v2-c-tenuta/
+v2-d-cielo/
+
+# 292 MB of horse content harvested from the live site
+content/
+
+# 575 MB of zip parts from an old transfer
+_to_delete/
+
+# 326 MB of photograph originals pulled from studvonaxe.it, with the
+# manifest that records which page each one came from. Working material:
+# the site only ever serves the optimised copies in assets/img.
+assets/source/
+
+# Concepts and variation pages, moved out of the site but kept until Mark
+# says they can go for good.
+_archive/
+
+# Local server noise
+logs/
