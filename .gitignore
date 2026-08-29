@@ -52,3 +52,5 @@ logs/
 # not tracked: one file, one place.
 deploy/assets/
 deploy/index.html
+deploy/news/
+deploy/news-data.js
