@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Feedback and audit log</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Internal working document, not a page of the site. -->
+<meta name="internal-doc" content="true">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#12233d; --navy-deep:#0a1526; --gold:#b3924f;
+  --base:#faf7f2; --base-alt:#f1ebe0; --ink:#14202e; --ink-soft:#4d5761;
+  --white:#ffffff; --line:#14202e1f;
+  --display:'Fraunces',serif; --body:'Manrope',sans-serif;
+  --wrap:1080px; --ease:cubic-bezier(.25,.1,.25,1);
+  --gutter:clamp(1.25rem,5vw,3rem); --r:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--base);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.62}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:var(--navy)}
+.wrap{width:min(var(--wrap),100% - (2*var(--gutter)));margin-inline:auto}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.top{padding:clamp(2.6rem,6vw,4.4rem) 0 clamp(1.6rem,3vw,2.4rem);border-bottom:1px solid var(--line)}
+.kick{margin:0;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,3.4vw + 1rem,3rem);line-height:1.05;
+  letter-spacing:-.02em;margin:.6rem 0 .9rem;color:var(--navy)}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{max-width:68ch;color:var(--ink-soft);margin:0}
+.how{margin-top:1.6rem;padding:1.1rem 1.3rem;border-left:2px solid var(--gold);background:var(--base-alt);
+  font-size:15px;color:var(--ink-soft);max-width:74ch}
+.how b{color:var(--navy)}
+
+section{padding:clamp(2.4rem,5vw,3.6rem) 0 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2vw + .6rem,2rem);
+  letter-spacing:-.015em;color:var(--navy);margin:0 0 .4rem}
+.sub{margin:0 0 1.6rem;color:var(--ink-soft);max-width:70ch;font-size:15px}
+
+.item{display:grid;gap:.55rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.rule{font-family:var(--display);font-size:1.15rem;line-height:1.25;color:var(--navy);margin:0}
+.said{margin:0;font-size:14.5px;color:var(--ink-soft)}
+.said q{font-style:italic;color:var(--navy)}
+.said q::before{content:"\201C"}
+.said q::after{content:"\201D"}
+.check{margin:0;font-size:14px;color:var(--ink-soft);padding-left:1.1rem;position:relative}
+.check::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;
+  background:var(--gold)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+.tag{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:.35em .7em;border-radius:100px;background:var(--base-alt);color:var(--ink-soft)}
+.tag--auto{background:var(--navy-deep);color:var(--white)}
+.tag--eye{background:color-mix(in srgb,var(--gold) 22%,transparent);color:var(--navy)}
+.tag--hard{background:#7a1f1f;color:var(--white)}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:.6rem}
+th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft)}
+td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-radius:5px}
+.foot{padding:2.4rem 0 4rem;color:var(--ink-soft);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <p class="kick">Feedback and audit log</p>
+  <h1>Every correction, and the check that <em>catches</em> it next time.</h1>
+  <p class="lede">Mark's feedback across the build, in his own words, turned into something checkable.
+  A rule that only lives in a conversation gets broken again; a rule with a check behind it does not.
+  This page is read before starting and run through before handing anything back.</p>
+  <div class="how"><b>How to use it.</b> Run <code>node scripts/audit-homepage.mjs &lt;file&gt;</code> first,
+  which now covers twenty checks automatically. Then walk the items tagged <b>by eye</b>, because a
+  script cannot tell whether a sentence is true. Nothing goes to Mark with a red line in the audit.</div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>Hard rules</h2>
+  <p class="sub">These were said sharply, twice, or both. Breaking one of these is the failure mode
+  that costs the most trust.</p>
+
+  <div class="item">
+    <p class="rule">Never draw a logo, a crown or a wordmark</p>
+    <p class="said">He said: <q>niet met een eigen gemaakt iets</q> and <q>nooit zelfgemaakte logo's
+    gebruiken!!</q> Only the supplied files in <code>assets/logo</code> may stand for the brand.</p>
+    <p class="check">Checked: the audit fails on any class containing wordmark, crown or brand-mark, and
+    warns on any inline SVG that is not a country flag.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A logo never sits on a ground it cannot be seen on</p>
+    <p class="said">He said: <q>Wit logo op witte achtergrond kan nooit! Allemaal domme fouten waar je
+    tegenaan loopt.</q></p>
+    <p class="check">Checked: every logo image must carry <code>data-ground</code>, and it must agree with
+    the <code>-onlight</code> or <code>-ondark</code> in the filename.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">An eyebrow never carries a number or a dash in front of it</p>
+    <p class="said">He said: <q>eyebrows wil ik nooit een strepje of nummer voor hebben</q>. It had already
+    been a rule once and crept back in through a plaque pattern.</p>
+    <p class="check">Checked: the audit reads every eyebrow and fails on a leading digit or dash.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Nothing is committed or pushed without being asked</p>
+    <p class="said">He said: <q>only locally we will edit, i will let you know when we need to push
+    something to the github afterwards</q>.</p>
+    <p class="check">By eye, every time: end the message by stating that nothing was committed or pushed.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Work in the file that was named, and nowhere else</p>
+    <p class="said">He said: <q>je hebt niet het juiste bestand bewerkt zoals gevraagd</q>. The working
+    page is <code>direction-b-editorial.html</code> unless he says otherwise.</p>
+    <p class="check">By eye: confirm the filename in the reply before starting.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Do what was asked, not what seems to follow from it</p>
+    <p class="said">He said: <q>alleen foals hoefde daar weg, meer niet</q>, after the foals moved out of
+    the horses grid and the category filter was removed along with them. The dataset had one category
+    left; the client had three.</p>
+    <p class="check">By eye: when a change makes something else look redundant, say so and ask, do not
+    remove it in the same pass.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Content and truth</h2>
+  <p class="sub">He said: <q>ik wil geen informatie dat niet klopt</q>. Everything on the page has to
+  trace back to the client's own site, the audited content files, or the meeting.</p>
+
+  <div class="item">
+    <p class="rule">Every number on the page must be countable in the data</p>
+    <p class="said">Found in the audit: the hero claimed <q>ten countries</q> for three passes. The data
+    holds six. The programme claimed seventeen pairings; the file lists fifteen.</p>
+    <p class="check">Checked: the audit lists every count stated in the copy so a human verifies each one.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A photograph may only name a horse when it came from that horse's own page</p>
+    <p class="said">Their own listing pages show other horses. A stand-in that names the wrong animal is
+    the worst kind of error on a breeding site.</p>
+    <p class="check">Checked: any frame marked as a placeholder must carry a visible <q>Photo pending</q>
+    label.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">No sentence that sounds good but cannot be sourced</p>
+    <p class="said">Written and then removed on his instruction to audit: <q>every result comes out of the
+    same damlines the foals and embryos do</q>. Two of the four results do not, and one cannot be checked.
+    Also removed: <q>usually the same day</q>, a promise about response time that nothing backs.</p>
+    <p class="check">By eye: for every claim, name the source. If there is none, the sentence goes.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">One fact, one spelling, one place</p>
+    <p class="said">Found in the audit: the footer gave an address in Castelnuovo Garfagnana while the rest
+    of the page said Desenzano del Garda, 250km apart. An Italian number was labelled <q>Belgium desk</q>.
+    One horse appeared as both <q>Emerald van t Ruytershof</q> and <q>van 't Ruytershof</q>.</p>
+    <p class="check">By eye: read the whole page in one pass looking only for the same fact stated twice.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A link must land somewhere</p>
+    <p class="said">After the semen band was removed, four links still pointed at it and did nothing at
+    all when clicked.</p>
+    <p class="check">Checked: the audit fails on any in-page anchor with no matching id.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Never write a number that can change</p>
+    <p class="said">He said: <q>Fourteen horses on this page, hoeft niet die titel, als het aantal
+    verandert wordt het lastig, dus nooit dat zo vernoemen in teksten als iets variabel is.</q></p>
+    <p class="check">Every count on the page is now counted from the list at render time: the banner
+    sentence, the filter chips, the run labels. A heading carries no number at all.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Use the words this market uses, not ours</p>
+    <p class="said">He asked: <q>en pairing? is dat echt een woord dat gebruikt wordt in de equestrian
+    world?</q> It is not. The word appeared nowhere in a sentence quoted from their own site: we had
+    introduced it. The jumping world says a horse is by a stallion out of a mare, and calls the
+    combination a <b>cross</b>. Twenty-eight uses were changed.</p>
+    <p class="check">Checked: a house-word list now fails the audit, with the better word named. Same
+    reason <q>on the record</q> went: journalist English, not horse English.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A heading may not decide what a section is allowed to contain</p>
+    <p class="said">He said: <q>what the horses have done, weet je niet, misschien is het wel heel ander
+    nieuws? dat weet je niet toch?</q> The section is filled by the client later, so the heading has to
+    fit everything that could land in it.</p>
+    <p class="check">By eye: for any section the client will fill, read the heading against the items
+    that do <b>not</b> exist yet.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A label may not promise a page that does not exist</p>
+    <p class="said">Every news card said <q>Read it</q>. There is no news page, and News is not even on
+    the page list the owners sent. The cards stopped being links.</p>
+    <p class="check">Checked in part by the dead-anchor rule; the rest by eye, because a link to
+    <code>#contact</code> is technically alive and still a lie.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A heading about the client is never ours to invent</p>
+    <p class="said">He asked: <q>bred on judgement, waar heb je dat vandaan, ik vind dat beetje zwak.</q>
+    The honest answer was that it came from nowhere: it was written because it sounded good. Replaced
+    with their own sentence from three lines below it, <q>from the cross to the day it leaves</q>.</p>
+    <p class="check">By eye: for a heading, name the sentence on their site it comes from, or do not
+    write it.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Their voice, not ours</p>
+    <p class="said">He said the tone was <q>shit</q> and to research their own site. Their words:
+    <q>The blood never lies</q>, <q>honesty and absolute transparency in all our sales</q>, <q>born from a
+    great passion for horses</q>, <q>many years spent on the best German farms</q>. Pedigrees in brackets,
+    plain sentences, first person plural.</p>
+    <p class="check">Checked: no long dashes, no dash-written ranges, no filler words. The rest by eye
+    against the tone section in the design system.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Open contradictions are surfaced, never smoothed over</p>
+    <p class="said">Their positioning is <q>sold direct, never through auction</q>, stated four times in
+    their own copy. Their own news item is a top price at an auction. Both are theirs, so the client
+    decides, and it is named at the top of the reply rather than quietly resolved.</p>
+    <p class="check">By eye: a contradiction between two client statements is reported, not fixed.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Design</h2>
+  <p class="sub">He said: <q>Echt heel lelijk en inconsistent op alle vlakken</q>. Most of what follows is
+  a version of one rule: the page owns one recipe per thing.</p>
+
+  <div class="item">
+    <p class="rule">One card, one button, one slider mechanism</p>
+    <p class="said">Improvised sections instead of the existing recipes were the original complaint. The
+    foals and the embryos now use the same card; the two programme runs and the hero use the same track.</p>
+    <p class="check">By eye: before adding a component, find the one the page already has.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Brand colours are sampled from the files, never judged by eye</p>
+    <p class="said">He asked: <q>kloppen de accent kleuren ook met de kleuren van het logo?</q> They did
+    not. The page navy was <code>#12233d</code>; the logo's navy is <code>#0d1d36</code>. Both are now the
+    logo's own values, and the contrast floor went up rather than down.</p>
+    <p class="check">Reading the pixels also found something no eye would: the two supplied logo files
+    carry <b>different golds</b>, <code>#b59148</code> in the icon and <code>#b57f24</code> in the
+    horizontal logo. Open with the client.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">One eyebrow recipe, and it is written once</p>
+    <p class="said">He said: <q>eyebrows zijn niet consistent, ik zie verschillen in eyebrow grootte,
+    kleuren, lettertypes</q>. There were six: an unstyled 18px paragraph, a 12.5px navy label, a 12px
+    white one, and three golds at 10.5, 11 and 12px. The design system specified a seventh, in the serif.</p>
+    <p class="check">Decided with Mark on 29 Aug: the page's Manrope wins over the design system's
+    Fraunces, and gold on every ground including photographs. Section eyebrow 11px at .22em, card label
+    10px at .18em, and the type is declared in <b>one</b> rule that every class points at. A component
+    that repeats the type will disagree with it eventually.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Two typefaces, and nothing else</p>
+    <p class="said">Checked on the same question: Fraunces for display, Manrope for everything else.
+    Measured across every element on the page, those two are the only families in use.</p>
+    <p class="check">Checked: the audit fails on any font-family that is not a token.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Sub-labels are not capitalised</p>
+    <p class="said">He said: <q>ik wil de subtitels zoals foals, frozen embryo's etc, niet in capital</q>.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Cut in means the background cuts in, not the plate</p>
+    <p class="said">He said: <q>ik wil de ruimte erachter cut in, dus de achtergrondkleur om de call to
+    action box, net zoals bij de hero</q>. The ivory ground hangs into the band below with rounded
+    corners, mirroring the hero tray. A plate with a negative margin is not the same gesture.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Rounded and contained beats full bleed</p>
+    <p class="said">He said: <q>wilde de ronde border radius houden contained in het scherm, nu ziet er
+    niet uit</q>. Plates keep the page's rounding and the page's width.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">No loose type on the ivory ground</p>
+    <p class="said">He said: <q>geen tekst op de lichte achtergrond zoals je nu hebt wat er niet uit
+    ziet</q>. Section copy lives inside a card, a plate or a band.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Two things that sit side by side share their treatment</p>
+    <p class="said">He said: <q>de box van foals en de box van embryo's heeft niet dezelfde
+    achtergrondkleur</q>.</p>
+    <p class="check">By eye: measure the computed value of both, do not judge it from the source.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Variations are genuinely different from one another</p>
+    <p class="said">He said: <q>allemaal verschillend van elkaar, uniek, design, iets aparts out of the
+    box maar in stud von axe stijl</q>, and keep them: <q>bewaar de variaties die we nu maken</q>. Each
+    set is one page, listed in the overview, and each option changes the mechanism rather than the
+    spacing.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Structure and search</h2>
+  <p class="sub">He asked: <q>hoe zit het met de seo, heeft alles de juiste h1, h2, h3, h4 tags?</q>
+  It did not, and none of the head a search engine reads existed at all.</p>
+
+  <div class="item">
+    <p class="rule">One h1, and never a level skipped</p>
+    <p class="said">The page had one h1, which was right, but the invitation was an h2 sitting between
+    the two h3s of the programme, and the footer columns jumped straight to h5.</p>
+    <p class="check">Checked: the audit fails on more or fewer than one h1 and on any skipped level.
+    The invitation became a paragraph, because a call to action is not a section.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A card that is not a link still needs a heading</p>
+    <p class="said">The news cards carry the item itself, so their titles are h3 under the section's h2.
+    That is what puts them in the outline a crawler reads.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The head a search engine reads is part of the build, not a later task</p>
+    <p class="said">Missing entirely: canonical, Open Graph, Twitter card, structured data. Now present,
+    with the domain flagged because .com against .it is still open.</p>
+    <p class="check">Checked: the audit fails if title, description, canonical, og:title, og:image or
+    structured data is missing, and warns while the page carries noindex.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Never put an unverified fact in structured data</p>
+    <p class="said">The postal address is contested: the old site says Castelnuovo Garfagnana, the brief
+    says Desenzano del Garda. It is therefore absent from the structured data, because a search engine
+    acts on what is written there.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A draft stays out of the index</p>
+    <p class="said">The page carries noindex while it is a concept. That line has to come off on the day
+    it goes live, and not a day before.</p>
+    <p class="check">Checked: the audit says so on every run for as long as it is there.</p>
+    <div class="tags"><span class="tag tag--auto">Automated</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>The mistakes, and what now catches them</h2>
+  <p class="sub">Every one of these cost time in this build. They are listed so the check is obvious
+  rather than the lesson being memorable.</p>
+
+  <table>
+    <thead><tr><th>What went wrong</th><th>Why</th><th>The check now</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>540 lines of CSS deleted in one edit</td>
+        <td>A cut between two markers assumed they were adjacent. The first <code>.hz__ph</code> was in
+        the horses block, the last was an override at the end of the sheet, and everything between them
+        went with it.</td>
+        <td>A region cut must prove what it does <b>not</b> contain, plus a maximum length. Brace balance
+        after every CSS edit.</td>
+      </tr>
+      <tr>
+        <td>The about photo vanished, twice over</td>
+        <td><code>replace(x, y, 1)</code> hit the first occurrence in the file, which was in the about
+        navigator rather than in the embryo data it was meant for.</td>
+        <td>Assert <code>count(x) == 1</code> before replacing, or match on a longer, unique string.</td>
+      </tr>
+      <tr>
+        <td>Background photographs dropping into the layout, three times</td>
+        <td><code>.x &gt; *</code> carries the same specificity as <code>.x__bg</code> and comes later, so
+        it overrode <code>position:absolute</code> and the image became a flow item.</td>
+        <td>Any <code>&gt; *</code> rule that sets position or z-index must exclude the absolutely placed
+        children with <code>:not()</code>.</td>
+      </tr>
+      <tr>
+        <td>A heading almost invisible on navy</td>
+        <td>The reset colours <code>h1</code> to <code>h4</code> with the ink colour, which beats a colour
+        the parent merely passes down.</td>
+        <td>Every heading on a dark panel states its own colour.</td>
+      </tr>
+      <tr>
+        <td>An invisible element still taking space, three times</td>
+        <td><code>opacity:0</code> hides; it does not collapse. Nor does a margin on a zero height box, and
+        an inline element still generates a line box.</td>
+        <td>Collapsed means <code>max-height:0</code> and <code>margin:0</code> together, and measure the
+        rendered height rather than trusting the source.</td>
+      </tr>
+      <tr>
+        <td>A shadow cut off in a straight line</td>
+        <td><code>overflow-x:auto</code> makes the block axis a scrollport too, so it clips vertically.</td>
+        <td>A card run gives its shadow room in padding and hands the surplus back with a negative margin.</td>
+      </tr>
+      <tr>
+        <td>The page scrolling sideways by 1360px</td>
+        <td>A grid item defaults to <code>min-width:auto</code>, so a scroll track stretched its column
+        instead of scrolling inside it.</td>
+        <td><code>min-width:0</code> on grid and flex children that hold a track. Check
+        <code>scrollWidth &gt; innerWidth</code> in the browser after every layout change.</td>
+      </tr>
+      <tr>
+        <td>Card text running together on one line</td>
+        <td>A <code>span</code> inside a card is inline. The whole card is one link, which cannot contain
+        block elements, so the block behaviour has to be set back deliberately.</td>
+        <td>Every styled span in a card gets <code>display:block</code>.</td>
+      </tr>
+      <tr>
+        <td>The contrast check never ran on this page</td>
+        <td>The palette parser expected an unindented <code>:root</code> block and different token names,
+        so it failed silently on every run for weeks.</td>
+        <td>The parser is indentation tolerant and normalises names; skipped pairs are now reported.</td>
+      </tr>
+      <tr>
+        <td>A screenshot showing a stale page</td>
+        <td>The browser pane returned occluded or cached frames.</td>
+        <td>Render with <code>chrome-headless-shell</code>, and pin viewport-height sections in a temporary
+        copy so <code>svh</code> does not stretch in a tall window.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>What the audit covers now</h2>
+  <p class="sub">Twenty checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
+  Green is the condition for handing anything back, not a nice extra.</p>
+  <table>
+    <thead><tr><th>Check</th><th>Catches</th></tr></thead>
+    <tbody>
+      <tr><td>Raw hex outside <code>:root</code></td><td>A colour that should have been a token. Alpha values and mask stops are exempt: those are treatments.</td></tr>
+      <tr><td>Opaque <code>rgb()</code> outside <code>:root</code></td><td>The same, for the other notation.</td></tr>
+      <tr><td>Font families</td><td>A typeface named directly instead of through a token.</td></tr>
+      <tr><td>Contrast, ten pairs</td><td>Text that fails WCAG AA on its own ground.</td></tr>
+      <tr><td>Long dashes, spaced hyphens, dash ranges</td><td>The punctuation the brief bans.</td></tr>
+      <tr><td>Filler words</td><td>Marketing language that says nothing.</td></tr>
+      <tr><td>Eyebrows</td><td>A number or a dash in front of one.</td></tr>
+      <tr><td>Logo grounds</td><td>A reversed logo on a light ground, or a missing <code>data-ground</code>.</td></tr>
+      <tr><td>Drawn marks</td><td>A hand-made crown or wordmark standing in for the brand.</td></tr>
+      <tr><td>In-page anchors</td><td>A link to a section that no longer exists.</td></tr>
+      <tr><td>Duplicate ids</td><td>Two elements sharing an id, which breaks label pairing silently.</td></tr>
+      <tr><td>Labels and fields</td><td>A label pointing at nothing, or a field with no label.</td></tr>
+      <tr><td>Placeholder photographs</td><td>A stand-in frame with no <q>Photo pending</q> label.</td></tr>
+      <tr><td>House words</td><td>Words that are ours rather than this market's, with the better word named. <code>pairing</code> becomes cross, <code>mediation</code> becomes brokering.</td></tr>
+      <tr><td>Counts in copy</td><td>Lists every number stated, for a human to check against the data. A number that can change should be counted at render time instead.</td></tr>
+      <tr><td>Heading structure</td><td>More than one h1, or a level skipped.</td></tr>
+      <tr><td>Search head</td><td>A missing title, description, canonical, social card or structured data. Warns while noindex is on.</td></tr>
+      <tr><td>Assets exist</td><td>A referenced file that is not on disk.</td></tr>
+      <tr><td>Asset weight</td><td>Anything over 500 KB.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Before handing anything back</h2>
+  <div class="item">
+    <p class="check">The audit runs green on the file that changed.</p>
+    <p class="check">The browser reports no console errors and no sideways scroll.</p>
+    <p class="check">The change is measured in the browser, not judged from the source.</p>
+    <p class="check">Every new claim in the copy has a named source.</p>
+    <p class="check">Rendered at 1440 and at 390, and both were actually looked at.</p>
+    <p class="check">Open questions for the client are listed, not silently decided.</p>
+    <p class="check">The reply states that nothing was committed or pushed.</p>
+  </div>
+</section>
+
+<p class="wrap foot">Kept alongside <a href="00-design-system.html">the design system</a> and
+<a href="01-build-checklist.html">the build checklist</a>. When new feedback arrives it is added here
+first, and only then acted on.</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Build checklist</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Internal working document, not a page of the site. -->
+<meta name="internal-doc" content="true">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Tokens copied verbatim from 00-design-system.html. */
+:root{
+  --navy:#0d1d36; --navy-graphic:#0b1b34; --gold:#b57f24;
+  --bone:#f4f0e7; --sky:#dfe8ef; --white:#ffffff;
+  --success:#3d6b4f; --error:#a03c2e; --warning:#8a6a1d;
+  --bg:var(--bone); --card:var(--white); --surface:var(--sky);
+  --text:var(--navy);
+  --text-soft:color-mix(in srgb, var(--navy) 90%, var(--sky));
+  --text-muted:color-mix(in srgb, var(--navy) 78%, var(--sky));
+  --accent:var(--gold);
+  --accent-ink:color-mix(in srgb, var(--gold) 46%, var(--navy));
+  --gold-soft:color-mix(in srgb, var(--gold) 62%, var(--white));
+  --border:color-mix(in srgb, var(--navy) 16%, transparent);
+  --border-strong:color-mix(in srgb, var(--navy) 34%, transparent);
+  --dark-bg:var(--navy-graphic); --dark-text:var(--bone);
+  --dark-muted:color-mix(in srgb, var(--bone) 74%, var(--navy-graphic));
+  --focus:var(--gold);
+  --font-display:'Jost', system-ui, sans-serif;
+  --font-serif:'Libre Caslon Display', Georgia, serif;
+  --font-serif-italic:'Libre Caslon Text', Georgia, serif;
+  --text-label:.75rem; --text-meta:.8125rem; --text-small:.9375rem;
+  --text-body:clamp(1.0625rem,.35vw + 1rem,1.125rem);
+  --text-lead:clamp(1.1875rem,.6vw + 1.05rem,1.375rem);
+  --text-title:clamp(1.75rem,2.4vw + .9rem,2.5rem);
+  --text-heading:clamp(2rem,3.6vw + 1rem,3.5rem);
+  --leading-tight:1.06; --leading-body:1.62; --tracking-label:.22em;
+  --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
+  --space-5:1.5rem; --space-6:2rem; --space-7:3rem; --space-8:4rem;
+  --radius-sm:12px; --radius-card:18px; --radius-plate:22px;
+  --radius-control:12px; --radius-chip:8px;
+  --shadow-card:0 18px 40px -26px color-mix(in srgb, var(--navy) 45%, transparent);
+  --ease:cubic-bezier(0.32,0.08,0.24,1); --dur-fast:300ms;
+  --container:1040px; --gutter:clamp(1.25rem,4vw,3rem);
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-display); font-weight:300;
+  font-size:var(--text-body); line-height:var(--leading-body)}
+a{color:inherit}
+ul{margin:0; padding:0; list-style:none}
+.wrap{width:min(var(--container),100% - (var(--gutter)*2)); margin-inline:auto;
+  padding-block:clamp(2.5rem,6vw,4.5rem) var(--space-8)}
+:focus-visible{outline:2px solid var(--focus); outline-offset:3px}
+
+.plaque{display:inline-flex; align-items:baseline; gap:.6em; font-size:var(--text-label);
+  font-weight:600; letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--accent-ink)}
+.plaque .n{color:var(--text-muted); font-weight:500}
+h1{font-family:var(--font-serif); font-weight:400; font-size:var(--text-heading);
+  line-height:var(--leading-tight); letter-spacing:-.02em; margin:var(--space-4) 0 var(--space-4); max-width:22ch}
+h1 em{font-family:var(--font-serif-italic); font-style:italic; color:var(--accent-ink)}
+.lede{color:var(--text-soft); max-width:62ch; margin:0 0 var(--space-4); font-weight:400}
+.lede a{color:var(--accent-ink)}
+
+/* Progress */
+.progress{position:sticky; top:0; z-index:10; margin-block:var(--space-5) var(--space-6);
+  padding:var(--space-4) var(--space-5); background:var(--card);
+  border-radius:var(--radius-card); box-shadow:var(--shadow-card);
+  display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-4); justify-content:space-between}
+.progress .count{font-family:var(--font-serif); font-size:var(--text-title); line-height:1}
+.progress .count small{font-family:var(--font-display); font-size:var(--text-label); font-weight:600;
+  letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--text-muted); margin-left:.6em}
+.bar{flex:1; min-width:200px; height:8px; border-radius:99px;
+  background:color-mix(in srgb, var(--navy) 10%, transparent); overflow:hidden}
+.bar i{display:block; height:100%; width:0; border-radius:99px; background:var(--accent);
+  transition:width var(--dur-fast) var(--ease)}
+.reset{border:1px solid var(--border-strong); background:transparent; color:var(--text);
+  border-radius:var(--radius-control); padding:.5em 1.1em; cursor:pointer;
+  font-family:var(--font-display); font-size:var(--text-label); font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase}
+.reset:hover{border-color:var(--navy)}
+
+/* Groups */
+section{margin-top:var(--space-7)}
+h2{font-family:var(--font-serif); font-weight:400; font-size:var(--text-title);
+  line-height:1.1; letter-spacing:-.015em; margin:0 0 var(--space-2)}
+.gnote{color:var(--text-soft); font-weight:400; font-size:var(--text-small);
+  max-width:62ch; margin:0 0 var(--space-4)}
+.items{display:grid; gap:var(--space-3)}
+
+.item{display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-4);
+  align-items:start; padding:var(--space-4) var(--space-5); background:var(--card);
+  border-radius:var(--radius-card); box-shadow:var(--shadow-card);
+  transition:opacity var(--dur-fast) var(--ease)}
+.item.done{opacity:.55}
+.item.done .what{text-decoration:line-through; text-decoration-color:var(--border-strong)}
+.item input[type=checkbox]{width:22px; height:22px; margin-top:.15em; accent-color:var(--navy); cursor:pointer; flex:none}
+.what{font-weight:400}
+.what b{font-weight:500}
+.said{display:block; margin-top:.35em; font-family:var(--font-serif-italic); font-style:italic;
+  font-size:var(--text-small); color:var(--accent-ink)}
+.why{display:block; margin-top:.35em; font-size:var(--text-meta); color:var(--text-muted)}
+
+.state{font-size:var(--text-label); font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:.35em .8em; border-radius:var(--radius-chip); white-space:nowrap; align-self:start}
+.s-ok{background:color-mix(in srgb, var(--success) 14%, var(--white)); color:var(--success)}
+.s-todo{background:color-mix(in srgb, var(--error) 12%, var(--white)); color:var(--error)}
+.s-part{background:color-mix(in srgb, var(--warning) 16%, var(--white)); color:var(--warning)}
+.s-client{background:color-mix(in srgb, var(--navy) 10%, var(--white)); color:var(--text-soft)}
+
+.legend{display:flex; flex-wrap:wrap; gap:var(--space-3); margin-top:var(--space-4);
+  font-size:var(--text-meta); color:var(--text-muted); font-weight:400}
+footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px solid var(--border);
+  font-size:var(--text-meta); font-weight:400; color:var(--text-muted)}
+@media (max-width:640px){
+  .item{grid-template-columns:auto 1fr; }
+  .item .state{grid-column:2; justify-self:start; margin-top:var(--space-2)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="plaque">Build checklist</p>
+  <h1>What the client asked for, and where we <em>stand</em>.</h1>
+  <p class="lede">Every line comes from the meeting with Stud Von Axe on 28 July 2026
+  (<a href="https://app.clickup.com/9015263960/docs/8cnm0pr-25575/8cnm0pr-17015" target="_blank" rel="noopener">ClickUp doc ↗</a>).
+  Italic text is what they said themselves. Ticks are kept in this browser.</p>
+
+  <div class="progress">
+    <span class="count"><span id="pc-done">0</span>/<span id="pc-total">0</span><small>ticked</small></span>
+    <span class="bar"><i id="pc-bar"></i></span>
+    <button class="reset" id="reset">Reset</button>
+  </div>
+
+  <div class="legend">
+    <span class="state s-ok">Done</span>
+    <span class="state s-part">Partly</span>
+    <span class="state s-todo">To do</span>
+    <span class="state s-client">On the client</span>
+  </div>
+
+  <!-- ══════════ A ══════════ -->
+  <section>
+    <h2>A · The homepage</h2>
+    <p class="gnote">What the meeting says belongs on the homepage. This is the scope of
+    <code>homepage-v3.html</code>.</p>
+    <ul class="items">
+      <li class="item" data-k="a1"><input type="checkbox"><span class="what"><b>A short "who we are" on the homepage</b>, explicitly not a heavy About page
+        <span class="said">"maybe in the first page we can add a little bit an overview about who we are and not put a page for"</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="a2"><input type="checkbox"><span class="what"><b>The four business lines weighted correctly</b>: foals, frozen embryos, implanted embryos, semen
+        <span class="why">Today the hero and the services section carry Foals, Embryos, Semen and Sport horses. Embryos have to split, and sport horses has to come out as a fourth line.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="a3"><input type="checkbox"><span class="what"><b>Bring sport horses back to its real weight</b>, and rewrite it as mediation
+        <span class="said">"we focus a little bit more in breeding … we provide to find the horses … 140, 130 … this is not really the main"</span>
+        <span class="why">It currently holds hero slide 04 plus a full dark plate. It should be one modest block about sourcing horses for clients and mares that combine sport with breeding.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="a4"><input type="checkbox"><span class="what"><b>Semen through Avantea visible as its own line</b>
+        <span class="said">"we would like to add also this part … they can see that we have also this other business"</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="a5"><input type="checkbox"><span class="what"><b>Sold status without the flags</b>
+        <span class="said">"I don't like the flags like this. I would like to see something different"</span>
+        <span class="why">We show quiet text, "Sold · GB", naming the destination country. This is the alternative they asked to see.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="a6"><input type="checkbox"><span class="what"><b>Scrolling gallery</b> instead of separate images
+        <span class="said">"we would like scrolling and not only different pieces"</span>
+        <span class="why">Our Instagram section is a static bento grid today.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="a7"><input type="checkbox"><span class="what"><b>Embedded video</b>, better presented
+        <span class="said">"maybe the way to chance to add also some video with a little bit more better"</span>
+        <span class="why">Nowhere on the page yet. Eli shoots foal video herself, so the material exists.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="a8"><input type="checkbox"><span class="what"><b>A request form on the homepage</b>, short and fast
+        <span class="why">Only phone, email and WhatsApp today. Conversion was Mark's own angle in the meeting.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="a9"><input type="checkbox"><span class="what"><b>WhatsApp CTA</b> clearly present
+        <span class="why">A text link exists. It could become a real button.</span></span><span class="state s-part">Partly</span></li>
+      <li class="item" data-k="a10"><input type="checkbox"><span class="what"><b>Fully responsive</b>, mobile named explicitly
+        <span class="why">Tested at 390, 768 and 1440.</span></span><span class="state s-ok">Done</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ B ══════════ -->
+  <section>
+    <h2>B · Site structure</h2>
+    <p class="gnote">Pages and grouping that follow from the meeting. Drives the navigation and everything built after the homepage.</p>
+    <ul class="items">
+      <li class="item" data-k="b1"><input type="checkbox"><span class="what"><b>Split embryos into frozen and implanted</b> as separate entries
+        <span class="said">"to split the part of the embryos in frozen embryos and implanted embryos"</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="b2"><input type="checkbox"><span class="what"><b>Categories</b>: foal against embryo, colt against filly, jumping against dressage</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="b3"><input type="checkbox"><span class="what"><b>The pages the owners asked for</b>, in their words, 29 August 2026:
+        Home &middot; Breeding mares &middot; Foals &middot; Embryos, split into implanted and frozen &middot; ICSI semen &middot; Sport horses &middot; Contact
+        <span class="why">This supersedes the page list taken from the July meeting. Three things changed:
+        sport horses gets a page of its own although the meeting called it non core, the semen page is named
+        <b>ICSI semen</b> rather than semen, and breeding mares becomes a page in its own right. News is no longer
+        on their list, so ask whether it stays as a page or lives on the homepage only. Plus the detail template
+        below, everything in Italian and English.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="b3a"><input type="checkbox"><span class="what"><b>Ask about News</b>: on the owners' list it is gone
+        <span class="why">It is on the homepage now as a slider. Confirm whether they want a News page behind it or not.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="b3b"><input type="checkbox"><span class="what"><b>Ask what ICSI means for the copy</b>
+        <span class="why">The site currently says frozen semen through Avantea. ICSI is a different technique and a
+        different product description, so the wording on that page has to come from them.</span></span><span class="state s-client">On the client</span></li>      <li class="item" data-k="b4"><input type="checkbox"><span class="what"><b>Confirm the domain:</b> they said .com, the live site is studvonaxe.it
+        <span class="why">Ask before anything goes on staging.</span></span><span class="state s-client">On the client</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ C ══════════ -->
+  <section>
+    <h2>C · The detail page</h2>
+    <p class="gnote">Their biggest complaint, and the template that gets used most. It deserves the most care.</p>
+    <ul class="items">
+      <li class="item" data-k="c1"><input type="checkbox"><span class="what"><b>Reorganise the genetics and the information</b>, less chaotic
+        <span class="said">"I find it a little bit chaotic and not really doesn't give the effect to catch you"</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="c2"><input type="checkbox"><span class="what"><b>Both HorseTelex and Hippomundo links</b> on every horse page, deliberately
+        <span class="said">"there is clients that they prefer to have a little bit an overview on Horsetelex and someone only Hippomundo … an extra service"</span>
+        <span class="why">Ours sit only in the footer today.</span></span><span class="state s-part">Partly</span></li>
+      <li class="item" data-k="c3"><input type="checkbox"><span class="what"><b>Update the Hippomundo blacktype presentation</b></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="c4"><input type="checkbox"><span class="what"><b>HorseTelex autofill</b> when creating a horse, where the data exists
+        <span class="why">Mark's proposal in the meeting. Note the caveat he raised: for foals the data is often not there.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="c5"><input type="checkbox"><span class="what"><b>A request form per horse</b>, short and direct</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="c6"><input type="checkbox"><span class="what"><b>Scrolling gallery and video</b> on the detail page too</span><span class="state s-todo">To do</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ D ══════════ -->
+  <section>
+    <h2>D · Brand and readability</h2>
+    <p class="gnote">They like their brand, but named readability and the typeface as concrete complaints.</p>
+    <ul class="items">
+      <li class="item" data-k="d1"><input type="checkbox"><span class="what"><b>Keep the navy, the gold, the white and the logo</b></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="d2"><input type="checkbox"><span class="what"><b>Light grounds with blue borders, gold as accent</b>
+        <span class="said">"if you have to read on the blue color … we suggested white backgrounds with blue borders"</span>
+        <span class="why">Our ground is bone with white cards, which fits. But three dark areas remain: the hero, the sport plate and the footer. The sport plate can go light.</span></span><span class="state s-part">Partly</span></li>
+      <li class="item" data-k="d3"><input type="checkbox"><span class="what"><b>A more elegant typeface</b> than the current one
+        <span class="said">"the font I think that is not really nice. It's not elegant. It's really strong"</span>
+        <span class="why">Libre Caslon Display for titles, Jost for everything else.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="d4"><input type="checkbox"><span class="what"><b>Build in the new Pantone gold</b>, not the current orange tone
+        <span class="why">Our <code>#b57f24</code> is a placeholder taken from the old site. It is one token, so the swap is a single edit.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="d5"><input type="checkbox"><span class="what"><b>Request the vector logo</b>
+        <span class="why">We only have a white raster version. The navy variant was derived by us.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="d6"><input type="checkbox"><span class="what"><b>Show proposals from classic to modern</b>
+        <span class="said">"every idea every proposal is accepted"</span>
+        <span class="why">Seven exist now: three static directions, three React directions and V3.</span></span><span class="state s-ok">Done</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ E ══════════ -->
+  <section>
+    <h2>E · Build and delivery</h2>
+    <ul class="items">
+      <li class="item" data-k="e1"><input type="checkbox"><span class="what"><b>Italian is the source language</b>, English translated automatically
+        <span class="said">"we just gonna have like the Italian version with all the information and then automatically translated"</span>
+        <span class="why">Our page is English only, and the EN and IT labels in the footer do nothing yet.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e2"><input type="checkbox"><span class="what"><b>Keep French and German possible</b> within the same plugin</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e3"><input type="checkbox"><span class="what"><b>Eli can add content herself</b>, without delay
+        <span class="said">"important for us to be a little bit flexible like that she can keep working on"</span>
+        <span class="why">This shapes the Elementor build: reusable blocks, nothing bespoke that only we can edit. See <code>docs/elementor-build-map.md</code> in the Cielo branch.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e4"><input type="checkbox"><span class="what"><b>Explanation videos for Eli</b> at handover</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e5"><input type="checkbox"><span class="what"><b>SEO setup</b>, including findability through AI, per language</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e6"><input type="checkbox"><span class="what"><b>Staging first, then live with no downtime</b>, migrating every current horse</span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e7"><input type="checkbox"><span class="what"><b>Request access</b> to the current site, domain and hosting</span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="e8"><input type="checkbox"><span class="what"><b>Finalise the Hippomundo agreement</b> for blacktype data</span><span class="state s-client">On the client</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ F ══════════ -->
+  <section>
+    <h2>F · House rules for everything we make</h2>
+    <p class="gnote">From the project brief and the design system. The audit guards whatever can be guarded automatically:
+    <code>node scripts/audit-homepage.mjs</code>.</p>
+    <ul class="items">
+      <li class="item" data-k="f1"><input type="checkbox"><span class="what"><b>Human English, no long dashes</b> used as a pause
+        <span class="why">Guarded automatically.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f2"><input type="checkbox"><span class="what"><b>Real content from studvonaxe.it</b>, never lorem ipsum, never an invented fact</span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f3"><input type="checkbox"><span class="what"><b>Every colour a CSS variable</b>, no loose hex outside <code>:root</code>
+        <span class="why">Guarded automatically.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f4"><input type="checkbox"><span class="what"><b>Unicode icons, no icon library</b></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f5"><input type="checkbox"><span class="what"><b>The logo matches its ground</b>: <code>-onlight</code> on light, <code>-ondark</code> on dark
+        <span class="why">Guarded automatically since the white on white mistake.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f6"><input type="checkbox"><span class="what"><b>WCAG AA as the floor</b>, and contrast reported honestly where it just misses
+        <span class="why">Guarded automatically across eleven text and ground pairs.</span></span><span class="state s-ok">Done</span></li>
+      <li class="item" data-k="f7"><input type="checkbox"><span class="what"><b>A photo may only name a horse</b> when it came from that horse's own listing
+        <span class="why">Carma and Electra get a typographic card for exactly this reason.</span></span><span class="state s-ok">Done</span></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ G ══════════ -->
+  <section>
+    <h2>G · Still to settle</h2>
+    <ul class="items">
+      <li class="item" data-k="g1"><input type="checkbox"><span class="what"><b>"Ontario" in the transcript is probably wrong</b>
+        <span class="why">They say twice that they produce frozen embryos in Ontario. Avantea is in Cremona and their base is Desenzano. Ask, do not guess.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="g2"><input type="checkbox"><span class="what"><b>Get the sport horses copy approved</b>
+        <span class="why">Written by us, it appears nowhere on their site.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="g3"><input type="checkbox"><span class="what"><b>Which direction wins</b>
+        <span class="why">Seven proposals are ready, the ClickUp task has no reply yet and the 6 August deadline has passed.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="g4"><input type="checkbox"><span class="what"><b>Instagram: a real feed or a static grid</b>
+        <span class="why">A live feed needs an embed, which brings a cookie and consent decision with it.</span></span><span class="state s-todo">To do</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    Source: ClickUp doc "Meeting · 07/28/2026", Stud Von Axe and Mark Gerrits.
+    Local working document, not for the client.
+  </footer>
+</div>
+
+<script>
+(function(){
+  const KEY = 'vonaxe-checklist-v1';
+  const items = [...document.querySelectorAll('.item')];
+  const done = document.getElementById('pc-done');
+  const total = document.getElementById('pc-total');
+  const bar = document.getElementById('pc-bar');
+  total.textContent = items.length;
+
+  /* Storage can throw in a private window or with site data blocked, so every
+     read and write is guarded and the page still works with no stored value. */
+  function load(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch { return {}; }
+  }
+  function save(state){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
+  }
+
+  let state = load();
+
+  function paint(){
+    let n = 0;
+    for (const li of items){
+      const on = !!state[li.dataset.k];
+      li.querySelector('input').checked = on;
+      li.classList.toggle('done', on);
+      if (on) n++;
+    }
+    done.textContent = n;
+    bar.style.width = items.length ? (n / items.length * 100) + '%' : '0';
+  }
+
+  for (const li of items){
+    li.querySelector('input').addEventListener('change', e => {
+      state[li.dataset.k] = e.target.checked;
+      save(state); paint();
+    });
+  }
+
+  document.getElementById('reset').addEventListener('click', () => {
+    state = {}; save(state); paint();
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>

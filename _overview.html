@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Von Axe · Project index</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="internal-doc" content="true">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1d36;--gold:#b59148;--base:#faf7f2;--base-alt:#f1ebe0;--ink:#14202e;
+  --ink-soft:#4d5761;--white:#fff;--line:#14202e1f;
+  --display:'Fraunces',serif;--body:'Manrope',sans-serif;--wrap:1080px;
+  --ease:cubic-bezier(.25,.1,.25,1);--gutter:clamp(1.25rem,5vw,3rem)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--base);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:inherit}
+.wrap{width:min(var(--wrap),100% - (2*var(--gutter)));margin-inline:auto}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.top{padding:clamp(2.6rem,6vw,4rem) 0 1.8rem;border-bottom:1px solid var(--line)}
+.kick{margin:0;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,3.4vw + 1rem,2.9rem);
+  line-height:1.05;margin:.6rem 0 .8rem;color:var(--navy)}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{max-width:70ch;color:var(--ink-soft);margin:0}
+h2{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--navy);
+  margin:clamp(2.2rem,4vw,3rem) 0 1rem}
+.grid{display:grid;gap:12px}
+@media (min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{position:relative;padding:1.2rem 1.4rem;border-radius:16px;background:var(--white);
+  box-shadow:inset 0 0 0 1px var(--line);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 45%,transparent),
+  0 20px 40px -24px rgba(10,21,38,.5)}
+.card--site{background:var(--navy);box-shadow:none}
+.card--site .nm,.card--site .ds{color:#fff}
+.card--site .ds{opacity:.72}
+.nm{display:block;font-family:var(--display);font-size:1.2rem;color:var(--navy);text-decoration:none}
+.nm::after{content:"";position:absolute;inset:0}
+.ds{display:block;margin-top:.35rem;font-size:14px;color:var(--ink-soft)}
+.tag{display:inline-block;margin-top:.7rem;font-size:9.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold)}
+.foot{padding:2.6rem 0 4rem;color:var(--ink-soft);font-size:13.5px;max-width:74ch}
+code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-radius:5px}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <p class="kick">Project index</p>
+  <h1>Stud Von Axe, and the four documents <em>behind</em> it.</h1>
+  <p class="lede">The site is one page for now. Everything else here is working material: the rules the
+  page is built to, the client's requirements, the feedback log, and the photographs.</p>
+</header>
+<main class="wrap">
+  <h2>The site</h2>
+  <div class="grid">
+    <div class="card card--site">
+      <a class="nm" href="/" target="_blank" rel="noopener">Homepage</a>
+      <span class="ds">The built page. Hero, about, horses, services, programme with foals and embryos,
+      news, contact.</span>
+      <span class="tag" style="color:#b59148">index.html</span>
+    </div>
+  </div>
+
+  <h2>Working documents</h2>
+  <div class="grid">
+    <div class="card">
+      <a class="nm" href="/00-design-system" target="_blank" rel="noopener">Design system</a>
+      <span class="ds">Tokens, type, colour, components and the writing rules. Synced to the homepage,
+      which is the source of truth.</span>
+      <span class="tag">Read first</span>
+    </div>
+    <div class="card">
+      <a class="nm" href="/01-build-checklist" target="_blank" rel="noopener">Build checklist</a>
+      <span class="ds">What the client asked for in the July meeting, plus the seven pages the owners
+      named in August.</span>
+      <span class="tag">Scope</span>
+    </div>
+    <div class="card">
+      <a class="nm" href="/02-feedback-log" target="_blank" rel="noopener">Feedback and audit log</a>
+      <span class="ds">Every correction, quoted, with the check that catches it next time. Twenty checks
+      run from one script.</span>
+      <span class="tag">Before you start</span>
+    </div>
+    <div class="card">
+      <a class="nm" href="/03-photo-library" target="_blank" rel="noopener">Photo library</a>
+      <span class="ds">215 photographs pulled from the live site, grouped by the page each one sits on,
+      so provenance travels with the file.</span>
+      <span class="tag">Material</span>
+    </div>
+  </div>
+</main>
+<p class="wrap foot">Run <code>node scripts/audit-homepage.mjs index.html</code> before handing anything
+back. The concepts and variation pages have been moved out of the site into <code>_archive/concepts/</code>,
+and the photograph originals live in <code>assets/source/</code>. Both are kept out of git on purpose.</p>
+</body>
+</html>
