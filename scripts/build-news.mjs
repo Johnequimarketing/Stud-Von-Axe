@@ -22,12 +22,17 @@ const NEWS = new Function(readFileSync(join(root, 'news-data.js'), 'utf-8') + ';
 const home = readFileSync(join(root, 'index.html'), 'utf-8');
 const homeCss = home.match(/<style>([\s\S]*?)<\/style>/)[1];
 
-/* From news/ every root link needs a hop up. */
+/* Root absolute, never relative.
+   The archive is served at /news with no trailing slash, and a browser
+   resolves a relative href against the DIRECTORY of the current URL. The
+   directory of /news is /, so href="contouch-top-price" resolved to
+   /contouch-top-price and returned 404. Root absolute paths hold wherever
+   the page is served, with or without the slash. */
 const relink = (html) => html
-  .replace(/href="#/g, 'href="../#')
-  .replace(/href="news\/"/g, 'href="./"')
-  .replace(/(src|href)="assets\//g, '$1="../assets/')
-  .replace(/href="index.html"/g, 'href="../"');
+  .replace(/href="#/g, 'href="/#')
+  .replace(/href="news\/"/g, 'href="/news"')
+  .replace(/(src|href)="assets\//g, '$1="/assets/')
+  .replace(/href="index.html"/g, 'href="/"');
 
 const headerRaw = relink(home.slice(home.indexOf('  <header class="hd">'),
                                     home.indexOf('  </header>') + '  </header>'.length));
@@ -181,7 +186,7 @@ const head = (title, desc, slug) => `<meta charset="utf-8">
 {"@context":"https://schema.org","@type":"NewsArticle","headline":${JSON.stringify(title)},
  "publisher":{"@type":"Organization","name":"Stud Von Axe"}}
 <\/script>
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -221,9 +226,9 @@ const navScript = `<script>
 mkdirSync(join(root, 'news'), { recursive: true });
 
 /* ── the archive ─────────────────────────────────────────────────────── */
-const cards = NEWS.map((n) => `      <li><a class="nw__card" href="${n.slug}">
+const cards = NEWS.map((n) => `      <li><a class="nw__card" href="/news/${n.slug}">
         <span class="nw__win"${n.ph ? ' data-placeholder="true"' : ''}>
-          <img src="../${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}" loading="lazy">
+          <img src="/${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}" loading="lazy">
           ${n.ph ? '<span class="hz__ph">Photo pending</span>' : ''}
         </span>
         <span class="nw__body">
@@ -243,7 +248,7 @@ ${head('News and results', 'Results in the ring, horses sold, and news from Dese
 ${headerHero}
 <section class="nhero">
   <div class="nhero__bg" aria-hidden="true">
-    <img src="../assets/img/news-hero.jpg" alt="" fetchpriority="high">
+    <img src="/assets/img/news-hero.jpg" alt="" fetchpriority="high">
   </div>
   <div class="nhero__veil" aria-hidden="true"></div>
   <div class="wrap">
@@ -281,13 +286,13 @@ ${head(n.title, n.excerpt, n.slug)}
 <body>
 ${headerSolid}
 <main class="wrap art">
-  <p class="art__crumb"><a href="./">News</a> &middot; ${esc(n.eyebrow)}</p>
+  <p class="art__crumb"><a href="/news">News</a> &middot; ${esc(n.eyebrow)}</p>
   <div class="art__head">
     <p class="plaque">${esc(n.eyebrow)}</p>
     <h1>${accent(n)}</h1>
   </div>
   <figure class="art__fig"${n.ph ? ' data-placeholder="true"' : ''}>
-    <img src="../${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}"
+    <img src="/${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}"
          ${n.ph ? '' : 'fetchpriority="high"'}>
     ${n.ph ? '<span class="hz__ph">Photo pending</span>' : ''}
   </figure>
@@ -302,17 +307,17 @@ ${body}
       Say what you are after and we will tell you plainly what we have.</p>
     </div>
     <div class="pcta__acts">
-      <a href="../#contact" class="btn-gold">Get in touch</a>
+      <a href="/#contact" class="btn-gold">Get in touch</a>
       <a href="https://wa.me/393495918565" target="_blank" rel="noopener" class="btn-ghost">Message on WhatsApp</a>
     </div>
   </div>
 
   <nav class="art__nav" aria-label="More news">
-    <a class="art__navA" href="${prev.slug}">
+    <a class="art__navA" href="/news/${prev.slug}">
       <span class="art__navK">&larr; Previous</span>
       <span class="art__navT">${esc(prev.title)}</span>
     </a>
-    <a class="art__navA art__navA--next" href="${next.slug}">
+    <a class="art__navA art__navA--next" href="/news/${next.slug}">
       <span class="art__navK">Next &rarr;</span>
       <span class="art__navT">${esc(next.title)}</span>
     </a>

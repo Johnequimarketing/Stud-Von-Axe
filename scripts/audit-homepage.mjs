@@ -307,6 +307,19 @@ for (const rel of files) {
   if (/name="robots"[^>]*noindex/.test(src))
     warn(rel, 'this page carries noindex: correct while it is a draft, remove it the day it goes live');
 
+  /* 13 ── links resolve from anywhere.
+     A relative href resolves against the DIRECTORY of the current URL, so
+     on a page served at /news with no trailing slash, href="story" points
+     at /story. Every internal link on a subpage must therefore be root
+     absolute. Caught after four news pages shipped with 404 links. */
+  const relLinks = [...src.matchAll(/(?:href|src)="((?!https?:|mailto:|tel:|#|\/|data:)[^"]+)"/g)]
+    .map(m => m[1])
+    .filter(h => !/^[a-z0-9-]+\.(?:js|css)$/i.test(h));   /* same-folder assets are fine */
+  const inSubfolder = rel.includes('/');
+  if (inSubfolder && relLinks.length)
+    fail(rel, `${relLinks.length} relative link(s) on a subpage; use root absolute: ${[...new Set(relLinks)].slice(0,4).join(', ')}`);
+  else if (inSubfolder) pass('every internal link is root absolute');
+
   /* 6 ── assets exist and are light */
   /* A page in a subfolder references ../assets/...; resolve every path
      relative to the file that names it, not to the project root. */

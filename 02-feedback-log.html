@@ -76,7 +76,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   A rule that only lives in a conversation gets broken again; a rule with a check behind it does not.
   This page is read before starting and run through before handing anything back.</p>
   <div class="how"><b>How to use it.</b> Run <code>node scripts/audit-homepage.mjs &lt;file&gt;</code> first,
-  which now covers twenty checks automatically. Then walk the items tagged <b>by eye</b>, because a
+  which now covers twenty two checks automatically. Then walk the items tagged <b>by eye</b>, because a
   script cannot tell whether a sentence is true. Nothing goes to Mark with a red line in the audit.</div>
 </header>
 
@@ -464,6 +464,15 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
         <td>The parser is indentation tolerant and normalises names; skipped pairs are now reported.</td>
       </tr>
       <tr>
+        <td>Four news pages shipped with links that 404</td>
+        <td>The cards used relative hrefs. A browser resolves those against the DIRECTORY of the
+        current URL, and with <code>trailingSlash:false</code> the archive is served at
+        <code>/news</code>, whose directory is <code>/</code>. So <code>href="story"</code> resolved
+        to <code>/story</code>.</td>
+        <td>Every internal link on a subpage is root absolute, and the audit fails on any relative
+        one. Verified by fetching each page and every link on it, not by reading the markup.</td>
+      </tr>
+      <tr>
         <td>A screenshot showing a stale page</td>
         <td>The browser pane returned occluded or cached frames.</td>
         <td>Render with <code>chrome-headless-shell</code>, and pin viewport-height sections in a temporary
@@ -475,7 +484,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>What the audit covers now</h2>
-  <p class="sub">Twenty checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
+  <p class="sub">Twenty two checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
   Green is the condition for handing anything back, not a nice extra.</p>
   <table>
     <thead><tr><th>Check</th><th>Catches</th></tr></thead>
@@ -497,6 +506,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
       <tr><td>Counts in copy</td><td>Lists every number stated, for a human to check against the data. A number that can change should be counted at render time instead.</td></tr>
       <tr><td>Heading structure</td><td>More than one h1, or a level skipped.</td></tr>
       <tr><td>Search head</td><td>A missing title, description, canonical, social card or structured data. Warns while noindex is on.</td></tr>
+      <tr><td>Relative links on a subpage</td><td>A link that resolves against the wrong directory. On a page served at /news with no trailing slash, href="story" points at /story.</td></tr>
       <tr><td>Assets exist</td><td>A referenced file that is not on disk.</td></tr>
       <tr><td>Asset weight</td><td>Anything over 500 KB.</td></tr>
     </tbody>
