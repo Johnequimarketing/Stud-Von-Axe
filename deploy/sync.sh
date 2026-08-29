@@ -17,9 +17,13 @@ set -euo pipefail
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(dirname "$here")"
 
-# ── the page ──────────────────────────────────────────────────────────
+# ── the pages ─────────────────────────────────────────────────────────
 cp "$root/index.html" "$here/index.html"
-echo "copied index.html"
+cp "$root/news-data.js" "$here/news-data.js"
+mkdir -p "$here/news"
+rm -f "$here/news/"*.html
+cp "$root/news/"*.html "$here/news/"
+echo "copied index.html, news-data.js and $(ls "$here/news" | wc -l | tr -d ' ') news pages"
 
 # ── only the assets the page actually references ──────────────────────
 # Read out of index.html rather than copying the whole folder, so an
@@ -36,7 +40,8 @@ while IFS= read -r ref; do
     echo "MISSING asset, refusing to publish: $ref" >&2
     exit 1
   fi
-done < <(grep -oE 'assets/(img|logo)/[A-Za-z0-9._-]+' "$root/index.html" | sort -u)
+done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html \
+  | grep -oE 'assets/(img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 
 echo

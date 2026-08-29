@@ -187,7 +187,7 @@ for (const rel of files) {
   /* 5 ── logo variant matches its ground.
      A white reverse logo on a light ground is invisible. Every logo <img>
      must declare data-ground, and it must agree with the filename. */
-  const logos = [...src.matchAll(/<img[^>]*src="assets\/logo\/([^"]+)"[^>]*>/g)];
+  const logos = [...src.matchAll(/<img[^>]*src="(?:\.\.\/)?assets\/logo\/([^"]+)"[^>]*>/g)];
   let logoOk = true;
   for (const [tag, fileName] of logos) {
     const ground = (tag.match(/data-ground="(light|dark)"/) || [])[1];
@@ -306,10 +306,12 @@ for (const rel of files) {
     warn(rel, 'this page carries noindex: correct while it is a draft, remove it the day it goes live');
 
   /* 6 ── assets exist and are light */
-  const refs = [...new Set([...src.matchAll(/(?:src|href)="(assets\/[^"]+)"/g)].map(m => m[1]))];
+  /* A page in a subfolder references ../assets/...; resolve every path
+     relative to the file that names it, not to the project root. */
+  const refs = [...new Set([...src.matchAll(/(?:src|href)="((?:\.\.\/)?assets\/[^"]+)"/g)].map(m => m[1]))];
   let assetsOk = true;
   for (const a of refs) {
-    const p = join(root, a);
+    const p = join(dirname(file), a);
     if (!existsSync(p)) { fail(rel, `missing asset: ${a}`); assetsOk = false; continue; }
     const kb = statSync(p).size / 1024;
     if (kb > 500 && !isInternal) { fail(rel, `asset over 500 KB: ${a} (${Math.round(kb)} KB)`); assetsOk = false; }

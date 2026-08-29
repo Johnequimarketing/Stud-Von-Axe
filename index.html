@@ -1267,8 +1267,11 @@
     box-shadow:inset 0 0 0 1px var(--color-line), 0 16px 38px -22px rgba(10,21,38,.5);
     transition:transform .4s var(--ease), box-shadow .4s var(--ease);
   }
-  /* No hover lift: the card is an article, not a link, and a lift would
-     invite a click that goes nowhere. */
+  .nw__card:hover, .nw__card:focus-visible{
+    transform:translateY(-6px);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent),
+               0 26px 52px -20px rgba(10,21,38,.6);
+  }
   .nw__win{ position:relative; display:block; aspect-ratio:16/10; overflow:hidden; }
   .nw__win img{
     width:100%; height:100%; object-fit:cover;
@@ -1282,10 +1285,17 @@
     font-size:clamp(1.1rem,1.5vw,1.3rem); line-height:1.14; color:var(--color-navy);
   }
   .nw__d{ display:block; margin-top:.5rem; font-size:14px; color:var(--color-ink-soft); }
-  .nw__body > :last-child{ margin-bottom:0; }
+  .nw__go{
+    display:block; margin-top:auto; padding-top:1rem;
+    font-family:var(--font-body); font-size:12.5px; font-weight:700;
+    letter-spacing:.06em; color:var(--color-navy);
+  }
+  .nw__go .a{ display:inline-block; transition:transform .3s var(--ease); }
+  .nw__card:hover .nw__go .a{ transform:translateX(4px); }
+  .nw__card:hover .nw__win img{ transform:scale(1.08); }
 
   @media (prefers-reduced-motion: reduce){
-    .nw__card, .nw__win img{ transition:none; }
+    .nw__card, .nw__win img, .nw__go .a{ transition:none; }
   }
 
   /* The counts. Audited from the content, not rounded up for effect. */
@@ -2162,7 +2172,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#horses">Horses</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#news">Results</a></li>
+          <li><a href="news/">News</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -2199,6 +2209,7 @@
   </div>
 </footer>
 
+<script src="news-data.js"></script>
 <script>
   /* Hero marquee.
      Real horses from studvonaxe.it, and only the four whose listing
@@ -2697,43 +2708,24 @@
 
 /* ============================================================
    NEWS
-   Four stories, every one of them stated on studvonaxe.it. Contouch is the
-   only one with a photograph of his own; the rest carry a labelled stand in,
-   because a picture may only name a horse when it came from that horse's
-   own page.
-   TODO client-confirm: photographs for the other three.
+   The four items come from news-data.js, the same file the archive and the
+   single pages are built from, so the three can never disagree. The cards
+   are links again: the pages they promised now exist.
    ============================================================ */
 (function(){
   var run = document.getElementById('nw-run');
-  if(!run) return;
-  var N = [
-    { v:'Your Auction', t:'Contouch SVA takes the top price',
-      d:'Sold for €150,000, the highest price of the auction, and now competing internationally.',
-      img:'assets/img/results-contouch.jpg' },
-    { v:'Nations Cup, Barcelona', t:'Calleryama takes the win',
-      d:'Ridden by Gilles Thomas. The dam of Unguessable Von Axe.',
-      img:'assets/img/results-unguessable.jpg', ph:true },
-    { v:'Nations Cup CSI3*, Madrid', t:'Second place at CSI3* Madrid',
-      d:'Calleryama, the dam of Unguessable Von Axe, placed second in the Nations Cup CSI3*.',
-      img:'assets/img/hero-neck-wide.jpg', ph:true },
-    { v:'Lanaken, 2022', t:'Cortina de Jolie Z’s offspring place',
-      d:'Offspring out of our broodmare placed at the World Championships for young horses.',
-      img:'assets/img/bases-yard.jpg', ph:true }
-  ];
-  /* Not links. "Read it" promised an article, and there is no news page:
-     News is not even on the page list the owners sent. The card carries the
-     item itself until there is something real to open.
-     TODO client-confirm: does News become a page, or stay here only? */
-  run.innerHTML = N.map(function(n){
-    return '<li><article class="nw__card">' +
+  if(!run || typeof NEWS === 'undefined') return;
+  run.innerHTML = NEWS.map(function(n){
+    return '<li><a class="nw__card" href="news/' + n.slug + '" aria-label="' + n.title + '. ' + n.eyebrow + '.">' +
       '<span class="nw__win"' + (n.ph ? ' data-placeholder="true"' : '') + '>' +
-      '<img src="' + n.img + '" alt="' + (n.ph ? 'Placeholder photograph' : n.t) + '" loading="lazy">' +
+      '<img src="' + n.img + '" alt="' + (n.ph ? 'Placeholder photograph' : n.title) + '" loading="lazy">' +
       (n.ph ? '<span class="hz__ph">Photo pending</span>' : '') + '</span>' +
       '<span class="nw__body">' +
-      '<span class="nw__v">' + n.v + '</span>' +
-      '<h3 class="nw__t">' + n.t + '</h3>' +
-      '<span class="nw__d">' + n.d + '</span>' +
-      '</span></article></li>';
+      '<span class="nw__v">' + n.eyebrow + '</span>' +
+      '<h3 class="nw__t">' + n.title + '</h3>' +
+      '<span class="nw__d">' + n.excerpt + '</span>' +
+      '<span class="nw__go">Read it <span class="a" aria-hidden="true">→</span></span>' +
+      '</span></a></li>';
   }).join('');
 })();
 </script>
