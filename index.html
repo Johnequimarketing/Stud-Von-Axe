@@ -139,7 +139,13 @@
     /* How far the menu plate hangs below the top edge. The logo plate
        stays glued to the top and is taller than this, so the two cross:
        a vertical plate through a horizontal one. */
-    --hd-drop: clamp(16px, 2.4vh, 30px);
+    /* The header's three measures. The plate is taller than the bar on
+       purpose: that difference is what makes them cross. The bar has a
+       fixed height so the taller plate overflows it instead of stretching
+       it, which it would otherwise do, being the tallest item in the row. */
+    --hd-top:   clamp(10px, 1.6vh, 22px);
+    --hd-bar:   clamp(52px, 6vh, 62px);
+    --hd-plate: clamp(74px, 8.6vh, 92px);
     --tray-radius: 34px;
     --tray-pad: clamp(14px, 1.5vw, 22px);
   }
@@ -297,13 +303,29 @@
      Held to the page gutter so it lines up with every .wrap below it, and
      rounded with --plate-radius rather than a full pill, which is what the
      stylesheet prescribes for a surface this size. */
+  /* A scrim across the top of the hero, not a plate behind the mark.
+     Measured: the brightest pixel behind the centred logo was pure white,
+     the rider's breeches, which puts the white mark at 1.00:1 against its
+     own background. A gradient from the top edge gives the mark, the menu
+     and the language switch a ground they can be read on whatever the
+     photograph does, without giving the bar a fill. It goes with the pin,
+     when the bar takes a real ground of its own. */
+  .hd::before{
+    content:""; position:absolute; z-index:0; inset:0 0 auto;
+    height:calc(var(--hd-top) + var(--hd-plate) + 26px);
+    background:linear-gradient(180deg, rgba(6,12,20,.58) 0%, rgba(6,12,20,.5) 52%, rgba(6,12,20,.24) 78%, transparent 100%);
+    pointer-events:none;
+    transition:opacity .3s var(--ease);
+  }
+  .hd.is-pinned::before{ opacity:0; }
   .hd__row{
+    position:relative; z-index:1;
     /* Not the containing block any more: the mark is anchored to .hd so it
        stays against the top of the page while this plate drops away from
        it. Moved with a transform rather than a margin: .hd is zero height
        on purpose, and a top margin on its child collapses through it and
        drags the header itself down, taking the mark with it. */
-    transform:translateY(var(--hd-drop));
+    transform:translateY(var(--hd-top));
     /* The one change: a plate held off the edges instead of a band across
        them, on the page gutter so its edge lines up with the content
        below, rounded with the stylesheet's own plate radius. Everything
@@ -311,7 +333,8 @@
     width:min(var(--wrap), 100% - (2 * var(--gutter)));
     margin-inline:auto;
     display:flex; align-items:center; justify-content:space-between; gap:1.1rem;
-    padding:.5rem clamp(1rem,2vw,1.6rem);
+    height:var(--hd-bar);
+    padding-inline:clamp(1rem,2vw,1.6rem);
     /* Bottom corners only: the bar sits tight against the top of the
        screen, so rounding the top would leave two slivers of photograph
        above it. It hangs down from the edge, the way the logo plate hangs
@@ -336,27 +359,29 @@
   /* Anchored to the header, not to the menu plate, so it keeps its top
      edge flush with the page while the plate hangs below it. Above the
      plate in the stack, so the two read as one shape crossing another. */
+  /* A plate taller than the bar it sits in, centred on it by align-self,
+     so it reaches past the bar top and bottom and the two read as one
+     shape crossing another. Centred by the layout rather than by a number
+     that would have to be kept in step with the bar's height. */
   .brand{
-    position:absolute; left:50%; top:0; transform:translateX(-50%);
-    z-index:3; display:block; line-height:0;
-    padding:.7rem 1.6rem .9rem;
-    /* It has to reach past the plate for the two to read as one shape
-       crossing another. On a narrow screen the logo stops shrinking before
-       the plate does, so without this the mark ended above the plate's
-       bottom edge and the cross fell apart. */
-    min-height:calc(var(--hd-drop) + 66px);
-    box-sizing:border-box;
+    position:relative; z-index:3; align-self:center;
+    display:grid; place-items:center; line-height:0;
+    height:var(--hd-plate); padding-inline:clamp(1rem,1.8vw,1.5rem);
+    border-radius:var(--card-radius);
     /* No ground over the hero: the white mark stands on the photograph
        itself. The plate arrives with the pin, below. */
     background:transparent;
-    border-radius:0 0 var(--card-radius) var(--card-radius);
     transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
   }
-  .brand img{ transition:opacity .25s var(--ease); }
-  .brand__onlight{ position:absolute; inset:.7rem 1.6rem auto; opacity:0; }
+  /* Both marks in one cell, so the plate is sized by the artwork and the
+     two can cross fade without either one moving. */
+  .brand img{
+    grid-area:1 / 1; display:block; width:clamp(120px, 11vw, 152px); height:auto;
+    transition:opacity .25s var(--ease);
+  }
+  .brand__onlight{ opacity:0; }
   .hd.is-pinned .brand__ondark{ opacity:0; }
   .hd.is-pinned .brand__onlight{ opacity:1; }
-  .brand img{ display:block; width:clamp(132px, 12vw, 168px); height:auto; }
   /* Pinned: the plate arrives, in the same fill as the bar so the seam
      between them disappears and only the rounded foot reads. */
   .hd.is-pinned .brand{
@@ -373,8 +398,11 @@
   .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .hd.is-pinned .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
   .hd.is-pinned .hd__rule{ opacity:0; }
-  .hd__start{ display:flex; align-items:center; min-width:0; }
-  .hd__end{ display:flex; align-items:center; justify-content:flex-end; gap:1.35rem; }
+  /* Equal shares of the leftover room, which is what actually centres the
+     mark: space-between only centres a middle item when the two outer
+     groups happen to be the same width. */
+  .hd__start{ display:flex; align-items:center; min-width:0; flex:1 1 0; }
+  .hd__end{ display:flex; align-items:center; justify-content:flex-end; gap:1.35rem; flex:1 1 0; min-width:0; }
   .hd__rule{
     position:relative; z-index:20; height:1px;
     background:var(--color-line-invert);
@@ -441,8 +469,8 @@
     /* The plate is narrower than the old full width bar, so at this width
        the hanging mark ran into the toggle and the button. It keeps its
        shape and simply takes less room. */
-    .hd__row{ padding:.5rem .7rem; }
-    .brand{ padding:.45rem .7rem .55rem; }
+    .hd__row{ padding-inline:.6rem; }
+    .brand{ padding-inline:.6rem; }
     .brand img{ width:96px; }
     .hd .btn-sm{ font-size:10.5px; padding:.75em 1em; }
   }
@@ -502,10 +530,8 @@
     position:relative; z-index:20; flex:1;
     display:flex; flex-direction:column; justify-content:center; align-items:center;
     text-align:center;
-    /* The mark has no plate over the hero, so it stands directly on the
-       photograph and the eyebrow, centred under it, ran straight through
-       the wordmark. The statement now starts below where the mark ends. */
-    padding:max(var(--hero-air), calc(var(--hd-drop) + 92px)) var(--gutter) var(--hero-air);
+    /* Clear of the bar, which now carries the mark inside it. */
+    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
@@ -1747,21 +1773,6 @@
      Signed off hero. The header is transparent and sits on the
      photograph, so it lives inside the hero section. -->
   <header class="hd">
-    <!-- Outside the menu plate on purpose. The plate is moved down with a
-         transform, and a transform makes an element the containing block
-         for its absolutely positioned children, which dragged the mark
-         down with it. Out here it stays flush with the top of the page. -->
-    <a href="#top" class="brand" aria-label="Stud Von Axe home">
-      <!-- Two marks, one per ground, which is what the two supplied files
-           are for. Over the hero the white one stands on the photograph
-           with no plate behind it; once the hero is behind the bar the
-           navy one takes over on ivory. Only one is ever visible, so the
-           second is hidden from screen readers rather than read twice. -->
-      <img class="brand__ondark" src="assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
-           alt="Von Axe, breeding and horse trading" width="168" height="56">
-      <img class="brand__onlight" src="assets/logo/logo-horizontal-onlight.png" data-ground="light"
-           alt="" aria-hidden="true" width="168" height="56">
-    </a>
     <div class="hd__row">
       <div class="hd__start">
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
@@ -1780,6 +1791,23 @@
           <a href="#about">About</a>
         </nav>
       </div>
+
+      <a href="#top" class="brand" aria-label="Stud Von Axe home">
+        <!-- Two marks, one per ground, which is what the two supplied files
+             are for. Over the hero the white one stands on the photograph
+             with no plate behind it; once the hero is behind the bar the
+             navy one takes over on ivory. Only one is ever visible, so the
+             second is hidden from screen readers rather than read twice. -->
+        <!-- TODO client-confirm: the white file Mark added on 29 Aug is
+             missing the V of VON. Checked against the source: the fault is
+             in the supplied artwork, not in the resize. Until a corrected
+             export arrives this keeps the white file that is complete.
+             Never repaired here: the mark is theirs. -->
+        <img class="brand__ondark" src="assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
+             alt="Von Axe, breeding and horse trading" width="600" height="264">
+        <img class="brand__onlight" src="assets/logo/logo-plain-onlight.png" data-ground="light"
+             alt="" aria-hidden="true" width="520" height="244">
+      </a>
 
       <div class="hd__end">
         <div class="lang-switch" aria-label="Language">
