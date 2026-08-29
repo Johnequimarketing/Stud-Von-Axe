@@ -58,6 +58,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2vw + .6rem
 .tag--auto{background:var(--navy-deep);color:var(--white)}
 .tag--eye{background:color-mix(in srgb,var(--gold) 22%,transparent);color:var(--navy)}
 .tag--hard{background:#7a1f1f;color:var(--white)}
+.tag--taste{background:color-mix(in srgb,var(--navy) 12%,transparent);color:var(--navy)}
 
 table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:.6rem}
 th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
@@ -72,15 +73,144 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <header class="wrap top">
   <p class="kick">Feedback and audit log</p>
   <h1>Every correction, and the check that <em>catches</em> it next time.</h1>
-  <p class="lede">Mark's feedback across the build, in his own words, turned into something checkable.
+  <p class="lede">Mark's feedback across the build, in his own words, turned into something checkable,
+  and what he keeps choosing, so the next design starts closer to right.
   A rule that only lives in a conversation gets broken again; a rule with a check behind it does not.
   This page is read before starting and run through before handing anything back.</p>
   <div class="how"><b>How to use it.</b> Run <code>node scripts/audit-homepage.mjs &lt;file&gt;</code> first,
-  which now covers twenty three checks automatically. Then walk the items tagged <b>by eye</b>, because a
+  which runs twenty one checks on a public page. Then walk the items tagged <b>by eye</b>, because a
   script cannot tell whether a sentence is true. Nothing goes to Mark with a red line in the audit.</div>
 </header>
 
 <main class="wrap">
+
+<section>
+  <h2>What he keeps choosing</h2>
+  <p class="sub">Not corrections. This is taste, read off six days of decisions, so a first draft starts
+  closer to what he would have picked anyway. Where he has chosen the same thing twice it is written as a
+  default; where he chose once it is written as a lean. Read this before designing, not after.</p>
+
+  <div class="item">
+    <p class="rule">Contained and rounded, never edge to edge</p>
+    <p class="said">Every single time. <q>wilde de ronde border radius houden contained in het scherm</q>,
+    and the header became a plate on the page gutter rather than a band across the screen. A full bleed
+    band was tried twice and rejected twice.</p>
+    <p class="check">Default: hold to <code>--wrap</code> and the gutter, round with
+    <code>--plate-radius</code>, and let the plate hang or cut rather than span.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A photograph under a plate, not a photograph beside a paragraph</p>
+    <p class="said">He picked the backdrop variant, the plate with a photograph in it, and the invitation
+    with a picture behind the veil, three times out of three. <q>bouw deze in met achtergrond foto erin</q>.</p>
+    <p class="check">Default: navy plate, photograph behind it, one-colour veil, type on top. The veil is
+    for a plate; it is never laid over the hero to make the header readable.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Movement, but quiet</p>
+    <p class="said">He asked for the hero to move on its own, and on the about page: <q>ik wil de foto fade
+    naar andere foto's hebben en wat dynamisch, vind het beetje saai zo</q>. He has never asked for a
+    carousel, a bounce or a parallax.</p>
+    <p class="check">Default: a crossfade on a five to six second beat, pausing on hover and focus, off
+    entirely under <code>prefers-reduced-motion</code>, with a way to take control by hand.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A section carries one idea, and something breaks the run</p>
+    <p class="said">The invitation was moved between the foals and the embryos on his instruction:
+    <q>zet de call to action tussen de foals en embryo's in, maak het mooier, en breekt het een beetje</q>.</p>
+    <p class="check">Default: two long runs of cards get a plate between them. A section that is trying to
+    do two things is two sections.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Serif heading, one italic accent word, and the accent is gold</p>
+    <p class="said">Chosen in the first direction and never questioned since. The menu joined it on
+    29 Aug: <q>de menu items mogen ook in de fonts van de website</q>.</p>
+    <p class="check">Default: Fraunces for headings and the menu, Manrope for labels and body, exactly one
+    <code>&lt;em&gt;</code> per heading, gold. Never a third face.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Gold is an accent, and it carries navy ink</p>
+    <p class="said">He asked for the contact button in the accent colour, and for the palette to be checked
+    against the logo files rather than judged by eye.</p>
+    <p class="check">Default: gold for the pill, the accent word and the eyebrow. Text on gold is navy.
+    Gold on ivory only at heading size, where 3:1 is the bar.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Plain words, and no sentence that has to be defended</p>
+    <p class="said"><q>gewoon simpele taal houden, geen onzin</q>, and about a headline he had not asked
+    for: <q>what the horses have done, weet je niet, misschien is het wel heel ander nieuws?</q></p>
+    <p class="check">Default: say the thing. If a sentence would need a source and has none, it does not
+    go on the page, however well it reads.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Six variations, genuinely different, in their own file</p>
+    <p class="said">This is how he wants options: <q>kun je hiervoor 6 variaties maken en mij
+    presenteren?</q>, <q>allemaal verschillend van elkaar</q>. He then names one, and only that one gets
+    built.</p>
+    <p class="check">Default: a separate HTML with six, each a different idea rather than six spacings of
+    the same idea, in the page's own tokens so the choice is honest. Then build the one he names, and
+    nothing beside it.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Show the proof, not the claim</p>
+    <p class="said">He asks for it back: renders, measurements, the audit line. A statement that something
+    works has never once satisfied him, and twice it was wrong.</p>
+    <p class="check">Default: measure in the browser, render the state, run the audit, and put the number
+    in the answer. Dutch in conversation, English on the page.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Settled, do not reopen</h2>
+  <p class="sub">Decisions already made, with him or by the owners. Asking again costs his time twice.</p>
+
+  <div class="item">
+    <p class="rule">The pages are the owners' list, and nothing else</p>
+    <p class="said">Home, Breeding mares, Foals, Embryos split into implanted and frozen, ICSI semen,
+    Sport horses, Contact, from their mail of 29 Aug. Results was never on it. About came off the top menu
+    on 29 Aug and lives in the footer, with a page of its own.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">News carries no dates, and the archive is reached from the footer</p>
+    <p class="said">The old site's timestamps contradict the stories they sit on, so no date is shown
+    until the owners give real ones. <q>De archief link naar nieuws mag in de footer erbij, hoeft niet in
+    de top erbij.</q></p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">English now, the other three later</p>
+    <p class="said">Italian is the source language and the switch is built, but only English is written.
+    IT, FR and DE sit in the switch as coming later, never as dead links.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Lanaken is not a yard</p>
+    <p class="said">Said sharply: <q>lanaken is geen yard? dus onthoud dat goed?</q> Two countries, one
+    programme: the cross begins in Desenzano, the foal is carried and raised in Lanaken.</p>
+    <p class="check">Checked: the audit fails on <q>both yards</q> and <q>two yards</q>.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+</section>
 
 <section>
   <h2>Hard rules</h2>
@@ -133,6 +263,36 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
     been a rule once and crept back in through a plaque pattern.</p>
     <p class="check">Checked: the audit reads every eyebrow and fails on a leading digit or dash.</p>
     <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Measure with the typeface that will actually be there</p>
+    <p class="said">The menu broke onto a second line inside the hero at 1280px. The breakpoint had been
+    measured before the webfont landed, in the fallback serif, which is about 20px narrower over six
+    items.</p>
+    <p class="check">Checked: any width measurement runs behind <code>document.fonts.ready</code>, and a
+    layout that depends on text width is measured at several widths, not one.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A check that finds nothing has to fail, not pass</p>
+    <p class="said">The audit's asset check matched <code>assets/</code> and <code>../assets/</code> but
+    not <code>/assets/</code>, the only shape the generated pages use. It reported zero assets and gave a
+    green line, on the very pages it existed to protect.</p>
+    <p class="check">Checked: it now fails when it matches nothing while the page clearly references
+    assets, and the same reasoning was applied to the logo ground check, which had gone blind the same
+    way. Every new check is proven by putting the bug back and watching it go red.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Generate the shared parts, never copy them</p>
+    <p class="said">Six pages now share a header, a footer and a stylesheet. He has said twice that
+    inconsistency is the thing he cannot stand.</p>
+    <p class="check">Checked: <code>scripts/lib/shell.mjs</code> lifts them from index.html and both
+    builders import it. A page that carries its own copy of anything shared is a page that will drift.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
   </div>
 
   <div class="item">
@@ -540,7 +700,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>What the audit covers now</h2>
-  <p class="sub">Twenty three checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
+  <p class="sub">Twenty three checks, run with <code>node scripts/audit-homepage.mjs index.html</code>.
   Green is the condition for handing anything back, not a nice extra.</p>
   <table>
     <thead><tr><th>Check</th><th>Catches</th></tr></thead>
@@ -566,6 +726,8 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
       <tr><td>Link targets exist</td><td>A link that resolves correctly and still points at nothing. Understands cleanUrls: /news/story is news/story.html, /news is news/index.html.</td></tr>
       <tr><td>Assets exist</td><td>A referenced file that is not on disk.</td></tr>
       <tr><td>Asset weight</td><td>Anything over 500 KB.</td></tr>
+      <tr><td>Asset paths, all three shapes</td><td><code>assets/</code>, <code>../assets/</code> and <code>/assets/</code>. The last one is what every generated page uses, and missing it made this check silently blind.</td></tr>
+      <tr><td>A check that matched nothing</td><td>The audit failing itself: a page that references assets while the pattern finds none.</td></tr>
     </tbody>
   </table>
 </section>
@@ -575,13 +737,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   <div class="item">
     <p class="check">A new check is proven against the bug it was written for, by reintroducing that bug
     and watching the check fail, before it is trusted.</p>
-    <p class="check">The audit runs green on the file that changed.</p>
+    <p class="check">The audit runs green on the file that changed, and on every page that inherits
+    from it. A change to index.html is a change to six pages: rebuild them
+    (<code>node scripts/build-news.mjs</code> and <code>node scripts/build-about.mjs</code>) and audit
+    them all, or the site is consistent only in the one file that was looked at.</p>
     <p class="check">The browser reports no console errors and no sideways scroll.</p>
     <p class="check">The change is measured in the browser, not judged from the source.</p>
     <p class="check">Every new claim in the copy has a named source.</p>
     <p class="check">Rendered at 1440 and at 390, and both were actually looked at.</p>
     <p class="check">Open questions for the client are listed, not silently decided.</p>
-    <p class="check">The reply states that nothing was committed or pushed.</p>
+    <p class="check">Publishing: since 28 Aug he has asked for the work to go live, so the reply states
+    what was pushed, what is live and on which URL, with the status codes checked. Before that date the
+    rule was the opposite, and outside what he has asked for it still is: nothing is committed, pushed or
+    published on our own judgement.</p>
   </div>
 </section>
 

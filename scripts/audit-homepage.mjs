@@ -338,7 +338,7 @@ for (const rel of files) {
     ? fail(rel, `${missing.length} internal link(s) point at nothing on disk: ${missing.slice(0,4).join(', ')}`)
     : linkTargets.length && pass(`${linkTargets.length} internal link target(s) all exist`);
 
-  /* 6 ── assets exist and are light */
+  /* 15 ── assets exist and are light */
   /* Three shapes reach the same file: assets/... on the homepage,
      ../assets/... from a subfolder, and /assets/... on every generated
      page. Root absolute resolves against the project, the other two
