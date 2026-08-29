@@ -2337,6 +2337,7 @@
 </footer>
 
 <script src="news-data.js"></script>
+<script src="horses-home.js"></script>
 <script>
   /* Hero marquee.
      Real horses from studvonaxe.it, and only the four whose listing
@@ -2414,12 +2415,12 @@
       { n:'02', t:'Foals', place:'Lanaken, Belgium', href:'#horses',
         img:'assets/img/offer-foal.jpg',
         cap:'Born and raised at our Belgian base, out of mares we chose ourselves.',
-        plateT:'Foals with us now',
+        plateT:'Foals born in Lanaken',
         plateS:'Colts and fillies out of our own damlines, sold direct.', cta:'See the foals' },
       { n:'03', t:'Frozen embryos', place:'From our own damlines', href:'#horses',
         img:'assets/img/horse-cabri.jpg',
         cap:'Frozen from our own damlines, every cross made on pedigree and produce.',
-        plateT:'Fifteen crosses, five damlines',
+        plateT:'Crosses from our own damlines',
         plateS:'Chosen on pedigree and on what a mare has produced.', cta:'See the crosses' },
       { n:'04', t:'Implanted embryos', place:'Pregnancies in Belgium', href:'#horses',
         img:'assets/img/bases-yard.jpg',
@@ -2596,7 +2597,13 @@
     }
     function render(filter){
       var set = here.filter(function(h){ return filter === 'all' || h.c === filter; });
-      run.innerHTML = set.slice(0, CAP).map(card).join('');
+      /* Cards from the harvested list where there is one for this filter,
+         so the grid, the archives and the horse pages are one set of facts.
+         "All horses" still mixes the two groups, which the generated files
+         cannot do for us, so that view keeps the local cards. */
+      if(window.HOME_HORSES && filter === 'sport')          run.innerHTML = HOME_HORSES.sport;
+      else if(window.HOME_HORSES && filter === 'broodmare') run.innerHTML = HOME_HORSES.mares;
+      else run.innerHTML = set.slice(0, CAP).map(card).join('');
       var note = document.getElementById('hz-bannerNote');
       if(note){
         var base = 'Sport horses and broodmares here, and ' + words(foals.length) +
@@ -2607,9 +2614,11 @@
       }
     }
 
-    /* The foals run is filled once: it is not filtered by these chips. */
+    /* The foals run is filled once: it is not filtered by these chips.
+       Its cards come from horses-data.js through horses-home.js, so a foal
+       shows the photograph and links to the page that exist for it. */
     var foalRun = document.getElementById('pg-foals');
-    if(foalRun) foalRun.innerHTML = foals.map(card).join('');
+    if(foalRun) foalRun.innerHTML = window.HOME_HORSES ? HOME_HORSES.foals : foals.map(card).join('');
 
     /* The chip counts are filled from the same list the grid renders. */
     document.querySelectorAll('[data-hz]').forEach(function(b){
@@ -2627,70 +2636,16 @@
     render('all');
   })();
 
-  /* ── The embryos: fifteen crosses out of five damlines ───────────────
-     Audited from studvonaxe.it/en/embryos on 20 Aug via the content file.
-     Typographic cards on purpose: no photograph can honestly stand for an
-     embryo, and a stand-in picture of a horse would name the wrong animal.
-     Grouped by damline rather than shuffled, because a buyer shopping a
-     family wants to see the family's options together. */
+  /* ── The embryos ─────────────────────────────────────────────────────
+     Their own list, read from horses-data.js through the cards that
+     scripts/build-horses.mjs writes. This block used to hold a second copy
+     of the crosses, typed out in August, and it had gone stale: their list
+     is six damlines and it claimed five. Every card now points at the
+     cross's own page and carries the photograph from it. */
   (function(){
     var run = document.getElementById('pg-embryos');
-    if(!run) return;
-
-    var D = [
-      { dam:'Cortina de Jolie Z',    ped:'Cornet Obolensky · Calato',
-        sires:[['Emerald van \u2019t Ruytershof','expected'],['Aganix du Seigneur Z','expected'],
-               ['Catoki','expected'],['United Touch S','frozen'],['Dourkhan Hero Z','frozen'],
-               ['Big Star','frozen'],['Uricas vd Kattevennen','frozen']] },
-      { dam:'Cabri vd Berghoeve Z',  ped:'Cornet Obolensky · Diamant de Semilly', img:'assets/img/horse-cabri.jpg',
-        sires:[['United Touch S','expected'],['Zandor Z','expected'],['Chacco Blue','expected']] },
-      { dam:'Hypnotic JT Z',         ped:'Halifax van het Kluizebos · Carthago',
-        sires:[['For Pleasure','expected'],['Comme il Faut','frozen'],['Catoki','frozen']] },
-      { dam:'Agousha vd Berghoeve Z',ped:'Aganix du Seigneur · Diamant de Semilly',
-        sires:[['Cornet Obolensky','expected']] },
-      { dam:'Carma vd Berghoeve Z',  ped:'Comme il Faut · Nabab de Reve', img:'assets/img/hero-grey.jpg',
-        sires:[['Mosito van het Hellehof','frozen']] }
-    ];
-
-    /* Stand in frames only, rotated so a damline with seven crosses does
-       not become seven copies of one photograph. None of these names an
-       individual horse, which is the whole point of a placeholder.
-       TODO client-confirm: replace with the ACF image per cross. */
-    var STANDIN = ['assets/img/hero-embryos.jpg','assets/img/offer-embryo.jpg',
-                   'assets/img/bases-yard.jpg','assets/img/semen-detail.jpg',
-                   'assets/img/hero-foals.jpg'];
-    var P = [];
-    D.forEach(function(d){
-      d.sires.forEach(function(s){
-        P.push({ sire:s[0], form:s[1], dam:d.dam, ped:d.ped,
-                 img:STANDIN[P.length % STANDIN.length] });
-      });
-    });
-
-    /* The same card as the foals beside it, so the two runs read as one
-       object seen twice. The photographs are stand ins: a cross has no
-       picture of its own, so every one of these carries the same "Photo
-       pending" label the horse grid uses, and the frame shows the dam the
-       cross is out of rather than a horse it could be mistaken for.
-       TODO client-confirm: replace with the ACF images per cross. */
-    function card(e){
-      var form = e.form === 'frozen' ? 'Frozen' : 'Expected 2027';
-      return '<li><a class="hz__card" href="#contact" aria-label="' + e.sire + ' out of ' +
-        e.dam + '. ' + form + '. Ask about this cross.">' +
-        '<span class="hz__win" data-placeholder="true">' +
-        '<img src="' + e.img + '" alt="Placeholder photograph" loading="lazy">' +
-        '<span class="hz__tag">' + form + '</span>' +
-        '<span class="hz__ph">Photo pending</span></span>' +
-        '<span class="hz__body">' +
-        '<span class="hz__name">' + e.sire + '</span>' +
-        '<span class="hz__meta">out of ' + e.dam + ' (' + e.ped.replace(' · ', ' x ') + ')</span>' +
-        '<span class="hz__view">Ask about this cross <span class="a" aria-hidden="true">→</span></span>' +
-        '</span></a></li>';
-    }
-
-    run.innerHTML = P.map(card).join('');
+    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.embryos;
   })();
-
 
   /* ── The two programme runs share the hero run's arrow behaviour ──────
      Same rAF tween as the topics run, and for the same reason: engines

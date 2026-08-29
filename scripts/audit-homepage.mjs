@@ -78,7 +78,13 @@ for (const rel of files) {
   /* A mask stop and an eight digit hex are treatments, not colour choices:
      #000 inside a mask-image is a shape, and #ffffffa8 is white at an
      opacity. Only an opaque six or three digit hex should have been a token. */
-  const maskless = afterRoot.replace(/[-\w]*mask-image:[^;]+;/g, '');
+  /* Comments are prose, not declarations: a note explaining why a veil is
+     navy rather than black names the hex, and that is not a colour choice
+     made outside :root. Stripped before the scan so the check stays about
+     what the browser reads. */
+  const maskless = afterRoot
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/[-\w]*mask-image:[^;]+;/g, '');
   const hexLit = /#[0-9a-fA-F]{3,8}\b/g;
   const opaqueHex = (h) => h.length === 4 || h.length === 7;
   const rogueHex = [...maskless.matchAll(hexLit), ...inlineStyles.matchAll(hexLit)]

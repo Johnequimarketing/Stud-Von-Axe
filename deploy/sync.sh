@@ -20,6 +20,7 @@ root="$(dirname "$here")"
 # ── the pages ─────────────────────────────────────────────────────────
 cp "$root/index.html" "$here/index.html"
 cp "$root/news-data.js" "$here/news-data.js"
+cp "$root/horses-home.js" "$here/horses-home.js"
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"

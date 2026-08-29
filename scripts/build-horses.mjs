@@ -28,7 +28,7 @@ const GROUPS = {
     title: 'The families we <em>breed from</em>',
     intro: 'Every mare here was chosen for what her family actually produces in sport. Their foals and embryos carry those lines.',
     img: 'hero-cortina-wide.jpg', pos: '50% 46%', w: 1920, h: 1150,
-    one: 'mare', many: 'mares',
+    one: 'mare', many: 'mares', singular: 'breeding mare',
     ctaH: 'Looking for a mare to <em>breed from</em>?',
     ctaD: 'Tell us the line you are after. If she is not here, we will say so, and we will tell you what is coming out of the same families.',
   },
@@ -39,7 +39,7 @@ const GROUPS = {
     title: 'Born and raised in <em>Lanaken</em>',
     intro: 'Out of our own damlines, raised at our Belgian base until the day they leave. Sold direct, and the ones that have gone stay here with the country they went to.',
     img: 'arch-foals.jpg', pos: '50% 50%', w: 1920, h: 853,
-    one: 'foal', many: 'foals',
+    one: 'foal', many: 'foals', singular: 'foal',
     ctaH: 'Tell us what you are <em>looking for</em>.',
     ctaD: 'A foal on the ground, or a cross still to be made. Say what you are after and we will tell you plainly what we have.',
   },
@@ -50,7 +50,7 @@ const GROUPS = {
     title: 'The same lines, <em>a year earlier</em>',
     intro: 'Frozen from our own damlines or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.',
     img: 'arch-embryos.jpg', pos: '50% 50%', w: 1920, h: 853,
-    one: 'cross', many: 'crosses',
+    one: 'cross', many: 'crosses', singular: 'cross',
     ctaH: 'Ask about a <em>cross</em>.',
     ctaD: 'Frozen or already carrying. We will tell you which stage a cross is at and what it takes to bring it home.',
   },
@@ -61,7 +61,7 @@ const GROUPS = {
     title: 'Bred here, <em>jumping elsewhere</em>',
     intro: 'Horses out of this programme that have gone on into sport, and mares that can still do both.',
     img: 'arch-sport.jpg', pos: '50% 50%', w: 1920, h: 853,
-    one: 'horse', many: 'horses',
+    one: 'horse', many: 'horses', singular: 'sport horse',
     ctaH: 'Looking for a particular <em>horse</em>?',
     ctaD: 'We also look on a client\'s behalf, across Europe and as far as America. Tell us what you need and we will go and find it.',
   },
@@ -321,6 +321,29 @@ ${list.map((h) => '        ' + card(h, group)).join('\n')}
   </section>
 `;
 
+/* The line a search engine shows under the title. Built from the fields
+   rather than from their tagline alone: half the taglines are three words
+   ("Just saddle broken!"), which reads as an empty result. Facts first,
+   their sentence after, cut on a word boundary at 158. */
+const metaDescription = (horse, group) => {
+  const name = horseName(horse.name);
+  const bits = [
+    `${name}, ${group.singular} at Stud Von Axe`,
+    horse.genetics ? horseName(horse.genetics) : '',
+    [horse.year && `Born ${horse.year}`, horse.studbook, SEX(horse)].filter(Boolean).join(', '),
+    theirWords(horse.tagline),
+    group.intro.split('.')[0],          /* the group line, so a horse with three
+                                           fields still says something useful */
+  ].filter(Boolean);
+  let out = '';
+  for (const bit of bits) {
+    const next = out ? `${out}. ${bit}` : bit;
+    if (next.length > 158) break;
+    out = next;
+  }
+  return (out || `${name}, ${group.one} at Stud Von Axe`).replace(/[.!]+$/, '') + '.';
+};
+
 /* ── the horse page, section one: picture, name, figures ───────────────── */
 const factRow = (horse) => {
   const facts = [
@@ -543,7 +566,7 @@ const horsePage = (horse, group, groupList) => `<!DOCTYPE html>
 <head>
 ${head({
   title: horseName(horse.name),
-  desc: [theirWords(horse.tagline), horse.genetics].filter(Boolean).join(' ') || `${horseName(horse.name)}, ${group.label.toLowerCase()} at Stud Von Axe.`,
+  desc: metaDescription(horse, group),
   path: `/${group.dir}/${horse.slug}`,
   image: horse.photos[0] ? horse.photos[0].replace('assets/img/', '') : 'hero-sport.jpg',
   ldType: 'ItemPage',
@@ -595,3 +618,45 @@ for (const key of Object.keys(GROUPS)) {
 }
 
 console.log(`built ${written.archives} archives and ${written.horses} horse pages`);
+
+/* ── the homepage runs ─────────────────────────────────────────────────
+   The homepage carried its own copy of the herd: fourteen horses typed out
+   in one script and fifteen crosses in another, both audited by hand in
+   August. They had drifted. Their embryo list is six damlines, not the five
+   the homepage claimed, and the cards pointed at #contact with stand-in
+   photographs while every one of those crosses now has a page and a picture
+   of its own.
+   So the cards are written here, by the same helpers that build the
+   archives, into a file the homepage reads. One source, one recipe, and a
+   number in the copy that is counted rather than typed. */
+const homeCards = (list, group, limit) => list.slice(0, limit).map((h) => card(h, group)).join('\n');
+
+const damlinesOf = (list) => new Set(
+  list.map((h) => (h.name.split(/\s+X\s+/i)[1] || '').trim()).filter(Boolean)
+).size;
+
+const mares  = HORSES.filter((h) => h.category === 'broodmare');
+const foals  = HORSES.filter((h) => h.category === 'foal');
+const crosses = HORSES.filter((h) => h.category === 'embryo');
+const sport  = HORSES.filter((h) => h.category === 'sport');
+
+writeFileSync(join(root, 'horses-home.js'),
+`/* Cards for the homepage runs, written by scripts/build-horses.mjs from
+   horses-data.js. Do not edit: rebuild. The homepage used to hold its own
+   copy of this list and the two fell out of step. */
+var HOME_HORSES = {
+  foals: ${JSON.stringify(homeCards(foals, GROUPS.foal, 8))},
+  embryos: ${JSON.stringify(homeCards(crosses, GROUPS.embryo, 8))},
+  mares: ${JSON.stringify(homeCards(mares, GROUPS.broodmare, 6))},
+  sport: ${JSON.stringify(homeCards(sport, GROUPS.sport, 6))},
+  counts: ${JSON.stringify({
+    mares: mares.length, foals: foals.length, crosses: crosses.length, sport: sport.length,
+    damlines: damlinesOf(crosses),
+    foalsAvailable: foals.filter((h) => !h.sold).length,
+    crossesAvailable: crosses.filter((h) => !h.sold).length,
+    maresAvailable: mares.filter((h) => !h.sold).length,
+  })},
+  words: ${JSON.stringify(WORDS)}
+};
+`);
+console.log('wrote horses-home.js for the homepage runs');

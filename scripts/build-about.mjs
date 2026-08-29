@@ -129,9 +129,14 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     padding:3.8rem clamp(1.1rem,1.8vw,1.4rem) clamp(1.1rem,1.8vw,1.4rem);
     /* The whole fade happens inside the top padding, above the label. Put
        it lower and the label sits in the pale end of its own gradient,
-       which is what the first attempt did: 1.0:1 on the brightest card. */
+       which is what the first attempt did: 1.0:1 on the brightest card.
+       It stops at .84 rather than .98. At .98 the navy is opaque, which is
+       why it read as black: nothing of the photograph is left to tint it,
+       and #0a1526 on its own is hard to tell from black. At .84 the picture
+       carries through the foot and the colour is visibly blue. Measured
+       again after the change, because thinner means less contrast. */
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), 0) 0%, rgba(var(--veil-rgb), .62) 12%, rgba(var(--veil-rgb), .93) 24%, rgba(var(--veil-rgb), .98) 100%);
+      rgba(var(--veil-rgb), 0) 0%, rgba(var(--veil-rgb), .54) 12%, rgba(var(--veil-rgb), .84) 24%, rgba(var(--veil-rgb), .90) 100%);
   }
   /* Written as :not() because .aboff__i > * carries the same specificity as
      the two layers above and, coming later, would drop them into the flow.
@@ -171,7 +176,7 @@ const page = `<!DOCTYPE html>
 <head>
 ${head({
   title: 'About',
-  desc: 'Stud Von Axe was born from a passion for horses: mares chosen after years on the best German farms, every cross begun in Desenzano del Garda and every foal carried and raised in Lanaken.',
+  desc: 'Mares chosen after years on the best German farms, every cross begun in Desenzano del Garda, every foal carried and raised in Lanaken.',
   path: '/about',
   image: 'about-hero.jpg',
   ldType: 'AboutPage',
@@ -264,10 +269,10 @@ ${header}
   <section class="aboff">
     <div class="wrap">
       <p class="plaque">What we offer</p>
-      <!-- Not "one programme" a second time: the heading above already says
-           it, and repeating it makes the page sound like it is running out
-           of things to say. -->
-      <h2 class="abst__h">Four ways <em>in</em></h2>
+      <!-- "Four ways in" said nothing a reader could use, and naming all
+           four ran to three lines. Plain words instead, which is the house
+           rule anyway. -->
+      <h2 class="abst__h">What we <em>sell</em></h2>
       <div class="aboff__grid">
 
         <a class="aboff__i" href="/#programme">
