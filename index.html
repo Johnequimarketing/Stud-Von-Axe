@@ -409,7 +409,7 @@
   /* Six nav items either side of a centred wordmark stop fitting on one
      line well above the phone breakpoint, so the drawer takes over here
      rather than at 860px. */
-  @media (max-width: 1100px){
+  @media (max-width: 1240px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -1765,12 +1765,19 @@
     <div class="hd__row">
       <div class="hd__start">
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
+        <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
+             mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
+             Home is the mark. Until each has a page of its own, every item
+             points at the section that holds that content today, so no
+             link in this menu goes anywhere it cannot deliver.
+             Results is gone: it was never on their list, and the news
+             lives in the footer where Mark put it. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
+          <a href="#horses">Breeding mares</a>
+          <a href="#programme">Foals</a>
+          <a href="#programme">Embryos</a>
+          <a href="#horses">Sport horses</a>
           <a href="#about">About</a>
-          <a href="#horses">Horses</a>
-          <a href="#programme">Programme</a>
-          <a href="#services">Services</a>
-          <a href="#news">Results</a>
         </nav>
       </div>
 
@@ -2227,8 +2234,11 @@
       <div class="footer-col">
         <h2 class="footer-h">Navigate</h2>
         <ul>
+          <li><a href="#horses">Breeding mares</a></li>
+          <li><a href="#programme">Foals</a></li>
+          <li><a href="#programme">Embryos</a></li>
+          <li><a href="#horses">Sport horses</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#horses">Horses</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="news/">News</a></li>
           <li><a href="#contact">Contact</a></li>
