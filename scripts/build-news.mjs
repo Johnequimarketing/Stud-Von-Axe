@@ -5,50 +5,14 @@
  * moment someone edits one by hand. This script is the only writer. To change
  * a story, edit news-data.js and run:  node scripts/build-news.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { root, homeCss, pageHeroCss, header as headerHero, footer as footerHtml, esc, navScript }
+  from './lib/shell.mjs';
 
 /* The data file is plain browser JS (`var NEWS = [...]`); evaluate it. */
 const NEWS = new Function(readFileSync(join(root, 'news-data.js'), 'utf-8') + '; return NEWS;')();
-
-/* The homepage is the source of truth for everything shared: its full
-   stylesheet, its header and its footer are lifted verbatim at build time
-   and only the paths are rewritten for the news/ folder. Rebuilding after
-   any homepage change keeps the two in step; nothing shared is authored
-   here a second time. */
-const home = readFileSync(join(root, 'index.html'), 'utf-8');
-const homeCss = home.match(/<style>([\s\S]*?)<\/style>/)[1];
-
-/* Root absolute, never relative.
-   The archive is served at /news with no trailing slash, and a browser
-   resolves a relative href against the DIRECTORY of the current URL. The
-   directory of /news is /, so href="contouch-top-price" resolved to
-   /contouch-top-price and returned 404. Root absolute paths hold wherever
-   the page is served, with or without the slash. */
-const relink = (html) => html
-  .replace(/href="#/g, 'href="/#')
-  .replace(/href="news\/"/g, 'href="/news"')
-  .replace(/(src|href)="assets\//g, '$1="/assets/')
-  .replace(/href="index.html"/g, 'href="/"');
-
-const headerRaw = relink(home.slice(home.indexOf('  <header class="hd">'),
-                                    home.indexOf('  </header>') + '  </header>'.length));
-/* Over the archive hero the header is the homepage's: transparent with the
-   hanging plate, pinning to ivory once the hero is behind it. The singles
-   have no dark hero, so there it is solid ivory from the first pixel. */
-const headerHero  = headerRaw.replace('<header class="hd">', '<header class="hd" id="site-header">');
-
-const footerHtml = relink(home.slice(home.indexOf('<footer class="site-footer">'),
-                                     home.indexOf('</footer>') + '</footer>'.length));
-
-for (const [piece, name] of [[headerHero, 'header'], [footerHtml, 'footer']]) {
-  if (!piece || piece.length < 400) throw new Error(`could not lift the ${name} from index.html`);
-}
-
-const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 /* One italic accent word per title, the house heading rule. Chosen per
    story rather than guessed by position. */
@@ -65,7 +29,7 @@ const accent = (item) => {
     : esc(item.title);
 };
 
-const CSS = homeCss + `
+const CSS = homeCss + pageHeroCss + `
   /* ── news pages only. Everything above is the homepage stylesheet. ── */
 
   /* The archive header IS the homepage header: the lifted stylesheet
@@ -77,35 +41,8 @@ const CSS = homeCss + `
      over them, so their type needs to clear the bar. */
   .nhero > .wrap, .ahero__in{ padding-top:clamp(6rem,13vh,8rem); }
 
-  /* ---- the archive hero: a covered photograph, the homepage veil ---- */
-  .nhero{
-    position:relative; isolation:isolate; overflow:hidden;
-    min-height:clamp(320px, 44vh, 460px);
-    display:grid; align-items:end;
-    background:var(--color-navy-deep);
-  }
-  .nhero__bg{ position:absolute; inset:0; z-index:0; }
-  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
-  /* Type crosses the whole width, so the veil is a foot gradient: open at
-     the head where the braids read, closing downward under the type. */
-  .nhero__veil{
-    position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg,
-      rgba(10,21,38,.42) 0%, rgba(10,21,38,.62) 45%, rgba(6,12,20,.9) 100%);
-  }
-  .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
-  /* Title left, intro right, on one baseline: the homepage section head,
-     brought onto the photograph. */
-  .nhero__grid{ display:grid; gap:clamp(1.2rem,3vw,2.6rem); align-items:end; }
-  @media (min-width:820px){ .nhero__grid{ grid-template-columns:1.1fr .9fr; } }
-  .arch__h{
-    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-white); max-width:16ch; text-wrap:balance;
-  }
-  .arch__h em{ font-style:italic; color:var(--color-gold); }
-  .arch__intro{ margin:0; color:rgba(255,255,255,.78); max-width:48ch; font-size:15.5px; }
-
+  /* The page hero and its two heading parts live in lib/shell.mjs:
+     the about page wears the same one. */
   /* ---- the archive grid reuses .nw__card from the homepage sheet ---- */
   .arch{ padding:clamp(2rem,4.5vw,3.2rem) 0 clamp(3rem,7vw,5rem); }
   .arch__grid{ display:grid; gap:var(--card-gap); }
@@ -236,34 +173,7 @@ const head = (title, desc, slug) => `<meta charset="utf-8">
 const header = headerHero;
 const footer = footerHtml;
 
-const navScript = `<script>
-(function(){
-  /* The homepage flip, and deliberately the homepage's own measurement:
-     the hero's bottom edge against the visible bar, not a scroll distance.
-     .hd is zero height by design, so its own offsetHeight is 0 and the row
-     is what has to be measured. Runs only where a hero exists. */
-  var hd = document.querySelector('.hd');
-  var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero');
-  if(hd && row && hero){
-    var onScroll = function(){
-      hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
-    };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll);
-    onScroll();
-  }
-  var toggle = document.getElementById('nav-toggle');
-  var nav = document.getElementById('primary-nav');
-  if(toggle && nav){
-    toggle.addEventListener('click', function(){
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-  }
-})();
-<\/script>`;
+/* header pin and drawer: the shared script, imported above. */
 
 mkdirSync(join(root, 'news'), { recursive: true });
 

@@ -23,7 +23,10 @@ cp "$root/news-data.js" "$here/news-data.js"
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"
-echo "copied index.html, news-data.js and $(ls "$here/news" | wc -l | tr -d ' ') news pages"
+mkdir -p "$here/about"
+rm -f "$here/about/"*.html
+cp "$root/about/index.html" "$here/about/index.html"
+echo "copied index.html, news-data.js, the about page and $(ls "$here/news" | wc -l | tr -d ' ') news pages"
 
 # ── only the assets the page actually references ──────────────────────
 # Read out of index.html rather than copying the whole folder, so an
@@ -40,7 +43,7 @@ while IFS= read -r ref; do
     echo "MISSING asset, refusing to publish: $ref" >&2
     exit 1
   fi
-done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html \
+done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
   | grep -oE 'assets/(img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 

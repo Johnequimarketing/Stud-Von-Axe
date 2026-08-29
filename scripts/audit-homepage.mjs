@@ -339,12 +339,19 @@ for (const rel of files) {
     : linkTargets.length && pass(`${linkTargets.length} internal link target(s) all exist`);
 
   /* 6 ── assets exist and are light */
-  /* A page in a subfolder references ../assets/...; resolve every path
-     relative to the file that names it, not to the project root. */
-  const refs = [...new Set([...src.matchAll(/(?:src|href)="((?:\.\.\/)?assets\/[^"]+)"/g)].map(m => m[1]))];
+  /* Three shapes reach the same file: assets/... on the homepage,
+     ../assets/... from a subfolder, and /assets/... on every generated
+     page. Root absolute resolves against the project, the other two
+     against the file that names them. The generated pages use the third
+     shape exclusively, so a pattern that missed it reported "0 assets" and
+     passed: a check that finds nothing must never read as a clean bill. */
+  const refs = [...new Set([...src.matchAll(/(?:src|href)="(\/?(?:\.\.\/)?assets\/[^"]+)"/g)].map(m => m[1]))];
+  if (!refs.length && /assets\//.test(src)) {
+    fail(rel, 'the asset check matched nothing while the page references assets: the pattern is blind');
+  }
   let assetsOk = true;
   for (const a of refs) {
-    const p = join(dirname(file), a);
+    const p = a.startsWith('/') ? join(root, a.slice(1)) : join(dirname(file), a);
     if (!existsSync(p)) { fail(rel, `missing asset: ${a}`); assetsOk = false; continue; }
     const kb = statSync(p).size / 1024;
     if (kb > 500 && !isInternal) { fail(rel, `asset over 500 KB: ${a} (${Math.round(kb)} KB)`); assetsOk = false; }
