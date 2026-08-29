@@ -207,7 +207,11 @@ for (const rel of files) {
   const houseWords = [
     ['pairing',      'cross, the word the jumping world uses for a sire and dam combination'],
     ['on the record','plain English: news, results'],
-    ['mediation',    'brokering, or acting between buyer and seller; mediation is dispute resolution'],
+    /* The stem, not the noun: "mediation" was on this list from the start
+       and "Sourced and mediated" sat on the homepage through every run of
+       it. A banned word that only catches one of its own forms is not a
+       ban. \b keeps it off "immediate". */
+    ['mediat(?:e|ed|es|ing|ion)', 'brokering, or acting between buyer and seller; mediation is dispute resolution'],
     ['the herd',     'name what it is: the mares, the foals, every horse we have'],
     ['both yards',   'two countries, one programme; Lanaken is not a yard of the stud'],
     ['two yards',    'two countries, one programme; Lanaken is not a yard of the stud'],
@@ -221,7 +225,7 @@ for (const rel of files) {
   const houseHits = isInternal ? []
     : houseWords.filter(([w]) => new RegExp(`\\b${w}`, 'i').test(text));
   houseHits.length
-    ? fail(rel, `word(s) that are not this market's English: ${houseHits.map(([w,f]) => `"${w}" (use ${f})`).join('; ')}`)
+    ? fail(rel, `word(s) that are not this market's English: ${houseHits.map(([w,f]) => `"${w.replace(/\(\?:[^)]*\)/, '…')}" (use ${f})`).join('; ')}`)
     : pass(isInternal ? 'internal document, copy rules not applied' : 'no house-banned words in the copy');
 
   /* 6 ── no invented mark.

@@ -104,6 +104,30 @@ const CSS = homeCss + pageHeroCss + `
   .abpl__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.1rem; color:var(--color-ink); }
   .abpl__d{ display:block; margin-top:.15rem; font-size:14px; color:var(--color-ink-soft); }
 
+  /* ---- what we offer: four routes, four hairlines ----
+     The same recipe as the two places above it, widened to four. A row of
+     rules rather than a row of cards, because cards here would compete with
+     the runs on the homepage that these four link to. */
+  .aboff{ padding-bottom:clamp(2.4rem,5vw,4rem); }
+  .aboff__grid{ display:grid; gap:1.6rem 2rem; margin-top:1.8rem; }
+  @media (min-width:640px){ .aboff__grid{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1000px){ .aboff__grid{ grid-template-columns:repeat(4, 1fr); } }
+  .aboff__i{ display:flex; flex-direction:column; padding-top:1.1rem; border-top:1px solid var(--color-line); min-width:0; }
+  .aboff__k{
+    font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.45rem;
+  }
+  .aboff__t{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem; line-height:1.1; color:var(--color-ink); }
+  .aboff__d{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:var(--color-ink-soft); }
+  .aboff__a{
+    margin-top:auto; font-family:var(--font-body); font-weight:700; font-size:11.5px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-navy);
+    display:inline-flex; align-items:center; gap:.45rem;
+    transition:gap .35s var(--ease);
+  }
+  .aboff__a:hover{ gap:.8rem; }
+  .aboff__a .a{ color:var(--color-gold); }
+
   /* ---- the invitation, the homepage plate, held to the page width ---- */
   .abcta{ padding-bottom:clamp(3.2rem,6vw,5rem); }
 `;
@@ -200,7 +224,55 @@ ${header}
     </div>
   </section>
 
-  <!-- THREE. The invitation. The homepage plate, unchanged. -->
+  <!-- THREE. The four routes, in the homepage's own words, each pointing at
+       the place that already holds them. Without this the page is a dead
+       end: it says who they are and then stops. -->
+  <section class="aboff">
+    <div class="wrap">
+      <p class="plaque">What we offer</p>
+      <!-- Not "one programme" a second time: the heading above already says
+           it, and repeating it makes the page sound like it is running out
+           of things to say. -->
+      <h2 class="abst__h">Four ways <em>in</em></h2>
+      <div class="aboff__grid">
+
+        <div class="aboff__i">
+          <span class="aboff__k">Lanaken, Belgium</span>
+          <h3 class="aboff__t">Foals</h3>
+          <p class="aboff__d">Born and raised at our Belgian base, out of mares chosen for jumping
+          ability and temperament. You collect a horse already on the ground.</p>
+          <a class="aboff__a" href="/#programme">See the foals <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="aboff__i">
+          <span class="aboff__k">Frozen or carrying</span>
+          <h3 class="aboff__t">Embryos</h3>
+          <p class="aboff__d">Frozen from our own damlines, or already carrying in Lanaken. Every cross
+          is made on pedigree and on what the mare has produced.</p>
+          <a class="aboff__a" href="/#programme">Ask about a cross <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="aboff__i">
+          <span class="aboff__k">With Avantea, Cremona</span>
+          <h3 class="aboff__t">ICSI semen</h3>
+          <p class="aboff__d">Worked with our own mares through OPU and ICSI. The stallions we hold are
+          named on request rather than listed.</p>
+          <a class="aboff__a" href="/news/icsi-semen-available">Read more <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="aboff__i">
+          <span class="aboff__k">Sourced and brokered</span>
+          <h3 class="aboff__t">Sport horses</h3>
+          <p class="aboff__d">Several of our mares are available either to compete or to breed from. We
+          also look on a client's behalf, across Europe and as far as America.</p>
+          <a class="aboff__a" href="/#horses">See the horses <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR. The invitation. The homepage plate, unchanged. -->
   <section class="abcta">
     <div class="wrap">
       <div class="pcta">
