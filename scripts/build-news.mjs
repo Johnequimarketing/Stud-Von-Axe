@@ -40,7 +40,6 @@ const headerRaw = relink(home.slice(home.indexOf('  <header class="hd">'),
    hanging plate, pinning to ivory once the hero is behind it. The singles
    have no dark hero, so there it is solid ivory from the first pixel. */
 const headerHero  = headerRaw.replace('<header class="hd">', '<header class="hd" id="site-header">');
-const headerSolid = headerRaw.replace('<header class="hd">', '<header class="hd hd--solid" id="site-header">');
 
 const footerHtml = relink(home.slice(home.indexOf('<footer class="site-footer">'),
                                      home.indexOf('</footer>') + '</footer>'.length));
@@ -74,27 +73,9 @@ const CSS = homeCss + `
      pins it once the hero is behind it. Only the singles need anything of
      their own: no dark hero there, so the header is solid ivory from the
      first pixel, wearing the pinned colours permanently. */
-  .hd--solid{ height:auto; position:sticky; top:0; }
-  /* On the singles the page ground is ivory too, so an ivory plate is
-     invisible: it reads as a full width bar again. White, like every other
-     card on this site, and the plate is a plate. */
-  .hd--solid .hd__row{
-    background:var(--color-white);
-    box-shadow:0 14px 34px -24px rgba(10,21,38,.5);
-  }
-  .hd--solid .brand{ box-shadow:none; }
-  .hd--solid .primary-nav a, .hd--solid .nav-toggle, .hd--solid .lang-switch button,
-  .hd--solid .lang-switch .sep, .hd--solid .lang-switch .lang-soon{
-    color:var(--color-ink);
-  }
-  .hd--solid .lang-switch .lang-soon{ opacity:.35; }
-  .hd--solid .primary-nav a:hover{ color:var(--color-navy); }
-  .hd--solid .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .hd--solid .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); background:none; }
-  .hd--solid .hd__rule{ display:none; }
-  /* the hero must reach the top edge the transparent header hangs over */
-  .nhero{ margin-top:0; }
-  .nhero > .wrap{ padding-top:clamp(5.5rem,12vh,7.5rem); }
+  /* Both heroes start at the very top of the page and the header hangs
+     over them, so their type needs to clear the bar. */
+  .nhero > .wrap, .ahero__in{ padding-top:clamp(6rem,13vh,8rem); }
 
   /* ---- the archive hero: a covered photograph, the homepage veil ---- */
   .nhero{
@@ -132,25 +113,26 @@ const CSS = homeCss + `
   @media (min-width:1040px){ .arch__grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 
   /* ---- the single ----
-     The photograph IS the hero: eyebrow and title sit on it, so the story
-     starts at the top of the screen instead of below a full width picture.
-     Same veil recipe as the archive hero and the homepage bands. */
+     The photograph is the hero, with the title on it, and the story runs
+     underneath in a readable measure. One photograph, one place, and the
+     only things to fill in per story are a title, an eyebrow, the text and
+     the picture. */
   .ahero{
     position:relative; isolation:isolate; overflow:hidden;
-    min-height:clamp(360px, 52vh, 540px);
+    min-height:clamp(400px, 56vh, 580px);
     display:grid; align-items:end; background:var(--color-navy-deep);
   }
   .ahero__bg{ position:absolute; inset:0; z-index:0; }
-  .ahero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .ahero__bg img{ width:100%; height:100%; object-fit:cover; }
   .ahero__veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
-      rgba(10,21,38,.34) 0%, rgba(10,21,38,.58) 46%, rgba(6,12,20,.92) 100%);
+      rgba(10,21,38,.44) 0%, rgba(10,21,38,.34) 34%, rgba(6,12,20,.88) 100%);
   }
   .ahero__in{
     position:relative; z-index:2;
     width:min(var(--wrap), 100% - (2 * var(--gutter))); margin-inline:auto;
-    padding-block:clamp(2rem,5vw,3.2rem) clamp(1.6rem,4vw,2.6rem);
+    padding-bottom:clamp(1.8rem,4vw,2.8rem);
   }
   .ahero h1{
     margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
@@ -159,51 +141,26 @@ const CSS = homeCss + `
   }
   .ahero h1 em{ font-style:italic; color:var(--color-gold); }
   .ahero .hz__ph{ top:auto; bottom:12px; right:12px; }
-
-  /* ---- the story ---- */
-  .art{ padding:clamp(2.2rem,5vw,3.4rem) 0 clamp(3rem,7vw,5rem); }
   .ahero__crumb{ margin:0 0 .9rem; font-size:12.5px; color:rgba(255,255,255,.66); }
   .ahero__crumb a{ color:var(--color-white); text-decoration:none;
     border-bottom:1px solid rgba(255,255,255,.35); padding-bottom:1px; }
   .ahero__crumb a:hover{ border-color:var(--color-gold); }
   .ahero__crumb span{ margin:0 .35rem; opacity:.5; }
-  /* Two columns on desktop: the story in a readable measure, the facts
-     rail beside it. One column and no rail below 900px. */
-  .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.5rem); align-items:start; }
-  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,62ch) 1fr; } }
+
+  /* ---- the story: text one side, the picture the other ---- */
+  .art{ padding:clamp(2.4rem,5vw,3.6rem) 0 clamp(3rem,7vw,5rem); }
+  .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:start; }
+  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,1.15fr) .85fr; } }
   .art__body p{ margin:0 0 1.15em; font-size:17.5px; line-height:1.68; color:var(--color-ink); }
-  .art__body p:first-child{
-    font-size:20px; line-height:1.55; color:var(--color-navy);
-  }
+  .art__body p:first-child{ font-size:20px; line-height:1.55; color:var(--color-navy); }
   .art__body p:last-child{ margin-bottom:0; }
-  .art__rail{
-    padding:clamp(1.1rem,2.2vw,1.5rem);
-    border-radius:var(--card-radius); background:var(--color-white);
-    box-shadow:inset 0 0 0 1px var(--color-line);
+  .art__pic{
+    position:relative; overflow:hidden; border-radius:var(--plate-radius);
+    background:var(--color-navy-deep);
+    box-shadow:0 26px 60px -40px rgba(10,21,38,.6);
   }
-  .art__railK{
-    margin:0; font-family:var(--font-body); font-size:10px; font-weight:700;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
-  }
-  .art__facts{ margin:.9rem 0 0; display:grid; gap:.8rem; }
-  .art__facts > div{ padding-top:.8rem; border-top:1px solid var(--color-line); }
-  .art__facts > div:first-child{ padding-top:0; border-top:0; }
-  .art__facts dt{
-    font-family:var(--font-body); font-size:11px; font-weight:700;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--color-ink-soft);
-  }
-  .art__facts dd{
-    margin:.25rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:1.1rem; line-height:1.25; color:var(--color-navy);
-  }
-  .art__railGo{
-    display:inline-flex; align-items:center; gap:.45rem; margin-top:1.1rem;
-    padding-top:.9rem; border-top:1px solid var(--color-line); width:100%;
-    font-size:12.5px; font-weight:700; letter-spacing:.06em; color:var(--color-navy);
-    text-decoration:none;
-  }
-  .art__railGo span{ transition:transform .3s var(--ease); }
-  .art__railGo:hover span{ transform:translateX(4px); }
+  .art__pic img{ width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; }
+  @media (max-width:899px){ .art__pic img{ aspect-ratio:16/10; } }
 
   /* ---- prev and next ----
      The same card the archive uses, laid on its side: the photograph on
@@ -272,6 +229,7 @@ const head = (title, desc, slug) => `<meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>${CSS}</style>`;
 
+const header = headerHero;
 const footer = footerHtml;
 
 const navScript = `<script>
@@ -280,9 +238,9 @@ const navScript = `<script>
      the hero's bottom edge against the visible bar, not a scroll distance.
      .hd is zero height by design, so its own offsetHeight is 0 and the row
      is what has to be measured. Runs only where a hero exists. */
-  var hd = document.querySelector('.hd:not(.hd--solid)');
+  var hd = document.querySelector('.hd');
   var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero');
+  var hero = document.querySelector('.nhero, .ahero');
   if(hd && row && hero){
     var onScroll = function(){
       hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
@@ -358,17 +316,13 @@ NEWS.forEach((n, i) => {
   const prev = NEWS[(i - 1 + NEWS.length) % NEWS.length];
   const next = NEWS[(i + 1) % NEWS.length];
   const body = n.body.map((p) => `      <p>${esc(p)}</p>`).join('\n');
-  /* Facts come straight out of the story's own sentences; nothing is
-     computed or inferred, so a story without them simply has none. */
-  const facts = (n.facts || []).map((f) =>
-    `        <div><dt>${esc(f.k)}</dt><dd>${esc(f.v)}</dd></div>`).join('\n');
   writeFileSync(join(root, 'news', `${n.slug}.html`), `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${head(n.title, n.excerpt, n.slug)}
 </head>
 <body>
-${headerSolid}
+${header}
 <section class="ahero">
   <div class="ahero__bg" aria-hidden="true">
     <img src="/${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}"
@@ -389,13 +343,11 @@ ${headerSolid}
     <div class="art__body">
 ${body}
     </div>
-    <aside class="art__rail">
-      <p class="art__railK">In this story</p>
-      <dl class="art__facts">
-${facts}
-      </dl>
-      <a class="art__railGo" href="/news">All news and results <span aria-hidden="true">&rarr;</span></a>
-    </aside>
+    <figure class="art__pic"${n.ph ? ' data-placeholder="true"' : ''}>
+      <img src="/${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}"
+           style="object-position:${n.focus || '50% 42%'}" loading="lazy">
+      ${n.ph ? '<span class="hz__ph">Photo pending</span>' : ''}
+    </figure>
   </div>
 
   <div class="pcta">
