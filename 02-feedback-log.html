@@ -189,6 +189,36 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">The header is a plate with air around it, and the mark crosses it</p>
+    <p class="said">Arrived at over four rounds and then confirmed: <q>hero super nice nu</q>. Air above
+    the whole header, the bar held to the page gutter and rounded on all four corners, and the logo on a
+    plate taller than the bar so the two cross. Transparent over the hero, ivory once the hero is behind
+    it, white mark on the photograph and the navy one on the ivory.</p>
+    <p class="check">Checked: the tokens are <code>--hd-top</code>, <code>--hd-bar</code> and
+    <code>--hd-plate</code>. The bar carries a fixed height on purpose, because as the tallest item in
+    the row the plate would otherwise stretch it and nothing would cross anything.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">About is a page, reached from the footer, not from the top menu</p>
+    <p class="said">He said: <q>plaats About ook in de footer, haal weg in de top menu, is beter, dan
+    hebben we wat meer ruimte</q>. The menu carries the owners' own list and nothing else, and the room
+    that freed went into the spacing rather than into another item.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A page is as short as it can be and still complete</p>
+    <p class="said">On the about page: <q>niet te groot, maximaal 3 secties bouwen, maar wat je doet doe
+    het goed</q>. A fourth was added later, but only after he chose it from four options and only
+    because the page was otherwise a dead end.</p>
+    <p class="check">Checked: propose the section, say what it would carry and what it costs, and let him
+    choose. Never lengthen a page to look thorough.</p>
+    <div class="tags"><span class="tag tag--hard">Settled</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">News carries no dates, and the archive is reached from the footer</p>
     <p class="said">The old site's timestamps contradict the stories they sit on, so no date is shown
     until the owners give real ones. <q>De archief link naar nieuws mag in de footer erbij, hoeft niet in
@@ -266,6 +296,29 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">Never invent a value that is not in the design system</p>
+    <p class="said">He said: <q>nooit zomaar zwart gebruiken, dat staat nergens en hebben we nergens
+    gebruikt, dus niet zelf met die bullshit komen</q>. Twelve veils were written as rgba(6,12,20), a
+    near-black that is in no token, no document and no other page.</p>
+    <p class="check">Checked: dark is <code>--veil-rgb: 10, 21, 38</code>, the components of navy-deep,
+    and every veil, scrim and shadow draws from it. The rule is wider than the colour: if a treatment
+    seems to need a value the system does not have, the system is missing something and that is a
+    question for Mark, not a local decision. The colour itself is the item further down this page.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Never shorten the copy to solve a technical problem</p>
+    <p class="said">The gold labels on the new cards would not clear the contrast threshold, so the copy
+    was cut to one line per card to move the text lower. He noticed immediately: <q>ik mis de algemene
+    tekst die er nog bij stond</q>. The words were not the problem and should never have paid for it.</p>
+    <p class="check">Checked: a contrast, overflow or fit problem is solved in the layout. The card grew
+    from 4:5 to 2:3 and the dark foot was hung on the text block, and the full sentences came back
+    unchanged. If a fix can only be bought with the client's words, it is the wrong fix.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Type on a photograph is measured behind the type, not near it</p>
     <p class="said">The four cards on the about page looked fine. Sampled behind the gold label itself,
     on the rendered page with the text hidden, the brightest card came in at 1.53:1 where the house
@@ -324,11 +377,14 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
-    <p class="rule">Nothing is committed or pushed without being asked</p>
-    <p class="said">He said: <q>only locally we will edit, i will let you know when we need to push
-    something to the github afterwards</q>.</p>
-    <p class="check">By eye, every time: end the message by stating that nothing was committed or pushed.</p>
-    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+    <p class="rule">Nothing is published on our own judgement</p>
+    <p class="said">He said it sharply while the repository was John's: <q>niets committen of pushen</q>.
+    Since 28 Aug he has asked for the opposite, his own Vercel and the site live, so the standing
+    instruction now is to build, audit, sync, publish and say what went where.</p>
+    <p class="check">Checked: the rule underneath never changed. Publishing happens because he asked for
+    it, to the target he named, and the reply says what is live on which URL with the status codes. Any
+    other repository, branch, host or account is a question first.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
   </div>
 
   <div class="item">
@@ -431,6 +487,17 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">A call to action may not shut out most of what they sell</p>
+    <p class="said">He said of <q>Ask us anything about a horse</q>: <q>is zo raar, klinkt gewoon raar,
+    wat over een veulen of embryo? wat dan, dat mag niet?</q> A foal and an embryo are not a horse in the
+    way that sentence uses the word, and between them they are most of the business.</p>
+    <p class="check">Checked by eye on every button and heading: does this sentence still work if the
+    reader wants a frozen embryo, a straw of semen or a mare? It reads <q>Tell us what you are looking
+    for</q> now, and the line under it names the embryo.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A label may not promise a page that does not exist</p>
     <p class="said">Every news card said <q>Read it</q>. There is no news page, and News is not even on
     the page list the owners sent. The cards stopped being links.</p>
@@ -486,6 +553,18 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
     search that sheet for the class first. Its buttons are <code>btn btn-gold btn-pill</code>, always
     all three.</p>
     <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A single photograph keeps its own proportions</p>
+    <p class="said">On the article page: <q>de foto is veel te hoog, past niet joh, doe net zo groot als
+    de foto zelf is, dus als hij verticaal is dat hij daarop aanpast en horizontaal dat hij daarop
+    aanpast</q>. A fixed aspect ratio had been cropping standing pictures into landscape boxes.</p>
+    <p class="check">Checked: where one photograph stands alone, no <code>aspect-ratio</code> and no
+    <code>object-fit</code> crop; the picture sets its own height. A ratio is only for a frame that has
+    to hold several pictures at once, like the fading frame on the about page, and that trade is stated
+    where it is made.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
   </div>
 
   <div class="item">
@@ -563,6 +642,39 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
     action box, net zoals bij de hero</q>. The ivory ground hangs into the band below with rounded
     corners, mirroring the hero tray. A plate with a negative margin is not the same gesture.</p>
     <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A row of cards stands at one height</p>
+    <p class="said">The four offer cards were stepped, the even ones dropped, as a way of breaking the
+    row. He said: <q>zet de foto's allemaal op dezelfde hoogte</q>. It read as a mistake rather than as
+    rhythm.</p>
+    <p class="check">Checked by eye: rhythm comes from what is inside the cards, not from moving them
+    off each other's line. The invitation plate is how a run gets broken here.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">An offer is shown with pictures, not set as a list</p>
+    <p class="said">The four routes were first built as hairlines with a label and a sentence under each.
+    <q>Bouw dit mooier, dit is niks zo. met boxes met achtergrond foto en daar de tekst bij onderin, maak
+    er iets moois van net zoals de rest van de website.</q></p>
+    <p class="check">Checked: anything that carries what they sell gets a photograph, in the page's own
+    plate recipe, with the type standing on the picture. A typographic list is for facts beside the
+    offer, like the two places, never for the offer itself.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A hero is a wide strip, so the photograph is chosen on its shape</p>
+    <p class="said">Two hero photographs were rejected before one worked: <q>doe een andere hero foto bij
+    de about pagina, die ziet er niet uit</q>. Both were good pictures and nearly square, and a hero
+    460px tall across the full width keeps about a fifth of a square photograph.</p>
+    <p class="check">Checked: for a hero, look for 1.8:1 or wider and put the subject to one side so the
+    type has ground. A nearly square picture belongs in a standing frame beside the words, where it
+    loses almost nothing. The harvested originals in <code>assets/source</code> are worth searching by
+    aspect ratio before settling for a crop.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
   </div>
 
   <div class="item">
