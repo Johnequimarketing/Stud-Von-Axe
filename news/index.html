@@ -1731,27 +1731,65 @@
   @media (min-width:680px){ .arch__grid{ grid-template-columns:1fr 1fr; } }
   @media (min-width:1040px){ .arch__grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 
-  /* ---- the single ---- */
-  .art{ padding:clamp(2.4rem,5vw,3.6rem) 0 clamp(3rem,7vw,5rem); }
-  .art__crumb{ font-size:13px; color:var(--color-ink-soft); }
-  .art__crumb a{ color:var(--color-navy); text-decoration:none; border-bottom:1px solid var(--color-line); }
-  .art__crumb a:hover{ border-color:var(--color-gold); }
-  .art__head{ max-width:var(--art-measure, 720px); margin-top:clamp(1.4rem,3vw,2rem); }
-  .art h1{
-    margin:.6rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-navy); text-wrap:balance;
+  /* ---- the single ----
+     The photograph IS the hero: eyebrow and title sit on it, so the story
+     starts at the top of the screen instead of below a full width picture.
+     Same veil recipe as the archive hero and the homepage bands. */
+  .ahero{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:clamp(360px, 52vh, 540px);
+    display:grid; align-items:end; background:var(--color-navy-deep);
   }
-  .art h1 em{ font-style:italic; color:var(--color-gold); }
-  .art__fig{
-    position:relative; overflow:hidden; border-radius:var(--plate-radius);
-    margin:clamp(1.6rem,3.5vw,2.4rem) 0 0; background:var(--color-navy-deep);
-    box-shadow:0 30px 70px -44px rgba(10,21,38,.6);
+  .ahero__bg{ position:absolute; inset:0; z-index:0; }
+  .ahero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .ahero__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,
+      rgba(10,21,38,.34) 0%, rgba(10,21,38,.58) 46%, rgba(6,12,20,.92) 100%);
   }
-  .art__fig img{ width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
-  .art__body{ max-width:var(--art-measure, 720px); margin-top:clamp(1.6rem,3.5vw,2.4rem); }
-  .art__body p{ margin:0 0 1.1em; font-size:17px; color:var(--color-ink); }
+  .ahero__in{
+    position:relative; z-index:2;
+    width:min(var(--wrap), 100% - (2 * var(--gutter))); margin-inline:auto;
+    padding-block:clamp(2rem,5vw,3.2rem) clamp(1.6rem,4vw,2.6rem);
+  }
+  .ahero h1{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem,3.4vw + 1rem,3.4rem); line-height:1.03;
+    letter-spacing:-.02em; color:var(--color-white); max-width:18ch; text-wrap:balance;
+  }
+  .ahero h1 em{ font-style:italic; color:var(--color-gold); }
+  .ahero .hz__ph{ top:auto; bottom:12px; right:12px; }
+
+  /* ---- the story ---- */
+  .art{ padding:clamp(2.2rem,5vw,3.4rem) 0 clamp(3rem,7vw,5rem); }
+  .ahero__crumb{ margin:0 0 .9rem; font-size:12.5px; color:rgba(255,255,255,.66); }
+  .ahero__crumb a{ color:var(--color-white); text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.35); padding-bottom:1px; }
+  .ahero__crumb a:hover{ border-color:var(--color-gold); }
+  .ahero__crumb span{ margin:0 .35rem; opacity:.5; }
+  /* Two columns on desktop: the story in a readable measure, the facts
+     rail beside it. One column and no rail below 900px. */
+  .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.5rem); align-items:start; }
+  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,62ch) 1fr; } }
+  .art__body p{ margin:0 0 1.15em; font-size:17.5px; line-height:1.68; color:var(--color-ink); }
+  .art__body p:first-child{
+    font-size:20px; line-height:1.55; color:var(--color-navy);
+  }
   .art__body p:last-child{ margin-bottom:0; }
+  .art__rail{
+    padding:clamp(1.1rem,2.2vw,1.5rem);
+    border-radius:var(--card-radius); background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line);
+  }
+  .art__railK{
+    margin:0; font-family:var(--font-body); font-size:10px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .art__railV{ margin:.45rem 0 0; font-family:var(--font-display); font-size:1.15rem;
+    line-height:1.2; color:var(--color-navy); }
+  .art__railL{ margin:1rem 0 0; padding-top:.9rem; border-top:1px solid var(--color-line);
+    font-size:13px; color:var(--color-ink-soft); }
+  .art__railL a{ color:var(--color-navy); }
 
   /* prev and next between stories */
   .art__nav{

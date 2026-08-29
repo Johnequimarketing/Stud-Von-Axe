@@ -277,6 +277,29 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   a version of one rule: the page owns one recipe per thing.</p>
 
   <div class="item">
+    <p class="rule">Never re-declare a component that already exists</p>
+    <p class="said">He said the news article looked <q>achterlijk lelijk</q> and the buttons
+    <q>zien er niet uit</q>. They were unstyled text with a yellow smear: I had written my own
+    <code>.btn-gold</code> in the news stylesheet, and the homepage sheet, lifted into the same page,
+    defines that class as a MODIFIER that needs <code>.btn</code> beside it. Mine won the colour and
+    lost every bit of the shape.</p>
+    <p class="check">By eye, before writing any component on a page that lifts the homepage sheet:
+    search that sheet for the class first. Its buttons are <code>btn btn-gold btn-pill</code>, always
+    all three.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A photograph at full width above the copy buries the story</p>
+    <p class="said">The article opened with a 16:9 picture across the measure, so nothing but the
+    picture was on the first screen. He asked for a hero, or something better.</p>
+    <p class="check">The photograph became the hero: eyebrow, crumb and title sit on it under the same
+    veil the homepage bands use, and the copy begins where the picture ends. Each story carries its own
+    focus point, because one crop centre does not suit four different photographs.</p>
+    <div class="tags"><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">One card, one button, one slider mechanism</p>
     <p class="said">Improvised sections instead of the existing recipes were the original complaint. The
     foals and the embryos now use the same card; the two programme runs and the hero use the same track.</p>

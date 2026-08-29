@@ -1731,27 +1731,65 @@
   @media (min-width:680px){ .arch__grid{ grid-template-columns:1fr 1fr; } }
   @media (min-width:1040px){ .arch__grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 
-  /* ---- the single ---- */
-  .art{ padding:clamp(2.4rem,5vw,3.6rem) 0 clamp(3rem,7vw,5rem); }
-  .art__crumb{ font-size:13px; color:var(--color-ink-soft); }
-  .art__crumb a{ color:var(--color-navy); text-decoration:none; border-bottom:1px solid var(--color-line); }
-  .art__crumb a:hover{ border-color:var(--color-gold); }
-  .art__head{ max-width:var(--art-measure, 720px); margin-top:clamp(1.4rem,3vw,2rem); }
-  .art h1{
-    margin:.6rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-navy); text-wrap:balance;
+  /* ---- the single ----
+     The photograph IS the hero: eyebrow and title sit on it, so the story
+     starts at the top of the screen instead of below a full width picture.
+     Same veil recipe as the archive hero and the homepage bands. */
+  .ahero{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:clamp(360px, 52vh, 540px);
+    display:grid; align-items:end; background:var(--color-navy-deep);
   }
-  .art h1 em{ font-style:italic; color:var(--color-gold); }
-  .art__fig{
-    position:relative; overflow:hidden; border-radius:var(--plate-radius);
-    margin:clamp(1.6rem,3.5vw,2.4rem) 0 0; background:var(--color-navy-deep);
-    box-shadow:0 30px 70px -44px rgba(10,21,38,.6);
+  .ahero__bg{ position:absolute; inset:0; z-index:0; }
+  .ahero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .ahero__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,
+      rgba(10,21,38,.34) 0%, rgba(10,21,38,.58) 46%, rgba(6,12,20,.92) 100%);
   }
-  .art__fig img{ width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
-  .art__body{ max-width:var(--art-measure, 720px); margin-top:clamp(1.6rem,3.5vw,2.4rem); }
-  .art__body p{ margin:0 0 1.1em; font-size:17px; color:var(--color-ink); }
+  .ahero__in{
+    position:relative; z-index:2;
+    width:min(var(--wrap), 100% - (2 * var(--gutter))); margin-inline:auto;
+    padding-block:clamp(2rem,5vw,3.2rem) clamp(1.6rem,4vw,2.6rem);
+  }
+  .ahero h1{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2rem,3.4vw + 1rem,3.4rem); line-height:1.03;
+    letter-spacing:-.02em; color:var(--color-white); max-width:18ch; text-wrap:balance;
+  }
+  .ahero h1 em{ font-style:italic; color:var(--color-gold); }
+  .ahero .hz__ph{ top:auto; bottom:12px; right:12px; }
+
+  /* ---- the story ---- */
+  .art{ padding:clamp(2.2rem,5vw,3.4rem) 0 clamp(3rem,7vw,5rem); }
+  .ahero__crumb{ margin:0 0 .9rem; font-size:12.5px; color:rgba(255,255,255,.66); }
+  .ahero__crumb a{ color:var(--color-white); text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.35); padding-bottom:1px; }
+  .ahero__crumb a:hover{ border-color:var(--color-gold); }
+  .ahero__crumb span{ margin:0 .35rem; opacity:.5; }
+  /* Two columns on desktop: the story in a readable measure, the facts
+     rail beside it. One column and no rail below 900px. */
+  .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.5rem); align-items:start; }
+  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,62ch) 1fr; } }
+  .art__body p{ margin:0 0 1.15em; font-size:17.5px; line-height:1.68; color:var(--color-ink); }
+  .art__body p:first-child{
+    font-size:20px; line-height:1.55; color:var(--color-navy);
+  }
   .art__body p:last-child{ margin-bottom:0; }
+  .art__rail{
+    padding:clamp(1.1rem,2.2vw,1.5rem);
+    border-radius:var(--card-radius); background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line);
+  }
+  .art__railK{
+    margin:0; font-family:var(--font-body); font-size:10px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .art__railV{ margin:.45rem 0 0; font-family:var(--font-display); font-size:1.15rem;
+    line-height:1.2; color:var(--color-navy); }
+  .art__railL{ margin:1rem 0 0; padding-top:.9rem; border-top:1px solid var(--color-line);
+    font-size:13px; color:var(--color-ink-soft); }
+  .art__railL a{ color:var(--color-navy); }
 
   /* prev and next between stories */
   .art__nav{
@@ -1808,31 +1846,50 @@
       </div>
     </div>
   </header>
-<main class="wrap art">
-  <p class="art__crumb"><a href="/news">News</a> &middot; ICSI semen</p>
-  <div class="art__head">
+<section class="ahero">
+  <div class="ahero__bg" aria-hidden="true">
+    <img src="/assets/img/semen-detail.jpg" alt="Placeholder photograph"
+         style="object-position:50% 45%"
+         >
+  </div>
+  <div class="ahero__veil" aria-hidden="true"></div>
+  <span class="hz__ph">Photo pending</span>
+  <div class="ahero__in">
+    <p class="ahero__crumb"><a href="/news">News</a> <span aria-hidden="true">&middot;</span> ICSI semen</p>
     <p class="plaque">ICSI semen</p>
     <h1><em>ICSI</em> semen available for breeders</h1>
   </div>
-  <figure class="art__fig" data-placeholder="true">
-    <img src="/assets/img/semen-detail.jpg" alt="Placeholder photograph"
-         >
-    <span class="hz__ph">Photo pending</span>
-  </figure>
-  <div class="art__body">
+</section>
+
+<main class="wrap art">
+  <div class="art__grid">
+    <div class="art__body">
       <p>Are you a breeder who would like to do OPU-ICSI with your mares?</p>
       <p>Contact us and we will send you our catalogue of the stallions you can use.</p>
+    </div>
+    <aside class="art__rail">
+      <p class="art__railK">About this story</p>
+      <p class="art__railV">Published by Stud Von Axe</p>
+      <p class="art__railL">Every item on this page is one the stud put out itself.
+        <a href="https://www.studvonaxe.it/news-contouch-sva-in-spagna/" target="_blank" rel="noopener">Read the original &#8599;</a></p>
+      <p class="art__railL"><a href="/news">All news and results &rarr;</a></p>
+    </aside>
   </div>
 
   <div class="pcta">
+    <div class="pcta__bg" aria-hidden="true">
+      <img src="/assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
+    </div>
+    <div class="pcta__veil" aria-hidden="true"></div>
     <div>
-      <h2 class="pcta__h">Tell us the horse you <em>have in mind</em>.</h2>
+      <p class="pcta__h">Tell us the horse you <em>have in mind</em>.</p>
       <p class="pcta__d">A foal on the ground, a cross still to be made, or a mare to breed from.
       Say what you are after and we will tell you plainly what we have.</p>
     </div>
     <div class="pcta__acts">
-      <a href="/#contact" class="btn-gold">Get in touch</a>
-      <a href="https://wa.me/393495918565" target="_blank" rel="noopener" class="btn-ghost">Message on WhatsApp</a>
+      <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
+      <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
+         class="btn btn-ghost btn-pill">Message on WhatsApp</a>
     </div>
   </div>
 
