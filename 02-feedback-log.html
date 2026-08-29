@@ -272,10 +272,13 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
     threshold for gold on a dark ground is 3:1. Sampling a rectangle roughly where the text sits gave
     2.8:1 and would have passed it.</p>
     <p class="check">Checked: render the state, hide the text, read the label's own bounding box out of
-    the browser and sample that. Fix it by putting the gradient's turn directly above the text block and
-    shortening the copy until the block sits below it, not by lightening the gold. Cards now measure
-    3.47:1 at worst. Re-measure whenever a photograph is swapped: this number belongs to the picture,
-    not to the CSS.</p>
+    the browser and sample that, at every width the layout changes at. Never lighten the gold to pass.</p>
+    <p class="check">And the fix that holds: hang the dark foot on the TEXT, not on the card. A gradient
+    measured in percentages of the card looks right on a wide screen and fails on a narrow one, because
+    the copy wraps onto more lines while the card gets shorter, so the label rides up into the bright
+    half. Measured at seven widths, the same card ran from 53% to 28%. A gradient on the text block, with
+    the whole fade inside its top padding, is as tall as the words are at every width and survives the
+    copy being rewritten. Cards now measure 3.77:1 at worst, gold, across 390 to 1440.</p>
     <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
   </div>
 
