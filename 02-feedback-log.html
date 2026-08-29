@@ -76,7 +76,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   A rule that only lives in a conversation gets broken again; a rule with a check behind it does not.
   This page is read before starting and run through before handing anything back.</p>
   <div class="how"><b>How to use it.</b> Run <code>node scripts/audit-homepage.mjs &lt;file&gt;</code> first,
-  which now covers twenty two checks automatically. Then walk the items tagged <b>by eye</b>, because a
+  which now covers twenty three checks automatically. Then walk the items tagged <b>by eye</b>, because a
   script cannot tell whether a sentence is true. Nothing goes to Mark with a red line in the audit.</div>
 </header>
 
@@ -110,6 +110,17 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
     <p class="said">He said: <q>eyebrows wil ik nooit een strepje of nummer voor hebben</q>. It had already
     been a rule once and crept back in through a plaque pattern.</p>
     <p class="check">Checked: the audit reads every eyebrow and fails on a leading digit or dash.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A link is only tested by following it</p>
+    <p class="said">He said, after hitting a 404 twice: <q>Dit soort fouten trouwens nooit meer maken.</q>
+    Four news pages shipped with cards that led nowhere. Every page returned 200 when asked for
+    directly, so my check said fine; nobody had asked whether the <b>link</b> arrives.</p>
+    <p class="check">Checked twice over now, and both were proven against the real bug before being
+    trusted: the audit fails on any relative link in a subpage, and fails again on any internal link
+    whose target does not exist on disk. By hand: fetch the page, then fetch every link on it.</p>
     <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--auto">Automated</span></div>
   </div>
 
@@ -484,7 +495,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>What the audit covers now</h2>
-  <p class="sub">Twenty two checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
+  <p class="sub">Twenty three checks, run with <code>node scripts/audit-homepage.mjs direction-b-editorial.html</code>.
   Green is the condition for handing anything back, not a nice extra.</p>
   <table>
     <thead><tr><th>Check</th><th>Catches</th></tr></thead>
@@ -507,6 +518,7 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
       <tr><td>Heading structure</td><td>More than one h1, or a level skipped.</td></tr>
       <tr><td>Search head</td><td>A missing title, description, canonical, social card or structured data. Warns while noindex is on.</td></tr>
       <tr><td>Relative links on a subpage</td><td>A link that resolves against the wrong directory. On a page served at /news with no trailing slash, href="story" points at /story.</td></tr>
+      <tr><td>Link targets exist</td><td>A link that resolves correctly and still points at nothing. Understands cleanUrls: /news/story is news/story.html, /news is news/index.html.</td></tr>
       <tr><td>Assets exist</td><td>A referenced file that is not on disk.</td></tr>
       <tr><td>Asset weight</td><td>Anything over 500 KB.</td></tr>
     </tbody>
@@ -516,6 +528,8 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Before handing anything back</h2>
   <div class="item">
+    <p class="check">A new check is proven against the bug it was written for, by reintroducing that bug
+    and watching the check fail, before it is trusted.</p>
     <p class="check">The audit runs green on the file that changed.</p>
     <p class="check">The browser reports no console errors and no sideways scroll.</p>
     <p class="check">The change is measured in the browser, not judged from the source.</p>

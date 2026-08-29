@@ -320,6 +320,24 @@ for (const rel of files) {
     fail(rel, `${relLinks.length} relative link(s) on a subpage; use root absolute: ${[...new Set(relLinks)].slice(0,4).join(', ')}`);
   else if (inSubfolder) pass('every internal link is root absolute');
 
+  /* 14 ── every internal link lands on a file that exists.
+     The relative-link check above catches links that resolve against the
+     wrong directory; this one catches links that resolve correctly and
+     still point at nothing. cleanUrls means /news/story is news/story.html
+     and /news is news/index.html, so the check has to try both. */
+  const linkTargets = [...new Set([...src.matchAll(/href="(\/[^"#?]*)"/g)].map(m => m[1]))]
+    .filter(h => !/\.(?:jpe?g|png|webp|svg|ico|js|css|pdf)$/i.test(h));
+  const missing = linkTargets.filter((h) => {
+    const bare = h.replace(/^\//, '').replace(/\/$/, '');
+    if (bare === '') return !existsSync(join(root, 'index.html'));
+    return !existsSync(join(root, bare)) &&
+           !existsSync(join(root, `${bare}.html`)) &&
+           !existsSync(join(root, bare, 'index.html'));
+  });
+  missing.length
+    ? fail(rel, `${missing.length} internal link(s) point at nothing on disk: ${missing.slice(0,4).join(', ')}`)
+    : linkTargets.length && pass(`${linkTargets.length} internal link target(s) all exist`);
+
   /* 6 ── assets exist and are light */
   /* A page in a subfolder references ../assets/...; resolve every path
      relative to the file that names it, not to the project root. */
