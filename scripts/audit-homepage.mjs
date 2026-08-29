@@ -92,6 +92,12 @@ for (const rel of files) {
      opaque literals are rogue, because those should have been tokens. */
   const rgbLit = /rgba?\(([^)]*)\)/g;
   const isOpaque = (args) => {
+    /* rgba(var(--veil-rgb), .9) is the token doing its job, not a literal.
+       The regex stops at the first ")" and hands back "var(--veil-rgb",
+       which then looks like a three-part opaque colour and failed every
+       page the moment the veils were moved onto the token. A check that
+       fails correct work teaches people to ignore it. */
+    if (args.includes('var(')) return false;
     const parts = args.split(',').map(x => x.trim());
     return parts.length < 4 || Number(parts[3]) >= 1;
   };

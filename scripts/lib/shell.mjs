@@ -124,7 +124,7 @@ export const pageHeroCss = `
   .nhero__veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
-      rgba(10,21,38,.42) 0%, rgba(10,21,38,.62) 45%, rgba(6,12,20,.9) 100%);
+      rgba(var(--veil-rgb), .42) 0%, rgba(var(--veil-rgb), .62) 45%, rgba(var(--veil-rgb), .9) 100%);
   }
   .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
   /* Title left, intro right, on one baseline: the homepage section head,

@@ -54,7 +54,7 @@ const CSS = homeCss + pageHeroCss + `
     position:relative;
     display:grid; border-radius:var(--plate-radius); overflow:hidden;
     aspect-ratio:3 / 4; background:var(--color-navy-deep);
-    box-shadow:0 30px 60px -46px rgba(10,21,38,.55);
+    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb), .55);
   }
   .abfade img{
     grid-area:1 / 1; width:100%; height:100%; object-fit:cover;
@@ -76,7 +76,7 @@ const CSS = homeCss + pageHeroCss + `
     background:rgba(255,255,255,.55); cursor:pointer;
     /* A hairline on a photograph is only as readable as what is behind it:
        this one sits on a pale sand floor in the first shot. */
-    box-shadow:0 0 6px rgba(6,12,20,.55);
+    box-shadow:0 0 6px rgba(var(--veil-rgb), .55);
     transition:background .35s var(--ease), width .35s var(--ease);
   }
   .abfade__dot[aria-current="true"]{ background:var(--color-gold); width:38px; }
@@ -125,7 +125,7 @@ const CSS = homeCss + pageHeroCss + `
     background:var(--color-navy-deep);
     transition:transform .5s var(--ease), box-shadow .5s var(--ease);
   }
-  .aboff__i:hover{ transform:translateY(-4px); box-shadow:0 30px 54px -40px rgba(10,21,38,.6); }
+  .aboff__i:hover{ transform:translateY(-4px); box-shadow:0 30px 54px -40px rgba(var(--veil-rgb), .6); }
   .aboff__bg{ position:absolute; inset:0; z-index:0; }
   .aboff__bg img{
     width:100%; height:100%; object-fit:cover;
@@ -144,7 +144,7 @@ const CSS = homeCss + pageHeroCss + `
      to later. The layer below is only a light wash over the picture. */
   .aboff__veil{
     position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, rgba(6,12,20,.06) 0%, rgba(8,16,28,.22) 100%);
+    background:linear-gradient(180deg, rgba(var(--veil-rgb), .06) 0%, rgba(var(--veil-rgb), .22) 100%);
   }
   .aboff__foot{
     padding:3.8rem clamp(1.1rem,1.8vw,1.4rem) clamp(1.1rem,1.8vw,1.4rem);
@@ -152,7 +152,7 @@ const CSS = homeCss + pageHeroCss + `
        it lower and the label sits in the pale end of its own gradient,
        which is what the first attempt did: 1.0:1 on the brightest card. */
     background:linear-gradient(180deg,
-      rgba(6,12,20,0) 0%, rgba(7,14,24,.58) 12%, rgba(6,12,20,.88) 24%, rgba(6,12,20,.97) 100%);
+      rgba(var(--veil-rgb), 0) 0%, rgba(var(--veil-rgb), .62) 12%, rgba(var(--veil-rgb), .93) 24%, rgba(var(--veil-rgb), .98) 100%);
   }
   /* Written as :not() because .aboff__i > * carries the same specificity as
      the two layers above and, coming later, would drop them into the flow.

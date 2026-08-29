@@ -507,6 +507,20 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">Dark is navy, never black</p>
+    <p class="said">He said: <q>we werken met donkerblauw niet met zwart toch? nu heb je zwart gebruikt
+    in de boxes?</q> He was right. Twelve veils and scrims on the homepage, and every gradient on the new
+    cards, were written as rgba(6,12,20), which is not in this palette and reads as black over a
+    photograph.</p>
+    <p class="check">Checked: there is one line for it now, <code>--veil-rgb: 10, 21, 38</code>, the
+    components of navy-deep, and every veil, scrim and shadow on every page draws from it as
+    <code>rgba(var(--veil-rgb), .9)</code>. A dark treatment written any other way is a colour that has
+    drifted. The audit's rgb check had to learn this: it read the token inside rgba() as a rogue literal
+    and failed all eight pages until it was taught the difference.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Brand colours are sampled from the files, never judged by eye</p>
     <p class="said">He asked: <q>kloppen de accent kleuren ook met de kleuren van het logo?</q> They did
     not. The page navy was <code>#12233d</code>; the logo's navy is <code>#0d1d36</code>. Both are now the

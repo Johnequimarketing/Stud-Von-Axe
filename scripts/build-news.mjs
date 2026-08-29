@@ -64,7 +64,7 @@ const CSS = homeCss + pageHeroCss + `
   .ahero__veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
-      rgba(10,21,38,.44) 0%, rgba(10,21,38,.34) 34%, rgba(6,12,20,.88) 100%);
+      rgba(var(--veil-rgb), .44) 0%, rgba(var(--veil-rgb), .34) 34%, rgba(var(--veil-rgb), .88) 100%);
   }
   .ahero__in{
     position:relative; z-index:2;
@@ -99,7 +99,7 @@ const CSS = homeCss + pageHeroCss + `
   .art__pic{
     margin:0; position:relative; overflow:hidden;
     border-radius:var(--plate-radius);
-    box-shadow:0 26px 60px -40px rgba(10,21,38,.6);
+    box-shadow:0 26px 60px -40px rgba(var(--veil-rgb), .6);
   }
   .art__pic img{ width:100%; height:auto; display:block; }
 
@@ -116,13 +116,13 @@ const CSS = homeCss + pageHeroCss + `
     display:flex; align-items:stretch; gap:0; overflow:hidden;
     text-decoration:none; border-radius:var(--card-radius);
     background:var(--color-white);
-    box-shadow:inset 0 0 0 1px var(--color-line), 0 16px 38px -26px rgba(10,21,38,.45);
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 16px 38px -26px rgba(var(--veil-rgb), .45);
     transition:box-shadow .35s var(--ease), transform .35s var(--ease);
   }
   .art__navA:hover, .art__navA:focus-visible{
     transform:translateY(-4px);
     box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent),
-               0 26px 52px -24px rgba(10,21,38,.55);
+               0 26px 52px -24px rgba(var(--veil-rgb), .55);
   }
   .art__navPic{ position:relative; flex:0 0 clamp(84px,11vw,120px); overflow:hidden; }
   .art__navPic img{

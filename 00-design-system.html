@@ -32,6 +32,10 @@
      own navy rather than a near miss. */
   --color-navy:        #0d1d36;
   --color-navy-deep:   #0a1526;
+  /* The same colour as components, for veils, scrims and shadows that need
+     it with an alpha: rgba(var(--veil-rgb), .9). Every dark treatment on the
+     site draws from this one line, so none of them can drift to black. */
+  --veil-rgb:          10, 21, 38;
   --color-navy-soft:   #2c4468;
   /* The head icon's gold, sampled from the file. NOTE: the horizontal
      logo carries a different, more orange gold (#b57f24). The two supplied
