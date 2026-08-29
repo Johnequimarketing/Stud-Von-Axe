@@ -29,15 +29,18 @@ const relink = (html) => html
   .replace(/(src|href)="assets\//g, '$1="../assets/')
   .replace(/href="index.html"/g, 'href="../"');
 
-const headerHtml = relink(home.slice(home.indexOf('  <header class="hd">'),
-                                     home.indexOf('  </header>') + '  </header>'.length))
-  /* the homepage header lives inside its hero; here it stands alone */
-  .replace('<header class="hd">', '<header class="hd" id="site-header">');
+const headerRaw = relink(home.slice(home.indexOf('  <header class="hd">'),
+                                    home.indexOf('  </header>') + '  </header>'.length));
+/* Over the archive hero the header is the homepage's: transparent with the
+   hanging plate, pinning to ivory once the hero is behind it. The singles
+   have no dark hero, so there it is solid ivory from the first pixel. */
+const headerHero  = headerRaw.replace('<header class="hd">', '<header class="hd" id="site-header">');
+const headerSolid = headerRaw.replace('<header class="hd">', '<header class="hd hd--solid" id="site-header">');
 
 const footerHtml = relink(home.slice(home.indexOf('<footer class="site-footer">'),
                                      home.indexOf('</footer>') + '</footer>'.length));
 
-for (const [piece, name] of [[headerHtml, 'header'], [footerHtml, 'footer']]) {
+for (const [piece, name] of [[headerHero, 'header'], [footerHtml, 'footer']]) {
   if (!piece || piece.length < 400) throw new Error(`could not lift the ${name} from index.html`);
 }
 
@@ -61,22 +64,26 @@ const accent = (item) => {
 const CSS = homeCss + `
   /* ── news pages only. Everything above is the homepage stylesheet. ── */
 
-  /* The homepage header is height:0 and transparent because it hangs over
-     a 100svh hero. Here it sits on its own ground: give it height again,
-     and the pinned (ivory) colours from the start on pages with no dark
-     hero behind it. */
-  .hd{ height:auto; position:sticky; top:0; }
-  .hd .hd__row{ background:var(--color-base); box-shadow:0 1px 0 var(--color-line); }
-  .hd .brand{ box-shadow:none; }
-  .hd .primary-nav a, .hd .nav-toggle, .hd .lang-switch button, .hd .lang-switch .sep,
-  .hd .lang-switch .lang-soon{
+  /* The archive header IS the homepage header: the lifted stylesheet
+     already carries its transparent and pinned states, and a script below
+     pins it once the hero is behind it. Only the singles need anything of
+     their own: no dark hero there, so the header is solid ivory from the
+     first pixel, wearing the pinned colours permanently. */
+  .hd--solid{ height:auto; position:sticky; top:0; }
+  .hd--solid .hd__row{ background:var(--color-base); box-shadow:0 1px 0 var(--color-line); }
+  .hd--solid .brand{ box-shadow:none; }
+  .hd--solid .primary-nav a, .hd--solid .nav-toggle, .hd--solid .lang-switch button,
+  .hd--solid .lang-switch .sep, .hd--solid .lang-switch .lang-soon{
     color:var(--color-ink);
   }
-  .hd .lang-switch .lang-soon{ opacity:.35; }
-  .hd .primary-nav a:hover{ color:var(--color-navy); }
-  .hd .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .hd .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); background:none; }
-  .hd .hd__rule{ display:none; }
+  .hd--solid .lang-switch .lang-soon{ opacity:.35; }
+  .hd--solid .primary-nav a:hover{ color:var(--color-navy); }
+  .hd--solid .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .hd--solid .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); background:none; }
+  .hd--solid .hd__rule{ display:none; }
+  /* the hero must reach the top edge the transparent header hangs over */
+  .nhero{ margin-top:0; }
+  .nhero > .wrap{ padding-top:clamp(5.5rem,12vh,7.5rem); }
 
   /* ---- the archive hero: a covered photograph, the homepage veil ---- */
   .nhero{
@@ -86,7 +93,7 @@ const CSS = homeCss + `
     background:var(--color-navy-deep);
   }
   .nhero__bg{ position:absolute; inset:0; z-index:0; }
-  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
   /* Type crosses the whole width, so the veil is a foot gradient: open at
      the head where the braids read, closing downward under the type. */
   .nhero__veil{
@@ -180,11 +187,25 @@ const head = (title, desc, slug) => `<meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>${CSS}</style>`;
 
-const header = headerHtml;
 const footer = footerHtml;
 
 const navScript = `<script>
 (function(){
+  /* The homepage flip, and deliberately the homepage's own measurement:
+     the hero's bottom edge against the visible bar, not a scroll distance.
+     .hd is zero height by design, so its own offsetHeight is 0 and the row
+     is what has to be measured. Runs only where a hero exists. */
+  var hd = document.querySelector('.hd:not(.hd--solid)');
+  var row = hd && hd.querySelector('.hd__row');
+  var hero = document.querySelector('.nhero');
+  if(hd && row && hero){
+    var onScroll = function(){
+      hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('primary-nav');
   if(toggle && nav){
@@ -219,19 +240,19 @@ writeFileSync(join(root, 'news', 'index.html'), `<!DOCTYPE html>
 ${head('News and results', 'Results in the ring, horses sold, and news from Desenzano and Lanaken.', '')}
 </head>
 <body>
-${header}
+${headerHero}
 <section class="nhero">
   <div class="nhero__bg" aria-hidden="true">
-    <img src="../assets/img/hero-neck-wide.jpg" alt="" fetchpriority="high">
+    <img src="../assets/img/news-hero.jpg" alt="" fetchpriority="high">
   </div>
   <div class="nhero__veil" aria-hidden="true"></div>
   <div class="wrap">
     <div class="nhero__grid">
       <div>
         <p class="plaque">News and results</p>
-        <h1 class="arch__h">The latest from <em>both yards</em>.</h1>
+        <h1 class="arch__h">The latest from <em>the stud</em>.</h1>
       </div>
-      <p class="arch__intro">Results in the ring, horses sold, and news from Desenzano and Lanaken.
+      <p class="arch__intro">Results in the ring, horses sold, and news from the programme.
       Every item here is one the stud published itself.</p>
     </div>
   </div>
@@ -258,7 +279,7 @@ NEWS.forEach((n, i) => {
 ${head(n.title, n.excerpt, n.slug)}
 </head>
 <body>
-${header}
+${headerSolid}
 <main class="wrap art">
   <p class="art__crumb"><a href="./">News</a> &middot; ${esc(n.eyebrow)}</p>
   <div class="art__head">

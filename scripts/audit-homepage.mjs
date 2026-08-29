@@ -209,6 +209,8 @@ for (const rel of files) {
     ['on the record','plain English: news, results'],
     ['mediation',    'brokering, or acting between buyer and seller; mediation is dispute resolution'],
     ['the herd',     'name what it is: the mares, the foals, every horse we have'],
+    ['both yards',   'two countries, one programme; Lanaken is not a yard of the stud'],
+    ['two yards',    'two countries, one programme; Lanaken is not a yard of the stud'],
     ['curated',      'say who chose it and why'],
     ['bespoke',      'say what is actually made to order'],
     ['boasts',       'state the fact without the verb'],
