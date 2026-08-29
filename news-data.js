@@ -10,6 +10,7 @@
 var NEWS = [
   {
     slug: 'contouch-top-price',
+    w: 1170, h: 769,
     focus: '50% 38%',
     eyebrow: 'Your Auction',
     title: 'Contouch SVA takes the top price',
@@ -31,6 +32,7 @@ var NEWS = [
   },
   {
     slug: 'calleryama-wins-barcelona',
+    w: 829, h: 547,
     focus: '50% 30%',
     eyebrow: 'Nations Cup, Barcelona',
     title: 'Calleryama wins the Nations Cup of Barcelona',
@@ -50,6 +52,7 @@ var NEWS = [
   },
   {
     slug: 'results-from-lanaken',
+    w: 820, h: 615,
     focus: '50% 34%',
     eyebrow: 'World Championships, Lanaken',
     title: 'Results from Lanaken',
@@ -74,6 +77,7 @@ var NEWS = [
   },
   {
     slug: 'icsi-semen-available',
+    w: 1200, h: 683,
     focus: '50% 45%',
     eyebrow: 'ICSI semen',
     title: 'ICSI semen available for breeders',

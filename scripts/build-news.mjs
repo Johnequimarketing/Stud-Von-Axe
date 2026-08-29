@@ -150,17 +150,21 @@ const CSS = homeCss + `
   /* ---- the story: text one side, the picture the other ---- */
   .art{ padding:clamp(2.4rem,5vw,3.6rem) 0 clamp(3rem,7vw,5rem); }
   .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:start; }
-  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,1.15fr) .85fr; } }
+  @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); } }
   .art__body p{ margin:0 0 1.15em; font-size:17.5px; line-height:1.68; color:var(--color-ink); }
   .art__body p:first-child{ font-size:20px; line-height:1.55; color:var(--color-navy); }
   .art__body p:last-child{ margin-bottom:0; }
+  /* The picture keeps its own proportions. No aspect-ratio and no cover
+     crop: a landscape photograph stays landscape, an upright one stays
+     upright, and the frame takes the shape of whatever is put in it. All
+     four of these are landscape today, so the column is not forced into a
+     tall crop that never suited them. */
   .art__pic{
-    position:relative; overflow:hidden; border-radius:var(--plate-radius);
-    background:var(--color-navy-deep);
+    margin:0; position:relative; overflow:hidden;
+    border-radius:var(--plate-radius);
     box-shadow:0 26px 60px -40px rgba(10,21,38,.6);
   }
-  .art__pic img{ width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; }
-  @media (max-width:899px){ .art__pic img{ aspect-ratio:16/10; } }
+  .art__pic img{ width:100%; height:auto; display:block; }
 
   /* ---- prev and next ----
      The same card the archive uses, laid on its side: the photograph on
@@ -345,7 +349,7 @@ ${body}
     </div>
     <figure class="art__pic"${n.ph ? ' data-placeholder="true"' : ''}>
       <img src="/${n.img}" alt="${n.ph ? 'Placeholder photograph' : esc(n.title)}"
-           style="object-position:${n.focus || '50% 42%'}" loading="lazy">
+           width="${n.w || ''}" height="${n.h || ''}" loading="lazy">
       ${n.ph ? '<span class="hz__ph">Photo pending</span>' : ''}
     </figure>
   </div>
