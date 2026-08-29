@@ -104,29 +104,76 @@ const CSS = homeCss + pageHeroCss + `
   .abpl__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.1rem; color:var(--color-ink); }
   .abpl__d{ display:block; margin-top:.15rem; font-size:14px; color:var(--color-ink-soft); }
 
-  /* ---- what we offer: four routes, four hairlines ----
-     The same recipe as the two places above it, widened to four. A row of
-     rules rather than a row of cards, because cards here would compete with
-     the runs on the homepage that these four link to. */
-  .aboff{ padding-bottom:clamp(2.4rem,5vw,4rem); }
-  .aboff__grid{ display:grid; gap:1.6rem 2rem; margin-top:1.8rem; }
-  @media (min-width:640px){ .aboff__grid{ grid-template-columns:1fr 1fr; } }
-  @media (min-width:1000px){ .aboff__grid{ grid-template-columns:repeat(4, 1fr); } }
-  .aboff__i{ display:flex; flex-direction:column; padding-top:1.1rem; border-top:1px solid var(--color-line); min-width:0; }
+  /* ---- what we offer: four photographs, four ways in ----
+     Hairlines were too quiet for a section this important, so this is the
+     page's own plate recipe at card size: photograph under a foot gradient,
+     type standing on it. Two things keep it from being another card grid.
+     The row is stepped, the even cards dropping by a fixed amount, which is
+     the same trick the invitation plays on the homepage: it breaks the run
+     rather than lining four boxes up like a table. And the whole card is
+     the link, so there is no button to hunt for. */
+  .aboff{ padding-bottom:clamp(2.8rem,6vw,4.6rem); }
+  .aboff__grid{ display:grid; gap:1.1rem; margin-top:1.9rem; }
+  @media (min-width:600px){ .aboff__grid{ grid-template-columns:1fr 1fr; gap:1.2rem; } }
+  @media (min-width:1000px){
+    .aboff__grid{ grid-template-columns:repeat(4, 1fr); gap:clamp(1rem,1.6vw,1.4rem); }
+    /* the step. Only where there are four across: at two across it would
+       stagger the pairs and read as a mistake. */
+    .aboff__i:nth-child(even){ margin-top:clamp(1.4rem,3.4vw,2.8rem); }
+  }
+  .aboff__i{
+    position:relative; isolation:isolate; overflow:hidden; min-width:0;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    aspect-ratio:4 / 5; border-radius:var(--plate-radius);
+    background:var(--color-navy-deep);
+    padding:clamp(1.1rem,1.8vw,1.5rem);
+    transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .aboff__i:hover{ transform:translateY(-4px); box-shadow:0 30px 54px -40px rgba(10,21,38,.6); }
+  .aboff__bg{ position:absolute; inset:0; z-index:0; }
+  .aboff__bg img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .aboff__i:hover .aboff__bg img{ transform:scale(1.045); }
+  /* A foot gradient, not a flat veil: the picture stays a picture at the
+     head and closes where the type sits. The stops are not a guess. The
+     gold label is the house eyebrow, and the house threshold for gold on a
+     dark ground is 3:1; measured on the rendered card, behind the label
+     itself rather than somewhere near it, the first draft came in at 1.53
+     on the brightest of the four. These stops put every card over the
+     line. Re-measure if the photographs are ever swapped. */
+  .aboff__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,
+      rgba(6,12,20,.04) 0%, rgba(8,16,28,.12) 42%, rgba(7,14,24,.80) 56%, rgba(6,12,20,.97) 100%);
+  }
+  /* Written as :not() because .aboff__i > * carries the same specificity as
+     the two layers above and, coming later, would drop them into the flow.
+     This has cost half a day twice in this build. */
+  .aboff__i > :not(.aboff__bg):not(.aboff__veil){ position:relative; z-index:2; min-width:0; }
   .aboff__k{
     font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.45rem;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem;
   }
-  .aboff__t{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem; line-height:1.1; color:var(--color-ink); }
-  .aboff__d{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:var(--color-ink-soft); }
+  .aboff__t{
+    margin:0 0 .45rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.25rem,1.5vw + .55rem,1.5rem); line-height:1.06;
+    letter-spacing:-.01em; color:var(--color-white);
+  }
+  .aboff__d{ margin:0 0 .9rem; font-size:13.5px; line-height:1.55; color:rgba(255,255,255,.78); }
   .aboff__a{
-    margin-top:auto; font-family:var(--font-body); font-weight:700; font-size:11.5px;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--color-navy);
-    display:inline-flex; align-items:center; gap:.45rem;
-    transition:gap .35s var(--ease);
+    font-family:var(--font-body); font-weight:700; font-size:10.5px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-white);
+    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease);
   }
-  .aboff__a:hover{ gap:.8rem; }
+  .aboff__i:hover .aboff__a{ gap:.8rem; }
   .aboff__a .a{ color:var(--color-gold); }
+  @media (prefers-reduced-motion: reduce){
+    .aboff__i, .aboff__bg img, .aboff__a{ transition:none; }
+    .aboff__i:hover{ transform:none; }
+    .aboff__i:hover .aboff__bg img{ transform:none; }
+  }
 
   /* ---- the invitation, the homepage plate, held to the page width ---- */
   .abcta{ padding-bottom:clamp(3.2rem,6vw,5rem); }
@@ -187,8 +234,8 @@ ${header}
                width="799" height="1200">
           <img src="/assets/img/intro-foal-star.jpg" alt="A foal in the field" loading="lazy"
                width="1200" height="1200">
-          <img src="/assets/img/hero-embryos.jpg" alt="A mare with her foal" loading="lazy"
-               width="1920" height="1734">
+          <img src="/assets/img/hero-grey.jpg" alt="A horse at the stud" loading="lazy"
+               width="1200" height="1124">
           <div class="abfade__dots" role="tablist" aria-label="Photographs">
             <button class="abfade__dot" type="button" role="tab" aria-current="true" aria-label="Photograph 1"></button>
             <button class="abfade__dot" type="button" role="tab" aria-current="false" aria-label="Photograph 2"></button>
@@ -236,38 +283,53 @@ ${header}
       <h2 class="abst__h">Four ways <em>in</em></h2>
       <div class="aboff__grid">
 
-        <div class="aboff__i">
+        <a class="aboff__i" href="/#programme">
+          <span class="aboff__bg" aria-hidden="true">
+            <img src="/assets/img/offer-foal.jpg" alt="" loading="lazy" width="1200" height="883"
+                 style="object-position:50% 42%">
+          </span>
+          <span class="aboff__veil" aria-hidden="true"></span>
           <span class="aboff__k">Lanaken, Belgium</span>
           <h3 class="aboff__t">Foals</h3>
-          <p class="aboff__d">Born and raised at our Belgian base, out of mares chosen for jumping
-          ability and temperament. You collect a horse already on the ground.</p>
-          <a class="aboff__a" href="/#programme">See the foals <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
+          <span class="aboff__d">Born and raised in Lanaken, out of mares chosen for jumping.</span>
+          <span class="aboff__a">See the foals <span class="a" aria-hidden="true">&rarr;</span></span>
+        </a>
 
-        <div class="aboff__i">
+        <a class="aboff__i" href="/#programme">
+          <span class="aboff__bg" aria-hidden="true">
+            <img src="/assets/img/offer-embryo.jpg" alt="" loading="lazy" width="1200" height="1084"
+                 style="object-position:52% 38%">
+          </span>
+          <span class="aboff__veil" aria-hidden="true"></span>
           <span class="aboff__k">Frozen or carrying</span>
           <h3 class="aboff__t">Embryos</h3>
-          <p class="aboff__d">Frozen from our own damlines, or already carrying in Lanaken. Every cross
-          is made on pedigree and on what the mare has produced.</p>
-          <a class="aboff__a" href="/#programme">Ask about a cross <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
+          <span class="aboff__d">Frozen from our own damlines, or already carrying in Lanaken.</span>
+          <span class="aboff__a">Ask about a cross <span class="a" aria-hidden="true">&rarr;</span></span>
+        </a>
 
-        <div class="aboff__i">
+        <a class="aboff__i" href="/news/icsi-semen-available">
+          <span class="aboff__bg" aria-hidden="true">
+            <img src="/assets/img/offer-semen.jpg" alt="" loading="lazy" width="1200" height="872"
+                 style="object-position:48% 44%">
+          </span>
+          <span class="aboff__veil" aria-hidden="true"></span>
           <span class="aboff__k">With Avantea, Cremona</span>
           <h3 class="aboff__t">ICSI semen</h3>
-          <p class="aboff__d">Worked with our own mares through OPU and ICSI. The stallions we hold are
-          named on request rather than listed.</p>
-          <a class="aboff__a" href="/news/icsi-semen-available">Read more <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
+          <span class="aboff__d">Worked with our own mares through OPU and ICSI.</span>
+          <span class="aboff__a">Read the story <span class="a" aria-hidden="true">&rarr;</span></span>
+        </a>
 
-        <div class="aboff__i">
+        <a class="aboff__i" href="/#horses">
+          <span class="aboff__bg" aria-hidden="true">
+            <img src="/assets/img/results-unguessable.jpg" alt="" loading="lazy" width="1200" height="932"
+                 style="object-position:50% 40%">
+          </span>
+          <span class="aboff__veil" aria-hidden="true"></span>
           <span class="aboff__k">Sourced and brokered</span>
           <h3 class="aboff__t">Sport horses</h3>
-          <p class="aboff__d">Several of our mares are available either to compete or to breed from. We
-          also look on a client's behalf, across Europe and as far as America.</p>
-          <a class="aboff__a" href="/#horses">See the horses <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
-
+          <span class="aboff__d">Mares to compete or to breed from, and we look on your behalf.</span>
+          <span class="aboff__a">See the horses <span class="a" aria-hidden="true">&rarr;</span></span>
+        </a>
       </div>
     </div>
   </section>

@@ -266,6 +266,20 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   </div>
 
   <div class="item">
+    <p class="rule">Type on a photograph is measured behind the type, not near it</p>
+    <p class="said">The four cards on the about page looked fine. Sampled behind the gold label itself,
+    on the rendered page with the text hidden, the brightest card came in at 1.53:1 where the house
+    threshold for gold on a dark ground is 3:1. Sampling a rectangle roughly where the text sits gave
+    2.8:1 and would have passed it.</p>
+    <p class="check">Checked: render the state, hide the text, read the label's own bounding box out of
+    the browser and sample that. Fix it by putting the gradient's turn directly above the text block and
+    shortening the copy until the block sits below it, not by lightening the gold. Cards now measure
+    3.47:1 at worst. Re-measure whenever a photograph is swapped: this number belongs to the picture,
+    not to the CSS.</p>
+    <div class="tags"><span class="tag tag--hard">Hard</span><span class="tag tag--eye">By eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Measure with the typeface that will actually be there</p>
     <p class="said">The menu broke onto a second line inside the hero at 1280px. The breakpoint had been
     measured before the webfont landed, in the fallback serif, which is about 20px narrower over six
