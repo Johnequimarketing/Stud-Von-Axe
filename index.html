@@ -346,17 +346,21 @@
        bottom edge and the cross fell apart. */
     min-height:calc(var(--hd-drop) + 66px);
     box-sizing:border-box;
-    background:var(--color-base);
+    /* No ground over the hero: the white mark stands on the photograph
+       itself. The plate arrives with the pin, below. */
+    background:transparent;
     border-radius:0 0 var(--card-radius) var(--card-radius);
-    box-shadow:0 12px 28px -18px rgba(10,21,38,.6);
-    transition:padding .3s var(--ease), box-shadow .3s var(--ease);
+    transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
   }
+  .brand img{ transition:opacity .25s var(--ease); }
+  .brand__onlight{ position:absolute; inset:.7rem 1.6rem auto; opacity:0; }
+  .hd.is-pinned .brand__ondark{ opacity:0; }
+  .hd.is-pinned .brand__onlight{ opacity:1; }
   .brand img{ display:block; width:clamp(132px, 12vw, 168px); height:auto; }
-  /* Once the bar is ivory too the plate stops being a separate object, so
-     its shadow would only draw a line under the logo. */
+  /* Pinned: the plate arrives, in the same fill as the bar so the seam
+     between them disappears and only the rounded foot reads. */
   .hd.is-pinned .brand{
-    /* Same fill as the bar, so the seam between them disappears. Only the
-       rounded foot still reads, which is the tab. */
+    background:var(--color-base);
     box-shadow:0 12px 24px -20px rgba(10,21,38,.35);
   }
 
@@ -498,7 +502,10 @@
     position:relative; z-index:20; flex:1;
     display:flex; flex-direction:column; justify-content:center; align-items:center;
     text-align:center;
-    padding:var(--hero-air) var(--gutter);
+    /* The mark has no plate over the hero, so it stands directly on the
+       photograph and the eyebrow, centred under it, ran straight through
+       the wordmark. The statement now starts below where the mark ends. */
+    padding:max(var(--hero-air), calc(var(--hd-drop) + 92px)) var(--gutter) var(--hero-air);
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
@@ -1745,7 +1752,15 @@
          for its absolutely positioned children, which dragged the mark
          down with it. Out here it stays flush with the top of the page. -->
     <a href="#top" class="brand" aria-label="Stud Von Axe home">
-      <img src="assets/logo/logo-horizontal-onlight.png" data-ground="light" alt="Von Axe, breeding and horse trading" width="168" height="56">
+      <!-- Two marks, one per ground, which is what the two supplied files
+           are for. Over the hero the white one stands on the photograph
+           with no plate behind it; once the hero is behind the bar the
+           navy one takes over on ivory. Only one is ever visible, so the
+           second is hidden from screen readers rather than read twice. -->
+      <img class="brand__ondark" src="assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
+           alt="Von Axe, breeding and horse trading" width="168" height="56">
+      <img class="brand__onlight" src="assets/logo/logo-horizontal-onlight.png" data-ground="light"
+           alt="" aria-hidden="true" width="168" height="56">
     </a>
     <div class="hd__row">
       <div class="hd__start">

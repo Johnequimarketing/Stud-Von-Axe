@@ -187,7 +187,7 @@ for (const rel of files) {
   /* 5 ── logo variant matches its ground.
      A white reverse logo on a light ground is invisible. Every logo <img>
      must declare data-ground, and it must agree with the filename. */
-  const logos = [...src.matchAll(/<img[^>]*src="(?:\.\.\/)?assets\/logo\/([^"]+)"[^>]*>/g)];
+  const logos = [...src.matchAll(/<img[^>]*src="(?:\.\.\/|\/)?assets\/logo\/([^"]+)"[^>]*>/g)];
   let logoOk = true;
   for (const [tag, fileName] of logos) {
     const ground = (tag.match(/data-ground="(light|dark)"/) || [])[1];
