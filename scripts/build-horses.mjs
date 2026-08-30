@@ -1920,8 +1920,7 @@ const contactSection = (horse) => {
           <div>
             <p class="plaque">Get in touch</p>
             <h2 class="ask__h">Ask us about <em>${esc(cross ? 'this cross' : n)}</em></h2>
-            <p class="ask__lead">No agent and no auction ring. You write to the two people who own the
-            stud, and one of them answers.</p>
+            <p class="ask__lead">Write to us and we will get back to you.</p>
           </div>
           <div class="ask__people">
             <a class="ask__p" href="tel:+393495918565">
