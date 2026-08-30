@@ -255,8 +255,9 @@ for (const rel of files) {
          Falls back to nothing, which skips the pair honestly, rather than to
          a guess. */
       factBg: (() => {
-        const m = cssBlocks.match(/\.hp__fact\{[^}]*background:color-mix\(in srgb,\s*var\(--color-gold\)\s*(\d+)%/);
-        return m && has(P.gold, P.bone) ? mix(P.gold, Number(m[1]) / 100, P.bone) : null;
+        const m = cssBlocks.match(/\.hp__fact\{[^}]*background:color-mix\(in srgb,\s*var\(--color-gold\)\s*(\d+)%,\s*var\(--color-(base|white)\)/);
+        const into = m && (m[2] === 'white' ? P.white : P.bone);
+        return m && has(P.gold) && into ? mix(P.gold, Number(m[1]) / 100, into) : null;
       })(),
     };
     const pairs = [

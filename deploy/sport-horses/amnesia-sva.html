@@ -2215,11 +2215,22 @@
   @media (min-width:620px){
     .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
   }
+  /* Gold at eighteen percent read as beige rather than as the accent: 30 Aug,
+     "vind die 4 blokjes nu niet helemaal passen". The accent is the accent, so
+     the block takes the full gold with navy on it, which is the button pairing
+     this site already uses and measures 5.70:1. A gold rule across the top
+     lifts it off the page, and the figure is set in the display face at
+     reading size so the block is read for its answer, not its label. */
   .hp__fact{
-    padding:clamp(.85rem,1.6vw,1.15rem) clamp(1rem,1.8vw,1.3rem);
+    position:relative; overflow:hidden;
+    padding:clamp(.9rem,1.7vw,1.2rem) clamp(1rem,1.8vw,1.3rem);
     border-radius:var(--card-radius);
-    background:color-mix(in srgb, var(--color-gold) 18%, var(--color-base));
-    border:1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+    background:color-mix(in srgb, var(--color-gold) 92%, var(--color-white));
+    box-shadow:0 18px 34px -28px rgba(var(--veil-rgb),.55);
+  }
+  .hp__fact::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:3px;
+    background:color-mix(in srgb, var(--color-navy) 85%, transparent);
   }
 
   /* The figures. The two places on the about page, widened: a row of
@@ -2232,11 +2243,22 @@
      two measured 4.42:1, just under the floor. */
   .hp__k{
     display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem;
-    color:color-mix(in srgb, var(--color-navy) 72%, transparent);
+    letter-spacing:.18em; text-transform:uppercase; margin-bottom:.3rem;
+    /* Eighty five percent: on the full gold seventy two measured 3.92:1 and
+       eighty scraped 4.58. This sits back from the figure without going under
+       the floor. */
+    color:color-mix(in srgb, var(--color-navy) 85%, transparent);
   }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.15rem;
     line-height:1.25; color:var(--color-navy); }
+  /* The same flag the badge wears, so there is one drawing and one rule for
+     it. Only what differs on a light ground is stated: the hairline that
+     separates it from ivory, and the space before the words. */
+  .hp__fact .hz__flag{
+    margin-right:.45rem; vertical-align:-1px;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-navy) 85%, transparent);
+  }
+
   .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
   /* The ghost button is drawn for a navy plate. On the ivory ground it was
      white on ivory, which is the one thing this project has a hard rule
@@ -2598,7 +2620,7 @@
             <div class="hp__fact"><span class="hp__k">Sex</span><span class="hp__v">Mare</span></div>
             <div class="hp__fact"><span class="hp__k">Studbook</span><span class="hp__v">Oldenburg International</span></div>
             <div class="hp__fact"><span class="hp__k">Height</span><span class="hp__v">163 cm</span></div>
-            <div class="hp__fact"><span class="hp__k">Status</span><span class="hp__v">Sold to Slovenia</span></div>
+            <div class="hp__fact"><span class="hp__k">Status</span><span class="hp__v"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#005DA4"/><rect y="10.67" width="24" height="5.33" fill="#ED1C24"/><path d="M4 3.2 6 6.6 8 3.2 9 7.4H3Z" fill="#005DA4" stroke="#fff" stroke-width=".5"/></svg></span>Sold to Slovenia</span></div>
       </div>
     </div>
   </section>
@@ -2729,9 +2751,9 @@
         <a class="hmore__all" href="/sport-horses">All horses <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Filou</span><span class="hz__meta">2005 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Valkyrie</span><span class="hz__meta">2014 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Diacco Blue SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><span class="hz__name">Filou</span><span class="hz__meta">2005 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><span class="hz__name">Valkyrie</span><span class="hz__meta">2014 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Germany"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#000"/><rect y="5.33" width="24" height="5.34" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg></span>Sold<span class="visually-hidden"> to Germany</span></span></span></span><span class="hz__body"><span class="hz__name">Diacco Blue SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>

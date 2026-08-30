@@ -18,6 +18,9 @@ const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') 
 const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
 /* Title and poster for every film, written by scripts/fetch-videos.py. */
 const VIDEOS = new Function(readFileSync(join(root, 'horses-videos.js'), 'utf-8') + '; return HORSE_VIDEOS;')();
+/* The country flags, shared with the homepage so there is one drawing of each
+   rather than one per file. */
+const FLAGS = new Function(readFileSync(join(root, 'flags.js'), 'utf-8') + '; return FLAGS;')();
 
 /* One entry per archive. A hero is a wide strip, so the photograph is
    chosen on shape as much as on subject: three of these are 2.25:1 crops
@@ -450,11 +453,22 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:620px){
     .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
   }
+  /* Gold at eighteen percent read as beige rather than as the accent: 30 Aug,
+     "vind die 4 blokjes nu niet helemaal passen". The accent is the accent, so
+     the block takes the full gold with navy on it, which is the button pairing
+     this site already uses and measures 5.70:1. A gold rule across the top
+     lifts it off the page, and the figure is set in the display face at
+     reading size so the block is read for its answer, not its label. */
   .hp__fact{
-    padding:clamp(.85rem,1.6vw,1.15rem) clamp(1rem,1.8vw,1.3rem);
+    position:relative; overflow:hidden;
+    padding:clamp(.9rem,1.7vw,1.2rem) clamp(1rem,1.8vw,1.3rem);
     border-radius:var(--card-radius);
-    background:color-mix(in srgb, var(--color-gold) 18%, var(--color-base));
-    border:1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+    background:color-mix(in srgb, var(--color-gold) 92%, var(--color-white));
+    box-shadow:0 18px 34px -28px rgba(var(--veil-rgb),.55);
+  }
+  .hp__fact::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:3px;
+    background:color-mix(in srgb, var(--color-navy) 85%, transparent);
   }
 
   /* The figures. The two places on the about page, widened: a row of
@@ -467,11 +481,22 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      two measured 4.42:1, just under the floor. */
   .hp__k{
     display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem;
-    color:color-mix(in srgb, var(--color-navy) 72%, transparent);
+    letter-spacing:.18em; text-transform:uppercase; margin-bottom:.3rem;
+    /* Eighty five percent: on the full gold seventy two measured 3.92:1 and
+       eighty scraped 4.58. This sits back from the figure without going under
+       the floor. */
+    color:color-mix(in srgb, var(--color-navy) 85%, transparent);
   }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.15rem;
     line-height:1.25; color:var(--color-navy); }
+  /* The same flag the badge wears, so there is one drawing and one rule for
+     it. Only what differs on a light ground is stated: the hairline that
+     separates it from ivory, and the space before the words. */
+  .hp__fact .hz__flag{
+    margin-right:.45rem; vertical-align:-1px;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-navy) 85%, transparent);
+  }
+
   .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
   /* The ghost button is drawn for a navy plate. On the ivory ground it was
      white on ivory, which is the one thing this project has a hard rule
@@ -871,8 +896,15 @@ const meta = (horse) => [horse.year, SEX(horse), sireOf(horse)].filter(Boolean).
    for one, rather than a stand-in picture of a different horse. */
 const card = (horse, group, full) => {
   const href = `/${group.dir}/${horse.slug}`;
+  /* A sold horse shows where it went, with the flag: the homepage cards have
+     always done this and the generated ones quietly did not, so the same horse
+     read differently depending on which page you met it on. No destination
+     means no flag rather than an empty box. */
+  const flag = horse.sold && horse.country && FLAGS[horse.country]
+    ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
   const label = horse.sold
-    ? '<span class="hz__tag hz__tag--sold">Sold</span>'
+    ? `<span class="hz__tag hz__tag--sold"${horse.country ? ` title="Sold to ${esc(COUNTRY[horse.country] || horse.country)}"` : ''}>${flag}Sold${
+        horse.country ? `<span class="visually-hidden"> to ${esc(COUNTRY[horse.country] || horse.country)}</span>` : ''}</span>`
     : '<span class="hz__tag">Available</span>';
   /* The status label the way the embryo cards wear theirs: the accent colour
      behind the word and a hairline running off it to the right. Kept at the
@@ -1268,12 +1300,15 @@ const factRow = (horse) => {
       ? (horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : 'Sold')
       : 'Available'],
   ].filter(([, v]) => v);
+  const flag = horse.sold && horse.country && FLAGS[horse.country]
+    ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
   /* 30 Aug: four blocks in the accent colour, side by side, rather than four
      columns of loose type. They wrap to two rows on a narrow screen and the
      row stays full whatever the count, because a horse can have three of these
      or five. */
   return facts.map(([k, v]) =>
-    `<div class="hp__fact"><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n            ');
+    `<div class="hp__fact"><span class="hp__k">${esc(k)}</span><span class="hp__v">${
+      k === 'Status' ? flag : ''}${esc(v)}</span></div>`).join('\n            ');
 };
 
 /* How many columns the row of figures takes, so it never ends on one block
