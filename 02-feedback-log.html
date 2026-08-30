@@ -565,6 +565,20 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">A section nobody can see is a section nobody can brief</p>
+    <p class="said">30 Aug: <q>ik wil bij alle pagina's ... dat je daar placeholder afbeeldingen neerzet
+    en/of een placeholder video ... nu heb ik geen idee hoe het eruit ziet ... Anders heeft mijn team
+    geen idee wat we moeten bouwen.</q> Thirty five pages had no gallery and thirty eight no film, so
+    on those pages the sections did not exist at all.</p>
+    <p class="check">Stand-ins where there is nothing, real material always winning where there is
+    something. And the other half of his sentence is the harder rule: <q>afbeeldingen die niet bij dat
+    paard horen, zet er duidelijk bij placeholder</q>. Each stand-in is a general shot of the yard under
+    a heavy navy veil with PLACEHOLDER across it, the heading says Placeholder, and a line underneath
+    names what is wanted and says plainly that this is not that horse. Not clickable, not playable.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A film belongs on the dark plate, in the place the lines take on a cross</p>
     <p class="said">30 Aug: <q>De video's mogen in hetzelfde design met zo een blauwe achtergrond als bij
     embryo's. en dan mag het een slider zijn, als het meerdere video's zijn. zelfde plek als bij de
@@ -911,6 +925,21 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">A comment is still text in the output, and the closing script tag ends a script from inside one</p>
+    <p class="said">The contact form broke all sixty pages at once. The comment above it warned about the
+    closing script tag by naming it, and naming it is what ended the script: the browser reads the
+    characters, not the intent. The line under it, joining the message with a line break, had the same
+    shape of bug, a single backslash-n that the template literal turned into a real line break inside a
+    string. Neither showed on the page: a browser that hits a syntax error stops running the block and
+    renders everything else exactly as before.</p>
+    <p class="check">The audit now parses every inline block on every page with <code>new Function</code>,
+    and both bugs were put back one at a time to watch it fail. Proven on 30 Aug. It catches a script
+    that cannot parse; it does not catch one that parses and then throws, which is what the slider's
+    <code>at()</code> did.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">Three behaviours in one closure: the slider's at() and the lightbox's at counter</p>
     <p class="said">The arrows did nothing at all. The console said "at is not a function": the film

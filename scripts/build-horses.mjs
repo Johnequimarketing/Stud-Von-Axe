@@ -96,6 +96,57 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
+  /* A stand-in says what it is, in words as well as in the picture. */
+  .hgal__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:var(--color-ink-soft); }
+  .hvid__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:rgba(255,255,255,.66); }
+  /* Nothing to enlarge and nothing to play: neither is a button. */
+  .hgal__f--stand{ cursor:default; }
+  .hgal__f--stand:hover img{ transform:none; }
+  .hvid__btn--stand{ cursor:default; }
+  .hvid__btn--stand:hover img{ transform:none; }
+  .hvid__btn--stand .hvid__play{ opacity:.55; }
+
+  /* ── the contact section ───────────────────────────────────────────────
+     Variation one of the six, chosen on 30 Aug. Navy half carries the
+     invitation and the four ways to reach them; ivory half carries the form.
+     It stands where the CTA plate stood. */
+  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
+  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .ask__h em{ font-style:italic; color:var(--color-gold); }
+  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .ask__people{ display:grid; }
+  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
+    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
+  .ask__p:hover{ padding-left:.4rem; }
+  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
+  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base); }
+  .ask__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
+  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .ask__row input, .ask__row textarea{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
+    transition:border-color .3s var(--ease);
+  }
+  .ask__row input:focus, .ask__row textarea:focus{ outline:none; border-color:var(--color-gold); }
+  .ask__row textarea{ resize:vertical; line-height:1.55; }
+  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ask__note:empty{ display:none; }
+
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
      .hz__chip, so an archive filters the way the homepage section already
@@ -1042,7 +1093,7 @@ ${facts.map(([k, v, url]) => `          <div><span class="eh__k">${esc(k)}</span
             : `<span class="eh__v">${esc(v)}</span>`}</div>`).join('\n')}
         </div>
         <div class="eh__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
+          <a href="#ask" class="btn btn-gold btn-pill">Ask about this embryo</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -1053,7 +1104,7 @@ ${facts.map(([k, v, url]) => `          <div><span class="eh__k">${esc(k)}</span
 ${pedigreeSection(horse)}
 ${linesSection(horse, dam, sire, damName)}
 ${moreSection(horse, group, list)}
-${horseCta(horse)}
+${contactSection(horse)}
 `;
 };
 
@@ -1198,7 +1249,7 @@ const introSection = (horse, group) => {
             ${factRow(horse)}
           </div>
           <div class="hp__acts">
-            <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
+            <a href="#ask" class="btn btn-gold btn-pill">Ask about this horse</a>
             ${(() => { const t = telexOf(horse); return t ? `<a href="${esc(t.url)}" target="_blank" rel="noopener"
                class="btn btn-ghost btn-pill">${t.self ? 'Pedigree on Horsetelex' : 'Damline on Horsetelex'}</a>` : ''; })()}
           </div>
@@ -1314,9 +1365,35 @@ const filmOf = (id, horse) => {
 
 const videoSection = (horse) => {
   const films = (horse.videos || []).map((id) => filmOf(id, horse)).filter((f) => f.poster);
-  if (!films.length) return '';
+  const stand = !films.length;
   const name = horseName(horse.name);
   const many = films.length > 1;
+  if (stand) return `
+  <section class="hvid is-stand">
+    <div class="wrap">
+      <div class="hvid__plate">
+        <div class="hvid__head">
+          <p class="hvid__k">Placeholder</p>
+          <h2 class="hvid__h">${esc(name)} <em>in motion</em></h2>
+          <p class="hvid__stand">This is how the film section looks once there is film. Nothing here is
+          ${esc(name)}: no film of ${esc(name)} is on their site. Send a YouTube link and it goes
+          straight in, and the section disappears entirely if there is never one.</p>
+        </div>
+        <div class="hvid__rail">
+          <div class="hvid__slide">
+            <span class="hvid__btn hvid__btn--stand">
+              <img src="/${PLACEHOLDER_FILM}" alt="Placeholder: film of ${esc(name)} is still to be supplied" loading="lazy">
+              <span class="hvid__veil" aria-hidden="true"></span>
+              <span class="hvid__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+`;
   return `
   <section class="hvid">
     <div class="wrap">
@@ -1431,16 +1508,36 @@ const pedigreeSection = (horse) => {
 /* ── the horse page, section four: the rest of the photographs ─────────
    The first is in the intro and the second, when there is one, sits beside
    the story. What is left goes here, and only if two or more are left. */
+/* Thirty five of the sixty horses have no spare photograph and thirty eight
+   have no film, so on those pages the two sections simply did not exist and
+   nobody could see what they are meant to be. 30 Aug: stand them in, and mark
+   them so plainly that nobody mistakes one for a picture of that horse. The
+   stand-ins are general shots of the yard under a heavy navy veil with
+   PLACEHOLDER written across them, the heading says so, and a line underneath
+   says what is wanted. Real material always wins; this only fills a hole. */
+const PLACEHOLDER_SHOTS = [
+  'assets/img/placeholder/gallery-1.jpg',
+  'assets/img/placeholder/gallery-2.jpg',
+  'assets/img/placeholder/gallery-3.jpg',
+];
+const PLACEHOLDER_FILM = 'assets/img/placeholder/film.jpg';
+
 const gallerySection = (horse) => {
-  const rest = photoPlan(horse).gallery;
-  if (!rest.length) return '';
+  const own = photoPlan(horse).gallery;
+  const stand = !own.length;
+  const rest = stand ? PLACEHOLDER_SHOTS : own;
   const name = horseName(horse.name);
   return `
-  <section class="hgal">
+  <section class="hgal${stand ? ' is-stand' : ''}">
     <div class="wrap">
       <div class="hgal__head">
-        <p class="plaque">${rest.length === 1 ? 'One more picture' : `${inWords(rest.length)} more pictures`}</p>
-        <h2 class="hgal__h">More of <em>${esc(name)}</em></h2>
+        <p class="plaque">${stand ? 'Placeholder' : rest.length === 1 ? 'One more picture' : `${inWords(rest.length)} more pictures`}</p>
+        <h2 class="hgal__h">${stand
+          ? `More pictures of <em>${esc(name)}</em>`
+          : `More of <em>${esc(name)}</em>`}</h2>
+        ${stand ? `<p class="hgal__stand">This is how the gallery looks once there are pictures.
+          These three are stand-ins, not ${esc(name)}: we have only one photograph of ${
+          horse.photos.length ? 'this horse' : 'this horse at all'}. Send us more and they go straight in.</p>` : ''}
       </div>
       <div class="hgal__grid">
 ${rest.map((src, i) => {
@@ -1454,6 +1551,9 @@ ${rest.map((src, i) => {
     : n % 3 === 2 ? n - 2
     : n;
   const fill = n === 1 ? ' hgal__f--half' : i >= half ? ' hgal__f--half' : '';
+  if (stand) return `        <span class="hgal__f hgal__f--stand${fill}">
+          <img src="/${src}" alt="Placeholder: a photograph of ${esc(name)} is still to be supplied" loading="lazy">
+        </span>`;
   return `        <button type="button" class="hgal__f${fill}" data-full="/${src}"
                 aria-label="Open picture ${i + 1} of ${rest.length} at full size">
           <img src="/${src}" alt="${esc(name)}" loading="lazy">
@@ -1609,6 +1709,77 @@ ${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h) : card(h
 
 /* ── the horse page, section six: the invitation ───────────────────────
    The plate the whole site closes on, with this horse named in it. */
+/* ── the contact section, on every single page ─────────────────────────
+   Variation one of the six in 07-horse-contact.html, chosen on 30 Aug: the
+   invitation and the four ways to reach them on the navy half, the form on
+   the ivory half. It replaces the CTA plate rather than standing next to it,
+   because two invitations in a row is one too many, and the buttons higher up
+   the page now land here instead of on the homepage.
+
+   The name of the horse is already in a field the visitor can still edit:
+   somebody writing about two of them should not have to fight it. */
+const contactSection = (horse) => {
+  const n = horseName(horse.name);
+  const cross = horse.category === 'embryo';
+  const her = horse.sex && /femmina|mare|filly/i.test(horse.sex) ? 'her' : 'him';
+  const it = cross ? 'this cross' : her;
+  return `
+  <section class="ask" id="ask">
+    <div class="wrap">
+      <div class="ask__box">
+        <div class="ask__side">
+          <div>
+            <p class="plaque">Ask about ${cross ? 'this cross' : n}</p>
+            <h2 class="ask__h">Ask the people who <em>${cross ? 'made it' : 'bred ' + her}</em>.</h2>
+            <p class="ask__lead">No agent and no auction ring. You speak to the two people who chose
+            the cross.</p>
+          </div>
+          <div class="ask__people">
+            <a class="ask__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="ask__pk">WhatsApp</span><span class="ask__pv">Fastest reply</span></a>
+            <a class="ask__p" href="tel:+393495918565">
+              <span class="ask__pk">Elisabetta</span><span class="ask__pv">+39 349 591 8565</span></a>
+            <a class="ask__p" href="tel:+393483953433">
+              <span class="ask__pk">Adriano</span><span class="ask__pv">+39 348 395 3433</span></a>
+            <a class="ask__p" href="mailto:studvonaxe@gmail.com">
+              <span class="ask__pk">By mail</span><span class="ask__pv">studvonaxe@gmail.com</span></a>
+          </div>
+        </div>
+        <form class="ask__form" data-horse="${esc(n)}">
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-name">Your name</label>
+              <input id="ask-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+            </div>
+            <div class="ask__row">
+              <label for="ask-email">Email</label>
+              <input id="ask-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-tel">Telephone <span class="ask__opt">optional</span></label>
+              <input id="ask-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+            </div>
+            <div class="ask__row">
+              <label for="ask-about">About</label>
+              <input id="ask-about" name="about" type="text" value="${esc(n)}">
+            </div>
+          </div>
+          <div class="ask__row">
+            <label for="ask-msg">Your message</label>
+            <textarea id="ask-msg" name="message" rows="4" required
+              placeholder="What would you like to know about ${esc(n)}?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+          <p class="ask__note" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+`;
+};
+
 const horseCta = (horse) => `
   <section class="abcta">
     <div class="wrap">
@@ -1680,6 +1851,43 @@ const heroSection = (g) => `
 /* The horse page: every section above, in the order they are defined, with
    the ones that have nothing to show left out entirely rather than drawn
    empty. */
+/* The form has nowhere to post to: this site is static files on Vercel with no
+   back end and no mail account behind it. Rather than swallow the message the
+   way the homepage form does, it hands it to the visitor's own mail app with
+   every field already written out, so pressing send actually sends something.
+   When a form service or a function is chosen, this is the one block that
+   changes and the markup stays exactly as it is. */
+const askScript = `<script>
+(function(){
+  var form = document.querySelector('.ask__form');
+  if (!form) return;
+  var note = form.querySelector('.ask__note');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var get = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
+    var about = get('about') || form.getAttribute('data-horse');
+    var body = [
+      'About: ' + about,
+      'Name: ' + get('name'),
+      'Email: ' + get('email'),
+      get('tel') ? 'Telephone: ' + get('tel') : '',
+      '',
+      get('message')
+    /* Escaped twice on purpose: this file is a template literal, so a single
+       backslash-n written here becomes a real line break in the page and
+       leaves the string open. The closing script tag has the same trap, which
+       is why naming it inside this comment closed the script and broke all
+       sixty pages: a comment is still text in the output. */
+    ].filter(function(l){ return l !== ''; }).join('\\n');
+    note.textContent = 'Opening your mail app with the message ready to send. If nothing happens, write to studvonaxe@gmail.com.';
+    location.href = 'mailto:studvonaxe@gmail.com'
+      + '?subject=' + encodeURIComponent('Enquiry: ' + about)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
+<\/script>`;
+
 const horsePage = (horse, group, body) => `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1703,6 +1911,7 @@ ${body}
 ${footer}
 ${navScript}
 ${/class="(hgal|hvid)"/.test(body) ? mediaScript : ''}
+${body.includes('class="ask"') ? askScript : ''}
 </body>
 </html>
 `;
@@ -1735,7 +1944,7 @@ for (const key of Object.keys(GROUPS)) {
          carries its sire and dam lines: same plate, same place. */
       : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
         videoSection(horse) + gallerySection(horse) +
-        moreSection(horse, group, list) + horseCta(horse);
+        moreSection(horse, group, list) + contactSection(horse);
     writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
     written.horses++;
   }

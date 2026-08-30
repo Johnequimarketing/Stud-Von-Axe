@@ -1854,6 +1854,57 @@
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
+  /* A stand-in says what it is, in words as well as in the picture. */
+  .hgal__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:var(--color-ink-soft); }
+  .hvid__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:rgba(255,255,255,.66); }
+  /* Nothing to enlarge and nothing to play: neither is a button. */
+  .hgal__f--stand{ cursor:default; }
+  .hgal__f--stand:hover img{ transform:none; }
+  .hvid__btn--stand{ cursor:default; }
+  .hvid__btn--stand:hover img{ transform:none; }
+  .hvid__btn--stand .hvid__play{ opacity:.55; }
+
+  /* ── the contact section ───────────────────────────────────────────────
+     Variation one of the six, chosen on 30 Aug. Navy half carries the
+     invitation and the four ways to reach them; ivory half carries the form.
+     It stands where the CTA plate stood. */
+  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
+  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .ask__h em{ font-style:italic; color:var(--color-gold); }
+  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .ask__people{ display:grid; }
+  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
+    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
+  .ask__p:hover{ padding-left:.4rem; }
+  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
+  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base); }
+  .ask__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
+  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .ask__row input, .ask__row textarea{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
+    transition:border-color .3s var(--ease);
+  }
+  .ask__row input:focus, .ask__row textarea:focus{ outline:none; border-color:var(--color-gold); }
+  .ask__row textarea{ resize:vertical; line-height:1.55; }
+  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ask__note:empty{ display:none; }
+
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
      .hz__chip, so an archive filters the way the homepage section already

@@ -1854,6 +1854,57 @@
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
+  /* A stand-in says what it is, in words as well as in the picture. */
+  .hgal__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:var(--color-ink-soft); }
+  .hvid__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
+    color:rgba(255,255,255,.66); }
+  /* Nothing to enlarge and nothing to play: neither is a button. */
+  .hgal__f--stand{ cursor:default; }
+  .hgal__f--stand:hover img{ transform:none; }
+  .hvid__btn--stand{ cursor:default; }
+  .hvid__btn--stand:hover img{ transform:none; }
+  .hvid__btn--stand .hvid__play{ opacity:.55; }
+
+  /* ── the contact section ───────────────────────────────────────────────
+     Variation one of the six, chosen on 30 Aug. Navy half carries the
+     invitation and the four ways to reach them; ivory half carries the form.
+     It stands where the CTA plate stood. */
+  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
+  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .ask__h em{ font-style:italic; color:var(--color-gold); }
+  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .ask__people{ display:grid; }
+  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
+    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
+  .ask__p:hover{ padding-left:.4rem; }
+  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
+  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base); }
+  .ask__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
+  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .ask__row input, .ask__row textarea{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
+    transition:border-color .3s var(--ease);
+  }
+  .ask__row input:focus, .ask__row textarea:focus{ outline:none; border-color:var(--color-gold); }
+  .ask__row textarea{ resize:vertical; line-height:1.55; }
+  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ask__note:empty{ display:none; }
+
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
      .hz__chip, so an archive filters the way the homepage section already
@@ -2473,7 +2524,7 @@
           <div><span class="eh__k">Studbook</span><span class="eh__v">Zangersheide</span></div>
         </div>
         <div class="eh__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
+          <a href="#ask" class="btn btn-gold btn-pill">Ask about this embryo</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -2551,23 +2602,56 @@
   </section>
 
 
-  <section class="abcta">
+  <section class="ask" id="ask">
     <div class="wrap">
-      <div class="pcta">
-        <div class="pcta__bg" aria-hidden="true">
-          <img src="/assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
+      <div class="ask__box">
+        <div class="ask__side">
+          <div>
+            <p class="plaque">Ask about this cross</p>
+            <h2 class="ask__h">Ask the people who <em>made it</em>.</h2>
+            <p class="ask__lead">No agent and no auction ring. You speak to the two people who chose
+            the cross.</p>
+          </div>
+          <div class="ask__people">
+            <a class="ask__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="ask__pk">WhatsApp</span><span class="ask__pv">Fastest reply</span></a>
+            <a class="ask__p" href="tel:+393495918565">
+              <span class="ask__pk">Elisabetta</span><span class="ask__pv">+39 349 591 8565</span></a>
+            <a class="ask__p" href="tel:+393483953433">
+              <span class="ask__pk">Adriano</span><span class="ask__pv">+39 348 395 3433</span></a>
+            <a class="ask__p" href="mailto:studvonaxe@gmail.com">
+              <span class="ask__pk">By mail</span><span class="ask__pv">studvonaxe@gmail.com</span></a>
+          </div>
         </div>
-        <div class="pcta__veil" aria-hidden="true"></div>
-        <div>
-          <p class="pcta__h">Interested in <em>Aganix du Seigneur Z x Cortina de Jolie Z</em>?</p>
-          <p class="pcta__d">Ask us anything about the family behind this one, what the line has
-          produced, or what it takes to bring it home. We answer plainly.</p>
-        </div>
-        <div class="pcta__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
-          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
-        </div>
+        <form class="ask__form" data-horse="Aganix du Seigneur Z x Cortina de Jolie Z">
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-name">Your name</label>
+              <input id="ask-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+            </div>
+            <div class="ask__row">
+              <label for="ask-email">Email</label>
+              <input id="ask-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-tel">Telephone <span class="ask__opt">optional</span></label>
+              <input id="ask-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+            </div>
+            <div class="ask__row">
+              <label for="ask-about">About</label>
+              <input id="ask-about" name="about" type="text" value="Aganix du Seigneur Z x Cortina de Jolie Z">
+            </div>
+          </div>
+          <div class="ask__row">
+            <label for="ask-msg">Your message</label>
+            <textarea id="ask-msg" name="message" rows="4" required
+              placeholder="What would you like to know about Aganix du Seigneur Z x Cortina de Jolie Z?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+          <p class="ask__note" role="status"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -2671,5 +2755,35 @@
 })();
 </script>
 
+<script>
+(function(){
+  var form = document.querySelector('.ask__form');
+  if (!form) return;
+  var note = form.querySelector('.ask__note');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var get = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
+    var about = get('about') || form.getAttribute('data-horse');
+    var body = [
+      'About: ' + about,
+      'Name: ' + get('name'),
+      'Email: ' + get('email'),
+      get('tel') ? 'Telephone: ' + get('tel') : '',
+      '',
+      get('message')
+    /* Escaped twice on purpose: this file is a template literal, so a single
+       backslash-n written here becomes a real line break in the page and
+       leaves the string open. The closing script tag has the same trap, which
+       is why naming it inside this comment closed the script and broke all
+       sixty pages: a comment is still text in the output. */
+    ].filter(function(l){ return l !== ''; }).join('\n');
+    note.textContent = 'Opening your mail app with the message ready to send. If nothing happens, write to studvonaxe@gmail.com.';
+    location.href = 'mailto:studvonaxe@gmail.com'
+      + '?subject=' + encodeURIComponent('Enquiry: ' + about)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>

@@ -71,7 +71,23 @@ for (const rel of files) {
   const text = noScript
     .replace(/<style>[\s\S]*?<\/style>/g, '')
     .replace(/<[^>]+>/g, ' ');
-  const scripts = [...src.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).join('\n');
+  const scriptBlocks = [...src.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  const scripts = scriptBlocks.join('\n');
+
+  /* Every inline block has to parse. Generated pages are written from template
+     literals, where two things end a script early and silently: a single
+     backslash-n that becomes a real line break inside a string, and the
+     characters of a closing script tag appearing anywhere in the block,
+     comments included. Both shipped once. A page that renders is not proof:
+     the browser simply stops running the rest. */
+  const broken = [];
+  for (const block of scriptBlocks) {
+    try { new Function(block); }
+    catch (e) { broken.push(e.message); }
+  }
+  broken.length
+    ? fail(rel, `${broken.length} inline script(s) do not parse: ${broken[0]}`)
+    : pass(`${scriptBlocks.length} inline script(s) all parse`);
 
   /* 1 ── token consistency */
   const afterRoot = cssBlocks.replace(/:root\s*\{[\s\S]*?\n\s*\}/, '');
