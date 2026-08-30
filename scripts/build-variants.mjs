@@ -280,7 +280,7 @@ const VARIANTS = [
   {
     id: 'seam-rule',
     title: 'Ten, with a rule under the breeding',
-    note: 'Variation ten with the line Mark asked for: a hairline under the damline, so the card reads in three parts, the names, the breeding, and then their sentence. It is white at low opacity rather than gold, because a second gold line competes with the seam above it and the eye stops knowing which one matters.',
+    note: 'Variation ten with the line Mark asked for, and it is the same line: one pixel of gold at 65%, full width, exactly the rule that runs across the seam above it. The card reads in three parts now, the names, the breeding, and then their own sentence.',
     grid: 'v-g3',
     card: (h) => `
       <li class="v13">
@@ -292,25 +292,6 @@ const VARIANTS = [
             <span class="v13__line">${esc(lineOf(h))}</span>
             <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">${esc(theirs(h.tagline))}</span>
-          </span>
-        </a>
-      </li>`,
-  },
-  {
-    id: 'seam-rule-gold',
-    title: 'Ten, with a gold rule under the breeding',
-    note: 'The same, in gold and short rather than full width, so it reads as a mark between two thoughts instead of a second horizon. Side by side with the one above, this is the choice between a divider you notice and one you only feel.',
-    grid: 'v-g3',
-    card: (h) => `
-      <li class="v14">
-        <a class="v14__a" href="/embryos/${h.slug}">
-          <span class="v14__win">${pic(h, 'v14__img')}<span class="v14__fade" aria-hidden="true"></span></span>
-          <span class="v14__seam"><span class="v14__stage">${esc(stage(h))}</span></span>
-          <span class="v14__box">
-            <span class="v14__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
-            <span class="v14__line">${esc(lineOf(h))}</span>
-            <span class="v14__rule" aria-hidden="true"></span>
-            <span class="v14__say">${esc(theirs(h.tagline))}</span>
           </span>
         </a>
       </li>`,
@@ -594,38 +575,40 @@ const CSS = `
   .v12__name em{ font-style:normal; color:var(--color-gold); }
   .v12__line{ display:block; margin-top:.35rem; font-size:12px; line-height:1.45; color:rgba(255,255,255,.6); }
 
-  /* ── 13 and 14: ten, with a rule under the breeding ─────────────────
-     Everything is variation ten. The only difference between the two is the
-     rule itself: white and full width, or gold and short. */
-  .v13__a, .v14__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
+  /* ── 13: ten, with a rule under the breeding ────────────────────────
+     Everything else is variation ten, unchanged. */
+  .v13__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
     overflow:hidden; background:var(--color-navy-deep);
     box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55); transition:transform .45s var(--ease); }
-  .v13__a:hover, .v14__a:hover{ transform:translateY(-5px); }
-  .v13__win, .v14__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
-  .v13__img, .v14__img{ width:100%; height:100%; object-fit:cover; display:block;
+  .v13__a:hover{ transform:translateY(-5px); }
+  .v13__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .v13__img{ width:100%; height:100%; object-fit:cover; display:block;
     transition:transform 1s var(--ease); }
-  .v13__a:hover .v13__img, .v14__a:hover .v14__img{ transform:scale(1.04); }
-  .v13__fade, .v14__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+  .v13__a:hover .v13__img{ transform:scale(1.04); }
+  .v13__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
     background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
       rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
-  .v13__seam, .v14__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+  .v13__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
     padding:0 1.1rem; margin-top:-.1rem; }
-  .v13__seam::after, .v14__seam::after{ content:""; flex:1 1 auto; height:1px;
+  .v13__seam::after{ content:""; flex:1 1 auto; height:1px;
     background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
-  .v13__stage, .v14__stage{ font-family:var(--font-body); font-weight:700; font-size:9.5px;
+  .v13__stage{ font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); flex:none; }
-  .v13__box, .v14__box{ flex:1 1 auto; display:block; padding:.75rem 1.1rem 1.2rem; }
-  .v13__name, .v14__name{ display:block; font-family:var(--font-display); font-weight:400;
+  .v13__box{ flex:1 1 auto; display:block; padding:.75rem 1.1rem 1.2rem; }
+  .v13__name{ display:block; font-family:var(--font-display); font-weight:400;
     font-size:1.12rem; line-height:1.2; color:var(--color-white); }
-  .v13__name em, .v14__name em{ font-style:italic; color:var(--color-gold); }
-  .v13__line, .v14__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45;
+  .v13__name em{ font-style:italic; color:var(--color-gold); }
+  .v13__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45;
     color:rgba(255,255,255,.62); }
-  .v13__say, .v14__say{ display:block; font-family:var(--font-display); font-style:italic;
+  .v13__say{ display:block; font-family:var(--font-display); font-style:italic;
     font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
 
-  .v13__rule{ display:block; height:1px; margin:.8rem 0 .7rem; background:rgba(255,255,255,.16); }
-  .v14__rule{ display:block; width:30px; height:1px; margin:.85rem 0 .7rem;
-    background:color-mix(in srgb, var(--color-gold) 70%, transparent); }
+  /* The same rule as the seam, to the value: one pixel, gold at 65%, full
+     width. Mark asked for the line under the breeding to match the one the
+     stage sits on, and matching it means the same declaration, not a
+     similar one. */
+  .v13__rule{ display:block; height:1px; margin:.8rem 0 .75rem;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
