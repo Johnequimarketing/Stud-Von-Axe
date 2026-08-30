@@ -16,6 +16,8 @@ import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, 
 const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
 const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
+/* Title and poster for every film, written by scripts/fetch-videos.py. */
+const VIDEOS = new Function(readFileSync(join(root, 'horses-videos.js'), 'utf-8') + '; return HORSE_VIDEOS;')();
 
 /* One entry per archive. A hero is a wide strip, so the photograph is
    chosen on shape as much as on subject: three of these are 2.25:1 crops
@@ -88,7 +90,10 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
     text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
   }
-  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
+  /* Three across, not four. At four the picture is too small to read a horse
+     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
+     wordt anders te krap en te klein". The embryo cards were already three. */
+  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
   /* ── the filter bar ────────────────────────────────────────────────────
@@ -163,6 +168,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     color:rgba(255,255,255,.72); }
   .eh__tray{ position:relative; z-index:2; margin-top:clamp(-3rem,-3.4vw,-2rem);
     background:var(--color-base); border-radius:var(--plate-radius);
+    border:1px solid var(--color-line);
     padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
   .eh__stage{ display:inline-flex; align-items:center; padding:.34em .85em;
     border-radius:var(--ctl-radius); background:var(--color-gold); color:var(--color-navy);
@@ -316,8 +322,27 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      sent are laid out. The header wears its pinned colours from the first
      pixel because there is no photograph behind it. */
   .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
+  /* With a hero the section starts at the top of the page and the two columns
+     hang into the photograph from below, the same move the embryo tray makes,
+     so a horse page and a cross page open the same way. */
+  .hp--hero{ position:relative; padding-top:0; }
+  .hp--hero .hp__grid{ position:relative; z-index:2; margin-top:clamp(-3.6rem,-4vw,-2.4rem); }
+  /* One photograph, two crops: the band takes the head, the column keeps the
+     whole horse, so the same file does not read as the same picture twice. */
+  .eh__win--high img{ object-position:center 22%; }
   .hp__grid{ display:grid; gap:clamp(1.8rem,4vw,3.4rem); align-items:start; }
   @media (min-width:900px){ .hp__grid{ grid-template-columns:.92fr 1.08fr; } }
+  /* Everything that stood loose beside the picture, gathered onto one plate. */
+  /* Ivory on ivory: hanging in the photograph the plate reads by contrast,
+     but on a narrow screen it sits below the picture on the page ground and
+     the shadow alone is not enough to see an edge. A hairline gives it one. */
+  .hp__tray{
+    background:var(--color-base); border-radius:var(--plate-radius);
+    border:1px solid var(--color-line);
+    padding:clamp(1.4rem,2.8vw,2rem);
+    box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5);
+  }
+  .hp--hero .hp__pic{ box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
   .hp__col{ min-width:0; }
   .hp__pic{
     border-radius:var(--plate-radius); overflow:hidden;
@@ -336,7 +361,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
   .hp__back--dark:hover{ color:var(--color-white); }
   .hp__h{
-    margin:.5rem 0 .4rem; font-family:var(--font-display); font-weight:400;
+    margin:0 0 .4rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
     color:var(--color-ink);
   }
@@ -443,10 +468,104 @@ const CSS = homeCss + pageHeroCss + storyCss + `
 
   /* The remaining photographs of this horse. Two or more, or the section is
      not drawn: a gallery of one is just a picture. */
+  /* ── the pictures ──────────────────────────────────────────────────────
+     A heading, then a run of frames of one height so the row reads as a row
+     rather than as a ragged edge, and any number of them: some horses have
+     one spare picture and one has five. Clicking opens it at full size
+     without leaving the page. */
+  .hgal__head, .hvid__head{ margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  .hgal__h, .hvid__h{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-ink);
+  }
+  .hgal__h em, .hvid__h em{ font-style:italic; color:var(--color-gold); }
+  /* Six columns so a frame can be a third or a half of the row. A run that
+     does not divide by three used to leave a hole at the end; the leftovers
+     widen to fill their row instead. */
   .hgal__grid{ display:grid; gap:clamp(.8rem,1.4vw,1.1rem); grid-template-columns:repeat(2, 1fr); }
-  @media (min-width:900px){ .hgal__grid.is-three{ grid-template-columns:repeat(3, 1fr); } }
-  .hgal__f{ border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
-  .hgal__f img{ display:block; width:100%; height:auto; }
+  @media (min-width:900px){
+    .hgal__grid{ grid-template-columns:repeat(6, 1fr); }
+    .hgal__f{ grid-column:span 2; }
+    .hgal__f--half{ grid-column:span 3; }
+    .hgal__f--alone{ grid-column:3 / span 2; }
+  }
+  .hgal__f{
+    position:relative; border-radius:var(--plate-radius); overflow:hidden;
+    background:var(--color-navy-deep); aspect-ratio:4/3; display:block;
+    width:100%; padding:0; border:0; cursor:zoom-in;
+  }
+  .hgal__f img{ display:block; width:100%; height:100%; object-fit:cover;
+    transition:transform .7s var(--ease); }
+  .hgal__f:hover img{ transform:scale(1.04); }
+
+  /* ── the films ─────────────────────────────────────────────────────────
+     A still with a play button, and the player written in on the click. */
+  .hvid__grid{ display:grid; gap:clamp(1rem,2vw,1.6rem); grid-template-columns:1fr; }
+  @media (min-width:820px){
+    .hvid__grid{ grid-template-columns:repeat(2, 1fr); }
+    .hvid__grid.is-one{ grid-template-columns:minmax(0, 760px); }
+  }
+  .hvid__f{ min-width:0; }
+  .hvid__btn{
+    position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer;
+    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep);
+    aspect-ratio:16/9;
+    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb),.55);
+  }
+  .hvid__btn img{ display:block; width:100%; height:100%; object-fit:cover;
+    transition:transform .7s var(--ease); }
+  .hvid__btn:hover img{ transform:scale(1.03); }
+  .hvid__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.12) 0%, rgba(var(--veil-rgb),.42) 100%); }
+  .hvid__play{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%; display:grid; place-items:center;
+    background:var(--color-gold); color:var(--color-navy);
+    box-shadow:0 10px 30px -10px rgba(var(--veil-rgb),.7);
+    transition:transform .35s var(--ease);
+  }
+  .hvid__btn:hover .hvid__play{ transform:translate(-50%,-50%) scale(1.08); }
+  .hvid__f iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
+    border-radius:var(--plate-radius); background:var(--color-navy-deep); }
+  .hvid__cap{ margin:.8rem 0 0; font-size:14px; line-height:1.5; color:var(--color-ink-soft); }
+  /* A film of the sire or the dam, on a page about the foal: said out loud
+     rather than left for the visitor to work out from the name. */
+  .hvid__whose{
+    display:inline-block; margin-right:.4rem; padding:.2em .6em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.14em;
+    text-transform:uppercase; vertical-align:.12em;
+  }
+  .hvid__note{ margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft); }
+
+  /* ── the lightbox ──────────────────────────────────────────────────────
+     One dialog for the whole page, opened with the picture that was clicked. */
+  .lb{ border:0; padding:0; background:transparent; max-width:none; max-height:none;
+    width:100%; height:100%; }
+  .lb::backdrop{ background:rgba(var(--veil-rgb),.92); }
+  .lb__in{ display:grid; place-items:center; width:100%; height:100%; padding:clamp(1rem,4vw,3rem); }
+  .lb img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block;
+    border-radius:var(--plate-radius); }
+  .lb__x{
+    position:absolute; top:clamp(1rem,3vw,2rem); right:clamp(1rem,3vw,2rem);
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--color-line-invert);
+    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
+    font-size:20px; line-height:1; display:grid; place-items:center;
+  }
+  .lb__x:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
+  .lb__nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--color-line-invert);
+    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
+    font-size:20px; line-height:1; display:grid; place-items:center;
+  }
+  .lb__nav:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
+  .lb__nav--prev{ left:clamp(.6rem,2vw,1.6rem); }
+  .lb__nav--next{ right:clamp(.6rem,2vw,1.6rem); }
+  @media (prefers-reduced-motion: reduce){
+    .hgal__f img, .hvid__btn img, .hvid__play{ transition:none; }
+    .hgal__f:hover img, .hvid__btn:hover img{ transform:none; }
+  }
 
   /* More from the same group: the homepage card again, three of them. */
   .hmore__head{
@@ -965,34 +1084,206 @@ const factRow = (horse) => {
     `<div><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n          ');
 };
 
+/* Which photograph goes where, decided once for the whole page. Four sections
+   want a picture and they used to count for themselves, which is how the same
+   file ended up in two of them. The band takes the first, the column beside
+   the name the second, the story the third, and everything left over goes to
+   the gallery.
+   With a single photograph the column keeps it and the band crops high on the
+   same file, so it is used twice on purpose rather than by accident. */
+const photoPlan = (horse) => {
+  const p = horse.photos;
+  if (!p.length) return { hero: '', col: '', story: '', gallery: [] };
+  if (p.length === 1) return { hero: p[0], col: p[0], story: '', gallery: [], oneOnly: true };
+  const story = horse.body.length ? (p[2] || '') : '';
+  const used = new Set([p[0], p[1], story].filter(Boolean));
+  return { hero: p[0], col: p[1], story, gallery: p.filter((x) => !used.has(x)) };
+};
+
 const introSection = (horse, group) => {
   const name = horseName(horse.name);
   const tag = horse.sold
     ? '<span class="hz__tag hz__tag--sold">Sold</span>'
     : '<span class="hz__tag">Available</span>';
-  const pic = horse.photos.length
-    ? `<div class="hp__pic"><img src="/${horse.photos[0]}" alt="${esc(name)}" fetchpriority="high">${tag}</div>`
+
+  /* A hero over the whole width, then the picture on the left and everything
+     that used to sit loose on the right gathered onto a plate: 30 Aug, "er
+     komt een hero boven" and "de tekst rechts gaat ook in een box".
+     The hero and the column must not be the same photograph twice. Where the
+     horse has two, they are two. Where it has one, which is fourteen of the
+     forty five, the hero crops high on the same file so the band shows the
+     head and the column shows the whole horse. */
+  const { hero: heroShot, col: colShot, oneOnly } = photoPlan(horse);
+
+  const hero = `
+    <div class="eh__win${oneOnly ? ' eh__win--high' : ''}">
+      ${heroShot
+        ? `<img src="/${heroShot}" alt="${esc(name)}" fetchpriority="high">`
+        : `<span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`}
+      <span class="eh__veil" aria-hidden="true"></span>
+      <a class="eh__back" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
+    </div>`;
+
+  const pic = colShot
+    ? `<div class="hp__pic"><img src="/${colShot}" alt="${esc(name)}" loading="lazy">${tag}</div>`
     : `<div class="hz__win typo hp__pic"><p>${esc(horse.genetics || '')}</p>${tag}</div>`;
+
   return `
-  <section class="hp">
+  <section class="hp hp--hero">
+    ${hero}
     <div class="wrap hp__grid">
       <div class="hp__col">
         ${pic}
       </div>
       <div class="hp__col">
-        <a class="hp__back" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
-        <h1 class="hp__h">${esc(name)}</h1>
-        ${horse.genetics ? `<p class="hp__cross">${esc(horseName(horse.genetics))}</p>` : ''}
-        ${horse.tagline ? `<p class="hp__lead">${esc(theirWords(horse.tagline))}</p>` : ''}
-        <div class="hp__facts">
-          ${factRow(horse)}
-        </div>
-        <div class="hp__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
-          ${(() => { const t = telexOf(horse); return t ? `<a href="${esc(t.url)}" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">${t.self ? 'Pedigree on Horsetelex' : 'Damline on Horsetelex'}</a>` : ''; })()}
+        <div class="hp__tray">
+          <h1 class="hp__h">${esc(name)}</h1>
+          ${horse.genetics ? `<p class="hp__cross">${esc(horseName(horse.genetics))}</p>` : ''}
+          ${horse.tagline ? `<p class="hp__lead">${esc(theirWords(horse.tagline))}</p>` : ''}
+          <div class="hp__facts">
+            ${factRow(horse)}
+          </div>
+          <div class="hp__acts">
+            <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
+            ${(() => { const t = telexOf(horse); return t ? `<a href="${esc(t.url)}" target="_blank" rel="noopener"
+               class="btn btn-ghost btn-pill">${t.self ? 'Pedigree on Horsetelex' : 'Damline on Horsetelex'}</a>` : ''; })()}
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+`;
+};
+
+/* ── the films ─────────────────────────────────────────────────────────
+   Twenty two of the sixty horses have film on their own page, thirty three
+   in all, and not one cross has any: a cross has nothing to film yet, which
+   is why 30 Aug asked for this on the horses and the foals only.
+
+   Nothing of YouTube is loaded until the visitor asks for it. The still and
+   the title come from scripts/fetch-videos.py, sit on this server, and the
+   player is only written into the page on the click. That keeps the visitor
+   out of Google's hands on arrival and saves about a megabyte a film.
+
+   Their YouTube titles are written for YouTube: "SOLD (flag) Name 2018
+   (sire x dam)". SOLD is already a badge on this page and the flag is a
+   picture of a word, so both come off. What is left is the label.
+
+   Three of the films are not of the horse whose page they are on: a foal has
+   nothing filmed yet, so they posted the sire or the dam instead. Same rule
+   as the Horsetelex links: the label says whose film it is. The subject is
+   read from the part before the bracket, because what is inside the bracket
+   is the pedigree and matches every other horse in the family. */
+/* The house writes a count as a word, and the audit refuses an eyebrow that
+   opens with a digit, so "4 films" is both wrong here and caught. */
+const inWords = (n) => ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
+  'eight', 'nine', 'ten', 'eleven', 'twelve'][n] || String(n);
+
+const filmTitle = (t) => String(t || '')
+  .replace(/\bSOLD\b/gi, '')
+  .replace(/[\u{1F1E6}-\u{1F1FF}]{2}/gu, '')
+  /* Two of them separate the horse from the class with a spaced hyphen, which
+     is the one punctuation mark this site does not use as a pause. A comma
+     says the same thing. */
+  .replace(/\s+-\s+/g, ', ')
+  .replace(/\s{2,}/g, ' ').trim();
+
+/* Their spelling of a horse's own name wobbles between the site and YouTube
+   (MEDILLÍN on one, Medellín on the other), so the subject is matched with a
+   small edit distance rather than character for character. */
+const editDistance = (a, b) => {
+  const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let diag = prev[0];
+    prev[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = prev[j];
+      prev[j] = Math.min(prev[j] + 1, prev[j - 1] + 1, diag + (a[i - 1] === b[j - 1] ? 0 : 1));
+      diag = tmp;
+    }
+  }
+  return prev[b.length];
+};
+const namesAgree = (subject, name) => {
+  const a = telexLetters(subject), b = telexLetters(name);
+  if (!a || !b) return false;
+  if (a.includes(b) || b.includes(a)) return true;
+  const head = a.slice(0, b.length + 2);
+  return editDistance(head, b) <= Math.max(2, Math.round(b.length * 0.15));
+};
+
+const filmOf = (id, horse) => {
+  const raw = filmTitle((VIDEOS[id] || {}).title);
+  const meta = VIDEOS[id] || {};
+  const subject = raw.split('(')[0].trim();
+  const ped = horse.pedigree || {};
+  const self = namesAgree(subject, horse.name);
+  let whose = '';
+  if (!self) {
+    if (ped.sire && namesAgree(subject, ped.sire)) whose = 'The sire';
+    else if (ped.dam && namesAgree(subject, ped.dam)) whose = 'The dam';
+    else if (subject) whose = 'Not this horse';
+  }
+  /* On the horse's own page its name is already the heading and its pedigree
+     is already at the top, so a caption reading "Hypnotic JT Z 2018 (Halifax
+     van het Kluizebos x Carthago)" says nothing four times over. What is left
+     after the name, the bracket and the year is what tells one film from
+     another: "first show ever". Where nothing is left, nothing is written.
+     A film of the sire or the dam keeps its whole title: there the name is
+     the point. */
+  const own = new Set(horse.name.split(/\s+/).map(telexLetters).filter(Boolean));
+  const bare = raw.replace(/\([^)]*\)/g, '');
+  /* Some of them write the pedigree without a bracket, so whatever is left
+     after the name is the sire and the dam again rather than anything about
+     the film. The "x" gives it away. */
+  const isPedigree = /\s+x\s+/i.test(bare);
+  const left = self
+    ? bare.replace(/\b(19|20)\d{2}\b/g, '')     /* the year, already in the figures */
+         .split(/\s+/)
+         /* Their spelling of the same horse differs between their site and
+            YouTube (MEDILLÍN against Medellín), so a word counts as part of
+            the name when it is one letter away from one. */
+         .filter((w) => {
+           const l = telexLetters(w);
+           if (!l) return false;
+           for (const part of own) if (editDistance(l, part) <= 1) return false;
+           return true;
+         })
+         .join(' ').replace(/^[\s,.:;-]+|[\s,.:;-]+$/g, '').trim()
+    : raw;
+  /* A single word left over is a fragment, not a caption: "6 yo" becomes
+     "yo". Nothing is better than a scrap. */
+  const title = !self ? raw
+    : (isPedigree || left.split(/\s+/).filter(Boolean).length < 2) ? '' : left;
+  return { id, title, whose, poster: meta.poster || '' };
+};
+
+const videoSection = (horse) => {
+  const films = (horse.videos || []).map((id) => filmOf(id, horse)).filter((f) => f.poster);
+  if (!films.length) return '';
+  const name = horseName(horse.name);
+  return `
+  <section class="hvid">
+    <div class="wrap">
+      <div class="hvid__head">
+        <p class="plaque">${films.length === 1 ? 'On film' : `${inWords(films.length)} films`}</p>
+        <h2 class="hvid__h">${esc(name)} <em>in motion</em></h2>
+      </div>
+      <div class="hvid__grid${films.length === 1 ? ' is-one' : ''}">
+${films.map((f) => `        <div class="hvid__f">
+          <button type="button" class="hvid__btn" data-yt="${esc(f.id)}"
+                  aria-label="Play the film${f.title ? `: ${esc(f.title)}` : ''}">
+            <img src="/${f.poster}" alt="" loading="lazy">
+            <span class="hvid__veil" aria-hidden="true"></span>
+            <span class="hvid__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </span>
+          </button>
+          ${f.whose || f.title ? `<p class="hvid__cap">${f.whose
+            ? `<span class="hvid__whose">${esc(f.whose)}</span> ` : ''}${esc(f.title)}</p>` : ''}
+        </div>`).join('\n')}
+      </div>
+      <p class="hvid__note">The player loads only when you press play.</p>
     </div>
   </section>
 `;
@@ -1004,8 +1295,9 @@ const introSection = (horse, group) => {
    written here. */
 const storySection = (horse) => {
   if (!horse.body.length) return '';
-  const pic = horse.photos[1]
-    ? `<div class="hp__col abst__pic"><img src="/${horse.photos[1]}" alt="${esc(horseName(horse.name))}" loading="lazy"></div>`
+  const shot = photoPlan(horse).story;
+  const pic = shot
+    ? `<div class="hp__col abst__pic"><img src="/${shot}" alt="${esc(horseName(horse.name))}" loading="lazy"></div>`
     : '';
   return `
   <section class="abst">
@@ -1073,19 +1365,79 @@ const pedigreeSection = (horse) => {
    The first is in the intro and the second, when there is one, sits beside
    the story. What is left goes here, and only if two or more are left. */
 const gallerySection = (horse) => {
-  const used = horse.body.length ? 2 : 1;
-  const rest = horse.photos.slice(used);
-  if (rest.length < 2) return '';
+  const rest = photoPlan(horse).gallery;
+  if (!rest.length) return '';
+  const name = horseName(horse.name);
   return `
   <section class="hgal">
     <div class="wrap">
-      <div class="hgal__grid${rest.length === 3 ? ' is-three' : ''}">
-${rest.map((src) => `        <div class="hgal__f"><img src="/${src}" alt="${esc(horseName(horse.name))}" loading="lazy"></div>`).join('\n')}
+      <div class="hgal__head">
+        <p class="plaque">${rest.length === 1 ? 'One more picture' : `${inWords(rest.length)} more pictures`}</p>
+        <h2 class="hgal__h">More of <em>${esc(name)}</em></h2>
+      </div>
+      <div class="hgal__grid">
+${rest.map((src, i) => {
+  /* The last row: one leftover is centred, two share the row. */
+  const left = rest.length % 3, from = rest.length - left;
+  const fill = left && i >= from ? (left === 1 ? ' hgal__f--alone' : ' hgal__f--half') : '';
+  return `        <button type="button" class="hgal__f${fill}" data-full="/${src}"
+                aria-label="Open picture ${i + 1} of ${rest.length} at full size">
+          <img src="/${src}" alt="${esc(name)}" loading="lazy">
+        </button>`;
+}).join('\n')}
       </div>
     </div>
   </section>
 `;
 };
+
+/* The film player and the picture viewer. Both are written in on demand:
+   nothing of YouTube is fetched until play is pressed, and the viewer is one
+   dialog reused for every picture on the page. */
+const mediaScript = `<script>
+(function(){
+  var films = document.querySelectorAll('.hvid__btn');
+  for (var i = 0; i < films.length; i++) films[i].addEventListener('click', function(){
+    var id = this.getAttribute('data-yt');
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    frame.title = this.getAttribute('aria-label') || 'Film';
+    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    frame.allowFullscreen = true;
+    this.parentNode.replaceChild(frame, this);
+  });
+
+  var shots = [].slice.call(document.querySelectorAll('.hgal__f'));
+  if (!shots.length) return;
+  var dlg = document.createElement('dialog');
+  dlg.className = 'lb';
+  dlg.innerHTML = '<div class="lb__in"><img alt=""></div>' +
+    '<button class="lb__x" type="button" aria-label="Close">&times;</button>' +
+    (shots.length > 1
+      ? '<button class="lb__nav lb__nav--prev" type="button" aria-label="Previous picture">&#8592;</button>' +
+        '<button class="lb__nav lb__nav--next" type="button" aria-label="Next picture">&#8594;</button>'
+      : '');
+  document.body.appendChild(dlg);
+  var img = dlg.querySelector('img'), at = 0;
+  function show(n){
+    at = (n + shots.length) % shots.length;
+    img.src = shots[at].getAttribute('data-full');
+    img.alt = shots[at].querySelector('img').alt;
+  }
+  for (var j = 0; j < shots.length; j++) (function(n){
+    shots[n].addEventListener('click', function(){ show(n); dlg.showModal(); });
+  })(j);
+  dlg.querySelector('.lb__x').addEventListener('click', function(){ dlg.close(); });
+  var prev = dlg.querySelector('.lb__nav--prev'), next = dlg.querySelector('.lb__nav--next');
+  if (prev) prev.addEventListener('click', function(){ show(at - 1); });
+  if (next) next.addEventListener('click', function(){ show(at + 1); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg || e.target.className === 'lb__in') dlg.close(); });
+  dlg.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft' && prev) show(at - 1);
+    if (e.key === 'ArrowRight' && next) show(at + 1);
+  });
+})();
+<\/script>`;
 
 /* ── the horse page, section five: more from the same group ────────────
    The homepage card again, three of them, and a way back to the whole set.
@@ -1196,7 +1548,7 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${body.includes('class="eh"')
+${/class="(eh|hp hp--hero)"/.test(body)
   ? header                       /* a dark hero: transparent, and it pins on scroll */
   : header.replace('class="hd"', 'class="hd is-pinned"')}
 
@@ -1205,6 +1557,7 @@ ${body}
 </main>
 ${footer}
 ${navScript}
+${/class="(hgal|hvid)"/.test(body) ? mediaScript : ''}
 </body>
 </html>
 `;
@@ -1234,7 +1587,8 @@ for (const key of Object.keys(GROUPS)) {
     const body = key === 'embryo'
       ? embryoPage(horse, group, list)
       : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
-        gallerySection(horse) + moreSection(horse, group, list) + horseCta(horse);
+        gallerySection(horse) + videoSection(horse) +
+        moreSection(horse, group, list) + horseCta(horse);
     writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
     written.horses++;
   }

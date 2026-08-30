@@ -120,6 +120,14 @@ const pedigree = (genealogia) => {
   };
 };
 
+/* The films they have put on a horse's own page, as YouTube ids. WordPress
+   renders an oEmbed as an iframe, but the same id also turns up as a plain
+   link in the block markup, so all three shapes are read and deduplicated.
+   Only the pages of born horses carry these: a cross has nothing to film. */
+const videos = (html) => [...new Set(
+  [...html.matchAll(/(?:youtube(?:-nocookie)?\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([A-Za-z0-9_-]{11})/g)]
+    .map(m => m[1]))];
+
 const photos = (html) => {
   const full = [...html.matchAll(/href='(https:\/\/www\.studvonaxe\.it\/wp-content\/uploads\/[^']+?\.(?:jpg|jpeg|png))'/gi)]
     .map(m => m[1]);
@@ -188,7 +196,11 @@ const run = async () => {
         horsetelex: (block(html, 'cavalli-link').match(/href="([^"]+)"/) || [])[1] || '',
         pedigree: pedigree(gen),
         body: story(gen),
-        photos: photos(html).slice(0, 4),
+        /* Ten rather than four: the gallery shows what a horse has, and
+           twenty three of them had more pictures on their own page than we
+           were keeping. */
+        photos: photos(html).slice(0, 10),
+        videos: videos(html),
         country: countryFor.get(link) || '',
         source: link,
         siteCategories: cats.split(' ').filter(c => c.startsWith('category-')).join(' '),
@@ -211,6 +223,8 @@ const run = async () => {
   const counts = all.reduce((a, h) => ({ ...a, [h.category]: (a[h.category] || 0) + 1 }), {});
   console.log('\ntotal', all.length, counts);
   console.log('sold:', all.filter(h => h.sold).length, ' available:', all.filter(h => h.sold === false).length);
+  const films = all.reduce((a, h) => a + h.videos.length, 0);
+  console.log('with video:', all.filter(h => h.videos.length).length, ' films:', films);
   console.log('with pedigree:', all.filter(h => h.pedigree).length,
               ' with story:', all.filter(h => h.body.length).length,
               ' with photos:', all.filter(h => h.photos.length).length);

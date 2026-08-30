@@ -17,7 +17,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "img", "horses")
-MAX_PER_HORSE = 3
+MAX_PER_HORSE = 8
 WIDTH = 1100
 QUALITY = 78
 

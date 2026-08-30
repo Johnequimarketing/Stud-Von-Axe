@@ -1820,7 +1820,10 @@
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
     text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
   }
-  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
+  /* Three across, not four. At four the picture is too small to read a horse
+     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
+     wordt anders te krap en te klein". The embryo cards were already three. */
+  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
   /* ── the filter bar ────────────────────────────────────────────────────
@@ -1895,6 +1898,7 @@
     color:rgba(255,255,255,.72); }
   .eh__tray{ position:relative; z-index:2; margin-top:clamp(-3rem,-3.4vw,-2rem);
     background:var(--color-base); border-radius:var(--plate-radius);
+    border:1px solid var(--color-line);
     padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
   .eh__stage{ display:inline-flex; align-items:center; padding:.34em .85em;
     border-radius:var(--ctl-radius); background:var(--color-gold); color:var(--color-navy);
@@ -2048,8 +2052,27 @@
      sent are laid out. The header wears its pinned colours from the first
      pixel because there is no photograph behind it. */
   .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
+  /* With a hero the section starts at the top of the page and the two columns
+     hang into the photograph from below, the same move the embryo tray makes,
+     so a horse page and a cross page open the same way. */
+  .hp--hero{ position:relative; padding-top:0; }
+  .hp--hero .hp__grid{ position:relative; z-index:2; margin-top:clamp(-3.6rem,-4vw,-2.4rem); }
+  /* One photograph, two crops: the band takes the head, the column keeps the
+     whole horse, so the same file does not read as the same picture twice. */
+  .eh__win--high img{ object-position:center 22%; }
   .hp__grid{ display:grid; gap:clamp(1.8rem,4vw,3.4rem); align-items:start; }
   @media (min-width:900px){ .hp__grid{ grid-template-columns:.92fr 1.08fr; } }
+  /* Everything that stood loose beside the picture, gathered onto one plate. */
+  /* Ivory on ivory: hanging in the photograph the plate reads by contrast,
+     but on a narrow screen it sits below the picture on the page ground and
+     the shadow alone is not enough to see an edge. A hairline gives it one. */
+  .hp__tray{
+    background:var(--color-base); border-radius:var(--plate-radius);
+    border:1px solid var(--color-line);
+    padding:clamp(1.4rem,2.8vw,2rem);
+    box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5);
+  }
+  .hp--hero .hp__pic{ box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
   .hp__col{ min-width:0; }
   .hp__pic{
     border-radius:var(--plate-radius); overflow:hidden;
@@ -2068,7 +2091,7 @@
   .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
   .hp__back--dark:hover{ color:var(--color-white); }
   .hp__h{
-    margin:.5rem 0 .4rem; font-family:var(--font-display); font-weight:400;
+    margin:0 0 .4rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
     color:var(--color-ink);
   }
@@ -2175,10 +2198,104 @@
 
   /* The remaining photographs of this horse. Two or more, or the section is
      not drawn: a gallery of one is just a picture. */
+  /* ── the pictures ──────────────────────────────────────────────────────
+     A heading, then a run of frames of one height so the row reads as a row
+     rather than as a ragged edge, and any number of them: some horses have
+     one spare picture and one has five. Clicking opens it at full size
+     without leaving the page. */
+  .hgal__head, .hvid__head{ margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  .hgal__h, .hvid__h{
+    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-ink);
+  }
+  .hgal__h em, .hvid__h em{ font-style:italic; color:var(--color-gold); }
+  /* Six columns so a frame can be a third or a half of the row. A run that
+     does not divide by three used to leave a hole at the end; the leftovers
+     widen to fill their row instead. */
   .hgal__grid{ display:grid; gap:clamp(.8rem,1.4vw,1.1rem); grid-template-columns:repeat(2, 1fr); }
-  @media (min-width:900px){ .hgal__grid.is-three{ grid-template-columns:repeat(3, 1fr); } }
-  .hgal__f{ border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
-  .hgal__f img{ display:block; width:100%; height:auto; }
+  @media (min-width:900px){
+    .hgal__grid{ grid-template-columns:repeat(6, 1fr); }
+    .hgal__f{ grid-column:span 2; }
+    .hgal__f--half{ grid-column:span 3; }
+    .hgal__f--alone{ grid-column:3 / span 2; }
+  }
+  .hgal__f{
+    position:relative; border-radius:var(--plate-radius); overflow:hidden;
+    background:var(--color-navy-deep); aspect-ratio:4/3; display:block;
+    width:100%; padding:0; border:0; cursor:zoom-in;
+  }
+  .hgal__f img{ display:block; width:100%; height:100%; object-fit:cover;
+    transition:transform .7s var(--ease); }
+  .hgal__f:hover img{ transform:scale(1.04); }
+
+  /* ── the films ─────────────────────────────────────────────────────────
+     A still with a play button, and the player written in on the click. */
+  .hvid__grid{ display:grid; gap:clamp(1rem,2vw,1.6rem); grid-template-columns:1fr; }
+  @media (min-width:820px){
+    .hvid__grid{ grid-template-columns:repeat(2, 1fr); }
+    .hvid__grid.is-one{ grid-template-columns:minmax(0, 760px); }
+  }
+  .hvid__f{ min-width:0; }
+  .hvid__btn{
+    position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer;
+    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep);
+    aspect-ratio:16/9;
+    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb),.55);
+  }
+  .hvid__btn img{ display:block; width:100%; height:100%; object-fit:cover;
+    transition:transform .7s var(--ease); }
+  .hvid__btn:hover img{ transform:scale(1.03); }
+  .hvid__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.12) 0%, rgba(var(--veil-rgb),.42) 100%); }
+  .hvid__play{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%; display:grid; place-items:center;
+    background:var(--color-gold); color:var(--color-navy);
+    box-shadow:0 10px 30px -10px rgba(var(--veil-rgb),.7);
+    transition:transform .35s var(--ease);
+  }
+  .hvid__btn:hover .hvid__play{ transform:translate(-50%,-50%) scale(1.08); }
+  .hvid__f iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
+    border-radius:var(--plate-radius); background:var(--color-navy-deep); }
+  .hvid__cap{ margin:.8rem 0 0; font-size:14px; line-height:1.5; color:var(--color-ink-soft); }
+  /* A film of the sire or the dam, on a page about the foal: said out loud
+     rather than left for the visitor to work out from the name. */
+  .hvid__whose{
+    display:inline-block; margin-right:.4rem; padding:.2em .6em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.14em;
+    text-transform:uppercase; vertical-align:.12em;
+  }
+  .hvid__note{ margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft); }
+
+  /* ── the lightbox ──────────────────────────────────────────────────────
+     One dialog for the whole page, opened with the picture that was clicked. */
+  .lb{ border:0; padding:0; background:transparent; max-width:none; max-height:none;
+    width:100%; height:100%; }
+  .lb::backdrop{ background:rgba(var(--veil-rgb),.92); }
+  .lb__in{ display:grid; place-items:center; width:100%; height:100%; padding:clamp(1rem,4vw,3rem); }
+  .lb img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block;
+    border-radius:var(--plate-radius); }
+  .lb__x{
+    position:absolute; top:clamp(1rem,3vw,2rem); right:clamp(1rem,3vw,2rem);
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--color-line-invert);
+    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
+    font-size:20px; line-height:1; display:grid; place-items:center;
+  }
+  .lb__x:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
+  .lb__nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--color-line-invert);
+    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
+    font-size:20px; line-height:1; display:grid; place-items:center;
+  }
+  .lb__nav:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
+  .lb__nav--prev{ left:clamp(.6rem,2vw,1.6rem); }
+  .lb__nav--next{ right:clamp(.6rem,2vw,1.6rem); }
+  @media (prefers-reduced-motion: reduce){
+    .hgal__f img, .hvid__btn img, .hvid__play{ transition:none; }
+    .hgal__f:hover img, .hvid__btn:hover img{ transform:none; }
+  }
 
   /* More from the same group: the homepage card again, three of them. */
   .hmore__head{
@@ -2203,7 +2320,7 @@
 </style>
 </head>
 <body>
-  <header class="hd is-pinned" id="site-header">
+  <header class="hd" id="site-header">
     <div class="hd__row">
       <div class="hd__start">
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
@@ -2259,26 +2376,33 @@
 
 <main id="main">
 
-  <section class="hp">
+  <section class="hp hp--hero">
+    
+    <div class="eh__win">
+      <img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" fetchpriority="high">
+      <span class="eh__veil" aria-hidden="true"></span>
+      <a class="eh__back" href="/foals"><span aria-hidden="true">&larr;</span> Foals</a>
+    </div>
     <div class="wrap hp__grid">
       <div class="hp__col">
-        <div class="hp__pic"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" fetchpriority="high"><span class="hz__tag hz__tag--sold">Sold</span></div>
+        <div class="hp__pic"><img src="/assets/img/horses/baltimore-von-axe-z-2.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></div>
       </div>
       <div class="hp__col">
-        <a class="hp__back" href="/foals"><span aria-hidden="true">&larr;</span> Foals</a>
-        <h1 class="hp__h">Baltimore Von Axe Z</h1>
-        <p class="hp__cross">Big Star x Cornet Obolensky x Calato x Darco x Chin Chin</p>
-        <p class="hp__lead">Fuga de Muze · Narcotique II · Qerlychin!</p>
-        <div class="hp__facts">
-          <div><span class="hp__k">Born</span><span class="hp__v">02/04/2025</span></div>
+        <div class="hp__tray">
+          <h1 class="hp__h">Baltimore Von Axe Z</h1>
+          <p class="hp__cross">Big Star x Cornet Obolensky x Calato x Darco x Chin Chin</p>
+          <p class="hp__lead">Fuga de Muze · Narcotique II · Qerlychin!</p>
+          <div class="hp__facts">
+            <div><span class="hp__k">Born</span><span class="hp__v">02/04/2025</span></div>
           <div><span class="hp__k">Sex</span><span class="hp__v">Colt</span></div>
           <div><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
           <div><span class="hp__k">Status</span><span class="hp__v">Sold to Poland</span></div>
-        </div>
-        <div class="hp__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
-          <a href="https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">Damline on Horsetelex</a>
+          </div>
+          <div class="hp__acts">
+            <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
+            <a href="https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z" target="_blank" rel="noopener"
+               class="btn btn-ghost btn-pill">Damline on Horsetelex</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2304,9 +2428,19 @@
 
   <section class="hgal">
     <div class="wrap">
+      <div class="hgal__head">
+        <p class="plaque">two more pictures</p>
+        <h2 class="hgal__h">More of <em>Baltimore Von Axe Z</em></h2>
+      </div>
       <div class="hgal__grid">
-        <div class="hgal__f"><img src="/assets/img/horses/baltimore-von-axe-z-2.jpg" alt="Baltimore Von Axe Z" loading="lazy"></div>
-        <div class="hgal__f"><img src="/assets/img/horses/baltimore-von-axe-z-3.jpg" alt="Baltimore Von Axe Z" loading="lazy"></div>
+        <button type="button" class="hgal__f hgal__f--half" data-full="/assets/img/horses/baltimore-von-axe-z-3.jpg"
+                aria-label="Open picture 1 of 2 at full size">
+          <img src="/assets/img/horses/baltimore-von-axe-z-3.jpg" alt="Baltimore Von Axe Z" loading="lazy">
+        </button>
+        <button type="button" class="hgal__f hgal__f--half" data-full="/assets/img/horses/baltimore-von-axe-z-4.jpg"
+                aria-label="Open picture 2 of 2 at full size">
+          <img src="/assets/img/horses/baltimore-von-axe-z-4.jpg" alt="Baltimore Von Axe Z" loading="lazy">
+        </button>
       </div>
     </div>
   </section>
@@ -2416,7 +2550,7 @@
 (function(){
   var hd = document.querySelector('.hd');
   var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh');
+  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero');
   if(hd && row && hero){
     var onScroll = function(){
       hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
@@ -2441,6 +2575,50 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var films = document.querySelectorAll('.hvid__btn');
+  for (var i = 0; i < films.length; i++) films[i].addEventListener('click', function(){
+    var id = this.getAttribute('data-yt');
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    frame.title = this.getAttribute('aria-label') || 'Film';
+    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    frame.allowFullscreen = true;
+    this.parentNode.replaceChild(frame, this);
+  });
+
+  var shots = [].slice.call(document.querySelectorAll('.hgal__f'));
+  if (!shots.length) return;
+  var dlg = document.createElement('dialog');
+  dlg.className = 'lb';
+  dlg.innerHTML = '<div class="lb__in"><img alt=""></div>' +
+    '<button class="lb__x" type="button" aria-label="Close">&times;</button>' +
+    (shots.length > 1
+      ? '<button class="lb__nav lb__nav--prev" type="button" aria-label="Previous picture">&#8592;</button>' +
+        '<button class="lb__nav lb__nav--next" type="button" aria-label="Next picture">&#8594;</button>'
+      : '');
+  document.body.appendChild(dlg);
+  var img = dlg.querySelector('img'), at = 0;
+  function show(n){
+    at = (n + shots.length) % shots.length;
+    img.src = shots[at].getAttribute('data-full');
+    img.alt = shots[at].querySelector('img').alt;
+  }
+  for (var j = 0; j < shots.length; j++) (function(n){
+    shots[n].addEventListener('click', function(){ show(n); dlg.showModal(); });
+  })(j);
+  dlg.querySelector('.lb__x').addEventListener('click', function(){ dlg.close(); });
+  var prev = dlg.querySelector('.lb__nav--prev'), next = dlg.querySelector('.lb__nav--next');
+  if (prev) prev.addEventListener('click', function(){ show(at - 1); });
+  if (next) next.addEventListener('click', function(){ show(at + 1); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg || e.target.className === 'lb__in') dlg.close(); });
+  dlg.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft' && prev) show(at - 1);
+    if (e.key === 'ArrowRight' && next) show(at + 1);
+  });
 })();
 </script>
 </body>

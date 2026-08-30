@@ -202,6 +202,28 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         hero and story blocks come from <code>lib/shell.mjs</code>, and the pedigree plate is the one
         component drawn new.</span></span><span class="state s-done">Done</span></li>
 
+      <li class="item" data-k="media1"><input type="checkbox"><span class="what"><b>Pictures and film on every horse and foal, taken from their own pages</b>
+        <span class="why">Their site carries thirty three films on twenty two horses, none of them on a
+        cross, and a hundred and forty three photographs where we were keeping a hundred and five. Both
+        are now harvested: <code>scripts/harvest-horses.mjs</code> reads the YouTube ids off the page,
+        <code>scripts/fetch-videos.py</code> fetches each film's title and poster frame, and up to eight
+        photographs a horse are downloaded instead of three. A horse page shows the spare pictures in a
+        gallery that opens full size, and the films as stills with a play button. Nothing of YouTube is
+        loaded until the visitor presses play. The film section is not drawn at all where there is no
+        film, and never on an embryo.</span></span><span class="state s-done">Done</span></li>
+
+      <li class="item" data-k="media2"><input type="checkbox"><span class="what"><b>Three films are of the sire or the dam, not of the horse on the page</b>
+        <span class="why">Same as the Horsetelex links: a foal has nothing filmed yet, so they posted the
+        parent. Bellavista Von Axe Z carries a film of Balou du Reventon, Purple Rain Von Axe Z one of
+        Pegase van 't Ruytershof, and Coolrock Von Axe Z one of Hypnotic JT Z. Each of the three now
+        carries a gold label saying THE SIRE or THE DAM, so nobody watches the wrong horse jump. For the
+        owners: is there film of these three foals themselves?</span></span><span class="state s-client">On the client</span></li>
+
+      <li class="item" data-k="media3"><input type="checkbox"><span class="what"><b>Two horses still have no photograph at all</b>
+        <span class="why">Hayley vd Berghoeve Z and Electra Von Axe Z. Everything on their pages is one of
+        their own card designs rather than a picture of the horse, so those pages open on the mark on navy
+        instead. A photograph each would fix it.</span></span><span class="state s-client">On the client</span></li>
+
       <li class="item" data-k="telex1"><input type="checkbox"><span class="what"><b>Eighteen Horsetelex links go to the horse's dam, not to the horse</b>
         <span class="why">On their own site every horse carries a Horsetelex link, but a young horse has
         no entry of its own yet, so the link goes to the dam: CABRI VD BERGHOEVE Z opens HIAMANT VAN'T
