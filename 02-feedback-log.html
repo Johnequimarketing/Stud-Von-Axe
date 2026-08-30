@@ -565,6 +565,40 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">A film belongs on the dark plate, in the place the lines take on a cross</p>
+    <p class="said">30 Aug: <q>De video's mogen in hetzelfde design met zo een blauwe achtergrond als bij
+    embryo's. en dan mag het een slider zijn, als het meerdere video's zijn. zelfde plek als bij de
+    embryo's.</q></p>
+    <p class="check">Same navy plate as the sire and dam lines, same position, straight after the
+    pedigree. A film is a dark thing to look at, so it sits on the dark ground and the photographs keep
+    the ivory one. The controls disappear when everything is already in view: two films side by side on
+    a wide plate leave one dot that cannot move and two arrows with nowhere to go.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The status label wears the accent colour, with a line running off it</p>
+    <p class="said">30 Aug, on the foal cards: <q>ik wil de available tag, net zoals bij de embryo's
+    hebben, maar dan mag hij bij broodmares / horses / foals wel bovenin blijven staan, maar wel met de
+    accent kleur label kleur erachter. en dan een lijntje naar rechts toe.</q> Trialled on the foals
+    first, at his request.</p>
+    <p class="check">Available takes the gold, because it is the one that is an invitation; sold keeps
+    the darker glass and a quieter line. Their dot is gold with a gold halo, so on a gold ground it
+    needs to turn navy or it vanishes.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A row that would end in one floating frame falls back to halves</p>
+    <p class="said">A gallery of one sat centred in the middle of the grid with white on both sides, and
+    twelve of these pages have exactly one spare picture. A run of four ended three across and one
+    stranded underneath.</p>
+    <p class="check">Six columns underneath: thirds by default, halves whenever the last row would be
+    left with a single frame. The last row is always full.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Three across, not four</p>
     <p class="said">30 Aug, on the archives: <q>mag ook in een rij van drie, niet 4, dat wordt anders te
     krap en te klein</q>. At four a card was 278px, at three it is 380px.</p>
@@ -877,6 +911,29 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">Three behaviours in one closure: the slider's at() and the lightbox's at counter</p>
+    <p class="said">The arrows did nothing at all. The console said "at is not a function": the film
+    slider declared <code>var at = function()</code> and the picture viewer, further down the same
+    IIFE, declared <code>var at = 0</code>. Hoisting turned the function into a number before either
+    ran.</p>
+    <p class="check">One closure per behaviour, so nothing in one can see anything in the other. And a
+    build whose output is thrown away with <code>&gt;/dev/null</code> hides the very failure you are
+    about to render: watch the build, then render.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">scrollTo({behavior:'smooth'}) is silently ignored by some engines</p>
+    <p class="said">With the naming fixed the arrows still did nothing, in silence: no error, no
+    movement. Setting scrollLeft directly worked; the same call with smooth behaviour did not.</p>
+    <p class="check">Set the value in the script and let <code>scroll-behavior</code> in the stylesheet
+    decide whether that is a glide or a jump. It is honoured or harmlessly skipped, and the
+    reduced-motion rule already turns it off. The dots and arrows are painted from the index being
+    moved to rather than from a scroll event, which does not fire everywhere either.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
   <p class="sub">Every one of these cost time in this build. They are listed so the check is obvious
   rather than the lesson being memorable.</p>
 

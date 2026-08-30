@@ -96,6 +96,34 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
+  /* ── the status seam, on the foal cards ────────────────────────────────
+     The label keeps its place at the top left; what is new is the ground
+     behind it and the line that carries the eye across the frame. Available
+     takes the gold, because it is the one that is an invitation. Sold keeps
+     the darker glass it already had, and a quieter line: it is a fact about
+     the horse, not an offer, and it should not shout louder than the ones
+     that can still be bought. */
+  .hz__seam{
+    position:absolute; z-index:2; top:12px; left:12px; right:12px;
+    display:flex; align-items:center; gap:.7rem; pointer-events:none;
+  }
+  .hz__seam::after{
+    content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent);
+  }
+  .hz__seam--sold::after{ background:rgba(255,255,255,.28); }
+  /* The tag inside a seam is placed by the seam, not by itself. */
+  .hz__seam .hz__tag{ position:static; flex:none; }
+  .hz__seam .hz__tag:not(.hz__tag--sold){
+    background:var(--color-gold); color:var(--color-navy);
+    -webkit-backdrop-filter:none; backdrop-filter:none;
+    box-shadow:none;
+  }
+  /* Their dot is gold with a gold halo; on a gold ground both disappear. */
+  .hz__seam .hz__tag:not(.hz__tag--sold)::before{
+    background:var(--color-navy); box-shadow:none;
+  }
+
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
      .hz__chip, so an archive filters the way the homepage section already
@@ -487,7 +515,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     .hgal__grid{ grid-template-columns:repeat(6, 1fr); }
     .hgal__f{ grid-column:span 2; }
     .hgal__f--half{ grid-column:span 3; }
-    .hgal__f--alone{ grid-column:3 / span 2; }
   }
   .hgal__f{
     position:relative; border-radius:var(--plate-radius); overflow:hidden;
@@ -499,35 +526,64 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .hgal__f:hover img{ transform:scale(1.04); }
 
   /* ── the films ─────────────────────────────────────────────────────────
-     A still with a play button, and the player written in on the click. */
-  .hvid__grid{ display:grid; gap:clamp(1rem,2vw,1.6rem); grid-template-columns:1fr; }
-  @media (min-width:820px){
-    .hvid__grid{ grid-template-columns:repeat(2, 1fr); }
-    .hvid__grid.is-one{ grid-template-columns:minmax(0, 760px); }
+     30 Aug: the same navy plate the sire and dam lines stand on, in the same
+     place on the page, and a slider once there is more than one. A film is a
+     dark thing to look at, so it belongs on the dark plate rather than on the
+     ivory ground with the photographs. */
+  .hvid__plate{
+    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
+    background:var(--color-navy-deep);
   }
-  .hvid__f{ min-width:0; }
+  .hvid__head{ margin-bottom:clamp(1.1rem,2.2vw,1.6rem); }
+  .hvid__k{
+    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .hvid__h{
+    margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-white);
+  }
+  .hvid__h em{ font-style:italic; color:var(--color-gold); }
+
+  /* One rail, scrolled rather than transformed: the browser keeps track of
+     where it is, a touch can swipe it, and it still works with the script
+     switched off. */
+  .hvid__rail{
+    display:grid; grid-auto-flow:column; grid-auto-columns:100%;
+    gap:clamp(1rem,2vw,1.6rem);
+    overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hvid__rail::-webkit-scrollbar{ display:none; }
+  @media (min-width:900px){
+    /* Two at a time on a wide screen, one on a narrow one. A single film
+       fills the plate either way. */
+    .hvid__rail{ grid-auto-columns:calc(50% - (clamp(1rem,2vw,1.6rem) / 2)); }
+    .hvid__rail:has(.hvid__slide:only-child){ grid-auto-columns:100%; }
+  }
+  .hvid__slide{ scroll-snap-align:start; min-width:0; }
   .hvid__btn{
     position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer;
-    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep);
+    border-radius:var(--card-radius); overflow:hidden;
+    background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white));
     aspect-ratio:16/9;
-    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb),.55);
   }
   .hvid__btn img{ display:block; width:100%; height:100%; object-fit:cover;
     transition:transform .7s var(--ease); }
   .hvid__btn:hover img{ transform:scale(1.03); }
   .hvid__veil{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),.12) 0%, rgba(var(--veil-rgb),.42) 100%); }
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.06) 0%, rgba(var(--veil-rgb),.34) 100%); }
   .hvid__play{
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:64px; height:64px; border-radius:50%; display:grid; place-items:center;
+    width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
     background:var(--color-gold); color:var(--color-navy);
-    box-shadow:0 10px 30px -10px rgba(var(--veil-rgb),.7);
+    box-shadow:0 12px 34px -12px rgba(var(--veil-rgb),.85);
     transition:transform .35s var(--ease);
   }
   .hvid__btn:hover .hvid__play{ transform:translate(-50%,-50%) scale(1.08); }
-  .hvid__f iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
-    border-radius:var(--plate-radius); background:var(--color-navy-deep); }
-  .hvid__cap{ margin:.8rem 0 0; font-size:14px; line-height:1.5; color:var(--color-ink-soft); }
+  .hvid__slide iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
+    border-radius:var(--card-radius); background:var(--color-navy-deep); }
+  .hvid__cap{ margin:.75rem 0 0; font-size:14px; line-height:1.55; color:rgba(255,255,255,.76); }
   /* A film of the sire or the dam, on a page about the foal: said out loud
      rather than left for the visitor to work out from the name. */
   .hvid__whose{
@@ -536,7 +592,26 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.14em;
     text-transform:uppercase; vertical-align:.12em;
   }
-  .hvid__note{ margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft); }
+
+  .hvid__bar[hidden]{ display:none; }
+  .hvid__bar{ display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; margin-top:clamp(1.1rem,2.2vw,1.5rem); }
+  .hvid__dots{ display:flex; gap:.5rem; }
+  .hvid__dot{
+    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
+    background:var(--color-line-invert); transition:background .3s var(--ease), transform .3s var(--ease);
+  }
+  .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
+  .hvid__arrows{ display:flex; gap:.5rem; }
+  .hvid__arrow{
+    width:40px; height:40px; border-radius:50%; cursor:pointer;
+    border:1px solid var(--color-line-invert); background:transparent;
+    color:var(--color-white); font-size:16px; line-height:1; display:grid; place-items:center;
+    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .hvid__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
+  .hvid__arrow:disabled{ opacity:.32; cursor:default; }
+  .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
 
   /* ── the lightbox ──────────────────────────────────────────────────────
      One dialog for the whole page, opened with the picture that was clicked. */
@@ -563,8 +638,9 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .lb__nav--prev{ left:clamp(.6rem,2vw,1.6rem); }
   .lb__nav--next{ right:clamp(.6rem,2vw,1.6rem); }
   @media (prefers-reduced-motion: reduce){
-    .hgal__f img, .hvid__btn img, .hvid__play{ transition:none; }
+    .hgal__f img, .hvid__btn img, .hvid__play, .hvid__dot{ transition:none; }
     .hgal__f:hover img, .hvid__btn:hover img{ transform:none; }
+    .hvid__rail{ scroll-behavior:auto; }
   }
 
   /* More from the same group: the homepage card again, three of them. */
@@ -690,9 +766,17 @@ const meta = (horse) => [horse.year, SEX(horse), sireOf(horse)].filter(Boolean).
    for one, rather than a stand-in picture of a different horse. */
 const card = (horse, group, full) => {
   const href = `/${group.dir}/${horse.slug}`;
-  const tag = horse.sold
+  const label = horse.sold
     ? '<span class="hz__tag hz__tag--sold">Sold</span>'
     : '<span class="hz__tag">Available</span>';
+  /* The status label the way the embryo cards wear theirs: the accent colour
+     behind the word and a hairline running off it to the right. Kept at the
+     top of the frame here rather than on the seam under it, because these
+     cards have a photograph the whole way down. Trialled on the foals only,
+     asked for on 30 Aug. */
+  const tag = group.dir === 'foals'
+    ? `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${label}</span>`
+    : label;
   const win = horse.photos.length
     ? `<span class="hz__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">${tag}</span>`
     : `<span class="hz__win typo"><p>${esc(theirWords(horse.genetics || horse.tagline || ''))}</p>${tag}</span>`;
@@ -1262,28 +1346,41 @@ const videoSection = (horse) => {
   const films = (horse.videos || []).map((id) => filmOf(id, horse)).filter((f) => f.poster);
   if (!films.length) return '';
   const name = horseName(horse.name);
+  const many = films.length > 1;
   return `
   <section class="hvid">
     <div class="wrap">
-      <div class="hvid__head">
-        <p class="plaque">${films.length === 1 ? 'On film' : `${inWords(films.length)} films`}</p>
-        <h2 class="hvid__h">${esc(name)} <em>in motion</em></h2>
+      <div class="hvid__plate">
+        <div class="hvid__head">
+          <p class="hvid__k">${films.length === 1 ? 'On film' : `${inWords(films.length)} films`}</p>
+          <h2 class="hvid__h">${esc(name)} <em>in motion</em></h2>
+        </div>
+        <div class="hvid__rail"${many ? ' tabindex="0" aria-label="Films, scroll sideways"' : ''}>
+${films.map((f, i) => `          <div class="hvid__slide">
+            <button type="button" class="hvid__btn" data-yt="${esc(f.id)}"
+                    aria-label="Play film ${i + 1} of ${films.length}${f.title ? `: ${esc(f.title)}` : ''}">
+              <img src="/${f.poster}" alt="" loading="lazy">
+              <span class="hvid__veil" aria-hidden="true"></span>
+              <span class="hvid__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            ${f.whose || f.title ? `<p class="hvid__cap">${f.whose
+              ? `<span class="hvid__whose">${esc(f.whose)}</span> ` : ''}${esc(f.title)}</p>` : ''}
+          </div>`).join('\n')}
+        </div>
+        ${many ? `<div class="hvid__bar">
+          <div class="hvid__dots" role="tablist" aria-label="Films">
+${films.map((f, i) => `            <button type="button" class="hvid__dot" role="tab" data-to="${i}"
+                    aria-label="Film ${i + 1}"${i === 0 ? ' aria-selected="true"' : ' aria-selected="false"'}></button>`).join('\n')}
+          </div>
+          <div class="hvid__arrows">
+            <button type="button" class="hvid__arrow" data-step="-1" aria-label="Previous film">&#8592;</button>
+            <button type="button" class="hvid__arrow" data-step="1" aria-label="Next film">&#8594;</button>
+          </div>
+        </div>` : ''}
+        <p class="hvid__note">The player loads only when you press play.</p>
       </div>
-      <div class="hvid__grid${films.length === 1 ? ' is-one' : ''}">
-${films.map((f) => `        <div class="hvid__f">
-          <button type="button" class="hvid__btn" data-yt="${esc(f.id)}"
-                  aria-label="Play the film${f.title ? `: ${esc(f.title)}` : ''}">
-            <img src="/${f.poster}" alt="" loading="lazy">
-            <span class="hvid__veil" aria-hidden="true"></span>
-            <span class="hvid__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </span>
-          </button>
-          ${f.whose || f.title ? `<p class="hvid__cap">${f.whose
-            ? `<span class="hvid__whose">${esc(f.whose)}</span> ` : ''}${esc(f.title)}</p>` : ''}
-        </div>`).join('\n')}
-      </div>
-      <p class="hvid__note">The player loads only when you press play.</p>
     </div>
   </section>
 `;
@@ -1377,9 +1474,16 @@ const gallerySection = (horse) => {
       </div>
       <div class="hgal__grid">
 ${rest.map((src, i) => {
-  /* The last row: one leftover is centred, two share the row. */
-  const left = rest.length % 3, from = rest.length - left;
-  const fill = left && i >= from ? (left === 1 ? ' hgal__f--alone' : ' hgal__f--half') : '';
+  /* Thirds by default. A row that would end with a single frame floating in
+     the middle is wrong twice over: alone at the bottom of a run of four, and
+     alone as the whole gallery, which is twelve of these pages. Both cases
+     fall back to halves, so the last row is always full. */
+  const n = rest.length;
+  const half = n === 1 ? 0
+    : n % 3 === 1 ? n - 4
+    : n % 3 === 2 ? n - 2
+    : n;
+  const fill = n === 1 ? ' hgal__f--half' : i >= half ? ' hgal__f--half' : '';
   return `        <button type="button" class="hgal__f${fill}" data-full="/${src}"
                 aria-label="Open picture ${i + 1} of ${rest.length} at full size">
           <img src="/${src}" alt="${esc(name)}" loading="lazy">
@@ -1395,6 +1499,10 @@ ${rest.map((src, i) => {
    nothing of YouTube is fetched until play is pressed, and the viewer is one
    dialog reused for every picture on the page. */
 const mediaScript = `<script>
+/* Three behaviours, three closures. They shared one scope at first, where the
+   slider's at() and the lightbox's at counter were the same name: hoisting
+   turned the function into a number and the arrows did nothing. Nothing here
+   needs to see anything there. */
 (function(){
   var films = document.querySelectorAll('.hvid__btn');
   for (var i = 0; i < films.length; i++) films[i].addEventListener('click', function(){
@@ -1406,7 +1514,74 @@ const mediaScript = `<script>
     frame.allowFullscreen = true;
     this.parentNode.replaceChild(frame, this);
   });
+})();
 
+(function(){
+  /* The film slider. The rail is a scroll container, so this only nudges it
+     and reads back where it landed: no position is kept in a variable that
+     could disagree with what is on the screen after a swipe. */
+  var rail = document.querySelector('.hvid__rail');
+  var bar = document.querySelector('.hvid__bar');
+  if (rail && bar) {
+    var slides = [].slice.call(rail.children);
+    var dots = [].slice.call(bar.querySelectorAll('.hvid__dot'));
+    var arrows = [].slice.call(bar.querySelectorAll('.hvid__arrow'));
+    var at = function(){
+      var best = 0, near = Infinity, left = rail.scrollLeft;
+      for (var n = 0; n < slides.length; n++) {
+        var d = Math.abs(slides[n].offsetLeft - rail.offsetLeft - left);
+        if (d < near) { near = d; best = n; }
+      }
+      return best;
+    };
+    /* How far the rail can actually go. On a wide plate two films are side by
+       side, so with four films the last reachable position is the third, not
+       the fourth: an arrow that stays lit with nowhere to go, and a dot that
+       can never light up, are both lies about the same thing. */
+    var last = function(){
+      var max = rail.scrollWidth - rail.clientWidth, best = 0;
+      for (var n = 0; n < slides.length; n++)
+        if (slides[n].offsetLeft - rail.offsetLeft <= max + 1) best = n;
+      return best;
+    };
+    /* Painted from the index we are going to rather than from the scroll
+       position we are at: a smooth scroll has not arrived yet when the click
+       is handled, and the scroll event that would correct it does not fire
+       everywhere. The event below still refreshes this after a swipe. */
+    var paint = function(n){
+      var end = last();
+      /* Two films on a wide plate are both already in view: one dot that
+         cannot move and two arrows that cannot go anywhere. The whole bar
+         goes away until the rail is actually longer than the plate, which
+         on a phone it always is. */
+      bar.hidden = end === 0;
+      if (end === 0) return;
+      if (n == null) n = at();
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].hidden = i > end;
+        dots[i].setAttribute('aria-selected', i === n ? 'true' : 'false');
+      }
+      arrows[0].disabled = n <= 0;
+      arrows[1].disabled = n >= end;
+    };
+    var go = function(n){
+      n = Math.max(0, Math.min(last(), n));
+      rail.scrollLeft = slides[n].offsetLeft - rail.offsetLeft;
+      paint(n);
+    };
+    for (var a = 0; a < arrows.length; a++) (function(btn){
+      btn.addEventListener('click', function(){ go(at() + Number(btn.getAttribute('data-step'))); });
+    })(arrows[a]);
+    for (var b = 0; b < dots.length; b++) (function(btn){
+      btn.addEventListener('click', function(){ go(Number(btn.getAttribute('data-to'))); });
+    })(dots[b]);
+    rail.addEventListener('scroll', function(){ paint(); }, { passive: true });
+    addEventListener('resize', function(){ paint(); });
+    paint();
+  }
+})();
+
+(function(){
   var shots = [].slice.call(document.querySelectorAll('.hgal__f'));
   if (!shots.length) return;
   var dlg = document.createElement('dialog');
@@ -1586,8 +1761,10 @@ for (const key of Object.keys(GROUPS)) {
   for (const horse of list) {
     const body = key === 'embryo'
       ? embryoPage(horse, group, list)
+      /* The films sit straight after the pedigree, which is where a cross
+         carries its sire and dam lines: same plate, same place. */
       : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
-        gallerySection(horse) + videoSection(horse) +
+        videoSection(horse) + gallerySection(horse) +
         moreSection(horse, group, list) + horseCta(horse);
     writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
     written.horses++;
