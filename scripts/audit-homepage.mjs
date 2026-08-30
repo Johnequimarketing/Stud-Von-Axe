@@ -21,6 +21,12 @@ const files = process.argv.slice(2).length
   ? process.argv.slice(2)
   : ['homepage-v3.html', '00-design-system.html'];
 
+/* index.html is the source every generated page lifts its stylesheet from, so
+   the literal font sizes it uses are the scale the rest are held to. Read once
+   here rather than once per page. */
+const HOME_CSS = (readFileSync(join(root, 'index.html'), 'utf-8')
+  .match(/<style>([\s\S]*?)<\/style>/) || ['', ''])[1];
+
 let failures = 0, warnings = 0;
 const fail = (file, msg) => { failures++; console.log(`  ✗ FAIL  ${msg}`); };
 const warn = (file, msg) => { warnings++; console.log(`  ! note  ${msg}`); };
@@ -107,6 +113,70 @@ for (const rel of files) {
   deadHooks.length
     ? fail(rel, `${deadHooks.length} control(s) with no script behind them: ${deadHooks.map(([h, what]) => `${h} (${what})`).join(', ')}`)
     : pass('every control on the page has a script that reads it');
+
+
+  /* ── the type scale ────────────────────────────────────────────────────
+     30 Aug: check the sizes too, not only the faces. index.html is the source
+     every other page lifts its stylesheet from, so the set of literal sizes it
+     uses is the scale. A page introducing a size the homepage does not have is
+     a page drifting away from it, and that reads as sloppy long before anyone
+     can name why. */
+  if (!isInternal) {
+    const sizesOf = (css) => new Set([...css.matchAll(/font-size:\s*([0-9.]+)px/g)].map(m => m[1]));
+    /* Declared in index.html rather than inferred from it: a scale that is
+       whatever the homepage happens to use cannot be added to on purpose. */
+    const declared = (HOME_CSS.match(/--type-scale:([^*]+)\*\//) || [])[1];
+    const scale = declared
+      ? new Set(declared.trim().split(/\s+/))
+      : sizesOf(HOME_CSS);
+    const here = sizesOf(cssBlocks.replace(/\/\*[\s\S]*?\*\//g, ''));
+    const strays = [...here].filter((v) => !scale.has(v));
+    strays.length
+      ? fail(rel, `${strays.length} font size(s) not in the homepage scale: ${strays.map(v => v + 'px').join(', ')}`)
+      : pass(`${here.size} literal font size(s), all from the homepage scale`);
+  }
+
+  /* ── radius ────────────────────────────────────────────────────────────
+     A corner is a brand decision here: everything is a plate, a card or a
+     control, and those are three tokens. A hand written radius is a fourth
+     rounding nobody chose. Circles and pills are shapes, not roundings. */
+  if (!isInternal) {
+    const bareCss = cssBlocks.replace(/\/\*[\s\S]*?\*\//g, '');
+    /* A circle, a pill and a country flag are shapes rather than roundings:
+       an 18 by 12 pixel flag needs a two pixel corner to read as enamel, and
+       no plate token can give it one. Everything else is a plate, a card or a
+       control, and those are tokens. */
+    const flagRule = /\.hz__flag\{[^}]*\}/g;
+    const radii = [...bareCss.replace(flagRule, '').matchAll(/border-radius:\s*([^;]+);/g)]
+      .map((m) => m[1].trim())
+      .filter((v) => !/var\(|50%|999px|100px|9999px|inherit/.test(v) && v !== '0');
+    radii.length
+      ? fail(rel, `${radii.length} hand written border-radius: ${[...new Set(radii)].slice(0, 4).join(', ')}`)
+      : pass('every border-radius is a token, a circle or a pill');
+  }
+
+  /* ── the words this market uses ────────────────────────────────────────
+     30 Aug: "of alles wel equestrian minded is". These are the words that give
+     a writer away as being outside the sport, and the Italian that should have
+     been translated on the way in. Their own spelling of a horse's name is
+     theirs and is never touched: this is about our words. */
+  const HORSEY = [
+    [/\bhorse rac(e|es|ing)\b/i, 'this is show jumping, not racing'],
+    [/\bracehorse\b/i, 'this is show jumping, not racing'],
+    [/\bjockeys?\b/i, 'a jockey rides in racing; here it is a rider'],
+    [/\bbaby horses?\b/i, 'a young horse is a foal'],
+    [/\b(fe)?male horses?\b/i, 'mare, stallion, gelding, colt or filly'],
+    [/\bpregnant\b/i, 'a mare is in foal'],
+    [/\bfamily tree\b/i, 'pedigree'],
+    [/\bhorse riding\b/i, 'riding, or jumping'],
+    [/\b(femmina|stallone|castrone|puledro|fattrice|cavall[oi])\b/i, 'Italian left untranslated'],
+    [/\bbreeders? papers?\b/i, 'studbook, or passport'],
+  ];
+  const horsey = HORSEY.filter(([re]) => re.test(text));
+  if (isInternal) pass('equestrian wording not applied to an internal document');
+  else horsey.length
+    ? fail(rel, `${horsey.length} phrase(s) a horse person would not write: ${horsey.map(([re, why]) => `"${(text.match(re) || [''])[0].trim()}" (${why})`).join('; ')}`)
+    : pass('nothing in the copy reads as written from outside the sport');
 
   /* 1 ── token consistency */
   const afterRoot = cssBlocks.replace(/:root\s*\{[\s\S]*?\n\s*\}/, '');

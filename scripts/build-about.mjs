@@ -60,7 +60,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     display:flex; gap:.45rem;
   }
   .abfade__dot{
-    width:26px; height:2px; padding:0; border:none; border-radius:2px;
+    width:26px; height:2px; padding:0; border:none; border-radius:999px;
     background:rgba(255,255,255,.55); cursor:pointer;
     /* A hairline on a photograph is only as readable as what is behind it:
        this one sits on a pale sand floor in the first shot. */

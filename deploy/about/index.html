@@ -80,6 +80,12 @@
     --card-gap: 14px;
     /* The page's shape language. It was square at 2px; these three values
        turn every card, plate and photograph together. */
+    /* The type scale. Every literal pixel size on this site comes from this
+       list, and scripts/audit-homepage.mjs reads it from here and holds every
+       page to it. Adding a size is a decision made here, once, not a number
+       typed into a component. 17.5 is the reading size for running copy; 16
+       and below are labels, figures and captions.
+       --type-scale: 8 9 9.5 10 10.5 11 11.5 12.5 13 13.5 14 14.5 15 15.5 16 17.5 18 20 22 */
     --card-radius: 18px;
     --plate-radius: 26px;
     --img-radius: 14px;
@@ -923,10 +929,11 @@
   .hz__tag--sold .to{ color:var(--color-gold); }
   /* A hairline and a soft corner, so the flag reads as a little enamel
      badge rather than clip art stuck on the photograph. */
+  /* Size, rounding and shadow live in the later block with the rest of the
+     card's second pass; stating them here as well was two answers to one
+     question, and the browser only ever used the later one. */
   .hz__flag{
-    display:inline-block; width:18px; height:12px; flex:none;
-    border-radius:2.5px; overflow:hidden; line-height:0;
-    box-shadow:0 0 0 1px rgba(255,255,255,.34), 0 1px 3px rgba(0,0,0,.35);
+    display:inline-block; flex:none; overflow:hidden; line-height:0;
   }
   .hz__flag svg{ display:block; width:100%; height:100%; }
   /* A stand-in frame is labelled on the card itself. Nothing unlabelled
@@ -1874,7 +1881,7 @@
     display:flex; gap:.45rem;
   }
   .abfade__dot{
-    width:26px; height:2px; padding:0; border:none; border-radius:2px;
+    width:26px; height:2px; padding:0; border:none; border-radius:999px;
     background:rgba(255,255,255,.55); cursor:pointer;
     /* A hairline on a photograph is only as readable as what is behind it:
        this one sits on a pale sand floor in the first shot. */

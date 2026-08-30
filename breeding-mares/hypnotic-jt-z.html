@@ -80,6 +80,12 @@
     --card-gap: 14px;
     /* The page's shape language. It was square at 2px; these three values
        turn every card, plate and photograph together. */
+    /* The type scale. Every literal pixel size on this site comes from this
+       list, and scripts/audit-homepage.mjs reads it from here and holds every
+       page to it. Adding a size is a decision made here, once, not a number
+       typed into a component. 17.5 is the reading size for running copy; 16
+       and below are labels, figures and captions.
+       --type-scale: 8 9 9.5 10 10.5 11 11.5 12.5 13 13.5 14 14.5 15 15.5 16 17.5 18 20 22 */
     --card-radius: 18px;
     --plate-radius: 26px;
     --img-radius: 14px;
@@ -923,10 +929,11 @@
   .hz__tag--sold .to{ color:var(--color-gold); }
   /* A hairline and a soft corner, so the flag reads as a little enamel
      badge rather than clip art stuck on the photograph. */
+  /* Size, rounding and shadow live in the later block with the rest of the
+     card's second pass; stating them here as well was two answers to one
+     question, and the browser only ever used the later one. */
   .hz__flag{
-    display:inline-block; width:18px; height:12px; flex:none;
-    border-radius:2.5px; overflow:hidden; line-height:0;
-    box-shadow:0 0 0 1px rgba(255,255,255,.34), 0 1px 3px rgba(0,0,0,.35);
+    display:inline-block; flex:none; overflow:hidden; line-height:0;
   }
   .hz__flag svg{ display:block; width:100%; height:100%; }
   /* A stand-in frame is labelled on the card itself. Nothing unlabelled
@@ -2106,7 +2113,7 @@
   .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
-  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
     color:rgba(255,255,255,.62); }
   .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
     background:var(--color-gold); color:var(--color-navy);
@@ -2179,7 +2186,7 @@
     margin:0 0 1.2rem; font-family:var(--font-display); font-style:italic;
     font-size:1.05rem; color:var(--color-gold);
   }
-  .hp__lead{ margin:0 0 1.6rem; font-size:17px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
+  .hp__lead{ margin:0 0 1.6rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
 
   /* The figures. The two places on the about page, widened: a row of
      hairline columns, and a field their site left empty is left out rather
@@ -2252,7 +2259,7 @@
      came out grey against a warm page. */
   .ped__cell{
     display:flex; align-items:center; min-width:0;
-    padding:.7rem .9rem; border-radius:10px;
+    padding:.7rem .9rem; border-radius:var(--ctl-radius);
     background:color-mix(in srgb, var(--color-base-alt) 58%, var(--color-base));
     font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
     color:var(--color-ink);
@@ -2560,8 +2567,8 @@
   <section class="abst">
     <div class="wrap abst__grid">
       <div class="abst__col">
-        <p class="plaque">About this horse</p>
-        <h2 class="abst__h">Hypnotic JT Z</h2>
+        <p class="plaque">The damline</p>
+        <h2 class="abst__h">Carte Blanche Z</h2>
         <p class="abst__lead">That dream mare can boost everyone’s breeding. First of all she naturally excel in sport with an amazing style and carefullness but she is also sister of the Olympic horse HARDROCK Z. Carte Blanche Z is also the mother of Charlemagne JT Z (160j), Cocaine Z (owned by Zangersheide and also cloned by them) and many other mares produced horses jumping in big classes.</p>
       </div>
       <div class="hp__col abst__pic"><img src="/assets/img/horses/hypnotic-jt-z-3.jpg" alt="Hypnotic JT Z" loading="lazy"></div>

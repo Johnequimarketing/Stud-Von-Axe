@@ -348,7 +348,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
-  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
     color:rgba(255,255,255,.62); }
   .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
     background:var(--color-gold); color:var(--color-navy);
@@ -421,7 +421,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     margin:0 0 1.2rem; font-family:var(--font-display); font-style:italic;
     font-size:1.05rem; color:var(--color-gold);
   }
-  .hp__lead{ margin:0 0 1.6rem; font-size:17px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
+  .hp__lead{ margin:0 0 1.6rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
 
   /* The figures. The two places on the about page, widened: a row of
      hairline columns, and a field their site left empty is left out rather
@@ -494,7 +494,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      came out grey against a warm page. */
   .ped__cell{
     display:flex; align-items:center; min-width:0;
-    padding:.7rem .9rem; border-radius:10px;
+    padding:.7rem .9rem; border-radius:var(--ctl-radius);
     background:color-mix(in srgb, var(--color-base-alt) 58%, var(--color-base));
     font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
     color:var(--color-ink);
@@ -754,9 +754,34 @@ const COUNTRY = {
    carrying. That is the split the owners asked for, implanted against
    frozen, and it is in the data rather than in a label we invented. */
 const isFrozen = (horse) => /frozen/i.test(horse.year || '');
-const when = (horse) => {
+
+/* Sixteen of the twenty one foals carry a full date of birth in the year
+   field rather than a year, and in two shapes: 07/05/25 beside 28/03/2025.
+   Printed raw, one card reads "Born 2026" and the next "Born 07/05/25".
+   The order is day/month/year, which is not assumed but read off the data:
+   eight of the sixteen have a first number above twelve and none has a second
+   one above twelve, and every month falls between March and June, which is
+   the foaling season. So a card shows the year, where it sits beside other
+   cards, and the page shows the whole date written out. */
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+const bornOn = (raw) => {
+  const m = String(raw || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+  if (!m) return null;
+  const day = Number(m[1]), month = Number(m[2]);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+  const year = m[3].length === 2 ? `20${m[3]}` : m[3];
+  return { day, month, year, long: `${day} ${MONTHS[month - 1]} ${year}` };
+};
+const bornYear = (horse) => {
+  const d = bornOn(horse.year);
+  return d ? d.year : (horse.year || '');
+};
+const when = (horse, full) => {
   if (horse.category === 'embryo') return isFrozen(horse) ? 'Frozen embryo' : `Due ${horse.year}`;
-  return horse.year ? `Born ${horse.year}` : '';
+  if (!horse.year) return '';
+  const d = bornOn(horse.year);
+  return `Born ${full && d ? d.long : bornYear(horse)}`;
 };
 
 /* ── the fields, in this market's words ────────────────────────────────
@@ -1199,7 +1224,8 @@ ${col(damCol)}
 const factRow = (horse) => {
   const facts = [
     [horse.category === 'embryo' ? 'Stage' : 'Born',
-     horse.category === 'embryo' ? when(horse) : horse.year],
+     horse.category === 'embryo' ? when(horse)
+       : (bornOn(horse.year) || {}).long || horse.year],
     ['Sex', SEX(horse)],
     ['Studbook', horse.studbook],
     ['Height', horse.height],
@@ -1462,12 +1488,26 @@ const storySection = (horse) => {
   const pic = shot
     ? `<div class="hp__col abst__pic"><img src="/${shot}" alt="${esc(horseName(horse.name))}" loading="lazy"></div>`
     : '';
+  /* Six of the sixty carry a paragraph on their own site, and two of those six
+     are not about the horse whose page they sit on: Bellavista's is two
+     hundred and seventy three words about Balou du Reventon, his sire, down to
+     what his riders earned in a season. Read under a heading saying "About
+     this horse" that is simply wrong, the same fault as the Horsetelex links
+     and the films. So the heading names whatever the first paragraph opens on:
+     the horse, the sire, or the dam. Their words are never rewritten, only
+     labelled truthfully. */
+  const ped = horse.pedigree || {};
+  const opens = horse.body[0];
+  const subject = namesAgree(opens, horse.name) ? null
+    : ped.sire && namesAgree(opens, ped.sire) ? ['The sire', horseName(ped.sire)]
+    : ped.dam && namesAgree(opens, ped.dam) ? ['The damline', horseName(ped.dam)]
+    : null;
   return `
   <section class="abst">
     <div class="wrap abst__grid"${pic ? '' : ' style="grid-template-columns:1fr"'}>
       <div class="abst__col">
-        <p class="plaque">About this horse</p>
-        <h2 class="abst__h">${esc(horseName(horse.name))}</h2>
+        <p class="plaque">${subject ? esc(subject[0]) : 'About this horse'}</p>
+        <h2 class="abst__h">${esc(subject ? subject[1] : horseName(horse.name))}</h2>
         ${horse.body.map((t, i) =>
           `<p class="${i === 0 ? 'abst__lead' : 'abst__body'}">${esc(theirWords(t))}</p>`).join('\n        ')}
       </div>

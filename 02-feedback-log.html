@@ -457,6 +457,20 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Content and truth</h2>
   <div class="item">
+    <p class="rule">A heading may not say "about this horse" over a paragraph about another one</p>
+    <p class="said">30 Aug: <q>waarom staat er een foto onder de titel met algemene informatie met een
+    lap tekst? is dat normaal zo? stond er bij dit paard meer informatie?</q> Six of the sixty carry a
+    paragraph from their own site, and two of the six are not about the horse whose page they sit on:
+    Bellavista's is two hundred and seventy three words about Balou du Reventon, his sire, down to what
+    his riders earned in a season.</p>
+    <p class="check">The heading now names whatever the first paragraph opens on: the horse, the sire,
+    or the damline. Their words are never rewritten, only labelled truthfully. Third time this exact
+    fault has turned up, after the Horsetelex links and the films, and it is the same fix each
+    time.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A line that is true on the homepage can be false on a page about one horse</p>
     <p class="said">30 Aug: <q>Ask the people who bred her. Deze zin moet anders</q>. It was lifted from
     the homepage, where it is a fair claim about the stud as a whole. On a single page it is a claim
@@ -1036,6 +1050,45 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">The audit runs after every change, and it checks more than tokens</p>
+    <p class="said">30 Aug: <q>Na elke change, kun je dan ook een audit draaien? of alle layout klopt,
+    consistent is? alle informatie klopt, alle teksten kloppen, alle formuleringen kloppen, geen gekke
+    woorden, of alles wel equestrian minded is. alle lettertypes, lettergroottes, kleuren etc.</q></p>
+    <p class="check">One command, <code>bash scripts/audit.sh</code>, in two passes. Every page against
+    the rules, and then the pages against each other and against horses-data.js, which is the half that
+    could not be checked one page at a time. What it added that day: the type scale, written down in
+    index.html rather than inferred, so adding a size is a decision; every border-radius a token, a
+    circle or a pill; the words a horse person would not write; every figure on a page traceable to the
+    record and no figure on a page the record does not have; one spelling per horse across its page and
+    its card; one set of layout tokens across all of them.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Three reading sizes for one job, and a component defined twice</p>
+    <p class="said">The first run of the new checks found them straight away. Running copy was set at
+    16, 17 and 17.5 pixels in three different files; the pedigree cell had a hand written 10px corner
+    that is exactly <code>--ctl-radius</code>; and the country flag was defined twice, 18 by 12 in one
+    block and 16 by 11 in another, with the browser silently using the second and the first sitting
+    there as dead code that still read like a decision.</p>
+    <p class="check">One reading size, the token where a token exists, one definition per component.
+    None of this is visible in a render, which is why it needs a check rather than an eye.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A date field that is sometimes a date, in two shapes</p>
+    <p class="said">Sixteen of the twenty one foals carry a full date of birth where the others carry a
+    year, and in two formats: 07/05/25 beside 28/03/2025. Printed raw, one card read "Born 2026" and the
+    next "Born 07/05/25".</p>
+    <p class="check">The order is day/month/year, and that is read off the data rather than assumed:
+    eight of the sixteen have a first number above twelve, none has a second one above twelve, and every
+    month falls between March and June, which is the foaling season. A card shows the year, where it
+    stands beside other cards; the page writes the date out in full, "7 May 2025".</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">A control with nothing behind it: arrows, dots or a play button and no code that hears them</p>
     <p class="said">Twice in one hour. Once an edit next to the media script took the whole script out
