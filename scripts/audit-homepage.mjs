@@ -89,6 +89,25 @@ for (const rel of files) {
     ? fail(rel, `${broken.length} inline script(s) do not parse: ${broken[0]}`)
     : pass(`${scriptBlocks.length} inline script(s) all parse`);
 
+  /* A control that promises something and has nothing behind it. Twice now a
+     page has shipped with arrows, dots or a play button and no code to hear
+     them: once because the script was cut out of the build by an edit next to
+     it, once because the condition that attaches it matched class="hgal" and
+     the page said class="hgal is-stand". Neither is a parse error and neither
+     shows in a render, so nothing caught them. Every data hook a control
+     carries must be read by a script on the same page. */
+  const hooks = [
+    ['data-yt', 'the film player'],
+    ['data-full', 'the picture viewer'],
+    ['data-step', 'the slider arrows'],
+    ['data-to', 'the slider dots'],
+  ];
+  const deadHooks = hooks.filter(([hook]) =>
+    new RegExp(`<[^>]+\\s${hook}=`).test(exempted) && !scripts.includes(hook));
+  deadHooks.length
+    ? fail(rel, `${deadHooks.length} control(s) with no script behind them: ${deadHooks.map(([h, what]) => `${h} (${what})`).join(', ')}`)
+    : pass('every control on the page has a script that reads it');
+
   /* 1 ── token consistency */
   const afterRoot = cssBlocks.replace(/:root\s*\{[\s\S]*?\n\s*\}/, '');
   /* A mask stop and an eight digit hex are treatments, not colour choices:

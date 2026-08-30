@@ -627,6 +627,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">A run of anything is a rail, so the count is never the layout's business</p>
+    <p class="said">30 Aug: <q>De afbeelding carrousel / gallerij, mag een carrousel dus worden, dus met
+    pijltjes erbij dat je door kan klikken bij elk paard, zodat je meerdere afbeeldingen kan
+    toevoegen.</q> The grid before it needed a rule for one picture, another for two, another for a
+    count that did not divide by three.</p>
+    <p class="check">It runs on the film rail rather than a second slider of its own: one mechanism on
+    this site, twenty lines serving both, which is the older rule <q>one card, one button, one slider
+    mechanism</q> applied. Three at a time on a wide screen, two on a tablet, one on a phone, and the
+    controls appear only once the rail is longer than the frame. Ten pictures need no new code.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Every page that sells one thing carries the way to ask about that one thing</p>
     <p class="said">30 Aug: <q>overal bij de single pagina's (behalve news), we moeten daar nog een
     contact form maken met contactgegevens bij en vooraf bij paard of wat dan ook al de naam vooraf
@@ -1023,6 +1036,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">A control with nothing behind it: arrows, dots or a play button and no code that hears them</p>
+    <p class="said">Twice in one hour. Once an edit next to the media script took the whole script out
+    with it, and once the condition that attaches it tested for <code>class="hgal"</code> while the page
+    said <code>class="hgal is-stand"</code>. Neither is a parse error, neither changes what the page
+    looks like, and the audit passed both times: the buttons were simply dead.</p>
+    <p class="check">The audit now checks that every data hook a control carries is read by a script on
+    the same page: <code>data-yt</code>, <code>data-full</code>, <code>data-step</code>,
+    <code>data-to</code>. Proven on 30 Aug against both faults, one at a time. A rendered page and a
+    green parse are not proof that anything works.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">A comment is still text in the output, and the closing script tag ends a script from inside one</p>
     <p class="said">The contact form broke all sixty pages at once. The comment above it warned about the
