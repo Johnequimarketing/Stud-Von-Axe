@@ -167,6 +167,43 @@ const VARIANTS = [
         </a>
       </li>`,
   },
+  {
+    id: 'welded',
+    title: 'The weld',
+    note: 'Mark\'s: the photograph fades into navy at its foot and a navy box carries on out of it, so the two are one object and the seam is nowhere. The picture stays large and clean, nothing is printed over it, and every fact sits in the block below. The fade ends on exactly the colour the box is, which is the whole trick: one pixel off and you see the join.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v7">
+        <a class="v7__a" href="/embryos/${h.slug}">
+          <span class="v7__win">${pic(h, 'v7__img')}<span class="v7__fade" aria-hidden="true"></span></span>
+          <span class="v7__box">
+            <span class="v7__stage">${esc(stage(h))}</span>
+            <span class="v7__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
+            <span class="v7__line">${esc(lineOf(h))}</span>
+            <span class="v7__say">${esc(theirs(h.tagline))}</span>
+          </span>
+        </a>
+      </li>`,
+  },
+  {
+    id: 'welded-name',
+    title: 'The weld, name on the seam',
+    note: 'The same weld, with the pairing set across the join: half of it on the last of the photograph, half on the box. It uses the seam instead of hiding it, and it buys the box room for the damline and their sentence without the card growing. The photograph is a step larger here, four to three.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v8">
+        <a class="v8__a" href="/embryos/${h.slug}">
+          <span class="v8__win">${pic(h, 'v8__img')}<span class="v8__fade" aria-hidden="true"></span>
+            <span class="v8__stage">${esc(stage(h))}</span></span>
+          <span class="v8__box">
+            <span class="v8__name">${esc(sireOf(h))}<span class="v8__x">&times;</span>${esc(damOf(h))}</span>
+            <span class="v8__rule" aria-hidden="true"></span>
+            <span class="v8__line">${esc(lineOf(h))}</span>
+            <span class="v8__say">${esc(theirs(h.tagline))}</span>
+          </span>
+        </a>
+      </li>`,
+  },
 ];
 
 const CSS = `
@@ -288,6 +325,74 @@ const CSS = `
   .v5__go{ grid-column:1 / -1; margin-top:1rem; font-family:var(--font-body); font-weight:700;
     font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--color-navy); }
 
+
+
+  /* One height per row. The photograph stays the same size on every card and
+     the box takes the slack, so a long pair of names lengthens the block
+     rather than the picture. Mark's rule from the about cards. */
+  .v-grid{ align-items:stretch; }
+  .v-grid li{ display:flex; }
+  .v7__a, .v8__a{ display:flex; flex-direction:column; width:100%; }
+  .v7__box, .v8__box{ flex:1 1 auto; }
+  /* ── 7 the weld ──────────────────────────────────────────────────────
+     The photograph runs out into navy and the box continues in the same
+     navy, so the card is one object with no line across it. Two things make
+     or break it: the last stop of the gradient is the box's own colour, not
+     a colour near it, and the box sits on the frame with no gap, no border
+     and no shadow of its own. Anything else and the seam appears. */
+  .v7__a{ display:block; border-radius:var(--card-radius); overflow:hidden;
+    background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .v7__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .v7__win{ position:relative; display:block; aspect-ratio:1/1; overflow:hidden; }
+  .v7__img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .v7__a:hover .v7__img{ transform:scale(1.045); }
+  .v7__fade{ position:absolute; left:0; right:0; bottom:-1px; height:58%;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), 0) 0%, rgba(var(--veil-rgb), .55) 46%,
+      rgba(var(--veil-rgb), .92) 82%, var(--color-navy-deep) 100%); }
+  .v7__box{ display:block; padding:.2rem 1.15rem 1.25rem; }
+  .v7__stage{ display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem; }
+  .v7__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.22; color:var(--color-white); }
+  .v7__name em{ font-style:italic; color:var(--color-gold); }
+  .v7__line{ display:block; margin-top:.45rem; font-size:12px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .v7__say{ display:block; margin-top:.7rem; font-family:var(--font-display); font-style:italic;
+    font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
+
+  /* ── 8 the weld, name across the seam ───────────────────────────────── */
+  .v8__a{ display:block; border-radius:var(--card-radius); overflow:hidden;
+    background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease); }
+  .v8__a:hover{ transform:translateY(-5px); }
+  .v8__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .v8__img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .v8__a:hover .v8__img{ transform:scale(1.045); }
+  .v8__fade{ position:absolute; left:0; right:0; bottom:-1px; height:52%;
+    background:linear-gradient(180deg,
+      rgba(var(--veil-rgb), 0) 0%, rgba(var(--veil-rgb), .5) 44%,
+      rgba(var(--veil-rgb), .9) 80%, var(--color-navy-deep) 100%); }
+  .v8__stage{ position:absolute; left:1.05rem; top:1.05rem; padding:.3rem .6rem; border-radius:100px;
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.16em;
+    text-transform:uppercase; }
+  /* Pulled up over the last of the photograph: the name sits on the join. */
+  .v8__box{ display:block; margin-top:-2.6rem; position:relative; z-index:2;
+    padding:0 1.15rem 1.3rem; }
+  .v8__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.18rem;
+    line-height:1.2; color:var(--color-white); }
+  .v8__x{ display:inline-block; margin:0 .38rem; font-style:italic; color:var(--color-gold); }
+  .v8__rule{ display:block; width:32px; height:1px; margin:.85rem 0 .7rem;
+    background:color-mix(in srgb, var(--color-gold) 70%, transparent); }
+  .v8__line{ display:block; font-size:12px; line-height:1.45; color:rgba(255,255,255,.62); }
+  .v8__say{ display:block; margin-top:.55rem; font-family:var(--font-display); font-style:italic;
+    font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
@@ -338,7 +443,7 @@ const html = `<!DOCTYPE html>
 <main>
 ${VARIANTS.map((v, i) => `
 <section class="v-sec" id="${v.id}">
-  <p class="v-num">Variation ${['one','two','three','four','five','six'][i]}</p>
+  <p class="v-num">Variation ${['one','two','three','four','five','six','seven','eight'][i]}</p>
   <h2>${esc(v.title)}</h2>
   <p class="v-note">${esc(v.note)}</p>
   <ul class="v-grid ${v.grid}">
