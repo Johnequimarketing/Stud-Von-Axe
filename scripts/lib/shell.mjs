@@ -56,7 +56,7 @@ export const navScript = `<script>
 (function(){
   var hd = document.querySelector('.hd');
   var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero, .abhero');
+  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh');
   if(hd && row && hero){
     var onScroll = function(){
       hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);

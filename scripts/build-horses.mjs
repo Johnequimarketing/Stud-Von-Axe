@@ -128,60 +128,63 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   }
 
 
-  /* ── the embryo's own page ─────────────────────────────────────────────
-     A cross is not a horse and the page says so. It has no sex, no height,
-     no studbook of its own and no Horsetelex entry, because it has not been
-     born: what it has is a sire, a dam, a stage and a damline, and the dam
-     is the reason anyone is reading. So the page leads with the pairing,
-     puts the figures beside the photograph, and then hands over to the mare,
-     who has the record. */
+  /* ── the embryo head: the tray, nothing on the photograph ──────────────
+     Chosen on 30 Aug. The photograph carries only the back link, so it stays
+     a photograph, and a plate hangs into it from below with the name, their
+     sentence, the figures and the two actions on it. It solves the crowded
+     title by removing the cause, and it is the version that still works on
+     the seven crosses with no picture of their own.
+     The veil is navy across the whole frame rather than a light wash: that
+     is how this site tints a photograph, and the header is transparent over
+     it, so the top has to hold white 15px links. */
   .eh{ position:relative; }
-  .ep{ padding-block:clamp(2.4rem,5vw,3.6rem); }
-  .ep__grid{ display:grid; gap:clamp(1.6rem,3.4vw,2.8rem); align-items:stretch; }
-  @media (min-width:900px){ .ep__grid{ grid-template-columns:1fr 1fr; } }
-  .ep__col{ min-width:0; display:flex; flex-direction:column; }
-  /* The picture matches the height of the column beside it, which is what
-     Mark asked for: one block, two halves, no ragged foot. */
-  .ep__pic{ position:relative; flex:1 1 auto; min-height:300px;
-    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
-  .ep__pic img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .ep__mark{ position:absolute; inset:0; display:grid; place-items:center; }
-  .ep__mark img{ position:static; width:auto; height:34%; max-height:120px; opacity:.16; }
-  .ep__cap{ position:absolute; left:0; right:0; bottom:0; padding:2.2rem 1rem .85rem;
-    font-family:var(--font-body); font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,.82);
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),0), rgba(var(--veil-rgb),.8)); }
-  .ep__stage{ display:inline-flex; align-items:center; align-self:flex-start;
-    padding:.36em .85em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.9rem; }
-  /* The hero above carries the pairing as the h1, so this repeats it a
-     step down and as a paragraph: two h1s on a page is an audit failure and
-     a second heading here would be a heading about nothing new. */
-  .ep__h{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.4rem,1.6vw + .7rem,1.8rem); line-height:1.12; letter-spacing:-.01em;
-    color:var(--color-ink); }
-  .ep__h em{ font-style:italic; color:var(--color-gold); }
-  .ep__say{ margin:0 0 1.3rem; font-family:var(--font-display); font-style:italic;
-    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:44ch; }
-  .ep__facts{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem 1.4rem;
-    margin:0 0 1.5rem; padding-top:1.3rem; border-top:1px solid var(--color-line); }
-  /* First thing in the column now, so it opens on a rule rather than under
-     one, and the figures get the room the repeated name was taking. */
-  .ep__facts--lead{ margin-top:.2rem; gap:1.2rem 1.4rem; }
-  .ep__facts--lead .ep__v{ font-size:1.15rem; }
-  .ep__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem; }
-  .ep__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+  .eh__win{ position:relative; height:clamp(360px,48vh,520px); overflow:hidden;
+    background:var(--color-navy-deep); }
+  .eh__win img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center; }
+  .eh__mark img{ width:auto; height:26%; max-height:110px; opacity:.16; }
+  .eh__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.56) 0%, rgba(var(--veil-rgb),.4) 40%,
+      rgba(var(--veil-rgb),.5) 100%); }
+  .eh__back{ position:absolute; left:0; right:0;
+    top:calc(var(--hd-top) + var(--hd-plate) + 1.5rem); z-index:2;
+    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto;
+    display:flex; align-items:center; gap:.5rem;
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.8); transition:color .3s var(--ease); }
+  .eh__back:hover{ color:var(--color-white); }
+  .eh__cap{ position:absolute; right:var(--gutter); bottom:clamp(3.6rem,5vw,4.6rem); z-index:2;
+    margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.05em;
+    color:rgba(255,255,255,.72); }
+  .eh__tray{ position:relative; z-index:2; margin-top:clamp(-3rem,-3.4vw,-2rem);
+    background:var(--color-base); border-radius:var(--plate-radius);
+    padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
+  .eh__stage{ display:inline-flex; align-items:center; padding:.34em .85em;
+    border-radius:var(--ctl-radius); background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.16em;
+    text-transform:uppercase; }
+  .eh__h{ margin:.9rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.7rem,2.4vw + .8rem,2.5rem); line-height:1.06; letter-spacing:-.02em;
+    color:var(--color-ink); max-width:22ch; }
+  .eh__h em{ font-style:italic; color:var(--color-gold); }
+  .eh__say{ margin:.6rem 0 1.2rem; font-family:var(--font-display); font-style:italic;
+    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:52ch; }
+  .eh__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
+    padding-top:1.1rem; border-top:1px solid var(--color-line); }
+  @media (min-width:760px){ .eh__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .eh__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.28rem; }
+  .eh__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
     line-height:1.25; color:var(--color-ink); }
-  .ep__telex{ display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin:0 0 1.3rem; }
-  .ep__telex a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--color-navy); border-bottom:1px solid var(--color-line);
-    padding-bottom:2px; transition:border-color .3s var(--ease); }
-  .ep__telex a:hover{ border-color:var(--color-gold); }
-  .ep__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:auto; }
-  .ep__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .ep__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+  .eh__telex{ display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin:1.1rem 0; }
+  .eh__telex a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--color-navy);
+    border-bottom:1px solid var(--color-line); padding-bottom:2px;
+    transition:border-color .3s var(--ease); }
+  .eh__telex a:hover{ border-color:var(--color-gold); }
+  .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
+  .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
 
   /* ── the dam ───────────────────────────────────────────────────────────
      The one section a cross earns that a horse does not: whoever is buying
@@ -211,15 +214,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .dam__go .a{ color:var(--color-gold); }
 
 
-  /* The hero on a cross carries its own photograph, so it needs the two
-     states a stock image never has: a borrowed picture is captioned, and no
-     picture at all is the supplied mark rather than an empty navy field. */
-  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center;
-    background:var(--color-navy-deep); }
-  .eh__mark img{ width:auto; height:30%; max-height:120px; opacity:.16; }
-  .eh__cap{ position:absolute; right:var(--gutter); top:calc(var(--hd-top) + var(--hd-plate) + 1.4rem);
-    z-index:3; margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.06em;
-    color:rgba(255,255,255,.72); }
   /* ── the two lines ─────────────────────────────────────────────────── */
   .ln{ padding-bottom:clamp(2.6rem,5vw,4rem); }
   .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
@@ -400,6 +394,21 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .ped__cell--self{ background:var(--color-gold); color:var(--color-navy); font-size:1.05rem; }
   .ped__cell--sire{ background:rgba(255,255,255,.10); }
   .ped__cell--third{ font-size:.82rem; color:rgba(255,255,255,.72); }
+
+  /* The first cell of a cross's pedigree is not a horse, it is the space
+     where one will be, so it is not filled in like the others: no ground of
+     its own, the supplied mark behind the words, and the gold kept for the
+     type. */
+  .ped__cell--next{
+    position:relative; background:none; overflow:hidden;
+    justify-content:flex-start;
+    font-family:var(--font-display); font-size:1.05rem; color:var(--color-gold);
+  }
+  .ped__cell--next img{
+    position:absolute; right:-8%; top:50%; transform:translateY(-50%);
+    width:auto; height:58%; max-height:150px; opacity:.14; pointer-events:none;
+  }
+  .ped__cell--next span{ position:relative; z-index:1; }
   .ped__note{
     margin:1.2rem 0 0; font-size:13px; color:rgba(255,255,255,.6);
   }
@@ -771,9 +780,6 @@ const damLink  = (h) => { const d = damOfCross(h); return (d && d.horsetelex) ||
 const embryoPage = (horse, group, list) => {
   const dam = damOfCross(horse);
   const sire = crossSire(horse), damName = crossDam(horse);
-  const shot = horse.photos[1] || horse.photos[0] || (dam && dam.photos[1]) || (dam && dam.photos[0]) || '';
-  const borrowed = !horse.photos.length && dam && dam.photos.length;
-
   const facts = [
     ['Stage', isFrozen(horse) ? 'Frozen embryo' : 'Carrying'],
     [isFrozen(horse) ? 'Foal expected' : 'Due', isFrozen(horse) ? 'On implantation' : horse.year],
@@ -781,11 +787,6 @@ const embryoPage = (horse, group, list) => {
     ['Dam', damName],
     horse.studbook ? ['Studbook', horse.studbook] : null,
   ].filter(Boolean);
-
-  const pic = shot
-    ? `<img src="/${shot}" alt="${esc(borrowed ? `${damName}, the dam of this cross` : horseName(horse.name))}">` +
-      (borrowed ? `<span class="ep__cap">Photograph: ${esc(damName)}, the dam of this cross</span>` : '')
-    : `<span class="ep__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`;
 
   /* The hero photograph is this cross's own, never a stock shot of another
      horse. Where the cross has none, which is seven of the fifteen, it
@@ -796,46 +797,30 @@ const embryoPage = (horse, group, list) => {
   const heroBorrowed = !horse.photos.length && dam && dam.photos.length;
 
   return `
-  <section class="nhero eh">
-    <div class="nhero__bg" aria-hidden="true">
+  <section class="eh">
+    <div class="eh__win">
       ${heroShot
-        ? `<img src="/${heroShot}" alt="" fetchpriority="high">`
+        ? `<img src="/${heroShot}" alt="${esc(heroBorrowed ? `${damName}, the dam of this cross` : horseName(horse.name))}" fetchpriority="high">`
         : `<span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`}
+      <span class="eh__veil" aria-hidden="true"></span>
+      <a class="eh__back" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
+      ${heroBorrowed ? `<p class="eh__cap">Photograph: ${esc(damName)}, the dam of this cross</p>` : ''}
     </div>
-    <div class="nhero__veil" aria-hidden="true"></div>
-    ${heroBorrowed ? `<p class="eh__cap">Photograph: ${esc(damName)}, the dam of this cross</p>` : ''}
     <div class="wrap">
-      <div class="nhero__grid">
-        <div>
-          <a class="hp__back hp__back--dark" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
-          <h1 class="arch__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</h1>
-        </div>
-        <p class="arch__intro">${esc(theirWords(horse.tagline) || damlineOf(horse))}</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="ep">
-    <div class="wrap ep__grid">
-      <div class="ep__col">
-        <div class="ep__pic">${pic}</div>
-      </div>
-      <div class="ep__col">
-        <!-- No name and no tagline here: the hero above carries both, and
-             printing them again a hundred pixels lower is the page saying
-             the same thing twice. This column is the figures and the two
-             ways to act on them. -->
-        <span class="ep__stage">${esc(stageOf(horse))}</span>
-        <div class="ep__facts ep__facts--lead">
-${facts.map(([k, v]) => `          <div><span class="ep__k">${esc(k)}</span><span class="ep__v">${esc(v)}</span></div>`).join('\n')}
+      <div class="eh__tray">
+        <span class="eh__stage">${esc(stageOf(horse))}</span>
+        <h1 class="eh__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</h1>
+        ${horse.tagline ? `<p class="eh__say">${esc(theirWords(horse.tagline))}</p>` : ''}
+        <div class="eh__facts">
+${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
         </div>
         ${(() => {
           const links = [[sire, sireLink(horse)], [damName, damLink(horse)]].filter(([, u]) => u);
-          return links.length ? `<p class="ep__telex">${links.map(([n, u]) =>
+          return links.length ? `<p class="eh__telex">${links.map(([n, u]) =>
             `<a href="${esc(u)}" target="_blank" rel="noopener">View ${esc(n)} on Horsetelex <span aria-hidden="true">&#8599;</span></a>`
           ).join('')}</p>` : '';
         })()}
-        <div class="ep__acts">
+        <div class="eh__acts">
           <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
@@ -843,6 +828,7 @@ ${facts.map(([k, v]) => `          <div><span class="ep__k">${esc(k)}</span><spa
       </div>
     </div>
   </section>
+
 ${pedigreeSection(horse)}
 ${linesSection(horse, dam, sire, damName)}
 ${moreSection(horse, group, list)}
@@ -1009,7 +995,12 @@ const pedigreeSection = (horse) => {
       <div class="ped__plate">
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
-          ${cell(horse.category === 'embryo' ? 'Your next embryo' : horseName(horse.name), 'ped__cell--self', 8)}
+          ${horse.category === 'embryo'
+            ? `<div class="ped__cell ped__cell--next" style="grid-row: span 8">
+                 <img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">
+                 <span>Your next embryo</span>
+               </div>`
+            : cell(horseName(horse.name), 'ped__cell--self', 8)}
           ${branch(p.sire, p.sireSire, p.sireDam, 0)}
           ${branch(p.dam, p.damSire, p.damDam, 4)}
         </div>
@@ -1150,7 +1141,9 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${header.replace('class="hd"', 'class="hd is-pinned"')}
+${body.includes('class="eh"')
+  ? header                       /* a dark hero: transparent, and it pins on scroll */
+  : header.replace('class="hd"', 'class="hd is-pinned"')}
 
 <main id="main">
 ${body}
