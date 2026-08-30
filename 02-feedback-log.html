@@ -420,6 +420,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>Content and truth</h2>
+  <div class="item">
+    <p class="rule">A link that says one name and opens another is a lie, however good the reason</p>
+    <p class="said">Their site hangs a Horsetelex link on every horse. Eighteen of those links go to that
+    horse's own dam, because a young horse has no entry yet: CABRI VD BERGHOEVE Z opens HIAMANT VAN'T
+    ROOSAKKER. Not their mistake, but a visitor only finds out after clicking.</p>
+    <p class="check">Compare the slug in the URL with the horse's name before the label is written, on
+    letters only so an accent does not count as a different horse. Own entry: <q>Pedigree on
+    Horsetelex</q>. The dam's: <q>Damline on Horsetelex</q>, and the line under the pedigree names her.
+    Anywhere else: not shown, and asked about in the checklist. Twenty three link to themselves,
+    seventeen are labelled as the damline, five have nothing.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
   <p class="sub">He said: <q>ik wil geen informatie dat niet klopt</q>. Everything on the page has to
   trace back to the client's own site, the audited content files, or the meeting.</p>
 
@@ -551,6 +564,59 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>Design</h2>
+  <div class="item">
+    <p class="rule">A section stands on the page ground, not on a plate, unless the plate earns it</p>
+    <p class="said">30 Aug, on the pedigree: <q>Maak deze zonder blauwe achtergrond aub, zet daar wel het
+    logo icon van het paard achter</q>, and when only the gold cell was changed, <q>je hebt de blauwe
+    achtergrond er niet weggehaald, ik bedoelde het hele blauwe achtergrond vlak</q>. Two dark plates in a
+    row, the tray and the pedigree, made the page read as one long dark band.</p>
+    <p class="check">Read <em>achtergrond</em> as the whole plate before reading it as a cell. Where a
+    plate comes off, the type, the cells and the links under it all have to be recoloured for a light
+    ground in the same change, and measured again: this one went from white on navy to ink on warm sand
+    at 5.7:1 and better.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The mark behind a section is a texture, and only where there is quiet ground for it</p>
+    <p class="said">30 Aug: <q>logo mag groot achter de sectie aub</q>. Big was right on the desktop and
+    wrong on a phone, where the pedigree fills the section edge to edge and the mark showed through every
+    gap between the cells.</p>
+    <p class="check">Size it against the height of the section rather than the width of the page, fade it
+    out at the top and bottom instead of letting the section clip it into a rectangle, five percent, and
+    hide it under 900px. Navy file on light, from <code>assets/logo</code>, never drawn.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Mixing navy into ivory makes grey, not a warm neutral</p>
+    <p class="said">The pedigree cells were first mixed from navy into the base and came out cold grey
+    against a warm page, which is the same complaint as <q>we werken met donkerblauw niet met zwart</q>
+    wearing different clothes.</p>
+    <p class="check">The palette already has the warm step: <code>--color-base-alt</code>. Three
+    generations became three strengths of it, so the depth is in one hue instead of in a second one.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A link belongs on the thing it names, not in a row of its own</p>
+    <p class="said">30 Aug: <q>view on horsetelex, dat vind ik rommelig staan boven de andere 2
+    linkjes</q>. It was a third kind of link in a small space, between the facts and the buttons.</p>
+    <p class="check">It went onto the sire's and the dam's own names in the facts, with a small mark to
+    say it leaves the site. One less row, and the link is where the hand already is.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Space between sections is one rule, not one per section</p>
+    <p class="said">30 Aug: <q>de hero sectie en de pedigree staan nu tegen elkaar</q> and
+    <q>er mag iets meer ruimte / space tussen de secties komen</q>. Every section carried a bottom padding
+    and no top one, so the gap depended on which section happened to be above.</p>
+    <p class="check"><code>--sec-half</code>, carried on both sides of every section, so two neighbours
+    always add up to the same gap.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
   <p class="sub">He said: <q>Echt heel lelijk en inconsistent op alle vlakken</q>. Most of what follows is
   a version of one rule: the page owns one recipe per thing.</p>
 

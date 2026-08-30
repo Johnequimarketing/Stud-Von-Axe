@@ -77,8 +77,13 @@ const CSS = homeCss + pageHeroCss + storyCss + `
 
   /* The archive grid is the homepage's own .hz__grid, given the room a page
      has and the homepage section does not: four across instead of three. */
-  .arch{ padding-block:clamp(2.6rem,5vw,4rem); }
-  .abcta{ padding-bottom:clamp(3.2rem,6vw,5rem); }
+  /* The space between sections is one rule, not six: every section carries
+     half of it on each side, so two neighbours add up to the same gap
+     wherever they meet, and the first and last still clear the hero and the
+     footer. */
+  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
+  .ped, .ln, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
+  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
     text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
@@ -174,15 +179,18 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:760px){ .eh__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
   .eh__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.28rem; }
-  .eh__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+  .eh__v{ display:inline-block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
     line-height:1.25; color:var(--color-ink); }
-  .eh__telex{ display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin:1.1rem 0; }
-  .eh__telex a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--color-navy);
-    border-bottom:1px solid var(--color-line); padding-bottom:2px;
-    transition:border-color .3s var(--ease); }
-  .eh__telex a:hover{ border-color:var(--color-gold); }
-  .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
+  /* The Horsetelex link used to sit as a loose row of its own between the
+     facts and the buttons, a third kind of link in a small space. It belongs
+     to the sire and the dam, so it lives on their names instead: same size
+     as the other facts, a small mark to say it leaves the site. */
+  .eh__v--telex{ color:var(--color-navy); text-decoration:none;
+    border-bottom:1px solid var(--color-line); padding-bottom:1px;
+    transition:border-color .3s var(--ease), color .3s var(--ease); }
+  .eh__v--telex span[aria-hidden]{ font-size:.72em; color:var(--color-gold); }
+  .eh__v--telex:hover{ color:var(--color-gold); border-color:var(--color-gold); }
+  .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
   .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
 
@@ -215,7 +223,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
 
 
   /* ── the two lines ─────────────────────────────────────────────────── */
-  .ln{ padding-bottom:clamp(2.6rem,5vw,4rem); }
   .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
     padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
     background:var(--color-navy-deep); }
@@ -368,61 +375,80 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      markup to fight on a phone.
      Below 760px it scrolls sideways in its own box rather than folding,
      because a pedigree folded into one column is no longer a pedigree. */
-  .ped{ padding-bottom:clamp(2.6rem,5vw,4rem); }
-  .ped__plate{
-    border-radius:var(--plate-radius); background:var(--color-navy-deep);
-    padding:clamp(1.6rem,3.4vw,2.6rem);
-    overflow-x:auto;
+  /* No plate under the pedigree any more: it stands on the page ground with
+     the supplied mark large behind it, the way the about section carries the
+     head as a watermark. The cells keep their shape and take their tint from
+     navy instead of from white, so the three generations still read as three
+     weights. */
+  .ped{ position:relative; isolation:isolate; overflow:clip; }
+  .ped__plate{ position:relative; z-index:1; overflow-x:auto; }
+  /* The mark is measured against the height of the section rather than the
+     width of the page, so it stays the same size relative to the pedigree
+     whether that is four rows or eight, and the section clips whatever
+     hangs over the edge. */
+  .ped__mark{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:-11%; top:50%; transform:translateY(-50%);
+    height:126%; opacity:.05;
+    /* It stands taller than the section on purpose, so the section clips it.
+       Clipped alone that reads as a rectangle drawn on the page, so it fades
+       out at the top and the bottom instead of stopping. */
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
   }
+  .ped__mark img{ height:100%; width:auto; display:block; }
+  /* On a narrow screen the pedigree scrolls sideways and fills the section
+     edge to edge, so there is no quiet ground left for a watermark to sit in
+     and it reads as clutter behind the names. It is a desktop grace note. */
+  @media (max-width: 900px){ .ped__mark{ display:none; } }
   .ped__h{
     margin:0 0 1.4rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05;
-    color:var(--color-white);
+    color:var(--color-ink);
   }
   .ped__h em{ font-style:italic; color:var(--color-gold); }
   .ped__grid{
     display:grid; grid-template-columns:repeat(4, minmax(150px, 1fr));
     gap:.4rem; min-width:640px;
   }
+  /* Three generations, three weights of the same warm ground: the parents
+     carry the full base-alt, the grandparents a little over half of it, the
+     great grandparents a trace. Mixing navy into ivory was tried first and
+     came out grey against a warm page. */
   .ped__cell{
     display:flex; align-items:center; min-width:0;
     padding:.7rem .9rem; border-radius:10px;
-    background:rgba(255,255,255,.055);
+    background:color-mix(in srgb, var(--color-base-alt) 58%, var(--color-base));
     font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
-    color:var(--color-white);
+    color:var(--color-ink);
   }
-  .ped__cell--self{ background:var(--color-gold); color:var(--color-navy); font-size:1.05rem; }
-  .ped__cell--sire{ background:rgba(255,255,255,.10); }
-  .ped__cell--third{ font-size:.82rem; color:rgba(255,255,255,.72); }
+  /* The horse itself, and on a cross the space where one will be, keep the
+     gold: it is the accent of the section and the only cell that is not a
+     name already written down. */
+  .ped__cell--self, .ped__cell--next{
+    background:var(--color-gold); color:var(--color-navy); font-size:1.05rem;
+  }
+  .ped__cell--sire{ background:var(--color-base-alt); }
+  .ped__cell--third{ font-size:.82rem; color:var(--color-ink-soft);
+    background:color-mix(in srgb, var(--color-base-alt) 26%, var(--color-base)); }
 
   /* The first cell of a cross's pedigree is not a horse, it is the space
      where one will be, so it is not filled in like the others: no ground of
      its own, the supplied mark behind the words, and the gold kept for the
      type. */
-  .ped__cell--next{
-    position:relative; background:none; overflow:hidden;
-    justify-content:flex-start;
-    font-family:var(--font-display); font-size:1.05rem; color:var(--color-gold);
-  }
-  .ped__cell--next img{
-    position:absolute; right:-8%; top:50%; transform:translateY(-50%);
-    width:auto; height:58%; max-height:150px; opacity:.14; pointer-events:none;
-  }
-  .ped__cell--next span{ position:relative; z-index:1; }
+  .ped__cell--next{ justify-content:flex-start; font-family:var(--font-display); }
   .ped__note{
-    margin:1.2rem 0 0; font-size:13px; color:rgba(255,255,255,.6);
+    margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft);
   }
 
   /* The remaining photographs of this horse. Two or more, or the section is
      not drawn: a gallery of one is just a picture. */
-  .hgal{ padding-bottom:clamp(2.6rem,5vw,4rem); }
   .hgal__grid{ display:grid; gap:clamp(.8rem,1.4vw,1.1rem); grid-template-columns:repeat(2, 1fr); }
   @media (min-width:900px){ .hgal__grid.is-three{ grid-template-columns:repeat(3, 1fr); } }
   .hgal__f{ border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
   .hgal__f img{ display:block; width:100%; height:auto; }
 
   /* More from the same group: the homepage card again, three of them. */
-  .hmore{ padding-bottom:clamp(2.6rem,5vw,4rem); }
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -769,8 +795,33 @@ const damOfCross = (h) => {
    typed into horses-extra.js, because their site does not publish it and a
    search URL is not a record. Nothing is drawn for a link that is not
    there, and nothing at all for the cross itself: it is not born. */
+/* Their site hangs a Horsetelex link on every horse, but a young horse has no
+   entry of its own yet, and eighteen of those links quietly go to that horse's
+   own dam instead. The link is worth keeping, the damline is exactly what a
+   buyer opens Horsetelex for, but the label has to say where it lands: a link
+   reading CABRI VD BERGHOEVE Z that opens HIAMANT VAN'T ROOSAKKER is a lie the
+   visitor only finds out about after clicking. A link that goes somewhere we
+   cannot name is not shown at all and is asked about in the checklist. */
+const telexLetters = (t) => String(t || '').toLowerCase()
+  .normalize('NFD').replace(/[^a-z]/g, '');
+const telexSame = (slug, name) => {
+  const a = telexLetters(slug), b = telexLetters(name);
+  if (!a || !b) return false;
+  return a.includes(b.slice(0, Math.min(b.length, 10))) || b.includes(a.slice(0, Math.min(a.length, 10)));
+};
+const telexOf = (horse) => {
+  if (!horse.horsetelex) return null;
+  const slug = (horse.horsetelex.match(/pedigree\/\d+\/([^/?#]+)/) || [])[1] || '';
+  /* An embryo record is this horse before it was born, so it is still itself. */
+  if (telexSame(slug, horse.name) || /^embryo-/.test(slug)) return { url: horse.horsetelex, self: true };
+  const ped = horse.pedigree || {};
+  if (ped.dam && telexSame(slug, ped.dam)) return { url: horse.horsetelex, self: false, of: horseName(ped.dam) };
+  if (ped.sire && telexSame(slug, ped.sire)) return { url: horse.horsetelex, self: false, of: horseName(ped.sire) };
+  return null;
+};
+
 const sireLink = (h) => (EXTRA.sires[h.name.split(/\s+X\s+/i)[0].trim()] || {}).horsetelex || '';
-const damLink  = (h) => { const d = damOfCross(h); return (d && d.horsetelex) || ''; };
+const damLink  = (h) => { const d = damOfCross(h); const t = d && telexOf(d); return (t && t.self && t.url) || ''; };
 
 /* ── the embryo page ───────────────────────────────────────────────────
    Its own template, because a cross needs different things said about it.
@@ -783,8 +834,8 @@ const embryoPage = (horse, group, list) => {
   const facts = [
     ['Stage', isFrozen(horse) ? 'Frozen embryo' : 'Carrying'],
     [isFrozen(horse) ? 'Foal expected' : 'Due', isFrozen(horse) ? 'On implantation' : horse.year],
-    ['Sire', sire],
-    ['Dam', damName],
+    ['Sire', sire, sireLink(horse)],
+    ['Dam', damName, damLink(horse)],
     horse.studbook ? ['Studbook', horse.studbook] : null,
   ].filter(Boolean);
 
@@ -812,14 +863,11 @@ const embryoPage = (horse, group, list) => {
         <h1 class="eh__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</h1>
         ${horse.tagline ? `<p class="eh__say">${esc(theirWords(horse.tagline))}</p>` : ''}
         <div class="eh__facts">
-${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
+${facts.map(([k, v, url]) => `          <div><span class="eh__k">${esc(k)}</span>${url
+            ? `<a class="eh__v eh__v--telex" href="${esc(url)}" target="_blank" rel="noopener"
+                 title="${esc(v)} on Horsetelex">${esc(v)} <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> on Horsetelex</span></a>`
+            : `<span class="eh__v">${esc(v)}</span>`}</div>`).join('\n')}
         </div>
-        ${(() => {
-          const links = [[sire, sireLink(horse)], [damName, damLink(horse)]].filter(([, u]) => u);
-          return links.length ? `<p class="eh__telex">${links.map(([n, u]) =>
-            `<a href="${esc(u)}" target="_blank" rel="noopener">View ${esc(n)} on Horsetelex <span aria-hidden="true">&#8599;</span></a>`
-          ).join('')}</p>` : '';
-        })()}
         <div class="eh__acts">
           <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
@@ -866,7 +914,7 @@ const linesSection = (horse, dam, sireName, damName) => {
     ped: dam && dam.genetics ? horseName(theirWords(dam.genetics)) : '',
     img: dam && dam.photos[0] ? `/${dam.photos[0]}` : '',
     text: perCross.damLine || (dam && dam.body[1]) || (dam && dam.body[0]) || theirWords(horse.tagline) || '',
-    link: (dam && dam.horsetelex) || '',
+    link: (() => { const t = dam && telexOf(dam); return (t && t.self && t.url) || ''; })(),
     href: dam ? `/${dam.category === 'broodmare' ? 'breeding-mares' : 'sport-horses'}/${dam.slug}` : '',
   };
 
@@ -941,8 +989,8 @@ const introSection = (horse, group) => {
         </div>
         <div class="hp__acts">
           <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
-          ${horse.horsetelex ? `<a href="${esc(horse.horsetelex)}" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">Pedigree on Horsetelex</a>` : ''}
+          ${(() => { const t = telexOf(horse); return t ? `<a href="${esc(t.url)}" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">${t.self ? 'Pedigree on Horsetelex' : 'Damline on Horsetelex'}</a>` : ''; })()}
         </div>
       </div>
     </div>
@@ -991,21 +1039,28 @@ const pedigreeSection = (horse) => {
     cell(third[from + 3] || '', 'ped__cell--third', 1);
   return `
   <section class="ped">
+    <div class="ped__mark" aria-hidden="true">
+      <img src="/assets/logo/icon-onlight.png" data-ground="light" alt="">
+    </div>
     <div class="wrap">
       <div class="ped__plate">
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
           ${horse.category === 'embryo'
-            ? `<div class="ped__cell ped__cell--next" style="grid-row: span 8">
-                 <img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">
-                 <span>Your next embryo</span>
-               </div>`
+            ? `<div class="ped__cell ped__cell--next" style="grid-row: span 8">Your next embryo</div>`
             : cell(horseName(horse.name), 'ped__cell--self', 8)}
           ${branch(p.sire, p.sireSire, p.sireDam, 0)}
           ${branch(p.dam, p.damSire, p.damDam, 4)}
         </div>
-        ${horse.horsetelex && horse.category !== 'embryo' ? `<p class="ped__note">The full pedigree is on
-          <a href="${esc(horse.horsetelex)}" target="_blank" rel="noopener" style="color:var(--color-gold)">Horsetelex</a>.</p>` : ''}
+        ${(() => {
+          if (horse.category === 'embryo') return '';
+          const t = telexOf(horse);
+          if (!t) return '';
+          const link = (label) => `<a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:var(--color-navy)">${label}</a>`;
+          return `<p class="ped__note">${t.self
+            ? `The full pedigree is on ${link('Horsetelex')}.`
+            : `${esc(horseName(horse.name))} has no Horsetelex entry of its own yet. The dam, ${esc(t.of)}, is on ${link('Horsetelex')}.`}</p>`;
+        })()}
         ${horse.category === 'embryo' ? `<p class="ped__note">A cross has no Horsetelex entry of its own:
           it is not born yet. The dam's record is on her page.</p>` : ''}
       </div>
