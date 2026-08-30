@@ -205,6 +205,45 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
   .dam__go:hover{ gap:.85rem; }
   .dam__go .a{ color:var(--color-gold); }
+
+
+  /* The hero on a cross carries its own photograph, so it needs the two
+     states a stock image never has: a borrowed picture is captioned, and no
+     picture at all is the supplied mark rather than an empty navy field. */
+  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center;
+    background:var(--color-navy-deep); }
+  .eh__mark img{ width:auto; height:30%; max-height:120px; opacity:.16; }
+  .eh__cap{ position:absolute; right:var(--gutter); top:calc(var(--hd-top) + var(--hd-plate) + 1.4rem);
+    z-index:3; margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.06em;
+    color:rgba(255,255,255,.72); }
+  /* ── the two lines ─────────────────────────────────────────────────── */
+  .ln{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
+    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
+    background:var(--color-navy-deep); }
+  @media (min-width:820px){ .ln__plate{ grid-template-columns:1fr 1px 1fr; } }
+  .ln__rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
+  @media (min-width:820px){ .ln__rule{ display:block; } }
+  .ln__col{ min-width:0; }
+  .ln__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
+    margin-bottom:1.05rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .ln__win img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ln__win--none{ display:grid; place-items:center; background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white)); }
+  .ln__win--none img{ width:auto; height:34%; max-height:64px; opacity:.2; }
+  .ln__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
+  .ln__n{ margin:.35rem 0 .2rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem;
+    line-height:1.15; color:var(--color-white); }
+  .ln__p{ display:block; font-family:var(--font-display); font-style:italic; font-size:13px;
+    color:var(--color-gold); margin-bottom:.75rem; }
+  .ln__t{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.76); max-width:52ch; }
+  .ln__t--waiting{ font-style:italic; color:rgba(255,255,255,.5); }
+  .ln__go{ display:flex; flex-wrap:wrap; gap:.35rem 1.3rem; }
+  .ln__go a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--color-white);
+    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
+  .ln__go a:hover{ gap:.8rem; }
+  .ln__go .a{ color:var(--color-gold); }
   /* ── the embryo card ───────────────────────────────────────────────────
      Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
      its foot and the box carries on out of it in the same navy, so the card
@@ -728,7 +767,7 @@ const damLink  = (h) => { const d = damOfCross(h); return (d && d.horsetelex) ||
 const embryoPage = (horse, group, list) => {
   const dam = damOfCross(horse);
   const sire = crossSire(horse), damName = crossDam(horse);
-  const shot = horse.photos[0] || (dam && dam.photos[0]) || '';
+  const shot = horse.photos[1] || horse.photos[0] || (dam && dam.photos[1]) || (dam && dam.photos[0]) || '';
   const borrowed = !horse.photos.length && dam && dam.photos.length;
 
   const facts = [
@@ -744,13 +783,23 @@ const embryoPage = (horse, group, list) => {
       (borrowed ? `<span class="ep__cap">Photograph: ${esc(damName)}, the dam of this cross</span>` : '')
     : `<span class="ep__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`;
 
+  /* The hero photograph is this cross's own, never a stock shot of another
+     horse. Where the cross has none, which is seven of the fifteen, it
+     borrows the dam's and says so on the picture; where there is neither, it
+     is the supplied mark on navy. The block below takes the second
+     photograph when there is one, so nothing is shown twice unnecessarily. */
+  const heroShot = horse.photos[0] || (dam && dam.photos[0]) || '';
+  const heroBorrowed = !horse.photos.length && dam && dam.photos.length;
+
   return `
-  <section class="nhero">
+  <section class="nhero eh">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/${group.img}" alt="" fetchpriority="high"
-           width="${group.w}" height="${group.h}" style="object-position:${group.pos}">
+      ${heroShot
+        ? `<img src="/${heroShot}" alt="" fetchpriority="high">`
+        : `<span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`}
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
+    ${heroBorrowed ? `<p class="eh__cap">Photograph: ${esc(damName)}, the dam of this cross</p>` : ''}
     <div class="wrap">
       <div class="nhero__grid">
         <div>
@@ -788,34 +837,72 @@ ${facts.map(([k, v]) => `          <div><span class="ep__k">${esc(k)}</span><spa
       </div>
     </div>
   </section>
-${damSection(dam, damName)}
 ${pedigreeSection(horse)}
+${linesSection(horse, dam, sire, damName)}
 ${moreSection(horse, group, list)}
 ${horseCta(horse)}
 `;
 };
 
-/* Her section, only when she has a listing of her own to point at. */
-const damSection = (dam, damName) => {
-  if (!dam) return '';
-  const line = dam.genetics ? horseName(theirWords(dam.genetics)) : '';
-  const first = dam.body && dam.body[0] ? theirWords(dam.body[0]) : dam.tagline ? theirWords(dam.tagline) : '';
-  const dir = dam.category === 'broodmare' ? 'breeding-mares' : 'sport-horses';
+/* ── the two lines, under the pedigree ─────────────────────────────────
+   Sire on the left, dam on the right: the pairing is the product, so both
+   halves get a column. Variation three of the six, on one navy plate with a
+   gold rule between them, which is the cross drawn as a divider and sits
+   under the pedigree without a second edge in between.
+
+   The left column is honest about a real gap: their site carries no
+   photograph and no text for any of the thirteen stallions. It fills from
+   horses-extra.js, by hand or from Horsetelex once the link is in, and
+   until then it says so rather than pretending the space is not there. */
+const linesSection = (horse, dam, sireName, damName) => {
+  const key = horse.name.split(/\s+X\s+/i)[0].trim();
+  const extraSire = EXTRA.sires[key] || {};
+  const perCross = (EXTRA.crosses[horse.slug] || {});
+  const ped = horse.pedigree || {};
+
+  const sireCol = {
+    k: 'Sire line',
+    name: sireName,
+    ped: [ped.sireSire, ped.sireDam].filter(Boolean).map(horseName).join(' x '),
+    img: '',
+    text: perCross.sireLine || extraSire.line || '',
+    link: extraSire.horsetelex || '',
+  };
+  const damCol = {
+    k: 'Dam line',
+    name: damName,
+    ped: dam && dam.genetics ? horseName(theirWords(dam.genetics)) : '',
+    img: dam && dam.photos[0] ? `/${dam.photos[0]}` : '',
+    text: perCross.damLine || (dam && dam.body[1]) || (dam && dam.body[0]) || theirWords(horse.tagline) || '',
+    link: (dam && dam.horsetelex) || '',
+    href: dam ? `/${dam.category === 'broodmare' ? 'breeding-mares' : 'sport-horses'}/${dam.slug}` : '',
+  };
+
+  const col = (c) => `
+        <div class="ln__col">
+          ${c.img
+            ? `<span class="ln__win"><img src="${esc(c.img)}" alt="${esc(c.name)}" loading="lazy"></span>`
+            : `<span class="ln__win ln__win--none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`}
+          <span class="ln__k">${esc(c.k)}</span>
+          <h2 class="ln__n">${esc(c.name)}</h2>
+          ${c.ped ? `<span class="ln__p">${esc(c.ped)}</span>` : ''}
+          ${c.text
+            ? `<p class="ln__t">${esc(theirWords(c.text))}</p>`
+            : `<p class="ln__t ln__t--waiting">Nothing published on this line yet. It goes in with the
+               Horsetelex link.</p>`}
+          <span class="ln__go">
+            ${c.href ? `<a href="${esc(c.href)}">See ${esc(c.name)} <span class="a" aria-hidden="true">&rarr;</span></a>` : ''}
+            ${c.link ? `<a href="${esc(c.link)}" target="_blank" rel="noopener">On Horsetelex <span aria-hidden="true">&#8599;</span></a>` : ''}
+          </span>
+        </div>`;
+
   return `
-  <section class="dam">
+  <section class="ln">
     <div class="wrap">
-      <div class="dam__plate">
-        ${dam.photos.length
-          ? `<div class="dam__pic"><img src="/${dam.photos[0]}" alt="${esc(horseName(dam.name))}" loading="lazy"></div>`
-          : ''}
-        <div class="dam__body">
-          <span class="dam__k">The dam</span>
-          <h2 class="dam__h">${esc(horseName(dam.name))}</h2>
-          ${line ? `<span class="dam__ped">${esc(line)}</span>` : ''}
-          ${first ? `<p class="dam__p">${esc(first)}</p>` : ''}
-          <a class="dam__go" href="/${dir}/${dam.slug}">See ${esc(horseName(dam.name))}
-            <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
+      <div class="ln__plate">
+${col(sireCol)}
+        <span class="ln__rule" aria-hidden="true"></span>
+${col(damCol)}
       </div>
     </div>
   </section>
@@ -963,8 +1050,8 @@ const moreSection = (horse, group, list) => {
         <h2 class="hmore__h">More <em>${esc(group.many)}</em></h2>
         <a class="hmore__all" href="/${group.dir}">All ${esc(group.many)} <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid">
-${rest.map((h) => '        ' + card(h, group)).join('\n')}
+      <ul class="hz__grid${group.dir === 'embryos' ? ' ec__grid' : ''}">
+${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h) : card(h, group))).join('\n')}
       </ul>
     </div>
   </section>

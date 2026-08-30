@@ -1937,6 +1937,45 @@
     display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
   .dam__go:hover{ gap:.85rem; }
   .dam__go .a{ color:var(--color-gold); }
+
+
+  /* The hero on a cross carries its own photograph, so it needs the two
+     states a stock image never has: a borrowed picture is captioned, and no
+     picture at all is the supplied mark rather than an empty navy field. */
+  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center;
+    background:var(--color-navy-deep); }
+  .eh__mark img{ width:auto; height:30%; max-height:120px; opacity:.16; }
+  .eh__cap{ position:absolute; right:var(--gutter); top:calc(var(--hd-top) + var(--hd-plate) + 1.4rem);
+    z-index:3; margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.06em;
+    color:rgba(255,255,255,.72); }
+  /* ── the two lines ─────────────────────────────────────────────────── */
+  .ln{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
+    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
+    background:var(--color-navy-deep); }
+  @media (min-width:820px){ .ln__plate{ grid-template-columns:1fr 1px 1fr; } }
+  .ln__rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
+  @media (min-width:820px){ .ln__rule{ display:block; } }
+  .ln__col{ min-width:0; }
+  .ln__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
+    margin-bottom:1.05rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .ln__win img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ln__win--none{ display:grid; place-items:center; background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white)); }
+  .ln__win--none img{ width:auto; height:34%; max-height:64px; opacity:.2; }
+  .ln__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
+  .ln__n{ margin:.35rem 0 .2rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem;
+    line-height:1.15; color:var(--color-white); }
+  .ln__p{ display:block; font-family:var(--font-display); font-style:italic; font-size:13px;
+    color:var(--color-gold); margin-bottom:.75rem; }
+  .ln__t{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.76); max-width:52ch; }
+  .ln__t--waiting{ font-style:italic; color:rgba(255,255,255,.5); }
+  .ln__go{ display:flex; flex-wrap:wrap; gap:.35rem 1.3rem; }
+  .ln__go a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--color-white);
+    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
+  .ln__go a:hover{ gap:.8rem; }
+  .ln__go .a{ color:var(--color-gold); }
   /* ── the embryo card ───────────────────────────────────────────────────
      Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
      its foot and the box carries on out of it in the same navy, so the card
@@ -2181,12 +2220,12 @@
 
 <main id="main">
 
-  <section class="nhero">
+  <section class="nhero eh">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/arch-embryos.jpg" alt="" fetchpriority="high"
-           width="1920" height="853" style="object-position:50% 50%">
+      <img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="" fetchpriority="high">
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
+    <p class="eh__cap">Photograph: Cabri vd Berghoeve Z, the dam of this cross</p>
     <div class="wrap">
       <div class="nhero__grid">
         <div>
@@ -2223,23 +2262,6 @@
     </div>
   </section>
 
-  <section class="dam">
-    <div class="wrap">
-      <div class="dam__plate">
-        <div class="dam__pic"><img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="Cabri vd Berghoeve Z" loading="lazy"></div>
-        <div class="dam__body">
-          <span class="dam__k">The dam</span>
-          <h2 class="dam__h">Cabri vd Berghoeve Z</h2>
-          <span class="dam__ped">Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span>
-          <p class="dam__p">Direct daughter of Hiamant van't Roosakker!</p>
-          <a class="dam__go" href="/breeding-mares/cabri-vd-berghoeve-z">See Cabri vd Berghoeve Z
-            <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <section class="ped">
     <div class="wrap">
       <div class="ped__plate">
@@ -2257,16 +2279,50 @@
   </section>
 
 
+  <section class="ln">
+    <div class="wrap">
+      <div class="ln__plate">
+
+        <div class="ln__col">
+          <span class="ln__win ln__win--none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>
+          <span class="ln__k">Sire line</span>
+          <h2 class="ln__n">Chacco Blue</h2>
+          <span class="ln__p">Chambertin x Contara</span>
+          <p class="ln__t ln__t--waiting">Nothing published on this line yet. It goes in with the
+               Horsetelex link.</p>
+          <span class="ln__go">
+            
+            
+          </span>
+        </div>
+        <span class="ln__rule" aria-hidden="true"></span>
+
+        <div class="ln__col">
+          <span class="ln__win"><img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="Cabri vd Berghoeve Z" loading="lazy"></span>
+          <span class="ln__k">Dam line</span>
+          <h2 class="ln__n">Cabri vd Berghoeve Z</h2>
+          <span class="ln__p">Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span>
+          <p class="ln__t">Out of a direct daughter of Hiamant van't Roosakker!</p>
+          <span class="ln__go">
+            <a href="/breeding-mares/cabri-vd-berghoeve-z">See Cabri vd Berghoeve Z <span class="a" aria-hidden="true">&rarr;</span></a>
+            <a href="https://www.horsetelex.com/horses/pedigree/1550217/hiamant-van-t-roosakker" target="_blank" rel="noopener">On Horsetelex <span aria-hidden="true">&#8599;</span></a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="hmore">
     <div class="wrap">
       <div class="hmore__head">
         <h2 class="hmore__h">More <em>crosses</em></h2>
         <a class="hmore__all" href="/embryos">All crosses <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="hz__win typo"><p>COMME IL FAUT X KANNAN X DARCO X HEDJAZ</p><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Patchina Van’T Merelsnest</span><span class="hz__meta">Frozen · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Catoki x Cortina de Jolie Z</span><span class="hz__meta">2027 · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">For Pleasure x Hypnotic JT Z</span><span class="hz__meta">2027 · For Pleasure</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      <ul class="hz__grid ec__grid">
+        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><span class="ec__name">Comme il Faut <em>&times;</em> Patchina Van’T Merelsnest</span><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
+        <li class="ec" data-sold="carrying" data-find="catoki x cortina de jolie z catoki x cornet obolensky x calato x darco x chin chin fuga de muze, narcotique ii, qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><span class="ec__name">Catoki <em>&times;</em> Cortina de Jolie Z</span><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Fuga de muze, Narcotique II, Qerlychin!</span></span></a></li>
+        <li class="ec" data-sold="carrying" data-find="for pleasure x hypnotic jt z for pleasure x halifax van kluizebos x carthago out of the sister of the olympic hardrock z! 2027 due 2027"><a class="ec__a" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="ec__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><span class="ec__name">For Pleasure <em>&times;</em> Hypnotic JT Z</span><span class="ec__line">HALIFAX VAN KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
       </ul>
     </div>
   </section>
