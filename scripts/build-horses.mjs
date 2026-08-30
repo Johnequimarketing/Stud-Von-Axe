@@ -14,6 +14,8 @@ import { join } from 'node:path';
 import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc } from './lib/shell.mjs';
 
 const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
+/* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
+const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
 
 /* One entry per archive. A hero is a wide strip, so the photograph is
    chosen on shape as much as on subject: three of these are 2.25:1 crops
@@ -125,6 +127,84 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     .flt__count{ margin-left:0; }
   }
 
+
+  /* ── the embryo's own page ─────────────────────────────────────────────
+     A cross is not a horse and the page says so. It has no sex, no height,
+     no studbook of its own and no Horsetelex entry, because it has not been
+     born: what it has is a sire, a dam, a stage and a damline, and the dam
+     is the reason anyone is reading. So the page leads with the pairing,
+     puts the figures beside the photograph, and then hands over to the mare,
+     who has the record. */
+  .eh{ position:relative; }
+  .ep{ padding-block:clamp(2.4rem,5vw,3.6rem); }
+  .ep__grid{ display:grid; gap:clamp(1.6rem,3.4vw,2.8rem); align-items:stretch; }
+  @media (min-width:900px){ .ep__grid{ grid-template-columns:1fr 1fr; } }
+  .ep__col{ min-width:0; display:flex; flex-direction:column; }
+  /* The picture matches the height of the column beside it, which is what
+     Mark asked for: one block, two halves, no ragged foot. */
+  .ep__pic{ position:relative; flex:1 1 auto; min-height:300px;
+    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
+  .ep__pic img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ep__mark{ position:absolute; inset:0; display:grid; place-items:center; }
+  .ep__mark img{ position:static; width:auto; height:34%; max-height:120px; opacity:.16; }
+  .ep__cap{ position:absolute; left:0; right:0; bottom:0; padding:2.2rem 1rem .85rem;
+    font-family:var(--font-body); font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,.82);
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0), rgba(var(--veil-rgb),.8)); }
+  .ep__stage{ display:inline-flex; align-items:center; align-self:flex-start;
+    padding:.36em .85em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.9rem; }
+  /* The hero above carries the pairing as the h1, so this repeats it a
+     step down and as a paragraph: two h1s on a page is an audit failure and
+     a second heading here would be a heading about nothing new. */
+  .ep__h{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.4rem,1.6vw + .7rem,1.8rem); line-height:1.12; letter-spacing:-.01em;
+    color:var(--color-ink); }
+  .ep__h em{ font-style:italic; color:var(--color-gold); }
+  .ep__say{ margin:0 0 1.3rem; font-family:var(--font-display); font-style:italic;
+    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:44ch; }
+  .ep__facts{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem 1.4rem;
+    margin:0 0 1.5rem; padding-top:1.3rem; border-top:1px solid var(--color-line); }
+  .ep__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem; }
+  .ep__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+    line-height:1.25; color:var(--color-ink); }
+  .ep__telex{ display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin:0 0 1.3rem; }
+  .ep__telex a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--color-navy); border-bottom:1px solid var(--color-line);
+    padding-bottom:2px; transition:border-color .3s var(--ease); }
+  .ep__telex a:hover{ border-color:var(--color-gold); }
+  .ep__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:auto; }
+  .ep__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .ep__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+
+  /* ── the dam ───────────────────────────────────────────────────────────
+     The one section a cross earns that a horse does not: whoever is buying
+     an embryo is buying her family. Her own page carries the record, so
+     this is her photograph, her breeding, her first paragraph and a way
+     through to it. */
+  .dam{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .dam__plate{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); align-items:center;
+    padding:clamp(1.4rem,3vw,2.2rem); border-radius:var(--plate-radius);
+    background:var(--color-navy-deep); }
+  @media (min-width:820px){ .dam__plate{ grid-template-columns:.42fr 1fr; } }
+  .dam__pic{ border-radius:var(--card-radius); overflow:hidden; aspect-ratio:4/3;
+    background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .dam__pic img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .dam__body{ min-width:0; }
+  .dam__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem; }
+  .dam__h{ margin:0 0 .3rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.3rem,1.6vw + .7rem,1.75rem); line-height:1.12; color:var(--color-white); }
+  .dam__ped{ display:block; font-family:var(--font-display); font-style:italic; font-size:13.5px;
+    color:var(--color-gold); margin-bottom:.7rem; }
+  .dam__p{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.78); max-width:56ch; }
+  .dam__go{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--color-white);
+    display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
+  .dam__go:hover{ gap:.85rem; }
+  .dam__go .a{ color:var(--color-gold); }
   /* ── the embryo card ───────────────────────────────────────────────────
      Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
      its foot and the box carries on out of it in the same navy, so the card
@@ -209,6 +289,8 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     transition:color .35s var(--ease);
   }
   .hp__back:hover{ color:var(--color-navy); }
+  .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
+  .hp__back--dark:hover{ color:var(--color-white); }
   .hp__h{
     margin:.5rem 0 .4rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
@@ -618,6 +700,128 @@ const embryoCard = (horse) => {
    available anyway, so the chip would say nothing. */
 const stageOf = (h) => (isFrozen(h) ? 'Frozen' : `Due ${h.year}`);
 
+/* The dam of a cross, matched to her own listing. Their spelling wobbles
+   between the two places, Bergheove against Berghoeve, so the match is on
+   letters only. Fourteen of the fifteen crosses find her. */
+const flat = (t) => (t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const damOfCross = (h) => {
+  const dam = h.name.split(/\s+X\s+/i).slice(1).join(' x ').trim();
+  if (!dam) return null;
+  const mares = HORSES.filter((m) => m.category === 'broodmare' || m.category === 'sport');
+  return mares.find((m) => flat(m.name) === flat(dam))
+      || mares.find((m) => flat(m.name).startsWith(flat(dam).slice(0, 12))) || null;
+};
+
+/* Where a cross points at Horsetelex. The dam's link is read straight out
+   of her own listing, which every one of the fifteen has. The sire's is
+   typed into horses-extra.js, because their site does not publish it and a
+   search URL is not a record. Nothing is drawn for a link that is not
+   there, and nothing at all for the cross itself: it is not born. */
+const sireLink = (h) => (EXTRA.sires[h.name.split(/\s+X\s+/i)[0].trim()] || {}).horsetelex || '';
+const damLink  = (h) => { const d = damOfCross(h); return (d && d.horsetelex) || ''; };
+
+/* ── the embryo page ───────────────────────────────────────────────────
+   Its own template, because a cross needs different things said about it.
+   No Horsetelex: it is not born, so it has no entry, and eleven of them
+   carry a link on their site that belongs to a parent. No sex, no height,
+   no "ask about this horse". */
+const embryoPage = (horse, group, list) => {
+  const dam = damOfCross(horse);
+  const sire = crossSire(horse), damName = crossDam(horse);
+  const shot = horse.photos[0] || (dam && dam.photos[0]) || '';
+  const borrowed = !horse.photos.length && dam && dam.photos.length;
+
+  const facts = [
+    ['Stage', isFrozen(horse) ? 'Frozen embryo' : 'Carrying'],
+    [isFrozen(horse) ? 'Foal expected' : 'Due', isFrozen(horse) ? 'On implantation' : horse.year],
+    ['Sire', sire],
+    ['Dam', damName],
+    horse.studbook ? ['Studbook', horse.studbook] : null,
+  ].filter(Boolean);
+
+  const pic = shot
+    ? `<img src="/${shot}" alt="${esc(borrowed ? `${damName}, the dam of this cross` : horseName(horse.name))}">` +
+      (borrowed ? `<span class="ep__cap">Photograph: ${esc(damName)}, the dam of this cross</span>` : '')
+    : `<span class="ep__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`;
+
+  return `
+  <section class="nhero">
+    <div class="nhero__bg" aria-hidden="true">
+      <img src="/assets/img/${group.img}" alt="" fetchpriority="high"
+           width="${group.w}" height="${group.h}" style="object-position:${group.pos}">
+    </div>
+    <div class="nhero__veil" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="nhero__grid">
+        <div>
+          <a class="hp__back hp__back--dark" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
+          <h1 class="arch__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</h1>
+        </div>
+        <p class="arch__intro">${esc(theirWords(horse.tagline) || damlineOf(horse))}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ep">
+    <div class="wrap ep__grid">
+      <div class="ep__col">
+        <div class="ep__pic">${pic}</div>
+      </div>
+      <div class="ep__col">
+        <span class="ep__stage">${esc(stageOf(horse))}</span>
+        <p class="ep__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</p>
+        ${horse.tagline ? `<p class="ep__say">${esc(theirWords(horse.tagline))}</p>` : ''}
+        <div class="ep__facts">
+${facts.map(([k, v]) => `          <div><span class="ep__k">${esc(k)}</span><span class="ep__v">${esc(v)}</span></div>`).join('\n')}
+        </div>
+        ${(() => {
+          const links = [[sire, sireLink(horse)], [damName, damLink(horse)]].filter(([, u]) => u);
+          return links.length ? `<p class="ep__telex">${links.map(([n, u]) =>
+            `<a href="${esc(u)}" target="_blank" rel="noopener">View ${esc(n)} on Horsetelex <span aria-hidden="true">&#8599;</span></a>`
+          ).join('')}</p>` : '';
+        })()}
+        <div class="ep__acts">
+          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
+          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+${damSection(dam, damName)}
+${pedigreeSection(horse)}
+${moreSection(horse, group, list)}
+${horseCta(horse)}
+`;
+};
+
+/* Her section, only when she has a listing of her own to point at. */
+const damSection = (dam, damName) => {
+  if (!dam) return '';
+  const line = dam.genetics ? horseName(theirWords(dam.genetics)) : '';
+  const first = dam.body && dam.body[0] ? theirWords(dam.body[0]) : dam.tagline ? theirWords(dam.tagline) : '';
+  const dir = dam.category === 'broodmare' ? 'breeding-mares' : 'sport-horses';
+  return `
+  <section class="dam">
+    <div class="wrap">
+      <div class="dam__plate">
+        ${dam.photos.length
+          ? `<div class="dam__pic"><img src="/${dam.photos[0]}" alt="${esc(horseName(dam.name))}" loading="lazy"></div>`
+          : ''}
+        <div class="dam__body">
+          <span class="dam__k">The dam</span>
+          <h2 class="dam__h">${esc(horseName(dam.name))}</h2>
+          ${line ? `<span class="dam__ped">${esc(line)}</span>` : ''}
+          ${first ? `<p class="dam__p">${esc(first)}</p>` : ''}
+          <a class="dam__go" href="/${dir}/${dam.slug}">See ${esc(horseName(dam.name))}
+            <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+`;
+};
+
 /* ── the horse page, section one: picture, name, figures ───────────────── */
 const factRow = (horse) => {
   const facts = [
@@ -712,12 +916,14 @@ const pedigreeSection = (horse) => {
       <div class="ped__plate">
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
-          ${cell(horseName(horse.name), 'ped__cell--self', 8)}
+          ${cell(horse.category === 'embryo' ? 'Your next embryo' : horseName(horse.name), 'ped__cell--self', 8)}
           ${branch(p.sire, p.sireSire, p.sireDam, 0)}
           ${branch(p.dam, p.damSire, p.damDam, 4)}
         </div>
-        ${horse.horsetelex ? `<p class="ped__note">The full pedigree is on
+        ${horse.horsetelex && horse.category !== 'embryo' ? `<p class="ped__note">The full pedigree is on
           <a href="${esc(horse.horsetelex)}" target="_blank" rel="noopener" style="color:var(--color-gold)">Horsetelex</a>.</p>` : ''}
+        ${horse.category === 'embryo' ? `<p class="ped__note">A cross has no Horsetelex entry of its own:
+          it is not born yet. The dam's record is on her page.</p>` : ''}
       </div>
     </div>
   </section>
@@ -838,7 +1044,7 @@ const heroSection = (g) => `
 /* The horse page: every section above, in the order they are defined, with
    the ones that have nothing to show left out entirely rather than drawn
    empty. */
-const horsePage = (horse, group, groupList) => `<!DOCTYPE html>
+const horsePage = (horse, group, body) => `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${head({
@@ -854,12 +1060,7 @@ ${head({
 ${header.replace('class="hd"', 'class="hd is-pinned"')}
 
 <main id="main">
-${introSection(horse, group)}
-${storySection(horse)}
-${pedigreeSection(horse)}
-${gallerySection(horse)}
-${moreSection(horse, group, groupList)}
-${horseCta(horse)}
+${body}
 </main>
 ${footer}
 ${navScript}
@@ -889,7 +1090,11 @@ for (const key of Object.keys(GROUPS)) {
   written.archives++;
 
   for (const horse of list) {
-    writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, list));
+    const body = key === 'embryo'
+      ? embryoPage(horse, group, list)
+      : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
+        gallerySection(horse) + moreSection(horse, group, list) + horseCta(horse);
+    writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
     written.horses++;
   }
   console.log(`  ${group.dir}: archive + ${list.length} ${list.length === 1 ? group.one : group.many}`);

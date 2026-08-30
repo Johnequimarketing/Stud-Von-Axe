@@ -1859,6 +1859,84 @@
     .flt__count{ margin-left:0; }
   }
 
+
+  /* ── the embryo's own page ─────────────────────────────────────────────
+     A cross is not a horse and the page says so. It has no sex, no height,
+     no studbook of its own and no Horsetelex entry, because it has not been
+     born: what it has is a sire, a dam, a stage and a damline, and the dam
+     is the reason anyone is reading. So the page leads with the pairing,
+     puts the figures beside the photograph, and then hands over to the mare,
+     who has the record. */
+  .eh{ position:relative; }
+  .ep{ padding-block:clamp(2.4rem,5vw,3.6rem); }
+  .ep__grid{ display:grid; gap:clamp(1.6rem,3.4vw,2.8rem); align-items:stretch; }
+  @media (min-width:900px){ .ep__grid{ grid-template-columns:1fr 1fr; } }
+  .ep__col{ min-width:0; display:flex; flex-direction:column; }
+  /* The picture matches the height of the column beside it, which is what
+     Mark asked for: one block, two halves, no ragged foot. */
+  .ep__pic{ position:relative; flex:1 1 auto; min-height:300px;
+    border-radius:var(--plate-radius); overflow:hidden; background:var(--color-navy-deep); }
+  .ep__pic img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ep__mark{ position:absolute; inset:0; display:grid; place-items:center; }
+  .ep__mark img{ position:static; width:auto; height:34%; max-height:120px; opacity:.16; }
+  .ep__cap{ position:absolute; left:0; right:0; bottom:0; padding:2.2rem 1rem .85rem;
+    font-family:var(--font-body); font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,.82);
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0), rgba(var(--veil-rgb),.8)); }
+  .ep__stage{ display:inline-flex; align-items:center; align-self:flex-start;
+    padding:.36em .85em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.9rem; }
+  /* The hero above carries the pairing as the h1, so this repeats it a
+     step down and as a paragraph: two h1s on a page is an audit failure and
+     a second heading here would be a heading about nothing new. */
+  .ep__h{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.4rem,1.6vw + .7rem,1.8rem); line-height:1.12; letter-spacing:-.01em;
+    color:var(--color-ink); }
+  .ep__h em{ font-style:italic; color:var(--color-gold); }
+  .ep__say{ margin:0 0 1.3rem; font-family:var(--font-display); font-style:italic;
+    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:44ch; }
+  .ep__facts{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem 1.4rem;
+    margin:0 0 1.5rem; padding-top:1.3rem; border-top:1px solid var(--color-line); }
+  .ep__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem; }
+  .ep__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
+    line-height:1.25; color:var(--color-ink); }
+  .ep__telex{ display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin:0 0 1.3rem; }
+  .ep__telex a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--color-navy); border-bottom:1px solid var(--color-line);
+    padding-bottom:2px; transition:border-color .3s var(--ease); }
+  .ep__telex a:hover{ border-color:var(--color-gold); }
+  .ep__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:auto; }
+  .ep__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+  .ep__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+
+  /* ── the dam ───────────────────────────────────────────────────────────
+     The one section a cross earns that a horse does not: whoever is buying
+     an embryo is buying her family. Her own page carries the record, so
+     this is her photograph, her breeding, her first paragraph and a way
+     through to it. */
+  .dam{ padding-bottom:clamp(2.6rem,5vw,4rem); }
+  .dam__plate{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); align-items:center;
+    padding:clamp(1.4rem,3vw,2.2rem); border-radius:var(--plate-radius);
+    background:var(--color-navy-deep); }
+  @media (min-width:820px){ .dam__plate{ grid-template-columns:.42fr 1fr; } }
+  .dam__pic{ border-radius:var(--card-radius); overflow:hidden; aspect-ratio:4/3;
+    background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .dam__pic img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .dam__body{ min-width:0; }
+  .dam__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem; }
+  .dam__h{ margin:0 0 .3rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.3rem,1.6vw + .7rem,1.75rem); line-height:1.12; color:var(--color-white); }
+  .dam__ped{ display:block; font-family:var(--font-display); font-style:italic; font-size:13.5px;
+    color:var(--color-gold); margin-bottom:.7rem; }
+  .dam__p{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.78); max-width:56ch; }
+  .dam__go{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--color-white);
+    display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
+  .dam__go:hover{ gap:.85rem; }
+  .dam__go .a{ color:var(--color-gold); }
   /* ── the embryo card ───────────────────────────────────────────────────
      Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
      its foot and the box carries on out of it in the same navy, so the card
@@ -1943,6 +2021,8 @@
     transition:color .35s var(--ease);
   }
   .hp__back:hover{ color:var(--color-navy); }
+  .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
+  .hp__back--dark:hover{ color:var(--color-white); }
   .hp__h{
     margin:.5rem 0 .4rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
@@ -2101,29 +2181,63 @@
 
 <main id="main">
 
-  <section class="hp">
-    <div class="wrap hp__grid">
-      <div class="hp__col">
-        <div class="hz__win typo hp__pic"><p>CATOKI X KALIFAX VAN HET KLUIZEBOS X CARTHAGO</p><span class="hz__tag">Available</span></div>
-      </div>
-      <div class="hp__col">
-        <a class="hp__back" href="/embryos"><span aria-hidden="true">&larr;</span> Embryos</a>
-        <h1 class="hp__h">Catoki x Hypnotic JT Z</h1>
-        <p class="hp__cross">Catoki x Kalifax van het Kluizebos x Carthago</p>
-        <p class="hp__lead">Out of a sister of Hardrock Z!</p>
-        <div class="hp__facts">
-          <div><span class="hp__k">Stage</span><span class="hp__v">Frozen embryo</span></div>
-          <div><span class="hp__k">Status</span><span class="hp__v">Available</span></div>
+  <section class="nhero">
+    <div class="nhero__bg" aria-hidden="true">
+      <img src="/assets/img/arch-embryos.jpg" alt="" fetchpriority="high"
+           width="1920" height="853" style="object-position:50% 50%">
+    </div>
+    <div class="nhero__veil" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="nhero__grid">
+        <div>
+          <a class="hp__back hp__back--dark" href="/embryos"><span aria-hidden="true">&larr;</span> Embryos</a>
+          <h1 class="arch__h">Catoki <em>&times;</em> Hypnotic JT Z</h1>
         </div>
-        <div class="hp__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
-          <a href="https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">Pedigree on Horsetelex</a>
+        <p class="arch__intro">Out of a sister of Hardrock Z!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ep">
+    <div class="wrap ep__grid">
+      <div class="ep__col">
+        <div class="ep__pic"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z, the dam of this cross"><span class="ep__cap">Photograph: Hypnotic JT Z, the dam of this cross</span></div>
+      </div>
+      <div class="ep__col">
+        <span class="ep__stage">Frozen</span>
+        <p class="ep__h">Catoki <em>&times;</em> Hypnotic JT Z</p>
+        <p class="ep__say">Out of a sister of Hardrock Z!</p>
+        <div class="ep__facts">
+          <div><span class="ep__k">Stage</span><span class="ep__v">Frozen embryo</span></div>
+          <div><span class="ep__k">Foal expected</span><span class="ep__v">On implantation</span></div>
+          <div><span class="ep__k">Sire</span><span class="ep__v">Catoki</span></div>
+          <div><span class="ep__k">Dam</span><span class="ep__v">Hypnotic JT Z</span></div>
+        </div>
+        <p class="ep__telex"><a href="https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z" target="_blank" rel="noopener">View Hypnotic JT Z on Horsetelex <span aria-hidden="true">&#8599;</span></a></p>
+        <div class="ep__acts">
+          <a href="/#contact" class="btn btn-gold btn-pill">Ask about this embryo</a>
+          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="dam">
+    <div class="wrap">
+      <div class="dam__plate">
+        <div class="dam__pic"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z" loading="lazy"></div>
+        <div class="dam__body">
+          <span class="dam__k">The dam</span>
+          <h2 class="dam__h">Hypnotic JT Z</h2>
+          <span class="dam__ped">Halifax van het Kluizebos x Carthago</span>
+          <p class="dam__p">That dream mare can boost everyone’s breeding. First of all she naturally excel in sport with an amazing style and carefullness but she is also sister of the Olympic horse HARDROCK Z. Carte Blanche Z is also the mother of Charlemagne JT Z (160j), Cocaine Z (owned by Zangersheide and also cloned by them) and many other mares produced horses jumping in big classes.</p>
+          <a class="dam__go" href="/breeding-mares/hypnotic-jt-z">See Hypnotic JT Z
+            <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <section class="ped">
@@ -2131,16 +2245,16 @@
       <div class="ped__plate">
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
-          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Catoki x Hypnotic JT Z</div>
+          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Your next embryo</div>
           <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Catoki</div><div class="ped__cell " style="grid-row: span 2">Cambridge</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Caletto I</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Hilgunde</div><div class="ped__cell " style="grid-row: span 2">Bilda</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Silvester</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Vordula</div>
           <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Hypnotic JT Z</div><div class="ped__cell " style="grid-row: span 2">Halifax van het Kluizebos</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Heartbreaker</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Mom’S Dalida vd Heffinck</div><div class="ped__cell " style="grid-row: span 2">Carte Blanche Z</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Carthago</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Monica</div>
         </div>
-        <p class="ped__note">The full pedigree is on
-          <a href="https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z" target="_blank" rel="noopener" style="color:var(--color-gold)">Horsetelex</a>.</p>
+        
+        <p class="ped__note">A cross has no Horsetelex entry of its own:
+          it is not born yet. The dam's record is on her page.</p>
       </div>
     </div>
   </section>
-
 
 
   <section class="hmore">
@@ -2178,6 +2292,7 @@
       </div>
     </div>
   </section>
+
 
 </main>
 <footer class="site-footer">

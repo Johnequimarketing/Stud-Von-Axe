@@ -25,6 +25,7 @@ cp "$root/horses-home.js" "$here/horses-home.js"
 # choose from, so he can look at them on a phone. It carries noindex and no
 # client data. Take this line out once a variation is chosen.
 cp "$root/04-embryo-cards.html" "$here/04-embryo-cards.html"
+cp "$root/05-embryo-lines.html" "$here/05-embryo-lines.html"
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"
