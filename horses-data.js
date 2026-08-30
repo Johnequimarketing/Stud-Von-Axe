@@ -635,12 +635,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/electra-von-axe-z-1.jpg"
-  ],
+  "photos": [],
   "country": "NL",
   "source": "https://www.studvonaxe.it/en/cavalli/emerald-vant-ruytershof-x-agousha-vd-berghoeve-z/",
-  "siteCategories": "category-breeding category-foal"
+  "siteCategories": "category-breeding category-foal",
+  "theirCard": [
+   "assets/img/horses/electra-von-axe-z-1.jpg"
+  ]
  },
  {
   "slug": "unique-touch-von-axe-z",
@@ -1429,12 +1430,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg"
-  ],
+  "photos": [],
   "country": "BR",
   "source": "https://www.studvonaxe.it/en/cavalli/dominator-2000-z-x-hypnotic-jt-z-2/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg"
+  ]
  },
  {
   "slug": "united-touch-s-x-cabri-vd-berghoeve-z",

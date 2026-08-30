@@ -124,6 +124,56 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     .flt__search{ max-width:none; flex-basis:100%; }
     .flt__count{ margin-left:0; }
   }
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
   /* The breeding line under the name: their Genetics row, which on a
      broodmare is the point of the card. Same italic gold the horse's own
      page opens with, so the card and the page read as one object. */
@@ -407,9 +457,27 @@ const count = (n) => WORDS[n] || String(n);
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
 const gridSection = (group, list) => {
-  const available = list.filter((h) => !h.sold).length;
-  const sold = list.length - available;
-  const openOn = available ? 'available' : 'all';
+  /* The chips differ per archive because the question differs. On mares,
+     foals and sport horses it is what is for sale. On embryos it is the
+     stage, frozen against carrying, which is the split the owners asked for
+     and the only one that means anything there: thirteen of the fifteen are
+     available, so an Available chip would say nothing. */
+  const embryos = group.dir === 'embryos';
+  /* On the embryos the first chip is All, and it is deliberate: every cross
+     is for sale, so there is nothing to filter out on arrival, and the six
+     frozen ones have no photograph, which would make an archive that opens
+     on Frozen a wall of navy. The stage is a filter here, not a
+     pre-selection. */
+  const chips = embryos
+    ? [['all', 'All', list.length],
+       ['carrying', 'Carrying', list.filter((h) => !isFrozen(h)).length],
+       ['frozen', 'Frozen', list.filter(isFrozen).length]]
+    : [['available', 'Available', list.filter((h) => !h.sold).length],
+       ['sold', 'Sold', list.filter((h) => h.sold).length],
+       ['all', 'All', list.length]];
+  const first = chips[0];
+  const openOn = first[2] ? first[0] : 'all';
+  const shown = openOn === 'all' ? list.length : first[2];
   const noun = (n) => `${count(n)} ${n === 1 ? group.one : group.many}`;
   return `
   <section class="arch">
@@ -425,19 +493,16 @@ const gridSection = (group, list) => {
           </svg>
         </div>
         <div class="flt__chips" role="group" aria-label="Filter these ${esc(group.many)}">
-          <button class="hz__chip" type="button" data-show="available"
-                  aria-pressed="${openOn === 'available' ? 'true' : 'false'}">Available <span class="c">${available}</span></button>
-          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">${sold}</span></button>
-          <button class="hz__chip" type="button" data-show="all"
-                  aria-pressed="${openOn === 'all' ? 'true' : 'false'}">All <span class="c">${list.length}</span></button>
+${chips.map(([key, label, n]) => `          <button class="hz__chip" type="button" data-show="${key}"
+                  aria-pressed="${openOn === key ? 'true' : 'false'}">${label} <span class="c">${n}</span></button>`).join('\n')}
         </div>
-        <p class="flt__count" data-count aria-live="polite">${noun(openOn === 'available' ? available : list.length)}</p>
+        <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
       </div>
 
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
 
-      <ul class="hz__grid" data-grid>
-${list.map((h) => '        ' + card(h, group, true)).join('\n')}
+      <ul class="hz__grid${embryos ? ' ec__grid' : ''}" data-grid>
+${list.map((h) => '        ' + (embryos ? embryoCard(h) : card(h, group, true))).join('\n')}
       </ul>
     </div>
   </section>
@@ -469,8 +534,12 @@ const filterScript = (group) => `<script>
     var q = (input.value || '').trim().toLowerCase();
     var shown = 0;
     cards.forEach(function(li){
-      var isSold = li.getAttribute('data-sold') === 'true';
-      var okState = show === 'all' || (show === 'sold') === isSold;
+      /* data-sold carries the state this archive filters on: true/false on
+         the horses, frozen/carrying on the crosses. One comparison either
+         way, so the two archives share this script. */
+      var state = li.getAttribute('data-sold');
+      var okState = show === 'all' ||
+        (state === 'true' ? show === 'sold' : state === 'false' ? show === 'available' : show === state);
       var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
       var on = okState && okFind;
       li.hidden = !on;
@@ -514,6 +583,40 @@ const metaDescription = (horse, group) => {
   }
   return (out || `${name}, ${group.one} at Stud Von Axe`).replace(/[.!]+$/, '') + '.';
 };
+
+/* A cross is named SIRE X DAM on their site, which is the only place the
+   two are written down separately. */
+const crossSire = (h) => horseName(h.name.split(/\s+X\s+/i)[0] || '');
+const crossDam  = (h) => horseName(h.name.split(/\s+X\s+/i).slice(1).join(' x ') || '');
+/* Their Genetics row opens with the sire of the cross, which the card
+   already shows, so the damline is what is left of it. */
+const damlineOf = (h) => horseName(theirWords((h.genetics || '').split(/\s+X\s+/i).slice(1).join(' x ')));
+
+/* The embryo card. Every other archive keeps .hz__card; this one is the
+   design Mark chose out of thirteen, and it exists because a cross is not a
+   horse: it has no face, half of them have no photograph at all, and what a
+   breeder reads is the pairing and the damline. */
+const embryoCard = (horse) => {
+  const win = horse.photos.length
+    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span>`
+    : `<span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span>`;
+  const haystack = [horse.name, horse.genetics, horse.tagline, horse.year, stageOf(horse)]
+    .filter(Boolean).join(' ').toLowerCase();
+  return `<li class="ec" data-sold="${isFrozen(horse) ? 'frozen' : 'carrying'}" data-find="${esc(haystack)}">` +
+    `<a class="ec__a" href="/embryos/${horse.slug}">${win}` +
+    `<span class="ec__seam"><span class="ec__stage">${esc(stageOf(horse))}</span></span>` +
+    '<span class="ec__box">' +
+      `<span class="ec__name">${esc(crossSire(horse))} <em>&times;</em> ${esc(crossDam(horse))}</span>` +
+      `<span class="ec__line">${esc(damlineOf(horse))}</span>` +
+      (horse.tagline ? `<span class="ec__say">${esc(theirWords(horse.tagline))}</span>` : '') +
+    '</span></a></li>';
+};
+
+/* Frozen or carrying, which is the split the owners asked for in July, read
+   out of their own field. Available and Sold do not belong on this archive:
+   an embryo is not sold the way a foal is, and thirteen of the fifteen are
+   available anyway, so the chip would say nothing. */
+const stageOf = (h) => (isFrozen(h) ? 'Frozen' : `Due ${h.year}`);
 
 /* ── the horse page, section one: picture, name, figures ───────────────── */
 const factRow = (horse) => {

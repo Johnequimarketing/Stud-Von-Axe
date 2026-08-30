@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Take their own frozen-embryo cards out of the photograph list.
+"""Take their own embryo card designs out of the photograph list.
 
 Six of the fifteen crosses have a "photograph" that is not one: it is their
 old card design, a flat navy field with the pairing set in type and an orange
@@ -23,7 +23,10 @@ def is_their_card(path):
     px = list(im.getdata()); n = len(px)
     navy = sum(1 for r, g, b in px if r < 45 and g < 55 and b < 80 and abs(g - r) < 30)
     orange = sum(1 for r, g, b in px if r > 200 and 100 < g < 190 and b < 90)
-    return navy / n > 0.45 and orange / n > 0.004
+    red = sum(1 for r, g, b in px if r > 140 and g < 80 and b < 80)
+    # The FROZEN button is orange and the IMPLANTED one is red; the first
+    # pass only knew about the orange and let a card through.
+    return navy / n > 0.45 and (orange + red) / n > 0.004
 
 horses = json.loads(subprocess.run(
     ["node", "-e", "console.log(JSON.stringify(require('./horses-data.js')))"],

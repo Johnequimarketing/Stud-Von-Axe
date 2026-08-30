@@ -2025,22 +2025,35 @@
     padding:0 1.1rem; margin-top:-.1rem; }
   .v13__seam::after{ content:""; flex:1 1 auto; height:1px;
     background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
-  .v13__stage{ font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); flex:none; }
+  /* The stage as a label rather than as loose type, in the shape the site
+     already uses for a tag: gold with navy ink, the same pairing as the box
+     at the foot and as every button on the site. */
+  .v13__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
   .v13__box{ flex:1 1 auto; display:block; padding:.75rem 1.1rem 1.2rem; }
   .v13__name{ display:block; font-family:var(--font-display); font-weight:400;
     font-size:1.12rem; line-height:1.2; color:var(--color-white); }
   .v13__name em{ font-style:italic; color:var(--color-gold); }
-  .v13__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45;
-    color:rgba(255,255,255,.62); }
+  .v13__line{ display:block; margin-top:.4rem; margin-bottom:.9rem; font-size:12px;
+    line-height:1.45; color:rgba(255,255,255,.62); }
   .v13__say{ display:block; font-family:var(--font-display); font-style:italic;
     font-size:13px; line-height:1.45; }
 
   /* Their sentence in the accent colour instead of under a second rule.
      Gold carries navy ink everywhere on this site, buttons included, so it
      does here too: 5.70:1, and the seam above stays the only line. */
-  .v13__say{ margin-top:.85rem; padding:.6rem .8rem; border-radius:var(--card-radius);
-    background:var(--color-gold); color:var(--color-navy); }
+  /* One height for every box in the row: it is pinned to the foot of the
+     card and reserves two lines, so a one line sentence and a two line one
+     draw the same block. Their longest sentence, at 109 characters, still
+     takes a third line rather than being cut: the words are theirs. */
+  .v13__box{ display:flex; flex-direction:column; }
+  .v13__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
@@ -2747,7 +2760,7 @@
 <section class="v-sec" id="seam-rule">
   <p class="v-num">Variation thirteen</p>
   <h2>Ten, with a rule under the breeding</h2>
-  <p class="v-note">Variation ten, and their own sentence now sits in a gold box with the page's rounding rather than under a second rule. Gold carries navy ink here, which is the house rule for anything gold on this site, and it measures 5.70:1. The seam above it stays the only line on the card.</p>
+  <p class="v-note">Variation ten with two changes. Their sentence sits in a gold box with the page's rounding, pinned to the foot of the card and reserving two lines, so every box in a row draws the same block. And the stage is a label now rather than loose type, in the shape the site already uses for a tag. Gold carries navy ink in both, which is the house rule here and measures 5.70:1.</p>
   <ul class="v-grid v-g3">
 
       <li class="v13">

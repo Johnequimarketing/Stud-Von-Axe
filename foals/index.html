@@ -1858,6 +1858,56 @@
     .flt__search{ max-width:none; flex-basis:100%; }
     .flt__count{ margin-left:0; }
   }
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
   /* The breeding line under the name: their Genetics row, which on a
      broodmare is the point of the card. Same italic gold the horse's own
      page opens with, so the card and the page read as one object. */
@@ -2083,7 +2133,8 @@
         <div class="flt__chips" role="group" aria-label="Filter these foals">
           <button class="hz__chip" type="button" data-show="available"
                   aria-pressed="true">Available <span class="c">1</span></button>
-          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">20</span></button>
+          <button class="hz__chip" type="button" data-show="sold"
+                  aria-pressed="false">Sold <span class="c">20</span></button>
           <button class="hz__chip" type="button" data-show="all"
                   aria-pressed="false">All <span class="c">21</span></button>
         </div>
@@ -2096,7 +2147,7 @@
         <li data-sold="true" data-find="charina von axe z chacco blue x cornet obolensky x calato x darco x chin chin one of the best stallion in the world crossed with one of the best dam lines ever! 2026 great britain filly"><a class="hz__card" href="/foals/charina-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/charina-von-axe-z-1.jpg" alt="Charina Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Charina Von Axe Z</span><span class="hz__meta">Born 2026 · Filly · Sold to Great Britain</span><span class="hz__ped">Chacco Blue x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li data-sold="true" data-find="comme il faut x hypnotic jt z comme il faut x halifax van het kluizebos x carthago out of a sister of the olympic hardrock z! 23/04/26 great britain filly"><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Hypnotic JT Z</span><span class="hz__meta">Born 23/04/26 · Filly · Sold to Great Britain</span><span class="hz__ped">Comme il Faut x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li data-sold="false" data-find="arkhana von axe z aganix su seigneur x cornet obolesnky x calato x darco x chin chin out of fuga de muse - narcotique ii - qerlychin! 2026 filly"><a class="hz__card" href="/foals/arkhana-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/arkhana-von-axe-z-1.jpg" alt="Arkhana Von Axe Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Arkhana Von Axe Z</span><span class="hz__meta">Born 2026 · Filly</span><span class="hz__ped">Aganix Su Seigneur x Cornet Obolesnky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="electra von axe z emerald van't ruytershof x aganix du seigneur z x diamant de semilly x darco x chin chin out of a direct daughter of gatoucha van't roosakker! 2026 the netherlands filly"><a class="hz__card" href="/foals/electra-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/electra-von-axe-z-1.jpg" alt="Electra Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Electra Von Axe Z</span><span class="hz__meta">Born 2026 · Filly · Sold to the Netherlands</span><span class="hz__ped">Emerald van't Ruytershof x Aganix du Seigneur Z x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="electra von axe z emerald van't ruytershof x aganix du seigneur z x diamant de semilly x darco x chin chin out of a direct daughter of gatoucha van't roosakker! 2026 the netherlands filly"><a class="hz__card" href="/foals/electra-von-axe-z"><span class="hz__win typo"><p>EMERALD VAN'T RUYTERSHOF X AGANIX DU SEIGNEUR Z X DIAMANT DE SEMILLY X DARCO X CHIN CHIN</p><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Electra Von Axe Z</span><span class="hz__meta">Born 2026 · Filly · Sold to the Netherlands</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li data-sold="true" data-find="unique touch von axe z united touch s x cornet obolensky x calato x darco x chin chin out of fuga de muse - narcotique ii - qerlychin! 2026 brazil"><a class="hz__card" href="/foals/unique-touch-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/unique-touch-von-axe-z-1.jpg" alt="Unique Touch Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unique Touch Von Axe Z</span><span class="hz__meta">Born 2026 · Sold to Brazil</span><span class="hz__ped">United Touch S x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li data-sold="true" data-find="darkhan von axe z dourkhan hero z x cornet obolensky x calato x darco x chin chin zangersheide usha van't roosakker, china touch hero and qerlychin in 1 match! 07/05/25 the netherlands colt"><a class="hz__card" href="/foals/darkhan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/darkhan-von-axe-z-1.jpg" alt="Darkhan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Darkhan Von Axe Z</span><span class="hz__meta">Born 07/05/25 · Colt · Zangersheide · Sold to the Netherlands</span><span class="hz__ped">Dourkhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li data-sold="true" data-find="dune von axe z diamant de semilly x halifax van het kluizebos x carthago zangersheide directly out of a sister of hardrock z! 28/03/2025 poland colt"><a class="hz__card" href="/foals/dune-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dune-von-axe-z-1.jpg" alt="Dune Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dune Von Axe Z</span><span class="hz__meta">Born 28/03/2025 · Colt · Zangersheide · Sold to Poland</span><span class="hz__ped">Diamant de Semilly x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
@@ -2255,8 +2306,12 @@
     var q = (input.value || '').trim().toLowerCase();
     var shown = 0;
     cards.forEach(function(li){
-      var isSold = li.getAttribute('data-sold') === 'true';
-      var okState = show === 'all' || (show === 'sold') === isSold;
+      /* data-sold carries the state this archive filters on: true/false on
+         the horses, frozen/carrying on the crosses. One comparison either
+         way, so the two archives share this script. */
+      var state = li.getAttribute('data-sold');
+      var okState = show === 'all' ||
+        (state === 'true' ? show === 'sold' : state === 'false' ? show === 'available' : show === state);
       var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
       var on = okState && okFind;
       li.hidden = !on;

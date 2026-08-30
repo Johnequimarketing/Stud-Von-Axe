@@ -1858,6 +1858,56 @@
     .flt__search{ max-width:none; flex-basis:100%; }
     .flt__count{ margin-left:0; }
   }
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
   /* The breeding line under the name: their Genetics row, which on a
      broodmare is the point of the card. Same italic gold the horse's own
      page opens with, so the card and the page read as one object. */
@@ -2101,7 +2151,7 @@
       </div>
       <ul class="hz__grid">
         <li><a class="hz__card" href="/embryos/cornet-obolensky-x-agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cornet-obolensky-x-agousha-vd-berghoeve-z-1.jpg" alt="Cornet Obolensky x Agousha vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cornet Obolensky x Agousha vd Berghoeve Z</span><span class="hz__meta">2027 · Cornet Obolensky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg" alt="Dominator 2000 Z x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dominator 2000 Z x Hypnotic JT Z</span><span class="hz__meta">2026 · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="hz__win typo"><p>DOMINATOR 2000 Z X HALIFAX VAN HET KLUIZEBOS X CARTHAGO</p><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dominator 2000 Z x Hypnotic JT Z</span><span class="hz__meta">2026 · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         <li><a class="hz__card" href="/embryos/united-touch-s-x-cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg" alt="United Touch S x Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">United Touch S x Cabri vd Berghoeve Z</span><span class="hz__meta">2027 · United Touch S</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
