@@ -91,6 +91,42 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
   default; where he chose once it is written as a lean. Read this before designing, not after.</p>
 
   <div class="item">
+    <p class="rule">When something is on a dark ground on one page, it is on a dark ground on all of them</p>
+    <p class="said">Read off three separate decisions in one week. The pedigree came <em>off</em> its navy
+    plate because it sat under another dark block; the films went <em>onto</em> the navy plate because
+    that is where the sire and dam lines already stand on a cross; and the same hero window now opens a
+    horse page and a cross page. He does not want a house style described, he wants the same object in
+    the same place.</p>
+    <p class="check">Before drawing anything new, ask which existing block does this job elsewhere, and
+    put the new thing on that block, in that position. A new plate needs a reason; matching one does
+    not.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">He wants to see it, not read that it exists</p>
+    <p class="said">The strongest single thread of the week. Six variations rather than a recommendation,
+    every time. <q>om te kijken hoe dat eruit ziet</q>, <q>even om te checken</q>, and then
+    <q>nu heb ik geen idee hoe het eruit ziet</q> about sections that were simply absent, which is what
+    put marked placeholders on forty three of them.</p>
+    <p class="check">A thing that cannot be looked at cannot be judged, and an empty section is not
+    modest, it is invisible. Build the state, mark it plainly for what it is, and let him look. Numbered
+    variations in their own file, never a paragraph describing the options.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">One publish per round, and the round is the whole message</p>
+    <p class="said">30 Aug: <q>push nooit bij elke kleine aanpassing, alleen als alle aanpassingen in de
+    claude chat in een keer klaar zijn</q>. Deploying per edit hit Vercel's hundred-a-day ceiling twice
+    in two days, and both times the work sat finished and unseen.</p>
+    <p class="check">Build, render, measure and audit as often as it takes; hold the sync, the deploy and
+    the commit until everything asked for in that message is done. And when the ceiling is hit, say so
+    in the reply rather than letting him find a stale page.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Contained and rounded, never edge to edge</p>
     <p class="said">Every single time. <q>wilde de ronde border radius houden contained in het scherm</q>,
     and the header became a plate on the page gutter rather than a band across the screen. A full bleed
@@ -421,6 +457,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Content and truth</h2>
   <div class="item">
+    <p class="rule">A form that does not send is a broken promise, sixty times over</p>
+    <p class="said">The homepage form stops the submit and shows a thank you. Nothing is sent, nothing is
+    stored, and the visitor is told their message arrived. Putting that on sixty more pages would have
+    multiplied it.</p>
+    <p class="check">Until there is somewhere to post to, the form composes the message into a
+    <code>mailto:</code> link and hands it to the visitor's own mail app, so pressing send actually
+    sends. The real choice, a form service or a function on Vercel, is on the client list as a decision
+    rather than quietly made. Same rule as the Horsetelex labels and the placeholder pictures: the
+    interface may not claim something that is not true.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A link that says one name and opens another is a lie, however good the reason</p>
     <p class="said">Their site hangs a Horsetelex link on every horse. Eighteen of those links go to that
     horse's own dam, because a young horse has no entry yet: CABRI VD BERGHOEVE Z opens HIAMANT VAN'T
@@ -564,6 +613,42 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>Design</h2>
+  <div class="item">
+    <p class="rule">Every page that sells one thing carries the way to ask about that one thing</p>
+    <p class="said">30 Aug: <q>overal bij de single pagina's (behalve news), we moeten daar nog een
+    contact form maken met contactgegevens bij en vooraf bij paard of wat dan ook al de naam vooraf
+    ingevuld</q>, and the buttons should land there. He picked variation one of six, the split plate.</p>
+    <p class="check">It replaces the CTA plate rather than standing under it: two invitations in a row is
+    one too many, and the second one was the weaker of the two. The name goes in a field the visitor can
+    still edit, not a locked one, because somebody writing about two horses should not have to fight it.
+    The buttons higher up the page point at <code>#ask</code> on the same page, never back to the
+    homepage.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">An exception holds only where the design is actually different</p>
+    <p class="said">30 Aug, taking the status label everywhere: <q>ook op de homepagina, behalve dus bij
+    embryo's daar hebben we al ander design</q>. On the homepage the embryo run uses the same card as
+    every other run; the separate embryo card with its Frozen/Carrying label exists only on
+    /embryos.</p>
+    <p class="check">So there was nothing to hold back there, and holding it back would have put two
+    different labels on one page. Check what the exception is actually protecting before applying it,
+    and say so rather than following the words off a cliff.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A component that appears on the homepage and on generated pages is defined in index.html</p>
+    <p class="said">The status seam was written into the build script first, which meant the homepage had
+    to get its own copy: two definitions of one component, free to drift apart the moment either is
+    touched.</p>
+    <p class="check"><code>index.html</code> is the single source every generated page lifts its CSS
+    from, so anything shared belongs there and nowhere else. Related to
+    <q>never re-declare a component that already exists</q>, but sharper: it says which file.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">A section nobody can see is a section nobody can brief</p>
     <p class="said">30 Aug: <q>ik wil bij alle pagina's ... dat je daar placeholder afbeeldingen neerzet
