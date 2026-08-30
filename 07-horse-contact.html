@@ -3,19 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bec Emerald Sam | Stud Von Axe</title>
-<meta name="description" content="Bec Emerald Sam, sport horse at Stud Von Axe. Emerald van't Ruytershof x Darco x Quidam Junior I. Born 2015, Irish Breed, Gelding.">
-<!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
+<meta name="internal-doc" content="true">
 <meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://www.studvonaxe.it/sport-horses/bec-emerald-sam">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Stud Von Axe">
-<meta property="og:title" content="Bec Emerald Sam">
-<meta property="og:description" content="Bec Emerald Sam, sport horse at Stud Von Axe. Emerald van't Ruytershof x Darco x Quidam Junior I. Born 2015, Irish Breed, Gelding.">
-<meta property="og:image" content="https://www.studvonaxe.it/assets/img/horses/bec-emerald-sam-1.jpg">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemPage","name":"Bec Emerald Sam"}
-</script>
+<title>A contact section on every horse, six ways | Stud Von Axe</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1770,1047 +1760,559 @@
     .hz__card::before, .hz__view{ transition:none; }
   }
 
-  /* ---- the archive hero: a covered photograph, the homepage veil ---- */
-  .nhero{
-    position:relative; isolation:isolate; overflow:hidden;
-    min-height:clamp(400px, 52vh, 520px);
-    display:grid; align-items:end;
-    background:var(--color-navy-deep);
-  }
-  .nhero__bg{ position:absolute; inset:0; z-index:0; }
-  .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
-  /* Type crosses the whole width, so the veil is a foot gradient: open at
-     the head where the braids read, closing downward under the type. */
-  /* A foot gradient, and the stops are measured rather than eyeballed.
-     The gold eyebrow sits about 60% down this hero, where the first version
-     left the picture bright: it measured 1.7:1 against a house floor of 3
-     for gold on a dark ground, on all four archives and on the news page
-     that has worn this veil since it was written. Re-measure if a hero
-     photograph is ever swapped for a lighter one. */
-  .nhero__veil{
-    position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .46) 0%, rgba(var(--veil-rgb), .52) 28%,
-      rgba(var(--veil-rgb), .86) 50%, rgba(var(--veil-rgb), .96) 100%);
-  }
-  .nhero > .wrap{ position:relative; z-index:2; padding-block:clamp(2.2rem,5vw,3.4rem); width:min(var(--wrap),100% - (2*var(--gutter))); margin-inline:auto; }
-  /* Title left, intro right, on one baseline: the homepage section head,
-     brought onto the photograph. */
-  .nhero__grid{ display:grid; gap:clamp(1.2rem,3vw,2.6rem); align-items:end; }
-  @media (min-width:820px){ .nhero__grid{ grid-template-columns:1.1fr .9fr; } }
-  .arch__h{
-    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3.4vw + 1rem,3.2rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-white); max-width:16ch; text-wrap:balance;
-  }
-  .arch__h em{ font-style:italic; color:var(--color-gold); }
-  .arch__intro{ margin:0; color:rgba(255,255,255,.78); max-width:48ch; font-size:15.5px; }
+  body{ background:var(--color-base); }
+  .d-head{ width:min(var(--wrap), 100% - (2*var(--gutter))); margin:0 auto; padding:clamp(3rem,7vh,5rem) 0 1rem; }
+  .d-head h1{ font-family:var(--font-display); font-weight:400; font-size:clamp(1.9rem,3vw+.8rem,2.8rem);
+    line-height:1.05; letter-spacing:-.02em; color:var(--color-ink); margin:.5rem 0 .8rem; }
+  .d-head h1 em{ font-style:italic; color:var(--color-gold); }
+  .d-head p{ max-width:64ch; color:var(--color-ink-soft); font-size:16px; margin:0 0 .7rem; }
+  .d-sec{ padding:clamp(2.4rem,5vw,3.6rem) 0 0; border-top:1px solid var(--color-line); }
+  .d-lab{ width:min(var(--wrap), 100% - (2*var(--gutter))); margin:0 auto clamp(1.4rem,3vw,2rem); }
+  .d-num{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--color-gold); margin:0 0 .4rem; }
+  .d-lab h2{ font-family:var(--font-display); font-weight:400; font-size:clamp(1.4rem,1.8vw+.7rem,1.9rem);
+    color:var(--color-ink); margin:0 0 .6rem; }
+  .d-note{ max-width:72ch; color:var(--color-ink-soft); font-size:15px; line-height:1.6; margin:0; }
+  .d-frame{ background:var(--color-base); border-top:1px solid var(--color-line);
+    border-bottom:1px solid var(--color-line); padding:clamp(2rem,4vw,3.2rem) 0; }
+  .d-warn{ width:min(var(--wrap), 100% - (2*var(--gutter))); margin:1.4rem auto 0;
+    padding:1rem 1.2rem; border-radius:var(--plate-radius);
+    background:color-mix(in srgb, var(--color-gold) 14%, var(--color-base));
+    border:1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+    font-size:14.5px; line-height:1.6; color:var(--color-ink); }
+  .d-warn b{ font-weight:700; }
 
-
-  /* ---- the story: the picture on the left, words on the right ----
-     Mark's order, and the mirror of the homepage's about section, so the
-     two do not read as the same block twice.
-     The section carries the watermark the same way that one does, which is
-     why it is relative and clipped: .stud__mark comes from the homepage
-     sheet above and bleeds off the right edge. */
-  .abst{
-    position:relative; isolation:isolate; overflow-x:clip;
-    padding-block:clamp(3.2rem,6vw,5rem);
+  /* ── the fields, shared by all six ─────────────────────────────────────
+     One set of rules so the six differ in shape and never in the parts. */
+  .cf__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .cf__pair:not(.is-stacked){ grid-template-columns:1fr 1fr; } }
+  .cf__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .cf__row label, .c6__row label{
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold);
   }
-  .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
-  @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }
-  .abst__col{ min-width:0; }
-  .abst__h{
-    margin:.7rem 0 1.2rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.8rem,2.6vw + .9rem,2.9rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-ink); max-width:15ch; text-wrap:balance;
-  }
-  .abst__h em{ font-style:italic; color:var(--color-gold); }
-  .abst__lead{ margin:0 0 1rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:52ch; }
-  .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
-  .abst__body b{ font-weight:700; color:var(--color-ink); }
-
-  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
-
-  /* The hero starts at the top of the page and the header hangs over it. */
-  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
-
-  /* The archive grid is the homepage's own .hz__grid, given the room a page
-     has and the homepage section does not: four across instead of three. */
-  /* The space between sections is one rule, not six: every section carries
-     half of it on each side, so two neighbours add up to the same gap
-     wherever they meet, and the first and last still clear the hero and the
-     footer. */
-  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
-  .ped, .ln, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
-  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
-  .arch__count{
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
-  }
-  /* Three across, not four. At four the picture is too small to read a horse
-     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
-     wordt anders te krap en te klein". The embryo cards were already three. */
-  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
-
-  /* ── the filter bar ────────────────────────────────────────────────────
-     A field and three chips over the grid. The chips are the homepage's own
-     .hz__chip, so an archive filters the way the homepage section already
-     does, and the field beside them is the only control this page adds.
-     Sold horses start hidden. They are not an answer to "what do you have",
-     but they are the proof of where these lines have gone, so they are one
-     chip away and never removed. A group with nothing available opens on
-     everything rather than on an empty grid. */
-  .flt{
-    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
-    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
-  }
-  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
-  .flt__search input{
-    width:100%; appearance:none; -webkit-appearance:none;
-    padding:.7rem 2.3rem .7rem .95rem;
-    border:1px solid var(--color-line); border-radius:100px;
-    background:var(--color-base); color:var(--color-ink);
-    font-family:var(--font-body); font-size:14.5px;
+  .cf__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .cf__row input, .cf__row textarea, .c6__row textarea{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
     transition:border-color .3s var(--ease);
   }
-  .flt__search input::placeholder{ color:var(--color-ink-soft); }
-  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
-  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
-  .flt__ico{
-    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
-    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  .cf__row input:focus, .cf__row textarea:focus, .c6__row textarea:focus{
+    outline:none; border-color:var(--color-gold);
   }
-  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
-  .flt__count{
-    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  .cf__row textarea, .c6__row textarea{ resize:vertical; line-height:1.55; }
+  /* On a navy plate the fields have to invert or they are ivory boxes on navy. */
+  .c4__form .cf__row input, .c4__form .cf__row textarea{
+    background:rgba(255,255,255,.06); border-color:var(--color-line-invert); color:var(--color-white);
   }
-  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
-  .flt__none.is-on{ display:block; }
-  .hz__grid li[hidden]{ display:none; }
-  @media (max-width:620px){
-    .flt__search{ max-width:none; flex-basis:100%; }
-    .flt__count{ margin-left:0; }
-  }
+  .c4__form .cf__row input::placeholder, .c4__form .cf__row textarea::placeholder{ color:rgba(255,255,255,.42); }
+  .c4__form .cf__row label{ color:var(--color-gold); }
 
+  /* the four ways to reach them, in two shapes */
+  .c1__p, .c2__p, .c3__p, .c5__p, .c6__p{ display:flex; flex-direction:column; gap:.15rem;
+    padding:.7rem 0; border-top:1px solid var(--color-line-invert); }
+  .c1__pk, .c2__pk, .c3__pk, .c5__pk, .c6__pk{ font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); }
+  .c1__pv, .c2__pv, .c3__pv, .c5__pv, .c6__pv{ font-family:var(--font-display); font-size:1rem; }
 
-  /* ── the embryo head: the tray, nothing on the photograph ──────────────
-     Chosen on 30 Aug. The photograph carries only the back link, so it stays
-     a photograph, and a plate hangs into it from below with the name, their
-     sentence, the figures and the two actions on it. It solves the crowded
-     title by removing the cause, and it is the version that still works on
-     the seven crosses with no picture of their own.
-     The veil is navy across the whole frame rather than a light wash: that
-     is how this site tints a photograph, and the header is transparent over
-     it, so the top has to hold white 15px links. */
-  .eh{ position:relative; }
-  .eh__win{ position:relative; height:clamp(360px,48vh,520px); overflow:hidden;
+  /* ── one: the split plate ── */
+  .c1__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .c1__box{ grid-template-columns:.85fr 1.15fr; } }
+  .c1__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .c1__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw+.8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .c1__h em{ font-style:italic; color:var(--color-gold); }
+  .c1__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .c1__people{ display:grid; }
+  .c1__pv{ color:var(--color-white); }
+  .c1__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base); }
+
+  /* ── two: her picture beside the form ── */
+  .c2__grid{ display:grid; gap:clamp(1.6rem,3.4vw,2.8rem); align-items:start; }
+  @media (min-width:900px){ .c2__grid{ grid-template-columns:.8fr 1.2fr; } }
+  .c2__col{ min-width:0; }
+  .c2__win{ position:relative; border-radius:var(--plate-radius); overflow:hidden; aspect-ratio:4/5;
+    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb),.55); }
+  .c2__win img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .c2__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 55%, rgba(var(--veil-rgb),.72) 100%); }
+  .c2__tag{ position:absolute; left:14px; bottom:14px; padding:.34em .85em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy); font-family:var(--font-body); font-weight:700;
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase; }
+  .c2__people{ display:grid; margin-top:1.2rem; }
+  .c2__p{ border-top-color:var(--color-line); }
+  .c2__pv{ color:var(--color-ink); }
+  .c2__h{ margin:.5rem 0 1.4rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw+.8rem,2rem); line-height:1.06; color:var(--color-ink); }
+  .c2__h em{ font-style:italic; color:var(--color-gold); }
+
+  /* ── three: one quiet column ── */
+  .c3__in{ width:min(680px, 100% - (2*var(--gutter))); margin:0 auto; text-align:center; }
+  .c3__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw+.8rem,2.1rem); line-height:1.08; color:var(--color-ink); }
+  .c3__h em{ font-style:italic; color:var(--color-gold); }
+  .c3__lead{ margin:0 auto 1.8rem; max-width:48ch; font-size:16px; line-height:1.6; color:var(--color-ink-soft); }
+  .c3__form{ text-align:left; }
+  .c3__people{ display:flex; flex-wrap:wrap; justify-content:center; gap:.2rem 2rem; margin-top:1.8rem;
+    padding-top:1.4rem; border-top:1px solid var(--color-line); }
+  .c3__p{ border-top:0; padding:.3rem 0; align-items:center; }
+  .c3__pv{ color:var(--color-ink); font-size:.95rem; }
+
+  /* ── four: the two of them first ── */
+  .c4__plate{ padding:clamp(1.6rem,3vw,2.4rem); border-radius:var(--plate-radius);
     background:var(--color-navy-deep); }
-  .eh__win img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center; }
-  .eh__mark img{ width:auto; height:26%; max-height:110px; opacity:.16; }
-  .eh__veil{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),.56) 0%, rgba(var(--veil-rgb),.4) 40%,
-      rgba(var(--veil-rgb),.5) 100%); }
-  .eh__back{ position:absolute; left:0; right:0;
-    top:calc(var(--hd-top) + var(--hd-plate) + 1.5rem); z-index:2;
-    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto;
-    display:flex; align-items:center; gap:.5rem;
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:rgba(255,255,255,.8); transition:color .3s var(--ease); }
-  .eh__back:hover{ color:var(--color-white); }
-  .eh__cap{ position:absolute; right:var(--gutter); bottom:clamp(3.6rem,5vw,4.6rem); z-index:2;
-    margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.05em;
-    color:rgba(255,255,255,.72); }
-  .eh__tray{ position:relative; z-index:2; margin-top:clamp(-3rem,-3.4vw,-2rem);
-    background:var(--color-base); border-radius:var(--plate-radius);
-    border:1px solid var(--color-line);
-    padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
-  .eh__stage{ display:inline-flex; align-items:center; padding:.34em .85em;
-    border-radius:var(--ctl-radius); background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.16em;
-    text-transform:uppercase; }
-  .eh__h{ margin:.9rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.7rem,2.4vw + .8rem,2.5rem); line-height:1.06; letter-spacing:-.02em;
-    color:var(--color-ink); max-width:22ch; }
-  .eh__h em{ font-style:italic; color:var(--color-gold); }
-  .eh__say{ margin:.6rem 0 1.2rem; font-family:var(--font-display); font-style:italic;
-    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:52ch; }
-  .eh__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
-    padding-top:1.1rem; border-top:1px solid var(--color-line); }
-  @media (min-width:760px){ .eh__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
-  .eh__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.28rem; }
-  .eh__v{ display:inline-block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
-    line-height:1.25; color:var(--color-ink); }
-  /* The Horsetelex link used to sit as a loose row of its own between the
-     facts and the buttons, a third kind of link in a small space. It belongs
-     to the sire and the dam, so it lives on their names instead: same size
-     as the other facts, a small mark to say it leaves the site. */
-  .eh__v--telex{ color:var(--color-navy); text-decoration:none;
-    border-bottom:1px solid var(--color-line); padding-bottom:1px;
-    transition:border-color .3s var(--ease), color .3s var(--ease); }
-  .eh__v--telex span[aria-hidden]{ font-size:.72em; color:var(--color-gold); }
-  .eh__v--telex:hover{ color:var(--color-gold); border-color:var(--color-gold); }
-  .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
-  .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+  .c4__head{ margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  .c4__h{ margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw+.8rem,2rem); line-height:1.05; color:var(--color-white); }
+  .c4__h em{ font-style:italic; color:var(--color-gold); }
+  .c4__cards{ display:grid; gap:.8rem; margin-bottom:clamp(1.4rem,2.6vw,2rem); }
+  @media (min-width:760px){ .c4__cards{ grid-template-columns:repeat(3,1fr); } }
+  .c4__card{ display:grid; gap:.2rem; padding:1.1rem 1.2rem; border-radius:var(--card-radius);
+    background:rgba(255,255,255,.055); border:1px solid var(--color-line-invert);
+    transition:background .3s var(--ease), border-color .3s var(--ease); }
+  .c4__card:hover{ background:rgba(255,255,255,.1); border-color:var(--color-gold); }
+  .c4__init{ display:grid; place-items:center; width:34px; height:34px; border-radius:50%;
+    background:var(--color-gold); color:var(--color-navy); margin-bottom:.5rem;
+    font-family:var(--font-display); font-size:1rem; }
+  .c4__cn{ font-family:var(--font-display); font-size:1.15rem; color:var(--color-white); }
+  .c4__cv{ font-family:var(--font-body); font-size:13.5px; color:rgba(255,255,255,.7); }
 
-  /* ── the dam ───────────────────────────────────────────────────────────
-     The one section a cross earns that a horse does not: whoever is buying
-     an embryo is buying her family. Her own page carries the record, so
-     this is her photograph, her breeding, her first paragraph and a way
-     through to it. */
-  .dam{ padding-bottom:clamp(2.6rem,5vw,4rem); }
-  .dam__plate{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); align-items:center;
-    padding:clamp(1.4rem,3vw,2.2rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep); }
-  @media (min-width:820px){ .dam__plate{ grid-template-columns:.42fr 1fr; } }
-  .dam__pic{ border-radius:var(--card-radius); overflow:hidden; aspect-ratio:4/3;
-    background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
-  .dam__pic img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .dam__body{ min-width:0; }
-  .dam__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem; }
-  .dam__h{ margin:0 0 .3rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.3rem,1.6vw + .7rem,1.75rem); line-height:1.12; color:var(--color-white); }
-  .dam__ped{ display:block; font-family:var(--font-display); font-style:italic; font-size:13.5px;
-    color:var(--color-gold); margin-bottom:.7rem; }
-  .dam__p{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.78); max-width:56ch; }
-  .dam__go{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-white);
-    display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
-  .dam__go:hover{ gap:.85rem; }
-  .dam__go .a{ color:var(--color-gold); }
+  /* ── five: on her photograph ── */
+  .c5{ position:relative; isolation:isolate; overflow:hidden; border-radius:var(--plate-radius);
+    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto; }
+  .c5__bg{ position:absolute; inset:0; z-index:0; }
+  .c5__bg img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .c5__veil{ position:absolute; inset:0; z-index:1;
+    background:linear-gradient(100deg, rgba(var(--veil-rgb),.94) 0%, rgba(var(--veil-rgb),.86) 42%,
+      rgba(var(--veil-rgb),.62) 100%); }
+  .c5__in{ position:relative; z-index:2; display:grid; gap:clamp(1.6rem,3.4vw,2.8rem);
+    padding-block:clamp(2rem,4vw,3.2rem); align-items:start; }
+  @media (min-width:900px){ .c5__in{ grid-template-columns:1fr 1fr; } }
+  .c5__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.6rem,2vw+.8rem,2.3rem); line-height:1.05; color:var(--color-white); }
+  .c5__h em{ font-style:italic; color:var(--color-gold); }
+  .c5__lead{ margin:0 0 1.4rem; font-size:15.5px; line-height:1.65; color:rgba(255,255,255,.78); max-width:42ch; }
+  .c5__people{ display:grid; }
+  .c5__pv{ color:var(--color-white); }
+  .c5__form{ padding:clamp(1.3rem,2.4vw,1.8rem); border-radius:var(--plate-radius);
+    background:var(--color-base); box-shadow:0 30px 60px -40px rgba(var(--veil-rgb),.7); }
 
-
-  /* ── the two lines ─────────────────────────────────────────────────── */
-  .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
-    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep); }
-  @media (min-width:820px){ .ln__plate{ grid-template-columns:1fr 1px 1fr; } }
-  .ln__rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
-  @media (min-width:820px){ .ln__rule{ display:block; } }
-  .ln__col{ min-width:0; }
-  .ln__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
-    margin-bottom:1.05rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
-  .ln__win img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .ln__win--none{ display:grid; place-items:center; background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white)); }
-  .ln__win--none img{ width:auto; height:34%; max-height:64px; opacity:.2; }
-  .ln__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
-  .ln__n{ margin:.35rem 0 .2rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem;
-    line-height:1.15; color:var(--color-white); }
-  .ln__p{ display:block; font-family:var(--font-display); font-style:italic; font-size:13px;
-    color:var(--color-gold); margin-bottom:.75rem; }
-  .ln__t{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.76); max-width:52ch; }
-  .ln__t--waiting{ font-style:italic; color:rgba(255,255,255,.5); }
-  .ln__go{ display:flex; flex-wrap:wrap; gap:.35rem 1.3rem; }
-  .ln__go a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-white);
-    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
-  .ln__go a:hover{ gap:.8rem; }
-  .ln__go .a{ color:var(--color-gold); }
-  /* ── the embryo card ───────────────────────────────────────────────────
-     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
-     its foot and the box carries on out of it in the same navy, so the card
-     is one object with no seam to see: the last stop of the gradient is the
-     box's own colour, and the box has no gap, border or shadow of its own.
-     A gold hairline crosses the join with the stage sitting on it as a
-     label, and their own sentence closes the card in the accent colour,
-     pinned to the foot and reserving two lines so every box in a row draws
-     the same block. Gold carries navy ink in both, 5.70:1. */
-  .ec{ display:flex; }
-  .ec__a{ display:flex; flex-direction:column; width:100%;
-    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
-    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
-    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
-  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
-  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
-  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
-  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform 1s var(--ease); }
-  .ec__a:hover .ec__win img{ transform:scale(1.04); }
-  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
-      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
-  /* No photograph: the supplied mark on navy, at the weight the about page
-     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
-  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
-    background:var(--color-navy-deep); }
-  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
-  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
-    padding:0 1.1rem; margin-top:-.1rem; }
-  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
-  .ec__stage{ flex:none; display:inline-flex; align-items:center;
-    padding:.34em .8em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.16em; text-transform:uppercase; }
-  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
-    line-height:1.2; color:var(--color-white); }
-  .ec__name em{ font-style:italic; color:var(--color-gold); }
-  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12px; line-height:1.45;
-    color:rgba(255,255,255,.62); }
-  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
-    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
-    text-wrap:balance; }
-  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
-  /* The breeding line under the name: their Genetics row, which on a
-     broodmare is the point of the card. Same italic gold the horse's own
-     page opens with, so the card and the page read as one object. */
-  .hz__ped{
-    display:block; margin-top:.3rem;
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
-    color:var(--color-gold);
+  /* ── six: the sentence ── */
+  .c6__plate{ padding:clamp(1.6rem,3vw,2.4rem); border-radius:var(--plate-radius);
+    background:var(--color-base-alt); }
+  .c6__say{ margin:.6rem 0 1.6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.2rem,1.1vw+.9rem,1.6rem); line-height:2.1; color:var(--color-ink); max-width:60ch; }
+  .c6__f{ display:inline-block; }
+  .c6__f input{
+    font-family:var(--font-display); font-size:inherit; color:var(--color-navy);
+    background:transparent; border:0; border-bottom:1px solid var(--color-gold);
+    padding:0 .3rem .1rem; text-align:center;
+    transition:background .3s var(--ease);
   }
-
-
-  /* ── the horse's own page ──────────────────────────────────────────────
-     No dark hero here. A horse photograph stands or is square, and a wide
-     strip keeps a fifth of it: the rule the about page's hero taught. So
-     the picture keeps its own proportions on the left and the horse's name
-     and figures stand beside it, which is also how the reference pages Mark
-     sent are laid out. The header wears its pinned colours from the first
-     pixel because there is no photograph behind it. */
-  .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
-  /* With a hero the section starts at the top of the page and the two columns
-     hang into the photograph from below, the same move the embryo tray makes,
-     so a horse page and a cross page open the same way. */
-  .hp--hero{ position:relative; padding-top:0; }
-  .hp--hero .hp__grid{ position:relative; z-index:2; margin-top:clamp(-3.6rem,-4vw,-2.4rem); }
-  /* One photograph, two crops: the band takes the head, the column keeps the
-     whole horse, so the same file does not read as the same picture twice. */
-  .eh__win--high img{ object-position:center 22%; }
-  .hp__grid{ display:grid; gap:clamp(1.8rem,4vw,3.4rem); align-items:start; }
-  @media (min-width:900px){ .hp__grid{ grid-template-columns:.92fr 1.08fr; } }
-  /* Everything that stood loose beside the picture, gathered onto one plate. */
-  /* Ivory on ivory: hanging in the photograph the plate reads by contrast,
-     but on a narrow screen it sits below the picture on the page ground and
-     the shadow alone is not enough to see an edge. A hairline gives it one. */
-  .hp__tray{
-    background:var(--color-base); border-radius:var(--plate-radius);
-    border:1px solid var(--color-line);
-    padding:clamp(1.4rem,2.8vw,2rem);
-    box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5);
-  }
-  .hp--hero .hp__pic{ box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
-  .hp__col{ min-width:0; }
-  .hp__pic{
-    border-radius:var(--plate-radius); overflow:hidden;
-    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb), .55);
-    position:relative;
-  }
-  .hp__pic img{ display:block; width:100%; height:auto; }
-  .hp__pic .hz__tag{ position:absolute; top:14px; left:14px; }
-  .hp__back{
-    display:inline-flex; align-items:center; gap:.5rem; margin-bottom:1rem;
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-ink-soft);
-    transition:color .35s var(--ease);
-  }
-  .hp__back:hover{ color:var(--color-navy); }
-  .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
-  .hp__back--dark:hover{ color:var(--color-white); }
-  .hp__h{
-    margin:0 0 .4rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
-    color:var(--color-ink);
-  }
-  .hp__cross{
-    margin:0 0 1.2rem; font-family:var(--font-display); font-style:italic;
-    font-size:1.05rem; color:var(--color-gold);
-  }
-  .hp__lead{ margin:0 0 1.6rem; font-size:17px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
-
-  /* The figures. The two places on the about page, widened: a row of
-     hairline columns, and a field their site left empty is left out rather
-     than shown as a dash. */
-  .hp__facts{
-    display:grid; gap:1rem 1.6rem; margin:0 0 1.8rem;
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    padding-top:1.4rem; border-top:1px solid var(--color-line);
-  }
-  @media (min-width:560px){ .hp__facts{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
-  .hp__k{
-    display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem;
-  }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem; color:var(--color-ink); }
-  .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
-  /* The ghost button is drawn for a navy plate. On the ivory ground it was
-     white on ivory, which is the one thing this project has a hard rule
-     about. Same treatment the pinned header gives it. */
-  .hp__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .hp__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
-
-  /* ── the pedigree ──────────────────────────────────────────────────────
-     The one component on this site that had to be drawn from scratch, and
-     it is drawn as the page's navy plate rather than as a table: four
-     columns, each generation half the height of the one before it, which is
-     what a pedigree is. Rows span rather than nest, so there is no table
-     markup to fight on a phone.
-     Below 760px it scrolls sideways in its own box rather than folding,
-     because a pedigree folded into one column is no longer a pedigree. */
-  /* No plate under the pedigree any more: it stands on the page ground with
-     the supplied mark large behind it, the way the about section carries the
-     head as a watermark. The cells keep their shape and take their tint from
-     navy instead of from white, so the three generations still read as three
-     weights. */
-  .ped{ position:relative; isolation:isolate; overflow:clip; }
-  .ped__plate{ position:relative; z-index:1; overflow-x:auto; }
-  /* The mark is measured against the height of the section rather than the
-     width of the page, so it stays the same size relative to the pedigree
-     whether that is four rows or eight, and the section clips whatever
-     hangs over the edge. */
-  .ped__mark{
-    position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:-11%; top:50%; transform:translateY(-50%);
-    height:126%; opacity:.05;
-    /* It stands taller than the section on purpose, so the section clips it.
-       Clipped alone that reads as a rectangle drawn on the page, so it fades
-       out at the top and the bottom instead of stopping. */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-  }
-  .ped__mark img{ height:100%; width:auto; display:block; }
-  /* On a narrow screen the pedigree scrolls sideways and fills the section
-     edge to edge, so there is no quiet ground left for a watermark to sit in
-     and it reads as clutter behind the names. It is a desktop grace note. */
-  @media (max-width: 900px){ .ped__mark{ display:none; } }
-  .ped__h{
-    margin:0 0 1.4rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05;
-    color:var(--color-ink);
-  }
-  .ped__h em{ font-style:italic; color:var(--color-gold); }
-  .ped__grid{
-    display:grid; grid-template-columns:repeat(4, minmax(150px, 1fr));
-    gap:.4rem; min-width:640px;
-  }
-  /* Three generations, three weights of the same warm ground: the parents
-     carry the full base-alt, the grandparents a little over half of it, the
-     great grandparents a trace. Mixing navy into ivory was tried first and
-     came out grey against a warm page. */
-  .ped__cell{
-    display:flex; align-items:center; min-width:0;
-    padding:.7rem .9rem; border-radius:10px;
-    background:color-mix(in srgb, var(--color-base-alt) 58%, var(--color-base));
-    font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
-    color:var(--color-ink);
-  }
-  /* The horse itself, and on a cross the space where one will be, keep the
-     gold: it is the accent of the section and the only cell that is not a
-     name already written down. */
-  .ped__cell--self, .ped__cell--next{
-    background:var(--color-gold); color:var(--color-navy); font-size:1.05rem;
-  }
-  .ped__cell--sire{ background:var(--color-base-alt); }
-  .ped__cell--third{ font-size:.82rem; color:var(--color-ink-soft);
-    background:color-mix(in srgb, var(--color-base-alt) 26%, var(--color-base)); }
-
-  /* The first cell of a cross's pedigree is not a horse, it is the space
-     where one will be, so it is not filled in like the others: no ground of
-     its own, the supplied mark behind the words, and the gold kept for the
-     type. */
-  .ped__cell--next{ justify-content:flex-start; font-family:var(--font-display); }
-  .ped__note{
-    margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft);
-  }
-
-  /* The remaining photographs of this horse. Two or more, or the section is
-     not drawn: a gallery of one is just a picture. */
-  /* ── the pictures ──────────────────────────────────────────────────────
-     A heading, then a run of frames of one height so the row reads as a row
-     rather than as a ragged edge, and any number of them: some horses have
-     one spare picture and one has five. Clicking opens it at full size
-     without leaving the page. */
-  .hgal__head, .hvid__head{ margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
-  .hgal__h, .hvid__h{
-    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-ink);
-  }
-  .hgal__h em, .hvid__h em{ font-style:italic; color:var(--color-gold); }
-  /* Six columns so a frame can be a third or a half of the row. A run that
-     does not divide by three used to leave a hole at the end; the leftovers
-     widen to fill their row instead. */
-  .hgal__grid{ display:grid; gap:clamp(.8rem,1.4vw,1.1rem); grid-template-columns:repeat(2, 1fr); }
-  @media (min-width:900px){
-    .hgal__grid{ grid-template-columns:repeat(6, 1fr); }
-    .hgal__f{ grid-column:span 2; }
-    .hgal__f--half{ grid-column:span 3; }
-  }
-  .hgal__f{
-    position:relative; border-radius:var(--plate-radius); overflow:hidden;
-    background:var(--color-navy-deep); aspect-ratio:4/3; display:block;
-    width:100%; padding:0; border:0; cursor:zoom-in;
-  }
-  .hgal__f img{ display:block; width:100%; height:100%; object-fit:cover;
-    transition:transform .7s var(--ease); }
-  .hgal__f:hover img{ transform:scale(1.04); }
-
-  /* ── the films ─────────────────────────────────────────────────────────
-     30 Aug: the same navy plate the sire and dam lines stand on, in the same
-     place on the page, and a slider once there is more than one. A film is a
-     dark thing to look at, so it belongs on the dark plate rather than on the
-     ivory ground with the photographs. */
-  .hvid__plate{
-    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep);
-  }
-  .hvid__head{ margin-bottom:clamp(1.1rem,2.2vw,1.6rem); }
-  .hvid__k{
-    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
-  }
-  .hvid__h{
-    margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-white);
-  }
-  .hvid__h em{ font-style:italic; color:var(--color-gold); }
-
-  /* One rail, scrolled rather than transformed: the browser keeps track of
-     where it is, a touch can swipe it, and it still works with the script
-     switched off. */
-  .hvid__rail{
-    display:grid; grid-auto-flow:column; grid-auto-columns:100%;
-    gap:clamp(1rem,2vw,1.6rem);
-    overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
-    scrollbar-width:none; -ms-overflow-style:none;
-  }
-  .hvid__rail::-webkit-scrollbar{ display:none; }
-  @media (min-width:900px){
-    /* Two at a time on a wide screen, one on a narrow one. A single film
-       fills the plate either way. */
-    .hvid__rail{ grid-auto-columns:calc(50% - (clamp(1rem,2vw,1.6rem) / 2)); }
-    .hvid__rail:has(.hvid__slide:only-child){ grid-auto-columns:100%; }
-  }
-  .hvid__slide{ scroll-snap-align:start; min-width:0; }
-  .hvid__btn{
-    position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer;
-    border-radius:var(--card-radius); overflow:hidden;
-    background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white));
-    aspect-ratio:16/9;
-  }
-  .hvid__btn img{ display:block; width:100%; height:100%; object-fit:cover;
-    transition:transform .7s var(--ease); }
-  .hvid__btn:hover img{ transform:scale(1.03); }
-  .hvid__veil{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),.06) 0%, rgba(var(--veil-rgb),.34) 100%); }
-  .hvid__play{
-    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
-    background:var(--color-gold); color:var(--color-navy);
-    box-shadow:0 12px 34px -12px rgba(var(--veil-rgb),.85);
-    transition:transform .35s var(--ease);
-  }
-  .hvid__btn:hover .hvid__play{ transform:translate(-50%,-50%) scale(1.08); }
-  .hvid__slide iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
-    border-radius:var(--card-radius); background:var(--color-navy-deep); }
-  .hvid__cap{ margin:.75rem 0 0; font-size:14px; line-height:1.55; color:rgba(255,255,255,.76); }
-  /* A film of the sire or the dam, on a page about the foal: said out loud
-     rather than left for the visitor to work out from the name. */
-  .hvid__whose{
-    display:inline-block; margin-right:.4rem; padding:.2em .6em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.14em;
-    text-transform:uppercase; vertical-align:.12em;
-  }
-
-  .hvid__bar[hidden]{ display:none; }
-  .hvid__bar{ display:flex; align-items:center; justify-content:space-between;
-    gap:1rem; margin-top:clamp(1.1rem,2.2vw,1.5rem); }
-  .hvid__dots{ display:flex; gap:.5rem; }
-  .hvid__dot{
-    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
-    background:var(--color-line-invert); transition:background .3s var(--ease), transform .3s var(--ease);
-  }
-  .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
-  .hvid__arrows{ display:flex; gap:.5rem; }
-  .hvid__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line-invert); background:transparent;
-    color:var(--color-white); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hvid__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hvid__arrow:disabled{ opacity:.32; cursor:default; }
-  .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
-
-  /* ── the lightbox ──────────────────────────────────────────────────────
-     One dialog for the whole page, opened with the picture that was clicked. */
-  .lb{ border:0; padding:0; background:transparent; max-width:none; max-height:none;
-    width:100%; height:100%; }
-  .lb::backdrop{ background:rgba(var(--veil-rgb),.92); }
-  .lb__in{ display:grid; place-items:center; width:100%; height:100%; padding:clamp(1rem,4vw,3rem); }
-  .lb img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block;
-    border-radius:var(--plate-radius); }
-  .lb__x{
-    position:absolute; top:clamp(1rem,3vw,2rem); right:clamp(1rem,3vw,2rem);
-    width:44px; height:44px; border-radius:50%; border:1px solid var(--color-line-invert);
-    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
-    font-size:20px; line-height:1; display:grid; place-items:center;
-  }
-  .lb__x:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .lb__nav{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:48px; height:48px; border-radius:50%; border:1px solid var(--color-line-invert);
-    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
-    font-size:20px; line-height:1; display:grid; place-items:center;
-  }
-  .lb__nav:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .lb__nav--prev{ left:clamp(.6rem,2vw,1.6rem); }
-  .lb__nav--next{ right:clamp(.6rem,2vw,1.6rem); }
-  @media (prefers-reduced-motion: reduce){
-    .hgal__f img, .hvid__btn img, .hvid__play, .hvid__dot{ transition:none; }
-    .hgal__f:hover img, .hvid__btn:hover img{ transform:none; }
-    .hvid__rail{ scroll-behavior:auto; }
-  }
-
-  /* More from the same group: the homepage card again, three of them. */
-  .hmore__head{
-    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
-    flex-wrap:wrap; margin-bottom:1.4rem;
-  }
-  .hmore__h{
-    margin:0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.4rem,1.6vw + .8rem,1.9rem); color:var(--color-ink);
-  }
-  .hmore__h em{ font-style:italic; color:var(--color-gold); }
-  .hmore__all{
-    font-family:var(--font-body); font-weight:700; font-size:11.5px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-navy);
-    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease);
-  }
-  .hmore__all:hover{ gap:.8rem; }
-  .hmore__all .a{ color:var(--color-gold); }
-  @media (min-width:900px){ .hmore .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
-
+  .c6__f input::placeholder{ color:var(--color-ink-soft); font-style:italic; opacity:.7; }
+  .c6__f input:focus{ outline:none; background:color-mix(in srgb, var(--color-gold) 16%, transparent); }
+  .c6__f--horse input{ color:var(--color-navy); font-style:italic; }
+  .c6__row{ display:flex; flex-direction:column; gap:.4rem; max-width:52ch; }
+  .c6__foot{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:1.4rem; margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid var(--color-line); }
+  .c6__people{ display:flex; flex-wrap:wrap; gap:.2rem 1.8rem; }
+  .c6__p{ border-top:0; padding:0; }
+  .c6__pv{ color:var(--color-ink); font-size:.95rem; }
 </style>
 </head>
 <body>
-  <header class="hd" id="site-header">
-    <div class="hd__row">
-      <div class="hd__start">
-        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
-        <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
-             mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Each of the four now has an archive of its
-             own, built from their site's own listings, so these go to
-             pages rather than to a section further down.
-             Results is gone: it was never on their list, and the news
-             lives in the footer where Mark put it. About went the same way
-             on 29 Aug: it was already in the footer's Navigate column, and
-             taking it off the bar buys the row the room it was short of. -->
-        <nav class="primary-nav" id="primary-nav" aria-label="Main">
-          <a href="/#top">Home</a>
-          <a href="/breeding-mares">Breeding mares</a>
-          <a href="/foals">Foals</a>
-          <a href="/embryos">Embryos</a>
-          <a href="/sport-horses">Sport horses</a>
-        </nav>
-      </div>
 
-      <a href="/#top" class="brand" aria-label="Stud Von Axe home">
-        <!-- Two marks, one per ground, which is what the two supplied files
-             are for. Over the hero the white one stands on the photograph
-             with no plate behind it; once the hero is behind the bar the
-             navy one takes over on ivory. Only one is ever visible, so the
-             second is hidden from screen readers rather than read twice. -->
-        <!-- TODO client-confirm: the white file Mark added on 29 Aug is
-             missing the V of VON. Checked against the source: the fault is
-             in the supplied artwork, not in the resize. Until a corrected
-             export arrives this keeps the white file that is complete.
-             Never repaired here: the mark is theirs. -->
-        <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
-             alt="Von Axe, breeding and horse trading" width="600" height="264">
-        <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
-             alt="" aria-hidden="true" width="520" height="244">
-      </a>
+<header class="d-head">
+  <p class="d-num">For Mark, to choose from</p>
+  <h1>Asking about <em>one horse</em>, six ways</h1>
+  <p>Every single page except the news gets its own contact section: the form, the four ways to reach
+  them, and the name of the horse already filled in. The "Ask about this…" buttons stop sending people
+  back to the homepage and land here instead.</p>
+  <p>All six on Hypnotic JT Z, and all six carry exactly the same parts, so the choice is only about the
+  shape. The name is in a field the visitor can still edit, because someone writing about two horses
+  should not have to fight it.</p>
+</header>
 
-      <div class="hd__end">
-        <div class="lang-switch" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
-          <span class="sep">/</span>
-          <button type="button">IT</button>
-          <span class="sep">/</span>
-          <span class="lang-soon" title="Coming later">FR</span>
-          <span class="sep">/</span>
-          <span class="lang-soon" title="Coming later">DE</span>
-        </div>
-        <a href="/#contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
-      </div>
-    </div>
-  </header>
+<div class="d-warn">
+  <b>One thing to decide before this goes live.</b> The form on the homepage does not send anything
+  today: it stops the submit and shows a thank you. Sixty pages of a form that quietly throws the
+  message away is sixty broken promises, so it needs somewhere to go. Three ways, cheapest first:
+  a <b>mailto:</b> link that opens the visitor's own mail app with everything filled in, no account and
+  no cost, but it fails on a phone without a mail app configured; a <b>form service</b> such as
+  Formspree or Web3Forms, a free tier and five minutes of setup, which mails it to studvonaxe@gmail.com;
+  or a small <b>function on Vercel</b> with a mail provider behind it, which is the tidiest and needs an
+  account and an API key. Say which and it is wired into whichever of the six you pick.
+</div>
 
-<main id="main">
+<main>
 
-  <section class="hp hp--hero">
-    
-    <div class="eh__win">
-      <img src="/assets/img/horses/bec-emerald-sam-1.jpg" alt="Bec Emerald Sam" fetchpriority="high">
-      <span class="eh__veil" aria-hidden="true"></span>
-      <a class="eh__back" href="/sport-horses"><span aria-hidden="true">&larr;</span> Sport horses</a>
-    </div>
-    <div class="wrap hp__grid">
-      <div class="hp__col">
-        <div class="hp__pic"><img src="/assets/img/horses/bec-emerald-sam-2.jpg" alt="Bec Emerald Sam" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></div>
-      </div>
-      <div class="hp__col">
-        <div class="hp__tray">
-          <h1 class="hp__h">Bec Emerald Sam</h1>
-          <p class="hp__cross">Emerald van't Ruytershof x Darco x Quidam Junior I</p>
-          
-          <div class="hp__facts">
-            <div><span class="hp__k">Born</span><span class="hp__v">2015</span></div>
-          <div><span class="hp__k">Sex</span><span class="hp__v">Gelding</span></div>
-          <div><span class="hp__k">Studbook</span><span class="hp__v">Irish Breed</span></div>
-          <div><span class="hp__k">Height</span><span class="hp__v">172 cm</span></div>
-          <div><span class="hp__k">Status</span><span class="hp__v">Sold to France</span></div>
+<section class="d-sec" id="c1">
+  <div class="d-lab">
+    <p class="d-num">Variation one</p>
+    <h2>The split plate</h2>
+    <p class="d-note">The homepage contact box, narrowed to one horse: the invitation and the four ways to reach them on the navy half, the form on the ivory half. It is the shape the site already has, so it needs no explaining, and the name of the horse sits in the heading as well as in the field.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c1">
+        <div class="wrap">
+          <div class="c1__box">
+            <div class="c1__side">
+              <div>
+                <p class="plaque">Ask about her</p>
+                <h2 class="c1__h">Ask the people who <em>bred her</em>.</h2>
+                <p class="c1__lead">No agent and no auction ring. You speak to the two people who chose the cross.</p>
+              </div>
+              <div class="c1__people">
+                <a class="c1__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="c1__pk">WhatsApp</span><span class="c1__pv">Fastest reply</span></a>
+            <a class="c1__p" href="tel:+393495918565">
+              <span class="c1__pk">Elisabetta</span><span class="c1__pv">+39 349 591 8565</span></a>
+            <a class="c1__p" href="tel:+393483953433">
+              <span class="c1__pk">Adriano</span><span class="c1__pv">+39 348 395 3433</span></a>
+            <a class="c1__p" href="mailto:studvonaxe@gmail.com">
+              <span class="c1__pk">By mail</span><span class="c1__pv">studvonaxe@gmail.com</span></a>
+              </div>
+            </div>
+            <form class="c1__form">
+              
+            <input type="hidden" name="horse" value="Hypnotic JT Z">
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c1-name">Your name</label>
+                <input id="c1-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              </div>
+              <div class="cf__row">
+                <label for="c1-email">Email</label>
+                <input id="c1-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c1-tel">Telephone <span class="cf__opt">optional</span></label>
+                <input id="c1-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              </div>
+              <div class="cf__row">
+                <label for="c1-about">About</label>
+                <input id="c1-about" name="about" type="text" value="Hypnotic JT Z">
+              </div>
+            </div>
+            <div class="cf__row">
+              <label for="c1-msg">Your message</label>
+              <textarea id="c1-msg" name="message" rows="4" required
+                placeholder="What would you like to know about Hypnotic JT Z?"></textarea>
+            </div>
+              <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+            </form>
           </div>
-          <div class="hp__acts">
-            <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>
+        </div>
+      </section></div>
+</section>
+
+<section class="d-sec" id="c2">
+  <div class="d-lab">
+    <p class="d-num">Variation two</p>
+    <h2>Her picture, beside the form</h2>
+    <p class="d-note">The horse is in the room: her photograph stands to the left of the form at the same height, with her name on a gold label over it, so there is no doubt which horse the message is about. The four ways to reach them run under the picture rather than beside the fields.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c2">
+        <div class="wrap">
+          <div class="c2__grid">
+            <div class="c2__col">
+              <div class="c2__win">
+                <img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z">
+                <span class="c2__veil" aria-hidden="true"></span>
+                <span class="c2__tag">Hypnotic JT Z</span>
+              </div>
+              <div class="c2__people">
+                <a class="c2__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="c2__pk">WhatsApp</span><span class="c2__pv">Fastest reply</span></a>
+            <a class="c2__p" href="tel:+393495918565">
+              <span class="c2__pk">Elisabetta</span><span class="c2__pv">+39 349 591 8565</span></a>
+            <a class="c2__p" href="tel:+393483953433">
+              <span class="c2__pk">Adriano</span><span class="c2__pv">+39 348 395 3433</span></a>
+            <a class="c2__p" href="mailto:studvonaxe@gmail.com">
+              <span class="c2__pk">By mail</span><span class="c2__pv">studvonaxe@gmail.com</span></a>
+              </div>
+            </div>
+            <form class="c2__form">
+              <p class="plaque">Ask about her</p>
+              <h2 class="c2__h">Write to us about <em>Hypnotic JT Z</em></h2>
+              
+            <input type="hidden" name="horse" value="Hypnotic JT Z">
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c2-name">Your name</label>
+                <input id="c2-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              </div>
+              <div class="cf__row">
+                <label for="c2-email">Email</label>
+                <input id="c2-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c2-tel">Telephone <span class="cf__opt">optional</span></label>
+                <input id="c2-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              </div>
+              <div class="cf__row">
+                <label for="c2-about">About</label>
+                <input id="c2-about" name="about" type="text" value="Hypnotic JT Z">
+              </div>
+            </div>
+            <div class="cf__row">
+              <label for="c2-msg">Your message</label>
+              <textarea id="c2-msg" name="message" rows="4" required
+                placeholder="What would you like to know about Hypnotic JT Z?"></textarea>
+            </div>
+              <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+            </form>
+          </div>
+        </div>
+      </section></div>
+</section>
+
+<section class="d-sec" id="c3">
+  <div class="d-lab">
+    <p class="d-num">Variation three</p>
+    <h2>One quiet column</h2>
+    <p class="d-note">Nothing beside it and nothing behind it: a narrow column on the page ground, the form in the middle of it, and the four ways to reach them as one line underneath. The lightest of the six, and the one that reads best at the end of a long page where the eye is tired.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c3">
+        <div class="c3__in">
+          <p class="plaque">Ask about her</p>
+          <h2 class="c3__h">What would you like to know about <em>Hypnotic JT Z</em>?</h2>
+          <p class="c3__lead">Her family, what the line has produced, or what it takes to bring her home. We answer plainly.</p>
+          <form class="c3__form">
             
+            <input type="hidden" name="horse" value="Hypnotic JT Z">
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c3-name">Your name</label>
+                <input id="c3-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              </div>
+              <div class="cf__row">
+                <label for="c3-email">Email</label>
+                <input id="c3-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c3-tel">Telephone <span class="cf__opt">optional</span></label>
+                <input id="c3-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              </div>
+              <div class="cf__row">
+                <label for="c3-about">About</label>
+                <input id="c3-about" name="about" type="text" value="Hypnotic JT Z">
+              </div>
+            </div>
+            <div class="cf__row">
+              <label for="c3-msg">Your message</label>
+              <textarea id="c3-msg" name="message" rows="4" required
+                placeholder="What would you like to know about Hypnotic JT Z?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+          </form>
+          <div class="c3__people">
+            <a class="c3__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="c3__pk">WhatsApp</span><span class="c3__pv">Fastest reply</span></a>
+            <a class="c3__p" href="tel:+393495918565">
+              <span class="c3__pk">Elisabetta</span><span class="c3__pv">+39 349 591 8565</span></a>
+            <a class="c3__p" href="tel:+393483953433">
+              <span class="c3__pk">Adriano</span><span class="c3__pv">+39 348 395 3433</span></a>
+            <a class="c3__p" href="mailto:studvonaxe@gmail.com">
+              <span class="c3__pk">By mail</span><span class="c3__pv">studvonaxe@gmail.com</span></a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section></div>
+</section>
 
-  <section class="ped">
-    <div class="ped__mark" aria-hidden="true">
-      <img src="/assets/logo/icon-onlight.png" data-ground="light" alt="">
-    </div>
-    <div class="wrap">
-      <div class="ped__plate">
-        <h2 class="ped__h">Three generations <em>deep</em></h2>
-        <div class="ped__grid">
-          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Bec Emerald Sam</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Emerald van’t Ruytershof</div><div class="ped__cell " style="grid-row: span 2">Diamant de Semilly</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Le tot de Semilly</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Venise des Cresles</div><div class="ped__cell " style="grid-row: span 2">Carthina Z</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Carthago</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Tanagra s van het Darof</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Darco barocco</div><div class="ped__cell " style="grid-row: span 2">Darco</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Lugano van la roche</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Ocoucha</div><div class="ped__cell " style="grid-row: span 2">Quidam Diamond</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Quidam Junior</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Legendary Diamond</div>
+<section class="d-sec" id="c4">
+  <div class="d-lab">
+    <p class="d-num">Variation four</p>
+    <h2>The two of them, first</h2>
+    <p class="d-note">Elisabetta and Adriano are the reason the site says no agent and no auction ring, so they go first and at full size, each with their own number. The form sits under them across the whole width. It is the warmest of the six and the one that makes the smallest promise about a reply time.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c4">
+        <div class="wrap">
+          <div class="c4__plate">
+            <div class="c4__head">
+              <p class="plaque">Ask about her</p>
+              <h2 class="c4__h">Two people, <em>one answer</em></h2>
+            </div>
+            <div class="c4__cards">
+              <a class="c4__card" href="tel:+393495918565">
+                <span class="c4__init" aria-hidden="true">E</span>
+                <span class="c4__cn">Elisabetta</span>
+                <span class="c4__cv">+39 349 591 8565</span>
+              </a>
+              <a class="c4__card" href="tel:+393483953433">
+                <span class="c4__init" aria-hidden="true">A</span>
+                <span class="c4__cn">Adriano</span>
+                <span class="c4__cv">+39 348 395 3433</span>
+              </a>
+              <a class="c4__card c4__card--wa" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+                <span class="c4__init" aria-hidden="true">&#9993;</span>
+                <span class="c4__cn">WhatsApp</span>
+                <span class="c4__cv">Fastest reply</span>
+              </a>
+            </div>
+            <form class="c4__form">
+              
+            <input type="hidden" name="horse" value="Hypnotic JT Z">
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c4-name">Your name</label>
+                <input id="c4-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              </div>
+              <div class="cf__row">
+                <label for="c4-email">Email</label>
+                <input id="c4-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="cf__pair">
+              <div class="cf__row">
+                <label for="c4-tel">Telephone <span class="cf__opt">optional</span></label>
+                <input id="c4-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              </div>
+              <div class="cf__row">
+                <label for="c4-about">About</label>
+                <input id="c4-about" name="about" type="text" value="Hypnotic JT Z">
+              </div>
+            </div>
+            <div class="cf__row">
+              <label for="c4-msg">Your message</label>
+              <textarea id="c4-msg" name="message" rows="4" required
+                placeholder="What would you like to know about Hypnotic JT Z?"></textarea>
+            </div>
+              <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+            </form>
+          </div>
         </div>
-        
-        
-      </div>
-    </div>
-  </section>
+      </section></div>
+</section>
 
-  <section class="hvid">
-    <div class="wrap">
-      <div class="hvid__plate">
-        <div class="hvid__head">
-          <p class="hvid__k">two films</p>
-          <h2 class="hvid__h">Bec Emerald Sam <em>in motion</em></h2>
-        </div>
-        <div class="hvid__rail" tabindex="0" aria-label="Films, scroll sideways">
-          <div class="hvid__slide">
-            <button type="button" class="hvid__btn" data-yt="8O9ctRB5cSk"
-                    aria-label="Play film 1 of 2">
-              <img src="/assets/img/video/8O9ctRB5cSk.jpg" alt="" loading="lazy">
-              <span class="hvid__veil" aria-hidden="true"></span>
-              <span class="hvid__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-              </span>
-            </button>
+<section class="d-sec" id="c5">
+  <div class="d-lab">
+    <p class="d-num">Variation five</p>
+    <h2>On her photograph</h2>
+    <p class="d-note">Her picture runs the full width with the navy veil over it, and the form sits on a plate on top, the way the hero hands over to the tray. The most striking of the six and the heaviest: it asks for a photograph wide enough to survive the crop, which ten of the sixty do not have.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c5">
+        <div class="c5__bg" aria-hidden="true"><img src="/assets/img/horses/hypnotic-jt-z-2.jpg" alt=""></div>
+        <span class="c5__veil" aria-hidden="true"></span>
+        <div class="wrap c5__in">
+          <div class="c5__type">
+            <p class="plaque">Ask about her</p>
+            <h2 class="c5__h">Interested in <em>Hypnotic JT Z</em>?</h2>
+            <p class="c5__lead">Ask us anything about the family behind her, what the line has produced,
+            or what it takes to bring her home.</p>
+            <div class="c5__people">
+              <a class="c5__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="c5__pk">WhatsApp</span><span class="c5__pv">Fastest reply</span></a>
+            <a class="c5__p" href="tel:+393495918565">
+              <span class="c5__pk">Elisabetta</span><span class="c5__pv">+39 349 591 8565</span></a>
+            <a class="c5__p" href="tel:+393483953433">
+              <span class="c5__pk">Adriano</span><span class="c5__pv">+39 348 395 3433</span></a>
+            <a class="c5__p" href="mailto:studvonaxe@gmail.com">
+              <span class="c5__pk">By mail</span><span class="c5__pv">studvonaxe@gmail.com</span></a>
+            </div>
+          </div>
+          <form class="c5__form">
             
-          </div>
-          <div class="hvid__slide">
-            <button type="button" class="hvid__btn" data-yt="9i7nD26bCqQ"
-                    aria-label="Play film 2 of 2">
-              <img src="/assets/img/video/9i7nD26bCqQ.jpg" alt="" loading="lazy">
-              <span class="hvid__veil" aria-hidden="true"></span>
-              <span class="hvid__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-              </span>
-            </button>
-            
-          </div>
+            <input type="hidden" name="horse" value="Hypnotic JT Z">
+            <div class="cf__pair is-stacked">
+              <div class="cf__row">
+                <label for="c5-name">Your name</label>
+                <input id="c5-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              </div>
+              <div class="cf__row">
+                <label for="c5-email">Email</label>
+                <input id="c5-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="cf__pair is-stacked">
+              <div class="cf__row">
+                <label for="c5-tel">Telephone <span class="cf__opt">optional</span></label>
+                <input id="c5-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              </div>
+              <div class="cf__row">
+                <label for="c5-about">About</label>
+                <input id="c5-about" name="about" type="text" value="Hypnotic JT Z">
+              </div>
+            </div>
+            <div class="cf__row">
+              <label for="c5-msg">Your message</label>
+              <textarea id="c5-msg" name="message" rows="4" required
+                placeholder="What would you like to know about Hypnotic JT Z?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+          </form>
         </div>
-        <div class="hvid__bar">
-          <div class="hvid__dots" role="tablist" aria-label="Films">
-            <button type="button" class="hvid__dot" role="tab" data-to="0"
-                    aria-label="Film 1" aria-selected="true"></button>
-            <button type="button" class="hvid__dot" role="tab" data-to="1"
-                    aria-label="Film 2" aria-selected="false"></button>
-          </div>
-          <div class="hvid__arrows">
-            <button type="button" class="hvid__arrow" data-step="-1" aria-label="Previous film">&#8592;</button>
-            <button type="button" class="hvid__arrow" data-step="1" aria-label="Next film">&#8594;</button>
-          </div>
-        </div>
-        <p class="hvid__note">The player loads only when you press play.</p>
-      </div>
-    </div>
-  </section>
+      </section></div>
+</section>
 
-  <section class="hgal">
-    <div class="wrap">
-      <div class="hgal__head">
-        <p class="plaque">One more picture</p>
-        <h2 class="hgal__h">More of <em>Bec Emerald Sam</em></h2>
-      </div>
-      <div class="hgal__grid">
-        <button type="button" class="hgal__f hgal__f--half" data-full="/assets/img/horses/bec-emerald-sam-3.jpg"
-                aria-label="Open picture 1 of 1 at full size">
-          <img src="/assets/img/horses/bec-emerald-sam-3.jpg" alt="Bec Emerald Sam" loading="lazy">
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="hmore">
-    <div class="wrap">
-      <div class="hmore__head">
-        <h2 class="hmore__h">More <em>horses</em></h2>
-        <a class="hmore__all" href="/sport-horses">All horses <span class="a" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/maralore"><span class="hz__win"><img src="/assets/img/horses/maralore-1.jpg" alt="Maralore" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Maralore</span><span class="hz__meta">2017 · Mare · Kannan</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Domino Van den Haze Z</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold">Sold</span></span></span><span class="hz__body"><span class="hz__name">Diamecho Von Axe Z</span><span class="hz__meta">2020 · Gelding · Diamant de Semilly</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="abcta">
-    <div class="wrap">
-      <div class="pcta">
-        <div class="pcta__bg" aria-hidden="true">
-          <img src="/assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
+<section class="d-sec" id="c6">
+  <div class="d-lab">
+    <p class="d-num">Variation six</p>
+    <h2>The sentence</h2>
+    <p class="d-note">The form written as the message itself: the fields sit inside a sentence, so filling it in reads as writing rather than as completing a record. Their own words are "honesty and absolute transparency", and this is the shape that sounds least like a form. The riskiest of the six, and the one that would be theirs alone.</p>
+  </div>
+  <div class="d-frame">
+      <section class="c6">
+        <div class="wrap">
+          <div class="c6__plate">
+            <p class="plaque">Ask about her</p>
+            <form class="c6__form">
+              <input type="hidden" name="horse" value="Hypnotic JT Z">
+              <p class="c6__say">
+                Hello, my name is
+                <span class="c6__f"><label class="visually-hidden" for="c6-name">Your name</label>
+                  <input id="c6-name" name="name" type="text" required autocomplete="name" size="14" placeholder="your name"></span>
+                and I would like to know more about
+                <span class="c6__f c6__f--horse"><label class="visually-hidden" for="c6-about">About</label>
+                  <input id="c6-about" name="about" type="text" size="20" value="Hypnotic JT Z"></span>.
+                You can reach me at
+                <span class="c6__f"><label class="visually-hidden" for="c6-email">Email</label>
+                  <input id="c6-email" name="email" type="email" required autocomplete="email" size="20" placeholder="you@example.com"></span>
+                or on
+                <span class="c6__f"><label class="visually-hidden" for="c6-tel">Telephone</label>
+                  <input id="c6-tel" name="tel" type="tel" autocomplete="tel" size="14" placeholder="+39 …"></span>.
+              </p>
+              <div class="c6__row">
+                <label for="c6-msg">Anything else you want to tell us</label>
+                <textarea id="c6-msg" name="message" rows="3" placeholder="Optional."></textarea>
+              </div>
+              <div class="c6__foot">
+                <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+                <div class="c6__people">
+                  <a class="c6__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+              <span class="c6__pk">WhatsApp</span><span class="c6__pv">Fastest reply</span></a>
+            <a class="c6__p" href="tel:+393495918565">
+              <span class="c6__pk">Elisabetta</span><span class="c6__pv">+39 349 591 8565</span></a>
+            <a class="c6__p" href="tel:+393483953433">
+              <span class="c6__pk">Adriano</span><span class="c6__pv">+39 348 395 3433</span></a>
+            <a class="c6__p" href="mailto:studvonaxe@gmail.com">
+              <span class="c6__pk">By mail</span><span class="c6__pv">studvonaxe@gmail.com</span></a>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="pcta__veil" aria-hidden="true"></div>
-        <div>
-          <p class="pcta__h">Interested in <em>Bec Emerald Sam</em>?</p>
-          <p class="pcta__d">Ask us anything about the family behind this one, what the line has
-          produced, or what it takes to bring it home. We answer plainly.</p>
-        </div>
-        <div class="pcta__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
-          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
-             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+      </section></div>
+</section>
 </main>
-<footer class="site-footer">
-  <div class="footer-ghost" aria-hidden="true">
-    <img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="">
-  </div>
-  <div class="footer-top">
-    <div class="wrap footer-grid">
-      <div class="footer-about">
-        <a class="footer-logo" href="/#top" aria-label="Stud Von Axe home">
-          <img src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
-               alt="Von Axe, breeding and horse trading" width="190" height="84">
-        </a>
-        <p>Sport horse breeding between Desenzano del Garda, Italy, and Lanaken, Belgium.</p>
-        <div class="footer-pill" role="group" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
-          <button type="button">IT</button>
-          <span class="lang-soon" title="Coming later">FR</span>
-          <span class="lang-soon" title="Coming later">DE</span>
-        </div>
-      </div>
 
-      <div class="footer-col">
-        <h2 class="footer-h">Navigate</h2>
-        <ul>
-          <li><a href="/breeding-mares">Breeding mares</a></li>
-          <li><a href="/foals">Foals</a></li>
-          <li><a href="/embryos">Embryos</a></li>
-          <li><a href="/sport-horses">Sport horses</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h2 class="footer-h">Contact</h2>
-        <ul>
-          <li><a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a></li>
-          <li><a href="tel:+393495918565">Elisabetta &#9743; +39 349 591 8565</a></li>
-          <li><a href="tel:+393483953433">Adriano &#9743; +39 348 395 3433</a></li>
-          <li style="opacity:.85; font-size:14px;">Desenzano del Garda, Italy<br>Lanaken, Belgium</li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h2 class="footer-h">Follow</h2>
-        <ul class="footer-socials" style="flex-direction:column; gap:.7rem;">
-          <li><a href="https://instagram.com/studvonaxe" target="_blank" rel="noopener">Instagram &#8599;</a></li>
-          <li><a href="https://facebook.com/StudVonAxe" target="_blank" rel="noopener">Facebook &#8599;</a></li>
-          <li><a href="https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg" target="_blank" rel="noopener">YouTube &#8599;</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap footer-bottom">
-    <p class="footer-copy">&#169; 2026 Stud Von Axe. All rights reserved.
-      <span class="footer-made">Made by <a href="https://equimarketing.com" target="_blank" rel="noopener">EquiMarketing</a></span></p>
-    <div class="footer-partners">
-      <span>Listed on</span>
-      <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex &#8599;</a>
-      <span>Hippomundo (logo to follow)</span>
-    </div>
-  </div>
+<footer class="d-head" style="padding-bottom:4rem">
+  <p style="font-size:14px">Say a number and it goes on all sixty single pages, with the buttons
+  pointed at it.</p>
 </footer>
-<script>
-(function(){
-  var hd = document.querySelector('.hd');
-  var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero');
-  if(hd && row && hero){
-    var onScroll = function(){
-      hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);
-    };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll);
-    onScroll();
-  }
-  var toggle = document.getElementById('nav-toggle');
-  var nav = document.getElementById('primary-nav');
-  if(toggle && nav){
-    toggle.addEventListener('click', function(){
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-    nav.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerHTML = '&#9776;';
-      });
-    });
-  }
-})();
-</script>
-<script>
-/* Three behaviours, three closures. They shared one scope at first, where the
-   slider's at() and the lightbox's at counter were the same name: hoisting
-   turned the function into a number and the arrows did nothing. Nothing here
-   needs to see anything there. */
-(function(){
-  var films = document.querySelectorAll('.hvid__btn');
-  for (var i = 0; i < films.length; i++) films[i].addEventListener('click', function(){
-    var id = this.getAttribute('data-yt');
-    var frame = document.createElement('iframe');
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-    frame.title = this.getAttribute('aria-label') || 'Film';
-    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
-    frame.allowFullscreen = true;
-    this.parentNode.replaceChild(frame, this);
-  });
-})();
 
-(function(){
-  /* The film slider. The rail is a scroll container, so this only nudges it
-     and reads back where it landed: no position is kept in a variable that
-     could disagree with what is on the screen after a swipe. */
-  var rail = document.querySelector('.hvid__rail');
-  var bar = document.querySelector('.hvid__bar');
-  if (rail && bar) {
-    var slides = [].slice.call(rail.children);
-    var dots = [].slice.call(bar.querySelectorAll('.hvid__dot'));
-    var arrows = [].slice.call(bar.querySelectorAll('.hvid__arrow'));
-    var at = function(){
-      var best = 0, near = Infinity, left = rail.scrollLeft;
-      for (var n = 0; n < slides.length; n++) {
-        var d = Math.abs(slides[n].offsetLeft - rail.offsetLeft - left);
-        if (d < near) { near = d; best = n; }
-      }
-      return best;
-    };
-    /* How far the rail can actually go. On a wide plate two films are side by
-       side, so with four films the last reachable position is the third, not
-       the fourth: an arrow that stays lit with nowhere to go, and a dot that
-       can never light up, are both lies about the same thing. */
-    var last = function(){
-      var max = rail.scrollWidth - rail.clientWidth, best = 0;
-      for (var n = 0; n < slides.length; n++)
-        if (slides[n].offsetLeft - rail.offsetLeft <= max + 1) best = n;
-      return best;
-    };
-    /* Painted from the index we are going to rather than from the scroll
-       position we are at: a smooth scroll has not arrived yet when the click
-       is handled, and the scroll event that would correct it does not fire
-       everywhere. The event below still refreshes this after a swipe. */
-    var paint = function(n){
-      var end = last();
-      /* Two films on a wide plate are both already in view: one dot that
-         cannot move and two arrows that cannot go anywhere. The whole bar
-         goes away until the rail is actually longer than the plate, which
-         on a phone it always is. */
-      bar.hidden = end === 0;
-      if (end === 0) return;
-      if (n == null) n = at();
-      for (var i = 0; i < dots.length; i++) {
-        dots[i].hidden = i > end;
-        dots[i].setAttribute('aria-selected', i === n ? 'true' : 'false');
-      }
-      arrows[0].disabled = n <= 0;
-      arrows[1].disabled = n >= end;
-    };
-    var go = function(n){
-      n = Math.max(0, Math.min(last(), n));
-      rail.scrollLeft = slides[n].offsetLeft - rail.offsetLeft;
-      paint(n);
-    };
-    for (var a = 0; a < arrows.length; a++) (function(btn){
-      btn.addEventListener('click', function(){ go(at() + Number(btn.getAttribute('data-step'))); });
-    })(arrows[a]);
-    for (var b = 0; b < dots.length; b++) (function(btn){
-      btn.addEventListener('click', function(){ go(Number(btn.getAttribute('data-to'))); });
-    })(dots[b]);
-    rail.addEventListener('scroll', function(){ paint(); }, { passive: true });
-    addEventListener('resize', function(){ paint(); });
-    paint();
-  }
-})();
-
-(function(){
-  var shots = [].slice.call(document.querySelectorAll('.hgal__f'));
-  if (!shots.length) return;
-  var dlg = document.createElement('dialog');
-  dlg.className = 'lb';
-  dlg.innerHTML = '<div class="lb__in"><img alt=""></div>' +
-    '<button class="lb__x" type="button" aria-label="Close">&times;</button>' +
-    (shots.length > 1
-      ? '<button class="lb__nav lb__nav--prev" type="button" aria-label="Previous picture">&#8592;</button>' +
-        '<button class="lb__nav lb__nav--next" type="button" aria-label="Next picture">&#8594;</button>'
-      : '');
-  document.body.appendChild(dlg);
-  var img = dlg.querySelector('img'), at = 0;
-  function show(n){
-    at = (n + shots.length) % shots.length;
-    img.src = shots[at].getAttribute('data-full');
-    img.alt = shots[at].querySelector('img').alt;
-  }
-  for (var j = 0; j < shots.length; j++) (function(n){
-    shots[n].addEventListener('click', function(){ show(n); dlg.showModal(); });
-  })(j);
-  dlg.querySelector('.lb__x').addEventListener('click', function(){ dlg.close(); });
-  var prev = dlg.querySelector('.lb__nav--prev'), next = dlg.querySelector('.lb__nav--next');
-  if (prev) prev.addEventListener('click', function(){ show(at - 1); });
-  if (next) next.addEventListener('click', function(){ show(at + 1); });
-  dlg.addEventListener('click', function(e){ if (e.target === dlg || e.target.className === 'lb__in') dlg.close(); });
-  dlg.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowLeft' && prev) show(at - 1);
-    if (e.key === 'ArrowRight' && next) show(at + 1);
-  });
-})();
-</script>
 </body>
 </html>

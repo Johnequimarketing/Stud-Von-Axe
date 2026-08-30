@@ -27,6 +27,7 @@ cp "$root/horses-home.js" "$here/horses-home.js"
 cp "$root/04-embryo-cards.html" "$here/04-embryo-cards.html"
 cp "$root/05-embryo-lines.html" "$here/05-embryo-lines.html"
 cp "$root/06-embryo-head.html" "$here/06-embryo-head.html"
+cp "$root/07-horse-contact.html" "$here/07-horse-contact.html"
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"
@@ -56,6 +57,7 @@ while IFS= read -r ref; do
     exit 1
   fi
 done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
+  "$root/07-horse-contact.html" \
   "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
   | grep -oE 'assets/(img/horses|img/video|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"

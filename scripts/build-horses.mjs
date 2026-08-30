@@ -96,34 +96,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
-  /* ── the status seam, on the foal cards ────────────────────────────────
-     The label keeps its place at the top left; what is new is the ground
-     behind it and the line that carries the eye across the frame. Available
-     takes the gold, because it is the one that is an invitation. Sold keeps
-     the darker glass it already had, and a quieter line: it is a fact about
-     the horse, not an offer, and it should not shout louder than the ones
-     that can still be bought. */
-  .hz__seam{
-    position:absolute; z-index:2; top:12px; left:12px; right:12px;
-    display:flex; align-items:center; gap:.7rem; pointer-events:none;
-  }
-  .hz__seam::after{
-    content:""; flex:1 1 auto; height:1px;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent);
-  }
-  .hz__seam--sold::after{ background:rgba(255,255,255,.28); }
-  /* The tag inside a seam is placed by the seam, not by itself. */
-  .hz__seam .hz__tag{ position:static; flex:none; }
-  .hz__seam .hz__tag:not(.hz__tag--sold){
-    background:var(--color-gold); color:var(--color-navy);
-    -webkit-backdrop-filter:none; backdrop-filter:none;
-    box-shadow:none;
-  }
-  /* Their dot is gold with a gold halo; on a gold ground both disappear. */
-  .hz__seam .hz__tag:not(.hz__tag--sold)::before{
-    background:var(--color-navy); box-shadow:none;
-  }
-
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
      .hz__chip, so an archive filters the way the homepage section already
@@ -772,11 +744,9 @@ const card = (horse, group, full) => {
   /* The status label the way the embryo cards wear theirs: the accent colour
      behind the word and a hairline running off it to the right. Kept at the
      top of the frame here rather than on the seam under it, because these
-     cards have a photograph the whole way down. Trialled on the foals only,
-     asked for on 30 Aug. */
-  const tag = group.dir === 'foals'
-    ? `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${label}</span>`
-    : label;
+     cards have a photograph the whole way down. Trialled on the foals on
+     30 Aug and taken to all three archives the same day. */
+  const tag = `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${label}</span>`;
   const win = horse.photos.length
     ? `<span class="hz__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">${tag}</span>`
     : `<span class="hz__win typo"><p>${esc(theirWords(horse.genetics || horse.tagline || ''))}</p>${tag}</span>`;
