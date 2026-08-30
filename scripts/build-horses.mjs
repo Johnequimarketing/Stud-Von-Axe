@@ -96,11 +96,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
 
 
-  /* A stand-in says what it is, in words as well as in the picture. */
-  .hgal__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
-    color:var(--color-ink-soft); }
-  .hvid__stand{ margin:.7rem 0 0; max-width:62ch; font-size:14.5px; line-height:1.6;
-    color:rgba(255,255,255,.66); }
   /* Nothing to enlarge and nothing to play: neither is a button. */
   .hgal__f--stand{ cursor:default; }
   .hgal__f--stand:hover img{ transform:none; }
@@ -1103,8 +1098,8 @@ ${facts.map(([k, v, url]) => `          <div><span class="eh__k">${esc(k)}</span
 
 ${pedigreeSection(horse)}
 ${linesSection(horse, dam, sire, damName)}
-${moreSection(horse, group, list)}
 ${contactSection(horse)}
+${moreSection(horse, group, list)}
 `;
 };
 
@@ -1375,9 +1370,6 @@ const videoSection = (horse) => {
         <div class="hvid__head">
           <p class="hvid__k">Placeholder</p>
           <h2 class="hvid__h">${esc(name)} <em>in motion</em></h2>
-          <p class="hvid__stand">This is how the film section looks once there is film. Nothing here is
-          ${esc(name)}: no film of ${esc(name)} is on their site. Send a YouTube link and it goes
-          straight in, and the section disappears entirely if there is never one.</p>
         </div>
         <div class="hvid__rail">
           <div class="hvid__slide">
@@ -1535,9 +1527,7 @@ const gallerySection = (horse) => {
         <h2 class="hgal__h">${stand
           ? `More pictures of <em>${esc(name)}</em>`
           : `More of <em>${esc(name)}</em>`}</h2>
-        ${stand ? `<p class="hgal__stand">This is how the gallery looks once there are pictures.
-          These three are stand-ins, not ${esc(name)}: we have only one photograph of ${
-          horse.photos.length ? 'this horse' : 'this horse at all'}. Send us more and they go straight in.</p>` : ''}
+
       </div>
       <div class="hgal__grid">
 ${rest.map((src, i) => {
@@ -1721,18 +1711,24 @@ ${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h) : card(h
 const contactSection = (horse) => {
   const n = horseName(horse.name);
   const cross = horse.category === 'embryo';
-  const her = horse.sex && /femmina|mare|filly/i.test(horse.sex) ? 'her' : 'him';
-  const it = cross ? 'this cross' : her;
+  /* The heading was "Ask the people who bred her", lifted from the homepage.
+     It is not true on most of these pages: seventeen of the twenty four mares
+     and sport horses do not carry Von Axe or SVA in their name, which is to
+     say they were bought rather than bred here. The same goes for the line
+     under it, which said the visitor is speaking to the two people who chose
+     the cross. What is true of every horse on the site is that there is no
+     agent between them and the owners, so that is what it says now, with the
+     horse's own name doing the work the claim was doing. */
   return `
   <section class="ask" id="ask">
     <div class="wrap">
       <div class="ask__box">
         <div class="ask__side">
           <div>
-            <p class="plaque">Ask about ${cross ? 'this cross' : n}</p>
-            <h2 class="ask__h">Ask the people who <em>${cross ? 'made it' : 'bred ' + her}</em>.</h2>
-            <p class="ask__lead">No agent and no auction ring. You speak to the two people who chose
-            the cross.</p>
+            <p class="plaque">Get in touch</p>
+            <h2 class="ask__h">Ask us about <em>${esc(cross ? 'this cross' : n)}</em></h2>
+            <p class="ask__lead">No agent and no auction ring. You write to the two people who own the
+            stud, and one of them answers.</p>
           </div>
           <div class="ask__people">
             <a class="ask__p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
@@ -1943,8 +1939,8 @@ for (const key of Object.keys(GROUPS)) {
       /* The films sit straight after the pedigree, which is where a cross
          carries its sire and dam lines: same plate, same place. */
       : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
-        videoSection(horse) + gallerySection(horse) +
-        moreSection(horse, group, list) + contactSection(horse);
+        videoSection(horse) + gallerySection(horse) + contactSection(horse) +
+        moreSection(horse, group, list);
     writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
     written.horses++;
   }
