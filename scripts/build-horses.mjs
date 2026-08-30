@@ -87,7 +87,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      wherever they meet, and the first and last still clear the hero and the
      footer. */
   :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
-  .ped, .ln, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
+  .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
   .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
@@ -1407,7 +1407,7 @@ const introSection = (horse, group) => {
 
   const pic = colShot
     ? `<div class="hp__pic"><img src="/${colShot}" alt="${esc(name)}" loading="lazy">${tag}</div>${
-        col2 ? `\n        <div class="hp__pic hp__pic--second"><img src="/${col2}" alt="${esc(name)}" loading="lazy"></div>` : ''}`
+        col2 ? `\n        <div class="hp__pic"><img src="/${col2}" alt="${esc(name)}" loading="lazy"></div>` : ''}`
     : `<div class="hz__win typo hp__pic"><p>${esc(horse.genetics || '')}</p>${tag}</div>`;
 
   return `

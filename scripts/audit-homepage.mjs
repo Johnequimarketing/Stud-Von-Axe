@@ -155,6 +155,31 @@ for (const rel of files) {
       : pass('every border-radius is a token, a circle or a pill');
   }
 
+  /* ── every class in the markup has a rule ──────────────────────────────
+     A class written into the page and never styled is either dead markup or a
+     rule somebody forgot: the build checklist carried nine items marked s-done
+     against fifteen marked s-ok, the same word in two classes, one of which
+     had no colour at all and nobody noticed because "Done" still read as Done.
+     Utility and state names that CSS reaches through an attribute selector or
+     that only script touches are exempt by prefix. */
+  if (!isInternal || /checklist|feedback/.test(rel)) {
+    const EXEMPT = /^(is-|has-|no-|js-|visually-hidden$|wrap$|btn|a$|to$)/;
+    /* Read from the markup only. Inside a script, class="…" is a fragment of a
+       string being built, and splitting it on whitespace yields "+" and "===";
+       inside <code> it is a quotation, which is how the feedback log came to
+       be accused of using a class it was writing about. */
+    const markupOnly = noScript.replace(/<code>[\s\S]*?<\/code>/g, '');
+    const used = new Set();
+    for (const m of markupOnly.matchAll(/class="([^"]*)"/g))
+      for (const c of m[1].split(/\s+/)) if (c && !EXEMPT.test(c)) used.add(c);
+    const styled = new Set();
+    for (const m of cssBlocks.matchAll(/\.([A-Za-z][\w-]*)/g)) styled.add(m[1]);
+    const unstyled = [...used].filter((c) => !styled.has(c));
+    unstyled.length
+      ? fail(rel, `${unstyled.length} class(es) in the markup with no rule anywhere: ${unstyled.slice(0, 5).join(', ')}`)
+      : pass(`${used.size} class(es) in the markup, every one of them styled`);
+  }
+
   /* ── the words this market uses ────────────────────────────────────────
      30 Aug: "of alles wel equestrian minded is". These are the words that give
      a writer away as being outside the sport, and the Italian that should have

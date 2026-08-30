@@ -1119,6 +1119,34 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">A class in the markup with no rule behind it</p>
+    <p class="said">Asked on 30 Aug whether everything was complete, the answer came back with four
+    things nobody had seen. The build checklist carried nine items marked <code>s-done</code> against
+    fifteen marked <code>s-ok</code>, the same word in two classes, one of which had no colour at all
+    and read as Done anyway. The homepage had an <code>sv__head</code> that was never styled. The film
+    section was left out of the list that gives every section its spacing, so it sat closer to its
+    neighbours than any other section on the page. And a second picture had a modifier name and no
+    rule.</p>
+    <p class="check">The audit now checks that every class written into the markup is matched by a rule
+    somewhere in the stylesheet. Scripts and <code>&lt;code&gt;</code> are read as what they are, a
+    string being built and a quotation, rather than as markup. Proven by adding a modifier that does
+    not exist. It is a spelling check for a design system: a name with nothing behind it is either dead
+    or a rule somebody forgot to write.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A link may not promise a page and deliver a form</p>
+    <p class="said">Two buttons on the homepage, "See all horses" and "See the foals", both went to
+    the contact section. They were written before the archives existed, when the form was the only
+    place to send anybody, and stayed pointing there after the pages they name were built.</p>
+    <p class="check">The audit checks that an anchor lands on a real id, which they did, so nothing
+    caught it. When a page is built, search for the links that were waiting for it. Fourth time this
+    week that a label described something other than what it opens.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A flex rule aimed at one column, applied to both</p>
     <p class="said">Written as <code>.hp__col &gt; *</code> it caught the plate as well as the pictures.
     The plate had a height forced on it and spilled its whole paragraph across the page and over the
