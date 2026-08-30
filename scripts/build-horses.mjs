@@ -398,6 +398,36 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5);
   }
   .hp--hero .hp__pic{ box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
+  /* Both columns end on the same line, whichever of the two is taller: 30 Aug,
+     "beide kolommen altijd minimaal even hoog maken". The plate sets the
+     height because it is the one with a length of its own, and the photograph
+     fills whatever that comes to by cropping rather than by leaving a gap.
+     A floor keeps the picture from flattening into a strip on a horse whose
+     plate carries only a name and two buttons.
+     Below 900px the two are stacked, and there the picture keeps its own
+     proportions: nothing to match. */
+  @media (min-width:900px){
+    .hp--hero .hp__grid{ align-items:stretch; min-height:clamp(360px, 32vw, 460px); }
+    .hp--hero .hp__col{ display:flex; flex-direction:column; gap:clamp(.8rem,1.4vw,1.1rem); }
+    /* Only the pictures share out the height. Written as .hp__col > * it also
+       caught the plate, which then had a height forced on it and spilled its
+       own text across the page: a rule aimed at one column applied to both. */
+    .hp--hero .hp__pic{ flex:1 1 0; min-width:0; min-height:0; }
+    /* The plate grows into the column when the pictures are taller, and never
+       shrinks below its own text. flex:0 0 auto left it at its natural height
+       against a 460px picture; flex:1 1 0 forced a height on it and spilled
+       the paragraph. This is the pair that does neither. */
+    .hp--hero .hp__tray{ flex:1 1 auto; min-width:0; }
+    .hp--hero .hp__pic{ position:relative; }
+    .hp--hero .hp__pic img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      /* Where a long paragraph makes the frame taller than the photograph is
+         shaped, the crop has to come off the bottom rather than off both ends:
+         centred, Cortina lost her head and kept her legs. These are standing
+         profile shots, so the horse lives in the upper two thirds. */
+      object-position:center 30%;
+    }
+  }
   .hp__col{ min-width:0; }
   .hp__pic{
     border-radius:var(--plate-radius); overflow:hidden;
@@ -1339,8 +1369,16 @@ const photoPlan = (horse) => {
   /* The story used to hold the third picture beside it. It now sits inside the
      tray with no room for one, so that photograph goes back to the gallery
      rather than being left out of the page altogether. */
-  const used = new Set([p[0], p[1]]);
-  return { hero: p[0], col: p[1], gallery: p.filter((x) => !used.has(x)) };
+  /* Three horses carry a paragraph long enough to make the plate roughly twice
+     the height the photograph beside it is shaped for. Stretched to match, the
+     crop takes fifty four percent off the width, and no fixed position saves
+     it: Cortina lost her head, another would lose its quarters. Where a horse
+     has the pictures, the column takes two stacked instead, which fills the
+     height honestly and shows more of the horse rather than less. */
+  const long = horse.body.join(' ').length > 400;
+  const second = long && p[2] ? p[2] : '';
+  const used = new Set([p[0], p[1], second].filter(Boolean));
+  return { hero: p[0], col: p[1], col2: second, gallery: p.filter((x) => !used.has(x)) };
 };
 
 const introSection = (horse, group) => {
@@ -1356,7 +1394,7 @@ const introSection = (horse, group) => {
      horse has two, they are two. Where it has one, which is fourteen of the
      forty five, the hero crops high on the same file so the band shows the
      head and the column shows the whole horse. */
-  const { hero: heroShot, col: colShot, oneOnly } = photoPlan(horse);
+  const { hero: heroShot, col: colShot, col2, oneOnly } = photoPlan(horse);
 
   const hero = `
     <div class="eh__win${oneOnly ? ' eh__win--high' : ''}">
@@ -1368,7 +1406,8 @@ const introSection = (horse, group) => {
     </div>`;
 
   const pic = colShot
-    ? `<div class="hp__pic"><img src="/${colShot}" alt="${esc(name)}" loading="lazy">${tag}</div>`
+    ? `<div class="hp__pic"><img src="/${colShot}" alt="${esc(name)}" loading="lazy">${tag}</div>${
+        col2 ? `\n        <div class="hp__pic hp__pic--second"><img src="/${col2}" alt="${esc(name)}" loading="lazy"></div>` : ''}`
     : `<div class="hz__win typo hp__pic"><p>${esc(horse.genetics || '')}</p>${tag}</div>`;
 
   return `

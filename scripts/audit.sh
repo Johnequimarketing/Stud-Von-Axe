@@ -3,13 +3,15 @@
 #
 #   bash scripts/audit.sh
 #
-# Two passes. The first holds every page to the rules on its own: tokens, the
+# Three passes. The first holds every page to the rules on its own: tokens, the
 # type scale, contrast, the words this market uses, headings, the search head,
 # links, assets, and whether the inline scripts parse and have controls behind
 # them. The second holds the pages to each other and to horses-data.js: the
 # same horse spelled the same way everywhere, every figure traceable to the
 # record, one set of layout tokens, no card pointing at a page that is not
-# there.
+# there. The third renders every horse page in Chrome and measures it, because
+# a flex rule aimed at one column and applied to both spills a paragraph across
+# the page without changing a single character of markup.
 #
 # Anything not green here does not go out.
 set -uo pipefail
@@ -30,10 +32,24 @@ echo "── The pages against each other and the data ────────�
 node scripts/audit-site.mjs | tail -12
 b=${PIPESTATUS[0]}
 
+# The third pass needs Chrome and the dev server, because it is about the
+# rendered result rather than the markup. Skipped, loudly, when either is
+# missing: a check that quietly does not run is worse than no check.
+c=0
+if curl -sf -o /dev/null "http://localhost:5187/"; then
+  echo "── The rendered pages, measured in a browser ─────────────────"
+  node scripts/audit-layout.mjs | tail -8
+  c=${PIPESTATUS[0]}
+else
+  echo "── The rendered pages ───────────────────────────────────────"
+  echo "  SKIPPED: no dev server on :5187, so layout was not measured."
+  c=1
+fi
+
 echo
-if [ "$a" -eq 0 ] && [ "$b" -eq 0 ]; then
-  echo "  Both passes green across ${#pages[@]} pages."
+if [ "$a" -eq 0 ] && [ "$b" -eq 0 ] && [ "$c" -eq 0 ]; then
+  echo "  All three passes green across ${#pages[@]} pages."
 else
   echo "  NOT GREEN. Nothing goes out until it is."
 fi
-exit $(( a + b ))
+exit $(( a + b + c ))

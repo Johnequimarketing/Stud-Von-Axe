@@ -641,6 +641,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">Both columns end on the same line, whichever is taller</p>
+    <p class="said">30 Aug: <q>beide kolommen altijd minimaal even hoog maken, dus foto net zo groot als
+    box rechts met tekst of andersom.</q></p>
+    <p class="check">The plate grows into the column when the pictures are taller and never shrinks
+    below its own text, and the picture fills whatever the plate comes to by cropping rather than
+    leaving a gap. Where a paragraph makes the plate roughly twice the height a photograph is shaped
+    for, the column takes two pictures stacked instead: stretched to match, the crop took fifty four
+    percent off the width and Cortina lost her head while keeping her legs. Three horses hit that, and
+    all three have the pictures for it.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">The same fact reads the same on every page it appears</p>
     <p class="said">30 Aug: <q>Ik mis bij de sold, ook nog de vlaggetjes, deze hadden we eerst overal wel
     bij, maar nu nergens meer.</q> The flags lived inside the homepage's own script, so the sixty
@@ -1092,6 +1105,21 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">A flex rule aimed at one column, applied to both</p>
+    <p class="said">Written as <code>.hp__col &gt; *</code> it caught the plate as well as the pictures.
+    The plate had a height forced on it and spilled its whole paragraph across the page and over the
+    blocks below. Then the opposite: <code>flex:0 0 auto</code> left it at its own height beside a
+    460px picture on forty one of forty five pages. Both versions parsed, passed every check, and
+    looked wrong.</p>
+    <p class="check">Neither is visible to anything that reads markup, so there is now a third audit
+    pass that renders all forty five horse pages in Chrome and measures them: do the columns end on the
+    same line, is anything clipped by a container that hides its overflow, does any page scroll
+    sideways. It skips loudly when the dev server is not up, because a check that quietly does not run
+    is worse than no check. <code>bash scripts/audit.sh</code> runs all three.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">The contrast check measures a list somebody typed, not the colours on the page</p>
     <p class="said">The accent blocks were drawn, and the audit passed without measuring them: the pairs
