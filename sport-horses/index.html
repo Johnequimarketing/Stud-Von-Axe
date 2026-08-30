@@ -1817,6 +1817,57 @@
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2019,20 +2070,41 @@
 
   <section class="arch">
     <div class="wrap">
-      <p class="arch__count">twelve horses</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/maralore"><span class="hz__win"><img src="/assets/img/horses/maralore-1.jpg" alt="Maralore" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Maralore</span><span class="hz__meta">2017 · Mare · Kannan</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Domino Van den Haze Z</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diamecho Von Axe Z</span><span class="hz__meta">2020 · Gelding · Diamant de Semilly</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Kashillio MB Z</span><span class="hz__meta">2016 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Contouch SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diabalou SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/gamora-o"><span class="hz__win"><img src="/assets/img/horses/gamora-o-1.jpg" alt="Gamora O" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Gamora O</span><span class="hz__meta">2011 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/amnesia-sva"><span class="hz__win"><img src="/assets/img/horses/amnesia-sva-1.jpg" alt="Amnésia SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Amnésia SVA</span><span class="hz__meta">2015 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Filou</span><span class="hz__meta">2005 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Valkyrie</span><span class="hz__meta">2014 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diacco Blue SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/bec-emerald-sam"><span class="hz__win"><img src="/assets/img/horses/bec-emerald-sam-1.jpg" alt="Bec Emerald Sam" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Bec Emerald Sam</span><span class="hz__meta">2015 · Gelding · Emerald van't Ruytershof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      <div class="flt" data-filter data-open="all">
+        <div class="flt__search">
+          <label class="visually-hidden" for="flt-q">Search these horses</label>
+          <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
+                 placeholder="Search a name, a sire, a country">
+          <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flt__chips" role="group" aria-label="Filter these horses">
+          <button class="hz__chip" type="button" data-show="available"
+                  aria-pressed="false">Available <span class="c">0</span></button>
+          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">12</span></button>
+          <button class="hz__chip" type="button" data-show="all"
+                  aria-pressed="true">All <span class="c">12</span></button>
+        </div>
+        <p class="flt__count" data-count aria-live="polite">twelve horses</p>
+      </div>
+
+      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+
+      <ul class="hz__grid" data-grid>
+        <li data-sold="true" data-find="maralore kannan x cedric x lavall i kwpn 2017 italy mare"><a class="hz__card" href="/sport-horses/maralore"><span class="hz__win"><img src="/assets/img/horses/maralore-1.jpg" alt="Maralore" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Maralore</span><span class="hz__meta">Born 2017 · Mare · KWPN · Sold to Italy</span><span class="hz__ped">Kannan x Cedric x Lavall I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="domino van den haze z zangersheide just saddle broken! 2018 czechia mare"><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Domino Van den Haze Z</span><span class="hz__meta">Born 2018 · Mare · Zangersheide · Sold to Czechia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diamecho von axe z diamant de semilly x echo vant spieveld x carthago x darco x chin chin zangersheide from van’t roosakker family! 2020 italy gelding"><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diamecho Von Axe Z</span><span class="hz__meta">Born 2020 · Gelding · Zangersheide · Sold to Italy</span><span class="hz__ped">Diamant de Semilly x Echo vant Spieveld x Carthago x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="kashillio mb z zangersheide 2016 the united states gelding"><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Kashillio MB Z</span><span class="hz__meta">Born 2016 · Gelding · Zangersheide · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="contouch sva oldenburg international 2015 spain gelding"><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Contouch SVA</span><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Spain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diabalou sva oldenburg international 2015 italy gelding"><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diabalou SVA</span><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="gamora o kwpn 2011 france mare"><a class="hz__card" href="/sport-horses/gamora-o"><span class="hz__win"><img src="/assets/img/horses/gamora-o-1.jpg" alt="Gamora O" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Gamora O</span><span class="hz__meta">Born 2011 · Mare · KWPN · Sold to France</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="amnésia sva oldenburg international 2015 slovenia mare"><a class="hz__card" href="/sport-horses/amnesia-sva"><span class="hz__win"><img src="/assets/img/horses/amnesia-sva-1.jpg" alt="Amnésia SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Amnésia SVA</span><span class="hz__meta">Born 2015 · Mare · Oldenburg International · Sold to Slovenia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="filou bwp 2005 italy mare"><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Filou</span><span class="hz__meta">Born 2005 · Mare · BWP · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="valkyrie oldenburg international 2014 italy mare"><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Valkyrie</span><span class="hz__meta">Born 2014 · Mare · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diacco blue sva oldenburg international 2015 germany gelding"><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Diacco Blue SVA</span><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Germany</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="bec emerald sam emerald van't ruytershof x darco x quidam junior i irish breed 2015 france gelding"><a class="hz__card" href="/sport-horses/bec-emerald-sam"><span class="hz__win"><img src="/assets/img/horses/bec-emerald-sam-1.jpg" alt="Bec Emerald Sam" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Bec Emerald Sam</span><span class="hz__meta">Born 2015 · Gelding · Irish Breed · Sold to France</span><span class="hz__ped">Emerald van't Ruytershof x Darco x Quidam Junior I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -2152,6 +2224,48 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var bar = document.querySelector('[data-filter]');
+  var grid = document.querySelector('[data-grid]');
+  if(!bar || !grid) return;
+  var cards = [].slice.call(grid.children);
+  var input = bar.querySelector('[data-find]');
+  var count = bar.querySelector('[data-count]');
+  var none  = document.querySelector('[data-none]');
+  var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one"];
+  var ONE = "horse", MANY = "horses";
+  var show = bar.getAttribute('data-open') || 'all';
+
+  function words(n){ return (WORDS[n] || String(n)) + ' ' + (n === 1 ? ONE : MANY); }
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(li){
+      var isSold = li.getAttribute('data-sold') === 'true';
+      var okState = show === 'all' || (show === 'sold') === isSold;
+      var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
+      var on = okState && okFind;
+      li.hidden = !on;
+      if(on) shown++;
+    });
+    count.textContent = words(shown);
+    if(none) none.classList.toggle('is-on', shown === 0);
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
+  });
+  input.addEventListener('input', apply);
+  /* A search should look through everything, not through the tab you happen
+     to be on: typing widens the state filter to all by itself. */
+  input.addEventListener('input', function(){ if(input.value.trim() && show !== 'all'){ show = 'all'; apply(); } });
+  apply();
 })();
 </script>
 </body>

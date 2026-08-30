@@ -1817,6 +1817,57 @@
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2013,7 +2064,7 @@
         <div class="hp__facts">
           <div><span class="hp__k">Born</span><span class="hp__v">23/04/26</span></div>
           <div><span class="hp__k">Sex</span><span class="hp__v">Filly</span></div>
-          <div><span class="hp__k">Status</span><span class="hp__v">Sold</span></div>
+          <div><span class="hp__k">Status</span><span class="hp__v">Sold to Great Britain</span></div>
         </div>
         <div class="hp__acts">
           <a href="/#contact" class="btn btn-gold btn-pill">Ask about this horse</a>

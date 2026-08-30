@@ -2,7 +2,7 @@
    scripts/harvest-horses.mjs. Their words, their spellings, their fields.
    An empty field is empty on their site too and is never filled in here.
    Regenerate rather than edit: node scripts/harvest-horses.mjs
-   Harvested 2026-08-29. */
+   Harvested 2026-08-30. */
 var HORSES = [
  {
   "slug": "hayley-vd-berghoeve-z",
@@ -36,6 +36,7 @@ var HORSES = [
   },
   "body": [],
   "photos": [],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/heartbreaker-x-hiamant-vant-roosakker-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -73,6 +74,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/cabri-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/cabri-vd-berghoeve-z-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -112,6 +114,7 @@ var HORSES = [
    "assets/img/horses/patchina-vant-merelsnest-2.jpg",
    "assets/img/horses/patchina-vant-merelsnest-3.jpg"
   ],
+  "country": "BE",
   "source": "https://www.studvonaxe.it/en/cavalli/patchina-vant-merelsnest-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -149,6 +152,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/carma-vd-bergheove-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/carma-vd-bergheove-z-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -190,6 +194,7 @@ var HORSES = [
    "assets/img/horses/hypnotic-jt-z-2.jpg",
    "assets/img/horses/hypnotic-jt-z-3.jpg"
   ],
+  "country": "BR",
   "source": "https://www.studvonaxe.it/en/cavalli/hypnotic-jt-z-3/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -235,6 +240,7 @@ var HORSES = [
    "assets/img/horses/cortina-de-jolie-z-2.jpg",
    "assets/img/horses/cortina-de-jolie-z-3.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -278,6 +284,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/agousha-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/agousha-vd-berghoeve-z-2/",
   "siteCategories": "category-broodmare"
  },
@@ -317,6 +324,7 @@ var HORSES = [
    "assets/img/horses/cartoona-blue-2.jpg",
    "assets/img/horses/cartoona-blue-3.jpg"
   ],
+  "country": "LT",
   "source": "https://www.studvonaxe.it/en/cavalli/cartoona-blue-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -356,6 +364,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/waikiki-vd-berghoeve-1.jpg"
   ],
+  "country": "IE",
   "source": "https://www.studvonaxe.it/en/cavalli/waikiki-vd-berghoeve-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -393,6 +402,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/heaven-vd-berghoeve-z-1.jpg"
   ],
+  "country": "IE",
   "source": "https://www.studvonaxe.it/en/cavalli/heaven-vd-berghoeve-z-2/",
   "siteCategories": "category-broodmare"
  },
@@ -432,6 +442,7 @@ var HORSES = [
    "assets/img/horses/unguessable-von-axe-2.jpg",
    "assets/img/horses/unguessable-von-axe-3.jpg"
   ],
+  "country": "US",
   "source": "https://www.studvonaxe.it/en/cavalli/unguessable-von-axe-2/",
   "siteCategories": "category-breeding category-broodmare category-sporty",
   "alsoIn": [
@@ -472,6 +483,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/cardesse-von-axe-1.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/cardesse-von-axe-2/",
   "siteCategories": "category-breeding category-broodmare"
  },
@@ -509,6 +521,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/charina-von-axe-z-1.jpg"
   ],
+  "country": "GB",
   "source": "https://www.studvonaxe.it/en/cavalli/chacco-blue-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -546,6 +559,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg"
   ],
+  "country": "GB",
   "source": "https://www.studvonaxe.it/en/cavalli/comme-il-faut-x-hypnotic-jt-z-4/",
   "siteCategories": "category-breeding category-foal",
   "alsoIn": [
@@ -586,6 +600,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/arkhana-von-axe-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/aganix-du-seigneur-z-x-cortina-de-jolie-z-3/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -623,6 +638,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/electra-von-axe-z-1.jpg"
   ],
+  "country": "NL",
   "source": "https://www.studvonaxe.it/en/cavalli/emerald-vant-ruytershof-x-agousha-vd-berghoeve-z/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -660,6 +676,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/unique-touch-von-axe-z-1.jpg"
   ],
+  "country": "BR",
   "source": "https://www.studvonaxe.it/en/cavalli/united-touch-x-cortina-de-jolie-z/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -699,6 +716,7 @@ var HORSES = [
    "assets/img/horses/darkhan-von-axe-z-2.jpg",
    "assets/img/horses/darkhan-von-axe-z-3.jpg"
   ],
+  "country": "NL",
   "source": "https://www.studvonaxe.it/en/cavalli/dourkhan-hero-z-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -736,6 +754,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/dune-von-axe-z-1.jpg"
   ],
+  "country": "PL",
   "source": "https://www.studvonaxe.it/en/cavalli/diamant-de-semilly-x-hypnotic-jt-z-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -773,6 +792,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/cara-von-axe-z-1.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/comilfo-plus-z-x-cartoona-blue-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -810,6 +830,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/coolrock-von-axe-z-1.jpg"
   ],
+  "country": "IE",
   "source": "https://www.studvonaxe.it/en/cavalli/chacco-blue-x-halifax-van-het-kluizebos-x-carthago-4/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -849,6 +870,7 @@ var HORSES = [
    "assets/img/horses/cumax-von-axe-z-2.jpg",
    "assets/img/horses/cumax-von-axe-z-3.jpg"
   ],
+  "country": "IE",
   "source": "https://www.studvonaxe.it/en/cavalli/cumano-x-hypnotic-jt-z-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -888,6 +910,7 @@ var HORSES = [
    "assets/img/horses/cosmopolitan-von-axe-z-2.jpg",
    "assets/img/horses/cosmopolitan-von-axe-z-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/comme-il-faut-x-patchina-vant-merelsnest-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -927,6 +950,7 @@ var HORSES = [
    "assets/img/horses/cacao-von-axe-z-2.jpg",
    "assets/img/horses/cacao-von-axe-z-3.jpg"
   ],
+  "country": "AR",
   "source": "https://www.studvonaxe.it/en/cavalli/dourkhan-hero-z-x-cortina-de-jolie-z-4/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -966,6 +990,7 @@ var HORSES = [
    "assets/img/horses/dourkhet-von-axe-z-2.jpg",
    "assets/img/horses/dourkhet-von-axe-z-3.jpg"
   ],
+  "country": "US",
   "source": "https://www.studvonaxe.it/en/cavalli/dourkhan-hero-z-x-cortina-de-jolie-z-6/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1005,6 +1030,7 @@ var HORSES = [
    "assets/img/horses/hyori-von-axe-z-2.jpg",
    "assets/img/horses/hyori-von-axe-z-3.jpg"
   ],
+  "country": "GB",
   "source": "https://www.studvonaxe.it/en/cavalli/heartbreaker-x-patchina-vant-merelsnest-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1049,6 +1075,7 @@ var HORSES = [
    "assets/img/horses/bellavista-von-axe-z-2.jpg",
    "assets/img/horses/bellavista-von-axe-z-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/balou-du-reventon-x-halifax-van-het-kluizebos-x-carthago-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1088,6 +1115,7 @@ var HORSES = [
    "assets/img/horses/delilah-von-axe-z-2.jpg",
    "assets/img/horses/delilah-von-axe-z-3.jpg"
   ],
+  "country": "PL",
   "source": "https://www.studvonaxe.it/en/cavalli/dominator-2000-z-x-cartoona-blue-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1127,6 +1155,7 @@ var HORSES = [
    "assets/img/horses/baltimore-von-axe-z-2.jpg",
    "assets/img/horses/baltimore-von-axe-z-3.jpg"
   ],
+  "country": "PL",
   "source": "https://www.studvonaxe.it/en/cavalli/big-star-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1169,6 +1198,7 @@ var HORSES = [
    "assets/img/horses/purple-rain-von-axe-z-2.jpg",
    "assets/img/horses/purple-rain-von-axe-z-3.jpg"
   ],
+  "country": "PL",
   "source": "https://www.studvonaxe.it/en/cavalli/pegase-vant-ruytershof-x-cartoon-x-chacco-blue-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1208,6 +1238,7 @@ var HORSES = [
    "assets/img/horses/medillin-von-axe-z-2.jpg",
    "assets/img/horses/medillin-von-axe-z-3.jpg"
   ],
+  "country": "US",
   "source": "https://www.studvonaxe.it/en/cavalli/medillin-von-axe/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1247,6 +1278,7 @@ var HORSES = [
    "assets/img/horses/evoque-von-axe-z-2.jpg",
    "assets/img/horses/evoque-von-axe-z-3.jpg"
   ],
+  "country": "BE",
   "source": "https://www.studvonaxe.it/en/cavalli/eldorado-van-de-zeshoek-x-halifax-van-het-kluizebos-x-carthago/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1286,6 +1318,7 @@ var HORSES = [
    "assets/img/horses/coachella-von-axe-2.jpg",
    "assets/img/horses/coachella-von-axe-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/conthargos-x-cartoon-x-chacco-blue-2/",
   "siteCategories": "category-breeding category-foal"
  },
@@ -1323,6 +1356,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/mosito-van-het-hellenof-x-carma-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/mosito-van-het-hellenof-x-carma-vd-berghoeve-z/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1360,6 +1394,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/cornet-obolensky-x-agousha-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/cornet-obolensky-x-agousha-vd-berghoeve-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1397,6 +1432,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg"
   ],
+  "country": "BR",
   "source": "https://www.studvonaxe.it/en/cavalli/dominator-2000-z-x-hypnotic-jt-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1434,6 +1470,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/united-touch-s-x-cabri-vd-berghoeve-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1471,6 +1508,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/zandor-z-x-cabri-vd-berghoeve-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1506,6 +1544,7 @@ var HORSES = [
   },
   "body": [],
   "photos": [],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/chacco-blue-x-cabri-vd-berghoeve-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1543,6 +1582,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/comme-il-faut-x-patchina-vant-merelsnest-1.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/comme-il-faut-x-patchina-vant-merelsnest-4/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1580,6 +1620,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/catoki-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1617,6 +1658,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/for-pleasure-x-hypnotic-jt-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1654,6 +1696,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/aganix-du-seigneur-z-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1691,6 +1734,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/catoki-x-hypnotic-jt-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/catoki-x-hypnotic-jt-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1728,6 +1772,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/united-touch-s-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/united-touch-s-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1765,6 +1810,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/dourkhan-hero-z-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/dourkhan-hero-z-x-cortina-de-jolie-z-8/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1802,6 +1848,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/big-star-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/big-star-x-cortina-de-jolie-z-4/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1839,6 +1886,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/uricas-vd-kattevennen-x-cortina-de-jolie-z-1.jpg"
   ],
+  "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/uricas-vd-kattevennen-x-cortina-de-jolie-z-2/",
   "siteCategories": "category-breeding category-embryo"
  },
@@ -1878,6 +1926,7 @@ var HORSES = [
    "assets/img/horses/maralore-2.jpg",
    "assets/img/horses/maralore-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/maralore-2/",
   "siteCategories": "category-sporty"
  },
@@ -1917,6 +1966,7 @@ var HORSES = [
    "assets/img/horses/domino-van-den-haze-z-2.jpg",
    "assets/img/horses/domino-van-den-haze-z-3.jpg"
   ],
+  "country": "CZ",
   "source": "https://www.studvonaxe.it/en/cavalli/domino-van-den-haze-z-2/",
   "siteCategories": "category-sporty"
  },
@@ -1956,6 +2006,7 @@ var HORSES = [
    "assets/img/horses/diamecho-von-axe-z-2.jpg",
    "assets/img/horses/diamecho-von-axe-z-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/diamecho-von-axe-z-2/",
   "siteCategories": "category-sporty"
  },
@@ -1994,6 +2045,7 @@ var HORSES = [
    "assets/img/horses/kashillio-mb-z-1.jpg",
    "assets/img/horses/kashillio-mb-z-2.jpg"
   ],
+  "country": "US",
   "source": "https://www.studvonaxe.it/en/cavalli/kashillio-mb-z-2/",
   "siteCategories": "category-sporty"
  },
@@ -2033,6 +2085,7 @@ var HORSES = [
    "assets/img/horses/contouch-sva-2.jpg",
    "assets/img/horses/contouch-sva-3.jpg"
   ],
+  "country": "ES",
   "source": "https://www.studvonaxe.it/en/cavalli/contouch-sva-2/",
   "siteCategories": "category-sporty"
  },
@@ -2072,6 +2125,7 @@ var HORSES = [
    "assets/img/horses/diabalou-sva-2.jpg",
    "assets/img/horses/diabalou-sva-3.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/diabalou-sva-2/",
   "siteCategories": "category-sporty"
  },
@@ -2111,6 +2165,7 @@ var HORSES = [
    "assets/img/horses/gamora-o-2.jpg",
    "assets/img/horses/gamora-o-3.jpg"
   ],
+  "country": "FR",
   "source": "https://www.studvonaxe.it/en/cavalli/gamora-o-2/",
   "siteCategories": "category-sporty"
  },
@@ -2150,6 +2205,7 @@ var HORSES = [
    "assets/img/horses/amnesia-sva-2.jpg",
    "assets/img/horses/amnesia-sva-3.jpg"
   ],
+  "country": "SI",
   "source": "https://www.studvonaxe.it/en/cavalli/amnesia-sva-2/",
   "siteCategories": "category-sporty"
  },
@@ -2187,6 +2243,7 @@ var HORSES = [
   "photos": [
    "assets/img/horses/filou-1.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/filou-2/",
   "siteCategories": "category-sporty"
  },
@@ -2225,6 +2282,7 @@ var HORSES = [
    "assets/img/horses/valkyrie-1.jpg",
    "assets/img/horses/valkyrie-2.jpg"
   ],
+  "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/valkyrie/",
   "siteCategories": "category-sporty"
  },
@@ -2263,6 +2321,7 @@ var HORSES = [
    "assets/img/horses/diacco-blue-sva-1.jpg",
    "assets/img/horses/diacco-blue-sva-2.jpg"
   ],
+  "country": "DE",
   "source": "https://www.studvonaxe.it/en/cavalli/diacco-blue-sva-2/",
   "siteCategories": "category-sporty"
  },
@@ -2302,6 +2361,7 @@ var HORSES = [
    "assets/img/horses/bec-emerald-sam-2.jpg",
    "assets/img/horses/bec-emerald-sam-3.jpg"
   ],
+  "country": "FR",
   "source": "https://www.studvonaxe.it/en/cavalli/bec-emerald-sam-2/",
   "siteCategories": "category-sporty"
  }

@@ -83,6 +83,57 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -209,7 +260,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
 
 `;
 
-const page = ({ title, desc, path, image, body, extraCss = '' }) => `<!DOCTYPE html>
+const page = ({ title, desc, path, image, body, extraCss = '', extraScript = '' }) => `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${head({ title, desc, path, image, ldType: 'CollectionPage' })}
@@ -223,6 +274,7 @@ ${body}
 </main>
 ${footer}
 ${navScript}
+${extraScript}
 </body>
 </html>
 `;
@@ -235,6 +287,27 @@ ${navScript}
 const theirWords = (text) => (text || '')
   .replace(/\s+[–—-]\s*/g, ' \u00b7 ')     /* Fuga de Muze - Narcotique II  */
   .replace(/\s+\u00b7\s*$/, '');           /* and one that ends on a dash   */
+
+/* The fifteen countries their listings actually name, and only those. The
+   homepage used to carry six, hand written, with a note that the client
+   claims more and we could not evidence them. The evidence was on their own
+   archive pages all along, in a field their stylesheet hides. */
+const COUNTRY = {
+  AR: 'Argentina', BE: 'Belgium', BR: 'Brazil', CZ: 'Czechia', DE: 'Germany',
+  ES: 'Spain', FR: 'France', GB: 'Great Britain', IE: 'Ireland', IT: 'Italy',
+  LT: 'Lithuania', NL: 'the Netherlands', PL: 'Poland', SI: 'Slovenia',
+  US: 'the United States',
+};
+
+/* An embryo's "year of birth" is not always a year: theirs reads FROZEN
+   EMBRYO on the ones in the tank and a year on the ones a mare is already
+   carrying. That is the split the owners asked for, implanted against
+   frozen, and it is in the data rather than in a label we invented. */
+const isFrozen = (horse) => /frozen/i.test(horse.year || '');
+const when = (horse) => {
+  if (horse.category === 'embryo') return isFrozen(horse) ? 'Frozen embryo' : `Due ${horse.year}`;
+  return horse.year ? `Born ${horse.year}` : '';
+};
 
 /* ── the fields, in this market's words ────────────────────────────────
    Their pages carry the sex in Italian on most horses and in English on a
@@ -286,18 +359,41 @@ const meta = (horse) => [horse.year, SEX(horse), sireOf(horse)].filter(Boolean).
 /* The homepage card, unchanged, pointed at the horse's own page. A horse
    without a photograph gets the typographic card the homepage already uses
    for one, rather than a stand-in picture of a different horse. */
-const card = (horse, group) => {
+const card = (horse, group, full) => {
   const href = `/${group.dir}/${horse.slug}`;
   const tag = horse.sold
     ? '<span class="hz__tag hz__tag--sold">Sold</span>'
     : '<span class="hz__tag">Available</span>';
   const win = horse.photos.length
     ? `<span class="hz__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">${tag}</span>`
-    : `<span class="hz__win typo"><p>${esc(horse.genetics || horse.tagline || '')}</p>${tag}</span>`;
-  return `<li><a class="hz__card" href="${href}">${win}` +
+    : `<span class="hz__win typo"><p>${esc(theirWords(horse.genetics || horse.tagline || ''))}</p>${tag}</span>`;
+
+  /* The archive card carries the breeding. On a broodmare the sire line is
+     the reason a visitor is on the page at all, and a card that names only
+     the sire makes them open twelve pages to compare four crosses. The
+     homepage keeps the short card: its run is three across inside a slider. */
+  /* Not on a card without a photograph: that card already shows the
+     breeding across the frame, and printing it twice reads as a mistake. */
+  const breeding = full && horse.genetics && horse.photos.length
+    ? `<span class="hz__ped">${esc(horseName(theirWords(horse.genetics)))}</span>` : '';
+  const line = full
+    ? [when(horse), SEX(horse), horse.studbook,
+       horse.sold && horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : '']
+        .filter(Boolean).join(' \u00b7 ')
+    : meta(horse);
+
+  /* Everything the search reads, lowercased once here rather than on every
+     keystroke: name, breeding, studbook, year and their own line. */
+  const haystack = [horse.name, horse.genetics, horse.studbook, horse.tagline, horse.year,
+                    horse.country && COUNTRY[horse.country], SEX(horse)]
+    .filter(Boolean).join(' ').toLowerCase();
+
+  return `<li${full ? ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` : ''}>` +
+    `<a class="hz__card" href="${href}">${win}` +
     '<span class="hz__body">' +
       `<span class="hz__name">${esc(horseName(horse.name))}</span>` +
-      `<span class="hz__meta">${esc(meta(horse))}</span>` +
+      `<span class="hz__meta">${esc(line)}</span>` +
+      breeding +
       '<span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span>' +
     '</span></a></li>';
 };
@@ -310,16 +406,91 @@ const WORDS = ['no','one','two','three','four','five','six','seven','eight','nin
 const count = (n) => WORDS[n] || String(n);
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
-const gridSection = (group, list) => `
+const gridSection = (group, list) => {
+  const available = list.filter((h) => !h.sold).length;
+  const sold = list.length - available;
+  const openOn = available ? 'available' : 'all';
+  const noun = (n) => `${count(n)} ${n === 1 ? group.one : group.many}`;
+  return `
   <section class="arch">
     <div class="wrap">
-      <p class="arch__count">${count(list.length)} ${list.length === 1 ? group.one : group.many}</p>
-      <ul class="hz__grid">
-${list.map((h) => '        ' + card(h, group)).join('\n')}
+      <div class="flt" data-filter data-open="${openOn}">
+        <div class="flt__search">
+          <label class="visually-hidden" for="flt-q">Search these ${esc(group.many)}</label>
+          <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
+                 placeholder="Search a name, a sire, a country">
+          <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flt__chips" role="group" aria-label="Filter these ${esc(group.many)}">
+          <button class="hz__chip" type="button" data-show="available"
+                  aria-pressed="${openOn === 'available' ? 'true' : 'false'}">Available <span class="c">${available}</span></button>
+          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">${sold}</span></button>
+          <button class="hz__chip" type="button" data-show="all"
+                  aria-pressed="${openOn === 'all' ? 'true' : 'false'}">All <span class="c">${list.length}</span></button>
+        </div>
+        <p class="flt__count" data-count aria-live="polite">${noun(openOn === 'available' ? available : list.length)}</p>
+      </div>
+
+      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+
+      <ul class="hz__grid" data-grid>
+${list.map((h) => '        ' + card(h, group, true)).join('\n')}
       </ul>
     </div>
   </section>
 `;
+};
+
+/* The filter itself. Every card is already in the page: this hides and
+   shows, it never fetches, so the whole archive is there for a search
+   engine and for a visitor with no JavaScript, who gets all of them and no
+   chips. The words are written into each card by the builder, lowercased
+   once, so a keystroke is a substring test and nothing else. */
+const filterScript = (group) => `<script>
+(function(){
+  var bar = document.querySelector('[data-filter]');
+  var grid = document.querySelector('[data-grid]');
+  if(!bar || !grid) return;
+  var cards = [].slice.call(grid.children);
+  var input = bar.querySelector('[data-find]');
+  var count = bar.querySelector('[data-count]');
+  var none  = document.querySelector('[data-none]');
+  var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var WORDS = ${JSON.stringify(WORDS)};
+  var ONE = ${JSON.stringify(group.one)}, MANY = ${JSON.stringify(group.many)};
+  var show = bar.getAttribute('data-open') || 'all';
+
+  function words(n){ return (WORDS[n] || String(n)) + ' ' + (n === 1 ? ONE : MANY); }
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(li){
+      var isSold = li.getAttribute('data-sold') === 'true';
+      var okState = show === 'all' || (show === 'sold') === isSold;
+      var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
+      var on = okState && okFind;
+      li.hidden = !on;
+      if(on) shown++;
+    });
+    count.textContent = words(shown);
+    if(none) none.classList.toggle('is-on', shown === 0);
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
+  });
+  input.addEventListener('input', apply);
+  /* A search should look through everything, not through the tab you happen
+     to be on: typing widens the state filter to all by itself. */
+  input.addEventListener('input', function(){ if(input.value.trim() && show !== 'all'){ show = 'all'; apply(); } });
+  apply();
+})();
+<\/script>`;
 
 /* The line a search engine shows under the title. Built from the fields
    rather than from their tagline alone: half the taglines are three words
@@ -347,11 +518,14 @@ const metaDescription = (horse, group) => {
 /* ── the horse page, section one: picture, name, figures ───────────────── */
 const factRow = (horse) => {
   const facts = [
-    ['Born', horse.year],
+    [horse.category === 'embryo' ? 'Stage' : 'Born',
+     horse.category === 'embryo' ? when(horse) : horse.year],
     ['Sex', SEX(horse)],
     ['Studbook', horse.studbook],
     ['Height', horse.height],
-    ['Status', horse.sold ? 'Sold' : 'Available'],
+    ['Status', horse.sold
+      ? (horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : 'Sold')
+      : 'Available'],
   ].filter(([, v]) => v);
   return facts.map(([k, v]) =>
     `<div><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n          ');
@@ -607,6 +781,7 @@ for (const key of Object.keys(GROUPS)) {
     path: `/${group.dir}`,
     image: group.img,
     body: heroSection(group) + gridSection(group, list) + ctaSection(group),
+    extraScript: filterScript(group),
   }));
   written.archives++;
 

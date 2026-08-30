@@ -1817,6 +1817,57 @@
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2019,29 +2070,50 @@
 
   <section class="arch">
     <div class="wrap">
-      <p class="arch__count">twenty one foals</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/charina-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/charina-von-axe-z-1.jpg" alt="Charina Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Charina Von Axe Z</span><span class="hz__meta">2026 · Filly · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Hypnotic JT Z</span><span class="hz__meta">23/04/26 · Filly · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/arkhana-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/arkhana-von-axe-z-1.jpg" alt="Arkhana Von Axe Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Arkhana Von Axe Z</span><span class="hz__meta">2026 · Filly · Aganix Su Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/electra-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/electra-von-axe-z-1.jpg" alt="Electra Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Electra Von Axe Z</span><span class="hz__meta">2026 · Filly · Emerald van't Ruytershof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/unique-touch-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/unique-touch-von-axe-z-1.jpg" alt="Unique Touch Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unique Touch Von Axe Z</span><span class="hz__meta">2026 · United Touch S</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/darkhan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/darkhan-von-axe-z-1.jpg" alt="Darkhan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Darkhan Von Axe Z</span><span class="hz__meta">07/05/25 · Colt · Dourkhan Hero Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/dune-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dune-von-axe-z-1.jpg" alt="Dune Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dune Von Axe Z</span><span class="hz__meta">28/03/2025 · Colt · Diamant de Semilly</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cara-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cara-von-axe-z-1.jpg" alt="Cara Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cara Von Axe Z</span><span class="hz__meta">30/04/2025 · Filly · Comilfo Plus Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/coolrock-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/coolrock-von-axe-z-1.jpg" alt="Coolrock Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Coolrock Von Axe Z</span><span class="hz__meta">14/06/2024 · Colt · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cumax-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cumax-von-axe-z-1.jpg" alt="Cumax Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cumax Von Axe Z</span><span class="hz__meta">06/06/2024 · Colt · Cumano</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cosmopolitan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cosmopolitan Von Axe Z</span><span class="hz__meta">16/05/2024 · Colt · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cacao-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cacao Von Axe Z</span><span class="hz__meta">08/04/2024 · Colt · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/dourkhet-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dourkhet Von Axe Z</span><span class="hz__meta">13/05/2024 · Colt · Dourkhan Hero Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/hyori-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Hyōri Von Axe Z</span><span class="hz__meta">06/03/2024 · Colt · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/bellavista-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/bellavista-von-axe-z-1.jpg" alt="Bellavista Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Bellavista Von Axe Z</span><span class="hz__meta">03/03/2023 · Filly · Balou du Reventon</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Delilah Von Axe Z</span><span class="hz__meta">01/05/2024 · Filly · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Baltimore Von Axe Z</span><span class="hz__meta">02/04/2025 · Colt · Big Star</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Purple Rain Von Axe Z</span><span class="hz__meta">01/05/2023 · Filly · Pegase van't Ruytershof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/medillin-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/medillin-von-axe-z-1.jpg" alt="Medillín Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Medillín Von Axe Z</span><span class="hz__meta">23/04/2022 · Filly · Mumbai</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/evoque-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/evoque-von-axe-z-1.jpg" alt="Evoque Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Evoque Von Axe Z</span><span class="hz__meta">20/04/2022 · Colt · Eldorado vd Zeshoek</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/coachella-von-axe"><span class="hz__win"><img src="/assets/img/horses/coachella-von-axe-1.jpg" alt="Coachella Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Coachella Von Axe</span><span class="hz__meta">2021 · Filly · Conthargos</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      <div class="flt" data-filter data-open="available">
+        <div class="flt__search">
+          <label class="visually-hidden" for="flt-q">Search these foals</label>
+          <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
+                 placeholder="Search a name, a sire, a country">
+          <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flt__chips" role="group" aria-label="Filter these foals">
+          <button class="hz__chip" type="button" data-show="available"
+                  aria-pressed="true">Available <span class="c">1</span></button>
+          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">20</span></button>
+          <button class="hz__chip" type="button" data-show="all"
+                  aria-pressed="false">All <span class="c">21</span></button>
+        </div>
+        <p class="flt__count" data-count aria-live="polite">one foal</p>
+      </div>
+
+      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+
+      <ul class="hz__grid" data-grid>
+        <li data-sold="true" data-find="charina von axe z chacco blue x cornet obolensky x calato x darco x chin chin one of the best stallion in the world crossed with one of the best dam lines ever! 2026 great britain filly"><a class="hz__card" href="/foals/charina-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/charina-von-axe-z-1.jpg" alt="Charina Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Charina Von Axe Z</span><span class="hz__meta">Born 2026 · Filly · Sold to Great Britain</span><span class="hz__ped">Chacco Blue x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="comme il faut x hypnotic jt z comme il faut x halifax van het kluizebos x carthago out of a sister of the olympic hardrock z! 23/04/26 great britain filly"><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Hypnotic JT Z</span><span class="hz__meta">Born 23/04/26 · Filly · Sold to Great Britain</span><span class="hz__ped">Comme il Faut x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="arkhana von axe z aganix su seigneur x cornet obolesnky x calato x darco x chin chin out of fuga de muse - narcotique ii - qerlychin! 2026 filly"><a class="hz__card" href="/foals/arkhana-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/arkhana-von-axe-z-1.jpg" alt="Arkhana Von Axe Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Arkhana Von Axe Z</span><span class="hz__meta">Born 2026 · Filly</span><span class="hz__ped">Aganix Su Seigneur x Cornet Obolesnky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="electra von axe z emerald van't ruytershof x aganix du seigneur z x diamant de semilly x darco x chin chin out of a direct daughter of gatoucha van't roosakker! 2026 the netherlands filly"><a class="hz__card" href="/foals/electra-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/electra-von-axe-z-1.jpg" alt="Electra Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Electra Von Axe Z</span><span class="hz__meta">Born 2026 · Filly · Sold to the Netherlands</span><span class="hz__ped">Emerald van't Ruytershof x Aganix du Seigneur Z x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="unique touch von axe z united touch s x cornet obolensky x calato x darco x chin chin out of fuga de muse - narcotique ii - qerlychin! 2026 brazil"><a class="hz__card" href="/foals/unique-touch-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/unique-touch-von-axe-z-1.jpg" alt="Unique Touch Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unique Touch Von Axe Z</span><span class="hz__meta">Born 2026 · Sold to Brazil</span><span class="hz__ped">United Touch S x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="darkhan von axe z dourkhan hero z x cornet obolensky x calato x darco x chin chin zangersheide usha van't roosakker, china touch hero and qerlychin in 1 match! 07/05/25 the netherlands colt"><a class="hz__card" href="/foals/darkhan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/darkhan-von-axe-z-1.jpg" alt="Darkhan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Darkhan Von Axe Z</span><span class="hz__meta">Born 07/05/25 · Colt · Zangersheide · Sold to the Netherlands</span><span class="hz__ped">Dourkhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="dune von axe z diamant de semilly x halifax van het kluizebos x carthago zangersheide directly out of a sister of hardrock z! 28/03/2025 poland colt"><a class="hz__card" href="/foals/dune-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dune-von-axe-z-1.jpg" alt="Dune Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dune Von Axe Z</span><span class="hz__meta">Born 28/03/2025 · Colt · Zangersheide · Sold to Poland</span><span class="hz__ped">Diamant de Semilly x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cara von axe z comilfo plus z x cartoon x chacco blue zangersheide out of an amazing jumping mare that already produced! 30/04/2025 italy filly"><a class="hz__card" href="/foals/cara-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cara-von-axe-z-1.jpg" alt="Cara Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cara Von Axe Z</span><span class="hz__meta">Born 30/04/2025 · Filly · Zangersheide · Sold to Italy</span><span class="hz__ped">Comilfo Plus Z x Cartoon x Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="coolrock von axe z chacco blue x halifax van het kluizebos x carthago zangersheide out of hardrock z's sister! 14/06/2024 ireland colt"><a class="hz__card" href="/foals/coolrock-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/coolrock-von-axe-z-1.jpg" alt="Coolrock Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Coolrock Von Axe Z</span><span class="hz__meta">Born 14/06/2024 · Colt · Zangersheide · Sold to Ireland</span><span class="hz__ped">Chacco Blue x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cumax von axe z cumano x halifax van het kluizebos x carthago zangersheide out of hardrock's sister! 06/06/2024 ireland colt"><a class="hz__card" href="/foals/cumax-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cumax-von-axe-z-1.jpg" alt="Cumax Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cumax Von Axe Z</span><span class="hz__meta">Born 06/06/2024 · Colt · Zangersheide · Sold to Ireland</span><span class="hz__ped">Cumano x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cosmopolitan von axe z comme il faut x kannan x darco zangersheide out of glasgow's sister! 16/05/2024 italy colt"><a class="hz__card" href="/foals/cosmopolitan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cosmopolitan Von Axe Z</span><span class="hz__meta">Born 16/05/2024 · Colt · Zangersheide · Sold to Italy</span><span class="hz__ped">Comme il Faut x Kannan x Darco</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cacao von axe z chacco blue x cornet obolensky x calato x darco x chin chin zangersheide best stallion in the world crossed with one of the best families! 08/04/2024 argentina colt"><a class="hz__card" href="/foals/cacao-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cacao Von Axe Z</span><span class="hz__meta">Born 08/04/2024 · Colt · Zangersheide · Sold to Argentina</span><span class="hz__ped">Chacco Blue x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="dourkhet von axe z dourkhan hero z x cornet obolensky x calato x darco x chin chin zangersheide 3 great damlines in one match! china touch hero x usha van't roosakker out of qerlychin mare! 13/05/2024 the united states colt"><a class="hz__card" href="/foals/dourkhet-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dourkhet Von Axe Z</span><span class="hz__meta">Born 13/05/2024 · Colt · Zangersheide · Sold to the United States</span><span class="hz__ped">Dourkhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="hyōri von axe z heartbreaker x kannan x darco zangersheide out of the sister of glasgow van't merelsnest! sapphire family 06/03/2024 great britain colt"><a class="hz__card" href="/foals/hyori-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Hyōri Von Axe Z</span><span class="hz__meta">Born 06/03/2024 · Colt · Zangersheide · Sold to Great Britain</span><span class="hz__ped">Heartbreaker x Kannan x Darco</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="bellavista von axe z balou du reventon x halifax van het kluizebos x carthago zangersheide from the sister of hardrock z! 03/03/2023 italy filly"><a class="hz__card" href="/foals/bellavista-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/bellavista-von-axe-z-1.jpg" alt="Bellavista Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Bellavista Von Axe Z</span><span class="hz__meta">Born 03/03/2023 · Filly · Zangersheide · Sold to Italy</span><span class="hz__ped">Balou du Reventon x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="delilah von axe z dominator 2000 z x cartoon x chacco blue scope is never enough! 01/05/2024 poland filly"><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Delilah Von Axe Z</span><span class="hz__meta">Born 01/05/2024 · Filly · Sold to Poland</span><span class="hz__ped">Dominator 2000 Z x Cartoon x Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="baltimore von axe z big star x cornet obolensky x calato x darco x chin chin zangersheide fuga de muze - narcotique ii - qerlychin! 02/04/2025 poland colt"><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Baltimore Von Axe Z</span><span class="hz__meta">Born 02/04/2025 · Colt · Zangersheide · Sold to Poland</span><span class="hz__ped">Big Star x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="purple rain von axe z pegase van't ruytershof x cartoon x chacco blue zangersheide from great jumping mare and sport family! 01/05/2023 poland filly"><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Purple Rain Von Axe Z</span><span class="hz__meta">Born 01/05/2023 · Filly · Zangersheide · Sold to Poland</span><span class="hz__ped">Pegase van't Ruytershof x Cartoon x Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="medillín von axe z mumbai x cartoon x chacco blue from a great jumping mare! 23/04/2022 the united states filly"><a class="hz__card" href="/foals/medillin-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/medillin-von-axe-z-1.jpg" alt="Medillín Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Medillín Von Axe Z</span><span class="hz__meta">Born 23/04/2022 · Filly · Sold to the United States</span><span class="hz__ped">Mumbai x Cartoon x Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="evoque von axe z eldorado vd zeshoek x halifax van het kluizebos x carthago from the 3/4 sister of hardrock z! 20/04/2022 belgium colt"><a class="hz__card" href="/foals/evoque-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/evoque-von-axe-z-1.jpg" alt="Evoque Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Evoque Von Axe Z</span><span class="hz__meta">Born 20/04/2022 · Colt · Sold to Belgium</span><span class="hz__ped">Eldorado vd Zeshoek x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="coachella von axe conthargos x cartoon x chacco blue oldenburg born at the end of april! 2021 italy filly"><a class="hz__card" href="/foals/coachella-von-axe"><span class="hz__win"><img src="/assets/img/horses/coachella-von-axe-1.jpg" alt="Coachella Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Coachella Von Axe</span><span class="hz__meta">Born 2021 · Filly · Oldenburg · Sold to Italy</span><span class="hz__ped">Conthargos x Cartoon x Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -2161,6 +2233,48 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var bar = document.querySelector('[data-filter]');
+  var grid = document.querySelector('[data-grid]');
+  if(!bar || !grid) return;
+  var cards = [].slice.call(grid.children);
+  var input = bar.querySelector('[data-find]');
+  var count = bar.querySelector('[data-count]');
+  var none  = document.querySelector('[data-none]');
+  var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one"];
+  var ONE = "foal", MANY = "foals";
+  var show = bar.getAttribute('data-open') || 'all';
+
+  function words(n){ return (WORDS[n] || String(n)) + ' ' + (n === 1 ? ONE : MANY); }
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(li){
+      var isSold = li.getAttribute('data-sold') === 'true';
+      var okState = show === 'all' || (show === 'sold') === isSold;
+      var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
+      var on = okState && okFind;
+      li.hidden = !on;
+      if(on) shown++;
+    });
+    count.textContent = words(shown);
+    if(none) none.classList.toggle('is-on', shown === 0);
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
+  });
+  input.addEventListener('input', apply);
+  /* A search should look through everything, not through the tab you happen
+     to be on: typing widens the state filter to all by itself. */
+  input.addEventListener('input', function(){ if(input.value.trim() && show !== 'all'){ show = 'all'; apply(); } });
+  apply();
 })();
 </script>
 </body>

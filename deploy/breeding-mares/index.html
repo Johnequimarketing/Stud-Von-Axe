@@ -1817,6 +1817,57 @@
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2019,20 +2070,41 @@
 
   <section class="arch">
     <div class="wrap">
-      <p class="arch__count">twelve mares</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/breeding-mares/hayley-vd-berghoeve-z"><span class="hz__win typo"><p>HEARTBREAKER X DIAMANT DE SEMILLY X DARCO X CHIN CHIN</p><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Hayley vd Berghoeve Z</span><span class="hz__meta">2024 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cabri vd Berghoeve Z</span><span class="hz__meta">2020 · Mare · Cornet Obolensky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/patchina-vant-merelsnest-1.jpg" alt="Patchina Van’t Merelsnest" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Patchina Van’t Merelsnest</span><span class="hz__meta">2015 · Mare · Kannan</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/carma-vd-bergheove-z"><span class="hz__win"><img src="/assets/img/horses/carma-vd-bergheove-z-1.jpg" alt="Carma vd Bergheove Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Carma vd Bergheove Z</span><span class="hz__meta">2024 · Mare · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Hypnotic JT Z</span><span class="hz__meta">2018 · Mare · Halifax van het Kluizebos</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cortina de Jolie Z</span><span class="hz__meta">2019 · Mare · Cornet Obolesnky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/agousha-vd-berghoeve-z-1.jpg" alt="Agousha vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Agousha vd Berghoeve Z</span><span class="hz__meta">2022 · Mare · Aganix du Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/cartoona-blue"><span class="hz__win"><img src="/assets/img/horses/cartoona-blue-1.jpg" alt="Cartoona Blue" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cartoona Blue</span><span class="hz__meta">2011 · Mare · Cartoon</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/waikiki-vd-berghoeve"><span class="hz__win"><img src="/assets/img/horses/waikiki-vd-berghoeve-1.jpg" alt="Waikiki vd Berghoeve" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Waikiki vd Berghoeve</span><span class="hz__meta">2022 · Mare · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/heaven-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/heaven-vd-berghoeve-z-1.jpg" alt="Heaven vd Berghoeve Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Heaven vd Berghoeve Z</span><span class="hz__meta">2022 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/unguessable-von-axe"><span class="hz__win"><img src="/assets/img/horses/unguessable-von-axe-1.jpg" alt="Unguessable Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unguessable Von Axe</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/cardesse-von-axe"><span class="hz__win"><img src="/assets/img/horses/cardesse-von-axe-1.jpg" alt="Cardesse Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cardesse Von Axe</span><span class="hz__meta">2018 · Mare</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      <div class="flt" data-filter data-open="available">
+        <div class="flt__search">
+          <label class="visually-hidden" for="flt-q">Search these mares</label>
+          <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
+                 placeholder="Search a name, a sire, a country">
+          <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flt__chips" role="group" aria-label="Filter these mares">
+          <button class="hz__chip" type="button" data-show="available"
+                  aria-pressed="true">Available <span class="c">5</span></button>
+          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">7</span></button>
+          <button class="hz__chip" type="button" data-show="all"
+                  aria-pressed="false">All <span class="c">12</span></button>
+        </div>
+        <p class="flt__count" data-count aria-live="polite">five mares</p>
+      </div>
+
+      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+
+      <ul class="hz__grid" data-grid>
+        <li data-sold="false" data-find="hayley vd berghoeve z heartbreaker x diamant de semilly x darco x chin chin zangersheide direct daughter of hiamant van't roosakker! 2024 mare"><a class="hz__card" href="/breeding-mares/hayley-vd-berghoeve-z"><span class="hz__win typo"><p>HEARTBREAKER X DIAMANT DE SEMILLY X DARCO X CHIN CHIN</p><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Hayley vd Berghoeve Z</span><span class="hz__meta">Born 2024 · Mare · Zangersheide</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="cabri vd berghoeve z cornet obolensky x diamant de semilly x darco x chin chin zangersheide direct daughter of hiamant van't roosakker! 2020 mare"><a class="hz__card" href="/breeding-mares/cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cabri vd Berghoeve Z</span><span class="hz__meta">Born 2020 · Mare · Zangersheide</span><span class="hz__ped">Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="patchina van’t merelsnest kannan x darco x hedjaz bwp sister to glasgow van't merelsnest! 2015 belgium mare"><a class="hz__card" href="/breeding-mares/patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/patchina-vant-merelsnest-1.jpg" alt="Patchina Van’t Merelsnest" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Patchina Van’t Merelsnest</span><span class="hz__meta">Born 2015 · Mare · BWP · Sold to Belgium</span><span class="hz__ped">Kannan x Darco x Hedjaz</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="carma vd bergheove z comme il faut x nabab de reve x jalisco b zangersheide sister of jaguar vd berghoeve! 2024 mare"><a class="hz__card" href="/breeding-mares/carma-vd-bergheove-z"><span class="hz__win"><img src="/assets/img/horses/carma-vd-bergheove-z-1.jpg" alt="Carma vd Bergheove Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Carma vd Bergheove Z</span><span class="hz__meta">Born 2024 · Mare · Zangersheide</span><span class="hz__ped">Comme il Faut x Nabab de Reve x Jalisco B</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="hypnotic jt z halifax van het kluizebos x carthago zangersheide sister of the olimpic hardrock z! 2018 brazil mare"><a class="hz__card" href="/breeding-mares/hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Hypnotic JT Z</span><span class="hz__meta">Born 2018 · Mare · Zangersheide · Sold to Brazil</span><span class="hz__ped">Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="cortina de jolie z cornet obolesnky x calato x darco x chin chin zangersheide closest way to narcotique ii and qerlychin! 2019 mare"><a class="hz__card" href="/breeding-mares/cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cortina de Jolie Z</span><span class="hz__meta">Born 2019 · Mare · Zangersheide</span><span class="hz__ped">Cornet Obolesnky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="agousha vd berghoeve z aganix du seigneur x diamant de semilly x darco x chin chin zangersheide directly out of gatoucha van't roosakker! 2022 mare"><a class="hz__card" href="/breeding-mares/agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/agousha-vd-berghoeve-z-1.jpg" alt="Agousha vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Agousha vd Berghoeve Z</span><span class="hz__meta">Born 2022 · Mare · Zangersheide</span><span class="hz__ped">Aganix du Seigneur x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cartoona blue cartoon x chacco blue x landgold oldenburg international in foal to emerald van't ruytershof 2011 lithuania mare"><a class="hz__card" href="/breeding-mares/cartoona-blue"><span class="hz__win"><img src="/assets/img/horses/cartoona-blue-1.jpg" alt="Cartoona Blue" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cartoona Blue</span><span class="hz__meta">Born 2011 · Mare · Oldenburg International · Sold to Lithuania</span><span class="hz__ped">Cartoon x Chacco Blue x Landgold</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="waikiki vd berghoeve catoki x goethe x darco x chin chin bwp out of baraka de muze - narcotique ii- qerlychin. 2022 ireland mare"><a class="hz__card" href="/breeding-mares/waikiki-vd-berghoeve"><span class="hz__win"><img src="/assets/img/horses/waikiki-vd-berghoeve-1.jpg" alt="Waikiki vd Berghoeve" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Waikiki vd Berghoeve</span><span class="hz__meta">Born 2022 · Mare · BWP · Sold to Ireland</span><span class="hz__ped">Catoki x Goethe x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="heaven vd berghoeve z heartbreaker x for pleasure x touchdown zangersheide out of world equestrian games winner liscalgot! 2022 ireland mare"><a class="hz__card" href="/breeding-mares/heaven-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/heaven-vd-berghoeve-z-1.jpg" alt="Heaven vd Berghoeve Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Heaven vd Berghoeve Z</span><span class="hz__meta">Born 2022 · Mare · Zangersheide · Sold to Ireland</span><span class="hz__ped">Heartbreaker x For Pleasure x Touchdown</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="unguessable von axe holsteiner her mother is jumping 160! 2018 the united states mare"><a class="hz__card" href="/breeding-mares/unguessable-von-axe"><span class="hz__win"><img src="/assets/img/horses/unguessable-von-axe-1.jpg" alt="Unguessable Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Unguessable Von Axe</span><span class="hz__meta">Born 2018 · Mare · Holsteiner · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="cardesse von axe holsteiner grandam full sister of cardento! 2018 italy mare"><a class="hz__card" href="/breeding-mares/cardesse-von-axe"><span class="hz__win"><img src="/assets/img/horses/cardesse-von-axe-1.jpg" alt="Cardesse Von Axe" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Cardesse Von Axe</span><span class="hz__meta">Born 2018 · Mare · Holsteiner · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -2152,6 +2224,48 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var bar = document.querySelector('[data-filter]');
+  var grid = document.querySelector('[data-grid]');
+  if(!bar || !grid) return;
+  var cards = [].slice.call(grid.children);
+  var input = bar.querySelector('[data-find]');
+  var count = bar.querySelector('[data-count]');
+  var none  = document.querySelector('[data-none]');
+  var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one"];
+  var ONE = "mare", MANY = "mares";
+  var show = bar.getAttribute('data-open') || 'all';
+
+  function words(n){ return (WORDS[n] || String(n)) + ' ' + (n === 1 ? ONE : MANY); }
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(li){
+      var isSold = li.getAttribute('data-sold') === 'true';
+      var okState = show === 'all' || (show === 'sold') === isSold;
+      var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
+      var on = okState && okFind;
+      li.hidden = !on;
+      if(on) shown++;
+    });
+    count.textContent = words(shown);
+    if(none) none.classList.toggle('is-on', shown === 0);
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
+  });
+  input.addEventListener('input', apply);
+  /* A search should look through everything, not through the tab you happen
+     to be on: typing widens the state filter to all by itself. */
+  input.addEventListener('input', function(){ if(input.value.trim() && show !== 'all'){ show = 'all'; apply(); } });
+  apply();
 })();
 </script>
 </body>

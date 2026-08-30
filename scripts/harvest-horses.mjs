@@ -145,6 +145,22 @@ const run = async () => {
     const links = [...new Set([...index.matchAll(/href="(https:\/\/www\.studvonaxe\.it\/en\/cavalli\/[^"]+?)"/g)].map(m => m[1]))];
     process.stdout.write(`${category}: ${links.length} pages\n`);
 
+    /* The country a sold horse went to lives only on the listing page, in a
+       field their stylesheet hides: <div class="...field-paese paese-si">BE</div>
+       right before the empty flag div the visitor sees a flag in. The detail
+       page does not carry it at all, which is why the first harvest came back
+       with no destinations. Read here, in listing order, and matched to the
+       cards by position. */
+    const countries = [...index.matchAll(/field-paese[^>]*>([A-Z]{2})?</g)].map(m => m[1] || '');
+    /* Each card links three times, from the photograph, the title and the
+       button, so the hrefs are reduced to first appearance before they are
+       lined up with the country fields. */
+    const cards = [...new Set([...index.matchAll(/href="(https:\/\/www\.studvonaxe\.it\/en\/cavalli\/[^"]+?)"/g)].map(m => m[1]))];
+    const countryFor = new Map();
+    cards.forEach((href, i) => { if (countries[i]) countryFor.set(href, countries[i]); });
+    const named = [...countryFor.values()].filter(Boolean).length;
+    if (named) process.stdout.write(`  ${named} with a destination country\n`);
+
     for (const link of links) {
       const html = await get(link);
       if (!html) continue;
@@ -173,6 +189,7 @@ const run = async () => {
         pedigree: pedigree(gen),
         body: story(gen),
         photos: photos(html).slice(0, 4),
+        country: countryFor.get(link) || '',
         source: link,
         siteCategories: cats.split(' ').filter(c => c.startsWith('category-')).join(' '),
       };

@@ -1817,6 +1817,57 @@
   }
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(4, 1fr); } }
 
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2019,23 +2070,44 @@
 
   <section class="arch">
     <div class="wrap">
-      <p class="arch__count">fifteen crosses</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/embryos/mosito-van-het-hellenof-x-carma-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/mosito-van-het-hellenof-x-carma-vd-berghoeve-z-1.jpg" alt="Mosito van het Hellenof x Carma vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Mosito van het Hellenof x Carma vd Berghoeve Z</span><span class="hz__meta">2027 · Mosito van het Hellehof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/cornet-obolensky-x-agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cornet-obolensky-x-agousha-vd-berghoeve-z-1.jpg" alt="Cornet Obolensky x Agousha vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cornet Obolensky x Agousha vd Berghoeve Z</span><span class="hz__meta">2027 · Cornet Obolensky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg" alt="Dominator 2000 Z x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dominator 2000 Z x Hypnotic JT Z</span><span class="hz__meta">2026 · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/united-touch-s-x-cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg" alt="United Touch S x Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">United Touch S x Cabri vd Berghoeve Z</span><span class="hz__meta">2027 · United Touch S</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/zandor-z-x-cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-1.jpg" alt="Zandor Z x Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Zandor Z x Cabri vd Berghoeve Z</span><span class="hz__meta">2027 · Zandor Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/chacco-blue-x-cabri-vd-berghoeve-z"><span class="hz__win typo"><p>Chacco Blue x Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</p><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Chacco Blue x Cabri vd Berghoeve Z</span><span class="hz__meta">2027 · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-patchina-vant-merelsnest-1.jpg" alt="Comme il Faut x Patchina Van’T Merelsnest" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Patchina Van’T Merelsnest</span><span class="hz__meta">Frozen · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Catoki x Cortina de Jolie Z</span><span class="hz__meta">2027 · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">For Pleasure x Hypnotic JT Z</span><span class="hz__meta">2027 · For Pleasure</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/aganix-du-seigneur-z-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg" alt="Aganix du Seigneur Z x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Aganix du Seigneur Z x Cortina de Jolie Z</span><span class="hz__meta">2027 · Aganix Su Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/catoki-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/catoki-x-hypnotic-jt-z-1.jpg" alt="Catoki x Hypnotic JT Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Catoki x Hypnotic JT Z</span><span class="hz__meta">FROZEN EMBRYO · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/united-touch-s-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/united-touch-s-x-cortina-de-jolie-z-1.jpg" alt="United Touch S x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">United Touch S x Cortina de Jolie Z</span><span class="hz__meta">FROZEN EMBRYO · United Touch S</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/dourkhan-hero-z-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/dourkhan-hero-z-x-cortina-de-jolie-z-1.jpg" alt="Dourkhan Hero Z x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Dourkhan Hero Z x Cortina de Jolie Z</span><span class="hz__meta">FROZEN EMBRYO · Doukhan Hero Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/big-star-x-cortina-de-jolie-z-1.jpg" alt="Big Star x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Big Star x Cortina de Jolie Z</span><span class="hz__meta">FROZEN EMBRYO · Big Star</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/embryos/uricas-vd-kattevennen-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/uricas-vd-kattevennen-x-cortina-de-jolie-z-1.jpg" alt="Uricas vd Kattevennen x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Uricas vd Kattevennen x Cortina de Jolie Z</span><span class="hz__meta">FROZEN EMBRYO · Uricas vd Kattevennen</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      <div class="flt" data-filter data-open="available">
+        <div class="flt__search">
+          <label class="visually-hidden" for="flt-q">Search these crosses</label>
+          <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
+                 placeholder="Search a name, a sire, a country">
+          <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flt__chips" role="group" aria-label="Filter these crosses">
+          <button class="hz__chip" type="button" data-show="available"
+                  aria-pressed="true">Available <span class="c">13</span></button>
+          <button class="hz__chip" type="button" data-show="sold" aria-pressed="false">Sold <span class="c">2</span></button>
+          <button class="hz__chip" type="button" data-show="all"
+                  aria-pressed="false">All <span class="c">15</span></button>
+        </div>
+        <p class="flt__count" data-count aria-live="polite">thirteen crosses</p>
+      </div>
+
+      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+
+      <ul class="hz__grid" data-grid>
+        <li data-sold="false" data-find="mosito van het hellenof x carma vd berghoeve z mosito van het hellehof x comme il faut x nabab de reve x jalisco b from a direct daughter of quaranca de muze - fragrance de chalus! 2027"><a class="hz__card" href="/embryos/mosito-van-het-hellenof-x-carma-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/mosito-van-het-hellenof-x-carma-vd-berghoeve-z-1.jpg" alt="Mosito van het Hellenof x Carma vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Mosito van het Hellenof x Carma vd Berghoeve Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">Mosito van het Hellehof x Comme il faut x Nabab de Reve x Jalisco B</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="cornet obolensky x agousha vd berghoeve z cornet obolensky x aganix du seigneur x diamant de semilly x darco x chin chin from a direct daughter of gatoucha van't roosakker! 2027"><a class="hz__card" href="/embryos/cornet-obolensky-x-agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cornet-obolensky-x-agousha-vd-berghoeve-z-1.jpg" alt="Cornet Obolensky x Agousha vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Cornet Obolensky x Agousha vd Berghoeve Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">Cornet Obolensky x Aganix du Seigneur x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="dominator 2000 z x hypnotic jt z dominator 2000 z x halifax van het kluizebos x carthago out of the sister of the olympic hardrock z! 2026 brazil"><a class="hz__card" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/dominator-2000-z-x-hypnotic-jt-z-1.jpg" alt="Dominator 2000 Z x Hypnotic JT Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Dominator 2000 Z x Hypnotic JT Z</span><span class="hz__meta">Due 2026 · Sold to Brazil</span><span class="hz__ped">Dominator 2000 Z x Halifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="united touch s x cabri vd berghoeve z united touch s x cornet obolensky x calato x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027"><a class="hz__card" href="/embryos/united-touch-s-x-cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg" alt="United Touch S x Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">United Touch S x Cabri vd Berghoeve Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">United Touch S x Cornet Obolensky x Calato x Darco x Chin chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="zandor z x cabri vd berghoeve z zandor z x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027"><a class="hz__card" href="/embryos/zandor-z-x-cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-1.jpg" alt="Zandor Z x Cabri vd Berghoeve Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Zandor Z x Cabri vd Berghoeve Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">Zandor Z x Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="chacco blue x cabri vd berghoeve z chacco blue x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027"><a class="hz__card" href="/embryos/chacco-blue-x-cabri-vd-berghoeve-z"><span class="hz__win typo"><p>Chacco Blue x Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</p><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Chacco Blue x Cabri vd Berghoeve Z</span><span class="hz__meta">Due 2027</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen italy"><a class="hz__card" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-patchina-vant-merelsnest-1.jpg" alt="Comme il Faut x Patchina Van’T Merelsnest" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Patchina Van’T Merelsnest</span><span class="hz__meta">Frozen embryo · Sold to Italy</span><span class="hz__ped">Comme il Faut x Kannan x Darco x Hedjaz</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="catoki x cortina de jolie z catoki x cornet obolensky x calato x darco x chin chin fuga de muze, narcotique ii, qerlychin! 2027"><a class="hz__card" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Catoki x Cortina de Jolie Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">Catoki x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="for pleasure x hypnotic jt z for pleasure x halifax van kluizebos x carthago out of the sister of the olympic hardrock z! 2027"><a class="hz__card" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">For Pleasure x Hypnotic JT Z</span><span class="hz__meta">Due 2027</span><span class="hz__ped">For Pleasure x Halifax van Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="aganix du seigneur z x cortina de jolie z aganix su seigneur x cornet obolesnky x calato x darco x chin chin zangersheide out of fuga de muze - narcotique ii - qerlychin! 2027"><a class="hz__card" href="/embryos/aganix-du-seigneur-z-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg" alt="Aganix du Seigneur Z x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Aganix du Seigneur Z x Cortina de Jolie Z</span><span class="hz__meta">Due 2027 · Zangersheide</span><span class="hz__ped">Aganix Su Seigneur x Cornet Obolesnky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="catoki x hypnotic jt z catoki x kalifax van het kluizebos x carthago out of a sister of hardrock z! frozen embryo"><a class="hz__card" href="/embryos/catoki-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/catoki-x-hypnotic-jt-z-1.jpg" alt="Catoki x Hypnotic JT Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Catoki x Hypnotic JT Z</span><span class="hz__meta">Frozen embryo</span><span class="hz__ped">Catoki x Kalifax van het Kluizebos x Carthago</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="united touch s x cortina de jolie z united touch s x cornet obolensky x calato x darco x chin chin classic touch dam line crossed with nacotique ii! frozen embryo"><a class="hz__card" href="/embryos/united-touch-s-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/united-touch-s-x-cortina-de-jolie-z-1.jpg" alt="United Touch S x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">United Touch S x Cortina de Jolie Z</span><span class="hz__meta">Frozen embryo</span><span class="hz__ped">United Touch S x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="dourkhan hero z x cortina de jolie z doukhan hero z x cornet obolensky x calato x darco x chin chin 3 of the best dam lines in the world crossed in one match! chin touch hero x usha van't roosakker x qerlychin frozen embryo"><a class="hz__card" href="/embryos/dourkhan-hero-z-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/dourkhan-hero-z-x-cortina-de-jolie-z-1.jpg" alt="Dourkhan Hero Z x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Dourkhan Hero Z x Cortina de Jolie Z</span><span class="hz__meta">Frozen embryo</span><span class="hz__ped">Doukhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="big star x cortina de jolie z big star x cornet obolensky x calato x darco x chin chin closest way to narcotique ii! frozen embryo"><a class="hz__card" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/big-star-x-cortina-de-jolie-z-1.jpg" alt="Big Star x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Big Star x Cortina de Jolie Z</span><span class="hz__meta">Frozen embryo</span><span class="hz__ped">Big Star x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="false" data-find="uricas vd kattevennen x cortina de jolie z uricas vd kattevennen x cornet obolensky x calato x darco x chin chin chika's way - wodka ii line crossed with narcotique ii - qerlychin! frozen embryo"><a class="hz__card" href="/embryos/uricas-vd-kattevennen-x-cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/uricas-vd-kattevennen-x-cortina-de-jolie-z-1.jpg" alt="Uricas vd Kattevennen x Cortina de Jolie Z" loading="lazy"><span class="hz__tag">Available</span></span><span class="hz__body"><span class="hz__name">Uricas vd Kattevennen x Cortina de Jolie Z</span><span class="hz__meta">Frozen embryo</span><span class="hz__ped">Uricas vd Kattevennen x Cornet Obolensky x Calato x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -2155,6 +2227,48 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var bar = document.querySelector('[data-filter]');
+  var grid = document.querySelector('[data-grid]');
+  if(!bar || !grid) return;
+  var cards = [].slice.call(grid.children);
+  var input = bar.querySelector('[data-find]');
+  var count = bar.querySelector('[data-count]');
+  var none  = document.querySelector('[data-none]');
+  var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one"];
+  var ONE = "cross", MANY = "crosses";
+  var show = bar.getAttribute('data-open') || 'all';
+
+  function words(n){ return (WORDS[n] || String(n)) + ' ' + (n === 1 ? ONE : MANY); }
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(li){
+      var isSold = li.getAttribute('data-sold') === 'true';
+      var okState = show === 'all' || (show === 'sold') === isSold;
+      var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
+      var on = okState && okFind;
+      li.hidden = !on;
+      if(on) shown++;
+    });
+    count.textContent = words(shown);
+    if(none) none.classList.toggle('is-on', shown === 0);
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
+  });
+  input.addEventListener('input', apply);
+  /* A search should look through everything, not through the tab you happen
+     to be on: typing widens the state filter to all by itself. */
+  input.addEventListener('input', function(){ if(input.value.trim() && show !== 'all'){ show = 'all'; apply(); } });
+  apply();
 })();
 </script>
 </body>
