@@ -74,7 +74,7 @@ const img = (cls) => SHOT
 const VARIANTS = [
   {
     id: 'tray', title: 'The tray',
-    note: 'One photograph across the top and the figures on a plate that hangs into it from below, the way the homepage hero hands over to the topics tray. The name is on the picture, the numbers are on the plate, and the two overlap so there is no seam where one block ends and another starts.',
+    note: 'One photograph across the top and the figures on a plate that hangs into it from below, the way the homepage hero hands over to the topics tray. Measured after Mark said the title sat against the block: there were exactly nought pixels between them. The photograph is taller now, the name sits well clear of the plate, and the plate hangs a little less deep, so the two overlap without touching.',
     html: () => `
       <section class="h1">
         <div class="h1__win">${img('h1')}<span class="h1__veil" aria-hidden="true"></span>
@@ -92,6 +92,52 @@ const VARIANTS = [
             </div>
             ${telex('h1')}
             ${acts('h1', true)}
+          </div>
+        </div>
+      </section>`,
+  },
+  {
+    id: 'tray-top', title: 'The tray, name at the head',
+    note: 'The same plate, with the name moved to the top of the photograph instead of the foot. Nothing can crowd it from below, the picture is uninterrupted where the horse is, and the eye reads down: name, photograph, figures.',
+    html: () => `
+      <section class="h7">
+        <div class="h7__win">${img('h7')}<span class="h7__veil" aria-hidden="true"></span>
+          <div class="h7__type">
+            <a class="h7__back" href="#"><span aria-hidden="true">&larr;</span> Embryos</a>
+            <p class="h7__h">${esc(SIRE)} <em>&times;</em> ${esc(DAM)}</p>
+          </div>
+        </div>
+        <div class="wrap">
+          <div class="h7__tray">
+            <span class="h7__stage">${esc(STAGE)}</span>
+            <p class="h7__say">${esc(SAY)}</p>
+            <div class="h7__facts">
+            ${facts('h7')}
+            </div>
+            ${telex('h7')}
+            ${acts('h7', true)}
+          </div>
+        </div>
+      </section>`,
+  },
+  {
+    id: 'tray-clean', title: 'The tray, nothing on the photograph',
+    note: 'The plate carries the name as well, so the photograph is only a photograph. It solves the crowding by removing the cause, it is the kindest to a picture, and it is the one that still works on the seven crosses that have no photograph of their own.',
+    html: () => `
+      <section class="h8">
+        <div class="h8__win">${img('h8')}<span class="h8__veil" aria-hidden="true"></span>
+          <a class="h8__back" href="#"><span aria-hidden="true">&larr;</span> Embryos</a>
+        </div>
+        <div class="wrap">
+          <div class="h8__tray">
+            <span class="h8__stage">${esc(STAGE)}</span>
+            <p class="h8__h">${esc(SIRE)} <em>&times;</em> ${esc(DAM)}</p>
+            <p class="h8__say">${esc(SAY)}</p>
+            <div class="h8__facts">
+            ${facts('h8')}
+            </div>
+            ${telex('h8')}
+            ${acts('h8', true)}
           </div>
         </div>
       </section>`,
@@ -226,7 +272,9 @@ const CSS = `
      six heroes each asking for 64vh makes the page as long as the window is
      tall, which is fine in a browser and useless in a render. On the real
      page they keep their vh. */
-  .d-frame .h1__win{ height:380px; }
+  .d-frame .h1__win{ height:420px; }
+  .d-frame .h7__win{ height:380px; }
+  .d-frame .h8__win{ height:400px; }
   .d-frame .h2__pic{ min-height:460px; }
   .d-frame .h3__win{ height:300px; }
   .d-frame .h6{ min-height:520px; }
@@ -234,31 +282,31 @@ const CSS = `
   .h-none img{ width:auto; height:26%; max-height:96px; opacity:.16; }
 
   /* shared bits */
-  .h1__k,.h2__k,.h3__k,.h4__k,.h5__k,.h6__k{ display:block; font-family:var(--font-body); font-weight:700;
+  .h1__k,.h7__k,.h8__k,.h2__k,.h3__k,.h4__k,.h5__k,.h6__k{ display:block; font-family:var(--font-body); font-weight:700;
     font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.28rem; }
-  .h1__v,.h2__v,.h3__v,.h4__v,.h5__v,.h6__v{ display:block; font-family:var(--font-display);
+  .h1__v,.h7__v,.h8__v,.h2__v,.h3__v,.h4__v,.h5__v,.h6__v{ display:block; font-family:var(--font-display);
     font-weight:400; font-size:1.05rem; line-height:1.25; }
-  .h1__stage,.h2__stage,.h3__stage,.h4__stage,.h5__stage,.h6__stage{ display:inline-flex; align-items:center;
+  .h1__stage,.h7__stage,.h8__stage,.h2__stage,.h3__stage,.h4__stage,.h5__stage,.h6__stage{ display:inline-flex; align-items:center;
     padding:.34em .85em; border-radius:var(--ctl-radius); background:var(--color-gold);
     color:var(--color-navy); font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
-  .h1__back,.h2__back,.h3__back,.h4__back,.h5__back,.h6__back{ display:inline-flex; align-items:center;
+  .h1__back,.h7__back,.h8__back,.h2__back,.h3__back,.h4__back,.h5__back,.h6__back{ display:inline-flex; align-items:center;
     gap:.5rem; font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
     text-transform:uppercase; }
   /* Rendered as paragraphs in this sheet: six samples on one page cannot
      each carry an h1, and the audit is right to say so. On the real page it
      is an h1, and the class is the same either way. */
-  .h1__h,.h2__h,.h3__h,.h4__h,.h5__h,.h6__h{ font-family:var(--font-display); font-weight:400;
+  .h1__h,.h7__h,.h8__h,.h2__h,.h3__h,.h4__h,.h5__h,.h6__h{ font-family:var(--font-display); font-weight:400;
     line-height:1.04; letter-spacing:-.02em; margin:.6rem 0 0; }
-  .h1__h em,.h2__h em,.h3__h em,.h4__h em,.h5__h em,.h6__h em{ font-style:italic; color:var(--color-gold); }
-  .h1__say,.h2__say,.h3__say,.h4__say,.h5__say,.h6__say{ font-family:var(--font-display); font-style:italic;
+  .h1__h em,.h7__h em,.h8__h em,.h2__h em,.h3__h em,.h4__h em,.h5__h em,.h6__h em{ font-style:italic; color:var(--color-gold); }
+  .h1__say,.h7__say,.h8__say,.h2__say,.h3__say,.h4__say,.h5__say,.h6__say{ font-family:var(--font-display); font-style:italic;
     line-height:1.45; }
   .btn-ghost.is-dark{ border-color:rgba(255,255,255,.34); color:var(--color-white); }
   .btn-ghost.is-dark:hover{ border-color:var(--color-white); }
   .btn-ghost.is-light{ border-color:var(--color-line); color:var(--color-ink); }
   .btn-ghost.is-light:hover{ border-color:var(--color-navy); color:var(--color-navy); }
-  .h1__acts,.h2__acts,.h3__acts,.h4__acts,.h5__acts,.h6__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
-  .h1__telex a,.h2__telex a,.h4__telex a,.h5__telex a,.h6__telex a{ font-family:var(--font-body);
+  .h1__acts,.h7__acts,.h8__acts,.h2__acts,.h3__acts,.h4__acts,.h5__acts,.h6__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
+  .h1__telex a,.h7__telex a,.h8__telex a,.h2__telex a,.h4__telex a,.h5__telex a,.h6__telex a{ font-family:var(--font-body);
     font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
 
   /* 1 tray */
@@ -281,6 +329,52 @@ const CSS = `
   .h1__telex{ margin:1.1rem 0 1.1rem; }
   .h1__telex a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); padding-bottom:2px; }
 
+
+  /* 1 tray, with room: the name clears the plate rather than resting on it */
+  .h1__win{ height:clamp(360px,50vh,480px); }
+  .h1__type{ bottom:clamp(4.4rem,7vw,5.6rem); }
+  .h1__tray{ margin-top:clamp(-2.6rem,-3vw,-1.8rem); }
+
+  /* 7 tray, name at the head */
+  .h7__win{ position:relative; height:clamp(320px,44vh,440px); overflow:hidden; background:var(--color-navy-deep); }
+  .h7__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .h7__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.72) 0%, rgba(var(--veil-rgb),.38) 46%, rgba(var(--veil-rgb),.6) 100%); }
+  .h7__type{ position:absolute; left:0; right:0; top:calc(var(--hd-top) + var(--hd-plate) + 1.4rem);
+    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto; }
+  .h7__back{ color:rgba(255,255,255,.72); }
+  .h7__h{ font-size:clamp(1.8rem,2.8vw + .9rem,2.8rem); color:var(--color-white); max-width:20ch; }
+  .h7__tray{ position:relative; margin-top:clamp(-2.6rem,-3vw,-1.8rem); z-index:2;
+    background:var(--color-base); border-radius:var(--plate-radius);
+    padding:clamp(1.3rem,2.6vw,1.9rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
+  .h7__say{ margin:.7rem 0 1.1rem; font-size:16px; color:var(--color-navy); max-width:52ch; }
+  .h7__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
+    padding-top:1.1rem; border-top:1px solid var(--color-line); }
+  @media (min-width:760px){ .h7__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .h7__v{ color:var(--color-ink); }
+  .h7__telex{ margin:1.1rem 0; }
+  .h7__telex a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); padding-bottom:2px; }
+
+  /* 8 tray, nothing on the photograph */
+  .h8__win{ position:relative; height:clamp(340px,46vh,460px); overflow:hidden; background:var(--color-navy-deep); }
+  .h8__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .h8__veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),.5) 0%, rgba(var(--veil-rgb),.18) 44%, rgba(var(--veil-rgb),.34) 100%); }
+  .h8__back{ position:absolute; left:0; right:0; top:calc(var(--hd-top) + var(--hd-plate) + 1.4rem);
+    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto;
+    color:rgba(255,255,255,.78); }
+  .h8__tray{ position:relative; margin-top:clamp(-3rem,-3.4vw,-2rem); z-index:2;
+    background:var(--color-base); border-radius:var(--plate-radius);
+    padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
+  .h8__h{ margin:.9rem 0 0; font-size:clamp(1.7rem,2.4vw + .8rem,2.5rem); color:var(--color-ink);
+    max-width:22ch; }
+  .h8__say{ margin:.6rem 0 1.2rem; font-size:16px; color:var(--color-navy); max-width:52ch; }
+  .h8__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
+    padding-top:1.1rem; border-top:1px solid var(--color-line); }
+  @media (min-width:760px){ .h8__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .h8__v{ color:var(--color-ink); }
+  .h8__telex{ margin:1.1rem 0; }
+  .h8__telex a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); padding-bottom:2px; }
   /* 2 split screen */
   .h2{ display:grid; align-items:stretch; }
   @media (min-width:900px){ .h2{ grid-template-columns:1fr 1fr; } }
@@ -406,7 +500,7 @@ const html = `<!DOCTYPE html>
 ${VARIANTS.map((v, i) => `
 <section class="d-sec" id="${v.id}">
   <div class="d-lab">
-    <p class="d-num">Variation ${['one','two','three','four','five','six'][i]}</p>
+    <p class="d-num">Variation ${['one','one A','one B','two','three','four','five','six'][i]}</p>
     <h2>${esc(v.title)}</h2>
     <p class="d-note">${esc(v.note)}</p>
   </div>
