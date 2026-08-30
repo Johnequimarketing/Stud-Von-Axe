@@ -438,8 +438,12 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      columns of loose type under a rule. They are small, so the gold reads as
      an accent rather than a field of it, and the row fills whatever the count:
      a horse may have three of these or five. */
+  /* A row of their own, under both columns rather than inside the plate:
+     30 Aug, "die blokjes moeten eronder komen, onder de 2 kolommen". Across
+     the full width they can breathe, and the plate above holds only what is
+     said in words. */
   .hp__facts{
-    display:grid; gap:.5rem; margin:0 0 1.8rem;
+    display:grid; gap:clamp(.5rem,1vw,.8rem); margin:clamp(1.4rem,3vw,2.2rem) 0 0;
     grid-template-columns:repeat(2, minmax(0, 1fr));
     padding-top:0; border-top:0;
   }
@@ -447,7 +451,8 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
   }
   .hp__fact{
-    padding:.7rem .85rem; border-radius:var(--ctl-radius);
+    padding:clamp(.85rem,1.6vw,1.15rem) clamp(1rem,1.8vw,1.3rem);
+    border-radius:var(--card-radius);
     background:color-mix(in srgb, var(--color-gold) 18%, var(--color-base));
     border:1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
   }
@@ -465,7 +470,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem;
     color:color-mix(in srgb, var(--color-navy) 72%, transparent);
   }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1rem;
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
     line-height:1.25; color:var(--color-navy); }
   .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
   /* The ghost button is drawn for a navy plate. On the ivory ground it was
@@ -1344,15 +1349,17 @@ const introSection = (horse, group) => {
           ${horse.genetics ? `<p class="hp__cross">${esc(horseName(horse.genetics))}</p>` : ''}
           ${horse.tagline ? `<p class="hp__lead">${esc(theirWords(horse.tagline))}</p>` : ''}
 ${storyBlock(horse)}
-          <div class="hp__facts" style="--cols:${factCols(horse)}">
-            ${factRow(horse)}
-          </div>
           <div class="hp__acts">
             <a href="#ask" class="btn btn-gold btn-pill">Ask about this horse</a>
             ${(() => { const t = telexOf(horse); return t ? `<a href="${esc(t.url)}" target="_blank" rel="noopener"
                class="btn btn-ghost btn-pill">${t.self ? 'Pedigree on Horsetelex' : 'Damline on Horsetelex'}</a>` : ''; })()}
           </div>
         </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="hp__facts" style="--cols:${factCols(horse)}">
+        ${factRow(horse)}
       </div>
     </div>
   </section>
