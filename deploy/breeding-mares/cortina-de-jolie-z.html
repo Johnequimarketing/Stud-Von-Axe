@@ -2188,20 +2188,50 @@
   }
   .hp__lead{ margin:0 0 1.6rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
 
+  /* Their paragraph, in the tray under the tagline. */
+  .hp__story{ margin:0 0 1.6rem; max-width:52ch; }
+  .hp__story p{ margin:0 0 .8rem; font-size:15.5px; line-height:1.65; color:var(--color-ink-soft); }
+  .hp__story p:last-child{ margin-bottom:0; }
+  .hp__storyk{
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); margin:0 0 .5rem !important;
+  }
+  .hp__storyk em{ font-style:normal; color:var(--color-ink-soft); }
+
+  /* ── the figures, as accent blocks ─────────────────────────────────────
+     30 Aug: four blocks in the accent colour side by side, rather than four
+     columns of loose type under a rule. They are small, so the gold reads as
+     an accent rather than a field of it, and the row fills whatever the count:
+     a horse may have three of these or five. */
+  .hp__facts{
+    display:grid; gap:.5rem; margin:0 0 1.8rem;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    padding-top:0; border-top:0;
+  }
+  @media (min-width:620px){
+    .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
+  }
+  .hp__fact{
+    padding:.7rem .85rem; border-radius:var(--ctl-radius);
+    background:color-mix(in srgb, var(--color-gold) 18%, var(--color-base));
+    border:1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+  }
+
   /* The figures. The two places on the about page, widened: a row of
      hairline columns, and a field their site left empty is left out rather
      than shown as a dash. */
-  .hp__facts{
-    display:grid; gap:1rem 1.6rem; margin:0 0 1.8rem;
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    padding-top:1.4rem; border-top:1px solid var(--color-line);
-  }
-  @media (min-width:560px){ .hp__facts{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+  /* Replaced above by the accent blocks; the old loose columns are gone. */
+  /* Inside an accent block the label cannot stay gold: gold on gold. Navy at
+     seventy two percent holds its own against that ground and still sits back
+     from the figure itself. Seventy two rather than sixty two because sixty
+     two measured 4.42:1, just under the floor. */
   .hp__k{
-    display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem;
+    display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem;
+    color:color-mix(in srgb, var(--color-navy) 72%, transparent);
   }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem; color:var(--color-ink); }
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1rem;
+    line-height:1.25; color:var(--color-navy); }
   .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
   /* The ghost button is drawn for a navy plate. On the ivory ground it was
      white on ivory, which is the one thing this project has a hard rule
@@ -2548,12 +2578,21 @@
           <h1 class="hp__h">Cortina de Jolie Z</h1>
           <p class="hp__cross">Cornet Obolesnky x Calato x Darco x Chin Chin</p>
           <p class="hp__lead">Closest way to Narcotique II and Qerlychin!</p>
-          <div class="hp__facts">
-            <div><span class="hp__k">Born</span><span class="hp__v">2019</span></div>
-          <div><span class="hp__k">Sex</span><span class="hp__v">Mare</span></div>
-          <div><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
-          <div><span class="hp__k">Height</span><span class="hp__v">168 cm</span></div>
-          <div><span class="hp__k">Status</span><span class="hp__v">Available</span></div>
+
+          <div class="hp__story">
+            
+            <p>Cortina de jolie Z is a young mare out of Fuga de Muze · Narcotique II · Qerly chin.</p>
+            <p>Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+            <p>Grand dam Narcotique de Muze II (by Darco), 1.60m with Eric Lamaze. She directly produced 13 international horses, of which 5 at 1.60m level and 5 approved stallions. She is granddam of more than 40 international horses, 11 of which jump at 1.60m level. Among her offspring we see big names like Sea Coast Ferly, Querlybet Hero, Vagabond de la Pomme, Estoy Aqui de Muze HDC, Go Easy de Muze, Sterrehof’s Ushi, Heroine de Muze, Inshallah de Muze and Levis de Muze.</p>
+            <p>Great-grandam Qerly Chin (s. Chin Chin), jumped1.60m with Christophe Barbeau. She directly produced 13 international showjumpers, of which 5 at 1.60m level. Her extensive number of offspring includes horses like Exquis Walnut de Muze, Jenson van ’t Meulenhof, Walloon de Muze, Toupie de la Roque en I’m Special de Muze.</p>
+            <p>The first colt that Cortina produced (by For Pleasure) was sold for 40 000 euro at Zangersheide Auction.</p>
+          </div>
+          <div class="hp__facts" style="--cols:3">
+            <div class="hp__fact"><span class="hp__k">Born</span><span class="hp__v">2019</span></div>
+            <div class="hp__fact"><span class="hp__k">Sex</span><span class="hp__v">Mare</span></div>
+            <div class="hp__fact"><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
+            <div class="hp__fact"><span class="hp__k">Height</span><span class="hp__v">168 cm</span></div>
+            <div class="hp__fact"><span class="hp__k">Status</span><span class="hp__v">Available</span></div>
           </div>
           <div class="hp__acts">
             <a href="#ask" class="btn btn-gold btn-pill">Ask about this horse</a>
@@ -2562,21 +2601,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="abst">
-    <div class="wrap abst__grid">
-      <div class="abst__col">
-        <p class="plaque">About this horse</p>
-        <h2 class="abst__h">Cortina de Jolie Z</h2>
-        <p class="abst__lead">Cortina de jolie Z is a young mare out of Fuga de Muze · Narcotique II · Qerly chin.</p>
-        <p class="abst__body">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
-        <p class="abst__body">Grand dam Narcotique de Muze II (by Darco), 1.60m with Eric Lamaze. She directly produced 13 international horses, of which 5 at 1.60m level and 5 approved stallions. She is granddam of more than 40 international horses, 11 of which jump at 1.60m level. Among her offspring we see big names like Sea Coast Ferly, Querlybet Hero, Vagabond de la Pomme, Estoy Aqui de Muze HDC, Go Easy de Muze, Sterrehof’s Ushi, Heroine de Muze, Inshallah de Muze and Levis de Muze.</p>
-        <p class="abst__body">Great-grandam Qerly Chin (s. Chin Chin), jumped1.60m with Christophe Barbeau. She directly produced 13 international showjumpers, of which 5 at 1.60m level. Her extensive number of offspring includes horses like Exquis Walnut de Muze, Jenson van ’t Meulenhof, Walloon de Muze, Toupie de la Roque en I’m Special de Muze.</p>
-        <p class="abst__body">The first colt that Cortina produced (by For Pleasure) was sold for 40 000 euro at Zangersheide Auction.</p>
-      </div>
-      <div class="hp__col abst__pic"><img src="/assets/img/horses/cortina-de-jolie-z-3.jpg" alt="Cortina de Jolie Z" loading="lazy"></div>
     </div>
   </section>
 
@@ -2627,14 +2651,16 @@
   <section class="hgal">
     <div class="wrap">
       <div class="hgal__head">
-        <p class="plaque">two more pictures</p>
+        <p class="plaque">three more pictures</p>
         <h2 class="hgal__h">More of <em>Cortina de Jolie Z</em></h2>
       </div>
       <div class="hgal__rail" tabindex="0" aria-label="Pictures, scroll sideways">
+        <button type="button" class="hgal__f" data-full="/assets/img/horses/cortina-de-jolie-z-3.jpg"
+                aria-label="Open picture 1 of 3 at full size"><img src="/assets/img/horses/cortina-de-jolie-z-3.jpg" alt="Cortina de Jolie Z" loading="lazy"></button>
         <button type="button" class="hgal__f" data-full="/assets/img/horses/cortina-de-jolie-z-4.jpg"
-                aria-label="Open picture 1 of 2 at full size"><img src="/assets/img/horses/cortina-de-jolie-z-4.jpg" alt="Cortina de Jolie Z" loading="lazy"></button>
+                aria-label="Open picture 2 of 3 at full size"><img src="/assets/img/horses/cortina-de-jolie-z-4.jpg" alt="Cortina de Jolie Z" loading="lazy"></button>
         <button type="button" class="hgal__f" data-full="/assets/img/horses/cortina-de-jolie-z-5.jpg"
-                aria-label="Open picture 2 of 2 at full size"><img src="/assets/img/horses/cortina-de-jolie-z-5.jpg" alt="Cortina de Jolie Z" loading="lazy"></button>
+                aria-label="Open picture 3 of 3 at full size"><img src="/assets/img/horses/cortina-de-jolie-z-5.jpg" alt="Cortina de Jolie Z" loading="lazy"></button>
       </div>
       <div class="hgal__bar">
         <div class="hgal__dots" role="tablist" aria-label="Pictures">
@@ -2642,6 +2668,8 @@
                   aria-label="Picture 1" aria-selected="true"></button>
           <button type="button" class="hgal__dot" role="tab" data-to="1"
                   aria-label="Picture 2" aria-selected="false"></button>
+          <button type="button" class="hgal__dot" role="tab" data-to="2"
+                  aria-label="Picture 3" aria-selected="false"></button>
         </div>
         <div class="hgal__arrows">
           <button type="button" class="hgal__arrow" data-step="-1" aria-label="Previous picture">&#8592;</button>

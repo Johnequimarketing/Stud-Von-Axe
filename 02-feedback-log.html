@@ -641,6 +641,19 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">One block holds the whole introduction, and the figures are objects in it</p>
+    <p class="said">30 Aug: <q>kunnen we rechts in het blokje, onder de subtitel / hook, de tekst
+    plaatsen die er nu anders los van staat of onder staat. en dan die 4 bakjes, zoals born / sex /
+    studbook etc.. 4 blokken eronder maken in accent kleur. naast elkaar horizontaal?</q></p>
+    <p class="check">Their paragraph moved off its own section and into the tray under the tagline: name,
+    breeding, their line, their paragraph, the figures, the two buttons, in one object. The figures
+    became small accent blocks side by side rather than columns of loose type under a rule. Five of them
+    go three and two rather than four and one, which is the gallery's rule about never ending a row on a
+    single item, applied again.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A run of anything is a rail, so the count is never the layout's business</p>
     <p class="said">30 Aug: <q>De afbeelding carrousel / gallerij, mag een carrousel dus worden, dus met
     pijltjes erbij dat je door kan klikken bij elk paard, zodat je meerdere afbeeldingen kan
@@ -1050,6 +1063,21 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">The contrast check measures a list somebody typed, not the colours on the page</p>
+    <p class="said">The accent blocks were drawn, and the audit passed without measuring them: the pairs
+    are written by hand, so a colour nobody adds is a colour nobody checks. Worse, when the pair was
+    added it was added as a restatement of the CSS, and the two immediately disagreed: the label was
+    gold on gold in the stylesheet while the audit measured navy at sixty two percent, and reported a
+    figure belonging to neither.</p>
+    <p class="check">The two new pairs read their percentages out of the stylesheet with a regex instead
+    of restating them, and skip honestly when they cannot be found rather than falling back to a guess.
+    The label then measured 4.42:1, under the floor, and went to seventy two percent. Proven by putting
+    sixty two back. The list is still written by hand: every new coloured surface has to be added to it
+    on the day it is drawn, and that is now said in a comment above the list.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">The audit runs after every change, and it checks more than tokens</p>
     <p class="said">30 Aug: <q>Na elke change, kun je dan ook een audit draaien? of alle layout klopt,

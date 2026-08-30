@@ -249,6 +249,15 @@ for (const rel of files) {
       accentInk: has(P.gold, P.navy)       ? mix(P.gold, .46, P.navy)  : null,
       goldSoft:  has(P.gold, P.white)      ? mix(P.gold, .62, P.white) : null,
       darkMuted: has(P.bone, P.navyG)      ? mix(P.bone, .74, P.navyG) : null,
+      /* Read out of the stylesheet rather than restated here. A percentage
+         copied into the audit is a second opinion about a colour, and when
+         the two drift the audit measures a shade that is not on the page.
+         Falls back to nothing, which skips the pair honestly, rather than to
+         a guess. */
+      factBg: (() => {
+        const m = cssBlocks.match(/\.hp__fact\{[^}]*background:color-mix\(in srgb,\s*var\(--color-gold\)\s*(\d+)%/);
+        return m && has(P.gold, P.bone) ? mix(P.gold, Number(m[1]) / 100, P.bone) : null;
+      })(),
     };
     const pairs = [
       ['body ink on the page ground',     P.ink || P.navy, P.bone,  4.5],
@@ -261,7 +270,15 @@ for (const rel of files) {
       ['white on navy (hero)',            P.white,     P.navy,  4.5],
       ['button: navy ink on gold',        P.navy,      P.gold,  4.5],
       ['eyebrow: gold on navy',           P.gold,      P.navyG, 3.0],
+      ['figure on the accent block',      P.navy,      D.factBg, 4.5],
+      ['figure label on the accent block', (() => {
+        const m = cssBlocks.match(/\.hp__k\{[^}]*color:color-mix\(in srgb,\s*var\(--color-navy\)\s*(\d+)%/);
+        return m && D.factBg && P.navy ? mix(P.navy, Number(m[1]) / 100, D.factBg) : null;
+      })(), D.factBg, 4.5],
     ];
+    /* This list is written by hand, which means a colour pair nobody adds is a
+       pair nobody measures. Every new coloured surface has to be added here on
+       the day it is drawn, or it ships unchecked. */
     const runnable = pairs.filter(([, fg, bg]) => fg && bg);
     const skipped = pairs.length - runnable.length;
     let worst = null, contrastOk = true;

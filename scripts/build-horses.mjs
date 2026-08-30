@@ -423,20 +423,50 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   }
   .hp__lead{ margin:0 0 1.6rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
 
+  /* Their paragraph, in the tray under the tagline. */
+  .hp__story{ margin:0 0 1.6rem; max-width:52ch; }
+  .hp__story p{ margin:0 0 .8rem; font-size:15.5px; line-height:1.65; color:var(--color-ink-soft); }
+  .hp__story p:last-child{ margin-bottom:0; }
+  .hp__storyk{
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); margin:0 0 .5rem !important;
+  }
+  .hp__storyk em{ font-style:normal; color:var(--color-ink-soft); }
+
+  /* ── the figures, as accent blocks ─────────────────────────────────────
+     30 Aug: four blocks in the accent colour side by side, rather than four
+     columns of loose type under a rule. They are small, so the gold reads as
+     an accent rather than a field of it, and the row fills whatever the count:
+     a horse may have three of these or five. */
+  .hp__facts{
+    display:grid; gap:.5rem; margin:0 0 1.8rem;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    padding-top:0; border-top:0;
+  }
+  @media (min-width:620px){
+    .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
+  }
+  .hp__fact{
+    padding:.7rem .85rem; border-radius:var(--ctl-radius);
+    background:color-mix(in srgb, var(--color-gold) 18%, var(--color-base));
+    border:1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+  }
+
   /* The figures. The two places on the about page, widened: a row of
      hairline columns, and a field their site left empty is left out rather
      than shown as a dash. */
-  .hp__facts{
-    display:grid; gap:1rem 1.6rem; margin:0 0 1.8rem;
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    padding-top:1.4rem; border-top:1px solid var(--color-line);
-  }
-  @media (min-width:560px){ .hp__facts{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+  /* Replaced above by the accent blocks; the old loose columns are gone. */
+  /* Inside an accent block the label cannot stay gold: gold on gold. Navy at
+     seventy two percent holds its own against that ground and still sits back
+     from the figure itself. Seventy two rather than sixty two because sixty
+     two measured 4.42:1, just under the floor. */
   .hp__k{
-    display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem;
+    display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem;
+    color:color-mix(in srgb, var(--color-navy) 72%, transparent);
   }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem; color:var(--color-ink); }
+  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1rem;
+    line-height:1.25; color:var(--color-navy); }
   .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
   /* The ghost button is drawn for a navy plate. On the ivory ground it was
      white on ivory, which is the one thing this project has a hard rule
@@ -1233,8 +1263,26 @@ const factRow = (horse) => {
       ? (horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : 'Sold')
       : 'Available'],
   ].filter(([, v]) => v);
+  /* 30 Aug: four blocks in the accent colour, side by side, rather than four
+     columns of loose type. They wrap to two rows on a narrow screen and the
+     row stays full whatever the count, because a horse can have three of these
+     or five. */
   return facts.map(([k, v]) =>
-    `<div><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n          ');
+    `<div class="hp__fact"><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n            ');
+};
+
+/* How many columns the row of figures takes, so it never ends on one block
+   sitting alone. Five go three and two rather than four and one, which is the
+   same rule the gallery follows. */
+const factCols = (horse) => {
+  const n = [
+    horse.year,
+    horse.category === 'embryo' ? null : SEX(horse),
+    horse.studbook,
+    horse.height,
+    true,
+  ].filter(Boolean).length;
+  return n === 5 ? 3 : n;
 };
 
 /* Which photograph goes where, decided once for the whole page. Four sections
@@ -1247,10 +1295,12 @@ const factRow = (horse) => {
 const photoPlan = (horse) => {
   const p = horse.photos;
   if (!p.length) return { hero: '', col: '', story: '', gallery: [] };
-  if (p.length === 1) return { hero: p[0], col: p[0], story: '', gallery: [], oneOnly: true };
-  const story = horse.body.length ? (p[2] || '') : '';
-  const used = new Set([p[0], p[1], story].filter(Boolean));
-  return { hero: p[0], col: p[1], story, gallery: p.filter((x) => !used.has(x)) };
+  if (p.length === 1) return { hero: p[0], col: p[0], gallery: [], oneOnly: true };
+  /* The story used to hold the third picture beside it. It now sits inside the
+     tray with no room for one, so that photograph goes back to the gallery
+     rather than being left out of the page altogether. */
+  const used = new Set([p[0], p[1]]);
+  return { hero: p[0], col: p[1], gallery: p.filter((x) => !used.has(x)) };
 };
 
 const introSection = (horse, group) => {
@@ -1293,7 +1343,8 @@ const introSection = (horse, group) => {
           <h1 class="hp__h">${esc(name)}</h1>
           ${horse.genetics ? `<p class="hp__cross">${esc(horseName(horse.genetics))}</p>` : ''}
           ${horse.tagline ? `<p class="hp__lead">${esc(theirWords(horse.tagline))}</p>` : ''}
-          <div class="hp__facts">
+${storyBlock(horse)}
+          <div class="hp__facts" style="--cols:${factCols(horse)}">
             ${factRow(horse)}
           </div>
           <div class="hp__acts">
@@ -1482,20 +1533,18 @@ ${films.map((f, i) => `            <button type="button" class="hvid__dot" role=
    Only six of the sixty horses carry one on their site. The section is not
    drawn at all for the other fifty four rather than filled with something
    written here. */
-const storySection = (horse) => {
+/* Their paragraph, and the heading that says whose it is.
+   Six of the sixty carry one on their own site, and two of those six are not
+   about the horse whose page they sit on: Bellavista's is two hundred and
+   seventy three words about Balou du Reventon, his sire, down to what his
+   riders earned in a season. Read under a heading saying "About this horse"
+   that is simply wrong, the same fault as the Horsetelex links and the films,
+   so the heading names whatever the first paragraph opens on. Their words are
+   never rewritten, only labelled truthfully.
+   30 Aug it moved off its own section and into the tray, under the tagline,
+   because standing alone under a photograph it read as a second page. */
+const storyBlock = (horse) => {
   if (!horse.body.length) return '';
-  const shot = photoPlan(horse).story;
-  const pic = shot
-    ? `<div class="hp__col abst__pic"><img src="/${shot}" alt="${esc(horseName(horse.name))}" loading="lazy"></div>`
-    : '';
-  /* Six of the sixty carry a paragraph on their own site, and two of those six
-     are not about the horse whose page they sit on: Bellavista's is two
-     hundred and seventy three words about Balou du Reventon, his sire, down to
-     what his riders earned in a season. Read under a heading saying "About
-     this horse" that is simply wrong, the same fault as the Horsetelex links
-     and the films. So the heading names whatever the first paragraph opens on:
-     the horse, the sire, or the dam. Their words are never rewritten, only
-     labelled truthfully. */
   const ped = horse.pedigree || {};
   const opens = horse.body[0];
   const subject = namesAgree(opens, horse.name) ? null
@@ -1503,18 +1552,10 @@ const storySection = (horse) => {
     : ped.dam && namesAgree(opens, ped.dam) ? ['The damline', horseName(ped.dam)]
     : null;
   return `
-  <section class="abst">
-    <div class="wrap abst__grid"${pic ? '' : ' style="grid-template-columns:1fr"'}>
-      <div class="abst__col">
-        <p class="plaque">${subject ? esc(subject[0]) : 'About this horse'}</p>
-        <h2 class="abst__h">${esc(subject ? subject[1] : horseName(horse.name))}</h2>
-        ${horse.body.map((t, i) =>
-          `<p class="${i === 0 ? 'abst__lead' : 'abst__body'}">${esc(theirWords(t))}</p>`).join('\n        ')}
-      </div>
-      ${pic}
-    </div>
-  </section>
-`;
+          <div class="hp__story">
+            ${subject ? `<p class="hp__storyk">${esc(subject[0])}<em> &middot; ${esc(subject[1])}</em></p>` : ''}
+${horse.body.map((t) => `            <p>${esc(theirWords(t))}</p>`).join('\n')}
+          </div>`;
 };
 
 /* ── the horse page, section three: the pedigree ────────────────────────
@@ -2007,7 +2048,7 @@ for (const key of Object.keys(GROUPS)) {
       ? embryoPage(horse, group, list)
       /* The films sit straight after the pedigree, which is where a cross
          carries its sire and dam lines: same plate, same place. */
-      : introSection(horse, group) + storySection(horse) + pedigreeSection(horse) +
+      : introSection(horse, group) + pedigreeSection(horse) +
         videoSection(horse) + gallerySection(horse) + contactSection(horse) +
         moreSection(horse, group, list);
     writeFileSync(join(root, group.dir, `${horse.slug}.html`), horsePage(horse, group, body));
