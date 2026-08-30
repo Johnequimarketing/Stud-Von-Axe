@@ -1579,12 +1579,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/comme-il-faut-x-patchina-vant-merelsnest-1.jpg"
-  ],
+  "photos": [],
   "country": "IT",
   "source": "https://www.studvonaxe.it/en/cavalli/comme-il-faut-x-patchina-vant-merelsnest-4/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/comme-il-faut-x-patchina-vant-merelsnest-1.jpg"
+  ]
  },
  {
   "slug": "catoki-x-cortina-de-jolie-z",
@@ -1731,12 +1732,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/catoki-x-hypnotic-jt-z-1.jpg"
-  ],
+  "photos": [],
   "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/catoki-x-hypnotic-jt-z-2/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/catoki-x-hypnotic-jt-z-1.jpg"
+  ]
  },
  {
   "slug": "united-touch-s-x-cortina-de-jolie-z",
@@ -1769,12 +1771,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/united-touch-s-x-cortina-de-jolie-z-1.jpg"
-  ],
+  "photos": [],
   "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/united-touch-s-x-cortina-de-jolie-z-2/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/united-touch-s-x-cortina-de-jolie-z-1.jpg"
+  ]
  },
  {
   "slug": "dourkhan-hero-z-x-cortina-de-jolie-z",
@@ -1807,12 +1810,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/dourkhan-hero-z-x-cortina-de-jolie-z-1.jpg"
-  ],
+  "photos": [],
   "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/dourkhan-hero-z-x-cortina-de-jolie-z-8/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/dourkhan-hero-z-x-cortina-de-jolie-z-1.jpg"
+  ]
  },
  {
   "slug": "big-star-x-cortina-de-jolie-z",
@@ -1845,12 +1849,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/big-star-x-cortina-de-jolie-z-1.jpg"
-  ],
+  "photos": [],
   "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/big-star-x-cortina-de-jolie-z-4/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/big-star-x-cortina-de-jolie-z-1.jpg"
+  ]
  },
  {
   "slug": "uricas-vd-kattevennen-x-cortina-de-jolie-z",
@@ -1883,12 +1888,13 @@ var HORSES = [
    ]
   },
   "body": [],
-  "photos": [
-   "assets/img/horses/uricas-vd-kattevennen-x-cortina-de-jolie-z-1.jpg"
-  ],
+  "photos": [],
   "country": "",
   "source": "https://www.studvonaxe.it/en/cavalli/uricas-vd-kattevennen-x-cortina-de-jolie-z-2/",
-  "siteCategories": "category-breeding category-embryo"
+  "siteCategories": "category-breeding category-embryo",
+  "theirCard": [
+   "assets/img/horses/uricas-vd-kattevennen-x-cortina-de-jolie-z-1.jpg"
+  ]
  },
  {
   "slug": "maralore",

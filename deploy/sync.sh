@@ -21,6 +21,10 @@ root="$(dirname "$here")"
 cp "$root/index.html" "$here/index.html"
 cp "$root/news-data.js" "$here/news-data.js"
 cp "$root/horses-home.js" "$here/horses-home.js"
+# One internal document goes out on purpose: the card variations Mark has to
+# choose from, so he can look at them on a phone. It carries noindex and no
+# client data. Take this line out once a variation is chosen.
+cp "$root/04-embryo-cards.html" "$here/04-embryo-cards.html"
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"
