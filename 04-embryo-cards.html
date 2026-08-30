@@ -2034,14 +2034,13 @@
   .v13__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45;
     color:rgba(255,255,255,.62); }
   .v13__say{ display:block; font-family:var(--font-display); font-style:italic;
-    font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
+    font-size:13px; line-height:1.45; }
 
-  /* The same rule as the seam, to the value: one pixel, gold at 65%, full
-     width. Mark asked for the line under the breeding to match the one the
-     stage sits on, and matching it means the same declaration, not a
-     similar one. */
-  .v13__rule{ display:block; height:1px; margin:.8rem 0 .75rem;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  /* Their sentence in the accent colour instead of under a second rule.
+     Gold carries navy ink everywhere on this site, buttons included, so it
+     does here too: 5.70:1, and the seam above stays the only line. */
+  .v13__say{ margin-top:.85rem; padding:.6rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy); }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
@@ -2748,7 +2747,7 @@
 <section class="v-sec" id="seam-rule">
   <p class="v-num">Variation thirteen</p>
   <h2>Ten, with a rule under the breeding</h2>
-  <p class="v-note">Variation ten with the line Mark asked for, and it is the same line: one pixel of gold at 65%, full width, exactly the rule that runs across the seam above it. The card reads in three parts now, the names, the breeding, and then their own sentence.</p>
+  <p class="v-note">Variation ten, and their own sentence now sits in a gold box with the page's rounding rather than under a second rule. Gold carries navy ink here, which is the house rule for anything gold on this site, and it measures 5.70:1. The seam above it stays the only line on the card.</p>
   <ul class="v-grid v-g3">
 
       <li class="v13">
@@ -2758,7 +2757,6 @@
           <span class="v13__box">
             <span class="v13__name">Cornet Obolensky <em>&times;</em> Agousha vd Berghoeve Z</span>
             <span class="v13__line">Aganix du Seigneur x Diamant de Semilly x Darco x Chin Chin</span>
-            <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">From a direct daughter of Gatoucha van't Roosakker!</span>
           </span>
         </a>
@@ -2771,7 +2769,6 @@
           <span class="v13__box">
             <span class="v13__name">Catoki <em>&times;</em> Hypnotic JT Z</span>
             <span class="v13__line">KALIFAX VAN HET KLUIZEBOS x CARTHAGO</span>
-            <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">Out of a sister of Hardrock Z!</span>
           </span>
         </a>
@@ -2784,7 +2781,6 @@
           <span class="v13__box">
             <span class="v13__name">Mosito van het Hellenof <em>&times;</em> Carma vd Berghoeve Z</span>
             <span class="v13__line">Comme il faut x Nabab de Reve x Jalisco B</span>
-            <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">From a direct daughter of Quaranca de Muze · Fragrance de Chalus!</span>
           </span>
         </a>
@@ -2797,7 +2793,6 @@
           <span class="v13__box">
             <span class="v13__name">Big Star <em>&times;</em> Cortina de Jolie Z</span>
             <span class="v13__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span>
-            <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">Closest way to Narcotique II!</span>
           </span>
         </a>

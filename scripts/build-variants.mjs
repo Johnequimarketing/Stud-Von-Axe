@@ -280,7 +280,7 @@ const VARIANTS = [
   {
     id: 'seam-rule',
     title: 'Ten, with a rule under the breeding',
-    note: 'Variation ten with the line Mark asked for, and it is the same line: one pixel of gold at 65%, full width, exactly the rule that runs across the seam above it. The card reads in three parts now, the names, the breeding, and then their own sentence.',
+    note: 'Variation ten, and their own sentence now sits in a gold box with the page\'s rounding rather than under a second rule. Gold carries navy ink here, which is the house rule for anything gold on this site, and it measures 5.70:1. The seam above it stays the only line on the card.',
     grid: 'v-g3',
     card: (h) => `
       <li class="v13">
@@ -290,7 +290,6 @@ const VARIANTS = [
           <span class="v13__box">
             <span class="v13__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
             <span class="v13__line">${esc(lineOf(h))}</span>
-            <span class="v13__rule" aria-hidden="true"></span>
             <span class="v13__say">${esc(theirs(h.tagline))}</span>
           </span>
         </a>
@@ -601,14 +600,13 @@ const CSS = `
   .v13__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45;
     color:rgba(255,255,255,.62); }
   .v13__say{ display:block; font-family:var(--font-display); font-style:italic;
-    font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
+    font-size:13px; line-height:1.45; }
 
-  /* The same rule as the seam, to the value: one pixel, gold at 65%, full
-     width. Mark asked for the line under the breeding to match the one the
-     stage sits on, and matching it means the same declaration, not a
-     similar one. */
-  .v13__rule{ display:block; height:1px; margin:.8rem 0 .75rem;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  /* Their sentence in the accent colour instead of under a second rule.
+     Gold carries navy ink everywhere on this site, buttons included, so it
+     does here too: 5.70:1, and the seam above stays the only line. */
+  .v13__say{ margin-top:.85rem; padding:.6rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy); }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
