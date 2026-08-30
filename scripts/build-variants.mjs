@@ -204,6 +204,79 @@ const VARIANTS = [
         </a>
       </li>`,
   },
+  {
+    id: 'tall',
+    title: 'The tall weld',
+    note: 'The weld in portrait. Two to three, so the photograph is nearly the whole card and the block underneath is one compact strip with the figures side by side instead of stacked. Three of these across a page read like a row of plates rather than a row of tiles, and on a phone they fill the screen.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v9">
+        <a class="v9__a" href="/embryos/${h.slug}">
+          <span class="v9__win">${pic(h, 'v9__img')}<span class="v9__fade" aria-hidden="true"></span></span>
+          <span class="v9__box">
+            <span class="v9__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
+            <span class="v9__row">
+              <span class="v9__cell"><span class="v9__k">Stage</span><span class="v9__v">${esc(stage(h))}</span></span>
+              <span class="v9__cell"><span class="v9__k">Damline</span><span class="v9__v">${esc(lineOf(h))}</span></span>
+            </span>
+          </span>
+        </a>
+      </li>`,
+  },
+  {
+    id: 'seam',
+    title: 'The gold seam',
+    note: 'The same weld, and then the join is admitted rather than hidden: a hairline of gold runs across it with the stage sitting on the line. It gives the card a horizon, which is the one thing the plain weld lacks, and it is the site\'s own gold doing a job rather than decorating.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v10">
+        <a class="v10__a" href="/embryos/${h.slug}">
+          <span class="v10__win">${pic(h, 'v10__img')}<span class="v10__fade" aria-hidden="true"></span></span>
+          <span class="v10__seam"><span class="v10__stage">${esc(stage(h))}</span></span>
+          <span class="v10__box">
+            <span class="v10__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
+            <span class="v10__line">${esc(lineOf(h))}</span>
+            <span class="v10__say">${esc(theirs(h.tagline))}</span>
+          </span>
+        </a>
+      </li>`,
+  },
+  {
+    id: 'framed',
+    title: 'The framed print',
+    note: 'The photograph is inset in the navy card with a margin all the way round, the way a print sits in a mount, and the type is under it inside the same card. Nothing fades and nothing is cropped to the edge, which is the most respectful a design gets to a photograph, and it is the only one here where the picture has its own border.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v11">
+        <a class="v11__a" href="/embryos/${h.slug}">
+          <span class="v11__mount">${pic(h, 'v11__img')}</span>
+          <span class="v11__box">
+            <span class="v11__stage">${esc(stage(h))}</span>
+            <span class="v11__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
+            <span class="v11__line">${esc(lineOf(h))}</span>
+          </span>
+        </a>
+      </li>`,
+  },
+  {
+    id: 'promise',
+    title: 'The promise',
+    note: 'Their own sentence is the headline and the names are the caption under it. Every one of the fifteen has a line like "Closest way to Narcotique II!" or "Out of a sister of Hardrock Z!", and that is what a breeder is actually shopping for. The weld underneath, so the photograph still carries the card.',
+    grid: 'v-g3',
+    card: (h) => `
+      <li class="v12">
+        <a class="v12__a" href="/embryos/${h.slug}">
+          <span class="v12__win">${pic(h, 'v12__img')}<span class="v12__fade" aria-hidden="true"></span>
+            <span class="v12__stage">${esc(stage(h))}</span></span>
+          <span class="v12__box">
+            <span class="v12__say">${esc(theirs(h.tagline))}</span>
+            <span class="v12__rule" aria-hidden="true"></span>
+            <span class="v12__name">${esc(sireOf(h))} <em>&times;</em> ${esc(damOf(h))}</span>
+            <span class="v12__line">${esc(lineOf(h))}</span>
+          </span>
+        </a>
+      </li>`,
+  },
 ];
 
 const CSS = `
@@ -393,6 +466,95 @@ const CSS = `
   .v8__line{ display:block; font-size:12px; line-height:1.45; color:rgba(255,255,255,.62); }
   .v8__say{ display:block; margin-top:.55rem; font-family:var(--font-display); font-style:italic;
     font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
+
+  /* ── 9 the tall weld ─────────────────────────────────────────────── */
+  .v9__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
+    overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55); transition:transform .45s var(--ease); }
+  .v9__a:hover{ transform:translateY(-5px); }
+  .v9__win{ position:relative; display:block; aspect-ratio:2/3; overflow:hidden; }
+  .v9__img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1s var(--ease); }
+  .v9__a:hover .v9__img{ transform:scale(1.04); }
+  .v9__fade{ position:absolute; left:0; right:0; bottom:-1px; height:42%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.6) 48%,
+      rgba(var(--veil-rgb),.93) 84%, var(--color-navy-deep) 100%); }
+  .v9__box{ flex:1 1 auto; display:block; padding:.1rem 1.1rem 1.15rem; }
+  .v9__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.08rem;
+    line-height:1.2; color:var(--color-white); }
+  .v9__name em{ font-style:italic; color:var(--color-gold); }
+  .v9__row{ display:grid; grid-template-columns:auto 1fr; gap:.2rem 1.2rem; margin-top:.85rem;
+    padding-top:.8rem; border-top:1px solid rgba(255,255,255,.14); }
+  .v9__cell{ display:block; min-width:0; }
+  .v9__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:9px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.15rem; }
+  .v9__v{ display:block; font-size:11.5px; line-height:1.4; color:rgba(255,255,255,.72); }
+
+  /* ── 10 the gold seam ────────────────────────────────────────────── */
+  .v10__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
+    overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55); transition:transform .45s var(--ease); }
+  .v10__a:hover{ transform:translateY(-5px); }
+  .v10__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .v10__img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1s var(--ease); }
+  .v10__a:hover .v10__img{ transform:scale(1.04); }
+  .v10__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* The horizon: a gold hairline across the join with the stage sitting on it. */
+  .v10__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .v10__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .v10__stage{ font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); flex:none; }
+  .v10__box{ flex:1 1 auto; display:block; padding:.75rem 1.1rem 1.2rem; }
+  .v10__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .v10__name em{ font-style:italic; color:var(--color-gold); }
+  .v10__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45; color:rgba(255,255,255,.62); }
+  .v10__say{ display:block; margin-top:.6rem; font-family:var(--font-display); font-style:italic;
+    font-size:13px; line-height:1.45; color:rgba(255,255,255,.86); }
+
+  /* ── 11 the framed print ─────────────────────────────────────────── */
+  .v11__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
+    background:var(--color-navy-deep); padding:.55rem .55rem 0;
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55); transition:transform .45s var(--ease); }
+  .v11__a:hover{ transform:translateY(-5px); }
+  .v11__mount{ display:block; aspect-ratio:4/3; overflow:hidden; border-radius:calc(var(--card-radius) - 6px);
+    background:color-mix(in srgb, var(--color-navy) 70%, #ffffff); }
+  .v11__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .v11__box{ flex:1 1 auto; display:block; padding:.95rem .6rem 1.15rem; }
+  .v11__stage{ display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.35rem; }
+  .v11__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.1rem;
+    line-height:1.2; color:var(--color-white); }
+  .v11__name em{ font-style:italic; color:var(--color-gold); }
+  .v11__line{ display:block; margin-top:.4rem; font-size:12px; line-height:1.45; color:rgba(255,255,255,.62); }
+
+  /* ── 12 the promise ──────────────────────────────────────────────── */
+  .v12__a{ display:flex; flex-direction:column; width:100%; border-radius:var(--card-radius);
+    overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55); transition:transform .45s var(--ease); }
+  .v12__a:hover{ transform:translateY(-5px); }
+  .v12__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .v12__img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1s var(--ease); }
+  .v12__a:hover .v12__img{ transform:scale(1.04); }
+  .v12__fade{ position:absolute; left:0; right:0; bottom:-1px; height:52%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.5) 44%,
+      rgba(var(--veil-rgb),.9) 80%, var(--color-navy-deep) 100%); }
+  .v12__stage{ position:absolute; right:1rem; top:1rem; padding:.3rem .6rem; border-radius:100px;
+    background:rgba(var(--veil-rgb), .72); color:var(--color-gold);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.16em;
+    text-transform:uppercase; }
+  .v12__box{ flex:1 1 auto; display:block; padding:.1rem 1.15rem 1.25rem; }
+  .v12__say{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.16rem;
+    line-height:1.24; color:var(--color-white); }
+  .v12__rule{ display:block; width:30px; height:1px; margin:.85rem 0 .7rem;
+    background:color-mix(in srgb, var(--color-gold) 70%, transparent); }
+  .v12__name{ display:block; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.9); }
+  .v12__name em{ font-style:normal; color:var(--color-gold); }
+  .v12__line{ display:block; margin-top:.35rem; font-size:12px; line-height:1.45; color:rgba(255,255,255,.6); }
   /* ── 6 the stack ─────────────────────────────────────────────────── */
   .v6__a{ display:grid; gap:.55rem; }
   .v6__win{ position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
@@ -443,7 +605,7 @@ const html = `<!DOCTYPE html>
 <main>
 ${VARIANTS.map((v, i) => `
 <section class="v-sec" id="${v.id}">
-  <p class="v-num">Variation ${['one','two','three','four','five','six','seven','eight'][i]}</p>
+  <p class="v-num">Variation ${['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][i]}</p>
   <h2>${esc(v.title)}</h2>
   <p class="v-note">${esc(v.note)}</p>
   <ul class="v-grid ${v.grid}">
