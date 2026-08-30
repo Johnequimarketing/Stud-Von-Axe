@@ -141,6 +141,89 @@ const VARIANTS = [
         <p class="l6__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
       </div>`,
   },
+  {
+    id: 'two-plates', title: 'Two plates',
+    note: 'Not one plate split in half but two of them, side by side with the page between. It reads as two subjects rather than one divided, which is what a sire and a dam are, and the empty column does not look like a hole in something: it looks like a plate waiting to be filled.',
+    kind: 'plates',
+    card: (c) => `
+      <div class="l7">
+        <span class="l7__win">${pic(c.img, c.n, 'l7__img')}</span>
+        <span class="l7__body">
+          <span class="l7__k">${esc(c.k)}</span>
+          <h3 class="l7__n">${esc(c.n)}</h3>
+          ${c.ped ? `<span class="l7__p">${esc(c.ped)}</span>` : ''}
+          <p class="l7__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+        </span>
+      </div>`,
+  },
+  {
+    id: 'rows', title: 'Two rows',
+    note: 'Stacked instead of side by side: sire over dam, each a full width row with the photograph on one side. The dam gets the room her paragraph actually needs, nothing is squeezed into half a column, and on a phone it is already what the other five collapse into anyway.',
+    kind: 'rows',
+    card: (c, i) => `
+      <div class="l8 ${i ? 'l8--r' : ''}">
+        <span class="l8__win">${pic(c.img, c.n, 'l8__img')}</span>
+        <span class="l8__body">
+          <span class="l8__k">${esc(c.k)}</span>
+          <h3 class="l8__n">${esc(c.n)}</h3>
+          ${c.ped ? `<span class="l8__p">${esc(c.ped)}</span>` : ''}
+          <p class="l8__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+        </span>
+      </div>`,
+  },
+  {
+    id: 'band', title: 'The band',
+    note: 'The two photographs run together as one band across the top, split down the middle, and the words sit under them in two columns. The pairing is stated by the picture rather than by a rule, and it is the only one where the two halves physically touch.',
+    kind: 'band',
+    card: (c) => `
+      <div class="l9">
+        <span class="l9__k">${esc(c.k)}</span>
+        <h3 class="l9__n">${esc(c.n)}</h3>
+        ${c.ped ? `<span class="l9__p">${esc(c.ped)}</span>` : ''}
+        <p class="l9__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+      </div>`,
+    band: (c) => `<span class="l9__win">${pic(c.img, c.n, 'l9__img')}</span>`,
+  },
+  {
+    id: 'portraits', title: 'The portraits',
+    note: 'Standing photographs rather than landscape, at two to three, which is how a horse is photographed and how a stallion card is printed. Taller pictures mean the text starts lower and the section reads as two portraits with captions.',
+    kind: 'plates',
+    card: (c) => `
+      <div class="l10">
+        <span class="l10__win">${pic(c.img, c.n, 'l10__img')}</span>
+        <span class="l10__body">
+          <span class="l10__k">${esc(c.k)}</span>
+          <h3 class="l10__n">${esc(c.n)}</h3>
+          ${c.ped ? `<span class="l10__p">${esc(c.ped)}</span>` : ''}
+          <p class="l10__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+        </span>
+      </div>`,
+  },
+  {
+    id: 'medallions', title: 'The medallions',
+    note: 'Round photographs at the head of each column, the way a pedigree page prints a portrait, with the type running full width underneath. The picture stops competing with the words, and a missing photograph costs a circle rather than half the section.',
+    kind: 'plate-one',
+    card: (c) => `
+      <div class="l11">
+        <span class="l11__med">${pic(c.img, c.n, 'l11__img')}</span>
+        <span class="l11__k">${esc(c.k)}</span>
+        <h3 class="l11__n">${esc(c.n)}</h3>
+        ${c.ped ? `<span class="l11__p">${esc(c.ped)}</span>` : ''}
+        <p class="l11__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+      </div>`,
+  },
+  {
+    id: 'cross-head', title: 'The cross as a heading',
+    note: 'The two names meet at the top as one line with the gold multiplication sign between them, and the columns underneath are the two halves of that sentence. It is the only one that says out loud what the section is: this crossed with that, and here is why each side matters.',
+    kind: 'plate-head',
+    card: (c) => `
+      <div class="l12">
+        <span class="l12__win">${pic(c.img, c.n, 'l12__img')}</span>
+        <span class="l12__k">${esc(c.k)}</span>
+        ${c.ped ? `<span class="l12__p">${esc(c.ped)}</span>` : ''}
+        <p class="l12__t${c.empty ? ' is-waiting' : ''}">${esc(c.empty ? WAITING : c.text)}</p>
+      </div>`,
+  },
 ];
 
 const CSS = `
@@ -164,14 +247,81 @@ const CSS = `
   .is-waiting{ font-style:italic; opacity:.62; }
 
   /* shared type */
-  .l1__k,.l2__k,.l3__k,.l4__k,.l5__k,.l6__k{ display:block; font-family:var(--font-body); font-weight:700;
+  .l1__k,.l2__k,.l3__k,.l4__k,.l5__k,.l6__k,
+  .l7__k,.l8__k,.l9__k,.l10__k,.l11__k,.l12__k{ display:block; font-family:var(--font-body); font-weight:700;
     font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
-  .l1__n,.l2__n,.l3__n,.l4__n,.l5__n,.l6__n{ margin:.35rem 0 .2rem; font-family:var(--font-display);
+  .l1__n,.l2__n,.l3__n,.l4__n,.l5__n,.l6__n,
+  .l7__n,.l8__n,.l9__n,.l10__n,.l11__n,.l12__n{ margin:.35rem 0 .2rem; font-family:var(--font-display);
     font-weight:400; font-size:1.3rem; line-height:1.15; }
-  .l1__p,.l2__p,.l3__p,.l4__p,.l5__p,.l6__p{ display:block; font-family:var(--font-display);
+  .l1__p,.l2__p,.l3__p,.l4__p,.l5__p,.l6__p,
+  .l7__p,.l8__p,.l9__p,.l10__p,.l11__p,.l12__p{ display:block; font-family:var(--font-display);
     font-style:italic; font-size:13px; color:var(--color-gold); margin-bottom:.7rem; }
-  .l1__t,.l2__t,.l3__t,.l4__t,.l5__t,.l6__t{ margin:0; font-size:14.5px; line-height:1.6; }
+  .l1__t,.l2__t,.l3__t,.l4__t,.l5__t,.l6__t,
+  .l7__t,.l8__t,.l9__t,.l10__t,.l11__t,.l12__t{ margin:0; font-size:14.5px; line-height:1.6; }
 
+
+  /* The six above were written before these six existed and their shared
+     type rules named l1 to l6 only, so seven to twelve came out with no
+     label colour and no size at all. Named now. */
+
+  /* 7 two plates */
+  .l7{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l7__win{ display:block; aspect-ratio:4/3; }
+  .l7__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l7__body{ display:block; padding:1.1rem 1.2rem 1.3rem; }
+  .l7__n{ color:var(--color-white); }
+  .l7__t{ color:rgba(255,255,255,.74); }
+
+  /* 8 two rows */
+  .l-rows{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
+  .l8{ display:grid; gap:0; background:var(--color-navy-deep); border-radius:var(--plate-radius);
+    overflow:hidden; }
+  @media (min-width:760px){
+    .l8{ grid-template-columns:.36fr 1fr; }
+    .l8--r{ grid-template-columns:1fr .36fr; }
+    .l8--r .l8__win{ order:2; }
+  }
+  .l8__win{ display:block; aspect-ratio:4/3; }
+  .l8__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l8__body{ display:block; padding:clamp(1.1rem,2.4vw,1.7rem); align-self:center; }
+  .l8__n{ color:var(--color-white); }
+  .l8__t{ color:rgba(255,255,255,.74); max-width:58ch; }
+
+  /* 9 the band */
+  .l-band{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l-band__pics{ display:grid; grid-template-columns:1fr 1fr; }
+  .l9__win{ display:block; aspect-ratio:16/9; }
+  .l9__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l-band__txt{ display:grid; gap:clamp(1.2rem,2.6vw,2rem); padding:clamp(1.3rem,2.8vw,2rem); }
+  @media (min-width:760px){ .l-band__txt{ grid-template-columns:1fr 1fr; } }
+  .l9__n{ color:var(--color-white); }
+  .l9__t{ color:rgba(255,255,255,.74); }
+
+  /* 10 portraits */
+  .l10{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l10__win{ display:block; aspect-ratio:2/3; }
+  .l10__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l10__body{ display:block; padding:1.1rem 1.2rem 1.3rem; }
+  .l10__n{ color:var(--color-white); }
+  .l10__t{ color:rgba(255,255,255,.74); }
+
+  /* 11 medallions */
+  .l11__med{ display:block; width:112px; height:112px; border-radius:50%; overflow:hidden;
+    margin-bottom:1rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .l11__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l11 .l-none{ height:100%; }
+  .l11__n{ color:var(--color-white); }
+  .l11__t{ color:rgba(255,255,255,.74); }
+
+  /* 12 cross as a heading */
+  .l-head2{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.2rem); }
+  .l-head2 span{ display:inline-block; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.3rem,1.8vw + .7rem,2rem); line-height:1.15; color:var(--color-white); }
+  .l-head2 em{ font-style:italic; color:var(--color-gold); margin:0 .4rem; }
+  .l12__win{ display:block; aspect-ratio:16/9; border-radius:var(--card-radius); overflow:hidden;
+    margin-bottom:1rem; }
+  .l12__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l12__t{ color:rgba(255,255,255,.74); }
   /* 1 the pair */
   .l1{ background:var(--color-base); border-radius:var(--plate-radius); overflow:hidden;
     box-shadow:0 1px 0 var(--color-line); }
@@ -199,6 +349,9 @@ const CSS = `
     padding:clamp(1.4rem,3vw,2.2rem); display:grid; gap:clamp(1.4rem,3vw,2.4rem); }
   @media (min-width:820px){ .l-plate{ grid-template-columns:1fr 1px 1fr; } }
   .l-rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
+  .l-plate--head{ display:block; }
+  .l-plate__cols{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); }
+  @media (min-width:820px){ .l-plate__cols{ grid-template-columns:1fr 1px 1fr; } }
   @media (min-width:820px){ .l-rule{ display:block; } }
   .l3__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
     margin-bottom:1rem; }
@@ -266,12 +419,17 @@ const html = `<!DOCTYPE html>
 <main>
 ${VARIANTS.map((v, i) => `
 <section class="l-sec" id="${v.id}">
-  <p class="l-num">Variation ${['one','two','three','four','five','six'][i]}</p>
+  <p class="l-num">Variation ${['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][i]}</p>
   <h2>${esc(v.title)}</h2>
   <p class="l-note">${esc(v.note)}</p>
-  ${v.id === 'plate'
-    ? `<div class="l-plate">${v.card(COLS[0], 0)}<span class="l-rule" aria-hidden="true"></span>${v.card(COLS[1], 1)}</div>`
-    : `<div class="l-grid${v.id === 'scale' ? ' l-g2' : ''}">${COLS.map(v.card).join('')}</div>`}
+  ${(() => {
+    if (v.id === 'plate') return `<div class="l-plate">${v.card(COLS[0], 0)}<span class="l-rule" aria-hidden="true"></span>${v.card(COLS[1], 1)}</div>`;
+    if (v.kind === 'rows') return `<div class="l-rows">${COLS.map(v.card).join('')}</div>`;
+    if (v.kind === 'band') return `<div class="l-band"><div class="l-band__pics">${COLS.map(v.band).join('')}</div><div class="l-band__txt">${COLS.map(v.card).join('')}</div></div>`;
+    if (v.kind === 'plate-one') return `<div class="l-plate l-plate--flat">${v.card(COLS[0], 0)}<span class="l-rule" aria-hidden="true"></span>${v.card(COLS[1], 1)}</div>`;
+    if (v.kind === 'plate-head') return `<div class="l-plate l-plate--head"><p class="l-head2"><span>${esc(sireName)}<em>&times;</em>${esc(damName)}</span></p><div class="l-plate__cols">${v.card(COLS[0], 0)}<span class="l-rule" aria-hidden="true"></span>${v.card(COLS[1], 1)}</div></div>`;
+    return `<div class="l-grid${v.id === 'scale' ? ' l-g2' : ''}">${COLS.map(v.card).join('')}</div>`;
+  })()}
 </section>`).join('\n')}
 </main>
 
@@ -284,4 +442,4 @@ ${VARIANTS.map((v, i) => `
 `;
 
 writeFileSync(join(root, '05-embryo-lines.html'), html);
-console.log('built 05-embryo-lines.html with 6 variations');
+console.log(`built 05-embryo-lines.html with ${VARIANTS.length} variations`);

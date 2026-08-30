@@ -1752,14 +1752,81 @@
   .is-waiting{ font-style:italic; opacity:.62; }
 
   /* shared type */
-  .l1__k,.l2__k,.l3__k,.l4__k,.l5__k,.l6__k{ display:block; font-family:var(--font-body); font-weight:700;
+  .l1__k,.l2__k,.l3__k,.l4__k,.l5__k,.l6__k,
+  .l7__k,.l8__k,.l9__k,.l10__k,.l11__k,.l12__k{ display:block; font-family:var(--font-body); font-weight:700;
     font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
-  .l1__n,.l2__n,.l3__n,.l4__n,.l5__n,.l6__n{ margin:.35rem 0 .2rem; font-family:var(--font-display);
+  .l1__n,.l2__n,.l3__n,.l4__n,.l5__n,.l6__n,
+  .l7__n,.l8__n,.l9__n,.l10__n,.l11__n,.l12__n{ margin:.35rem 0 .2rem; font-family:var(--font-display);
     font-weight:400; font-size:1.3rem; line-height:1.15; }
-  .l1__p,.l2__p,.l3__p,.l4__p,.l5__p,.l6__p{ display:block; font-family:var(--font-display);
+  .l1__p,.l2__p,.l3__p,.l4__p,.l5__p,.l6__p,
+  .l7__p,.l8__p,.l9__p,.l10__p,.l11__p,.l12__p{ display:block; font-family:var(--font-display);
     font-style:italic; font-size:13px; color:var(--color-gold); margin-bottom:.7rem; }
-  .l1__t,.l2__t,.l3__t,.l4__t,.l5__t,.l6__t{ margin:0; font-size:14.5px; line-height:1.6; }
+  .l1__t,.l2__t,.l3__t,.l4__t,.l5__t,.l6__t,
+  .l7__t,.l8__t,.l9__t,.l10__t,.l11__t,.l12__t{ margin:0; font-size:14.5px; line-height:1.6; }
 
+
+  /* The six above were written before these six existed and their shared
+     type rules named l1 to l6 only, so seven to twelve came out with no
+     label colour and no size at all. Named now. */
+
+  /* 7 two plates */
+  .l7{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l7__win{ display:block; aspect-ratio:4/3; }
+  .l7__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l7__body{ display:block; padding:1.1rem 1.2rem 1.3rem; }
+  .l7__n{ color:var(--color-white); }
+  .l7__t{ color:rgba(255,255,255,.74); }
+
+  /* 8 two rows */
+  .l-rows{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
+  .l8{ display:grid; gap:0; background:var(--color-navy-deep); border-radius:var(--plate-radius);
+    overflow:hidden; }
+  @media (min-width:760px){
+    .l8{ grid-template-columns:.36fr 1fr; }
+    .l8--r{ grid-template-columns:1fr .36fr; }
+    .l8--r .l8__win{ order:2; }
+  }
+  .l8__win{ display:block; aspect-ratio:4/3; }
+  .l8__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l8__body{ display:block; padding:clamp(1.1rem,2.4vw,1.7rem); align-self:center; }
+  .l8__n{ color:var(--color-white); }
+  .l8__t{ color:rgba(255,255,255,.74); max-width:58ch; }
+
+  /* 9 the band */
+  .l-band{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l-band__pics{ display:grid; grid-template-columns:1fr 1fr; }
+  .l9__win{ display:block; aspect-ratio:16/9; }
+  .l9__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l-band__txt{ display:grid; gap:clamp(1.2rem,2.6vw,2rem); padding:clamp(1.3rem,2.8vw,2rem); }
+  @media (min-width:760px){ .l-band__txt{ grid-template-columns:1fr 1fr; } }
+  .l9__n{ color:var(--color-white); }
+  .l9__t{ color:rgba(255,255,255,.74); }
+
+  /* 10 portraits */
+  .l10{ background:var(--color-navy-deep); border-radius:var(--plate-radius); overflow:hidden; }
+  .l10__win{ display:block; aspect-ratio:2/3; }
+  .l10__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l10__body{ display:block; padding:1.1rem 1.2rem 1.3rem; }
+  .l10__n{ color:var(--color-white); }
+  .l10__t{ color:rgba(255,255,255,.74); }
+
+  /* 11 medallions */
+  .l11__med{ display:block; width:112px; height:112px; border-radius:50%; overflow:hidden;
+    margin-bottom:1rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
+  .l11__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l11 .l-none{ height:100%; }
+  .l11__n{ color:var(--color-white); }
+  .l11__t{ color:rgba(255,255,255,.74); }
+
+  /* 12 cross as a heading */
+  .l-head2{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.2rem); }
+  .l-head2 span{ display:inline-block; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.3rem,1.8vw + .7rem,2rem); line-height:1.15; color:var(--color-white); }
+  .l-head2 em{ font-style:italic; color:var(--color-gold); margin:0 .4rem; }
+  .l12__win{ display:block; aspect-ratio:16/9; border-radius:var(--card-radius); overflow:hidden;
+    margin-bottom:1rem; }
+  .l12__img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .l12__t{ color:rgba(255,255,255,.74); }
   /* 1 the pair */
   .l1{ background:var(--color-base); border-radius:var(--plate-radius); overflow:hidden;
     box-shadow:0 1px 0 var(--color-line); }
@@ -1787,6 +1854,9 @@
     padding:clamp(1.4rem,3vw,2.2rem); display:grid; gap:clamp(1.4rem,3vw,2.4rem); }
   @media (min-width:820px){ .l-plate{ grid-template-columns:1fr 1px 1fr; } }
   .l-rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
+  .l-plate--head{ display:block; }
+  .l-plate__cols{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); }
+  @media (min-width:820px){ .l-plate__cols{ grid-template-columns:1fr 1px 1fr; } }
   @media (min-width:820px){ .l-rule{ display:block; } }
   .l3__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
     margin-bottom:1rem; }
@@ -1971,6 +2041,140 @@
         <span class="l6__rule" aria-hidden="true"></span>
         <p class="l6__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
       </div></div>
+</section>
+
+<section class="l-sec" id="two-plates">
+  <p class="l-num">Variation seven</p>
+  <h2>Two plates</h2>
+  <p class="l-note">Not one plate split in half but two of them, side by side with the page between. It reads as two subjects rather than one divided, which is what a sire and a dam are, and the empty column does not look like a hole in something: it looks like a plate waiting to be filled.</p>
+  <div class="l-grid">
+      <div class="l7">
+        <span class="l7__win"><span class="l7__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span>
+        <span class="l7__body">
+          <span class="l7__k">Sire line</span>
+          <h3 class="l7__n">Big Star</h3>
+          <span class="l7__p">Quick Star x Jolanda</span>
+          <p class="l7__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+        </span>
+      </div>
+      <div class="l7">
+        <span class="l7__win"><img class="l7__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span>
+        <span class="l7__body">
+          <span class="l7__k">Dam line</span>
+          <h3 class="l7__n">Cortina de Jolie Z</h3>
+          <span class="l7__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+          <p class="l7__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+        </span>
+      </div></div>
+</section>
+
+<section class="l-sec" id="rows">
+  <p class="l-num">Variation eight</p>
+  <h2>Two rows</h2>
+  <p class="l-note">Stacked instead of side by side: sire over dam, each a full width row with the photograph on one side. The dam gets the room her paragraph actually needs, nothing is squeezed into half a column, and on a phone it is already what the other five collapse into anyway.</p>
+  <div class="l-rows">
+      <div class="l8 ">
+        <span class="l8__win"><span class="l8__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span>
+        <span class="l8__body">
+          <span class="l8__k">Sire line</span>
+          <h3 class="l8__n">Big Star</h3>
+          <span class="l8__p">Quick Star x Jolanda</span>
+          <p class="l8__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+        </span>
+      </div>
+      <div class="l8 l8--r">
+        <span class="l8__win"><img class="l8__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span>
+        <span class="l8__body">
+          <span class="l8__k">Dam line</span>
+          <h3 class="l8__n">Cortina de Jolie Z</h3>
+          <span class="l8__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+          <p class="l8__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+        </span>
+      </div></div>
+</section>
+
+<section class="l-sec" id="band">
+  <p class="l-num">Variation nine</p>
+  <h2>The band</h2>
+  <p class="l-note">The two photographs run together as one band across the top, split down the middle, and the words sit under them in two columns. The pairing is stated by the picture rather than by a rule, and it is the only one where the two halves physically touch.</p>
+  <div class="l-band"><div class="l-band__pics"><span class="l9__win"><span class="l9__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span><span class="l9__win"><img class="l9__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span></div><div class="l-band__txt">
+      <div class="l9">
+        <span class="l9__k">Sire line</span>
+        <h3 class="l9__n">Big Star</h3>
+        <span class="l9__p">Quick Star x Jolanda</span>
+        <p class="l9__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+      </div>
+      <div class="l9">
+        <span class="l9__k">Dam line</span>
+        <h3 class="l9__n">Cortina de Jolie Z</h3>
+        <span class="l9__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+        <p class="l9__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+      </div></div></div>
+</section>
+
+<section class="l-sec" id="portraits">
+  <p class="l-num">Variation ten</p>
+  <h2>The portraits</h2>
+  <p class="l-note">Standing photographs rather than landscape, at two to three, which is how a horse is photographed and how a stallion card is printed. Taller pictures mean the text starts lower and the section reads as two portraits with captions.</p>
+  <div class="l-grid">
+      <div class="l10">
+        <span class="l10__win"><span class="l10__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span>
+        <span class="l10__body">
+          <span class="l10__k">Sire line</span>
+          <h3 class="l10__n">Big Star</h3>
+          <span class="l10__p">Quick Star x Jolanda</span>
+          <p class="l10__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+        </span>
+      </div>
+      <div class="l10">
+        <span class="l10__win"><img class="l10__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span>
+        <span class="l10__body">
+          <span class="l10__k">Dam line</span>
+          <h3 class="l10__n">Cortina de Jolie Z</h3>
+          <span class="l10__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+          <p class="l10__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+        </span>
+      </div></div>
+</section>
+
+<section class="l-sec" id="medallions">
+  <p class="l-num">Variation eleven</p>
+  <h2>The medallions</h2>
+  <p class="l-note">Round photographs at the head of each column, the way a pedigree page prints a portrait, with the type running full width underneath. The picture stops competing with the words, and a missing photograph costs a circle rather than half the section.</p>
+  <div class="l-plate l-plate--flat">
+      <div class="l11">
+        <span class="l11__med"><span class="l11__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span>
+        <span class="l11__k">Sire line</span>
+        <h3 class="l11__n">Big Star</h3>
+        <span class="l11__p">Quick Star x Jolanda</span>
+        <p class="l11__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+      </div><span class="l-rule" aria-hidden="true"></span>
+      <div class="l11">
+        <span class="l11__med"><img class="l11__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span>
+        <span class="l11__k">Dam line</span>
+        <h3 class="l11__n">Cortina de Jolie Z</h3>
+        <span class="l11__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+        <p class="l11__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+      </div></div>
+</section>
+
+<section class="l-sec" id="cross-head">
+  <p class="l-num">Variation twelve</p>
+  <h2>The cross as a heading</h2>
+  <p class="l-note">The two names meet at the top as one line with the gold multiplication sign between them, and the columns underneath are the two halves of that sentence. It is the only one that says out loud what the section is: this crossed with that, and here is why each side matters.</p>
+  <div class="l-plate l-plate--head"><p class="l-head2"><span>Big Star<em>&times;</em>Cortina de Jolie Z</span></p><div class="l-plate__cols">
+      <div class="l12">
+        <span class="l12__win"><span class="l12__img l-none"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span></span>
+        <span class="l12__k">Sire line</span>
+        <span class="l12__p">Quick Star x Jolanda</span>
+        <p class="l12__t is-waiting">Their site carries no text and no photograph for the sire. This fills from horses-extra.js, by hand or from Horsetelex once the link is in.</p>
+      </div><span class="l-rule" aria-hidden="true"></span>
+      <div class="l12">
+        <span class="l12__win"><img class="l12__img" src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"></span>
+        <span class="l12__k">Dam line</span>
+        <span class="l12__p">Cornet Obolesnky x Calato x Darco x Chin Chin</span>
+        <p class="l12__t">Fuga is the full sister of the 5* Grand Prix mare Sea Coast Ferly (ex Ferly de Muze), and she already produced Ilius de Muze (140j) Pollux de Muze Z (160j), Demantour de Muze Z (150j), Oliver Twist de Muze (160j) .</p>
+      </div></div></div>
 </section>
 </main>
 

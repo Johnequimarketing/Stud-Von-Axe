@@ -166,6 +166,10 @@ const CSS = homeCss + pageHeroCss + storyCss + `
     font-size:16px; line-height:1.5; color:var(--color-navy); max-width:44ch; }
   .ep__facts{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem 1.4rem;
     margin:0 0 1.5rem; padding-top:1.3rem; border-top:1px solid var(--color-line); }
+  /* First thing in the column now, so it opens on a rule rather than under
+     one, and the figures get the room the repeated name was taking. */
+  .ep__facts--lead{ margin-top:.2rem; gap:1.2rem 1.4rem; }
+  .ep__facts--lead .ep__v{ font-size:1.15rem; }
   .ep__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.3rem; }
   .ep__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
@@ -817,10 +821,12 @@ const embryoPage = (horse, group, list) => {
         <div class="ep__pic">${pic}</div>
       </div>
       <div class="ep__col">
+        <!-- No name and no tagline here: the hero above carries both, and
+             printing them again a hundred pixels lower is the page saying
+             the same thing twice. This column is the figures and the two
+             ways to act on them. -->
         <span class="ep__stage">${esc(stageOf(horse))}</span>
-        <p class="ep__h">${esc(sire)} <em>&times;</em> ${esc(damName)}</p>
-        ${horse.tagline ? `<p class="ep__say">${esc(theirWords(horse.tagline))}</p>` : ''}
-        <div class="ep__facts">
+        <div class="ep__facts ep__facts--lead">
 ${facts.map(([k, v]) => `          <div><span class="ep__k">${esc(k)}</span><span class="ep__v">${esc(v)}</span></div>`).join('\n')}
         </div>
         ${(() => {
