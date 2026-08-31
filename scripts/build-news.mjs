@@ -8,7 +8,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, header as headerHero, footer as footerHtml, esc, navScript }
+import { root, homeCss, pageHeroCss, headerFor, footer as footerHtml, esc, navScript }
   from './lib/shell.mjs';
 
 /* The data file is plain browser JS (`var NEWS = [...]`); evaluate it. */
@@ -170,7 +170,10 @@ const head = (title, desc, slug) => `<meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>${CSS}</style>`;
 
-const header = headerHero;
+/* News joined the bar on 31 Aug, so these pages mark it the way a horse page
+   marks its archive. They had never marked anything, because there was
+   nothing on the menu to mark. */
+const header = headerFor('/news');
 const footer = footerHtml;
 
 /* header pin and drawer: the shared script, imported above. */
@@ -197,7 +200,7 @@ writeFileSync(join(root, 'news', 'index.html'), `<!DOCTYPE html>
 ${head('News and results', 'Results in the ring, horses sold, and news from Desenzano and Lanaken.', '')}
 </head>
 <body>
-${headerHero}
+${header}
 <section class="nhero">
   <div class="nhero__bg" aria-hidden="true">
     <img src="/assets/img/news-hero.jpg" alt="" fetchpriority="high">

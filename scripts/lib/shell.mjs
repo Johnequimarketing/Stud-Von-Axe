@@ -47,12 +47,16 @@ export const header = bareHeader;
    rule for [aria-current="page"] since the beginning and not one of them
    carried the attribute, so the menu never showed where you were. Pass the
    path a page is served at: headerFor('/foals'). */
+/* Every copy of the destination, not the first one. About us and News are on
+   the bar twice since 31 Aug: once in the right hand half and once inside the
+   drawer, because a flex row cannot be split across a centred wordmark and
+   the drawer is one list. Only one of the two is ever on screen, so marking
+   both is marking the one you can see; marking the first would have put it on
+   the hidden copy. */
 export const headerFor = (path) => {
   if (!path) return bareHeader;
   const at = `href="${path}"`;
-  return bareHeader.includes(at)
-    ? bareHeader.replace(at, `${at} aria-current="page"`)
-    : bareHeader;
+  return bareHeader.split(at).join(`${at} aria-current="page"`);
 };
 
 export const footer = relink(

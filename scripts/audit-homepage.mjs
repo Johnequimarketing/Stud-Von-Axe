@@ -205,13 +205,21 @@ for (const rel of files) {
      along on the header every other page lifts, so two items were current at
      once. Exactly one, or none on a page whose section is not in the menu. */
   if (!isInternal) {
-    const nav = (noScript.match(/<nav class="primary-nav"[\s\S]*?<\/nav>/) || [''])[0];
-    if (nav) {
-      const marked = [...nav.matchAll(/<a[^>]*aria-current="page"[^>]*>([^<]*)/g)].map((m) => m[1].trim());
-      marked.length > 1
-        ? fail(rel, `${marked.length} menu items marked as the current page: ${marked.join(', ')}`)
+    /* Both halves of the bar, and the drawer copies of the right hand one.
+       A destination that appears twice is marked twice on purpose, so the
+       test is not how many are marked but whether they all name the same
+       page: two different items current at once is the fault. */
+    const navs = [...noScript.matchAll(/<nav class="(?:primary-nav|hd__nav)"[\s\S]*?<\/nav>/g)]
+      .map((m) => m[0]).join('\n');
+    if (navs) {
+      const marked = [...navs.matchAll(/<a[^>]*href="([^"]*)"[^>]*aria-current="page"[^>]*>([^<]*)/g)]
+        .map((m) => ({ href: m[1], label: m[2].trim() }));
+      const places = new Set(marked.map((m) => m.href));
+      places.size > 1
+        ? fail(rel, `${places.size} different menu items marked as the current page: ${
+            marked.map((m) => `${m.label} (${m.href})`).join(', ')}`)
         : pass(marked.length
-            ? `the menu marks one page as current: ${marked[0]}`
+            ? `the menu marks one page as current: ${marked[0].label}`
             : 'no menu item marked, and this page is not in the menu');
     }
   }

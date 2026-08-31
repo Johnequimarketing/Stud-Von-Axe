@@ -1141,6 +1141,43 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">A control that lives in the footer element but not on the footer</p>
+    <p class="said">31 Aug: <q>language switcher mag onderaan komen aan het scherm vast scrollend, als
+    collabsable iets</q>. It has to appear on all ninety odd pages, and only two things in this project
+    reach every page: the stylesheet and the header and footer lifted out of index.html.</p>
+    <p class="check">So the widget and its behaviour sit inside the footer element, which the lift
+    carries whole, and the CSS holds it to the screen instead. One trap: the footer lifts its own
+    content above the watermark with <code>.site-footer &gt; :not(.footer-ghost)</code>, which outweighs
+    a plain class and pinned the fixed widget back into the footer, where the overflow rule then hid
+    it. Excluded by name. A rule that reaches every child reaches the child you did not mean.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The centred mark decides how much bar there is, not the screen</p>
+    <p class="said">31 Aug, adding WhatsApp: it landed on top of the logo on a phone. The mark is
+    absolutely placed and centred, so the two sides are not what is left of the screen, they are what
+    is left of the screen minus a mark that never moves.</p>
+    <p class="check">Measured at 390: the right hand side is ninety nine pixels and the contact button
+    is a hundred of them. WhatsApp swaps to the left, beside the burger, which has room. Two anchors,
+    one shown at a time, the same way About us and News are on the bar and in the drawer. Measure the
+    side, not the viewport.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Explaining a process nobody asked about</p>
+    <p class="said">31 Aug: <q>heel veel info over opu and icsi with your mares, maar wie boeit dat?
+    hebben ze dat gevraagd?</q>. The ICSI archive opened with the technique, the laboratory, the
+    shipping and a paragraph about confirming the stock.</p>
+    <p class="check">Cut to one line: ICSI semen from the stallions they breed with themselves,
+    availability per stallion on request. The cards already say Availability on request and the fact
+    row already says it again; a third sentence saying the same thing was our own worry on their page.
+    Nobody asked for a lesson in embryo transfer.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A menu item that never fitted, and a breakpoint measured for a menu that no longer existed</p>
     <p class="said">31 Aug: Contact was the seventh item on the bar and it sat behind the logo at 1440.
     The drawer breakpoint had been measured once, honestly, for five items, and stayed at 1300 while a

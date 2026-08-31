@@ -75,7 +75,7 @@ const GROUPS = {
     label: 'ICSI semen',
     kicker: 'ICSI semen',
     title: 'The stallions <em>behind our crosses</em>',
-    intro: 'ICSI doses of the stallions we breed with ourselves, produced with Avantea in Cremona and shipped across the EU and for export.',
+    intro: 'ICSI semen from the stallions we breed with ourselves. Availability per stallion on request.',
     img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
     one: 'stallion', many: 'stallions', singular: 'stallion',
     /* No chips. Every other archive filters on something the data knows:
@@ -84,9 +84,8 @@ const GROUPS = {
        search box stays, because thirteen names are worth searching. */
     chips: false,
     card: (h, full) => stallionCard(h, full), grid: ' ec__grid',
-    note: 'These are the stallions Stud Von Axe breeds with, and their pedigrees come from our own crosses. Which of them we hold ICSI doses of is still being confirmed, so ask and we will tell you what is in the tank.',
-    ctaH: 'Ask about a <em>dose</em>.',
-    ctaD: 'Tell us the stallion and the mare you have in mind. We will tell you what we hold and what it takes to get it to your vet.',
+    ctaH: 'Ask about a <em>stallion</em>.',
+    ctaD: 'Tell us which stallion you are after and we will tell you what we have.',
   },
   sport: {
     dir: 'sport-horses',
@@ -179,15 +178,6 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
 
-  /* Said out loud rather than left for the visitor to assume: the thirteen
-     stallions are the ones this stud breeds with, and nobody has yet
-     confirmed which of them there are doses of. It is the same sentence on
-     the archive and on every stallion page, and it goes the day the owners
-     answer. */
-  .unc{ margin:1.2rem 0 0; padding-left:.9rem; border-left:2px solid var(--color-gold);
-    font-family:var(--font-body); font-size:13px; line-height:1.55;
-    color:var(--color-navy); max-width:62ch; }
-  .arch .unc{ margin:0 0 1.6rem; }
 
   /* ── the dam ───────────────────────────────────────────────────────────
      The one section a cross earns that a horse does not: whoever is buying
@@ -915,7 +905,6 @@ ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="butto
         <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
       </div>
 
-      ${group.note ? `<p class="unc">${esc(group.note)}</p>` : ''}
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
 
       <ul class="hz__grid${group.grid || ''}" data-grid>
@@ -1191,7 +1180,6 @@ const stallionPage = (horse, group, list) => {
         <div class="eh__facts">
 ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
         </div>
-        <p class="unc">Which stallions we hold ICSI doses of is still being confirmed. Ask and we will tell you what is in the tank.</p>
         <div class="eh__acts">
           <a href="#ask" class="btn btn-gold btn-pill">Ask about this stallion</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
