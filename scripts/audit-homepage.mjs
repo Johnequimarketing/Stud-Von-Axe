@@ -12,7 +12,7 @@
  *     dashes before eyebrows, no digit-digit ranges, no banned filler words.
  *  4. Assets: every referenced local asset exists and is under 500 KB.
  */
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -26,6 +26,24 @@ const files = process.argv.slice(2).length
    here rather than once per page. */
 const HOME_CSS = (readFileSync(join(root, 'index.html'), 'utf-8')
   .match(/<style>([\s\S]*?)<\/style>/) || ['', ''])[1];
+
+/* Every page's markup, read once: a class can be styled on the homepage and
+   used only on a horse page, and calling that dead would be wrong. */
+const SITE_MARKUP = (() => {
+  const out = [];
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.isDirectory()) {
+        if (/^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(e.name)) continue;
+        walk(join(dir, e.name));
+      } else if (e.name.endsWith('.html')) {
+        out.push(readFileSync(join(dir, e.name), 'utf-8').replace(/<style>[\s\S]*?<\/style>/g, ''));
+      }
+    }
+  };
+  walk(root);
+  return out.join('\n');
+})();
 
 let failures = 0, warnings = 0;
 const fail = (file, msg) => { failures++; console.log(`  ✗ FAIL  ${msg}`); };
@@ -207,6 +225,21 @@ for (const rel of files) {
     spans
       ? fail(rel, `${spans} card title(s) in a span rather than a heading`)
       : pass('every card title is a heading');
+  }
+
+  /* ── a rule for a class nothing uses ───────────────────────────────────
+     The mirror of the check above. Three button variants sat in the stylesheet
+     of all eighty one pages and were used by none: btn-primary lost its last
+     user when the homepage form took the gold pill the other sixty one forms
+     have, and two had never been used at all. Only checked on the homepage,
+     which is where the stylesheet is written; a subpage carrying a rule for a
+     component it does not show is normal, because it lifts the whole sheet. */
+  if (!isInternal && /index\.html$/.test(rel) && !/\//.test(rel)) {
+    const styled = [...new Set([...cssBlocks.matchAll(/\.(btn-[a-z-]+)\s*[,{:]/g)].map((m) => m[1]))];
+    const dead = styled.filter((c) => !new RegExp(`class="[^"]*\\b${c}\\b`).test(SITE_MARKUP));
+    dead.length
+      ? fail(rel, `${dead.length} button variant(s) styled and never used: ${dead.join(', ')}`)
+      : pass(`${styled.length} button variant(s), every one of them used somewhere`);
   }
 
   /* ── the words this market uses ────────────────────────────────────────

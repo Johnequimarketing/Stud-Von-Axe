@@ -1802,7 +1802,7 @@ const horseCta = (horse) => `
           produced, or what it takes to bring it home. We answer plainly.</p>
         </div>
         <div class="pcta__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
+          <a href="/contact" class="btn btn-gold btn-pill">Get in touch</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -1827,7 +1827,7 @@ const ctaSection = (group) => `
           <p class="pcta__d">${esc(group.ctaD)}</p>
         </div>
         <div class="pcta__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
+          <a href="/contact" class="btn btn-gold btn-pill">Get in touch</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>

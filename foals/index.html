@@ -197,30 +197,12 @@
     transition:background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), opacity .5s var(--ease);
     white-space:nowrap;
   }
-  .btn-primary{
-    background:var(--color-navy);
-    color:var(--color-white);
-    border:1px solid var(--color-navy);
-  }
-  .btn-primary:hover{ background:var(--color-navy-deep); border-color:var(--color-navy-deep); }
   .btn-ghost{
     background:transparent;
     color:var(--color-white);
     border:1px solid var(--color-line-invert);
   }
   .btn-ghost:hover{ background:rgba(255,255,255,.1); border-color:var(--color-white); }
-  .btn-outline-dark{
-    background:transparent;
-    color:var(--color-navy);
-    border:1px solid var(--color-navy);
-  }
-  .btn-outline-dark:hover{ background:var(--color-navy); color:var(--color-white); }
-  .btn-whatsapp{
-    background:var(--color-navy);
-    color:var(--color-white);
-    border:1px solid var(--color-navy);
-  }
-  .btn-whatsapp:hover{ background:var(--color-navy-deep); }
   .btn-gold{
     background:var(--color-gold);
     color:var(--color-navy-deep);
@@ -740,7 +722,15 @@
      jump when the run reaches a boundary. */
   .topics-arrow[disabled]{ opacity:.3; cursor:default; }
 
-  @media (max-width: 1180px){ .topics-arrow{ display:none; } }
+  /* Below 1180 there is no room beside the rail for a button that hangs
+     half outside it, so they used to be hidden — which left four rails on
+     tablet and phone with no control at all and nothing in their place. They
+     move onto the rail instead, the way every carousel does at that width. */
+  @media (max-width: 1180px){
+    .topics-arrow--prev{ left:10px; }
+    .topics-arrow--next{ right:10px; }
+    .topics-arrow{ box-shadow:0 10px 26px -8px rgba(var(--veil-rgb), .55); }
+  }
   @media (max-width: 1100px){ .topic{ flex-basis:calc((100% - (2 * var(--card-gap))) / 3); } }
   @media (max-width: 900px){  .topic{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
   @media (max-width: 560px){  .topic{ flex-basis:84%; } }
@@ -2712,7 +2702,7 @@
           <p class="pcta__d">A foal on the ground, or a cross still to be made. Say what you are after and we will tell you plainly what we have.</p>
         </div>
         <div class="pcta__acts">
-          <a href="/#contact" class="btn btn-gold btn-pill">Get in touch</a>
+          <a href="/contact" class="btn btn-gold btn-pill">Get in touch</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
