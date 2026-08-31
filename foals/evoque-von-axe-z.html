@@ -961,6 +961,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1751,7 +1752,7 @@
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
   .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
@@ -2587,7 +2588,7 @@
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
           <a href="/breeding-mares">Breeding mares</a>
-          <a href="/foals">Foals</a>
+          <a href="/foals" aria-current="page">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
           <a href="/semen">ICSI semen</a>
@@ -2788,9 +2789,9 @@
         <a class="hmore__all" href="/foals">All foals <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/coachella-von-axe"><span class="hz__win"><img src="/assets/img/horses/coachella-von-axe-1.jpg" alt="Coachella Von Axe" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><span class="hz__name">Coachella Von Axe</span><span class="hz__meta">2021 · Filly · Conthargos</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/charina-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/charina-von-axe-z-1.jpg" alt="Charina Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><span class="hz__name">Charina Von Axe Z</span><span class="hz__meta">2026 · Filly · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><span class="hz__name">Comme il Faut x Hypnotic JT Z</span><span class="hz__meta">23/04/26 · Filly · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/coachella-von-axe"><span class="hz__win"><img src="/assets/img/horses/coachella-von-axe-1.jpg" alt="Coachella Von Axe" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Coachella Von Axe</h3><span class="hz__meta">2021 · Filly · Conthargos</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/charina-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/charina-von-axe-z-1.jpg" alt="Charina Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Charina Von Axe Z</h3><span class="hz__meta">2026 · Filly · Chacco Blue</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Comme il Faut x Hypnotic JT Z</h3><span class="hz__meta">23/04/26 · Filly · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>

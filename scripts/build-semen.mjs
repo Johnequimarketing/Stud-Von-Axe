@@ -18,7 +18,7 @@
  */
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, archiveCss, header, footer, head, navScript, esc } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, archiveCss, header, footer, head, navScript, esc, headerFor } from './lib/shell.mjs';
 
 const SEMEN = new Function(readFileSync(join(root, 'semen-data.js'), 'utf-8') + '; return SEMEN;')();
 const NEWS = new Function(readFileSync(join(root, 'news-data.js'), 'utf-8') + '; return NEWS;')();
@@ -110,7 +110,7 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${header}
+${headerFor('/semen')}
 
 <main id="main">
 

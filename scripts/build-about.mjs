@@ -13,7 +13,7 @@
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, headerFor } from './lib/shell.mjs';
 
 const CSS = homeCss + pageHeroCss + storyCss + `
   /* ── about page only. Everything above is the homepage stylesheet. ── */
@@ -185,7 +185,7 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${header}
+${headerFor('/about')}
 
 <main id="main">
 

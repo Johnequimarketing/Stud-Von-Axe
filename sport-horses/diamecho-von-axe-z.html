@@ -961,6 +961,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1751,7 +1752,7 @@
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
   .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
@@ -2589,7 +2590,7 @@
           <a href="/breeding-mares">Breeding mares</a>
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
-          <a href="/sport-horses">Sport horses</a>
+          <a href="/sport-horses" aria-current="page">Sport horses</a>
           <a href="/semen">ICSI semen</a>
           <a href="/contact">Contact</a>
         </nav>
@@ -2824,9 +2825,9 @@
         <a class="hmore__all" href="/sport-horses">All horses <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><span class="hz__name">Kashillio MB Z</span><span class="hz__meta">2016 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Spain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg></span>Sold<span class="visually-hidden"> to Spain</span></span></span></span><span class="hz__body"><span class="hz__name">Contouch SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><span class="hz__name">Diabalou SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h3 class="hz__name">Kashillio MB Z</h3><span class="hz__meta">2016 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Spain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg></span>Sold<span class="visually-hidden"> to Spain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Contouch SVA</h3><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Diabalou SVA</h3><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>

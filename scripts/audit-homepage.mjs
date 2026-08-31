@@ -180,6 +180,35 @@ for (const rel of files) {
       : pass(`${used.size} class(es) in the markup, every one of them styled`);
   }
 
+  /* ── you are here ──────────────────────────────────────────────────────
+     The rule for [aria-current="page"] has been on every page since the
+     beginning and the attribute was on none of them, so the menu never showed
+     where you were. And once it was added, the homepage's own marking rode
+     along on the header every other page lifts, so two items were current at
+     once. Exactly one, or none on a page whose section is not in the menu. */
+  if (!isInternal) {
+    const nav = (noScript.match(/<nav class="primary-nav"[\s\S]*?<\/nav>/) || [''])[0];
+    if (nav) {
+      const marked = [...nav.matchAll(/<a[^>]*aria-current="page"[^>]*>([^<]*)/g)].map((m) => m[1].trim());
+      marked.length > 1
+        ? fail(rel, `${marked.length} menu items marked as the current page: ${marked.join(', ')}`)
+        : pass(marked.length
+            ? `the menu marks one page as current: ${marked[0]}`
+            : 'no menu item marked, and this page is not in the menu');
+    }
+  }
+
+  /* ── a card that carries an item carries a heading ─────────────────────
+     Sixty horse cards and seventeen crosses held their name in a span, which
+     put none of them in the outline a crawler or a screen reader reads, while
+     the news cards next to them had used h3 all along. */
+  if (!isInternal) {
+    const spans = (noScript.match(/<span class="(hz__name|ec__name|nw__t)"/g) || []).length;
+    spans
+      ? fail(rel, `${spans} card title(s) in a span rather than a heading`)
+      : pass('every card title is a heading');
+  }
+
   /* ── the words this market uses ────────────────────────────────────────
      30 Aug: "of alles wel equestrian minded is". These are the words that give
      a writer away as being outside the sport, and the Italian that should have

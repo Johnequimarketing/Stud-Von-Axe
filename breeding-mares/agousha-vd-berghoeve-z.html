@@ -961,6 +961,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1751,7 +1752,7 @@
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
   .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
@@ -2586,7 +2587,7 @@
              taking it off the bar buys the row the room it was short of. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
-          <a href="/breeding-mares">Breeding mares</a>
+          <a href="/breeding-mares" aria-current="page">Breeding mares</a>
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
@@ -2803,9 +2804,9 @@
         <a class="hmore__all" href="/breeding-mares">All mares <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/breeding-mares/cartoona-blue"><span class="hz__win"><img src="/assets/img/horses/cartoona-blue-1.jpg" alt="Cartoona Blue" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Lithuania"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#FDB913"/><rect y="5.33" width="24" height="5.34" fill="#006A44"/><rect y="10.67" width="24" height="5.33" fill="#C1272D"/></svg></span>Sold<span class="visually-hidden"> to Lithuania</span></span></span></span><span class="hz__body"><span class="hz__name">Cartoona Blue</span><span class="hz__meta">2011 · Mare · Cartoon</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/waikiki-vd-berghoeve"><span class="hz__win"><img src="/assets/img/horses/waikiki-vd-berghoeve-1.jpg" alt="Waikiki vd Berghoeve" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><span class="hz__name">Waikiki vd Berghoeve</span><span class="hz__meta">2022 · Mare · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/heaven-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/heaven-vd-berghoeve-z-1.jpg" alt="Heaven vd Berghoeve Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><span class="hz__name">Heaven vd Berghoeve Z</span><span class="hz__meta">2022 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/cartoona-blue"><span class="hz__win"><img src="/assets/img/horses/cartoona-blue-1.jpg" alt="Cartoona Blue" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Lithuania"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#FDB913"/><rect y="5.33" width="24" height="5.34" fill="#006A44"/><rect y="10.67" width="24" height="5.33" fill="#C1272D"/></svg></span>Sold<span class="visually-hidden"> to Lithuania</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cartoona Blue</h3><span class="hz__meta">2011 · Mare · Cartoon</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/waikiki-vd-berghoeve"><span class="hz__win"><img src="/assets/img/horses/waikiki-vd-berghoeve-1.jpg" alt="Waikiki vd Berghoeve" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Waikiki vd Berghoeve</h3><span class="hz__meta">2022 · Mare · Catoki</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/heaven-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/heaven-vd-berghoeve-z-1.jpg" alt="Heaven vd Berghoeve Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Heaven vd Berghoeve Z</h3><span class="hz__meta">2022 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>

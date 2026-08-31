@@ -11,7 +11,7 @@
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, header, footer, head, navScript, askScript } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, header, footer, head, navScript, askScript, headerFor } from './lib/shell.mjs';
 
 const CSS = homeCss + pageHeroCss + `
   /* ── contact page only. Everything above is the homepage stylesheet. ── */
@@ -83,7 +83,7 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${header}
+${headerFor('/contact')}
 
 <main id="main">
 

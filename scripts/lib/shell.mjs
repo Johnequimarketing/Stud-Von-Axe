@@ -30,10 +30,30 @@ export const relink = (html) => html
 
 export const homeCss = home.match(/<style>([\s\S]*?)<\/style>/)[1];
 
-export const header = relink(
+const bareHeader = relink(
   home.slice(home.indexOf('  <header class="hd">'),
              home.indexOf('  </header>') + '  </header>'.length)
-).replace('<header class="hd">', '<header class="hd" id="site-header">');
+)
+  .replace('<header class="hd">', '<header class="hd" id="site-header">')
+  /* index.html marks its own Home link, because it is the one page that is
+     not generated and its Home is an anchor rather than a path. Every other
+     page lifts this header, so that marking has to come off first or two
+     items end up current at once. */
+  .replace(' aria-current="page"', '');
+
+export const header = bareHeader;
+
+/* The header with the page you are on marked in it. Every page has carried the
+   rule for [aria-current="page"] since the beginning and not one of them
+   carried the attribute, so the menu never showed where you were. Pass the
+   path a page is served at: headerFor('/foals'). */
+export const headerFor = (path) => {
+  if (!path) return bareHeader;
+  const at = `href="${path}"`;
+  return bareHeader.includes(at)
+    ? bareHeader.replace(at, `${at} aria-current="page"`)
+    : bareHeader;
+};
 
 export const footer = relink(
   home.slice(home.indexOf('<footer class="site-footer">'),

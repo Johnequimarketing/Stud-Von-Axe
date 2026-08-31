@@ -11,7 +11,7 @@
  */
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss, headerFor } from './lib/shell.mjs';
 
 const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
@@ -645,7 +645,7 @@ ${head({ title, desc, path, image, ldType: 'CollectionPage' })}
 <style>${CSS}${extraCss}</style>
 </head>
 <body>
-${header}
+${headerFor(path)}
 
 <main id="main">
 ${body}
@@ -807,7 +807,7 @@ const card = (horse, group, full) => {
   return `<li${full ? ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` : ''}>` +
     `<a class="hz__card" href="${href}">${win}` +
     '<span class="hz__body">' +
-      `<span class="hz__name">${esc(horseName(horse.name))}</span>` +
+      `<${full ? 'h2' : 'h3'} class="hz__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
       `<span class="hz__meta">${esc(line)}</span>` +
       breeding +
       '<span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span>' +
@@ -868,7 +868,7 @@ ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="butto
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
 
       <ul class="hz__grid${embryos ? ' ec__grid' : ''}" data-grid>
-${list.map((h) => '        ' + (embryos ? embryoCard(h) : card(h, group, true))).join('\n')}
+${list.map((h) => '        ' + (embryos ? embryoCard(h, true) : card(h, group, true))).join('\n')}
       </ul>
     </div>
   </section>
@@ -962,7 +962,7 @@ const damlineOf = (h) => horseName(theirWords((h.genetics || '').split(/\s+X\s+/
    design Mark chose out of thirteen, and it exists because a cross is not a
    horse: it has no face, half of them have no photograph at all, and what a
    breeder reads is the pairing and the damline. */
-const embryoCard = (horse) => {
+const embryoCard = (horse, full) => {
   const win = horse.photos.length
     ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span>`
     : `<span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span>`;
@@ -972,7 +972,7 @@ const embryoCard = (horse) => {
     `<a class="ec__a" href="/embryos/${horse.slug}">${win}` +
     `<span class="ec__seam"><span class="ec__stage">${esc(stageOf(horse))}</span></span>` +
     '<span class="ec__box">' +
-      `<span class="ec__name">${esc(crossSire(horse))} <em>&times;</em> ${esc(crossDam(horse))}</span>` +
+      `<${full ? 'h2' : 'h3'} class="ec__name">${esc(crossSire(horse))} <em>&times;</em> ${esc(crossDam(horse))}</${full ? 'h2' : 'h3'}>` +
       `<span class="ec__line">${esc(damlineOf(horse))}</span>` +
       (horse.tagline ? `<span class="ec__say">${esc(theirWords(horse.tagline))}</span>` : '') +
     '</span></a></li>';
@@ -1721,7 +1721,7 @@ const moreSection = (horse, group, list) => {
         <a class="hmore__all" href="/${group.dir}">All ${esc(group.many)} <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid${group.dir === 'embryos' ? ' ec__grid' : ''}">
-${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h) : card(h, group))).join('\n')}
+${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h, false) : card(h, group))).join('\n')}
       </ul>
     </div>
   </section>
@@ -1888,9 +1888,14 @@ ${head({
 <style>${CSS}</style>
 </head>
 <body>
-${/class="(eh|hp hp--hero)"/.test(body)
-  ? header                       /* a dark hero: transparent, and it pins on scroll */
-  : header.replace('class="hd"', 'class="hd is-pinned"')}
+${(() => {
+  /* A horse page belongs to its archive, so that is the item marked in the
+     menu: on /foals/arkhana the menu shows Foals. */
+  const hd = headerFor(`/${group.dir}`);
+  return /class="(eh|hp hp--hero)"/.test(body)
+    ? hd                          /* a dark hero: transparent, and it pins on scroll */
+    : hd.replace('class="hd"', 'class="hd is-pinned"');
+})()}
 
 <main id="main">
 ${body}
@@ -1980,7 +1985,7 @@ var HOME_HORSES = {
      "Available" on the homepage and "Due 2027" on its archive, because the
      homepage run was built from the horse card and the archive from the
      embryo card. One embryo, one card, one word for its stage. */
-  embryos: ${JSON.stringify(crosses.slice(0, 8).map(embryoCard).join('\n'))},
+  embryos: ${JSON.stringify(crosses.slice(0, 8).map((h) => embryoCard(h, false)).join('\n'))},
   mares: ${JSON.stringify(homeCards(mares, GROUPS.broodmare, 6))},
   sport: ${JSON.stringify(homeCards(sport, GROUPS.sport, 6))},
   counts: ${JSON.stringify({

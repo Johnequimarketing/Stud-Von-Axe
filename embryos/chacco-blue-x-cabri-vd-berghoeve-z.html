@@ -961,6 +961,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1751,7 +1752,7 @@
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
   .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
@@ -2588,7 +2589,7 @@
           <a href="/#top">Home</a>
           <a href="/breeding-mares">Breeding mares</a>
           <a href="/foals">Foals</a>
-          <a href="/embryos">Embryos</a>
+          <a href="/embryos" aria-current="page">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
           <a href="/semen">ICSI semen</a>
           <a href="/contact">Contact</a>
@@ -2770,9 +2771,9 @@
         <a class="hmore__all" href="/embryos">All crosses <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid ec__grid">
-        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><span class="ec__name">Comme il Faut <em>&times;</em> Patchina Van’T Merelsnest</span><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
-        <li class="ec" data-sold="carrying" data-find="catoki x cortina de jolie z catoki x cornet obolensky x calato x darco x chin chin fuga de muze, narcotique ii, qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><span class="ec__name">Catoki <em>&times;</em> Cortina de Jolie Z</span><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Fuga de muze, Narcotique II, Qerlychin!</span></span></a></li>
-        <li class="ec" data-sold="carrying" data-find="for pleasure x hypnotic jt z for pleasure x halifax van kluizebos x carthago out of the sister of the olympic hardrock z! 2027 due 2027"><a class="ec__a" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="ec__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><span class="ec__name">For Pleasure <em>&times;</em> Hypnotic JT Z</span><span class="ec__line">HALIFAX VAN KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
+        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Comme il Faut <em>&times;</em> Patchina Van’T Merelsnest</h3><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
+        <li class="ec" data-sold="carrying" data-find="catoki x cortina de jolie z catoki x cornet obolensky x calato x darco x chin chin fuga de muze, narcotique ii, qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Catoki <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Fuga de muze, Narcotique II, Qerlychin!</span></span></a></li>
+        <li class="ec" data-sold="carrying" data-find="for pleasure x hypnotic jt z for pleasure x halifax van kluizebos x carthago out of the sister of the olympic hardrock z! 2027 due 2027"><a class="ec__a" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="ec__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">For Pleasure <em>&times;</em> Hypnotic JT Z</h3><span class="ec__line">HALIFAX VAN KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
       </ul>
     </div>
   </section>

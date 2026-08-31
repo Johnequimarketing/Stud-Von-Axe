@@ -1014,6 +1014,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1804,7 +1805,7 @@
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
   .ec__name em{ font-style:italic; color:var(--color-gold); }
   .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
@@ -1963,7 +1964,7 @@
              on 29 Aug: it was already in the footer's Navigate column, and
              taking it off the bar buys the row the room it was short of. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
-          <a href="#top">Home</a>
+          <a href="#top" aria-current="page">Home</a>
           <a href="breeding-mares/">Breeding mares</a>
           <a href="foals/">Foals</a>
           <a href="embryos/">Embryos</a>
@@ -2713,7 +2714,7 @@
          has no page to link to, so it is not a link and does not say View. */
       return '<li><div class="hz__card">' + win +
         '<span class="hz__body">' +
-          '<span class="hz__name">' + h.n + '</span>' +
+          '<h3 class="hz__name">' + h.n + '</h3>' +
           '<span class="hz__meta">' + meta(h) + '</span>' +
         '</span></div></li>';
     }
