@@ -484,6 +484,27 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         like a padding somebody chose. Declared now, and the audit fails any bare
         <code>var()</code> naming a property the page does not declare.</span></span><span class="state s-ok">Done</span></li>
 
+      <li class="item" data-k="b19"><input type="checkbox"><span class="what"><b>The two places on the contact page, with maps</b>
+        <span class="said">"Contact pagina wil ik onderaan ook nog de 2 locaties hebben in belgie en in italie, met google maps en adres informatie erbij"</span>
+        <span class="why">Built, under the form. Each place is a card: the address written out, a link
+        that opens Google Maps, and a map that <b>does not load until somebody presses the button on
+        it</b>. An embedded map fetches from Google the moment a page opens and hands over the
+        visitor's IP address whether they wanted a map or not, and the privacy page on this same site
+        says nothing arrives on a page by itself. So the map waits to be asked, and the privacy page
+        now describes it.
+        The Belgian card carries a marked line: no street address for the Lanaken yard has ever been
+        given to us, so the map shows the town and says so rather than dropping a pin on a town centre
+        that is not their gate.</span></span><span class="state s-ok">Done</span></li>
+
+      <li class="item" data-k="b20"><input type="checkbox"><span class="what"><b>The contact page shows both Italian addresses at once, and they are 200km apart</b>
+        <span class="why">This is the address question made visible. The card says Castelnuovo
+        Garfagnana, which is the registered company and what their own footer says; the footer of the
+        very same page says Desenzano del Garda, because that is what the briefing said and it is named
+        in ninety two places on this site. A visitor reading the contact page sees both. There is a
+        marked line on the card telling them to ask before setting off, which is honest and is not a
+        solution. One sentence from the owners settles it and it is one rebuild either
+        way.</span></span><span class="state s-client">On the client</span></li>
+
       <li class="item" data-k="b4"><input type="checkbox"><span class="what"><b>Confirm the domain:</b> they said .com, the live site is studvonaxe.it
         <span class="why">Ask before anything goes on staging.</span></span><span class="state s-client">On the client</span></li>
     </ul>

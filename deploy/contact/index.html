@@ -84,6 +84,10 @@
        Declared on 31 Aug: four rules referred to --sec-half by name and it had
        never been written down, so all four resolved to nothing and sat flush
        against whatever was above them. The legal pages made it visible. */
+    /* The room between two menu items, and the hairline sits in the middle of
+       it. It was .7rem while six names had to share one side of a centred
+       mark; three a side can afford this. */
+    --nav-gap: 1.25rem;
     --sec-full: clamp(4rem, 8vw, 7rem);
     --sec-half: clamp(2rem, 4vw, 3.5rem);
     /* The page's shape language. It was square at 2px; these three values
@@ -384,7 +388,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:var(--nav-gap); flex-wrap:nowrap; }
   .primary-nav a,
   .hd__nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
@@ -401,10 +405,24 @@
   .primary-nav a[aria-current="page"],
   .hd__nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
 
+  /* A hairline between the names, in the middle of the gap. The bar carries
+     the only run of words on this site that is not a sentence, and without a
+     divider they read as one long string. Drawn from the link's own colour so
+     it follows the bar from white over the photograph to ink once pinned, and
+     never on the first item of a group or in the drawer, where each row
+     already has a rule under it. */
+  .primary-nav a, .hd__nav a{ position:relative; }
+  .primary-nav a + a::before,
+  .hd__nav a + a::before{
+    content:""; position:absolute; top:50%; left:calc(-1 * (var(--nav-gap) / 2));
+    width:1px; height:11px; margin-top:-6px;
+    background:currentColor; opacity:.32;
+  }
+
   /* The right hand half of the bar. One recipe with the left half, listed
      beside it above rather than restated here, so the two can never drift
      into two kinds of menu link on one bar. */
-  .hd__nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; margin-right:.4rem; }
+  .hd__nav{ display:flex; align-items:center; gap:var(--nav-gap); flex-wrap:nowrap; margin-right:.5rem; }
   /* Shown only inside the drawer, where the right hand half is not on
      screen. Above the drawer breakpoint these are the two links in
      .hd__nav and these copies are not drawn. The five archives work the same
@@ -441,19 +459,22 @@
      seven need 555, which is why Contact is not on the bar: it cannot fit at
      any width, and it is the gold button eighteen pixels to the right of the
      mark, so the bar already carries it.
-     The mark is centred again and the six names are split three a side, which
-     is what makes it fit: the right hand group, three names with WhatsApp and
-     the button, needs 405 of the 412 pixels the arrangement leaves at this
-     width. Measured with the real serif at 1160, where the clearance is down
-     to eleven pixels.
-     This line has moved four times in three days, every time because a number
-     measured once for one arrangement kept standing after the arrangement
-     changed. It is measured for this one.
+     The mark is centred and the six names are split three a side. The right
+     hand group, three names with the hairlines between them, WhatsApp and the
+     button, is the one that decides: at 1190 its clearance from the mark is
+     down to four pixels, so the drawer takes over at 1240 and 1280, 1366 and
+     everything above get the bar.
+     Widening the gap between the names on 31 Aug cost sixty pixels of
+     clearance and moved this line from 1180 to 1240. It is worth saying out
+     loud, because this number has moved five times in three days and every
+     time it was the same fault: a measurement taken for one arrangement left
+     standing after the arrangement changed. Change anything on the bar and
+     measure it again.
      The gap is a flat rem rather than a vw: one that grows with the screen
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
-  @media (max-width: 1180px){
+  @media (max-width: 1240px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -472,6 +493,8 @@
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
+    /* Rows, not a run: each one already carries a rule under it. */
+    .primary-nav a + a::before{ content:none; }
     .nav-toggle{ display:block; }
     /* The right hand half goes into the drawer with the rest. Its three
        links are drawn from the copies inside the drawer, so the bar keeps
@@ -2097,6 +2120,65 @@
     text-transform:uppercase; color:var(--color-gold); margin-top:.5rem;
   }
 
+  /* ── the two places ───────────────────────────────────────────────── */
+  .pl{ padding-block:0 var(--sec-full); }
+  .pl__head{ max-width:52ch; margin-bottom:clamp(1.6rem,3vw,2.4rem); }
+  .pl__h{
+    margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.6rem,2vw + .8rem,2.2rem); line-height:1.06; color:var(--color-ink);
+  }
+  .pl__h em{ font-style:italic; color:var(--color-gold); }
+  .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
+  .pl__grid{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
+  @media (min-width:820px){ .pl__grid{ grid-template-columns:1fr 1fr; } }
+  .pl__card{
+    display:grid; grid-template-rows:auto 1fr; overflow:hidden;
+    border-radius:var(--plate-radius); background:var(--color-base);
+    border:1px solid var(--color-line);
+    box-shadow:0 26px 60px -44px rgba(var(--veil-rgb),.5);
+  }
+  /* The map's own frame. It holds the invitation before the map arrives and
+     the map itself after, at the same size either way, so nothing on the page
+     jumps when somebody presses the button. */
+  .pl__map{ position:relative; aspect-ratio:16/10; background:var(--color-navy-deep); }
+  .pl__map iframe{ width:100%; height:100%; border:0; display:block; }
+  .pl__ask{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:flex-start; justify-content:flex-end; gap:.5rem;
+    padding:clamp(1.1rem,2vw,1.5rem);
+  }
+  .pl__askT{
+    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .pl__askD{ margin:0 0 .5rem; font-size:13px; line-height:1.55;
+    color:rgba(255,255,255,.7); max-width:34ch; }
+  .pl__body{ padding:clamp(1.2rem,2.2vw,1.7rem); display:grid; align-content:start; gap:.1rem; }
+  .pl__kick{
+    margin:0 0 .35rem; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .pl__name{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400;
+    font-size:1.35rem; line-height:1.15; color:var(--color-ink); }
+  .pl__addr{ font-style:normal; font-size:15px; line-height:1.65; color:var(--color-ink); }
+  /* A gap in what we were given, said out loud rather than pinned somewhere
+     approximate. Same treatment as the blocks on the terms page. */
+  .pl__note{
+    margin:.9rem 0 0; padding:.7rem .85rem; border-radius:var(--ctl-radius);
+    background:color-mix(in srgb, var(--color-gold) 14%, var(--color-base));
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent);
+    font-family:var(--font-body); font-size:13px; line-height:1.6; color:var(--color-navy);
+  }
+  .pl__go{
+    margin-top:1rem; justify-self:start;
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--color-navy);
+    border-bottom:1px solid var(--color-line); padding-bottom:2px;
+    transition:border-color .3s var(--ease), color .3s var(--ease);
+  }
+  .pl__go:hover{ color:var(--color-gold); border-color:var(--color-gold); }
+  .pl__go .a{ color:var(--color-gold); font-size:.9em; }
+
   /* The form, the same split plate the sixty horse pages carry, minus the
      About field: on a horse page it names the horse, here there is none. */
   .cn__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
@@ -2184,7 +2266,12 @@
 
   <section class="nhero cnhero">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/hero-neck-wide.jpg" alt="" fetchpriority="high">
+      <!-- The stable wall, not a close up of a neck. 31 Aug: the old one was a
+           slab of brown with the head cut off at the edge, and it was the same
+           plaited horse the ICSI archive already carries. A contact page wants
+           the place, and this is their own header photograph of it. -->
+      <img src="/assets/img/hero-contact.jpg" alt="" fetchpriority="high" width="1420" height="634"
+           style="object-position:50% 34%">
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
@@ -2232,14 +2319,9 @@
           </div>
           <div class="cn__places">
             <div class="cn__place">
-              <span class="cn__pk">Where the crosses are made</span>
-              <span class="cn__pv">Desenzano del Garda</span>
-              <span class="cn__pd">Italy</span>
-            </div>
-            <div class="cn__place">
-              <span class="cn__pk">Where the foals are raised</span>
-              <span class="cn__pv">Lanaken</span>
-              <span class="cn__pd">Belgium</span>
+              <span class="cn__pk">Two countries, one programme</span>
+              <span class="cn__pv">Italy and Belgium</span>
+              <span class="cn__pd">Both on the map below</span>
             </div>
           </div>
         </div>
@@ -2283,6 +2365,57 @@
       </div>
     </div>
   </section>
+
+
+  <section class="pl" id="places">
+    <div class="wrap">
+      <div class="pl__head">
+        <p class="plaque">Where we are</p>
+        <h2 class="pl__h">Two countries, <em>one programme</em></h2>
+        <p class="pl__intro">Every cross begins in Italy and every foal is raised in Belgium. You are
+        welcome at either, by appointment.</p>
+      </div>
+      <div class="pl__grid">
+        <div class="pl__card">
+          <div class="pl__map" data-map="https://www.google.com/maps?q=Via%20per%20Arni%2030%2C%2055032%20Castelnuovo%20Garfagnana%20LU%2C%20Italy&amp;output=embed">
+            <div class="pl__ask">
+              <p class="pl__askT">Google Maps</p>
+              <p class="pl__askD">The map is not loaded until you ask for it, because loading it hands
+              your IP address to Google.</p>
+              <button class="btn btn-gold btn-pill btn-sm" type="button" data-load>Show the map</button>
+            </div>
+          </div>
+          <div class="pl__body">
+            <p class="pl__kick">Italy</p>
+            <h3 class="pl__name">Castelnuovo Garfagnana</h3>
+            <address class="pl__addr">Stud Von Axe Az. Agr. s.s.<br>Via per Arni 30<br>55032 Castelnuovo Garfagnana (LU)<br>Italy</address>
+            <p class="pl__note">This is the registered company. The site also names Desenzano del Garda as where the crosses are made, and the two are two hundred kilometres apart, so ask us before you set off.</p>
+            <a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=Via%20per%20Arni%2030%2C%2055032%20Castelnuovo%20Garfagnana%20LU%2C%20Italy"
+               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="pl__card">
+          <div class="pl__map" data-map="https://www.google.com/maps?q=Lanaken%2C%20Belgium&amp;output=embed">
+            <div class="pl__ask">
+              <p class="pl__askT">Google Maps</p>
+              <p class="pl__askD">The map is not loaded until you ask for it, because loading it hands
+              your IP address to Google.</p>
+              <button class="btn btn-gold btn-pill btn-sm" type="button" data-load>Show the map</button>
+            </div>
+          </div>
+          <div class="pl__body">
+            <p class="pl__kick">Belgium</p>
+            <h3 class="pl__name">Lanaken</h3>
+            <address class="pl__addr">Lanaken<br>Belgium</address>
+            <p class="pl__note">The street address of the Belgian yard has not been given to us yet, so this map shows the town and not the gate. Ask us and we will send you the pin.</p>
+            <a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=Lanaken%2C%20Belgium"
+               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 </main>
 <footer class="site-footer">
@@ -2460,6 +2593,25 @@
     location.href = 'mailto:studvonaxe@gmail.com'
       + '?subject=' + encodeURIComponent('Enquiry: ' + about)
       + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+<script>
+(function(){
+  var maps = [].slice.call(document.querySelectorAll('[data-map]'));
+  maps.forEach(function(box){
+    var btn = box.querySelector('[data-load]');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = box.getAttribute('data-map');
+      f.title = 'Map';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.setAttribute('allowfullscreen', '');
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
   });
 })();
 </script>

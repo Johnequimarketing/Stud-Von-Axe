@@ -13,6 +13,9 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, homeCss, pageHeroCss, header, footer, head, navScript, askScript, headerFor } from './lib/shell.mjs';
 
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
 const CSS = homeCss + pageHeroCss + `
   /* ── contact page only. Everything above is the homepage stylesheet. ── */
   .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
@@ -44,6 +47,65 @@ const CSS = homeCss + pageHeroCss + `
     text-transform:uppercase; color:var(--color-gold); margin-top:.5rem;
   }
 
+  /* ── the two places ───────────────────────────────────────────────── */
+  .pl{ padding-block:0 var(--sec-full); }
+  .pl__head{ max-width:52ch; margin-bottom:clamp(1.6rem,3vw,2.4rem); }
+  .pl__h{
+    margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.6rem,2vw + .8rem,2.2rem); line-height:1.06; color:var(--color-ink);
+  }
+  .pl__h em{ font-style:italic; color:var(--color-gold); }
+  .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
+  .pl__grid{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
+  @media (min-width:820px){ .pl__grid{ grid-template-columns:1fr 1fr; } }
+  .pl__card{
+    display:grid; grid-template-rows:auto 1fr; overflow:hidden;
+    border-radius:var(--plate-radius); background:var(--color-base);
+    border:1px solid var(--color-line);
+    box-shadow:0 26px 60px -44px rgba(var(--veil-rgb),.5);
+  }
+  /* The map's own frame. It holds the invitation before the map arrives and
+     the map itself after, at the same size either way, so nothing on the page
+     jumps when somebody presses the button. */
+  .pl__map{ position:relative; aspect-ratio:16/10; background:var(--color-navy-deep); }
+  .pl__map iframe{ width:100%; height:100%; border:0; display:block; }
+  .pl__ask{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:flex-start; justify-content:flex-end; gap:.5rem;
+    padding:clamp(1.1rem,2vw,1.5rem);
+  }
+  .pl__askT{
+    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .pl__askD{ margin:0 0 .5rem; font-size:13px; line-height:1.55;
+    color:rgba(255,255,255,.7); max-width:34ch; }
+  .pl__body{ padding:clamp(1.2rem,2.2vw,1.7rem); display:grid; align-content:start; gap:.1rem; }
+  .pl__kick{
+    margin:0 0 .35rem; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .pl__name{ margin:0 0 .5rem; font-family:var(--font-display); font-weight:400;
+    font-size:1.35rem; line-height:1.15; color:var(--color-ink); }
+  .pl__addr{ font-style:normal; font-size:15px; line-height:1.65; color:var(--color-ink); }
+  /* A gap in what we were given, said out loud rather than pinned somewhere
+     approximate. Same treatment as the blocks on the terms page. */
+  .pl__note{
+    margin:.9rem 0 0; padding:.7rem .85rem; border-radius:var(--ctl-radius);
+    background:color-mix(in srgb, var(--color-gold) 14%, var(--color-base));
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent);
+    font-family:var(--font-body); font-size:13px; line-height:1.6; color:var(--color-navy);
+  }
+  .pl__go{
+    margin-top:1rem; justify-self:start;
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--color-navy);
+    border-bottom:1px solid var(--color-line); padding-bottom:2px;
+    transition:border-color .3s var(--ease), color .3s var(--ease);
+  }
+  .pl__go:hover{ color:var(--color-gold); border-color:var(--color-gold); }
+  .pl__go .a{ color:var(--color-gold); font-size:.9em; }
+
   /* The form, the same split plate the sixty horse pages carry, minus the
      About field: on a horse page it names the horse, here there is none. */
   .cn__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
@@ -69,6 +131,99 @@ const WAYS = [
   ['A', 'Adriano', '+39 348 395 3433', 'Call or message', 'tel:+393483953433'],
 ];
 
+/* ── the two places, with a map each ───────────────────────────────────
+   Asked for on 31 Aug: both locations under the form, with Google Maps and
+   the address.
+
+   The map does not load until somebody asks for it. An embedded Google map
+   fetches from Google the moment the page opens and hands over the visitor's
+   IP address whether they wanted a map or not, and /privacy says on this same
+   site that nothing on a page comes from anywhere but our own server. So each
+   map is a plate with the address on it and a button; press it and the map
+   arrives in place. The address, the postcode and a link that opens Google
+   Maps in a new tab are all there without loading anything, which is what most
+   people came for anyway.
+
+   What is real here and what is not: the Italian address is the registered
+   company, word for word as Mark sent it. Lanaken is a town and nothing more,
+   because no street address for the Belgian yard has ever been given, and a
+   pin dropped on a town centre is not where their stable is. It says so
+   rather than guessing. */
+const PLACES = [
+  {
+    kick: 'Italy',
+    name: 'Castelnuovo Garfagnana',
+    lines: ['Stud Von Axe Az. Agr. s.s.', 'Via per Arni 30', '55032 Castelnuovo Garfagnana (LU)', 'Italy'],
+    /* Their own footer and the company register both say Castelnuovo
+       Garfagnana; the briefing this site was written from says Desenzano del
+       Garda, which is two hundred kilometres away and is named in ninety two
+       places here, including the footer of this very page. Both cannot be
+       where you drive to. Marked until they say which. */
+    note: 'This is the registered company. The site also names Desenzano del Garda as where the crosses are made, and the two are two hundred kilometres apart, so ask us before you set off.',
+    q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
+  },
+  {
+    kick: 'Belgium',
+    name: 'Lanaken',
+    lines: ['Lanaken', 'Belgium'],
+    note: 'The street address of the Belgian yard has not been given to us yet, so this map shows the town and not the gate. Ask us and we will send you the pin.',
+    q: 'Lanaken, Belgium',
+  },
+];
+
+const placesSection = `
+  <section class="pl" id="places">
+    <div class="wrap">
+      <div class="pl__head">
+        <p class="plaque">Where we are</p>
+        <h2 class="pl__h">Two countries, <em>one programme</em></h2>
+        <p class="pl__intro">Every cross begins in Italy and every foal is raised in Belgium. You are
+        welcome at either, by appointment.</p>
+      </div>
+      <div class="pl__grid">
+${PLACES.map((pl) => `        <div class="pl__card">
+          <div class="pl__map" data-map="${esc(`https://www.google.com/maps?q=${encodeURIComponent(pl.q)}&output=embed`)}">
+            <div class="pl__ask">
+              <p class="pl__askT">Google Maps</p>
+              <p class="pl__askD">The map is not loaded until you ask for it, because loading it hands
+              your IP address to Google.</p>
+              <button class="btn btn-gold btn-pill btn-sm" type="button" data-load>Show the map</button>
+            </div>
+          </div>
+          <div class="pl__body">
+            <p class="pl__kick">${esc(pl.kick)}</p>
+            <h3 class="pl__name">${esc(pl.name)}</h3>
+            <address class="pl__addr">${pl.lines.map(esc).join('<br>')}</address>
+            ${pl.note ? `<p class="pl__note">${esc(pl.note)}</p>` : ''}
+            <a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=${esc(encodeURIComponent(pl.q))}"
+               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>`).join('\n')}
+      </div>
+    </div>
+  </section>
+`;
+
+const placesScript = `<script>
+(function(){
+  var maps = [].slice.call(document.querySelectorAll('[data-map]'));
+  maps.forEach(function(box){
+    var btn = box.querySelector('[data-load]');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = box.getAttribute('data-map');
+      f.title = 'Map';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.setAttribute('allowfullscreen', '');
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
+  });
+})();
+<\/script>`;
+
 const page = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +244,12 @@ ${headerFor('/contact')}
 
   <section class="nhero cnhero">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/hero-neck-wide.jpg" alt="" fetchpriority="high">
+      <!-- The stable wall, not a close up of a neck. 31 Aug: the old one was a
+           slab of brown with the head cut off at the edge, and it was the same
+           plaited horse the ICSI archive already carries. A contact page wants
+           the place, and this is their own header photograph of it. -->
+      <img src="/assets/img/hero-contact.jpg" alt="" fetchpriority="high" width="1420" height="634"
+           style="object-position:50% 34%">
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
@@ -125,14 +285,9 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
           </div>
           <div class="cn__places">
             <div class="cn__place">
-              <span class="cn__pk">Where the crosses are made</span>
-              <span class="cn__pv">Desenzano del Garda</span>
-              <span class="cn__pd">Italy</span>
-            </div>
-            <div class="cn__place">
-              <span class="cn__pk">Where the foals are raised</span>
-              <span class="cn__pv">Lanaken</span>
-              <span class="cn__pd">Belgium</span>
+              <span class="cn__pk">Two countries, one programme</span>
+              <span class="cn__pv">Italy and Belgium</span>
+              <span class="cn__pd">Both on the map below</span>
             </div>
           </div>
         </div>
@@ -177,10 +332,13 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
     </div>
   </section>
 
+${placesSection}
+
 </main>
 ${footer}
 ${navScript}
 ${askScript}
+${placesScript}
 </body>
 </html>
 `;

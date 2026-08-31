@@ -266,7 +266,8 @@ writeFileSync(join(root, 'privacy', 'index.html'), legalPage({
     ] },
     { h: 'What this site collects', p: [
       'Nothing. There is no analytics on these pages, no advertising, no tracking pixel and no cookie of our own. Nothing is stored in your browser and nothing about your visit reaches us.',
-      'The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else on the page comes from anywhere but our own server.',
+      'The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else arrives on a page by itself.',
+      'The contact page can show a Google map of each of our two places, and that map is not loaded until you press the button on it. Until you do, nothing has been asked of Google beyond the typefaces; once you do, Google sees your IP address the way it would if you had opened Google Maps yourself. The address is written out on the page either way, so you never have to load the map to read it.',
     ] },
     { h: 'The forms', p: [
       'The forms on this site do not send anything anywhere by themselves. When you press send, your own mail programme opens with the answers written into a message addressed to us, and nothing leaves your computer until you send that message yourself.',

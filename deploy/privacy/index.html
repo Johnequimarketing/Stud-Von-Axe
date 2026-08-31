@@ -84,6 +84,10 @@
        Declared on 31 Aug: four rules referred to --sec-half by name and it had
        never been written down, so all four resolved to nothing and sat flush
        against whatever was above them. The legal pages made it visible. */
+    /* The room between two menu items, and the hairline sits in the middle of
+       it. It was .7rem while six names had to share one side of a centred
+       mark; three a side can afford this. */
+    --nav-gap: 1.25rem;
     --sec-full: clamp(4rem, 8vw, 7rem);
     --sec-half: clamp(2rem, 4vw, 3.5rem);
     /* The page's shape language. It was square at 2px; these three values
@@ -384,7 +388,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:var(--nav-gap); flex-wrap:nowrap; }
   .primary-nav a,
   .hd__nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
@@ -401,10 +405,24 @@
   .primary-nav a[aria-current="page"],
   .hd__nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
 
+  /* A hairline between the names, in the middle of the gap. The bar carries
+     the only run of words on this site that is not a sentence, and without a
+     divider they read as one long string. Drawn from the link's own colour so
+     it follows the bar from white over the photograph to ink once pinned, and
+     never on the first item of a group or in the drawer, where each row
+     already has a rule under it. */
+  .primary-nav a, .hd__nav a{ position:relative; }
+  .primary-nav a + a::before,
+  .hd__nav a + a::before{
+    content:""; position:absolute; top:50%; left:calc(-1 * (var(--nav-gap) / 2));
+    width:1px; height:11px; margin-top:-6px;
+    background:currentColor; opacity:.32;
+  }
+
   /* The right hand half of the bar. One recipe with the left half, listed
      beside it above rather than restated here, so the two can never drift
      into two kinds of menu link on one bar. */
-  .hd__nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; margin-right:.4rem; }
+  .hd__nav{ display:flex; align-items:center; gap:var(--nav-gap); flex-wrap:nowrap; margin-right:.5rem; }
   /* Shown only inside the drawer, where the right hand half is not on
      screen. Above the drawer breakpoint these are the two links in
      .hd__nav and these copies are not drawn. The five archives work the same
@@ -441,19 +459,22 @@
      seven need 555, which is why Contact is not on the bar: it cannot fit at
      any width, and it is the gold button eighteen pixels to the right of the
      mark, so the bar already carries it.
-     The mark is centred again and the six names are split three a side, which
-     is what makes it fit: the right hand group, three names with WhatsApp and
-     the button, needs 405 of the 412 pixels the arrangement leaves at this
-     width. Measured with the real serif at 1160, where the clearance is down
-     to eleven pixels.
-     This line has moved four times in three days, every time because a number
-     measured once for one arrangement kept standing after the arrangement
-     changed. It is measured for this one.
+     The mark is centred and the six names are split three a side. The right
+     hand group, three names with the hairlines between them, WhatsApp and the
+     button, is the one that decides: at 1190 its clearance from the mark is
+     down to four pixels, so the drawer takes over at 1240 and 1280, 1366 and
+     everything above get the bar.
+     Widening the gap between the names on 31 Aug cost sixty pixels of
+     clearance and moved this line from 1180 to 1240. It is worth saying out
+     loud, because this number has moved five times in three days and every
+     time it was the same fault: a measurement taken for one arrangement left
+     standing after the arrangement changed. Change anything on the bar and
+     measure it again.
      The gap is a flat rem rather than a vw: one that grows with the screen
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
-  @media (max-width: 1180px){
+  @media (max-width: 1240px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -472,6 +493,8 @@
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
+    /* Rows, not a run: each one already carries a rule under it. */
+    .primary-nav a + a::before{ content:none; }
     .nav-toggle{ display:block; }
     /* The right hand half goes into the drawer with the rest. Its three
        links are drawn from the copies inside the drawer, so the bar keeps
@@ -2291,7 +2314,8 @@
           <span class="lg__no">02</span>
           <h2 class="lg__h">What this site collects</h2>
         <p>Nothing. There is no analytics on these pages, no advertising, no tracking pixel and no cookie of our own. Nothing is stored in your browser and nothing about your visit reaches us.</p>
-        <p>The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else on the page comes from anywhere but our own server.</p>
+        <p>The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else arrives on a page by itself.</p>
+        <p>The contact page can show a Google map of each of our two places, and that map is not loaded until you press the button on it. Until you do, nothing has been asked of Google beyond the typefaces; once you do, Google sees your IP address the way it would if you had opened Google Maps yourself. The address is written out on the page either way, so you never have to load the map to read it.</p>
         </section>
 
         <section id="s3">
