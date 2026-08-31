@@ -654,6 +654,28 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>Design</h2>
   <div class="item">
+    <p class="rule">One recipe per component, and only the difference stated per place</p>
+    <p class="said">31 Aug, after Mark noticed the slider buttons were not the same everywhere: there
+    were four separate arrow recipes, two at 44px turning navy and two at 40px turning gold, two with
+    a focus ring and two without, three with a disabled state and one without. Nothing about the job
+    differed, only where the button sat.</p>
+    <p class="check">One block for all four, and per place only what genuinely differs: white on the
+    tray, glass on the navigator's photograph, a hairline on the navy film plate. The same move that
+    the status seam, the embryo card, the contact form and the archive furniture all needed, and the
+    rule is the same each time: a component two pages share does not live inside one of them.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A control that disappears needs something in its place</p>
+    <p class="said">Below 1180px the four homepage rails hid their arrows outright, so on tablet and
+    phone there was no control and no dot to replace it — only a swipe nobody was told about.</p>
+    <p class="check">They move onto the rail instead of vanishing. Hiding a control is a decision
+    about a smaller screen, not a way out of positioning it.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Both columns end on the same line, whichever is taller</p>
     <p class="said">30 Aug: <q>beide kolommen altijd minimaal even hoog maken, dus foto net zo groot als
     box rechts met tekst of andersom.</q></p>
@@ -1118,6 +1140,30 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 
 <section>
   <h2>The mistakes, and what now catches them</h2>
+  <div class="item">
+    <p class="rule">The audit kept its own list of pages, and a new page fell straight through it</p>
+    <p class="said">31 Aug: the contact page was built, audited nothing, and the run still reported
+    green across 79 pages. The list of pages lived in <code>scripts/audit.sh</code> as a typed array,
+    so a page nobody added was a page nobody checked, silently.</p>
+    <p class="check">It now finds every .html on disk, excludes deploy, _archive and the worktrees,
+    prints the count so a difference shows, and refuses to report green on an empty list. Proven by
+    dropping an unstyled page into the root: 81 found, not green. The same shape of fault as the
+    hand written contrast pairs, and the same fix: derive rather than restate.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The link that opened a form while its label named a page</p>
+    <p class="said">Fifteen of them, and the worst was the default: every horse card on the homepage
+    opened the contact form, with "View" written under it, because "all horses" fell back to a second
+    copy of the herd kept inside index.html. Pressing "Sport horses" made the same cards work.</p>
+    <p class="check">The audit checked that an anchor lands on a real id, and every one of them did.
+    That is not the same question as whether the label is true. When a page is built, search for the
+    links that were waiting for it: the archives existed for two days before the buttons naming them
+    were pointed at them.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
   <div class="item">
     <p class="rule">A class in the markup with no rule behind it</p>
     <p class="said">Asked on 30 Aug whether everything was complete, the answer came back with four
