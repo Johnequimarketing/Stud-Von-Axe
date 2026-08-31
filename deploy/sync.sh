@@ -21,6 +21,8 @@ root="$(dirname "$here")"
 cp "$root/index.html" "$here/index.html"
 cp "$root/news-data.js" "$here/news-data.js"
 cp "$root/horses-home.js" "$here/horses-home.js"
+cp "$root/sitemap.xml" "$here/sitemap.xml"
+cp "$root/robots.txt" "$here/robots.txt"
 # One internal document goes out on purpose: the card variations Mark has to
 # choose from, so he can look at them on a phone. It carries noindex and no
 # client data. Take this line out once a variation is chosen.

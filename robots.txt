@@ -1,0 +1,8 @@
+# The site is still a draft: every page carries noindex, so nothing here
+# should be crawled or indexed yet. Flip DRAFT in scripts/build-seo.mjs on the
+# day it goes live, and take the noindex out of scripts/lib/shell.mjs in the
+# same change.
+User-agent: *
+Disallow: /
+
+Sitemap: https://stud-von-axe-ten.vercel.app/sitemap.xml

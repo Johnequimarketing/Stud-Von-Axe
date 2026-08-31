@@ -352,14 +352,14 @@
   /* Once pinned the bar is ivory, so everything on it turns to ink. */
   .hd.is-pinned .primary-nav a,
   .hd.is-pinned .nav-toggle,
-  .hd.is-pinned .lang-switch button,
+  .hd.is-pinned .lang-switch span,
   .hd.is-pinned .lang-switch .sep,
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); }
   /* The two that the line above cannot reach: the active language sets its
      own white, later in the sheet and at the same weight, and the greyed
      ones carry white at low opacity. Both were invisible on the ivory bar.
      Caught in a render of the pinned state, not in the file. */
-  .hd.is-pinned .lang-switch button[aria-current="true"]{ color:var(--color-navy); }
+  .hd.is-pinned .lang-switch [aria-current="true"]{ color:var(--color-navy); }
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); opacity:.42; }
   .hd.is-pinned .lang-switch .sep{ color:color-mix(in srgb, var(--color-ink) 30%, transparent); }
   .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
@@ -396,10 +396,12 @@
   .primary-nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
 
   .lang-switch{ display:flex; align-items:center; gap:.5rem; font-size:13px; font-weight:700; letter-spacing:.06em; }
-  .lang-switch button{ color:#ffffffa8; padding:.15rem .1rem; }
-  .lang-switch button[aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
+  /* Spans rather than buttons: nothing here is clickable until the other
+     languages exist, and a button with no handler is a promise. */
+  .lang-switch span{ color:#ffffffa8; padding:.15rem .1rem; }
+  .lang-switch [aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
   .lang-switch .lang-soon{ color:var(--color-white); opacity:.38; cursor:not-allowed; }
-  .lang-switch .sep{ color:#ffffff4d; }
+  .lang-switch .sep{ color:#ffffff4d; padding:0; }
 
   .nav-toggle{
     display:none;
@@ -696,22 +698,47 @@
   .topic:hover .topic__go .a{ transform:translateX(4px); }
 
   /* The arrows ride the tray's edges. Hidden where the run is dragged. */
+  /* ── one arrow, five places ────────────────────────────────────────────
+     The topics tray, the stud navigator, the film rail, the picture rail and
+     anything after them. They were four separate recipes: two at 44px on a
+     white disc turning navy, two at 40px transparent turning gold, two with a
+     focus ring and two without, three with a disabled state and one without.
+     Nothing about the job differs, only where the button sits, so only that
+     is stated per place now.
+     Gold on hover, because gold is what this site uses to say "this one". */
+  .topics-arrow, .stud__arrow, .hvid__arrow, .hgal__arrow{
+    width:42px; height:42px; border-radius:50%; cursor:pointer; flex:none;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:16px; line-height:1;
+    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
+    transition:background .3s var(--ease), color .3s var(--ease),
+               border-color .3s var(--ease), opacity .3s var(--ease);
+  }
+  .topics-arrow:hover:not(:disabled), .stud__arrow:hover:not(:disabled),
+  .hvid__arrow:hover:not(:disabled), .hgal__arrow:hover:not(:disabled){
+    background:var(--color-gold); color:var(--color-navy); border-color:transparent;
+  }
+  .topics-arrow:focus-visible, .stud__arrow:focus-visible,
+  .hvid__arrow:focus-visible, .hgal__arrow:focus-visible{
+    outline:2px solid var(--color-gold); outline-offset:3px;
+  }
+  .topics-arrow:disabled, .stud__arrow:disabled,
+  .hvid__arrow:disabled, .hgal__arrow:disabled{ opacity:.32; cursor:default; }
+  /* On a navy plate the disc would be a white hole, so there it is the plate
+     itself with a hairline, which is what the film rail already did. */
+  .hvid__arrow{ background:transparent; border-color:var(--color-line-invert); color:var(--color-white); }
+  .hgal__arrow{ background:transparent; }
+
+  /* Where this one sits: over the rail, half outside it. */
   .topics-arrow{
     position:absolute; top:50%; transform:translateY(-50%); z-index:5;
-    width:44px; height:44px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line);
-    background:var(--color-white); color:var(--color-navy);
-    font-size:16px; line-height:1;
     box-shadow:0 8px 22px -10px rgba(var(--veil-rgb), .4);
-    transition:background .3s var(--ease), color .3s var(--ease), opacity .3s var(--ease);
   }
-  .topics-arrow:hover{ background:var(--color-navy); color:var(--color-white); }
   .topics-arrow--prev{ left:calc(-1 * (22px + var(--tray-pad) / 2)); }
   .topics-arrow--next{ right:calc(-1 * (22px + var(--tray-pad) / 2)); }
   /* Kept in place rather than hidden at the ends, so the tray does not
      jump when the run reaches a boundary. */
   .topics-arrow[disabled]{ opacity:.3; cursor:default; }
-  .topics-arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
 
   @media (max-width: 1180px){ .topics-arrow{ display:none; } }
   @media (max-width: 1100px){ .topic{ flex-basis:calc((100% - (2 * var(--card-gap))) / 3); } }
@@ -785,14 +812,7 @@
   .stud__capKick{ margin:0 0 .4rem; }
   .stud__capBody{ margin:0; font-size:13.5px; color:var(--color-ink-soft); max-width:36ch; }
   .stud__arrows{ display:flex; gap:.6rem; }
-  .stud__arrow{
-    width:44px; height:44px; border-radius:50%; cursor:pointer; flex:none;
-    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
-    display:inline-flex; align-items:center; justify-content:center; font-size:15px;
-    transition:background .3s var(--ease), color .3s var(--ease);
-  }
-  .stud__arrow:hover{ background:var(--color-navy); color:var(--color-white); }
-  .stud__arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
 
   /* ---- the copy ---- */
   .stud__copy > * + *{ margin-top:1.15rem; }
@@ -959,6 +979,7 @@
     display:block;
     font-family:var(--font-display); font-weight:400; font-size:1.1rem;
     line-height:1.16; letter-spacing:-.01em; color:var(--color-navy);
+      margin:0;
   }
   .hz__meta{
     display:block; margin-top:.3rem;
@@ -1565,13 +1586,13 @@
     border-radius:100px; background:rgba(255,255,255,.07);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
   }
-  .footer-pill button, .footer-pill span{
-    padding:.45em 1em; border-radius:100px; border:0; background:none; cursor:pointer;
+  .footer-pill span{
+    padding:.45em 1em; border-radius:100px; border:0; background:none;
     font-family:var(--font-body); font-size:10.5px; font-weight:700;
     letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6);
     transition:background .3s var(--ease), color .3s var(--ease);
   }
-  .footer-pill button[aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
+  .footer-pill [aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
   .footer-pill .lang-soon{ opacity:.4; cursor:not-allowed; }
   .footer-top{ padding:clamp(3rem,7vw,5rem) 0 clamp(2.2rem,5vw,3rem); border-bottom:1px solid var(--color-line-invert); }
   .footer-grid{ display:grid; grid-template-columns:1fr; gap:2.6rem; }
@@ -1709,6 +1730,117 @@
     width:16px; height:11px; border-radius:2px;
     box-shadow:0 0 0 1px rgba(255,255,255,.28);
   }
+
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+  /* ── the contact section ───────────────────────────────────────────────
+     Variation one of the six, chosen on 30 Aug. Navy half carries the
+     invitation and the four ways to reach them; ivory half carries the form.
+     It stands where the CTA plate stood. */
+  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
+  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .ask__h em{ font-style:italic; color:var(--color-gold); }
+  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .ask__people{ display:grid; }
+  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
+    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
+  .ask__p:hover{ padding-left:.4rem; }
+  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
+  /* The form is shorter than the column of names beside it, so it is centred
+     against it rather than hanging from the top with the space all at the
+     bottom. */
+  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base);
+    display:flex; flex-direction:column; justify-content:center; }
+  .ask__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
+  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .ask__row input, .ask__row textarea, .ask__row select{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
+    transition:border-color .3s var(--ease);
+  }
+  .ask__row input:focus, .ask__row textarea:focus, .ask__row select:focus{ outline:none; border-color:var(--color-gold); }
+  .ask__row select{ appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding-right:2.6em;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.15em) 55%, calc(100% - .8em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat; }
+  .ask__row textarea{ resize:vertical; line-height:1.55; }
+  .ask__form > .ask__row:last-of-type{ margin-bottom:1.4rem; }
+  .ask__form .btn{ align-self:flex-start; }
+  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ask__note:empty{ display:none; }
+
   /* ── the status seam ───────────────────────────────────────────────────
      The label keeps its place at the top left of the frame; what is new is
      the ground behind it and the hairline that carries the eye across.
@@ -1771,7 +1903,7 @@
     color:var(--color-white);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
   }
-  .stud__arrow:hover{ background:var(--color-white); color:var(--color-navy); }
+  .stud__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
 
   @media (prefers-reduced-motion: reduce){
     .hz__card::before, .hz__view{ transition:none; }
@@ -1837,13 +1969,6 @@
   .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
   .abst__body b{ font-weight:700; color:var(--color-ink); }
 
-  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
-
-  /* The hero starts at the top of the page and the header hangs over it. */
-  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
-
-  /* The archive grid is the homepage's own .hz__grid, given the room a page
-     has and the homepage section does not: four across instead of three. */
   /* The space between sections is one rule, not six: every section carries
      half of it on each side, so two neighbours add up to the same gap
      wherever they meet, and the first and last still clear the hero and the
@@ -1859,59 +1984,6 @@
      off and the pedigree line under it wraps to three lines: 30 Aug, "dat
      wordt anders te krap en te klein". The embryo cards were already three. */
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
-
-  /* Nothing to enlarge and nothing to play: neither is a button. */
-  .hgal__f--stand{ cursor:default; }
-  .hgal__f--stand:hover img{ transform:none; }
-  .hvid__btn--stand{ cursor:default; }
-  .hvid__btn--stand:hover img{ transform:none; }
-  .hvid__btn--stand .hvid__play{ opacity:.55; }
-
-  /* ── the contact section ───────────────────────────────────────────────
-     Variation one of the six, chosen on 30 Aug. Navy half carries the
-     invitation and the four ways to reach them; ivory half carries the form.
-     It stands where the CTA plate stood. */
-  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
-  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
-    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
-  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
-  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
-    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
-  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
-  .ask__h em{ font-style:italic; color:var(--color-gold); }
-  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
-  .ask__people{ display:grid; }
-  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
-    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
-  .ask__p:hover{ padding-left:.4rem; }
-  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); }
-  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
-  /* The form is shorter than the column of names beside it, so it is centred
-     against it rather than hanging from the top with the space all at the
-     bottom. */
-  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base);
-    display:flex; flex-direction:column; justify-content:center; }
-  .ask__pair{ display:grid; gap:1rem; }
-  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
-  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
-  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); }
-  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
-  .ask__row input, .ask__row textarea{
-    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
-    background:var(--color-base); border:1px solid var(--color-line);
-    border-radius:var(--ctl-radius); padding:.7rem .85rem;
-    transition:border-color .3s var(--ease);
-  }
-  .ask__row input:focus, .ask__row textarea:focus{ outline:none; border-color:var(--color-gold); }
-  .ask__row textarea{ resize:vertical; line-height:1.55; }
-  .ask__form > .ask__row:last-of-type{ margin-bottom:1.4rem; }
-  .ask__form .btn{ align-self:flex-start; }
-  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
-  .ask__note:empty{ display:none; }
 
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
@@ -1954,6 +2026,20 @@
     .flt__count{ margin-left:0; }
   }
 
+  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
+
+  /* The hero starts at the top of the page and the header hangs over it. */
+  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
+
+  /* The archive grid is the homepage's own .hz__grid, given the room a page
+     has and the homepage section does not: four across instead of three. */
+
+  /* Nothing to enlarge and nothing to play: neither is a button. */
+  .hgal__f--stand{ cursor:default; }
+  .hgal__f--stand:hover img{ transform:none; }
+  .hvid__btn--stand{ cursor:default; }
+  .hvid__btn--stand:hover img{ transform:none; }
+  .hvid__btn--stand .hvid__play{ opacity:.55; }
 
   /* ── the embryo head: the tray, nothing on the photograph ──────────────
      Chosen on 30 Aug. The photograph carries only the back link, so it stays
@@ -2072,65 +2158,6 @@
     display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
   .ln__go a:hover{ gap:.8rem; }
   .ln__go .a{ color:var(--color-gold); }
-  /* ── the embryo card ───────────────────────────────────────────────────
-     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
-     its foot and the box carries on out of it in the same navy, so the card
-     is one object with no seam to see: the last stop of the gradient is the
-     box's own colour, and the box has no gap, border or shadow of its own.
-     A gold hairline crosses the join with the stage sitting on it as a
-     label, and their own sentence closes the card in the accent colour,
-     pinned to the foot and reserving two lines so every box in a row draws
-     the same block. Gold carries navy ink in both, 5.70:1. */
-  .ec{ display:flex; }
-  .ec__a{ display:flex; flex-direction:column; width:100%;
-    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
-    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
-    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
-  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
-  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
-  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
-  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform 1s var(--ease); }
-  .ec__a:hover .ec__win img{ transform:scale(1.04); }
-  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
-      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
-  /* No photograph: the supplied mark on navy, at the weight the about page
-     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
-  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
-    background:var(--color-navy-deep); }
-  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
-  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
-    padding:0 1.1rem; margin-top:-.1rem; }
-  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
-  .ec__stage{ flex:none; display:inline-flex; align-items:center;
-    padding:.34em .8em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.16em; text-transform:uppercase; }
-  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
-    line-height:1.2; color:var(--color-white); }
-  .ec__name em{ font-style:italic; color:var(--color-gold); }
-  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
-    color:rgba(255,255,255,.62); }
-  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
-    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
-    text-wrap:balance; }
-  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
-  /* The breeding line under the name: their Genetics row, which on a
-     broodmare is the point of the card. Same italic gold the horse's own
-     page opens with, so the card and the page read as one object. */
-  .hz__ped{
-    display:block; margin-top:.3rem;
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
-    color:var(--color-gold);
-  }
-
-
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2413,14 +2440,6 @@
   }
   .hgal__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
   .hgal__arrows{ display:flex; gap:.5rem; }
-  .hgal__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line); background:transparent;
-    color:var(--color-ink); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hgal__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hgal__arrow:disabled{ opacity:.32; cursor:default; }
 
   /* ── the films ─────────────────────────────────────────────────────────
      30 Aug: the same navy plate the sire and dam lines stand on, in the same
@@ -2500,14 +2519,6 @@
   }
   .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
   .hvid__arrows{ display:flex; gap:.5rem; }
-  .hvid__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line-invert); background:transparent;
-    color:var(--color-white); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hvid__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hvid__arrow:disabled{ opacity:.32; cursor:default; }
   .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
 
   /* ── the lightbox ──────────────────────────────────────────────────────
@@ -2579,9 +2590,11 @@
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
           <a href="/breeding-mares">Breeding mares</a>
-          <a href="/foals">Foals</a>
+          <a href="/foals" aria-current="page">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
+          <a href="/semen">ICSI semen</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
 
@@ -2603,16 +2616,16 @@
       </a>
 
       <div class="hd__end">
-        <div class="lang-switch" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <span aria-current="true">EN</span>
           <span class="sep">/</span>
-          <button type="button">IT</button>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="sep">/</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="sep">/</span>
           <span class="lang-soon" title="Coming later">DE</span>
         </div>
-        <a href="/#contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
+        <a href="/contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
       </div>
     </div>
   </header>
@@ -2787,9 +2800,9 @@
         <a class="hmore__all" href="/foals">All foals <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><span class="hz__name">Delilah Von Axe Z</span><span class="hz__meta">01/05/2024 · Filly · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><span class="hz__name">Baltimore Von Axe Z</span><span class="hz__meta">02/04/2025 · Colt · Big Star</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><span class="hz__name">Purple Rain Von Axe Z</span><span class="hz__meta">01/05/2023 · Filly · Pegase van't Ruytershof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Delilah Von Axe Z</h3><span class="hz__meta">01/05/2024 · Filly · Dominator 2000 Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Baltimore Von Axe Z</h3><span class="hz__meta">02/04/2025 · Colt · Big Star</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Purple Rain Von Axe Z</h3><span class="hz__meta">01/05/2023 · Filly · Pegase van't Ruytershof</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -2808,8 +2821,8 @@
         </a>
         <p>Sport horse breeding between Desenzano del Garda, Italy, and Lanaken, Belgium.</p>
         <div class="footer-pill" role="group" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
-          <button type="button">IT</button>
+          <span aria-current="true">EN</span>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="lang-soon" title="Coming later">DE</span>
         </div>
@@ -2825,7 +2838,7 @@
           <li><a href="/about">About</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/news">News</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
 

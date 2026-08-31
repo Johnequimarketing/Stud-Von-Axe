@@ -169,6 +169,36 @@ miscount.length
   ? fail(`${miscount.length} archive(s) whose card count does not match the data`, miscount)
   : pass('every archive shows exactly the horses in its category');
 
+/* ── 8. the sitemap lists every public page ────────────────────────────*/
+if (existsSync(join(root, 'sitemap.xml'))) {
+  const map = read('sitemap.xml');
+  const listed = new Set([...map.matchAll(/<loc>[^<]*?([^<]*)<\/loc>/g)]
+    .map((m) => m[1].replace(/^https?:\/\/[^/]+/, '') || '/'));
+  const onDisk = [];
+  const walk = (dir) => {
+    for (const name of readdirSync(join(root, dir), { withFileTypes: true })) {
+      const rel = dir ? `${dir}/${name.name}` : name.name;
+      if (name.isDirectory()) {
+        if (/^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(name.name)) continue;
+        walk(rel);
+      } else if (name.name.endsWith('.html')) {
+        if (/<meta name="internal-doc"/.test(read(rel))) continue;
+        onDisk.push(rel === 'index.html' ? '/' : '/' + rel.replace(/\/index\.html$/, '').replace(/\.html$/, ''));
+      }
+    }
+  };
+  walk('');
+  const missing = onDisk.filter((u) => !listed.has(u));
+  const extra = [...listed].filter((u) => !onDisk.includes(u));
+  missing.length || extra.length
+    ? fail(`the sitemap and the pages on disk disagree`,
+           [...missing.map((u) => `on disk, not in the sitemap: ${u}`),
+            ...extra.map((u) => `in the sitemap, not on disk: ${u}`)])
+    : pass(`the sitemap lists all ${onDisk.length} public pages and nothing else`);
+} else {
+  fail('there is no sitemap.xml');
+}
+
 console.log('\n══════════════════════════════════════════════');
 console.log(`${failures} failure(s) across ${checks} site-wide check(s)\n`);
 process.exit(failures ? 1 : 0);
