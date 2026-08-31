@@ -698,22 +698,47 @@
   .topic:hover .topic__go .a{ transform:translateX(4px); }
 
   /* The arrows ride the tray's edges. Hidden where the run is dragged. */
+  /* ── one arrow, five places ────────────────────────────────────────────
+     The topics tray, the stud navigator, the film rail, the picture rail and
+     anything after them. They were four separate recipes: two at 44px on a
+     white disc turning navy, two at 40px transparent turning gold, two with a
+     focus ring and two without, three with a disabled state and one without.
+     Nothing about the job differs, only where the button sits, so only that
+     is stated per place now.
+     Gold on hover, because gold is what this site uses to say "this one". */
+  .topics-arrow, .stud__arrow, .hvid__arrow, .hgal__arrow{
+    width:42px; height:42px; border-radius:50%; cursor:pointer; flex:none;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:16px; line-height:1;
+    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
+    transition:background .3s var(--ease), color .3s var(--ease),
+               border-color .3s var(--ease), opacity .3s var(--ease);
+  }
+  .topics-arrow:hover:not(:disabled), .stud__arrow:hover:not(:disabled),
+  .hvid__arrow:hover:not(:disabled), .hgal__arrow:hover:not(:disabled){
+    background:var(--color-gold); color:var(--color-navy); border-color:transparent;
+  }
+  .topics-arrow:focus-visible, .stud__arrow:focus-visible,
+  .hvid__arrow:focus-visible, .hgal__arrow:focus-visible{
+    outline:2px solid var(--color-gold); outline-offset:3px;
+  }
+  .topics-arrow:disabled, .stud__arrow:disabled,
+  .hvid__arrow:disabled, .hgal__arrow:disabled{ opacity:.32; cursor:default; }
+  /* On a navy plate the disc would be a white hole, so there it is the plate
+     itself with a hairline, which is what the film rail already did. */
+  .hvid__arrow{ background:transparent; border-color:var(--color-line-invert); color:var(--color-white); }
+  .hgal__arrow{ background:transparent; }
+
+  /* Where this one sits: over the rail, half outside it. */
   .topics-arrow{
     position:absolute; top:50%; transform:translateY(-50%); z-index:5;
-    width:44px; height:44px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line);
-    background:var(--color-white); color:var(--color-navy);
-    font-size:16px; line-height:1;
     box-shadow:0 8px 22px -10px rgba(var(--veil-rgb), .4);
-    transition:background .3s var(--ease), color .3s var(--ease), opacity .3s var(--ease);
   }
-  .topics-arrow:hover{ background:var(--color-navy); color:var(--color-white); }
   .topics-arrow--prev{ left:calc(-1 * (22px + var(--tray-pad) / 2)); }
   .topics-arrow--next{ right:calc(-1 * (22px + var(--tray-pad) / 2)); }
   /* Kept in place rather than hidden at the ends, so the tray does not
      jump when the run reaches a boundary. */
   .topics-arrow[disabled]{ opacity:.3; cursor:default; }
-  .topics-arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
 
   @media (max-width: 1180px){ .topics-arrow{ display:none; } }
   @media (max-width: 1100px){ .topic{ flex-basis:calc((100% - (2 * var(--card-gap))) / 3); } }
@@ -787,14 +812,7 @@
   .stud__capKick{ margin:0 0 .4rem; }
   .stud__capBody{ margin:0; font-size:13.5px; color:var(--color-ink-soft); max-width:36ch; }
   .stud__arrows{ display:flex; gap:.6rem; }
-  .stud__arrow{
-    width:44px; height:44px; border-radius:50%; cursor:pointer; flex:none;
-    border:1px solid var(--color-line); background:var(--color-white); color:var(--color-navy);
-    display:inline-flex; align-items:center; justify-content:center; font-size:15px;
-    transition:background .3s var(--ease), color .3s var(--ease);
-  }
-  .stud__arrow:hover{ background:var(--color-navy); color:var(--color-white); }
-  .stud__arrow:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
 
   /* ---- the copy ---- */
   .stud__copy > * + *{ margin-top:1.15rem; }
@@ -1885,7 +1903,7 @@
     color:var(--color-white);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
   }
-  .stud__arrow:hover{ background:var(--color-white); color:var(--color-navy); }
+  .stud__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
 
   @media (prefers-reduced-motion: reduce){
     .hz__card::before, .hz__view{ transition:none; }

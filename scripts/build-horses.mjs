@@ -489,14 +489,6 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   }
   .hgal__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
   .hgal__arrows{ display:flex; gap:.5rem; }
-  .hgal__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line); background:transparent;
-    color:var(--color-ink); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hgal__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hgal__arrow:disabled{ opacity:.32; cursor:default; }
 
   /* ── the films ─────────────────────────────────────────────────────────
      30 Aug: the same navy plate the sire and dam lines stand on, in the same
@@ -576,14 +568,6 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   }
   .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
   .hvid__arrows{ display:flex; gap:.5rem; }
-  .hvid__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line-invert); background:transparent;
-    color:var(--color-white); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hvid__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hvid__arrow:disabled{ opacity:.32; cursor:default; }
   .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
 
   /* ── the lightbox ──────────────────────────────────────────────────────
