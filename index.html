@@ -158,6 +158,10 @@
 
     /* How far the ivory tray bites into the hero, and the tray's own shape. */
     --cut: 96px;
+    /* A test, 31 Aug: the hero photograph held inside the page instead of
+       bleeding to all four edges, the way the floating header plate already
+       is. One number, so it is one edit to widen, tighten or take out. */
+    --hero-inset: var(--gutter);
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
     /* How far the menu plate hangs below the top edge. The logo plate
@@ -608,9 +612,28 @@
   .hero{
     position:relative; min-height:100svh; padding-bottom:var(--cut);
     display:flex; flex-direction:column;
-    background:var(--color-navy-deep);
+    /* The ground the framed photograph sits on. It was navy-deep, which was
+       the photograph's own backstop while it bled to the edges. */
+    background:var(--color-base);
   }
-  .hero__bg{ position:absolute; inset:0; }
+  /* Held off the sides and the foot on the page gutter, so its edge lines up
+     with the header plate above it and with every section below it, and
+     rounded at the foot with the stylesheet's own plate radius.
+     Not off the top, and that is the one thing this arrangement cannot have:
+     the bar carries a white mark and white links because it stands on the
+     photograph, and inset from the top it would stand on ivory and disappear.
+     Keeping the picture under the bar keeps the bar exactly as it was, which
+     is what was asked for.
+     Nor off the foot: the tray of topic cards is pulled up by --cut so that it
+     cuts into the hero from below, and that is a shape the two make together.
+     Taking anything off the bottom stands the tray clear of the picture and
+     leaves a band of ivory between them. So the picture keeps its full height
+     and is held off the two sides only, which is the whole of what changes. */
+  .hero__bg{
+    position:absolute;
+    inset:0 var(--hero-inset) 0;
+    border-radius:0 0 var(--plate-radius) var(--plate-radius); overflow:hidden;
+  }
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
   .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
