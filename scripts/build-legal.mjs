@@ -33,30 +33,54 @@ const CSS = homeCss + pageHeroCss + `
   /* ── the legal pages and the 404. Everything above is the homepage sheet. ── */
   .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
 
+  /* One split plate, the same object as the contact form and the order form:
+     navy on the left with the contents, ivory on the right with the words.
+     The page had them loose on the page ground, which on a site where every
+     other block sits on a plate reads as an unfinished page. */
   .lg{ padding-block:var(--sec-half); }
-  .lg__grid{ display:grid; gap:clamp(2rem,5vw,4rem); }
-  @media (min-width:900px){ .lg__grid{ grid-template-columns:.32fr .68fr; align-items:start; } }
-
-  /* The contents list stays beside the text on a wide screen: eleven headings
-     is a long page and a reader wants to see the shape of it. */
-  .lg__toc{ position:sticky; top:calc(var(--hd-top) + var(--hd-bar) + 1.4rem); }
-  .lg__toc ol{ list-style:none; margin:0; padding:0; display:grid; gap:.1rem;
-    counter-reset:lgc; }
-  .lg__toc a{
-    display:flex; gap:.7rem; padding:.4rem 0;
-    font-family:var(--font-body); font-size:14px; line-height:1.4;
-    color:var(--color-ink-soft); border-bottom:1px solid transparent;
-    transition:color .3s var(--ease);
+  .lg__box{
+    display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55);
   }
-  .lg__toc a:hover{ color:var(--color-navy); }
+  @media (min-width:900px){ .lg__box{ grid-template-columns:.34fr .66fr; } }
+  .lg__side{
+    background:var(--color-navy-deep); color:var(--color-white);
+    padding:clamp(1.6rem,3vw,2.4rem);
+  }
+  .lg__inner{ position:sticky; top:calc(var(--hd-top) + var(--hd-bar) + 1.6rem); }
+  /* The numbered rail, the same control the order form walks on. Here it
+     marks where you are as you read instead of where you have got to. */
+  .lg__toc{ list-style:none; margin:1.2rem 0 0; padding:0; display:grid; gap:.1rem; counter-reset:lgc; }
+  .lg__toc a{
+    display:flex; gap:.75rem; padding:.5rem .7rem; border-radius:var(--ctl-radius);
+    font-family:var(--font-body); font-size:14px; line-height:1.4;
+    color:rgba(255,255,255,.55);
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
   .lg__toc a::before{
     counter-increment:lgc; content:counter(lgc, decimal-leading-zero);
-    font-weight:700; font-size:10px; letter-spacing:.18em; color:var(--color-gold);
-    padding-top:.28rem;
+    font-weight:700; font-size:10px; letter-spacing:.18em; padding-top:.28rem;
+    color:inherit; flex:none;
+  }
+  .lg__toc a:hover{ color:var(--color-white); background:rgba(255,255,255,.06); }
+  .lg__toc a[aria-current="true"]{ background:var(--color-gold); color:var(--color-navy); }
+  .lg__stamp{
+    margin:1.4rem 0 0; padding-top:1.1rem; border-top:1px solid var(--color-line-invert);
+    font-family:var(--font-body); font-size:12.5px; line-height:1.6;
+    color:rgba(255,255,255,.55);
   }
 
-  .lg__body > section{ padding-top:clamp(1.6rem,3vw,2.4rem); }
-  .lg__body > section + section{ border-top:1px solid var(--color-line); margin-top:clamp(1.6rem,3vw,2.4rem); }
+  .lg__body{ background:var(--color-base); padding:clamp(1.6rem,3vw,2.6rem); }
+  .lg__body > section{ scroll-margin-top:calc(var(--hd-top) + var(--hd-bar) + 2rem); }
+  .lg__body > section + section{ border-top:1px solid var(--color-line);
+    margin-top:clamp(1.8rem,3.4vw,2.6rem); padding-top:clamp(1.8rem,3.4vw,2.6rem); }
+  /* The number beside a heading, so the rail on the left and the page on the
+     right are visibly the same list. */
+  .lg__no{
+    display:block; margin-bottom:.35rem;
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold);
+  }
   .lg__h{
     margin:0 0 .8rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.3rem,1.4vw + .8rem,1.7rem); line-height:1.1; color:var(--color-ink);
@@ -77,7 +101,7 @@ const CSS = homeCss + pageHeroCss + `
   .lg__todo b{ display:block; font-weight:700; font-size:10px; letter-spacing:.18em;
     text-transform:uppercase; color:var(--color-gold); margin-bottom:.25rem; }
 
-  .lg__note{ margin:0 0 1.6rem; font-size:14px; line-height:1.6; color:var(--color-ink-soft); }
+
 
   /* ── 404 ──────────────────────────────────────────────────────────────
      One navy plate, the mark behind it, and the way back. No photograph: a
@@ -85,12 +109,18 @@ const CSS = homeCss + pageHeroCss + `
      for, and every photograph on this site names a horse. */
   .nf{ min-height:78svh; display:grid; align-items:center;
     background:var(--color-navy-deep); position:relative; overflow:clip; }
+  /* The supplied mark is 420 by 914, more than twice as tall as it is wide.
+     Sized on its width it stands 870px tall inside a section half that, and
+     the section clipped its ears and its chin. The box is tied to the
+     section's height and the mark is contained inside it, so it can never be
+     taller than the section and never runs past the right edge. */
   .nf__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
-    width:clamp(190px, 26vw, 400px); opacity:.06;
+    right:clamp(0px, 1.5vw, 3rem); top:8%; bottom:8%;
+    width:clamp(120px, 18vw, 260px); opacity:.06;
   }
-  .nf__mark img{ width:100%; height:auto; display:block; }
+  .nf__mark img{ width:100%; height:100%; object-fit:contain;
+    object-position:center right; display:block; }
   .nf .wrap{ position:relative; z-index:1; padding-block:clamp(6rem,14vh,9rem) clamp(3rem,7vh,5rem); }
   .nf__h{
     margin:.8rem 0 .8rem; font-family:var(--font-display); font-weight:400;
@@ -113,7 +143,37 @@ const CSS = homeCss + pageHeroCss + `
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-const page = ({ title, desc, path, body, hd }) => `<!DOCTYPE html>
+/* The rail on the left marks the section you are reading. Written here rather
+   than lifted, because these are the only two pages with a contents list, and
+   it is the same idea as the order form's rail: a numbered list that knows
+   where you are. */
+const spyScript = `<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('[data-lg]'));
+  if(!links.length) return;
+  var parts = links.map(function(a){
+    return { a: a, el: document.querySelector(a.getAttribute('href')) };
+  }).filter(function(p){ return p.el; });
+  var bar = 0;
+  function measure(){
+    var row = document.querySelector('.hd__row');
+    bar = (row ? row.getBoundingClientRect().bottom : 0) + 24;
+  }
+  function mark(){
+    var at = parts[0];
+    parts.forEach(function(p){ if(p.el.getBoundingClientRect().top <= bar) at = p; });
+    parts.forEach(function(p){
+      if(p === at) p.a.setAttribute('aria-current', 'true');
+      else p.a.removeAttribute('aria-current');
+    });
+  }
+  measure(); mark();
+  window.addEventListener('scroll', mark, {passive:true});
+  window.addEventListener('resize', function(){ measure(); mark(); });
+})();
+<\/script>`;
+
+const page = ({ title, desc, path, body, hd, spy }) => `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${head({ title, desc, path, image: 'hero-grey-wide.jpg' })}
@@ -127,6 +187,7 @@ ${body}
 </main>
 ${footer}
 ${navScript}
+${spy ? spyScript : ''}
 </body>
 </html>
 `;
@@ -153,28 +214,34 @@ const hero = (kicker, title, intro) => `
 /* One list per page: the heading, and the paragraphs under it. A string is a
    paragraph; an array is a list; an object is a block the owners still owe. */
 const section = (s, i) => `
-      <section id="s${i + 1}">
-        <h2 class="lg__h">${esc(s.h)}</h2>
+        <section id="s${i + 1}">
+          <span class="lg__no">${String(i + 1).padStart(2, '0')}</span>
+          <h2 class="lg__h">${esc(s.h)}</h2>
 ${(s.p || []).map((b) => Array.isArray(b)
     ? `        <ul>${b.map((li) => `<li>${esc(li)}</li>`).join('')}</ul>`
     : typeof b === 'object'
       ? `        <p class="lg__todo"><b>Still to come from the owners</b>${esc(b.todo)}</p>`
       : `        <p>${esc(b)}</p>`).join('\n')}
-      </section>`;
+        </section>`;
 
 const legalPage = ({ title, kicker, h1, intro, note, sections, path }) => page({
-  title, desc: intro, path, hd: headerFor(path),
+  title, desc: intro, path, hd: headerFor(path), spy: true,
   body: hero(kicker, h1, intro) + `
   <section class="lg">
-    <div class="wrap lg__grid">
-      <nav class="lg__toc" aria-label="On this page">
-        <ol>
-${sections.map((s, i) => `          <li><a href="#s${i + 1}">${esc(s.h)}</a></li>`).join('\n')}
-        </ol>
-      </nav>
-      <div class="lg__body">
-        <p class="lg__note">${esc(note)}</p>
+    <div class="wrap">
+      <div class="lg__box">
+        <aside class="lg__side">
+          <p class="plaque">On this page</p>
+          <div class="lg__inner">
+            <ol class="lg__toc">
+${sections.map((s, i) => `              <li><a href="#s${i + 1}" data-lg="${i + 1}">${esc(s.h)}</a></li>`).join('\n')}
+            </ol>
+            <p class="lg__stamp">${esc(note)}</p>
+          </div>
+        </aside>
+        <div class="lg__body">
 ${sections.map(section).join('\n')}
+        </div>
       </div>
     </div>
   </section>

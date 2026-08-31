@@ -1141,6 +1141,34 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">Consistency is not copying the recipe, it is checking the recipe was right</p>
+    <p class="said">31 Aug, three times over: <q>hoofd icon valt buiten scherm</q>, then <q>kop nog
+    steeds afgeknipt</q>. The first fix put the pedigree watermark on the recipe the homepage sections
+    use, which felt like the consistent move and was the wrong one: that recipe pulled the mark five
+    per cent of the screen past the right edge, so all it did was give the pedigree the same cut the
+    homepage already had.</p>
+    <p class="check">Measured instead of matched. The supplied mark is 420 by 914, more than twice as
+    tall as it is wide, so sizing it on a width of 400 stands it 870 pixels tall inside a section half
+    that and the section clips its ears and its chin. Every watermark now hangs off the section's own
+    height with the image contained inside it: it cannot be taller than the section and cannot run past
+    the edge. Checked in the browser on all four, image rectangle against section rectangle, rather
+    than by eye.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A token nobody declared, and four sections stuck to their neighbours</p>
+    <p class="said">31 Aug: <q>Privacy policy en terms and conditions look shit, staat nu er zo
+    achterlijk tegenaan</q>. The page really was stuck to its own hero.</p>
+    <p class="check">Four rules asked for <code>--sec-half</code> and it had never been written down, so
+    all four resolved to nothing. CSS says nothing about that: an undeclared custom property is an empty
+    value, and a padding of nothing looks exactly like a padding somebody chose. Declared, and the audit
+    now fails any bare var() naming a property the page does not declare. A var() with a fallback is
+    left alone, because it cannot resolve to nothing.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A closing script tag written with two backslashes, and an audit that could not see it</p>
     <p class="said">31 Aug: the order form did nothing at all. The block ended with the characters
     <code>&lt;\/script&gt;</code> in the page, so the script never closed, and the browser ran none of

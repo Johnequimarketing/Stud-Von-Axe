@@ -78,6 +78,14 @@
     /* Height the sticky header reserves, and gives back to the hero. */
 
     --card-gap: 14px;
+    /* The rhythm between sections. A section pads itself with the full value
+       top and bottom; the half is for a block that follows another closely on
+       purpose, such as the invitation under a run of cards.
+       Declared on 31 Aug: four rules referred to --sec-half by name and it had
+       never been written down, so all four resolved to nothing and sat flush
+       against whatever was above them. The legal pages made it visible. */
+    --sec-full: clamp(4rem, 8vw, 7rem);
+    --sec-half: clamp(2rem, 4vw, 3.5rem);
     /* The page's shape language. It was square at 2px; these three values
        turn every card, plate and photograph together. */
     /* The type scale. Every literal pixel size on this site comes from this
@@ -254,7 +262,8 @@
   .hd:not(.is-pinned) .brand__ondark{
     filter:drop-shadow(0 1px 2px rgba(var(--veil-rgb), .5)) drop-shadow(0 3px 14px rgba(var(--veil-rgb), .45));
   }
-  .hd:not(.is-pinned) .primary-nav a,
+  .hd:not(.is-pinned) .primary-nav > a,
+  .hd:not(.is-pinned) .hd__dropBtn,
   .hd:not(.is-pinned) .hd__nav a,
   .hd:not(.is-pinned) .nav-toggle,
   .hd:not(.is-pinned) .hd__wa{
@@ -335,7 +344,10 @@
   /* Once pinned the bar is ivory, so everything on it turns to ink. */
   .hd.is-pinned .primary-nav a,
   .hd.is-pinned .hd__nav a,
+  .hd.is-pinned .hd__dropBtn,
   .hd.is-pinned .nav-toggle{ color:var(--color-ink); }
+  /* The panel is its own plate and keeps its own colours at both states. */
+  .hd.is-pinned .hd__panel .hd__pn{ color:var(--color-navy); }
   .hd.is-pinned .hd__wa{ color:var(--color-navy); border-color:var(--color-line); }
   .hd.is-pinned .hd__wa:hover{ background:var(--color-navy); color:var(--color-white);
     border-color:var(--color-navy); }
@@ -384,8 +396,48 @@
   .hd__nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
   /* Shown only inside the drawer, where the right hand half is not on
      screen. Above the drawer breakpoint these are the two links in
-     .hd__nav and these copies are not drawn. */
-  .hd__drawerOnly{ display:none; }
+     .hd__nav and these copies are not drawn. The five archives work the same
+     way in reverse: on the bar they are the panel, in the drawer they are
+     five plain links. */
+  .hd__drawerOnly, .hd__inDrawer{ display:none; }
+
+  /* ── Horses, and what is under it ──────────────────────────────────── */
+  .hd__drop{ position:relative; display:inline-flex; }
+  .hd__dropBtn{
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:0 0 3px; background:none; border:0; cursor:pointer;
+    border-bottom:1px solid transparent;
+    font-family:var(--font-display); font-size:15px; font-weight:400; letter-spacing:.005em;
+    color:var(--color-white); white-space:nowrap;
+    transition:border-color .4s var(--ease), color .4s var(--ease);
+  }
+  .hd__dropBtn:hover,
+  .hd__dropBtn[aria-expanded="true"]{ border-color:var(--color-gold); }
+  .hd__caret{ font-size:8px; transition:transform .3s var(--ease); }
+  .hd__dropBtn[aria-expanded="true"] .hd__caret{ transform:rotate(180deg); }
+  /* The word carries the marking when the page you are on is one of the five
+     inside it, so the bar still says where you are. */
+  .hd__drop:has(a[aria-current="page"]) .hd__dropBtn{ border-color:var(--color-gold); }
+
+  .hd__panel{
+    position:absolute; z-index:3; top:calc(100% + 1.1rem); left:-1rem;
+    width:min(320px, calc(100vw - (2 * var(--gutter))));
+    display:grid; padding:.6rem;
+    border-radius:var(--plate-radius); background:var(--color-base);
+    border:1px solid var(--color-line);
+    box-shadow:0 30px 60px -34px rgba(var(--veil-rgb),.55);
+  }
+  .hd__panel[hidden]{ display:none; }
+  .hd__panel a{
+    display:grid; gap:.1rem; padding:.6rem .8rem; border-radius:var(--ctl-radius);
+    border-bottom:0; color:var(--color-ink);
+    transition:background .3s var(--ease);
+  }
+  .hd__panel a:hover{ background:var(--color-base-alt); }
+  .hd__panel a[aria-current="page"]{ background:var(--color-gold); }
+  .hd__panel a[aria-current="page"] .hd__pd{ color:var(--color-navy); opacity:.75; }
+  .hd__pn{ font-family:var(--font-display); font-size:16px; line-height:1.2; color:var(--color-navy); }
+  .hd__pd{ font-family:var(--font-body); font-size:12.5px; line-height:1.4; color:var(--color-ink-soft); }
 
   /* WhatsApp: the same circle every other icon-only control on this site
      uses, at the bar's own size. Ghost on the photograph, ink once pinned,
@@ -425,7 +477,7 @@
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
-  @media (max-width: 1380px){
+  @media (max-width: 1020px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -447,9 +499,11 @@
     .nav-toggle{ display:block; }
     /* The right hand half goes into the drawer with the rest. Its two links
        are drawn from the copies inside the drawer, so the bar keeps only
-       WhatsApp and the contact button at this width. */
+       WhatsApp and the contact button at this width. The panel closes and
+       its five archives become five rows. */
     .hd__nav{ display:none; }
-    .hd__drawerOnly{ display:block; }
+    .hd__drawerOnly, .hd__inDrawer{ display:block; }
+    .hd__drop{ display:none; }
   }
 
   @media (max-width: 860px){
@@ -790,13 +844,16 @@
      second logo competing with the one in the header. */
   .stud__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    /* Inside the page, never past its right edge. It used to be pulled out by
-       five per cent of the screen, so a fifth of the head was cut off by the
-       window on every one of these sections. */
-    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
-    width:clamp(190px, 26vw, 400px); opacity:.05;
+    /* The supplied mark is 420 by 914: more than twice as tall as it is wide.
+       Sized on its width it stands 870px tall inside a section half that, and
+       the section clips its ears and its chin. So the box is tied to the
+       section's height and the mark is contained inside it: it can never be
+       taller than the section and it can never run past the right edge. */
+    right:clamp(0px, 1.5vw, 3rem); top:8%; bottom:8%;
+    width:clamp(120px, 18vw, 260px); opacity:.05;
   }
-  .stud__mark img{ width:100%; height:auto; display:block; }
+  .stud__mark img{ width:100%; height:100%; object-fit:contain;
+    object-position:center right; display:block; }
   /* Stated on the grid itself, never as .stud > *, which would carry the
      same specificity as .stud__mark and drop the watermark into the flow. */
   .stud__grid{
@@ -1335,13 +1392,16 @@
      read as one gesture rather than two decorations. */
   .nw__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    /* Inside the page, never past its right edge. It used to be pulled out by
-       five per cent of the screen, so a fifth of the head was cut off by the
-       window on every one of these sections. */
-    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
-    width:clamp(190px, 26vw, 400px); opacity:.05;
+    /* The supplied mark is 420 by 914: more than twice as tall as it is wide.
+       Sized on its width it stands 870px tall inside a section half that, and
+       the section clips its ears and its chin. So the box is tied to the
+       section's height and the mark is contained inside it: it can never be
+       taller than the section and it can never run past the right edge. */
+    right:clamp(0px, 1.5vw, 3rem); top:8%; bottom:8%;
+    width:clamp(120px, 18vw, 260px); opacity:.05;
   }
-  .nw__mark img{ width:100%; height:auto; display:block; }
+  .nw__mark img{ width:100%; height:100%; object-fit:contain;
+    object-position:center right; display:block; }
   /* On the wrap itself, never as .nw > *: same specificity as .nw__mark. */
   .nw > .wrap{ position:relative; z-index:1; }
   .nw__head{
@@ -1611,10 +1671,11 @@
   .site-footer{ position:relative; isolation:isolate; overflow:hidden; }
   .footer-ghost{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:clamp(-2rem, 1vw, 3rem); top:50%; transform:translateY(-50%);
-    width:clamp(180px, 24vw, 320px); opacity:.09;
+    right:clamp(0px, 1.5vw, 3rem); top:8%; bottom:8%;
+    width:clamp(120px, 18vw, 260px); opacity:.09;
   }
-  .footer-ghost img{ width:100%; height:auto; display:block; }
+  .footer-ghost img{ width:100%; height:100%; object-fit:contain;
+    object-position:center right; display:block; }
   /* Lift only the CONTENT above the watermark. `.site-footer > *` carries
      the same specificity as `.footer-ghost` and, coming later, would beat it
      and drop the icon into the flow as a 340px tall block at the top.
@@ -2238,11 +2299,31 @@
              not on screen. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
-          <a href="/sport-horses">Sport horses</a>
-          <a href="/breeding-mares">Breeding mares</a>
-          <a href="/foals">Foals</a>
-          <a href="/embryos">Embryos</a>
-          <a href="/icsi-semen">ICSI semen</a>
+          <!-- The five archives under one word. They are five destinations
+               with one subject, and side by side they needed 483 of the 497
+               pixels the centred mark leaves: fourteen pixels of slack, which
+               is why the drawer had to take over at 1380 and a thirteen inch
+               laptop got a burger menu on a desktop. Folded, the left half
+               needs a hundred and forty, and the panel has room to say what
+               each archive is instead of only naming it. -->
+          <span class="hd__drop">
+            <button class="hd__dropBtn" type="button" aria-expanded="false" aria-controls="hd-horses">
+              Horses <span class="hd__caret" aria-hidden="true">&#9662;</span></button>
+            <span class="hd__panel" id="hd-horses" hidden>
+              <a href="/sport-horses"><span class="hd__pn">Sport horses</span><span class="hd__pd">Bred here, jumping elsewhere</span></a>
+              <a href="/breeding-mares"><span class="hd__pn">Breeding mares</span><span class="hd__pd">The families we breed from</span></a>
+              <a href="/foals"><span class="hd__pn">Foals</span><span class="hd__pd">Born and raised in Lanaken</span></a>
+              <a href="/embryos"><span class="hd__pn">Embryos</span><span class="hd__pd">The same lines, a year earlier</span></a>
+              <a href="/icsi-semen"><span class="hd__pn">ICSI semen</span><span class="hd__pd">The stallions behind our crosses</span></a>
+            </span>
+          </span>
+          <!-- The same five, for the drawer, where there is a column to put
+               them in and no mark in the middle. One set is ever on screen. -->
+          <a href="/sport-horses" class="hd__inDrawer">Sport horses</a>
+          <a href="/breeding-mares" class="hd__inDrawer">Breeding mares</a>
+          <a href="/foals" class="hd__inDrawer">Foals</a>
+          <a href="/embryos" class="hd__inDrawer">Embryos</a>
+          <a href="/icsi-semen" class="hd__inDrawer">ICSI semen</a>
           <a href="/about" aria-current="page" class="hd__drawerOnly">About us</a>
           <a href="/news" class="hd__drawerOnly">News</a>
         </nav>
@@ -2283,6 +2364,31 @@
         <a href="/contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
       </div>
     </div>
+
+    <script>
+    /* Inside the header on purpose: scripts/lib/shell.mjs lifts this element
+       whole, so the panel and its behaviour reach all ninety odd pages as one
+       copy rather than one per builder. The same reason the language switch
+       sits inside the footer. */
+    (function(){
+      var drop = document.querySelector('.hd__drop');
+      if(!drop) return;
+      var btn = drop.querySelector('.hd__dropBtn'), panel = drop.querySelector('.hd__panel');
+      if(!btn || !panel) return;
+      function set(open){
+        panel.hidden = !open;
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      btn.addEventListener('click', function(){ set(panel.hidden); });
+      document.addEventListener('click', function(e){ if(!drop.contains(e.target)) set(false); });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && !panel.hidden){ set(false); btn.focus(); }
+      });
+      panel.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ set(false); });
+      });
+    })();
+    </script>
   </header>
 
 <main id="main">

@@ -483,12 +483,18 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
      edge: two fifths of the head was cut off by the screen, and on a page
      whose pedigree is short the head shrank with it until there was nothing
      to see. A width, an inset in rem, and it is the same mark everywhere. */
+  /* The supplied mark is 420 by 914, more than twice as tall as it is wide.
+     Sized on its width it stands 870px tall inside a section half that, and
+     the section clipped its ears and its chin. The box is tied to the
+     section's height and the mark is contained inside it, so it can never be
+     taller than the section and never runs past the right edge. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
-    width:clamp(190px, 26vw, 400px); opacity:.05;
+    right:clamp(0px, 1.5vw, 3rem); top:8%; bottom:8%;
+    width:clamp(120px, 18vw, 260px); opacity:.05;
   }
-  .ped__mark img{ width:100%; height:auto; display:block; }
+  .ped__mark img{ width:100%; height:100%; object-fit:contain;
+    object-position:center right; display:block; }
   .ped__mark img{ height:100%; width:auto; display:block; }
   /* On a narrow screen the pedigree scrolls sideways and fills the section
      edge to edge, so there is no quiet ground left for a watermark to sit in

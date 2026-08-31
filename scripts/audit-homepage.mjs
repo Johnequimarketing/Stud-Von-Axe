@@ -171,6 +171,28 @@ for (const rel of files) {
       : pass(`${here.size} literal font size(s), all from the homepage scale`);
   }
 
+  /* ── a token that was never written down ───────────────────────────────
+     31 Aug: four rules asked for --sec-half and no :root on this site had ever
+     declared it, so all four resolved to nothing and their sections sat flush
+     against whatever was above them. CSS does not complain about that: an
+     undeclared custom property is simply an empty value, and a padding of
+     nothing looks like a padding somebody chose. Every var() has to name a
+     property this stylesheet declares. */
+  {
+    /* Declared anywhere the browser will see it: the stylesheet, and the style
+       attribute on an element, which is how the fact rows set their column
+       count per horse. */
+    const declared = new Set([...src.matchAll(/(--[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
+    /* A var() with a fallback cannot resolve to nothing, so it is not this
+       fault: var(--cols, 4) is a deliberate per element override. Only a bare
+       one has to be written down. */
+    const used = new Set([...cssBlocks.matchAll(/var\((--[a-z0-9-]+)\s*\)/g)].map((m) => m[1]));
+    const ghosts = [...used].filter((v) => !declared.has(v));
+    ghosts.length
+      ? fail(rel, `${ghosts.length} custom propert(y/ies) used but never declared: ${ghosts.join(', ')}`)
+      : pass(`${used.size} custom propert(y/ies) used, every one of them declared`);
+  }
+
   /* ── radius ────────────────────────────────────────────────────────────
      A corner is a brand decision here: everything is a plate, a card or a
      control, and those are three tokens. A hand written radius is a fourth

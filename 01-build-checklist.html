@@ -459,6 +459,24 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         are two different objects and a row that alternates between them is exactly the inconsistency to
         avoid.</span></span><span class="state s-ok">Done</span></li>
 
+      <li class="item" data-k="b17"><input type="checkbox"><span class="what"><b>The five archives fold under one word</b>
+        <span class="said">"Home &middot; Horses &#9662; [merk] About us &middot; News &middot; wa &middot; CONTACT US ... kun je dit proberen te bouwen?"</span>
+        <span class="why">Built. The left half of the bar went from 483 pixels to 116, so the drawer
+        breakpoint could come down from 1380 to 1020: a thirteen inch laptop and a 1366 screen now get
+        the real bar instead of a burger menu. The panel has room to say what each archive is rather
+        than only naming it, ICSI semen sits level with the other four instead of last in a squeezed
+        row, and the word Horses carries the gold marking when the page you are on is one of the five.
+        Below 1020 the panel closes and the five are five rows in the drawer, which is what a drawer is
+        for. Worth a look next to the old bar before it stays.</span></span><span class="state s-ok">Done</span></li>
+
+      <li class="item" data-k="b18"><input type="checkbox"><span class="what"><b>A spacing token that was never written down</b>
+        <span class="why">Four rules asked for <code>--sec-half</code> and no stylesheet on this site
+        ever declared it, so all four resolved to nothing and their sections sat flush against whatever
+        was above them. That is why the privacy page looked like it was stuck to its own hero. CSS does
+        not complain: an undeclared custom property is an empty value, and a padding of nothing looks
+        like a padding somebody chose. Declared now, and the audit fails any bare
+        <code>var()</code> naming a property the page does not declare.</span></span><span class="state s-ok">Done</span></li>
+
       <li class="item" data-k="b4"><input type="checkbox"><span class="what"><b>Confirm the domain:</b> they said .com, the live site is studvonaxe.it
         <span class="why">Ask before anything goes on staging.</span></span><span class="state s-client">On the client</span></li>
     </ul>
