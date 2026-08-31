@@ -352,14 +352,14 @@
   /* Once pinned the bar is ivory, so everything on it turns to ink. */
   .hd.is-pinned .primary-nav a,
   .hd.is-pinned .nav-toggle,
-  .hd.is-pinned .lang-switch button,
+  .hd.is-pinned .lang-switch span,
   .hd.is-pinned .lang-switch .sep,
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); }
   /* The two that the line above cannot reach: the active language sets its
      own white, later in the sheet and at the same weight, and the greyed
      ones carry white at low opacity. Both were invisible on the ivory bar.
      Caught in a render of the pinned state, not in the file. */
-  .hd.is-pinned .lang-switch button[aria-current="true"]{ color:var(--color-navy); }
+  .hd.is-pinned .lang-switch [aria-current="true"]{ color:var(--color-navy); }
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); opacity:.42; }
   .hd.is-pinned .lang-switch .sep{ color:color-mix(in srgb, var(--color-ink) 30%, transparent); }
   .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
@@ -396,10 +396,12 @@
   .primary-nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
 
   .lang-switch{ display:flex; align-items:center; gap:.5rem; font-size:13px; font-weight:700; letter-spacing:.06em; }
-  .lang-switch button{ color:#ffffffa8; padding:.15rem .1rem; }
-  .lang-switch button[aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
+  /* Spans rather than buttons: nothing here is clickable until the other
+     languages exist, and a button with no handler is a promise. */
+  .lang-switch span{ color:#ffffffa8; padding:.15rem .1rem; }
+  .lang-switch [aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
   .lang-switch .lang-soon{ color:var(--color-white); opacity:.38; cursor:not-allowed; }
-  .lang-switch .sep{ color:#ffffff4d; }
+  .lang-switch .sep{ color:#ffffff4d; padding:0; }
 
   .nav-toggle{
     display:none;
@@ -1565,13 +1567,13 @@
     border-radius:100px; background:rgba(255,255,255,.07);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
   }
-  .footer-pill button, .footer-pill span{
-    padding:.45em 1em; border-radius:100px; border:0; background:none; cursor:pointer;
+  .footer-pill span{
+    padding:.45em 1em; border-radius:100px; border:0; background:none;
     font-family:var(--font-body); font-size:10.5px; font-weight:700;
     letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6);
     transition:background .3s var(--ease), color .3s var(--ease);
   }
-  .footer-pill button[aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
+  .footer-pill [aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
   .footer-pill .lang-soon{ opacity:.4; cursor:not-allowed; }
   .footer-top{ padding:clamp(3rem,7vw,5rem) 0 clamp(2.2rem,5vw,3rem); border-bottom:1px solid var(--color-line-invert); }
   .footer-grid{ display:grid; grid-template-columns:1fr; gap:2.6rem; }
@@ -1709,6 +1711,66 @@
     width:16px; height:11px; border-radius:2px;
     box-shadow:0 0 0 1px rgba(255,255,255,.28);
   }
+
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
   /* ── the status seam ───────────────────────────────────────────────────
      The label keeps its place at the top left of the frame; what is new is
      the ground behind it and the hairline that carries the eye across.
@@ -2072,65 +2134,6 @@
     display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
   .ln__go a:hover{ gap:.8rem; }
   .ln__go .a{ color:var(--color-gold); }
-  /* ── the embryo card ───────────────────────────────────────────────────
-     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
-     its foot and the box carries on out of it in the same navy, so the card
-     is one object with no seam to see: the last stop of the gradient is the
-     box's own colour, and the box has no gap, border or shadow of its own.
-     A gold hairline crosses the join with the stage sitting on it as a
-     label, and their own sentence closes the card in the accent colour,
-     pinned to the foot and reserving two lines so every box in a row draws
-     the same block. Gold carries navy ink in both, 5.70:1. */
-  .ec{ display:flex; }
-  .ec__a{ display:flex; flex-direction:column; width:100%;
-    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
-    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
-    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
-  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
-  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
-  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
-  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform 1s var(--ease); }
-  .ec__a:hover .ec__win img{ transform:scale(1.04); }
-  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
-      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
-  /* No photograph: the supplied mark on navy, at the weight the about page
-     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
-  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
-    background:var(--color-navy-deep); }
-  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
-  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
-    padding:0 1.1rem; margin-top:-.1rem; }
-  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
-    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
-  .ec__stage{ flex:none; display:inline-flex; align-items:center;
-    padding:.34em .8em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.16em; text-transform:uppercase; }
-  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
-  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
-    line-height:1.2; color:var(--color-white); }
-  .ec__name em{ font-style:italic; color:var(--color-gold); }
-  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
-    color:rgba(255,255,255,.62); }
-  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
-    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
-    text-wrap:balance; }
-  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
-  /* The breeding line under the name: their Genetics row, which on a
-     broodmare is the point of the card. Same italic gold the horse's own
-     page opens with, so the card and the page read as one object. */
-  .hz__ped{
-    display:block; margin-top:.3rem;
-    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
-    color:var(--color-gold);
-  }
-
-
   /* ── the horse's own page ──────────────────────────────────────────────
      No dark hero here. A horse photograph stands or is square, and a wide
      strip keeps a fifth of it: the rule the about page's hero taught. So
@@ -2603,10 +2606,10 @@
       </a>
 
       <div class="hd__end">
-        <div class="lang-switch" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <span aria-current="true">EN</span>
           <span class="sep">/</span>
-          <button type="button">IT</button>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="sep">/</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="sep">/</span>
@@ -2804,8 +2807,8 @@
         </a>
         <p>Sport horse breeding between Desenzano del Garda, Italy, and Lanaken, Belgium.</p>
         <div class="footer-pill" role="group" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
-          <button type="button">IT</button>
+          <span aria-current="true">EN</span>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="lang-soon" title="Coming later">DE</span>
         </div>

@@ -275,7 +275,7 @@ ${header}
       <h2 class="abst__h">What we <em>sell</em></h2>
       <div class="aboff__grid">
 
-        <a class="aboff__i" href="/#programme">
+        <a class="aboff__i" href="/foals">
           <span class="aboff__bg" aria-hidden="true">
             <img src="/assets/img/offer-foal.jpg" alt="" loading="lazy" width="1200" height="883"
                  style="object-position:50% 42%">
@@ -289,7 +289,7 @@ ${header}
           </span>
         </a>
 
-        <a class="aboff__i" href="/#programme">
+        <a class="aboff__i" href="/embryos">
           <span class="aboff__bg" aria-hidden="true">
             <img src="/assets/img/offer-embryo.jpg" alt="" loading="lazy" width="1200" height="1084"
                  style="object-position:52% 38%">
@@ -299,7 +299,7 @@ ${header}
             <span class="aboff__k">Frozen or carrying</span>
             <h3 class="aboff__t">Embryos</h3>
             <span class="aboff__d">Frozen from our own damlines, or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.</span>
-            <span class="aboff__a">Ask about a cross <span class="a" aria-hidden="true">&rarr;</span></span>
+            <span class="aboff__a">See the crosses <span class="a" aria-hidden="true">&rarr;</span></span>
           </span>
         </a>
 
@@ -317,7 +317,7 @@ ${header}
           </span>
         </a>
 
-        <a class="aboff__i" href="/#horses">
+        <a class="aboff__i" href="/sport-horses">
           <span class="aboff__bg" aria-hidden="true">
             <img src="/assets/img/results-unguessable.jpg" alt="" loading="lazy" width="1200" height="932"
                  style="object-position:50% 40%">

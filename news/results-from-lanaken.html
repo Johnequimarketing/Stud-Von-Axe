@@ -353,14 +353,14 @@
   /* Once pinned the bar is ivory, so everything on it turns to ink. */
   .hd.is-pinned .primary-nav a,
   .hd.is-pinned .nav-toggle,
-  .hd.is-pinned .lang-switch button,
+  .hd.is-pinned .lang-switch span,
   .hd.is-pinned .lang-switch .sep,
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); }
   /* The two that the line above cannot reach: the active language sets its
      own white, later in the sheet and at the same weight, and the greyed
      ones carry white at low opacity. Both were invisible on the ivory bar.
      Caught in a render of the pinned state, not in the file. */
-  .hd.is-pinned .lang-switch button[aria-current="true"]{ color:var(--color-navy); }
+  .hd.is-pinned .lang-switch [aria-current="true"]{ color:var(--color-navy); }
   .hd.is-pinned .lang-switch .lang-soon{ color:var(--color-ink); opacity:.42; }
   .hd.is-pinned .lang-switch .sep{ color:color-mix(in srgb, var(--color-ink) 30%, transparent); }
   .hd.is-pinned .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
@@ -397,10 +397,12 @@
   .primary-nav a[aria-current="page"]{ border-color:var(--color-gold); color:var(--color-white); }
 
   .lang-switch{ display:flex; align-items:center; gap:.5rem; font-size:13px; font-weight:700; letter-spacing:.06em; }
-  .lang-switch button{ color:#ffffffa8; padding:.15rem .1rem; }
-  .lang-switch button[aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
+  /* Spans rather than buttons: nothing here is clickable until the other
+     languages exist, and a button with no handler is a promise. */
+  .lang-switch span{ color:#ffffffa8; padding:.15rem .1rem; }
+  .lang-switch [aria-current="true"]{ color:var(--color-white); border-bottom:1px solid var(--color-gold); }
   .lang-switch .lang-soon{ color:var(--color-white); opacity:.38; cursor:not-allowed; }
-  .lang-switch .sep{ color:#ffffff4d; }
+  .lang-switch .sep{ color:#ffffff4d; padding:0; }
 
   .nav-toggle{
     display:none;
@@ -1566,13 +1568,13 @@
     border-radius:100px; background:rgba(255,255,255,.07);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
   }
-  .footer-pill button, .footer-pill span{
-    padding:.45em 1em; border-radius:100px; border:0; background:none; cursor:pointer;
+  .footer-pill span{
+    padding:.45em 1em; border-radius:100px; border:0; background:none;
     font-family:var(--font-body); font-size:10.5px; font-weight:700;
     letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6);
     transition:background .3s var(--ease), color .3s var(--ease);
   }
-  .footer-pill button[aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
+  .footer-pill [aria-current="true"]{ background:var(--color-gold); color:var(--color-navy-deep); }
   .footer-pill .lang-soon{ opacity:.4; cursor:not-allowed; }
   .footer-top{ padding:clamp(3rem,7vw,5rem) 0 clamp(2.2rem,5vw,3rem); border-bottom:1px solid var(--color-line-invert); }
   .footer-grid{ display:grid; grid-template-columns:1fr; gap:2.6rem; }
@@ -1974,10 +1976,10 @@
       </a>
 
       <div class="hd__end">
-        <div class="lang-switch" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <span aria-current="true">EN</span>
           <span class="sep">/</span>
-          <button type="button">IT</button>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="sep">/</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="sep">/</span>
@@ -2065,8 +2067,8 @@
         </a>
         <p>Sport horse breeding between Desenzano del Garda, Italy, and Lanaken, Belgium.</p>
         <div class="footer-pill" role="group" aria-label="Language">
-          <button type="button" aria-current="true">EN</button>
-          <button type="button">IT</button>
+          <span aria-current="true">EN</span>
+          <span class="lang-soon" title="Italian follows in WordPress">IT</span>
           <span class="lang-soon" title="Coming later">FR</span>
           <span class="lang-soon" title="Coming later">DE</span>
         </div>
