@@ -790,7 +790,10 @@
      second logo competing with the one in the header. */
   .stud__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .stud__mark img{ width:100%; height:auto; display:block; }
@@ -1332,7 +1335,10 @@
      read as one gesture rather than two decorations. */
   .nw__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .nw__mark img{ width:100%; height:auto; display:block; }
@@ -2519,7 +2525,7 @@
      to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .ped__mark img{ width:100%; height:auto; display:block; }
@@ -2868,26 +2874,6 @@
   </section>
 
 
-  <section class="hmore">
-    <div class="wrap">
-      <div class="hmore__head">
-        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
-      </div>
-
-      <p class="hmore__lab">On the ground</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/arkhana-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/arkhana-von-axe-z-1.jpg" alt="Arkhana Von Axe Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Arkhana Von Axe Z</h3><span class="hz__meta">Born 2026 · Filly · Aganix Su Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/agousha-vd-berghoeve-z-1.jpg" alt="Agousha vd Berghoeve Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Agousha vd Berghoeve Z</h3><span class="hz__meta">Born 2022 · Mare · Aganix du Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
-
-      <p class="hmore__lab">A cross still to come</p>
-      <ul class="hz__grid ec__grid">
-        <li class="ec" data-sold="carrying" data-find="aganix du seigneur z x cortina de jolie z aganix su seigneur x cornet obolesnky x calato x darco x chin chin out of fuga de muze - narcotique ii - qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/aganix-du-seigneur-z-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg" alt="Aganix du Seigneur Z x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Aganix du Seigneur Z <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLESNKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Out of Fuga de Muze · Narcotique II · Qerlychin!</span></span></a></li>
-      </ul>
-    </div>
-  </section>
-
-
   <section class="ask ord" id="order">
     <div class="wrap">
       <div class="ask__box">
@@ -2990,6 +2976,26 @@
           </div>
         </form>
       </div>
+    </div>
+  </section>
+
+
+  <section class="hmore">
+    <div class="wrap">
+      <div class="hmore__head">
+        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
+      </div>
+
+      <p class="hmore__lab">On the ground</p>
+      <ul class="hz__grid">
+        <li><a class="hz__card" href="/foals/arkhana-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/arkhana-von-axe-z-1.jpg" alt="Arkhana Von Axe Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Arkhana Von Axe Z</h3><span class="hz__meta">Born 2026 · Filly · Aganix Su Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/agousha-vd-berghoeve-z-1.jpg" alt="Agousha vd Berghoeve Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Agousha vd Berghoeve Z</h3><span class="hz__meta">Born 2022 · Mare · Aganix du Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      </ul>
+
+      <p class="hmore__lab">A cross still to come</p>
+      <ul class="hz__grid ec__grid">
+        <li class="ec" data-sold="carrying" data-find="aganix du seigneur z x cortina de jolie z aganix su seigneur x cornet obolesnky x calato x darco x chin chin out of fuga de muze - narcotique ii - qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/aganix-du-seigneur-z-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg" alt="Aganix du Seigneur Z x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Aganix du Seigneur Z <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLESNKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Out of Fuga de Muze · Narcotique II · Qerlychin!</span></span></a></li>
+      </ul>
     </div>
   </section>
 

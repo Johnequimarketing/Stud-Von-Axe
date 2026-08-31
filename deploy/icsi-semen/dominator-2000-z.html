@@ -790,7 +790,10 @@
      second logo competing with the one in the header. */
   .stud__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .stud__mark img{ width:100%; height:auto; display:block; }
@@ -1332,7 +1335,10 @@
      read as one gesture rather than two decorations. */
   .nw__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .nw__mark img{ width:100%; height:auto; display:block; }
@@ -2519,7 +2525,7 @@
      to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .ped__mark img{ width:100%; height:auto; display:block; }
@@ -2868,26 +2874,6 @@
   </section>
 
 
-  <section class="hmore">
-    <div class="wrap">
-      <div class="hmore__head">
-        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
-      </div>
-
-      <p class="hmore__lab">On the ground</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Czechia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D7141A"/><path d="M0 0 12 8 0 16Z" fill="#11457E"/></svg></span>Sold<span class="visually-hidden"> to Czechia</span></span></span></span><span class="hz__body"><h3 class="hz__name">Domino Van den Haze Z</h3><span class="hz__meta">Born 2018 · Mare · Sold to Czechia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Delilah Von Axe Z</h3><span class="hz__meta">Born 2024 · Filly · Dominator 2000 Z · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
-
-      <p class="hmore__lab">A cross still to come</p>
-      <ul class="hz__grid ec__grid">
-        <li class="ec" data-sold="carrying" data-find="dominator 2000 z x hypnotic jt z dominator 2000 z x halifax van het kluizebos x carthago out of the sister of the olympic hardrock z! 2026 due 2026"><a class="ec__a" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2026</span></span><span class="ec__box"><h3 class="ec__name">Dominator 2000 Z <em>&times;</em> Hypnotic JT Z</h3><span class="ec__line">HALIFAX VAN HET KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
-      </ul>
-    </div>
-  </section>
-
-
   <section class="ask ord" id="order">
     <div class="wrap">
       <div class="ask__box">
@@ -2990,6 +2976,26 @@
           </div>
         </form>
       </div>
+    </div>
+  </section>
+
+
+  <section class="hmore">
+    <div class="wrap">
+      <div class="hmore__head">
+        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
+      </div>
+
+      <p class="hmore__lab">On the ground</p>
+      <ul class="hz__grid">
+        <li><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Czechia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D7141A"/><path d="M0 0 12 8 0 16Z" fill="#11457E"/></svg></span>Sold<span class="visually-hidden"> to Czechia</span></span></span></span><span class="hz__body"><h3 class="hz__name">Domino Van den Haze Z</h3><span class="hz__meta">Born 2018 · Mare · Sold to Czechia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Delilah Von Axe Z</h3><span class="hz__meta">Born 2024 · Filly · Dominator 2000 Z · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      </ul>
+
+      <p class="hmore__lab">A cross still to come</p>
+      <ul class="hz__grid ec__grid">
+        <li class="ec" data-sold="carrying" data-find="dominator 2000 z x hypnotic jt z dominator 2000 z x halifax van het kluizebos x carthago out of the sister of the olympic hardrock z! 2026 due 2026"><a class="ec__a" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2026</span></span><span class="ec__box"><h3 class="ec__name">Dominator 2000 Z <em>&times;</em> Hypnotic JT Z</h3><span class="ec__line">HALIFAX VAN HET KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
+      </ul>
     </div>
   </section>
 

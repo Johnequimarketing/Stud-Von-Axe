@@ -790,7 +790,10 @@
      second logo competing with the one in the header. */
   .stud__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .stud__mark img{ width:100%; height:auto; display:block; }
@@ -1332,7 +1335,10 @@
      read as one gesture rather than two decorations. */
   .nw__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .nw__mark img{ width:100%; height:auto; display:block; }
@@ -2519,7 +2525,7 @@
      to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .ped__mark img{ width:100%; height:auto; display:block; }

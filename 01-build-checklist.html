@@ -408,13 +408,23 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         read is not worth much. Two pages, or two paragraphs from the owners, and both become
         links.</span></span><span class="state s-client">On the client</span></li>
 
-      <li class="item" data-k="b13"><input type="checkbox"><span class="what"><b>A stallion's pedigree stops at his grandparents</b>
-        <span class="why">Their site has no stallion page, so a stallion's pedigree is read out of the
-        tables on his own crosses, and those stop one generation short of his. The heading now counts
-        what it draws and says two generations on those pages instead of three. A Horsetelex link per
-        stallion in <code>horses-extra.js</code> would fix it in one paste, and sixteen of the fifty two
-        missing pairs could be filled from other pedigrees already on the site if the ragged half table
-        is worth it.</span></span><span class="state s-client">On the client</span></li>
+      <li class="item" data-k="b13"><input type="checkbox"><span class="what"><b>Thirteen Horsetelex links, and the stallion pedigrees are three deep</b>
+        <span class="said">Raised twice: "de three generations deep is niet compleet, staan maar 2 generaties"</span>
+        <span class="why">This is a hole in the source, not in the build. Their site has no stallion
+        page, so a stallion's pedigree can only be read out of the tables on the crosses he sired, and
+        those stop exactly one generation short of his own: his sire, his dam, his four grandparents,
+        and nothing beyond. Every other page has that fourth column because their own horses' tables
+        carry it.
+        Two ways out were tried on 31 August. Reading the great grandparents back out of the other
+        sixty tables works, but only for sixteen of the fifty two pairs: Aganix gains two boxes out of
+        eight and three of the thirteen gain nothing, so the table grows a pair of strays, the heading
+        goes back to claiming a generation it barely shows, and the thirteen pages end up at two
+        different depths. Pedigree databases are all behind bot protection, and a pedigree typed from
+        anywhere other than a record is exactly what this project does not do.
+        So all thirteen stop at the grandparents and the heading says so. The fix is thirteen
+        Horsetelex URLs pasted into the <code>sires</code> block of <code>horses-extra.js</code>, where
+        the empty field is already waiting: one paste per stallion and the pages read three deep and
+        link out for the rest.</span></span><span class="state s-client">On the client</span></li>
 
       <li class="item" data-k="b14"><input type="checkbox"><span class="what"><b>The foals and horses by a stallion stand on his page</b>
         <span class="said">"Our own crosses by him... is dat een idee om ook de embryo foals / paarden bij te zetten?"</span>

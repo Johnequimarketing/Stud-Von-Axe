@@ -790,7 +790,10 @@
      second logo competing with the one in the header. */
   .stud__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .stud__mark img{ width:100%; height:auto; display:block; }
@@ -1332,7 +1335,10 @@
      read as one gesture rather than two decorations. */
   .nw__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    /* Inside the page, never past its right edge. It used to be pulled out by
+       five per cent of the screen, so a fifth of the head was cut off by the
+       window on every one of these sections. */
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .nw__mark img{ width:100%; height:auto; display:block; }
@@ -2519,7 +2525,7 @@
      to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .ped__mark img{ width:100%; height:auto; display:block; }
@@ -2868,27 +2874,6 @@
   </section>
 
 
-  <section class="hmore">
-    <div class="wrap">
-      <div class="hmore__head">
-        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
-      </div>
-
-      <p class="hmore__lab">On the ground</p>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Comme il Faut x Hypnotic JT Z</h3><span class="hz__meta">Born 2026 · Filly · Comme il Faut · Sold to Great Britain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cosmopolitan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cosmopolitan Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Comme il Faut · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/breeding-mares/carma-vd-bergheove-z"><span class="hz__win"><img src="/assets/img/horses/carma-vd-bergheove-z-1.jpg" alt="Carma vd Bergheove Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Carma vd Bergheove Z</h3><span class="hz__meta">Born 2024 · Mare · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
-
-      <p class="hmore__lab">A cross still to come</p>
-      <ul class="hz__grid ec__grid">
-        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Comme il Faut <em>&times;</em> Patchina van’t Merelsnest</h3><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
-      </ul>
-    </div>
-  </section>
-
-
   <section class="ask ord" id="order">
     <div class="wrap">
       <div class="ask__box">
@@ -2991,6 +2976,27 @@
           </div>
         </form>
       </div>
+    </div>
+  </section>
+
+
+  <section class="hmore">
+    <div class="wrap">
+      <div class="hmore__head">
+        <h2 class="hmore__h">Our own <em>produce</em> by him</h2>
+      </div>
+
+      <p class="hmore__lab">On the ground</p>
+      <ul class="hz__grid">
+        <li><a class="hz__card" href="/foals/comme-il-faut-x-hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg" alt="Comme il Faut x Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Comme il Faut x Hypnotic JT Z</h3><span class="hz__meta">Born 2026 · Filly · Comme il Faut · Sold to Great Britain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/cosmopolitan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cosmopolitan Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Comme il Faut · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/breeding-mares/carma-vd-bergheove-z"><span class="hz__win"><img src="/assets/img/horses/carma-vd-bergheove-z-1.jpg" alt="Carma vd Bergheove Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Carma vd Bergheove Z</h3><span class="hz__meta">Born 2024 · Mare · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+      </ul>
+
+      <p class="hmore__lab">A cross still to come</p>
+      <ul class="hz__grid ec__grid">
+        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Comme il Faut <em>&times;</em> Patchina van’t Merelsnest</h3><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
+      </ul>
     </div>
   </section>
 

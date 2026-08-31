@@ -22,6 +22,57 @@ const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8
    the archive and the thirteen pages without knowing they arrived
    separately. */
 const SEMEN = new Function(readFileSync(join(root, 'semen-data.js'), 'utf-8') + '; return SEMEN;')();
+
+/* ── who a horse's parents are, out of their own tables ─────────────────
+   A stallion has no page on their site, so his pedigree is read off the
+   crosses he sired, and those tables stop one generation short of his: his
+   sire, his dam and his four grandparents, and nothing beyond. That left the
+   thirteen stallion pages a column short of every other page on the site.
+   But the same sixty tables name a great many of those grandparents again, in
+   places where their own parents ARE written down: Clinton stands as a
+   grandparent on one cross and as a great grandparent's sire on another. This
+   index reads every table once and remembers who each name's parents are, and
+   the stallions borrow from it.
+   Sixteen of the fifty two pairs are in there. The rest are simply not on
+   their site, and a name we do not have is left out rather than typed from
+   somewhere else. */
+const keyOf = (n) => String(n || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+const PARENTS = (() => {
+  const m = new Map();
+  const add = (name, sire, dam) => {
+    const k = keyOf(name);
+    if (!k || (!sire && !dam)) return;
+    const cur = m.get(k) || { sire: '', dam: '' };
+    if (!cur.sire && sire) cur.sire = sire;
+    if (!cur.dam && dam) cur.dam = dam;
+    m.set(k, cur);
+  };
+  for (const h of HARVESTED) {
+    const p = h.pedigree || {}, t = p.third || [];
+    add(p.sire, p.sireSire, p.sireDam);
+    add(p.dam, p.damSire, p.damDam);
+    add(p.sireSire, t[0], t[1]); add(p.sireDam, t[2], t[3]);
+    add(p.damSire, t[4], t[5]); add(p.damDam, t[6], t[7]);
+  }
+  return m;
+})();
+
+/* Tried on 31 Aug and left off, on purpose. Filling from the index gives two
+   of the eight great grandparents on Aganix and none at all on three of the
+   thirteen, so the table gains a pair of stray boxes and the heading goes back
+   to claiming a generation it is barely showing. Thirteen pages at two
+   different depths is also the inconsistency this round is about. All thirteen
+   stop at the grandparents until a Horsetelex link per stallion arrives in
+   horses-extra.js, where the empty field is already waiting; then this becomes
+   a real fourth column rather than a ragged one. On the checklist.
+   The index stays because the day those links arrive it is the fallback for
+   anything they do not cover. */
+const thirdFromIndex = (p) => {
+  const of = (n) => PARENTS.get(keyOf(n)) || { sire: '', dam: '' };
+  return [p.sireSire, p.sireDam, p.damSire, p.damDam]
+    .flatMap((n) => { const r = of(n); return [r.sire, r.dam]; });
+};
+
 const HORSES = [...HARVESTED, ...SEMEN];
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
 const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
@@ -436,7 +487,7 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
      to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    right:clamp(0px, 1.5vw, 3rem); top:50%; transform:translateY(-50%);
     width:clamp(190px, 26vw, 400px); opacity:.05;
   }
   .ped__mark img{ width:100%; height:auto; display:block; }
@@ -1202,8 +1253,8 @@ ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><spa
   </section>
 
 ${pedigreeSection(horse)}
-${crossesSection(horse)}
 ${orderSection(horseName(horse.name))}
+${crossesSection(horse)}
 ${moreSection(horse, group, list)}
 `;
 };
