@@ -11,7 +11,7 @@
  */
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss } from './lib/shell.mjs';
 
 const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
@@ -74,7 +74,7 @@ const GROUPS = {
   },
 };
 
-const CSS = homeCss + pageHeroCss + storyCss + `
+const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   /* ── horse pages only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the top of the page and the header hangs over it. */
@@ -82,22 +82,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
 
   /* The archive grid is the homepage's own .hz__grid, given the room a page
      has and the homepage section does not: four across instead of three. */
-  /* The space between sections is one rule, not six: every section carries
-     half of it on each side, so two neighbours add up to the same gap
-     wherever they meet, and the first and last still clear the hero and the
-     footer. */
-  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
-  .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
-  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
-  .arch__count{
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
-  }
-  /* Three across, not four. At four the picture is too small to read a horse
-     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
-     wordt anders te krap en te klein". The embryo cards were already three. */
-  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
 
   /* Nothing to enlarge and nothing to play: neither is a button. */
   .hgal__f--stand{ cursor:default; }
@@ -105,48 +89,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .hvid__btn--stand{ cursor:default; }
   .hvid__btn--stand:hover img{ transform:none; }
   .hvid__btn--stand .hvid__play{ opacity:.55; }
-
-  /* ── the filter bar ────────────────────────────────────────────────────
-     A field and three chips over the grid. The chips are the homepage's own
-     .hz__chip, so an archive filters the way the homepage section already
-     does, and the field beside them is the only control this page adds.
-     Sold horses start hidden. They are not an answer to "what do you have",
-     but they are the proof of where these lines have gone, so they are one
-     chip away and never removed. A group with nothing available opens on
-     everything rather than on an empty grid. */
-  .flt{
-    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
-    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
-  }
-  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
-  .flt__search input{
-    width:100%; appearance:none; -webkit-appearance:none;
-    padding:.7rem 2.3rem .7rem .95rem;
-    border:1px solid var(--color-line); border-radius:100px;
-    background:var(--color-base); color:var(--color-ink);
-    font-family:var(--font-body); font-size:14.5px;
-    transition:border-color .3s var(--ease);
-  }
-  .flt__search input::placeholder{ color:var(--color-ink-soft); }
-  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
-  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
-  .flt__ico{
-    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
-    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
-  }
-  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
-  .flt__count{
-    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
-  }
-  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
-  .flt__none.is-on{ display:block; }
-  .hz__grid li[hidden]{ display:none; }
-  @media (max-width:620px){
-    .flt__search{ max-width:none; flex-basis:100%; }
-    .flt__count{ margin-left:0; }
-  }
-
 
   /* ── the embryo head: the tray, nothing on the photograph ──────────────
      Chosen on 30 Aug. The photograph carries only the back link, so it stays

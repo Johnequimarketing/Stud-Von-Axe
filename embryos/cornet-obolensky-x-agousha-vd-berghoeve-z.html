@@ -1950,13 +1950,6 @@
   .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
   .abst__body b{ font-weight:700; color:var(--color-ink); }
 
-  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
-
-  /* The hero starts at the top of the page and the header hangs over it. */
-  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
-
-  /* The archive grid is the homepage's own .hz__grid, given the room a page
-     has and the homepage section does not: four across instead of three. */
   /* The space between sections is one rule, not six: every section carries
      half of it on each side, so two neighbours add up to the same gap
      wherever they meet, and the first and last still clear the hero and the
@@ -1972,14 +1965,6 @@
      off and the pedigree line under it wraps to three lines: 30 Aug, "dat
      wordt anders te krap en te klein". The embryo cards were already three. */
   @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
-
-  /* Nothing to enlarge and nothing to play: neither is a button. */
-  .hgal__f--stand{ cursor:default; }
-  .hgal__f--stand:hover img{ transform:none; }
-  .hvid__btn--stand{ cursor:default; }
-  .hvid__btn--stand:hover img{ transform:none; }
-  .hvid__btn--stand .hvid__play{ opacity:.55; }
 
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
@@ -2022,6 +2007,20 @@
     .flt__count{ margin-left:0; }
   }
 
+  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
+
+  /* The hero starts at the top of the page and the header hangs over it. */
+  .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
+
+  /* The archive grid is the homepage's own .hz__grid, given the room a page
+     has and the homepage section does not: four across instead of three. */
+
+  /* Nothing to enlarge and nothing to play: neither is a button. */
+  .hgal__f--stand{ cursor:default; }
+  .hgal__f--stand:hover img{ transform:none; }
+  .hvid__btn--stand{ cursor:default; }
+  .hvid__btn--stand:hover img{ transform:none; }
+  .hvid__btn--stand .hvid__play{ opacity:.55; }
 
   /* ── the embryo head: the tray, nothing on the photograph ──────────────
      Chosen on 30 Aug. The photograph carries only the back link, so it stays
@@ -2591,6 +2590,7 @@
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
+          <a href="/semen">ICSI semen</a>
           <a href="/contact">Contact</a>
         </nav>
       </div>

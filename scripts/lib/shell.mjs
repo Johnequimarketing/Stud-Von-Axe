@@ -24,7 +24,7 @@ export const relink = (html) => html
   .replace(/href="#/g, 'href="/#')
   .replace(/href="news\/"/g, 'href="/news"')
   .replace(/href="about\/"/g, 'href="/about"')
-  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact)\/"/g, 'href="/$1"')
+  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact|semen)\/"/g, 'href="/$1"')
   .replace(/(src|href)="assets\//g, '$1="/assets/')
   .replace(/href="index.html"/g, 'href="/"');
 
@@ -151,6 +151,70 @@ export const pageHeroCss = `
 
 /* ---- the story block: words one side, a photograph the other ----
    Written once here because the about page and every horse page wear it. ---- */
+/* ── the archive furniture ────────────────────────────────────────────
+   The section rhythm, the filter bar and the closing invitation. Lifted out
+   of scripts/build-horses.mjs on 31 Aug when the semen page needed the same
+   filter bar: a component used by five pages cannot live inside the script
+   that builds four of them. */
+export const archiveCss = `
+  /* The space between sections is one rule, not six: every section carries
+     half of it on each side, so two neighbours add up to the same gap
+     wherever they meet, and the first and last still clear the hero and the
+     footer. */
+  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
+  .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
+  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .arch__count{
+    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
+  }
+  /* Three across, not four. At four the picture is too small to read a horse
+     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
+     wordt anders te krap en te klein". The embryo cards were already three. */
+  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
+
+  /* ── the filter bar ────────────────────────────────────────────────────
+     A field and three chips over the grid. The chips are the homepage's own
+     .hz__chip, so an archive filters the way the homepage section already
+     does, and the field beside them is the only control this page adds.
+     Sold horses start hidden. They are not an answer to "what do you have",
+     but they are the proof of where these lines have gone, so they are one
+     chip away and never removed. A group with nothing available opens on
+     everything rather than on an empty grid. */
+  .flt{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
+    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  }
+  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search input{
+    width:100%; appearance:none; -webkit-appearance:none;
+    padding:.7rem 2.3rem .7rem .95rem;
+    border:1px solid var(--color-line); border-radius:100px;
+    background:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__search input::placeholder{ color:var(--color-ink-soft); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+  .flt__ico{
+    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+  }
+  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__count{
+    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+  }
+  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
+  .flt__none.is-on{ display:block; }
+  .hz__grid li[hidden]{ display:none; }
+  @media (max-width:620px){
+    .flt__search{ max-width:none; flex-basis:100%; }
+    .flt__count{ margin-left:0; }
+  }
+`;
+
 export const storyCss = `
   /* ---- the story: the picture on the left, words on the right ----
      Mark's order, and the mirror of the homepage's about section, so the
