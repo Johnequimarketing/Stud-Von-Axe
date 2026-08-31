@@ -113,6 +113,23 @@ for (const rel of files) {
     ? fail(rel, `${broken.length} inline script(s) do not parse: ${broken[0]}`)
     : pass(`${scriptBlocks.length} inline script(s) all parse`);
 
+  /* And every one of them has to close. The check above reads what is between
+     <script> and </script>, so a block that never closes is not a block it can
+     see: it is skipped in silence, which is exactly what happened on 31 Aug
+     when the order form's closing tag was written with two backslashes and
+     reached the page as the literal characters <\/script>. The audit stayed
+     green over thirteen pages whose form did nothing at all.
+     Two opens against two closes, and no escaped closing tag left in the
+     output: a backslash only has to be there while the string is source. */
+  const opens = (src.match(/<script[\s>]/g) || []).length;
+  const closes = (src.match(/<\/script>/g) || []).length;
+  const escaped = (src.match(/<\\\/script>/g) || []).length;
+  opens === closes && !escaped
+    ? pass(`${opens} script tag(s), every one of them closed`)
+    : fail(rel, escaped
+        ? `${escaped} closing script tag(s) written with a backslash, so the block never ends`
+        : `${opens} script tag(s) opened and ${closes} closed`);
+
   /* A control that promises something and has nothing behind it. Twice now a
      page has shipped with arrows, dots or a play button and no code to hear
      them: once because the script was cut out of the build by an edit next to

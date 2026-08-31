@@ -1141,6 +1141,42 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">A closing script tag written with two backslashes, and an audit that could not see it</p>
+    <p class="said">31 Aug: the order form did nothing at all. The block ended with the characters
+    <code>&lt;\/script&gt;</code> in the page, so the script never closed, and the browser ran none of
+    it. No console error: an unterminated script simply ends at the file.</p>
+    <p class="check">The check that reads every inline block matches between an opening and a closing
+    tag, so a block that never closes is not a block it can see. It was skipped in silence and the run
+    reported green over thirteen dead pages. There is now a second check: as many closes as opens, and
+    no escaped closing tag left in the output. Proved by putting the second backslash back and watching
+    the parse check drop from three scripts to two while the new one failed. A checker that reads what
+    is between two markers cannot tell you the second marker is missing.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The hidden attribute loses to any class in the stylesheet</p>
+    <p class="said">On the first render of the order form the company name stood there with nothing
+    choosing it, and Next and Send were on screen at the same time.</p>
+    <p class="check">hidden is a browser default of display:none and a default loses to an author rule.
+    .ask__row is display:flex and .btn is display:inline-flex, so both were drawn anyway. Any component
+    that hides a part of itself with the attribute has to say so in its own sheet.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A heading that promises a generation it is not showing</p>
+    <p class="said">31 Aug: <q>ik zie ook dat de three generations deep niet compleet is, staan maar 2
+    generaties</q>. Their site has no stallion page, so a stallion's pedigree is read out of the tables
+    on his crosses, and those stop one generation short of his.</p>
+    <p class="check">The heading counts what it draws. Three columns is two generations and it says so.
+    The same page also lost its watermark off the right edge, because that one mark was sized off the
+    section height and hung eleven per cent of the page width past it while every other watermark on
+    the site uses a width and an inset in rem. One recipe, everywhere.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">A rail is as tall as its words unless you say otherwise</p>
     <p class="said">31 Aug: <q>zijn niet even hoog</q>. The fixed card in the programme ran on for
     seventy pixels past the cards beside it. It had been hidden while the runs held foals and

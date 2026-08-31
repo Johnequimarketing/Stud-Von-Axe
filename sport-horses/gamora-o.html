@@ -2100,6 +2100,91 @@
     .flt__count{ margin-left:0; }
   }
 
+  /* The rail is the configurator: five numbered steps down the navy half,
+     the one you are on in gold, the ones behind you in white. It is the
+     progress bar and the way back in one control. */
+  .ord__rail{ list-style:none; margin:1.6rem 0; padding:0; display:grid; gap:.15rem; }
+  .ord__tab{
+    display:flex; align-items:center; gap:.8rem; width:100%;
+    padding:.6rem .7rem; border-radius:var(--ctl-radius);
+    background:none; border:0; cursor:pointer; text-align:left;
+    color:rgba(255,255,255,.5);
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .ord__tab:hover{ color:var(--color-white); background:rgba(255,255,255,.06); }
+  .ord__tab .ord__no{
+    flex:none; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.18em; color:inherit;
+  }
+  .ord__tt{ font-family:var(--font-display); font-size:15px; line-height:1.2; }
+  .ord__tab.is-done{ color:rgba(255,255,255,.82); }
+  .ord__tab[aria-current="step"]{ background:var(--color-gold); color:var(--color-navy); }
+  .ord__tab[aria-current="step"] .ord__tt{ font-weight:400; }
+
+  /* The panel. A fieldset carries a border and padding of its own in every
+     browser; this one is a plain block, and its legend is the heading. */
+  .ord__step{ border:0; margin:0; padding:0; min-width:0; }
+  /* The hidden attribute is a browser default of display:none, and a default
+     loses to any class in the sheet. .ask__row is display:flex and .btn is
+     display:inline-flex, so a row waiting on an answer and a button waiting
+     for its step were both drawn anyway: the company name stood there with
+     nothing choosing it, and Next and Send were on screen at once. */
+  .ord__step[hidden]{ display:none; }
+  .ask__row[hidden]{ display:none; }
+  .ord__acts .btn[hidden]{ display:none; }
+  .ord__h{
+    display:flex; align-items:baseline; gap:.7rem; padding:0; margin:0 0 .3rem;
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.3rem,1.4vw + .8rem,1.7rem); line-height:1.1; color:var(--color-ink);
+  }
+  .ord__h .ord__no{
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    color:var(--color-gold);
+  }
+  .ord__lead{ margin:0 0 1.4rem; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ord__grid{ display:grid; gap:0 1rem; }
+  @media (min-width:620px){ .ord__grid{ grid-template-columns:1fr 1fr; } }
+  /* The three that need the full width whatever the screen does. */
+  .ord__grid > .ask__row:has(textarea),
+  .ord__grid > .ord__check{ grid-column:1 / -1; }
+  .ord__hint{
+    font-family:var(--font-body); font-size:12.5px; line-height:1.4;
+    color:var(--color-ink-soft); margin-top:-.15rem;
+  }
+  .ord__step input[readonly]{
+    background:var(--color-base-alt); color:var(--color-ink); cursor:default;
+  }
+
+  /* A checkbox is the one control here that reads left to right. */
+  .ord__check label{
+    display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
+    font-family:var(--font-body); font-weight:400; font-size:14px; line-height:1.5;
+    letter-spacing:0; text-transform:none; color:var(--color-ink);
+  }
+  .ord__check input{ flex:none; width:18px; height:18px; margin-top:.15rem; accent-color:var(--color-gold); }
+
+  /* The summary. Their answers back to them, in the order they were asked. */
+  .ord__sum{ margin:0 0 1.4rem; display:grid; gap:0; }
+  .ord__sum div{
+    display:flex; flex-wrap:wrap; gap:.2rem 1rem; justify-content:space-between;
+    padding:.55rem 0; border-top:1px solid var(--color-line);
+  }
+  .ord__sum dt{
+    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold);
+  }
+  .ord__sum dd{ margin:0; font-family:var(--font-display); font-size:15px; color:var(--color-ink);
+    text-align:right; }
+
+  .ord__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
+  .ord__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ord__note.is-bad{ color:var(--color-navy); }
+  /* The form is a walk, not a column: it starts at the top of its half.
+     Named on its own class rather than scoped through .ord, so the class in
+     the markup has a rule of its own and the audit can see it. It is later in
+     the sheet than .ask__form, so it wins the centring. */
+  .ord__form{ justify-content:flex-start; }
+
   /* ── horse pages only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the top of the page and the header hangs over it. */
@@ -2107,6 +2192,15 @@
 
   /* The archive grid is the homepage's own .hz__grid, given the room a page
      has and the homepage section does not: four across instead of three. */
+
+  /* The line above a row inside a section that holds two of them. Same
+     treatment as the plaque eyebrow, one step quieter. */
+  .hmore__lab{
+    margin:1.8rem 0 .9rem; font-family:var(--font-body); font-weight:700;
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--color-gold);
+  }
+  .hmore__lab:first-of-type{ margin-top:0; }
 
   /* Nothing to enlarge and nothing to play: neither is a button. */
   .hgal__f--stand{ cursor:default; }
@@ -2417,16 +2511,18 @@
      width of the page, so it stays the same size relative to the pedigree
      whether that is four rows or eight, and the section clips whatever
      hangs over the edge. */
+  /* The same watermark the news and about sections carry on the homepage,
+     word for word, rather than a second recipe. It used to be sized off the
+     section's height and hung eleven per cent of the page width past the right
+     edge: two fifths of the head was cut off by the screen, and on a page
+     whose pedigree is short the head shrank with it until there was nothing
+     to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:-11%; top:50%; transform:translateY(-50%);
-    height:126%; opacity:.05;
-    /* It stands taller than the section on purpose, so the section clips it.
-       Clipped alone that reads as a rectangle drawn on the page, so it fades
-       out at the top and the bottom instead of stopping. */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    width:clamp(190px, 26vw, 400px); opacity:.05;
   }
+  .ped__mark img{ width:100%; height:auto; display:block; }
   .ped__mark img{ height:100%; width:auto; display:block; }
   /* On a narrow screen the pedigree scrolls sideways and fills the section
      edge to edge, so there is no quiet ground left for a watermark to sit in
@@ -2677,10 +2773,10 @@
              not on screen. -->
         <nav class="primary-nav" id="primary-nav" aria-label="Main">
           <a href="/#top">Home</a>
+          <a href="/sport-horses" aria-current="page">Sport horses</a>
           <a href="/breeding-mares">Breeding mares</a>
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
-          <a href="/sport-horses" aria-current="page">Sport horses</a>
           <a href="/icsi-semen">ICSI semen</a>
           <a href="/about" class="hd__drawerOnly">About us</a>
           <a href="/news" class="hd__drawerOnly">News</a>
@@ -2911,13 +3007,16 @@
 
       <div class="footer-col">
         <h2 class="footer-h">Navigate</h2>
+        <!-- The same order as the bar, on Mark's word 31 Aug: sport horses,
+             breeding mares, foals, embryos, ICSI semen. Two lists of the same
+             pages in two orders is the visitor's problem, not ours. -->
         <ul>
+          <li><a href="/sport-horses">Sport horses</a></li>
           <li><a href="/breeding-mares">Breeding mares</a></li>
           <li><a href="/foals">Foals</a></li>
           <li><a href="/embryos">Embryos</a></li>
-          <li><a href="/sport-horses">Sport horses</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li><a href="/icsi-semen">ICSI semen</a></li>
+          <li><a href="/about">About us</a></li>
           <li><a href="/news">News</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>

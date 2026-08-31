@@ -12,6 +12,7 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss, headerFor } from './lib/shell.mjs';
+import { orderSection, orderCss, orderScript } from './lib/order-form.mjs';
 
 const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* The thirteen stallions of the ICSI semen line. Their own site has no
@@ -84,8 +85,8 @@ const GROUPS = {
        search box stays, because thirteen names are worth searching. */
     chips: false,
     card: (h, full) => stallionCard(h, full), grid: ' ec__grid',
-    ctaH: 'Ask about a <em>stallion</em>.',
-    ctaD: 'Tell us which stallion you are after and we will tell you what we have.',
+    ctaH: 'Order your ICSI <em>through us</em>.',
+    ctaD: 'Open a stallion and the order form asks for everything we need: you, your mare, and when you want the dose.',
   },
   sport: {
     dir: 'sport-horses',
@@ -100,7 +101,7 @@ const GROUPS = {
   },
 };
 
-const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
+const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
   /* ── horse pages only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the top of the page and the header hangs over it. */
@@ -108,6 +109,15 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
 
   /* The archive grid is the homepage's own .hz__grid, given the room a page
      has and the homepage section does not: four across instead of three. */
+
+  /* The line above a row inside a section that holds two of them. Same
+     treatment as the plaque eyebrow, one step quieter. */
+  .hmore__lab{
+    margin:1.8rem 0 .9rem; font-family:var(--font-body); font-weight:700;
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--color-gold);
+  }
+  .hmore__lab:first-of-type{ margin-top:0; }
 
   /* Nothing to enlarge and nothing to play: neither is a button. */
   .hgal__f--stand{ cursor:default; }
@@ -418,16 +428,18 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
      width of the page, so it stays the same size relative to the pedigree
      whether that is four rows or eight, and the section clips whatever
      hangs over the edge. */
+  /* The same watermark the news and about sections carry on the homepage,
+     word for word, rather than a second recipe. It used to be sized off the
+     section's height and hung eleven per cent of the page width past the right
+     edge: two fifths of the head was cut off by the screen, and on a page
+     whose pedigree is short the head shrank with it until there was nothing
+     to see. A width, an inset in rem, and it is the same mark everywhere. */
   .ped__mark{
     position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:-11%; top:50%; transform:translateY(-50%);
-    height:126%; opacity:.05;
-    /* It stands taller than the section on purpose, so the section clips it.
-       Clipped alone that reads as a rectangle drawn on the page, so it fades
-       out at the top and the bottom instead of stopping. */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    right:calc(-1 * clamp(1.5rem, 5vw, 6rem)); top:50%; transform:translateY(-50%);
+    width:clamp(190px, 26vw, 400px); opacity:.05;
   }
+  .ped__mark img{ width:100%; height:auto; display:block; }
   .ped__mark img{ height:100%; width:auto; display:block; }
   /* On a narrow screen the pedigree scrolls sideways and fills the section
      edge to edge, so there is no quiet ground left for a watermark to sit in
@@ -1181,7 +1193,7 @@ const stallionPage = (horse, group, list) => {
 ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
         </div>
         <div class="eh__acts">
-          <a href="#ask" class="btn btn-gold btn-pill">Ask about this stallion</a>
+          <a href="#order" class="btn btn-gold btn-pill">Order this stallion</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -1191,30 +1203,56 @@ ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><spa
 
 ${pedigreeSection(horse)}
 ${crossesSection(horse)}
-${contactSection(horse)}
+${orderSection(horseName(horse.name))}
 ${moreSection(horse, group, list)}
 `;
 };
 
 /* What this stud has actually done with the stallion, which is the one thing
-   about him that is ours to say. Every one of the thirteen is the sire of at
-   least one cross on the embryo archive, so the section is a run of those
-   crosses and nothing is written that is not already on their own pages. */
+   about him that is ours to say. It began as the crosses only, which was the
+   list in semen-data.js; on 31 Aug Mark asked whether the foals and the horses
+   by him could stand here too, and they can, because every horse on the site
+   carries its sire in its own pedigree table. Matched on letters, the way the
+   dams are matched, because their spelling wobbles.
+   Foals and horses first, crosses after: a horse on the ground is the stronger
+   proof, and it keeps the two card designs in two blocks rather than
+   alternating down the row. Each keeps its own card: a cross is not a horse,
+   and the same cross showing two designs was a fault worth not repeating. */
+const flatName = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+const byHim = (stallion) => {
+  const k = flatName(stallion.name);
+  const kids = HORSES.filter((h) => h.category !== 'stallion'
+    && flatName((h.pedigree || {}).sire) === k);
+  const order = { sport: 0, foal: 1, broodmare: 2, embryo: 3 };
+  return kids.sort((a, b) => (order[a.category] ?? 9) - (order[b.category] ?? 9));
+};
+
 const crossesSection = (horse) => {
-  const mine = (horse.crosses || [])
-    .map((slug) => HORSES.find((h) => h.slug === slug)).filter(Boolean);
+  const mine = byHim(horse);
   if (!mine.length) return '';
-  const n = mine.length;
+  const born = mine.filter((h) => h.category !== 'embryo');
+  const crosses = mine.filter((h) => h.category === 'embryo');
+  /* Two rows, never one mixed one. A horse card and a cross card are two
+     different objects on purpose, and a row that alternates between them is
+     the inconsistency Mark keeps pointing at. So the horses on the ground are
+     a row of horse cards and the crosses are a row of cross cards, each under
+     its own line, in one section under one heading. */
+  const what = born.length && crosses.length ? 'produce'
+    : crosses.length ? (crosses.length === 1 ? 'cross' : 'crosses')
+    : born.length === 1 ? 'horse' : 'horses';
+  const row = (label, list, cross) => list.length ? `
+      ${born.length && crosses.length ? `<p class="hmore__lab">${label}</p>` : ''}
+      <ul class="hz__grid${cross ? ' ec__grid' : ''}">
+${list.map((h) => '        ' + (cross ? embryoCard(h, false) : card(h, GROUPS[h.category]))).join('\n')}
+      </ul>` : '';
   return `
   <section class="hmore">
     <div class="wrap">
       <div class="hmore__head">
-        <h2 class="hmore__h">Our own <em>${n === 1 ? 'cross' : 'crosses'}</em> by him</h2>
-        <a class="hmore__all" href="/embryos">All crosses <span class="a" aria-hidden="true">&rarr;</span></a>
+        <h2 class="hmore__h">Our own <em>${what}</em> by him</h2>
       </div>
-      <ul class="hz__grid ec__grid">
-${mine.map((h) => '        ' + embryoCard(h, false)).join('\n')}
-      </ul>
+${row('On the ground', born, false)}
+${row(crosses.length === 1 ? 'A cross still to come' : 'Crosses still to come', crosses, true)}
     </div>
   </section>
 `;
@@ -1622,6 +1660,12 @@ const pedigreeSection = (horse) => {
   const cell = (name, cls, col, row, span) =>
     name ? `<div class="ped__cell ${cls}" style="grid-column:${col}; grid-row:${row} / span ${span}">${esc(horseName(name))}</div>` : '';
   const third = p.third || [];
+  /* The heading used to say three generations on every page that had a sire.
+     A stallion has no fourth column: his own pedigree is read out of the
+     tables on his crosses, which stop at his grandparents, and the page then
+     promised a generation it was not showing. It counts what it draws. */
+  const depth = third.some(Boolean) ? 3
+    : [p.sireSire, p.sireDam, p.damSire, p.damDam].some(Boolean) ? 2 : 1;
   const branch = (parent, gsire, gdam, from, top) =>
     cell(parent, 'ped__cell--sire', 2, top, 4) +
     cell(gsire, '', 3, top, 2) +
@@ -1637,7 +1681,7 @@ const pedigreeSection = (horse) => {
     </div>
     <div class="wrap">
       <div class="ped__plate">
-        <h2 class="ped__h">Three generations <em>deep</em></h2>
+        <h2 class="ped__h">${depth === 3 ? 'Three generations' : depth === 2 ? 'Two generations' : 'One generation'} <em>deep</em></h2>
         <div class="ped__grid">
           ${horse.category === 'embryo'
             ? `<div class="ped__cell ped__cell--next" style="grid-column:1; grid-row:1 / span 8">Your next embryo</div>`
@@ -2041,7 +2085,8 @@ ${body}
 ${footer}
 ${navScript}
 ${/class="(hgal|hvid)[ "]/.test(body) ? mediaScript : ''}
-${body.includes('class="ask"') ? askScript : ''}
+${body.includes('class="ask ord"') ? orderScript
+  : body.includes('class="ask"') ? askScript : ''}
 </body>
 </html>
 `;
