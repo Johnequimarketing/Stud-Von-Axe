@@ -106,10 +106,6 @@
 
     /* How far the ivory tray bites into the hero, and the tray's own shape. */
     --cut: 96px;
-    /* A test, 31 Aug: the hero photograph held inside the page instead of
-       bleeding to all four edges, the way the floating header plate already
-       is. One number, so it is one edit to widen, tighten or take out. */
-    --hero-inset: var(--gutter);
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
     /* How far the menu plate hangs below the top edge. The logo plate
@@ -560,20 +556,9 @@
   .hero{
     position:relative; min-height:100svh; padding-bottom:var(--cut);
     display:flex; flex-direction:column;
-    /* The ground the framed photograph sits on. It was navy-deep, which was
-       the photograph's own backstop while it bled to the edges. */
-    background:var(--color-base);
+    background:var(--color-navy-deep);
   }
-  /* Held off all four edges on the page gutter, so its edge lines up with the
-     header plate above it and with every section below it, and rounded with
-     the stylesheet's own plate radius. The tray that cuts into the hero from
-     below still meets the picture: the bottom inset stops at the cut rather
-     than under it. */
-  .hero__bg{
-    position:absolute;
-    inset:var(--hero-inset) var(--hero-inset) calc(var(--cut) + var(--hero-inset));
-    border-radius:var(--plate-radius); overflow:hidden;
-  }
+  .hero__bg{ position:absolute; inset:0; }
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
   .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }

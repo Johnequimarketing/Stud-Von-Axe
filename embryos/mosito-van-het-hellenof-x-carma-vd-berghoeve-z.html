@@ -105,18 +105,6 @@
 
     /* How far the ivory tray bites into the hero, and the tray's own shape. */
     --cut: 96px;
-    /* A test, 31 Aug: the hero photograph held inside the page instead of
-       bleeding to all four edges, the way the floating header plate already
-       is. One number, so it is one edit to widen, tighten or take out. */
-    --hero-inset: var(--gutter);
-    /* A hair of ivory above the picture, and no more. The bar has to stay on
-       the photograph, because that is what its white mark and white links
-       stand on; the room for that runs out at the top of the menu words,
-       which sit about thirty seven pixels down. So this is a line of daylight
-       that closes the frame without taking the bar off the picture. Measured
-       on a phone, where the room is tightest: the mark's crown starts three
-       pixels below the top of the photograph, not above it. */
-    --hero-top: clamp(10px, 1.8vh, 24px);
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
     /* How far the menu plate hangs below the top edge. The logo plate
@@ -567,50 +555,9 @@
   .hero{
     position:relative; min-height:100svh; padding-bottom:var(--cut);
     display:flex; flex-direction:column;
-    /* The ground the framed photograph sits on. It was navy-deep, which was
-       the photograph's own backstop while it bled to the edges. */
-    background:var(--color-base);
+    background:var(--color-navy-deep);
   }
-  /* Held off the sides and the foot on the page gutter, so its edge lines up
-     with the header plate above it and with every section below it, and
-     rounded at the foot with the stylesheet's own plate radius.
-     Not off the top, and that is the one thing this arrangement cannot have:
-     the bar carries a white mark and white links because it stands on the
-     photograph, and inset from the top it would stand on ivory and disappear.
-     Keeping the picture under the bar keeps the bar exactly as it was, which
-     is what was asked for.
-     Off the top too, but only by a line: deep enough for the frame to close,
-     shallow enough that every menu word is still on the photograph and the bar
-     keeps the white treatment it was built for. Clearing the whole bar was
-     tried first and it works, but it stands the bar on ivory and its mark and
-     links have to turn to ink, which is a bigger change than the one asked
-     for.
-     Not off the foot: the tray of topic cards is pulled up by --cut so that it
-     cuts into the hero from below, and that is a shape the two make together.
-     Taking anything off the bottom stands the tray clear of the picture and
-     leaves a band of ivory between them. */
-  /* All four corners, and the foot stops where the tray of topic cards
-     begins. It used to run on under the tray, which is what let the tray cut
-     into it, but the tray is two pixels narrower than the picture, so its own
-     rounded head covered both bottom corners and they read as square. A corner
-     you cannot see is not a corner. */
-  .hero__bg{
-    position:absolute;
-    inset:var(--hero-top) var(--hero-inset) var(--cut);
-    border-radius:var(--plate-radius); overflow:hidden;
-  }
-
-  /* The bar sits lower on the homepage, and that is the whole trick: the mark
-     hangs on a plate taller than the bar and reached above the picture's top
-     edge, where a white mark loses its crown against the ivory. Rather than
-     put a ground behind the mark, the bar moves down until the mark is inside
-     the photograph like everything else on it. Measured, not guessed: the
-     mark now starts eight pixels below the top of the picture at 1440 and on
-     a phone.
-     Homepage only, by :has, so nothing was added to markup that the lift
-     carries to the other ninety six pages. */
-  body:has(.hero){ --hd-top: clamp(22px, 3.6vh, 38px); }
-
+  .hero__bg{ position:absolute; inset:0; }
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
   .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
@@ -634,11 +581,7 @@
     display:flex; flex-direction:column; justify-content:center; align-items:center;
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
-    /* Inside the frame, not level with it: the picture is held off the sides
-       by --hero-inset, so text padded to the same number touches the edge it
-       is standing on. On a phone that was ten pixels of daylight. */
-    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px))
-            calc(var(--hero-inset) + clamp(1rem, 3vw, 2rem)) var(--hero-air);
+    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
