@@ -589,23 +589,27 @@
      cuts into the hero from below, and that is a shape the two make together.
      Taking anything off the bottom stands the tray clear of the picture and
      leaves a band of ivory between them. */
+  /* All four corners, and the foot stops where the tray of topic cards
+     begins. It used to run on under the tray, which is what let the tray cut
+     into it, but the tray is two pixels narrower than the picture, so its own
+     rounded head covered both bottom corners and they read as square. A corner
+     you cannot see is not a corner. */
   .hero__bg{
     position:absolute;
-    inset:var(--hero-top) var(--hero-inset) 0;
-    border-radius:var(--plate-radius) var(--plate-radius) 0 0; overflow:hidden;
+    inset:var(--hero-top) var(--hero-inset) var(--cut);
+    border-radius:var(--plate-radius); overflow:hidden;
   }
 
-  /* The one thing on the bar that hangs higher than the line of daylight is
-     the mark: its plate is taller than the bar and reaches eight pixels above
-     the photograph's top edge, so a white mark would have its crown cut off
-     against the ivory. It takes its own ivory plate here instead, which is
-     what the stylesheet says the plate is for: a shape crossing another. The
-     links and the two buttons all sit inside the picture and stay white.
-     Homepage only, and by :has, so nothing was added to markup the lift
+  /* The bar sits lower on the homepage, and that is the whole trick: the mark
+     hangs on a plate taller than the bar and reached above the picture's top
+     edge, where a white mark loses its crown against the ivory. Rather than
+     put a ground behind the mark, the bar moves down until the mark is inside
+     the photograph like everything else on it. Measured, not guessed: the
+     mark now starts eight pixels below the top of the picture at 1440 and on
+     a phone.
+     Homepage only, by :has, so nothing was added to markup that the lift
      carries to the other ninety six pages. */
-  body:has(.hero) .hd:not(.is-pinned) .brand{ background:var(--color-base); }
-  body:has(.hero) .hd:not(.is-pinned) .brand__ondark{ opacity:0; filter:none; }
-  body:has(.hero) .hd:not(.is-pinned) .brand__onlight{ opacity:1; }
+  body:has(.hero){ --hd-top: clamp(22px, 3.6vh, 38px); }
 
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
