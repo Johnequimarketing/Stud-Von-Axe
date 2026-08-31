@@ -90,7 +90,7 @@ const card = (s) => `        <li data-kind="${esc(s.kind)}">
             </span>
             <span class="ec__seam"><span class="ec__stage">${esc(s.label)}</span></span>
             <span class="ec__box">
-              <span class="ec__name">Placeholder</span>
+              <h2 class="ec__name">Placeholder</h2>
               <span class="ec__line">${esc(s.note)}</span>
               <span class="ec__say">Stallions are named on request. Ask us for the catalogue.</span>
             </span>
