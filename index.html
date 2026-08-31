@@ -162,10 +162,14 @@
        bleeding to all four edges, the way the floating header plate already
        is. One number, so it is one edit to widen, tighten or take out. */
     --hero-inset: var(--gutter);
-    /* The top inset has to clear the whole bar, mark and all, not match the
-       sides: a photograph that stops halfway down the bar puts half of each
-       menu word on ivory and half on the picture. */
-    --hero-top: calc(var(--hd-top) + var(--hd-plate) + clamp(.7rem, 1.4vh, 1.1rem));
+    /* A hair of ivory above the picture, and no more. The bar has to stay on
+       the photograph, because that is what its white mark and white links
+       stand on; the room for that runs out at the top of the menu words,
+       which sit about thirty seven pixels down. So this is a line of daylight
+       that closes the frame without taking the bar off the picture. Measured
+       on a phone, where the room is tightest: the mark's crown starts three
+       pixels below the top of the photograph, not above it. */
+    --hero-top: clamp(10px, 1.8vh, 24px);
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
     /* How far the menu plate hangs below the top edge. The logo plate
@@ -628,10 +632,12 @@
      photograph, and inset from the top it would stand on ivory and disappear.
      Keeping the picture under the bar keeps the bar exactly as it was, which
      is what was asked for.
-     Off the top as well, on the second pass, and that one carries a cost that
-     could not be avoided: the bar stands on the page ground now, so its white
-     mark and white links would be invisible, and they turn to ink below. It is
-     the only thing besides the picture that moves.
+     Off the top too, but only by a line: deep enough for the frame to close,
+     shallow enough that every menu word is still on the photograph and the bar
+     keeps the white treatment it was built for. Clearing the whole bar was
+     tried first and it works, but it stands the bar on ivory and its mark and
+     links have to turn to ink, which is a bigger change than the one asked
+     for.
      Not off the foot: the tray of topic cards is pulled up by --cut so that it
      cuts into the hero from below, and that is a shape the two make together.
      Taking anything off the bottom stands the tray clear of the picture and
@@ -642,28 +648,18 @@
     border-radius:var(--plate-radius) var(--plate-radius) 0 0; overflow:hidden;
   }
 
-  /* The homepage bar, before it pins. Every other page still opens on a
-     photograph that runs to the top and keeps the white treatment above; here
-     the picture starts below the mark, so the bar reads as ink on ivory from
-     the first pixel. Scoped with :has so no page without a .hero is touched
-     and nothing has to be added to the markup that the lift would carry. */
-  body:has(.hero) .hd:not(.is-pinned) .primary-nav a,
-  body:has(.hero) .hd:not(.is-pinned) .hd__nav a,
-  body:has(.hero) .hd:not(.is-pinned) .nav-toggle{ color:var(--color-ink); text-shadow:none; }
-  body:has(.hero) .hd:not(.is-pinned) .hd__wa{
-    color:var(--color-navy); border-color:var(--color-line); text-shadow:none;
-  }
-  body:has(.hero) .hd:not(.is-pinned) .hd__wa:hover{
-    background:var(--color-navy); color:var(--color-white); border-color:var(--color-navy);
-  }
-  body:has(.hero) .hd:not(.is-pinned) .primary-nav a:hover,
-  body:has(.hero) .hd:not(.is-pinned) .primary-nav a[aria-current="page"],
-  body:has(.hero) .hd:not(.is-pinned) .hd__nav a:hover,
-  body:has(.hero) .hd:not(.is-pinned) .hd__nav a[aria-current="page"]{ color:var(--color-navy); }
-  /* The mark swaps to the navy file, the one meant for a light ground, and
-     loses the drop shadow it wore to stand on a photograph. */
+  /* The one thing on the bar that hangs higher than the line of daylight is
+     the mark: its plate is taller than the bar and reaches eight pixels above
+     the photograph's top edge, so a white mark would have its crown cut off
+     against the ivory. It takes its own ivory plate here instead, which is
+     what the stylesheet says the plate is for: a shape crossing another. The
+     links and the two buttons all sit inside the picture and stay white.
+     Homepage only, and by :has, so nothing was added to markup the lift
+     carries to the other ninety six pages. */
+  body:has(.hero) .hd:not(.is-pinned) .brand{ background:var(--color-base); }
   body:has(.hero) .hd:not(.is-pinned) .brand__ondark{ opacity:0; filter:none; }
   body:has(.hero) .hd:not(.is-pinned) .brand__onlight{ opacity:1; }
+
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
   .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
