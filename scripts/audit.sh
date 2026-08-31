@@ -17,14 +17,30 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-pages=(index.html about/index.html news/index.html news/*.html
-       breeding-mares/*.html foals/*.html embryos/*.html sport-horses/*.html
-       00-design-system.html 01-build-checklist.html 02-feedback-log.html
-       04-embryo-cards.html 05-embryo-lines.html 06-embryo-head.html
-       07-horse-contact.html)
+# Every page on disk, found rather than listed. The list used to be typed out
+# here, which meant a page nobody added to it was silently never audited: the
+# contact page was built, passed nothing, and the run still said 79 pages.
+# Excluded on purpose: deploy/ is the published copy, _archive/ is finished
+# work, and the v2-* directories are git worktrees with their own repos.
+# mapfile is bash 4; macOS ships bash 3.2, so the array is filled the portable
+# way. No page here has a space in its name, and the audit fails loudly if the
+# list comes back empty.
+pages=()
+while IFS= read -r f; do pages+=("$f"); done < <(
+  find . -name '*.html' \
+    -not -path './deploy/*' -not -path './_archive/*' -not -path './_to_delete/*' \
+    -not -path './v2-*' -not -path './node_modules/*' -not -path './content/*' \
+    -not -name '_*.html' \
+    | sed 's|^\./||' | sort
+)
+if [ ${#pages[@]} -eq 0 ]; then
+  echo "  FOUND NO PAGES. The audit refuses to report green on nothing."
+  exit 1
+fi
 
 echo
 echo "── Every page against the rules ──────────────────────────────"
+echo "   ${#pages[@]} pages found on disk"
 node scripts/audit-homepage.mjs "${pages[@]}" | tail -3
 a=${PIPESTATUS[0]}
 

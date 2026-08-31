@@ -24,7 +24,7 @@ export const relink = (html) => html
   .replace(/href="#/g, 'href="/#')
   .replace(/href="news\/"/g, 'href="/news"')
   .replace(/href="about\/"/g, 'href="/about"')
-  .replace(/href="(breeding-mares|foals|embryos|sport-horses)\/"/g, 'href="/$1"')
+  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact)\/"/g, 'href="/$1"')
   .replace(/(src|href)="assets\//g, '$1="/assets/')
   .replace(/href="index.html"/g, 'href="/"');
 
@@ -175,3 +175,40 @@ export const storyCss = `
   .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
   .abst__body b{ font-weight:700; color:var(--color-ink); }
 `;
+
+/* The form has nowhere to post to: this site is static files on Vercel with no
+   back end and no mail account behind it. Rather than swallow the message the
+   way the homepage form does, it hands it to the visitor's own mail app with
+   every field already written out, so pressing send actually sends something.
+   When a form service or a function is chosen, this is the one block that
+   changes and the markup stays exactly as it is. */
+export const askScript = `<script>
+(function(){
+  var form = document.querySelector('.ask__form');
+  if (!form) return;
+  var note = form.querySelector('.ask__note');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var get = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
+    var about = get('about') || form.getAttribute('data-horse');
+    var body = [
+      'About: ' + about,
+      'Name: ' + get('name'),
+      'Email: ' + get('email'),
+      get('tel') ? 'Telephone: ' + get('tel') : '',
+      '',
+      get('message')
+    /* Escaped twice on purpose: this file is a template literal, so a single
+       backslash-n written here becomes a real line break in the page and
+       leaves the string open. The closing script tag has the same trap, which
+       is why naming it inside this comment closed the script and broke all
+       sixty pages: a comment is still text in the output. */
+    ].filter(function(l){ return l !== ''; }).join('\\n');
+    note.textContent = 'Opening your mail app with the message ready to send. If nothing happens, write to studvonaxe@gmail.com.';
+    location.href = 'mailto:studvonaxe@gmail.com'
+      + '?subject=' + encodeURIComponent('Enquiry: ' + about)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
+<\/script>`;

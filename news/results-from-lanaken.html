@@ -1712,6 +1712,117 @@
     width:16px; height:11px; border-radius:2px;
     box-shadow:0 0 0 1px rgba(255,255,255,.28);
   }
+
+
+  /* ── the embryo card ───────────────────────────────────────────────────
+     Variation thirteen, chosen on 30 Aug. The photograph fades into navy at
+     its foot and the box carries on out of it in the same navy, so the card
+     is one object with no seam to see: the last stop of the gradient is the
+     box's own colour, and the box has no gap, border or shadow of its own.
+     A gold hairline crosses the join with the stage sitting on it as a
+     label, and their own sentence closes the card in the accent colour,
+     pinned to the foot and reserving two lines so every box in a row draws
+     the same block. Gold carries navy ink in both, 5.70:1. */
+  .ec{ display:flex; }
+  .ec__a{ display:flex; flex-direction:column; width:100%;
+    border-radius:var(--card-radius); overflow:hidden; background:var(--color-navy-deep);
+    box-shadow:0 20px 44px -34px rgba(var(--veil-rgb), .55);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+  .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
+  .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s var(--ease); }
+  .ec__a:hover .ec__win img{ transform:scale(1.04); }
+  .ec__fade{ position:absolute; left:0; right:0; bottom:-1px; height:50%;
+    background:linear-gradient(180deg, rgba(var(--veil-rgb),0) 0%, rgba(var(--veil-rgb),.55) 46%,
+      rgba(var(--veil-rgb),.92) 82%, var(--color-navy-deep) 100%); }
+  /* No photograph: the supplied mark on navy, at the weight the about page
+     uses it as a watermark. Seven of the fifteen, so this is not an edge. */
+  .ec__mark{ display:grid; place-items:center; width:100%; height:100%;
+    background:var(--color-navy-deep); }
+  .ec__mark img{ width:auto; height:44%; max-height:76px; opacity:.16; }
+  .ec__seam{ position:relative; display:flex; align-items:center; gap:.7rem;
+    padding:0 1.1rem; margin-top:-.1rem; }
+  .ec__seam::after{ content:""; flex:1 1 auto; height:1px;
+    background:color-mix(in srgb, var(--color-gold) 65%, transparent); }
+  .ec__stage{ flex:none; display:inline-flex; align-items:center;
+    padding:.34em .8em; border-radius:var(--ctl-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.16em; text-transform:uppercase; }
+  .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
+  .ec__name{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
+    line-height:1.2; color:var(--color-white); }
+  .ec__name em{ font-style:italic; color:var(--color-gold); }
+  .ec__line{ display:block; margin:.4rem 0 .9rem; font-size:12.5px; line-height:1.45;
+    color:rgba(255,255,255,.62); }
+  .ec__say{ margin-top:auto; padding:.62rem .8rem; border-radius:var(--card-radius);
+    background:var(--color-gold); color:var(--color-navy);
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.45;
+    min-height:calc(2 * 1.45 * 13px + 1.24rem); display:flex; align-items:center;
+    text-wrap:balance; }
+  @media (min-width:1100px){ .arch .ec__grid{ grid-template-columns:repeat(3, 1fr); } }
+  /* The breeding line under the name: their Genetics row, which on a
+     broodmare is the point of the card. Same italic gold the horse's own
+     page opens with, so the card and the page read as one object. */
+  .hz__ped{
+    display:block; margin-top:.3rem;
+    font-family:var(--font-display); font-style:italic; font-size:13px; line-height:1.35;
+    color:var(--color-gold);
+  }
+
+  /* ── the contact section ───────────────────────────────────────────────
+     Variation one of the six, chosen on 30 Aug. Navy half carries the
+     invitation and the four ways to reach them; ivory half carries the form.
+     It stands where the CTA plate stood. */
+  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
+  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .ask__h em{ font-style:italic; color:var(--color-gold); }
+  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .ask__people{ display:grid; }
+  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
+    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
+  .ask__p:hover{ padding-left:.4rem; }
+  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
+  /* The form is shorter than the column of names beside it, so it is centred
+     against it rather than hanging from the top with the space all at the
+     bottom. */
+  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base);
+    display:flex; flex-direction:column; justify-content:center; }
+  .ask__pair{ display:grid; gap:1rem; }
+  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
+  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
+  .ask__row input, .ask__row textarea, .ask__row select{
+    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
+    background:var(--color-base); border:1px solid var(--color-line);
+    border-radius:var(--ctl-radius); padding:.7rem .85rem;
+    transition:border-color .3s var(--ease);
+  }
+  .ask__row input:focus, .ask__row textarea:focus, .ask__row select:focus{ outline:none; border-color:var(--color-gold); }
+  .ask__row select{ appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding-right:2.6em;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.15em) 55%, calc(100% - .8em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat; }
+  .ask__row textarea{ resize:vertical; line-height:1.55; }
+  .ask__form > .ask__row:last-of-type{ margin-bottom:1.4rem; }
+  .ask__form .btn{ align-self:flex-start; }
+  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
+  .ask__note:empty{ display:none; }
+
   /* ── the status seam ───────────────────────────────────────────────────
      The label keeps its place at the top left of the frame; what is new is
      the ground behind it and the hairline that carries the eye across.
@@ -1955,6 +2066,7 @@
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
 
@@ -1985,7 +2097,7 @@
           <span class="sep">/</span>
           <span class="lang-soon" title="Coming later">DE</span>
         </div>
-        <a href="/#contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
+        <a href="/contact" class="btn btn-gold btn-pill btn-sm">Contact us</a>
       </div>
     </div>
   </header>
@@ -2084,7 +2196,7 @@
           <li><a href="/about">About</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/news">News</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
 

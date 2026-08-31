@@ -34,6 +34,7 @@ cp "$root/news/"*.html "$here/news/"
 mkdir -p "$here/about"
 rm -f "$here/about/"*.html
 cp "$root/about/index.html" "$here/about/index.html"
+mkdir -p "$here/contact" && cp "$root/contact/index.html" "$here/contact/index.html"
 for group in breeding-mares foals embryos sport-horses; do
   mkdir -p "$here/$group"
   rm -f "$here/$group/"*.html
@@ -58,7 +59,7 @@ while IFS= read -r ref; do
   fi
 done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
   "$root/07-horse-contact.html" \
-  "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
+  "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html "$root/contact/index.html" \
   | grep -oE 'assets/(img/horses|img/video|img/placeholder|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 

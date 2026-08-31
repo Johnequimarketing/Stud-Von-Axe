@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Domino Van den Haze Z | Stud Von Axe</title>
-<meta name="description" content="Domino Van den Haze Z, sport horse at Stud Von Axe. Born 2018, Zangersheide, Mare. Just saddle broken.">
+<title>Contact | Stud Von Axe</title>
+<meta name="description" content="Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from Desenzano del Garda in Italy and Lanaken in Belgium.">
 <!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
 <meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://www.studvonaxe.it/sport-horses/domino-van-den-haze-z">
+<link rel="canonical" href="https://www.studvonaxe.it/contact">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stud Von Axe">
-<meta property="og:title" content="Domino Van den Haze Z">
-<meta property="og:description" content="Domino Van den Haze Z, sport horse at Stud Von Axe. Born 2018, Zangersheide, Mare. Just saddle broken.">
-<meta property="og:image" content="https://www.studvonaxe.it/assets/img/horses/domino-van-den-haze-z-1.jpg">
+<meta property="og:title" content="Contact">
+<meta property="og:description" content="Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from Desenzano del Garda in Italy and Lanaken in Belgium.">
+<meta property="og:image" content="https://www.studvonaxe.it/assets/img/hero-neck-wide.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemPage","name":"Domino Van den Haze Z"}
+{"@context":"https://schema.org","@type":"ContactPage","name":"Contact","publisher":{"@type":"Organization","name":"Stud Von Axe"}}
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1927,648 +1927,53 @@
   .arch__intro{ margin:0; color:rgba(255,255,255,.78); max-width:48ch; font-size:15.5px; }
 
 
-  /* ---- the story: the picture on the left, words on the right ----
-     Mark's order, and the mirror of the homepage's about section, so the
-     two do not read as the same block twice.
-     The section carries the watermark the same way that one does, which is
-     why it is relative and clipped: .stud__mark comes from the homepage
-     sheet above and bleeds off the right edge. */
-  .abst{
-    position:relative; isolation:isolate; overflow-x:clip;
-    padding-block:clamp(3.2rem,6vw,5rem);
-  }
-  .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
-  @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }
-  .abst__col{ min-width:0; }
-  .abst__h{
-    margin:.7rem 0 1.2rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.8rem,2.6vw + .9rem,2.9rem); line-height:1.04;
-    letter-spacing:-.02em; color:var(--color-ink); max-width:15ch; text-wrap:balance;
-  }
-  .abst__h em{ font-style:italic; color:var(--color-gold); }
-  .abst__lead{ margin:0 0 1rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:52ch; }
-  .abst__body{ margin:0 0 1rem; font-size:16px; line-height:1.68; color:var(--color-ink-soft); max-width:52ch; }
-  .abst__body b{ font-weight:700; color:var(--color-ink); }
-
-  /* ── horse pages only. Everything above is the homepage stylesheet. ── */
-
-  /* The hero starts at the top of the page and the header hangs over it. */
+  /* ── contact page only. Everything above is the homepage stylesheet. ── */
   .nhero > .wrap{ padding-top:clamp(6rem,13vh,8rem); }
+  .cnhero .nhero__bg img{ object-position:50% 40%; }
 
-  /* The archive grid is the homepage's own .hz__grid, given the room a page
-     has and the homepage section does not: four across instead of three. */
-  /* The space between sections is one rule, not six: every section carries
-     half of it on each side, so two neighbours add up to the same gap
-     wherever they meet, and the first and last still clear the hero and the
-     footer. */
-  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
-  .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
-  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
-  .arch__count{
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
-  }
-  /* Three across, not four. At four the picture is too small to read a horse
-     off and the pedigree line under it wraps to three lines: 30 Aug, "dat
-     wordt anders te krap en te klein". The embryo cards were already three. */
-  @media (min-width:1100px){ .arch .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
+  .cn{ padding-block:var(--sec-half); }
 
-
-  /* Nothing to enlarge and nothing to play: neither is a button. */
-  .hgal__f--stand{ cursor:default; }
-  .hgal__f--stand:hover img{ transform:none; }
-  .hvid__btn--stand{ cursor:default; }
-  .hvid__btn--stand:hover img{ transform:none; }
-  .hvid__btn--stand .hvid__play{ opacity:.55; }
-
-  /* ── the filter bar ────────────────────────────────────────────────────
-     A field and three chips over the grid. The chips are the homepage's own
-     .hz__chip, so an archive filters the way the homepage section already
-     does, and the field beside them is the only control this page adds.
-     Sold horses start hidden. They are not an answer to "what do you have",
-     but they are the proof of where these lines have gone, so they are one
-     chip away and never removed. A group with nothing available opens on
-     everything rather than on an empty grid. */
-  .flt{
-    display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
-    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+  /* The three ways to reach them, at full size and first, because they are
+     the answer for most visitors: nobody fills in a form to ask a question
+     they could put in a WhatsApp message. */
+  .cn__ways{ display:grid; gap:clamp(.8rem,1.6vw,1.1rem); margin-bottom:clamp(2rem,4vw,3rem); }
+  @media (min-width:760px){ .cn__ways{ grid-template-columns:repeat(3,1fr); } }
+  .cn__way{
+    display:grid; gap:.2rem; padding:clamp(1.2rem,2.2vw,1.6rem);
+    border-radius:var(--card-radius); background:var(--color-navy-deep);
+    border:1px solid var(--color-line-invert);
+    transition:border-color .3s var(--ease), transform .35s var(--ease);
   }
-  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
-  .flt__search input{
-    width:100%; appearance:none; -webkit-appearance:none;
-    padding:.7rem 2.3rem .7rem .95rem;
-    border:1px solid var(--color-line); border-radius:100px;
-    background:var(--color-base); color:var(--color-ink);
-    font-family:var(--font-body); font-size:14.5px;
-    transition:border-color .3s var(--ease);
+  .cn__way:hover{ border-color:var(--color-gold); transform:translateY(-2px); }
+  .cn__init{
+    display:grid; place-items:center; width:38px; height:38px; border-radius:50%;
+    background:var(--color-gold); color:var(--color-navy); margin-bottom:.7rem;
+    font-family:var(--font-display); font-size:1.05rem;
   }
-  .flt__search input::placeholder{ color:var(--color-ink-soft); }
-  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
-  .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
-  .flt__ico{
-    position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
-    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
-  }
-  .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
-  .flt__count{
-    margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
-  }
-  .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
-  .flt__none.is-on{ display:block; }
-  .hz__grid li[hidden]{ display:none; }
-  @media (max-width:620px){
-    .flt__search{ max-width:none; flex-basis:100%; }
-    .flt__count{ margin-left:0; }
+  .cn__wn{ font-family:var(--font-display); font-size:1.25rem; color:var(--color-white); }
+  .cn__wv{ font-family:var(--font-body); font-size:14px; color:rgba(255,255,255,.72); }
+  .cn__wk{
+    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); margin-top:.5rem;
   }
 
-
-  /* ── the embryo head: the tray, nothing on the photograph ──────────────
-     Chosen on 30 Aug. The photograph carries only the back link, so it stays
-     a photograph, and a plate hangs into it from below with the name, their
-     sentence, the figures and the two actions on it. It solves the crowded
-     title by removing the cause, and it is the version that still works on
-     the seven crosses with no picture of their own.
-     The veil is navy across the whole frame rather than a light wash: that
-     is how this site tints a photograph, and the header is transparent over
-     it, so the top has to hold white 15px links. */
-  .eh{ position:relative; }
-  .eh__win{ position:relative; height:clamp(360px,48vh,520px); overflow:hidden;
-    background:var(--color-navy-deep); }
-  .eh__win img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .eh__mark{ position:absolute; inset:0; display:grid; place-items:center; }
-  .eh__mark img{ width:auto; height:26%; max-height:110px; opacity:.16; }
-  .eh__veil{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),.56) 0%, rgba(var(--veil-rgb),.4) 40%,
-      rgba(var(--veil-rgb),.5) 100%); }
-  .eh__back{ position:absolute; left:0; right:0;
-    top:calc(var(--hd-top) + var(--hd-plate) + 1.5rem); z-index:2;
-    width:min(var(--wrap), 100% - (2*var(--gutter))); margin-inline:auto;
-    display:flex; align-items:center; gap:.5rem;
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:rgba(255,255,255,.8); transition:color .3s var(--ease); }
-  .eh__back:hover{ color:var(--color-white); }
-  .eh__cap{ position:absolute; right:var(--gutter); bottom:clamp(3.6rem,5vw,4.6rem); z-index:2;
-    margin:0; font-family:var(--font-body); font-size:11px; letter-spacing:.05em;
-    color:rgba(255,255,255,.72); }
-  .eh__tray{ position:relative; z-index:2; margin-top:clamp(-3rem,-3.4vw,-2rem);
-    background:var(--color-base); border-radius:var(--plate-radius);
-    border:1px solid var(--color-line);
-    padding:clamp(1.4rem,2.8vw,2rem); box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
-  .eh__stage{ display:inline-flex; align-items:center; padding:.34em .85em;
-    border-radius:var(--ctl-radius); background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.16em;
-    text-transform:uppercase; }
-  .eh__h{ margin:.9rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.7rem,2.4vw + .8rem,2.5rem); line-height:1.06; letter-spacing:-.02em;
-    color:var(--color-ink); max-width:22ch; }
-  .eh__h em{ font-style:italic; color:var(--color-gold); }
-  .eh__say{ margin:.6rem 0 1.2rem; font-family:var(--font-display); font-style:italic;
-    font-size:16px; line-height:1.5; color:var(--color-navy); max-width:52ch; }
-  .eh__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
-    padding-top:1.1rem; border-top:1px solid var(--color-line); }
-  @media (min-width:760px){ .eh__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
-  .eh__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.28rem; }
-  .eh__v{ display:inline-block; font-family:var(--font-display); font-weight:400; font-size:1.05rem;
-    line-height:1.25; color:var(--color-ink); }
-  /* The Horsetelex link used to sit as a loose row of its own between the
-     facts and the buttons, a third kind of link in a small space. It belongs
-     to the sire and the dam, so it lives on their names instead: same size
-     as the other facts, a small mark to say it leaves the site. */
-  .eh__v--telex{ color:var(--color-navy); text-decoration:none;
-    border-bottom:1px solid var(--color-line); padding-bottom:1px;
-    transition:border-color .3s var(--ease), color .3s var(--ease); }
-  .eh__v--telex span[aria-hidden]{ font-size:.72em; color:var(--color-gold); }
-  .eh__v--telex:hover{ color:var(--color-gold); border-color:var(--color-gold); }
-  .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
-  .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
-
-  /* ── the dam ───────────────────────────────────────────────────────────
-     The one section a cross earns that a horse does not: whoever is buying
-     an embryo is buying her family. Her own page carries the record, so
-     this is her photograph, her breeding, her first paragraph and a way
-     through to it. */
-  .dam{ padding-bottom:clamp(2.6rem,5vw,4rem); }
-  .dam__plate{ display:grid; gap:clamp(1.4rem,3vw,2.4rem); align-items:center;
-    padding:clamp(1.4rem,3vw,2.2rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep); }
-  @media (min-width:820px){ .dam__plate{ grid-template-columns:.42fr 1fr; } }
-  .dam__pic{ border-radius:var(--card-radius); overflow:hidden; aspect-ratio:4/3;
-    background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
-  .dam__pic img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .dam__body{ min-width:0; }
-  .dam__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); margin-bottom:.4rem; }
-  .dam__h{ margin:0 0 .3rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.3rem,1.6vw + .7rem,1.75rem); line-height:1.12; color:var(--color-white); }
-  .dam__ped{ display:block; font-family:var(--font-display); font-style:italic; font-size:13.5px;
-    color:var(--color-gold); margin-bottom:.7rem; }
-  .dam__p{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.78); max-width:56ch; }
-  .dam__go{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-white);
-    display:inline-flex; align-items:center; gap:.5rem; transition:gap .35s var(--ease); }
-  .dam__go:hover{ gap:.85rem; }
-  .dam__go .a{ color:var(--color-gold); }
-
-
-  /* ── the two lines ─────────────────────────────────────────────────── */
-  .ln__plate{ display:grid; gap:clamp(1.6rem,3vw,2.4rem);
-    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep); }
-  @media (min-width:820px){ .ln__plate{ grid-template-columns:1fr 1px 1fr; } }
-  .ln__rule{ display:none; background:color-mix(in srgb, var(--color-gold) 55%, transparent); }
-  @media (min-width:820px){ .ln__rule{ display:block; } }
-  .ln__col{ min-width:0; }
-  .ln__win{ display:block; aspect-ratio:4/3; border-radius:var(--card-radius); overflow:hidden;
-    margin-bottom:1.05rem; background:color-mix(in srgb, var(--color-navy) 70%, var(--color-white)); }
-  .ln__win img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .ln__win--none{ display:grid; place-items:center; background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white)); }
-  .ln__win--none img{ width:auto; height:34%; max-height:64px; opacity:.2; }
-  .ln__k{ display:block; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold); }
-  .ln__n{ margin:.35rem 0 .2rem; font-family:var(--font-display); font-weight:400; font-size:1.35rem;
-    line-height:1.15; color:var(--color-white); }
-  .ln__p{ display:block; font-family:var(--font-display); font-style:italic; font-size:13px;
-    color:var(--color-gold); margin-bottom:.75rem; }
-  .ln__t{ margin:0 0 1rem; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.76); max-width:52ch; }
-  .ln__t--waiting{ font-style:italic; color:rgba(255,255,255,.5); }
-  .ln__go{ display:flex; flex-wrap:wrap; gap:.35rem 1.3rem; }
-  .ln__go a{ font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-white);
-    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease); }
-  .ln__go a:hover{ gap:.8rem; }
-  .ln__go .a{ color:var(--color-gold); }
-  /* ── the horse's own page ──────────────────────────────────────────────
-     No dark hero here. A horse photograph stands or is square, and a wide
-     strip keeps a fifth of it: the rule the about page's hero taught. So
-     the picture keeps its own proportions on the left and the horse's name
-     and figures stand beside it, which is also how the reference pages Mark
-     sent are laid out. The header wears its pinned colours from the first
-     pixel because there is no photograph behind it. */
-  .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
-  /* With a hero the section starts at the top of the page and the two columns
-     hang into the photograph from below, the same move the embryo tray makes,
-     so a horse page and a cross page open the same way. */
-  .hp--hero{ position:relative; padding-top:0; }
-  .hp--hero .hp__grid{ position:relative; z-index:2; margin-top:clamp(-3.6rem,-4vw,-2.4rem); }
-  /* One photograph, two crops: the band takes the head, the column keeps the
-     whole horse, so the same file does not read as the same picture twice. */
-  .eh__win--high img{ object-position:center 22%; }
-  .hp__grid{ display:grid; gap:clamp(1.8rem,4vw,3.4rem); align-items:start; }
-  @media (min-width:900px){ .hp__grid{ grid-template-columns:.92fr 1.08fr; } }
-  /* Everything that stood loose beside the picture, gathered onto one plate. */
-  /* Ivory on ivory: hanging in the photograph the plate reads by contrast,
-     but on a narrow screen it sits below the picture on the page ground and
-     the shadow alone is not enough to see an edge. A hairline gives it one. */
-  .hp__tray{
-    background:var(--color-base); border-radius:var(--plate-radius);
-    border:1px solid var(--color-line);
-    padding:clamp(1.4rem,2.8vw,2rem);
-    box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5);
-  }
-  .hp--hero .hp__pic{ box-shadow:0 30px 60px -44px rgba(var(--veil-rgb),.5); }
-  /* Both columns end on the same line, whichever of the two is taller: 30 Aug,
-     "beide kolommen altijd minimaal even hoog maken". The plate sets the
-     height because it is the one with a length of its own, and the photograph
-     fills whatever that comes to by cropping rather than by leaving a gap.
-     A floor keeps the picture from flattening into a strip on a horse whose
-     plate carries only a name and two buttons.
-     Below 900px the two are stacked, and there the picture keeps its own
-     proportions: nothing to match. */
-  @media (min-width:900px){
-    .hp--hero .hp__grid{ align-items:stretch; min-height:clamp(360px, 32vw, 460px); }
-    .hp--hero .hp__col{ display:flex; flex-direction:column; gap:clamp(.8rem,1.4vw,1.1rem); }
-    /* Only the pictures share out the height. Written as .hp__col > * it also
-       caught the plate, which then had a height forced on it and spilled its
-       own text across the page: a rule aimed at one column applied to both. */
-    .hp--hero .hp__pic{ flex:1 1 0; min-width:0; min-height:0; }
-    /* The plate grows into the column when the pictures are taller, and never
-       shrinks below its own text. flex:0 0 auto left it at its natural height
-       against a 460px picture; flex:1 1 0 forced a height on it and spilled
-       the paragraph. This is the pair that does neither. */
-    .hp--hero .hp__tray{ flex:1 1 auto; min-width:0; }
-    .hp--hero .hp__pic{ position:relative; }
-    .hp--hero .hp__pic img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-      /* Where a long paragraph makes the frame taller than the photograph is
-         shaped, the crop has to come off the bottom rather than off both ends:
-         centred, Cortina lost her head and kept her legs. These are standing
-         profile shots, so the horse lives in the upper two thirds. */
-      object-position:center 30%;
-    }
-  }
-  .hp__col{ min-width:0; }
-  .hp__pic{
-    border-radius:var(--plate-radius); overflow:hidden;
-    box-shadow:0 30px 60px -46px rgba(var(--veil-rgb), .55);
-    position:relative;
-  }
-  .hp__pic img{ display:block; width:100%; height:auto; }
-  .hp__pic .hz__tag{ position:absolute; top:14px; left:14px; }
-  .hp__back{
-    display:inline-flex; align-items:center; gap:.5rem; margin-bottom:1rem;
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-ink-soft);
-    transition:color .35s var(--ease);
-  }
-  .hp__back:hover{ color:var(--color-navy); }
-  .hp__back--dark{ color:rgba(255,255,255,.72); margin-bottom:.2rem; }
-  .hp__back--dark:hover{ color:var(--color-white); }
-  .hp__h{
-    margin:0 0 .4rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(2rem,3vw + 1rem,3rem); line-height:1.02; letter-spacing:-.02em;
-    color:var(--color-ink);
-  }
-  .hp__cross{
-    margin:0 0 1.2rem; font-family:var(--font-display); font-style:italic;
-    font-size:1.05rem; color:var(--color-gold);
-  }
-  .hp__lead{ margin:0 0 1.6rem; font-size:17.5px; line-height:1.6; color:var(--color-ink); max-width:46ch; }
-
-  /* Their paragraph, in the tray under the tagline. */
-  .hp__story{ margin:0 0 1.6rem; max-width:52ch; }
-  .hp__story p{ margin:0 0 .8rem; font-size:15.5px; line-height:1.65; color:var(--color-ink-soft); }
-  .hp__story p:last-child{ margin-bottom:0; }
-  .hp__storyk{
-    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); margin:0 0 .5rem !important;
-  }
-  .hp__storyk em{ font-style:normal; color:var(--color-ink-soft); }
-
-  /* ── the figures, as accent blocks ─────────────────────────────────────
-     30 Aug: four blocks in the accent colour side by side, rather than four
-     columns of loose type under a rule. They are small, so the gold reads as
-     an accent rather than a field of it, and the row fills whatever the count:
-     a horse may have three of these or five. */
-  /* A row of their own, under both columns rather than inside the plate:
-     30 Aug, "die blokjes moeten eronder komen, onder de 2 kolommen". Across
-     the full width they can breathe, and the plate above holds only what is
-     said in words. */
-  .hp__facts{
-    display:grid; gap:clamp(.5rem,1vw,.8rem); margin:clamp(1.4rem,3vw,2.2rem) 0 0;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    padding-top:0; border-top:0;
-  }
-  @media (min-width:620px){
-    .hp__facts{ grid-template-columns:repeat(var(--cols, 4), minmax(0, 1fr)); }
-  }
-  /* Gold at eighteen percent read as beige rather than as the accent: 30 Aug,
-     "vind die 4 blokjes nu niet helemaal passen". The accent is the accent, so
-     the block takes the full gold with navy on it, which is the button pairing
-     this site already uses and measures 5.70:1. A gold rule across the top
-     lifts it off the page, and the figure is set in the display face at
-     reading size so the block is read for its answer, not its label. */
-  .hp__fact{
-    position:relative; overflow:hidden;
-    padding:clamp(.9rem,1.7vw,1.2rem) clamp(1rem,1.8vw,1.3rem);
-    border-radius:var(--card-radius);
-    background:color-mix(in srgb, var(--color-gold) 92%, var(--color-white));
-    box-shadow:0 18px 34px -28px rgba(var(--veil-rgb),.55);
-  }
-  .hp__fact::before{
-    content:""; position:absolute; left:0; right:0; top:0; height:3px;
-    background:color-mix(in srgb, var(--color-navy) 85%, transparent);
-  }
-
-  /* The figures. The two places on the about page, widened: a row of
-     hairline columns, and a field their site left empty is left out rather
-     than shown as a dash. */
-  /* Replaced above by the accent blocks; the old loose columns are gone. */
-  /* Inside an accent block the label cannot stay gold: gold on gold. Navy at
-     seventy two percent holds its own against that ground and still sits back
-     from the figure itself. Seventy two rather than sixty two because sixty
-     two measured 4.42:1, just under the floor. */
-  .hp__k{
-    display:block; font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.18em; text-transform:uppercase; margin-bottom:.3rem;
-    /* Eighty five percent: on the full gold seventy two measured 3.92:1 and
-       eighty scraped 4.58. This sits back from the figure without going under
-       the floor. */
-    color:color-mix(in srgb, var(--color-navy) 85%, transparent);
-  }
-  .hp__v{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.15rem;
-    line-height:1.25; color:var(--color-navy); }
-  /* The same flag the badge wears, so there is one drawing and one rule for
-     it. Only what differs on a light ground is stated: the hairline that
-     separates it from ivory, and the space before the words. */
-  .hp__fact .hz__flag{
-    margin-right:.45rem; vertical-align:-1px;
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-navy) 85%, transparent);
-  }
-
-  .hp__acts{ display:flex; flex-wrap:wrap; gap:.7rem; }
-  /* The ghost button is drawn for a navy plate. On the ivory ground it was
-     white on ivory, which is the one thing this project has a hard rule
-     about. Same treatment the pinned header gives it. */
-  .hp__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
-  .hp__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
-
-  /* ── the pedigree ──────────────────────────────────────────────────────
-     The one component on this site that had to be drawn from scratch, and
-     it is drawn as the page's navy plate rather than as a table: four
-     columns, each generation half the height of the one before it, which is
-     what a pedigree is. Rows span rather than nest, so there is no table
-     markup to fight on a phone.
-     Below 760px it scrolls sideways in its own box rather than folding,
-     because a pedigree folded into one column is no longer a pedigree. */
-  /* No plate under the pedigree any more: it stands on the page ground with
-     the supplied mark large behind it, the way the about section carries the
-     head as a watermark. The cells keep their shape and take their tint from
-     navy instead of from white, so the three generations still read as three
-     weights. */
-  .ped{ position:relative; isolation:isolate; overflow:clip; }
-  .ped__plate{ position:relative; z-index:1; overflow-x:auto; }
-  /* The mark is measured against the height of the section rather than the
-     width of the page, so it stays the same size relative to the pedigree
-     whether that is four rows or eight, and the section clips whatever
-     hangs over the edge. */
-  .ped__mark{
-    position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:-11%; top:50%; transform:translateY(-50%);
-    height:126%; opacity:.05;
-    /* It stands taller than the section on purpose, so the section clips it.
-       Clipped alone that reads as a rectangle drawn on the page, so it fades
-       out at the top and the bottom instead of stopping. */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-  }
-  .ped__mark img{ height:100%; width:auto; display:block; }
-  /* On a narrow screen the pedigree scrolls sideways and fills the section
-     edge to edge, so there is no quiet ground left for a watermark to sit in
-     and it reads as clutter behind the names. It is a desktop grace note. */
-  @media (max-width: 900px){ .ped__mark{ display:none; } }
-  .ped__h{
-    margin:0 0 1.4rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05;
-    color:var(--color-ink);
-  }
-  .ped__h em{ font-style:italic; color:var(--color-gold); }
-  .ped__grid{
-    display:grid; grid-template-columns:repeat(4, minmax(150px, 1fr));
-    gap:.4rem; min-width:640px;
-  }
-  /* Three generations, three weights of the same warm ground: the parents
-     carry the full base-alt, the grandparents a little over half of it, the
-     great grandparents a trace. Mixing navy into ivory was tried first and
-     came out grey against a warm page. */
-  .ped__cell{
-    display:flex; align-items:center; min-width:0;
-    padding:.7rem .9rem; border-radius:var(--ctl-radius);
-    background:color-mix(in srgb, var(--color-base-alt) 58%, var(--color-base));
-    font-family:var(--font-display); font-weight:400; font-size:.92rem; line-height:1.2;
-    color:var(--color-ink);
-  }
-  /* The horse itself, and on a cross the space where one will be, keep the
-     gold: it is the accent of the section and the only cell that is not a
-     name already written down. */
-  .ped__cell--self, .ped__cell--next{
-    background:var(--color-gold); color:var(--color-navy); font-size:1.05rem;
-  }
-  .ped__cell--sire{ background:var(--color-base-alt); }
-  .ped__cell--third{ font-size:.82rem; color:var(--color-ink-soft);
-    background:color-mix(in srgb, var(--color-base-alt) 26%, var(--color-base)); }
-
-  /* The first cell of a cross's pedigree is not a horse, it is the space
-     where one will be, so it is not filled in like the others: no ground of
-     its own, the supplied mark behind the words, and the gold kept for the
-     type. */
-  .ped__cell--next{ justify-content:flex-start; font-family:var(--font-display); }
-  .ped__note{
-    margin:1.2rem 0 0; font-size:13px; color:var(--color-ink-soft);
-  }
-
-  /* The remaining photographs of this horse. Two or more, or the section is
-     not drawn: a gallery of one is just a picture. */
-  /* ── the pictures ──────────────────────────────────────────────────────
-     A heading, then a run of frames of one height so the row reads as a row
-     rather than as a ragged edge, and any number of them: some horses have
-     one spare picture and one has five. Clicking opens it at full size
-     without leaving the page. */
-  .hgal__head, .hvid__head{ margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
-  .hgal__h, .hvid__h{
-    margin:.5rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-ink);
-  }
-  .hgal__h em, .hvid__h em{ font-style:italic; color:var(--color-gold); }
-  /* The gallery is a rail like the films, so any number of pictures fits and
-     the layout never decides how many are allowed. Three at a time on a wide
-     screen, two on a tablet, one on a phone. */
-  .hgal__rail{
-    display:grid; grid-auto-flow:column; grid-auto-columns:78%;
-    gap:clamp(.8rem,1.4vw,1.1rem);
-    overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
-    scrollbar-width:none; -ms-overflow-style:none;
-  }
-  .hgal__rail::-webkit-scrollbar{ display:none; }
-  @media (min-width:700px){ .hgal__rail{ grid-auto-columns:calc(50% - (clamp(.8rem,1.4vw,1.1rem) / 2)); } }
-  @media (min-width:1100px){ .hgal__rail{ grid-auto-columns:calc(33.333% - (clamp(.8rem,1.4vw,1.1rem) * 2 / 3)); } }
-  .hgal__f{
-    position:relative; border-radius:var(--plate-radius); overflow:hidden;
-    background:var(--color-navy-deep); aspect-ratio:4/3; display:block;
-    width:100%; padding:0; border:0; cursor:zoom-in; scroll-snap-align:start;
-  }
-  .hgal__f img{ display:block; width:100%; height:100%; object-fit:cover;
-    transition:transform .7s var(--ease); }
-  .hgal__f:hover img{ transform:scale(1.04); }
-  .hgal__bar[hidden]{ display:none; }
-  .hgal__bar{ display:flex; align-items:center; justify-content:space-between;
-    gap:1rem; margin-top:clamp(1rem,2vw,1.4rem); }
-  .hgal__dots{ display:flex; gap:.5rem; }
-  .hgal__dot{
-    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
-    background:var(--color-line); transition:background .3s var(--ease), transform .3s var(--ease);
-  }
-  .hgal__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
-  .hgal__arrows{ display:flex; gap:.5rem; }
-  .hgal__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line); background:transparent;
-    color:var(--color-ink); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hgal__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hgal__arrow:disabled{ opacity:.32; cursor:default; }
-
-  /* ── the films ─────────────────────────────────────────────────────────
-     30 Aug: the same navy plate the sire and dam lines stand on, in the same
-     place on the page, and a slider once there is more than one. A film is a
-     dark thing to look at, so it belongs on the dark plate rather than on the
-     ivory ground with the photographs. */
-  .hvid__plate{
-    padding:clamp(1.5rem,3vw,2.3rem); border-radius:var(--plate-radius);
-    background:var(--color-navy-deep);
-  }
-  .hvid__head{ margin-bottom:clamp(1.1rem,2.2vw,1.6rem); }
-  .hvid__k{
-    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
-  }
-  .hvid__h{
-    margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.05; color:var(--color-white);
-  }
-  .hvid__h em{ font-style:italic; color:var(--color-gold); }
-
-  /* One rail, scrolled rather than transformed: the browser keeps track of
-     where it is, a touch can swipe it, and it still works with the script
-     switched off. */
-  .hvid__rail{
-    display:grid; grid-auto-flow:column; grid-auto-columns:100%;
-    gap:clamp(1rem,2vw,1.6rem);
-    overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
-    scrollbar-width:none; -ms-overflow-style:none;
-  }
-  .hvid__rail::-webkit-scrollbar{ display:none; }
-  @media (min-width:900px){
-    /* Two at a time on a wide screen, one on a narrow one. A single film
-       fills the plate either way. */
-    .hvid__rail{ grid-auto-columns:calc(50% - (clamp(1rem,2vw,1.6rem) / 2)); }
-    .hvid__rail:has(.hvid__slide:only-child){ grid-auto-columns:100%; }
-  }
-  .hvid__slide{ scroll-snap-align:start; min-width:0; }
-  .hvid__btn{
-    position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer;
-    border-radius:var(--card-radius); overflow:hidden;
-    background:color-mix(in srgb, var(--color-navy) 82%, var(--color-white));
-    aspect-ratio:16/9;
-  }
-  .hvid__btn img{ display:block; width:100%; height:100%; object-fit:cover;
-    transition:transform .7s var(--ease); }
-  .hvid__btn:hover img{ transform:scale(1.03); }
-  .hvid__veil{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(var(--veil-rgb),.06) 0%, rgba(var(--veil-rgb),.34) 100%); }
-  .hvid__play{
-    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
-    background:var(--color-gold); color:var(--color-navy);
-    box-shadow:0 12px 34px -12px rgba(var(--veil-rgb),.85);
-    transition:transform .35s var(--ease);
-  }
-  .hvid__btn:hover .hvid__play{ transform:translate(-50%,-50%) scale(1.08); }
-  .hvid__slide iframe{ display:block; width:100%; aspect-ratio:16/9; border:0;
-    border-radius:var(--card-radius); background:var(--color-navy-deep); }
-  .hvid__cap{ margin:.75rem 0 0; font-size:14px; line-height:1.55; color:rgba(255,255,255,.76); }
-  /* A film of the sire or the dam, on a page about the foal: said out loud
-     rather than left for the visitor to work out from the name. */
-  .hvid__whose{
-    display:inline-block; margin-right:.4rem; padding:.2em .6em; border-radius:var(--ctl-radius);
-    background:var(--color-gold); color:var(--color-navy);
-    font-family:var(--font-body); font-weight:700; font-size:9.5px; letter-spacing:.14em;
-    text-transform:uppercase; vertical-align:.12em;
-  }
-
-  .hvid__bar[hidden]{ display:none; }
-  .hvid__bar{ display:flex; align-items:center; justify-content:space-between;
-    gap:1rem; margin-top:clamp(1.1rem,2.2vw,1.5rem); }
-  .hvid__dots{ display:flex; gap:.5rem; }
-  .hvid__dot{
-    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
-    background:var(--color-line-invert); transition:background .3s var(--ease), transform .3s var(--ease);
-  }
-  .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
-  .hvid__arrows{ display:flex; gap:.5rem; }
-  .hvid__arrow{
-    width:40px; height:40px; border-radius:50%; cursor:pointer;
-    border:1px solid var(--color-line-invert); background:transparent;
-    color:var(--color-white); font-size:16px; line-height:1; display:grid; place-items:center;
-    transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .hvid__arrow:hover:not(:disabled){ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .hvid__arrow:disabled{ opacity:.32; cursor:default; }
-  .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
-
-  /* ── the lightbox ──────────────────────────────────────────────────────
-     One dialog for the whole page, opened with the picture that was clicked. */
-  .lb{ border:0; padding:0; background:transparent; max-width:none; max-height:none;
-    width:100%; height:100%; }
-  .lb::backdrop{ background:rgba(var(--veil-rgb),.92); }
-  .lb__in{ display:grid; place-items:center; width:100%; height:100%; padding:clamp(1rem,4vw,3rem); }
-  .lb img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block;
-    border-radius:var(--plate-radius); }
-  .lb__x{
-    position:absolute; top:clamp(1rem,3vw,2rem); right:clamp(1rem,3vw,2rem);
-    width:44px; height:44px; border-radius:50%; border:1px solid var(--color-line-invert);
-    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
-    font-size:20px; line-height:1; display:grid; place-items:center;
-  }
-  .lb__x:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .lb__nav{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:48px; height:48px; border-radius:50%; border:1px solid var(--color-line-invert);
-    background:rgba(var(--veil-rgb),.5); color:var(--color-white); cursor:pointer;
-    font-size:20px; line-height:1; display:grid; place-items:center;
-  }
-  .lb__nav:hover{ background:var(--color-gold); color:var(--color-navy); border-color:transparent; }
-  .lb__nav--prev{ left:clamp(.6rem,2vw,1.6rem); }
-  .lb__nav--next{ right:clamp(.6rem,2vw,1.6rem); }
-  @media (prefers-reduced-motion: reduce){
-    .hgal__f img, .hvid__btn img, .hvid__play, .hvid__dot, .hgal__dot{ transition:none; }
-    .hgal__f:hover img, .hvid__btn:hover img{ transform:none; }
-    .hvid__rail, .hgal__rail{ scroll-behavior:auto; }
-  }
-
-  /* More from the same group: the homepage card again, three of them. */
-  .hmore__head{
-    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
-    flex-wrap:wrap; margin-bottom:1.4rem;
-  }
-  .hmore__h{
-    margin:0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.4rem,1.6vw + .8rem,1.9rem); color:var(--color-ink);
-  }
-  .hmore__h em{ font-style:italic; color:var(--color-gold); }
-  .hmore__all{
-    font-family:var(--font-body); font-weight:700; font-size:11.5px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--color-navy);
-    display:inline-flex; align-items:center; gap:.45rem; transition:gap .35s var(--ease);
-  }
-  .hmore__all:hover{ gap:.8rem; }
-  .hmore__all .a{ color:var(--color-gold); }
-  @media (min-width:900px){ .hmore .hz__grid{ grid-template-columns:repeat(3, 1fr); } }
-
-
+  /* The form, the same split plate the sixty horse pages carry, minus the
+     About field: on a horse page it names the horse, here there is none. */
+  .cn__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
+    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
+  @media (min-width:900px){ .cn__box{ grid-template-columns:.85fr 1.15fr; } }
+  .cn__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
+    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
+  .cn__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
+  .cn__h em{ font-style:italic; color:var(--color-gold); }
+  .cn__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
+  .cn__places{ display:grid; gap:.9rem; }
+  .cn__place{ display:grid; gap:.1rem; padding-top:.9rem; border-top:1px solid var(--color-line-invert); }
+  .cn__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--color-gold); }
+  .cn__pv{ font-family:var(--font-display); font-size:1.05rem; color:var(--color-white); }
+  .cn__pd{ font-family:var(--font-body); font-size:13px; color:rgba(255,255,255,.6); }
 </style>
 </head>
 <body>
@@ -2629,175 +2034,105 @@
 
 <main id="main">
 
-  <section class="hp hp--hero">
-    
-    <div class="eh__win">
-      <img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" fetchpriority="high">
-      <span class="eh__veil" aria-hidden="true"></span>
-      <a class="eh__back" href="/sport-horses"><span aria-hidden="true">&larr;</span> Sport horses</a>
+  <section class="nhero cnhero">
+    <div class="nhero__bg" aria-hidden="true">
+      <img src="/assets/img/hero-neck-wide.jpg" alt="" fetchpriority="high">
     </div>
-    <div class="wrap hp__grid">
-      <div class="hp__col">
-        <div class="hp__pic"><img src="/assets/img/horses/domino-van-den-haze-z-2.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></div>
-      </div>
-      <div class="hp__col">
-        <div class="hp__tray">
-          <h1 class="hp__h">Domino Van den Haze Z</h1>
-          
-          <p class="hp__lead">Just saddle broken!</p>
-
-          <div class="hp__acts">
-            <a href="#ask" class="btn btn-gold btn-pill">Ask about this horse</a>
-            <a href="https://www.horsetelex.com/horses/pedigree/2188792/domino-van-den-haze-z" target="_blank" rel="noopener"
-               class="btn btn-ghost btn-pill">Pedigree on Horsetelex</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="hp__facts" style="--cols:3">
-        <div class="hp__fact"><span class="hp__k">Born</span><span class="hp__v">2018</span></div>
-            <div class="hp__fact"><span class="hp__k">Sex</span><span class="hp__v">Mare</span></div>
-            <div class="hp__fact"><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
-            <div class="hp__fact"><span class="hp__k">Height</span><span class="hp__v">170 cm</span></div>
-            <div class="hp__fact"><span class="hp__k">Status</span><span class="hp__v"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D7141A"/><path d="M0 0 12 8 0 16Z" fill="#11457E"/></svg></span>Sold to Czechia</span></div>
+      <div class="nhero__grid">
+        <div>
+          <p class="plaque">Contact</p>
+          <h1 class="arch__h">Write to us <em>directly</em></h1>
+        </div>
+        <p class="arch__intro">There is nobody in between. Elisabetta and Adriano read what comes
+        in and one of them answers.</p>
       </div>
     </div>
   </section>
 
-  <section class="ped">
-    <div class="ped__mark" aria-hidden="true">
-      <img src="/assets/logo/icon-onlight.png" data-ground="light" alt="">
-    </div>
+  <section class="cn">
     <div class="wrap">
-      <div class="ped__plate">
-        <h2 class="ped__h">Three generations <em>deep</em></h2>
-        <div class="ped__grid">
-          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Domino Van den Haze Z</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Dominator 2000 Z</div><div class="ped__cell " style="grid-row: span 2">Diamant de Semilly</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Le tot de Semilly</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Venise des Cresles</div><div class="ped__cell " style="grid-row: span 2">Chephale 2000</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Cassini I</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Nephale</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Centa van’t gelutt Z</div><div class="ped__cell " style="grid-row: span 2">Cento</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Capitol I</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Viola XI</div><div class="ped__cell " style="grid-row: span 2">Ta Pomme</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Jus de pomme</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Nirwana de la Cour</div>
-        </div>
-        <p class="ped__note">The full pedigree is on <a href="https://www.horsetelex.com/horses/pedigree/2188792/domino-van-den-haze-z" target="_blank" rel="noopener" style="color:var(--color-navy)">Horsetelex</a>.</p>
-        
+      <div class="cn__ways">
+        <a class="cn__way" href="https://wa.me/393495918565" target="_blank" rel="noopener">
+          <span class="cn__init" aria-hidden="true">W</span>
+          <span class="cn__wn">WhatsApp</span>
+          <span class="cn__wv">Fastest reply</span>
+          <span class="cn__wk">Message us</span>
+        </a>
+        <a class="cn__way" href="tel:+393495918565">
+          <span class="cn__init" aria-hidden="true">E</span>
+          <span class="cn__wn">Elisabetta</span>
+          <span class="cn__wv">+39 349 591 8565</span>
+          <span class="cn__wk">Call or message</span>
+        </a>
+        <a class="cn__way" href="tel:+393483953433">
+          <span class="cn__init" aria-hidden="true">A</span>
+          <span class="cn__wn">Adriano</span>
+          <span class="cn__wv">+39 348 395 3433</span>
+          <span class="cn__wk">Call or message</span>
+        </a>
       </div>
-    </div>
-  </section>
 
-  <section class="hvid">
-    <div class="wrap">
-      <div class="hvid__plate">
-        <div class="hvid__head">
-          <p class="hvid__k">On film</p>
-          <h2 class="hvid__h">Domino Van den Haze Z <em>in motion</em></h2>
-        </div>
-        <div class="hvid__rail">
-          <div class="hvid__slide">
-            <button type="button" class="hvid__btn" data-yt="0OotzOHq04A"
-                    aria-label="Play film 1 of 1">
-              <img src="/assets/img/video/0OotzOHq04A.jpg" alt="" loading="lazy">
-              <span class="hvid__veil" aria-hidden="true"></span>
-              <span class="hvid__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-              </span>
-            </button>
-            
-          </div>
-        </div>
-        
-        <p class="hvid__note">The player loads only when you press play.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hgal">
-    <div class="wrap">
-      <div class="hgal__head">
-        <p class="plaque">two more pictures</p>
-        <h2 class="hgal__h">More of <em>Domino Van den Haze Z</em></h2>
-      </div>
-      <div class="hgal__rail" tabindex="0" aria-label="Pictures, scroll sideways">
-        <button type="button" class="hgal__f" data-full="/assets/img/horses/domino-van-den-haze-z-3.jpg"
-                aria-label="Open picture 1 of 2 at full size"><img src="/assets/img/horses/domino-van-den-haze-z-3.jpg" alt="Domino Van den Haze Z" loading="lazy"></button>
-        <button type="button" class="hgal__f" data-full="/assets/img/horses/domino-van-den-haze-z-4.jpg"
-                aria-label="Open picture 2 of 2 at full size"><img src="/assets/img/horses/domino-van-den-haze-z-4.jpg" alt="Domino Van den Haze Z" loading="lazy"></button>
-      </div>
-      <div class="hgal__bar">
-        <div class="hgal__dots" role="tablist" aria-label="Pictures">
-          <button type="button" class="hgal__dot" role="tab" data-to="0"
-                  aria-label="Picture 1" aria-selected="true"></button>
-          <button type="button" class="hgal__dot" role="tab" data-to="1"
-                  aria-label="Picture 2" aria-selected="false"></button>
-        </div>
-        <div class="hgal__arrows">
-          <button type="button" class="hgal__arrow" data-step="-1" aria-label="Previous picture">&#8592;</button>
-          <button type="button" class="hgal__arrow" data-step="1" aria-label="Next picture">&#8594;</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ask" id="ask">
-    <div class="wrap">
-      <div class="ask__box">
-        <div class="ask__side">
+      <div class="cn__box">
+        <div class="cn__side">
           <div>
-            <p class="plaque">Get in touch</p>
-            <h2 class="ask__h">Ask us about <em>Domino Van den Haze Z</em></h2>
-            <p class="ask__lead">Write to us and we will get back to you.</p>
+            <p class="plaque">By mail</p>
+            <h2 class="cn__h">Tell us what you are <em>looking for</em></h2>
+            <p class="cn__lead">Write to us and we will get back to you. If you would rather write
+            yourself, we are at <a href="mailto:studvonaxe@gmail.com" style="color:var(--color-gold)">studvonaxe@gmail.com</a>.</p>
           </div>
-          <div class="ask__people">
-            <a class="ask__p" href="tel:+393495918565">
-              <span class="ask__pk">Elisabetta</span><span class="ask__pv">+39 349 591 8565</span></a>
-            <a class="ask__p" href="tel:+393483953433">
-              <span class="ask__pk">Adriano</span><span class="ask__pv">+39 348 395 3433</span></a>
-            <a class="ask__p" href="mailto:studvonaxe@gmail.com">
-              <span class="ask__pk">By mail</span><span class="ask__pv">studvonaxe@gmail.com</span></a>
+          <div class="cn__places">
+            <div class="cn__place">
+              <span class="cn__pk">Where the crosses are made</span>
+              <span class="cn__pv">Desenzano del Garda</span>
+              <span class="cn__pd">Italy</span>
+            </div>
+            <div class="cn__place">
+              <span class="cn__pk">Where the foals are raised</span>
+              <span class="cn__pv">Lanaken</span>
+              <span class="cn__pd">Belgium</span>
+            </div>
           </div>
         </div>
-        <form class="ask__form" data-horse="Domino Van den Haze Z">
+        <form class="ask__form" data-horse="">
           <div class="ask__pair">
             <div class="ask__row">
-              <label for="ask-name">Your name</label>
-              <input id="ask-name" name="name" type="text" required autocomplete="name" placeholder="Name">
+              <label for="cn-name">Your name</label>
+              <input id="cn-name" name="name" type="text" required autocomplete="name" placeholder="Name">
             </div>
             <div class="ask__row">
-              <label for="ask-email">Email</label>
-              <input id="ask-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+              <label for="cn-email">Email</label>
+              <input id="cn-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
             </div>
           </div>
           <div class="ask__pair">
             <div class="ask__row">
-              <label for="ask-tel">Telephone <span class="ask__opt">optional</span></label>
-              <input id="ask-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+              <label for="cn-tel">Telephone <span class="ask__opt">optional</span></label>
+              <input id="cn-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
             </div>
             <div class="ask__row">
-              <label for="ask-about">About</label>
-              <input id="ask-about" name="about" type="text" value="Domino Van den Haze Z">
+              <label for="cn-about">What about</label>
+              <select id="cn-about" name="about" required>
+                <option value="" selected>Choose one</option>
+                <option>A foal</option>
+                <option>An embryo</option>
+                <option>A breeding mare</option>
+                <option>A sport horse</option>
+                <option>Semen</option>
+                <option>Something else</option>
+              </select>
             </div>
           </div>
           <div class="ask__row">
-            <label for="ask-msg">Your message</label>
-            <textarea id="ask-msg" name="message" rows="4" required
-              placeholder="What would you like to know about Domino Van den Haze Z?"></textarea>
+            <label for="cn-msg">Your message</label>
+            <textarea id="cn-msg" name="message" rows="4" required
+              placeholder="What are you looking for?"></textarea>
           </div>
           <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
           <p class="ask__note" role="status"></p>
         </form>
       </div>
-    </div>
-  </section>
-
-  <section class="hmore">
-    <div class="wrap">
-      <div class="hmore__head">
-        <h2 class="hmore__h">More <em>horses</em></h2>
-        <a class="hmore__all" href="/sport-horses">All horses <span class="a" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><span class="hz__name">Diamecho Von Axe Z</span><span class="hz__meta">2020 · Gelding · Diamant de Semilly</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><span class="hz__name">Kashillio MB Z</span><span class="hz__meta">2016 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Spain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg></span>Sold<span class="visually-hidden"> to Spain</span></span></span></span><span class="hz__body"><span class="hz__name">Contouch SVA</span><span class="hz__meta">2015 · Gelding</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
     </div>
   </section>
 
@@ -2896,120 +2231,6 @@
       });
     });
   }
-})();
-</script>
-<script>
-(function(){
-  var films = document.querySelectorAll('.hvid__btn');
-  for (var i = 0; i < films.length; i++) films[i].addEventListener('click', function(){
-    var id = this.getAttribute('data-yt');
-    if (!id) return;
-    var frame = document.createElement('iframe');
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-    frame.title = this.getAttribute('aria-label') || 'Film';
-    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
-    frame.allowFullscreen = true;
-    this.parentNode.replaceChild(frame, this);
-  });
-})();
-
-(function(){
-  /* One slider, two rails. The films and the pictures behave the same way, so
-     they run the same lines rather than two copies free to drift apart. The
-     rail is a scroll container: this only nudges it and reads back where it
-     landed, so a swipe and a click cannot disagree about the position. */
-  var slide = function(prefix){
-    var rail = document.querySelector('.' + prefix + '__rail');
-    var bar = document.querySelector('.' + prefix + '__bar');
-    if (!rail || !bar) return;
-    var slides = [].slice.call(rail.children);
-    var dots = [].slice.call(bar.querySelectorAll('.' + prefix + '__dot'));
-    var arrows = [].slice.call(bar.querySelectorAll('.' + prefix + '__arrow'));
-    var at = function(){
-      var best = 0, near = Infinity, left = rail.scrollLeft;
-      for (var n = 0; n < slides.length; n++) {
-        var d = Math.abs(slides[n].offsetLeft - rail.offsetLeft - left);
-        if (d < near) { near = d; best = n; }
-      }
-      return best;
-    };
-    /* How far the rail can actually go. With three pictures side by side and
-       four in the rail the last reachable position is the second, not the
-       fourth: an arrow that stays lit with nowhere to go, and a dot that can
-       never light up, are both lies about the same thing. */
-    var last = function(){
-      var max = rail.scrollWidth - rail.clientWidth, best = 0;
-      for (var n = 0; n < slides.length; n++)
-        if (slides[n].offsetLeft - rail.offsetLeft <= max + 1) best = n;
-      return best;
-    };
-    /* Painted from the index being moved to rather than from the scroll
-       position: a smooth scroll has not arrived when the click is handled, and
-       the scroll event that would correct it does not fire everywhere. */
-    var paint = function(n){
-      var end = last();
-      bar.hidden = end === 0;
-      if (end === 0) return;
-      if (n == null) n = at();
-      for (var i = 0; i < dots.length; i++) {
-        dots[i].hidden = i > end;
-        dots[i].setAttribute('aria-selected', i === n ? 'true' : 'false');
-      }
-      arrows[0].disabled = n <= 0;
-      arrows[1].disabled = n >= end;
-    };
-    /* The value is set and the stylesheet decides whether that is a glide or a
-       jump: scrollTo with smooth behaviour is ignored outright by some
-       engines, which left the arrows doing nothing at all. */
-    var go = function(n){
-      n = Math.max(0, Math.min(last(), n));
-      rail.scrollLeft = slides[n].offsetLeft - rail.offsetLeft;
-      paint(n);
-    };
-    for (var a = 0; a < arrows.length; a++) (function(btn){
-      btn.addEventListener('click', function(){ go(at() + Number(btn.getAttribute('data-step'))); });
-    })(arrows[a]);
-    for (var b = 0; b < dots.length; b++) (function(btn){
-      btn.addEventListener('click', function(){ go(Number(btn.getAttribute('data-to'))); });
-    })(dots[b]);
-    rail.addEventListener('scroll', function(){ paint(); }, { passive: true });
-    addEventListener('resize', function(){ paint(); });
-    paint();
-  };
-  slide('hvid');
-  slide('hgal');
-})();
-
-(function(){
-  var shots = [].slice.call(document.querySelectorAll('.hgal__f[data-full]'));
-  if (!shots.length) return;
-  var dlg = document.createElement('dialog');
-  dlg.className = 'lb';
-  dlg.innerHTML = '<div class="lb__in"><img alt=""></div>' +
-    '<button class="lb__x" type="button" aria-label="Close">&times;</button>' +
-    (shots.length > 1
-      ? '<button class="lb__nav lb__nav--prev" type="button" aria-label="Previous picture">&#8592;</button>' +
-        '<button class="lb__nav lb__nav--next" type="button" aria-label="Next picture">&#8594;</button>'
-      : '');
-  document.body.appendChild(dlg);
-  var img = dlg.querySelector('img'), at = 0;
-  function show(n){
-    at = (n + shots.length) % shots.length;
-    img.src = shots[at].getAttribute('data-full');
-    img.alt = shots[at].querySelector('img').alt;
-  }
-  for (var j = 0; j < shots.length; j++) (function(n){
-    shots[n].addEventListener('click', function(){ show(n); dlg.showModal(); });
-  })(j);
-  dlg.querySelector('.lb__x').addEventListener('click', function(){ dlg.close(); });
-  var prev = dlg.querySelector('.lb__nav--prev'), next = dlg.querySelector('.lb__nav--next');
-  if (prev) prev.addEventListener('click', function(){ show(at - 1); });
-  if (next) next.addEventListener('click', function(){ show(at + 1); });
-  dlg.addEventListener('click', function(e){ if (e.target === dlg || e.target.className === 'lb__in') dlg.close(); });
-  dlg.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowLeft' && prev) show(at - 1);
-    if (e.key === 'ArrowRight' && next) show(at + 1);
-  });
 })();
 </script>
 <script>

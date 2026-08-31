@@ -11,7 +11,7 @@
  */
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript } from './lib/shell.mjs';
 
 const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
@@ -105,51 +105,6 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   .hvid__btn--stand{ cursor:default; }
   .hvid__btn--stand:hover img{ transform:none; }
   .hvid__btn--stand .hvid__play{ opacity:.55; }
-
-  /* ── the contact section ───────────────────────────────────────────────
-     Variation one of the six, chosen on 30 Aug. Navy half carries the
-     invitation and the four ways to reach them; ivory half carries the form.
-     It stands where the CTA plate stood. */
-  .ask{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
-  .ask__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
-    box-shadow:0 34px 76px -46px rgba(var(--veil-rgb),.55); }
-  @media (min-width:900px){ .ask__box{ grid-template-columns:.85fr 1.15fr; } }
-  .ask__side{ display:flex; flex-direction:column; justify-content:space-between; gap:2rem;
-    padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-navy-deep); }
-  .ask__h{ margin:.5rem 0 .6rem; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-white); }
-  .ask__h em{ font-style:italic; color:var(--color-gold); }
-  .ask__lead{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.74); max-width:38ch; }
-  .ask__people{ display:grid; }
-  .ask__p{ display:flex; flex-direction:column; gap:.15rem; padding:.7rem 0;
-    border-top:1px solid var(--color-line-invert); transition:padding-left .35s var(--ease); }
-  .ask__p:hover{ padding-left:.4rem; }
-  .ask__pk{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); }
-  .ask__pv{ font-family:var(--font-display); font-size:1rem; color:var(--color-white); }
-  /* The form is shorter than the column of names beside it, so it is centred
-     against it rather than hanging from the top with the space all at the
-     bottom. */
-  .ask__form{ padding:clamp(1.6rem,3vw,2.4rem); background:var(--color-base);
-    display:flex; flex-direction:column; justify-content:center; }
-  .ask__pair{ display:grid; gap:1rem; }
-  @media (min-width:620px){ .ask__pair{ grid-template-columns:1fr 1fr; } }
-  .ask__row{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
-  .ask__row label{ font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold); }
-  .ask__opt{ font-weight:400; letter-spacing:.06em; text-transform:none; opacity:.75; }
-  .ask__row input, .ask__row textarea{
-    width:100%; font-family:var(--font-body); font-size:15px; color:var(--color-ink);
-    background:var(--color-base); border:1px solid var(--color-line);
-    border-radius:var(--ctl-radius); padding:.7rem .85rem;
-    transition:border-color .3s var(--ease);
-  }
-  .ask__row input:focus, .ask__row textarea:focus{ outline:none; border-color:var(--color-gold); }
-  .ask__row textarea{ resize:vertical; line-height:1.55; }
-  .ask__form > .ask__row:last-of-type{ margin-bottom:1.4rem; }
-  .ask__form .btn{ align-self:flex-start; }
-  .ask__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
-  .ask__note:empty{ display:none; }
 
   /* ── the filter bar ────────────────────────────────────────────────────
      A field and three chips over the grid. The chips are the homepage's own
@@ -1978,43 +1933,6 @@ const heroSection = (g) => `
 /* The horse page: every section above, in the order they are defined, with
    the ones that have nothing to show left out entirely rather than drawn
    empty. */
-/* The form has nowhere to post to: this site is static files on Vercel with no
-   back end and no mail account behind it. Rather than swallow the message the
-   way the homepage form does, it hands it to the visitor's own mail app with
-   every field already written out, so pressing send actually sends something.
-   When a form service or a function is chosen, this is the one block that
-   changes and the markup stays exactly as it is. */
-const askScript = `<script>
-(function(){
-  var form = document.querySelector('.ask__form');
-  if (!form) return;
-  var note = form.querySelector('.ask__note');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (!form.reportValidity()) return;
-    var get = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
-    var about = get('about') || form.getAttribute('data-horse');
-    var body = [
-      'About: ' + about,
-      'Name: ' + get('name'),
-      'Email: ' + get('email'),
-      get('tel') ? 'Telephone: ' + get('tel') : '',
-      '',
-      get('message')
-    /* Escaped twice on purpose: this file is a template literal, so a single
-       backslash-n written here becomes a real line break in the page and
-       leaves the string open. The closing script tag has the same trap, which
-       is why naming it inside this comment closed the script and broke all
-       sixty pages: a comment is still text in the output. */
-    ].filter(function(l){ return l !== ''; }).join('\\n');
-    note.textContent = 'Opening your mail app with the message ready to send. If nothing happens, write to studvonaxe@gmail.com.';
-    location.href = 'mailto:studvonaxe@gmail.com'
-      + '?subject=' + encodeURIComponent('Enquiry: ' + about)
-      + '&body=' + encodeURIComponent(body);
-  });
-})();
-<\/script>`;
-
 const horsePage = (horse, group, body) => `<!DOCTYPE html>
 <html lang="en">
 <head>
