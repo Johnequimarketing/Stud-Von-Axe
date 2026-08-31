@@ -48,8 +48,8 @@ echo "copied index.html, news-data.js, the about page, $(ls "$here/news" | wc -l
 # Read out of index.html rather than copying the whole folder, so an
 # unused or unreleased photograph can never reach the internet by sitting
 # in the same directory as one that is used.
-mkdir -p "$here/assets/img/horses" "$here/assets/img/video" "$here/assets/img/placeholder" "$here/assets/logo"
-rm -f "$here/assets/img/"*.jpg "$here/assets/img/"*.png "$here/assets/img/horses/"* "$here/assets/img/video/"* "$here/assets/img/placeholder/"* "$here/assets/logo/"*
+mkdir -p "$here/assets/img/horses" "$here/assets/img/video" "$here/assets/img/placeholder" "$here/assets/img/share" "$here/assets/logo"
+rm -f "$here/assets/img/"*.jpg "$here/assets/img/"*.png "$here/assets/img/horses/"* "$here/assets/img/video/"* "$here/assets/img/placeholder/"* "$here/assets/img/share/"* "$here/assets/logo/"*
 count=0
 while IFS= read -r ref; do
   if [[ -f "$root/$ref" ]]; then
@@ -63,7 +63,7 @@ done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/
   "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
   "$root/icsi-semen/"*.html "$root/contact/index.html" \
   "$root/privacy/index.html" "$root/terms/index.html" "$root/404.html" \
-  | grep -oE 'assets/(img/horses|img/video|img/placeholder|img|logo)/[A-Za-z0-9._-]+' | sort -u)
+  | grep -oE 'assets/(img/horses|img/video|img/placeholder|img/share|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 
 echo

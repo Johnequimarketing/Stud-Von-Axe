@@ -349,7 +349,7 @@ const WAYS = [
 
 writeFileSync(join(root, '404.html'), page({
   title: 'Page not found',
-  desc: 'That page is not here. The horses, the crosses and the stallions are.',
+  desc: 'That page is not here. The sport horses, the breeding mares, the foals, the crosses and the ICSI stallions all are, and every one of them is one link away.',
   path: '/404',
   hd: header,
   body: `

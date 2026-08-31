@@ -181,6 +181,73 @@ miscount.length
   ? fail(`${miscount.length} archive(s) whose card count does not match the data`, miscount)
   : pass('every archive shows exactly the horses in its category');
 
+/* ── the head a search engine and a share sheet read ───────────────────
+   31 Aug. Every page had a title, a description and a canonical from the
+   start, and two things behind them were wrong for months without showing:
+   fifty of the fifty nine og:images were smaller than the 1200 by 630 the
+   networks want, so a pasted link showed a thumbnail rather than the horse,
+   and eighty eight of the eighty nine pages had no twitter:card, which is the
+   one tag that decides whether X draws the wide picture at all.
+   A share card is invisible from inside the site. It only shows in somebody
+   else's chat window, which is exactly why it needs a check. */
+{
+  const dir = (d) => existsSync(join(root, d)) ? readdirSync(join(root, d), { withFileTypes: true }) : [];
+  const walk = (d) => dir(d).flatMap((e) => {
+    const rel = d ? `${d}/${e.name}` : e.name;
+    if (e.isDirectory()) {
+      return /^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(e.name)
+        ? [] : walk(rel);
+    }
+    return e.name.endsWith('.html') && !e.name.startsWith('_') ? [rel] : [];
+  });
+  const public_ = walk('').filter((f) => !/<meta name="internal-doc"/.test(read(f)));
+  const grab = (h, re) => (h.match(re) || [, ''])[1];
+
+  const missing = [], small = [], noCard = [], longTitle = [], badDesc = [];
+  const titles = new Map(), descs = new Map();
+  for (const f of public_) {
+    const h = read(f);
+    const title = grab(h, /<title>([\s\S]*?)<\/title>/).trim();
+    const desc = grab(h, /<meta name="description" content="([^"]*)"/);
+    const img = grab(h, /<meta property="og:image" content="([^"]*)"/).replace(/^https?:\/\/[^/]+\//, '');
+    if (!/twitter:card/.test(h)) noCard.push(f);
+    if (title.length > 62) longTitle.push(`${f}: ${title.length} characters`);
+    if (desc.length < 70 || desc.length > 160) badDesc.push(`${f}: ${desc.length} characters`);
+    (titles.get(title) || titles.set(title, []).get(title)).push(f);
+    (descs.get(desc) || descs.set(desc, []).get(desc)).push(f);
+    if (!img || !existsSync(join(root, img))) { missing.push(`${f}: ${img || 'none'}`); continue; }
+    /* The size is read out of the JPEG itself rather than trusted: the tags
+       claim 1200 by 630 and a tag cannot resize a picture. */
+    const buf = readFileSync(join(root, img));
+    let i = 2, w = 0, ht = 0;
+    while (i < buf.length - 9) {
+      if (buf[i] !== 0xff) { i++; continue; }
+      const m = buf[i + 1];
+      if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+        ht = buf.readUInt16BE(i + 5); w = buf.readUInt16BE(i + 7); break;
+      }
+      i += 2 + buf.readUInt16BE(i + 2);
+    }
+    if (w < 1200 || ht < 630) small.push(`${f}: ${img} is ${w}x${ht}`);
+  }
+  const dup = (m, what) => [...m].filter(([, v]) => v.length > 1)
+    .map(([k, v]) => `${v.length} pages share this ${what}: ${String(k).slice(0, 50)}`);
+
+  missing.length ? fail(`${missing.length} page(s) whose share picture is not on disk`, missing)
+    : pass(`every page names a share picture that exists`);
+  small.length ? fail(`${small.length} share picture(s) under 1200x630`, small)
+    : pass(`every share picture is at least 1200x630`);
+  noCard.length ? fail(`${noCard.length} page(s) with no twitter:card`, noCard)
+    : pass('every page carries a twitter card');
+  longTitle.length ? fail(`${longTitle.length} title(s) over 62 characters`, longTitle)
+    : pass('every title fits a search result');
+  badDesc.length ? fail(`${badDesc.length} description(s) outside 70 to 160 characters`, badDesc)
+    : pass('every description is between 70 and 160 characters');
+  const dups = [...dup(titles, 'title'), ...dup(descs, 'description')];
+  dups.length ? fail(`${dups.length} title(s) or description(s) used twice`, dups)
+    : pass(`all ${public_.length} titles and descriptions are unique`);
+}
+
 /* ── 8. the sitemap lists every public page ────────────────────────────*/
 if (existsSync(join(root, 'sitemap.xml'))) {
   const map = read('sitemap.xml');

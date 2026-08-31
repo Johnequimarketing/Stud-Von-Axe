@@ -110,7 +110,20 @@ export const navScript = `<script>
 
 /* The head every generated page shares. What differs per page is passed in:
    the title, the description, the path, the og:image and the JSON-LD type. */
-export const head = ({ title, desc, path, image = 'hero-sport.jpg', ldType = 'WebPage', ldExtra = {} }) =>
+/* What a link to this page looks like when it is pasted into WhatsApp or
+   posted on Facebook. The networks want 1200 by 630; the photographs on this
+   site are at most 1100 wide and usually taller than they are wide, so fifty
+   of the fifty nine pages were handing over a picture too small for a large
+   card. Every photograph now has a card of its own, built by
+   scripts/make-share-cards.py, and the page points at that rather than at the
+   photograph: same name, one folder along. */
+const shareCard = (image) => {
+  const stem = String(image).split('/').pop().replace(/\.[a-z]+$/i, '');
+  return `/assets/img/share/${stem}.jpg`;
+};
+
+export const head = ({ title, desc, path, image = 'hero-sport.jpg', ldType = 'WebPage',
+                       ogType = 'website', ldExtra = {} }) =>
 `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)} | Stud Von Axe</title>
@@ -118,11 +131,22 @@ export const head = ({ title, desc, path, image = 'hero-sport.jpg', ldType = 'We
 <!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://www.studvonaxe.it${path}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
+<meta property="og:url" content="https://www.studvonaxe.it${path}">
+<meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Stud Von Axe">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="https://www.studvonaxe.it/assets/img/${image}">
+<meta property="og:image" content="https://www.studvonaxe.it${shareCard(image)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(title)}, Stud Von Axe">
+<!-- X reads the og tags when these are missing, but only for a small card:
+     without twitter:card it never shows the wide picture. -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="https://www.studvonaxe.it${shareCard(image)}">
 <script type="application/ld+json">
 ${JSON.stringify({ '@context': 'https://schema.org', '@type': ldType, name: title, ...ldExtra })}
 <\/script>

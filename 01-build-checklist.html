@@ -536,6 +536,32 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         country" on the stallion archive, which has neither. And the contact page said "Two countries,
         one programme" twice, once in the form and once over the maps.</span></span><span class="state s-ok">Done</span></li>
 
+      <li class="item" data-k="b23"><input type="checkbox"><span class="what"><b>The share picture every page hands to WhatsApp and Facebook</b>
+        <span class="why">Titles, descriptions, canonicals and structured data were right on all
+        eighty nine pages and had been from the start. Two things behind them were not, and neither is
+        visible from inside the site: <b>fifty of the fifty nine og:images were smaller than the 1200
+        by 630 the networks want</b>, because a harvested horse photograph is at most 1100 wide and
+        usually taller than it is wide, so a pasted link showed a thumbnail beside the text rather
+        than the horse; and <b>eighty eight of the eighty nine had no twitter:card</b>, which is the
+        one tag that decides whether X draws the wide picture at all.
+        Every photograph now has a card of its own at 1200 by 630, built by
+        <code>scripts/make-share-cards.py</code>: the horse whole in the middle, and the space either
+        side is the same picture blown up, blurred and darkened, so nothing is cropped and the colours
+        are the horse's own. Re-run it when the real photographs arrive.
+        The news pages also carried a second copy of the head and it had drifted: no twitter card, no
+        og:url, and one photograph of a sport horse on all five stories whatever they were about. They
+        use the shared head now.
+        Six checks in the audit so this cannot come back, proved by putting the old state
+        back.</span></span><span class="state s-ok">Done</span></li>
+
+      <li class="item" data-k="b24"><input type="checkbox"><span class="what"><b>The canonical points at studvonaxe.it and the domain is not settled</b>
+        <span class="why">Every page says <code>https://www.studvonaxe.it/…</code> is the real address
+        of that page. That is right if the site keeps the .it domain and wrong the day it moves, and
+        the owners said .com at the meeting. It is one line in
+        <code>scripts/lib/shell.mjs</code>, but it has to be the right line before anything is indexed:
+        a canonical pointing at a domain that does not serve the page tells a search engine to ignore
+        the page it is reading.</span></span><span class="state s-client">On the client</span></li>
+
       <li class="item" data-k="b4"><input type="checkbox"><span class="what"><b>Confirm the domain:</b> they said .com, the live site is studvonaxe.it
         <span class="why">Ask before anything goes on staging.</span></span><span class="state s-client">On the client</span></li>
     </ul>

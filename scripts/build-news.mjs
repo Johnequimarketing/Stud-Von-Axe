@@ -8,7 +8,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, headerFor, footer as footerHtml, esc, navScript }
+import { root, homeCss, pageHeroCss, headerFor, footer as footerHtml, esc, navScript, head as sharedHead }
   from './lib/shell.mjs';
 
 /* The data file is plain browser JS (`var NEWS = [...]`); evaluate it. */
@@ -148,26 +148,19 @@ const CSS = homeCss + pageHeroCss + `
   }
 `;
 
-const head = (title, desc, slug) => `<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} | Stud Von Axe</title>
-<meta name="description" content="${esc(desc)}">
-<!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
-<meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://www.studvonaxe.it/news/${slug}">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Stud Von Axe">
-<meta property="og:title" content="${esc(title)}">
-<meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="https://www.studvonaxe.it/assets/img/hero-sport.jpg">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"NewsArticle","headline":${JSON.stringify(title)},
- "publisher":{"@type":"Organization","name":"Stud Von Axe"}}
-<\/script>
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+/* One head, the shared one. This file used to carry its own copy and the two
+   had drifted: the news pages had no twitter card, no og:url and no og:locale,
+   and every one of the five handed over the same photograph of a sport horse
+   whatever the story was about. A second implementation of a thing that
+   already exists is a second thing to keep in step, and this one was not. */
+const head = (title, desc, slug, image) => sharedHead({
+  title, desc,
+  path: slug ? `/news/${slug}` : '/news',
+  image: image || 'news-hero.jpg',
+  ogType: slug ? 'article' : 'website',
+  ldType: slug ? 'NewsArticle' : 'CollectionPage',
+  ldExtra: slug ? { headline: title, publisher: { '@type': 'Organization', name: 'Stud Von Axe' } } : {},
+}) + `
 <style>${CSS}</style>`;
 
 /* News joined the bar on 31 Aug, so these pages mark it the way a horse page
@@ -197,7 +190,7 @@ const cards = NEWS.map((n) => `      <li><a class="nw__card" href="/news/${n.slu
 writeFileSync(join(root, 'news', 'index.html'), `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head('News and results', 'Results in the ring, horses sold, and news from Desenzano and Lanaken.', '')}
+${head('News and results', 'Results in the ring, horses sold, and news from Desenzano and Lanaken.', '', 'news-hero.jpg')}
 </head>
 <body>
 ${header}
@@ -236,7 +229,7 @@ NEWS.forEach((n, i) => {
   writeFileSync(join(root, 'news', `${n.slug}.html`), `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head(n.title, n.excerpt, n.slug)}
+${head(n.title, n.excerpt, n.slug, n.img)}
 </head>
 <body>
 ${header}
