@@ -418,9 +418,14 @@
      right hand group is pushed to the far edge by a margin rather than by
      giving the two sides the same width, which is what used to cap each side
      at 497 pixels however wide the screen was. */
-  .hd__start{ display:flex; align-items:center; min-width:0; flex:0 1 auto; }
-  .hd__end{ display:flex; align-items:center; gap:1rem; flex:0 0 auto;
-    margin-left:auto; padding-left:1.4rem; }
+  /* Equal shares of the leftover room, which is what actually centres the
+     mark: space-between only centres a middle item when the two outer groups
+     happen to be the same width. Each side gets 516 pixels at the cap, and
+     the right hand one, which carries three names, WhatsApp and the button,
+     needs 405 of them. */
+  .hd__start{ display:flex; align-items:center; min-width:0; flex:1 1 0; }
+  .hd__end{ display:flex; align-items:center; justify-content:flex-end;
+    gap:1rem; flex:1 1 0; min-width:0; }
   .hd__rule{
     position:relative; z-index:20; height:1px;
     background:var(--color-line-invert);
@@ -452,7 +457,7 @@
   /* The right hand half of the bar. One recipe with the left half, listed
      beside it above rather than restated here, so the two can never drift
      into two kinds of menu link on one bar. */
-  .hd__nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
+  .hd__nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; margin-right:.4rem; }
   /* Shown only inside the drawer, where the right hand half is not on
      screen. Above the drawer breakpoint these are the two links in
      .hd__nav and these copies are not drawn. The five archives work the same
@@ -489,14 +494,14 @@
      seven need 555, which is why Contact is not on the bar: it cannot fit at
      any width, and it is the gold button eighteen pixels to the right of the
      mark, so the bar already carries it.
-     That was the arithmetic while the mark stood in the middle. It does not
-     any more: it is the first thing in the row and the whole width is one
-     line, so the bar holds the mark, six names, two more names and two
-     buttons down to 1150, measured with the real serif. This line sits at
-     1180, just above where the slack runs out, so 1200, 1280 and 1366 all get
-     the real bar. It has moved three times in three days for the same reason
-     each time: a number measured once for one arrangement kept standing after
-     the arrangement changed.
+     The mark is centred again and the six names are split three a side, which
+     is what makes it fit: the right hand group, three names with WhatsApp and
+     the button, needs 405 of the 412 pixels the arrangement leaves at this
+     width. Measured with the real serif at 1160, where the clearance is down
+     to eleven pixels.
+     This line has moved four times in three days, every time because a number
+     measured once for one arrangement kept standing after the arrangement
+     changed. It is measured for this one.
      The gap is a flat rem rather than a vw: one that grows with the screen
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
@@ -521,10 +526,9 @@
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
     .nav-toggle{ display:block; }
-    /* The right hand half goes into the drawer with the rest. Its two links
-       are drawn from the copies inside the drawer, so the bar keeps only
-       WhatsApp and the contact button at this width. The panel closes and
-       its five archives become five rows. */
+    /* The right hand half goes into the drawer with the rest. Its three
+       links are drawn from the copies inside the drawer, so the bar keeps
+       only WhatsApp and the contact button at this width. */
     .hd__nav{ display:none; }
     .hd__drawerOnly{ display:block; }
   }
@@ -542,6 +546,13 @@
     .brand{ padding-inline:.6rem; }
     .brand img{ width:96px; }
     .hd .btn-sm{ font-size:10.5px; padding:.75em 1em; }
+    /* The mark stops being centred here, and only here. Equal shares means
+       each side of a 390 bar gets ninety one pixels while the right one
+       carries WhatsApp and the button and needs a hundred and fifty two, so
+       the buttons walked over the mark. Below 526 pixels, measured, there is
+       not room for a centred mark and both controls; the row simply spreads
+       out instead and the mark sits a little left of centre. */
+    .hd__start, .hd__end{ flex:0 1 auto; }
   }
 
   /* ============================================================
@@ -2080,17 +2091,29 @@
      photograph, so it lives inside the hero section. -->
   <header class="hd">
     <div class="hd__row">
-      <!-- 31 Aug, second try. The mark stood in the middle of the bar, which
-           looks handsome and costs the two halves everything: whatever the
-           monitor, each side had 497 pixels and six items needed 483, so the
-           drawer had to take over at 1380 and a thirteen inch laptop got a
-           burger menu on a desktop. Folding the five archives under one word
-           fixed the room and cost the visitor the five names, which Mark
-           called right: nobody has to work out what is behind a word.
-           So the mark moved to the left and the whole width is one row. Every
-           page is named, nothing is hidden, and the bar holds far lower down
-           than it ever did centred. -->
+      <!-- 31 Aug, third arrangement and Mark's call. The mark is back in the
+           middle and the six pages are split around it: what the stud is and
+           who is in the field on the left, what it sells on the right, then
+           the two things a visitor can do. About us and News came off the bar
+           altogether and live in the footer, where they were before.
+           Three names a side is well inside the room a centred mark leaves,
+           so the bar holds far lower than the six-in-a-row version ever did:
+           the drawer takes over at 1140 rather than 1380. -->
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
+
+      <div class="hd__start">
+        <nav class="primary-nav" id="primary-nav" aria-label="Main">
+          <a href="#top" aria-current="page">Home</a>
+          <a href="sport-horses/">Sport horses</a>
+          <a href="breeding-mares/">Breeding mares</a>
+          <!-- The other half of the same menu, for the drawer, where there is
+               one column and no mark in the middle to split it. One set is
+               ever on screen. -->
+          <a href="foals/" class="hd__drawerOnly">Foals</a>
+          <a href="embryos/" class="hd__drawerOnly">Embryos</a>
+          <a href="icsi-semen/" class="hd__drawerOnly">ICSI semen</a>
+        </nav>
+      </div>
 
       <a href="#top" class="brand" aria-label="Stud Von Axe home">
         <!-- Two marks, one per ground, which is what the two supplied files
@@ -2108,27 +2131,11 @@
         <img class="brand__onlight" src="assets/logo/logo-plain-onlight.png" data-ground="light"
              alt="" aria-hidden="true" width="520" height="244">
       </a>
-
-      <div class="hd__start">
-        <!-- The pages the owners named on 29 Aug 2026, in the order Mark set
-             on 31 Aug. Contact is not a link here because it is the gold
-             button at the other end of the same bar. -->
-        <nav class="primary-nav" id="primary-nav" aria-label="Main">
-          <a href="#top" aria-current="page">Home</a>
-          <a href="sport-horses/">Sport horses</a>
-          <a href="breeding-mares/">Breeding mares</a>
+      <div class="hd__end">
+        <nav class="hd__nav" aria-label="What we sell">
           <a href="foals/">Foals</a>
           <a href="embryos/">Embryos</a>
           <a href="icsi-semen/">ICSI semen</a>
-          <a href="about/" class="hd__drawerOnly">About us</a>
-          <a href="news/" class="hd__drawerOnly">News</a>
-        </nav>
-      </div>
-
-      <div class="hd__end">
-        <nav class="hd__nav" aria-label="About the stud">
-          <a href="about/">About us</a>
-          <a href="news/">News</a>
         </nav>
         <!-- WhatsApp is how these two actually answer, so it sits on the bar
              beside the form. Drawn here rather than pulled from an icon set:
