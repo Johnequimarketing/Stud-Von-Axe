@@ -1218,7 +1218,12 @@
   }
   .pgr__fix{
     display:flex; flex-direction:column; justify-content:center;
-    min-height:clamp(320px, 27vw, 400px);
+    /* The rail beside it is inset: ten pixels at the head and sixteen at the
+       foot, which is the room its cards need for their shadow. The fixed card
+       sits on the same two lines, so the block reads as one row of cards
+       rather than a tall panel with three short cards beside it. */
+    margin-block:10px 16px;
+    min-height:clamp(300px, 24vw, 360px);
     padding:clamp(1.2rem,2vw,1.7rem);
     border-radius:var(--card-radius);
     background:var(--color-navy-deep); color:var(--color-white);
@@ -1244,8 +1249,13 @@
   .pgr__cta .a{ transition:transform .3s var(--ease); }
   .pgr__cta:hover .a{ transform:translateX(4px); }
 
-  .pgr__wrap{ position:relative; min-width:0; }
+  /* The rail fills the row rather than sitting at the height of its own
+     content: without this the cards stopped wherever their words ended and
+     the fixed card beside them ran on, which on the stallions was a seventy
+     pixel step because a stallion card carries no quoted line. */
+  .pgr__wrap{ position:relative; min-width:0; display:flex; }
   .pgr__run{
+    flex:1 1 auto; align-items:stretch;
     display:flex; gap:var(--card-gap);
     overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
     /* overflow-x:auto makes the BLOCK axis a scrollport too, so a card's
@@ -1255,15 +1265,19 @@
     scrollbar-width:none; -ms-overflow-style:none;
   }
   .pgr__run::-webkit-scrollbar{ display:none; }
-  /* Exactly three beside the fixed card, so the row reads as four. */
+  /* Two beside the fixed card, on Mark's word, 31 Aug. Three made each card
+     narrow enough that a stallion's name and his sire line were the whole of
+     it; two gives the picture room and the run still slides. */
   .pgr__run > li{
-    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    flex:0 0 calc((100% - var(--card-gap)) / 2);
     scroll-snap-align:start; display:flex;
   }
+  /* Every card the full height of the rail, so two beside each other end on
+     the same line whatever their words do. */
+  .pgr__run > li > *{ height:100%; }
   .pgr__run > li:last-child{ scroll-snap-align:end; }
   .pgr__wrap .topics-arrow--prev{ left:-22px; }
   .pgr__wrap .topics-arrow--next{ right:-22px; }
-  @media (max-width:899px){ .pgr__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
   @media (max-width:560px){ .pgr__run > li{ flex-basis:84%; } }
 
   /* ---- the closing plate ----
