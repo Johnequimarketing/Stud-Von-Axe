@@ -23,13 +23,10 @@ cp "$root/news-data.js" "$here/news-data.js"
 cp "$root/horses-home.js" "$here/horses-home.js"
 cp "$root/sitemap.xml" "$here/sitemap.xml"
 cp "$root/robots.txt" "$here/robots.txt"
-# One internal document goes out on purpose: the card variations Mark has to
-# choose from, so he can look at them on a phone. It carries noindex and no
-# client data. Take this line out once a variation is chosen.
-cp "$root/04-embryo-cards.html" "$here/04-embryo-cards.html"
-cp "$root/05-embryo-lines.html" "$here/05-embryo-lines.html"
-cp "$root/06-embryo-head.html" "$here/06-embryo-head.html"
-cp "$root/07-horse-contact.html" "$here/07-horse-contact.html"
+# Four variation documents used to be published here so Mark could pick a
+# design on his phone. Every one of those choices has been made and built, so
+# they came off the site and out of the repository on 31 Aug. Which variation
+# won is written beside the code that carries it.
 mkdir -p "$here/news"
 rm -f "$here/news/"*.html
 cp "$root/news/"*.html "$here/news/"
@@ -63,7 +60,6 @@ while IFS= read -r ref; do
     exit 1
   fi
 done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
-  "$root/07-horse-contact.html" \
   "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
   "$root/icsi-semen/"*.html "$root/contact/index.html" \
   "$root/privacy/index.html" "$root/terms/index.html" "$root/404.html" \

@@ -1994,7 +1994,7 @@ ${rest.map((h) => '        ' + (group.card ? group.card(h, false) : card(h, grou
 /* ── the horse page, section six: the invitation ───────────────────────
    The plate the whole site closes on, with this horse named in it. */
 /* ── the contact section, on every single page ─────────────────────────
-   Variation one of the six in 07-horse-contact.html, chosen on 30 Aug: the
+   Variation one of the six laid out on 30 Aug and chosen the same day: the
    invitation and the four ways to reach them on the navy half, the form on
    the ivory half. It replaces the CTA plate rather than standing next to it,
    because two invitations in a row is one too many, and the buttons higher up
