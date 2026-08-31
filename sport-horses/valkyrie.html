@@ -1686,6 +1686,11 @@
   .footer-partners{ display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; font-size:12.5px; color:#ffffff8f; }
   .footer-partners a{ color:#ffffffb5; border-bottom:1px solid transparent; }
   .footer-partners a:hover{ border-color:var(--color-gold); }
+  /* The registered line. Quieter than the copyright above it and on its own
+     row, because it is a legal requirement rather than something to read. */
+  .footer-reg{ padding-bottom:2rem; }
+  .footer-reg p{ margin:0; font-family:var(--font-body); font-size:11.5px; line-height:1.6;
+    color:#ffffff5c; }
   .footer-copy{ font-size:12.5px; color:#ffffff70; }
   .footer-made{ display:inline-block; margin-left:.9rem; padding-left:.9rem;
                 border-left:1px solid var(--color-line-invert); }
@@ -2168,6 +2173,8 @@
     letter-spacing:0; text-transform:none; color:var(--color-ink);
   }
   .ord__check input{ flex:none; width:18px; height:18px; margin-top:.15rem; accent-color:var(--color-gold); }
+  .ord__check a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); }
+  .ord__check a:hover{ border-color:var(--color-gold); }
 
   /* The summary. Their answers back to them, in the order they were asked. */
   .ord__sum{ margin:0 0 1.4rem; display:grid; gap:0; }
@@ -2564,6 +2571,12 @@
   .ped__cell--sire{ background:var(--color-base-alt); }
   .ped__cell--third{ font-size:.82rem; color:var(--color-ink-soft);
     background:color-mix(in srgb, var(--color-base-alt) 26%, var(--color-base)); }
+  /* A name their own pages do not carry. It reads as a gap on purpose: no
+     ground of its own, a dashed edge, and the words rather than a blank. */
+  .ped__cell--todo{
+    background:none; box-shadow:inset 0 0 0 1px var(--color-line);
+    color:var(--color-ink-soft); font-style:italic; opacity:.7;
+  }
 
   /* The first cell of a cross's pedigree is not a horse, it is the space
      where one will be, so it is not filled in like the others: no ground of
@@ -3077,13 +3090,23 @@
   </div>
 
   <div class="wrap footer-bottom">
-    <p class="footer-copy">&#169; 2026 Stud Von Axe. All rights reserved.
+    <p class="footer-copy">&#169; 2026 Von Axe. All rights reserved.
       <span class="footer-made">Made by <a href="https://equimarketing.com" target="_blank" rel="noopener">EquiMarketing</a></span></p>
+    <!-- The two listing sites came off on 31 Aug at Mark's word. Their place
+         is the two legal pages, which the order form's last step now has
+         something to point at. -->
     <div class="footer-partners">
-      <span>Listed on</span>
-      <a href="https://www.horsetelex.com/sponsors/profile/4368/stud-von-axe" target="_blank" rel="noopener">HorseTelex &#8599;</a>
-      <span>Hippomundo (logo to follow)</span>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms and conditions</a>
     </div>
+  </div>
+
+  <!-- The registered company, word for word as Mark sent it on 31 Aug and as
+       their own site's footer has it. An Italian company has to carry its
+       name, its seat and its VAT number where a visitor can find them. -->
+  <div class="wrap footer-reg">
+    <p>Stud Von Axe Az. Agr. s.s. &middot; Via per Arni 30, 55032 Castelnuovo Garfagnana (LU), Italy
+    &middot; P. IVA IT02519980466</p>
   </div>
 
   <div class="lang">
@@ -3135,7 +3158,7 @@
 (function(){
   var hd = document.querySelector('.hd');
   var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero');
+  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero, .nf');
   if(hd && row && hero){
     var onScroll = function(){
       hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);

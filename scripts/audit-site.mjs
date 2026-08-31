@@ -195,6 +195,9 @@ if (existsSync(join(root, 'sitemap.xml'))) {
         walk(rel);
       } else if (name.name.endsWith('.html')) {
         if (/<meta name="internal-doc"/.test(read(rel))) continue;
+        /* The 404 is public and audited like any page, and it is the one page
+           that must not be in the sitemap: that file says come and fetch this. */
+        if (rel === '404.html') continue;
         onDisk.push(rel === 'index.html' ? '/' : '/' + rel.replace(/\/index\.html$/, '').replace(/\.html$/, ''));
       }
     }

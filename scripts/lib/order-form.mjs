@@ -167,13 +167,15 @@ ${s.fields.map((f) => '              ' + field(f, horseName)).join('\n')}
             <legend class="ord__h"><span class="ord__no">0${STEPS.length + 1}</span> Summary</legend>
             <p class="ord__lead">Everything you have filled in. This is what reaches us, word for word.</p>
             <dl class="ord__sum"></dl>
+            <!-- Both link out since 31 Aug: a box asking somebody to agree to a
+                 document they cannot open is not worth ticking. -->
             <div class="ask__row ord__check">
               <label for="ord-terms"><input type="checkbox" id="ord-terms" name="terms" data-req="1">
-              <span>I agree to the breeding terms</span></label>
+              <span>I agree to the <a href="/terms" target="_blank" rel="noopener">terms and conditions</a></span></label>
             </div>
             <div class="ask__row ord__check">
               <label for="ord-privacy"><input type="checkbox" id="ord-privacy" name="privacy" data-req="1">
-              <span>I agree to the privacy statement</span></label>
+              <span>I agree to the <a href="/privacy" target="_blank" rel="noopener">privacy policy</a></span></label>
             </div>
           </fieldset>
 
@@ -256,6 +258,8 @@ export const orderCss = `
     letter-spacing:0; text-transform:none; color:var(--color-ink);
   }
   .ord__check input{ flex:none; width:18px; height:18px; margin-top:.15rem; accent-color:var(--color-gold); }
+  .ord__check a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); }
+  .ord__check a:hover{ border-color:var(--color-gold); }
 
   /* The summary. Their answers back to them, in the order they were asked. */
   .ord__sum{ margin:0 0 1.4rem; display:grid; gap:0; }

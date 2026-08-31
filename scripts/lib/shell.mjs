@@ -24,7 +24,7 @@ export const relink = (html) => html
   .replace(/href="#/g, 'href="/#')
   .replace(/href="news\/"/g, 'href="/news"')
   .replace(/href="about\/"/g, 'href="/about"')
-  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact|icsi-semen)\/"/g, 'href="/$1"')
+  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact|icsi-semen|privacy|terms)\/"/g, 'href="/$1"')
   .replace(/(src|href)="assets\//g, '$1="/assets/')
   .replace(/href="index.html"/g, 'href="/"');
 
@@ -80,7 +80,7 @@ export const navScript = `<script>
 (function(){
   var hd = document.querySelector('.hd');
   var row = hd && hd.querySelector('.hd__row');
-  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero');
+  var hero = document.querySelector('.nhero, .ahero, .abhero, .eh, .hp--hero, .nf');
   if(hd && row && hero){
     var onScroll = function(){
       hd.classList.toggle('is-pinned', hero.getBoundingClientRect().bottom <= row.offsetHeight + 8);

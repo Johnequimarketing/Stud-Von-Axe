@@ -57,21 +57,19 @@ const PARENTS = (() => {
   return m;
 })();
 
-/* Tried on 31 Aug and left off, on purpose. Filling from the index gives two
-   of the eight great grandparents on Aganix and none at all on three of the
-   thirteen, so the table gains a pair of stray boxes and the heading goes back
-   to claiming a generation it is barely showing. Thirteen pages at two
-   different depths is also the inconsistency this round is about. All thirteen
-   stop at the grandparents until a Horsetelex link per stallion arrives in
-   horses-extra.js, where the empty field is already waiting; then this becomes
-   a real fourth column rather than a ragged one. On the checklist.
-   The index stays because the day those links arrive it is the fallback for
-   anything they do not cover. */
-const thirdFromIndex = (p) => {
+/* Every stallion's third generation, as far as their own tables carry it.
+   Sixteen of the fifty two pairs are in there; the rest are simply not on
+   their site. Mark's call on 31 Aug: draw the table whole either way and let
+   the cells we cannot fill say so, rather than a short table or a ragged one.
+   All sixty of their own horses have all fourteen, so the words only ever
+   appear on these thirteen pages. */
+for (const st of SEMEN) {
+  const p = st.pedigree;
+  if (p.third && p.third.length) continue;
   const of = (n) => PARENTS.get(keyOf(n)) || { sire: '', dam: '' };
-  return [p.sireSire, p.sireDam, p.damSire, p.damDam]
+  p.third = [p.sireSire, p.sireDam, p.damSire, p.damDam]
     .flatMap((n) => { const r = of(n); return [r.sire, r.dam]; });
-};
+}
 
 const HORSES = [...HARVESTED, ...SEMEN];
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
@@ -526,6 +524,12 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
   .ped__cell--sire{ background:var(--color-base-alt); }
   .ped__cell--third{ font-size:.82rem; color:var(--color-ink-soft);
     background:color-mix(in srgb, var(--color-base-alt) 26%, var(--color-base)); }
+  /* A name their own pages do not carry. It reads as a gap on purpose: no
+     ground of its own, a dashed edge, and the words rather than a blank. */
+  .ped__cell--todo{
+    background:none; box-shadow:inset 0 0 0 1px var(--color-line);
+    color:var(--color-ink-soft); font-style:italic; opacity:.7;
+  }
 
   /* The first cell of a cross's pedigree is not a horse, it is the space
      where one will be, so it is not filled in like the others: no ground of
@@ -1708,15 +1712,16 @@ const pedigreeSection = (horse) => {
      a stallion has no fourth generation on record, so his own dam ended up in
      the grandparents' column reading as his granddam. A pedigree that puts a
      horse in the wrong generation is worse than one with a gap in it. */
+  /* A cell with no name is drawn anyway and says what it is: an empty box
+     would read as a fault in the table and a missing box moves the horses
+     below it into the wrong generation. Mark, 31 Aug: "maak dan de pedigree
+     nog wel gewoon compleet, maar plaats er dan to be filled in". Only the
+     thirteen stallions have any, because their own horses' tables are whole. */
   const cell = (name, cls, col, row, span) =>
-    name ? `<div class="ped__cell ${cls}" style="grid-column:${col}; grid-row:${row} / span ${span}">${esc(horseName(name))}</div>` : '';
+    `<div class="ped__cell ${cls}${name ? '' : ' ped__cell--todo'}"` +
+    ` style="grid-column:${col}; grid-row:${row} / span ${span}">` +
+    `${name ? esc(horseName(name)) : 'To be filled in'}</div>`;
   const third = p.third || [];
-  /* The heading used to say three generations on every page that had a sire.
-     A stallion has no fourth column: his own pedigree is read out of the
-     tables on his crosses, which stop at his grandparents, and the page then
-     promised a generation it was not showing. It counts what it draws. */
-  const depth = third.some(Boolean) ? 3
-    : [p.sireSire, p.sireDam, p.damSire, p.damDam].some(Boolean) ? 2 : 1;
   const branch = (parent, gsire, gdam, from, top) =>
     cell(parent, 'ped__cell--sire', 2, top, 4) +
     cell(gsire, '', 3, top, 2) +
@@ -1732,7 +1737,7 @@ const pedigreeSection = (horse) => {
     </div>
     <div class="wrap">
       <div class="ped__plate">
-        <h2 class="ped__h">${depth === 3 ? 'Three generations' : depth === 2 ? 'Two generations' : 'One generation'} <em>deep</em></h2>
+        <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
           ${horse.category === 'embryo'
             ? `<div class="ped__cell ped__cell--next" style="grid-column:1; grid-row:1 / span 8">Your next embryo</div>`

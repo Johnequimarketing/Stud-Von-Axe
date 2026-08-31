@@ -294,6 +294,10 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://stud-von-axe-ten.vercel.app/privacy</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://stud-von-axe-ten.vercel.app/sport-horses</loc>
     <priority>0.8</priority>
   </url>
@@ -343,6 +347,10 @@
   </url>
   <url>
     <loc>https://stud-von-axe-ten.vercel.app/sport-horses/valkyrie</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://stud-von-axe-ten.vercel.app/terms</loc>
     <priority>0.5</priority>
   </url>
 </urlset>

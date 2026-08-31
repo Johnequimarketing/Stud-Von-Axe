@@ -35,7 +35,10 @@ const walk = (dir) => readdirSync(dir).flatMap((name) => {
 
 /* An internal document is one that says so in its own head. That is the same
    test the audit uses, so the two cannot disagree about what is public. */
-const isInternal = (file) => /<meta name="internal-doc"/.test(readFileSync(file, 'utf-8'));
+const isInternal = (file) => /<meta name="internal-doc"/.test(readFileSync(file, 'utf-8'))
+  /* A 404 is a real page and a public one, and it still has no place in a
+     sitemap: the file lists what a search engine should come and fetch. */
+  || /(^|\/)404\.html$/.test(file.replace(/\\/g, '/'));
 
 const urlFor = (file) => {
   const rel = relative(root, file).replace(/\\/g, '/');
