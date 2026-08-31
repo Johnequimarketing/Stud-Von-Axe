@@ -162,6 +162,10 @@
        bleeding to all four edges, the way the floating header plate already
        is. One number, so it is one edit to widen, tighten or take out. */
     --hero-inset: var(--gutter);
+    /* The top inset has to clear the whole bar, mark and all, not match the
+       sides: a photograph that stops halfway down the bar puts half of each
+       menu word on ivory and half on the picture. */
+    --hero-top: calc(var(--hd-top) + var(--hd-plate) + clamp(.7rem, 1.4vh, 1.1rem));
     /* the smaller cut, used where a plate overlaps the section under it */
     --cut-band: clamp(2.5rem, 4.5vw, 4rem);
     /* How far the menu plate hangs below the top edge. The logo plate
@@ -624,16 +628,42 @@
      photograph, and inset from the top it would stand on ivory and disappear.
      Keeping the picture under the bar keeps the bar exactly as it was, which
      is what was asked for.
-     Nor off the foot: the tray of topic cards is pulled up by --cut so that it
+     Off the top as well, on the second pass, and that one carries a cost that
+     could not be avoided: the bar stands on the page ground now, so its white
+     mark and white links would be invisible, and they turn to ink below. It is
+     the only thing besides the picture that moves.
+     Not off the foot: the tray of topic cards is pulled up by --cut so that it
      cuts into the hero from below, and that is a shape the two make together.
      Taking anything off the bottom stands the tray clear of the picture and
-     leaves a band of ivory between them. So the picture keeps its full height
-     and is held off the two sides only, which is the whole of what changes. */
+     leaves a band of ivory between them. */
   .hero__bg{
     position:absolute;
-    inset:0 var(--hero-inset) 0;
-    border-radius:0 0 var(--plate-radius) var(--plate-radius); overflow:hidden;
+    inset:var(--hero-top) var(--hero-inset) 0;
+    border-radius:var(--plate-radius) var(--plate-radius) 0 0; overflow:hidden;
   }
+
+  /* The homepage bar, before it pins. Every other page still opens on a
+     photograph that runs to the top and keeps the white treatment above; here
+     the picture starts below the mark, so the bar reads as ink on ivory from
+     the first pixel. Scoped with :has so no page without a .hero is touched
+     and nothing has to be added to the markup that the lift would carry. */
+  body:has(.hero) .hd:not(.is-pinned) .primary-nav a,
+  body:has(.hero) .hd:not(.is-pinned) .hd__nav a,
+  body:has(.hero) .hd:not(.is-pinned) .nav-toggle{ color:var(--color-ink); text-shadow:none; }
+  body:has(.hero) .hd:not(.is-pinned) .hd__wa{
+    color:var(--color-navy); border-color:var(--color-line); text-shadow:none;
+  }
+  body:has(.hero) .hd:not(.is-pinned) .hd__wa:hover{
+    background:var(--color-navy); color:var(--color-white); border-color:var(--color-navy);
+  }
+  body:has(.hero) .hd:not(.is-pinned) .primary-nav a:hover,
+  body:has(.hero) .hd:not(.is-pinned) .primary-nav a[aria-current="page"],
+  body:has(.hero) .hd:not(.is-pinned) .hd__nav a:hover,
+  body:has(.hero) .hd:not(.is-pinned) .hd__nav a[aria-current="page"]{ color:var(--color-navy); }
+  /* The mark swaps to the navy file, the one meant for a light ground, and
+     loses the drop shadow it wore to stand on a photograph. */
+  body:has(.hero) .hd:not(.is-pinned) .brand__ondark{ opacity:0; filter:none; }
+  body:has(.hero) .hd:not(.is-pinned) .brand__onlight{ opacity:1; }
     /* Pushed right so the mare sits left of the centred statement rather
      than directly behind it. */
   .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
@@ -657,7 +687,11 @@
     display:flex; flex-direction:column; justify-content:center; align-items:center;
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
-    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
+    /* Inside the frame, not level with it: the picture is held off the sides
+       by --hero-inset, so text padded to the same number touches the edge it
+       is standing on. On a phone that was ten pixels of daylight. */
+    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px))
+            calc(var(--hero-inset) + clamp(1rem, 3vw, 2rem)) var(--hero-air);
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
