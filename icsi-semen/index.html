@@ -1114,6 +1114,9 @@
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius);
   }
+  /* One link per archive on the All tab, three of them, so they wrap on a
+     narrow screen rather than pushing the note out of the plate. */
+  .hz__more{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
   .hz__banner b{
     display:block; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
@@ -2197,6 +2200,26 @@
     width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  /* The narrowing that is not a yes or no. What is for sale is a chip, because
+     it is the first question and it has two answers; a studbook, a sex and a
+     year are lists, and a list of five chips beside a list of eight is a wall
+     of buttons. Same box as a form field, one size down: this is a control
+     bar, not a form. */
+  .flt__sels{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__sel select{
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:.55rem 2.4em .55rem .9rem; min-height:40px;
+    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
+    background-color:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:13px;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__sel select:hover{ border-color:var(--color-navy); }
+  .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
@@ -2862,6 +2885,31 @@
   }
 
   /* More from the same group: the homepage card again, three of them. */
+  /* The same rail as the homepage runs: a scroller with snap points, the
+     arrows half outside it on a wide screen and on it below 1180. */
+  .hmore__wrap{ position:relative; min-width:0; }
+  .hmore__run{
+    list-style:none; margin:0; padding:10px 2px 62px; display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scroll-behavior:smooth; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hmore__run::-webkit-scrollbar{ display:none; }
+  .hmore__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex; min-width:0;
+  }
+  .hmore__run > li > *{ width:100%; }
+  .hmore__wrap .topics-arrow--prev{ left:-22px; }
+  .hmore__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width: 1180px){
+    .hmore__wrap .topics-arrow--prev{ left:10px; }
+    .hmore__wrap .topics-arrow--next{ right:10px; }
+  }
+  @media (max-width: 899px){ .hmore__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){ .hmore__run > li{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){ .hmore__run{ scroll-behavior:auto; } }
+
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -2978,6 +3026,7 @@
             <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
+
 
         <p class="flt__count" data-count aria-live="polite">thirteen stallions</p>
       </div>
@@ -3181,6 +3230,7 @@
   var count = bar.querySelector('[data-count]');
   var none  = document.querySelector('[data-none]');
   var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var sels  = [].slice.call(bar.querySelectorAll('[data-facet]'));
   var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one","twenty two","twenty three","twenty four","twenty five","twenty six","twenty seven","twenty eight","twenty nine","thirty","thirty one","thirty two","thirty three","thirty four","thirty five","thirty six","thirty seven","thirty eight","thirty nine","forty","forty one","forty two","forty three","forty four","forty five","forty six","forty seven","forty eight","forty nine","fifty","fifty one","fifty two","fifty three","fifty four","fifty five","fifty six","fifty seven","fifty eight","fifty nine"];
   var ONE = "stallion", MANY = "stallions";
   var show = bar.getAttribute('data-open') || 'all';
@@ -3198,7 +3248,13 @@
       var okState = show === 'all' ||
         (state === 'true' ? show === 'sold' : state === 'false' ? show === 'available' : show === state);
       var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
-      var on = okState && okFind;
+      /* Every select has to agree, and an empty one agrees with everything, so
+         the chips, the selects and the search box narrow together rather than
+         one of them replacing the others. */
+      var okFacets = sels.every(function(sel){
+        return !sel.value || li.getAttribute('data-' + sel.getAttribute('data-facet')) === sel.value;
+      });
+      var on = okState && okFind && okFacets;
       li.hidden = !on;
       if(on) shown++;
     });
@@ -3210,6 +3266,7 @@
   chips.forEach(function(c){
     c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
   });
+  sels.forEach(function(sel){ sel.addEventListener('change', apply); });
   input.addEventListener('input', apply);
   /* A search should look through everything, not through the tab you happen
      to be on: typing widens the state filter to all by itself. */

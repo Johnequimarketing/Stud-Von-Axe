@@ -1114,6 +1114,9 @@
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius);
   }
+  /* One link per archive on the All tab, three of them, so they wrap on a
+     narrow screen rather than pushing the note out of the plate. */
+  .hz__more{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
   .hz__banner b{
     display:block; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
@@ -2197,6 +2200,26 @@
     width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  /* The narrowing that is not a yes or no. What is for sale is a chip, because
+     it is the first question and it has two answers; a studbook, a sex and a
+     year are lists, and a list of five chips beside a list of eight is a wall
+     of buttons. Same box as a form field, one size down: this is a control
+     bar, not a form. */
+  .flt__sels{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__sel select{
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:.55rem 2.4em .55rem .9rem; min-height:40px;
+    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
+    background-color:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:13px;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__sel select:hover{ border-color:var(--color-navy); }
+  .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
@@ -2862,6 +2885,31 @@
   }
 
   /* More from the same group: the homepage card again, three of them. */
+  /* The same rail as the homepage runs: a scroller with snap points, the
+     arrows half outside it on a wide screen and on it below 1180. */
+  .hmore__wrap{ position:relative; min-width:0; }
+  .hmore__run{
+    list-style:none; margin:0; padding:10px 2px 62px; display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scroll-behavior:smooth; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hmore__run::-webkit-scrollbar{ display:none; }
+  .hmore__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex; min-width:0;
+  }
+  .hmore__run > li > *{ width:100%; }
+  .hmore__wrap .topics-arrow--prev{ left:-22px; }
+  .hmore__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width: 1180px){
+    .hmore__wrap .topics-arrow--prev{ left:10px; }
+    .hmore__wrap .topics-arrow--next{ right:10px; }
+  }
+  @media (max-width: 899px){ .hmore__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){ .hmore__run > li{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){ .hmore__run{ scroll-behavior:auto; } }
+
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -2958,7 +3006,7 @@
     </div>
     <div class="wrap hp__grid">
       <div class="hp__col">
-        <div class="hp__pic"><img src="/assets/img/horses/cosmopolitan-von-axe-z-2.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold">Sold</span></div>
+        <div class="hp__pic"><img src="/assets/img/horses/cosmopolitan-von-axe-z-2.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold to Italy</span></div>
       </div>
       <div class="hp__col">
         <div class="hp__tray">
@@ -2975,11 +3023,10 @@
       </div>
     </div>
     <div class="wrap">
-      <div class="hp__facts" style="--cols:4">
+      <div class="hp__facts" style="--cols:3">
         <div class="hp__fact"><span class="hp__k">Born</span><span class="hp__v">16 May 2024</span></div>
             <div class="hp__fact"><span class="hp__k">Sex</span><span class="hp__v">Colt</span></div>
             <div class="hp__fact"><span class="hp__k">Studbook</span><span class="hp__v">Zangersheide</span></div>
-            <div class="hp__fact"><span class="hp__k">Status</span><span class="hp__v"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold to Italy</span></div>
       </div>
     </div>
   </section>
@@ -3104,11 +3151,25 @@
         <h2 class="hmore__h">More <em>foals</em></h2>
         <a class="hmore__all" href="/foals">All foals <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/cacao-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Argentina"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#74ACDF"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><circle cx="12" cy="8" r="1.7" fill="#F6B40E"/></svg></span>Sold<span class="visually-hidden"> to Argentina</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cacao Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Chacco Blue · Sold to Argentina</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/dourkhet-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h3 class="hz__name">Dourkhet Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Dourkhan Hero Z · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/hyori-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Hyōri Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Heartbreaker · Sold to Great Britain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-      </ul>
+      <div class="hmore__wrap">
+        <ul class="hmore__run" id="more-foals" tabindex="0"
+            aria-label="More foals">
+          <li><a class="hz__card" href="/foals/cacao-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Argentina"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#74ACDF"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><circle cx="12" cy="8" r="1.7" fill="#F6B40E"/></svg></span>Sold<span class="visually-hidden"> to Argentina</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cacao Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Chacco Blue · Sold to Argentina</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/dourkhet-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h3 class="hz__name">Dourkhet Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Dourkhan Hero Z · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/hyori-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Hyōri Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Heartbreaker · Sold to Great Britain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/bellavista-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/bellavista-von-axe-z-1.jpg" alt="Bellavista Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Bellavista Von Axe Z</h3><span class="hz__meta">Born 2023 · Filly · Balou du Reventon · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Delilah Von Axe Z</h3><span class="hz__meta">Born 2024 · Filly · Dominator 2000 Z · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Baltimore Von Axe Z</h3><span class="hz__meta">Born 2025 · Colt · Big Star · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Purple Rain Von Axe Z</h3><span class="hz__meta">Born 2023 · Filly · Pegase van't Ruytershof · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/medillin-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/medillin-von-axe-z-1.jpg" alt="Medillín Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h3 class="hz__name">Medillín Von Axe Z</h3><span class="hz__meta">Born 2022 · Filly · Mumbai · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/evoque-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/evoque-von-axe-z-1.jpg" alt="Evoque Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Belgium"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#2D2926"/><rect x="8" width="8" height="16" fill="#FAE042"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to Belgium</span></span></span></span><span class="hz__body"><h3 class="hz__name">Evoque Von Axe Z</h3><span class="hz__meta">Born 2022 · Colt · Eldorado vd Zeshoek · Sold to Belgium</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/foals/coachella-von-axe"><span class="hz__win"><img src="/assets/img/horses/coachella-von-axe-1.jpg" alt="Coachella Von Axe" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Coachella Von Axe</h3><span class="hz__meta">Born 2021 · Filly · Conthargos · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        </ul>
+        <button class="topics-arrow topics-arrow--prev" data-rail="more-foals" data-dir="-1"
+                aria-label="Previous foals">&larr;</button>
+        <button class="topics-arrow topics-arrow--next" data-rail="more-foals" data-dir="1"
+                aria-label="Next foals">&rarr;</button>
+      </div>
     </div>
   </section>
 
@@ -3402,6 +3463,32 @@
     location.href = 'mailto:studvonaxe@gmail.com'
       + '?subject=' + encodeURIComponent('Enquiry: ' + about)
       + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('[data-rail]').forEach(function(btn){
+    var run = document.getElementById(btn.getAttribute('data-rail'));
+    if(!run) return;
+    btn.addEventListener('click', function(){
+      var card = run.querySelector('li');
+      var step = card ? card.getBoundingClientRect().width + 14 : run.clientWidth * .8;
+      run.scrollLeft += step * Number(btn.getAttribute('data-dir'));
+    });
+  });
+  document.querySelectorAll('.hmore__run').forEach(function(run){
+    var wrap = run.parentElement;
+    function sync(){
+      var max = run.scrollWidth - run.clientWidth;
+      wrap.querySelectorAll('[data-rail]').forEach(function(b){
+        var back = Number(b.getAttribute('data-dir')) < 0;
+        b.disabled = max < 4 || (back ? run.scrollLeft <= 3 : run.scrollLeft >= max - 3);
+      });
+    }
+    run.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync);
+    sync();
   });
 })();
 </script>

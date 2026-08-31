@@ -250,6 +250,26 @@ export const archiveCss = `
     width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  /* The narrowing that is not a yes or no. What is for sale is a chip, because
+     it is the first question and it has two answers; a studbook, a sex and a
+     year are lists, and a list of five chips beside a list of eight is a wall
+     of buttons. Same box as a form field, one size down: this is a control
+     bar, not a form. */
+  .flt__sels{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__sel select{
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:.55rem 2.4em .55rem .9rem; min-height:40px;
+    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
+    background-color:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:13px;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__sel select:hover{ border-color:var(--color-navy); }
+  .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;

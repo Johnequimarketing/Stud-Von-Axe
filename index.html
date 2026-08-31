@@ -1156,6 +1156,9 @@
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius);
   }
+  /* One link per archive on the All tab, three of them, so they wrap on a
+     narrow screen rather than pushing the note out of the plate. */
+  .hz__more{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
   .hz__banner b{
     display:block; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
@@ -2393,12 +2396,18 @@
     <!-- The ivory tray: the page ground hangs down into the services band, so
          the cut is made of background rather than of the plate itself. -->
     <div class="hz-tray">
+      <!-- The heading and the link have to name the same thing. The heading
+           used to say "Every horse we have" beside a button reading "See the
+           foals", because there is no page that holds every horse and the
+           button had to point somewhere. On All it is now three links, one per
+           archive, which is what "more" actually means there; on a single
+           chip it is one button to that chip's own archive. -->
       <div class="hz__banner">
         <div>
-          <b>Every horse we have</b>
+          <b id="hz-bannerTitle">Every horse we have</b>
           <span id="hz-bannerNote"></span>
         </div>
-        <a class="hz__cta" href="sport-horses/">See all horses <span class="a" aria-hidden="true">&rarr;</span></a>
+        <div class="hz__more" id="hz-bannerMore"></div>
       </div>
     </div>
   </section>
@@ -2921,20 +2930,18 @@
     /* A chip counts its whole group, not the handful on show. */
     var TOTAL = { all:C.sport + C.mares + C.foals, sport:C.sport,
                   broodmare:C.mares, foal:C.foals };
-    /* The button under the grid used to say "See all horses" and open the
-       sport horse archive, which is a third of them. There is no page that
-       holds every horse, so the button names the page it actually opens and
-       follows the chip. On All it opens the foals: they are the largest
-       group and the one the six mixed cards show least of. */
-    var MORE = {
-      all:       { href:'foals/',          label:'See the foals' },
-      sport:     { href:'sport-horses/',   label:'See all sport horses' },
-      broodmare: { href:'breeding-mares/', label:'See all breeding mares' },
-      foal:      { href:'foals/',          label:'See all foals' }
+    /* What the banner says and what it opens. On a single chip that is one
+       archive and one button. On All there is no page that holds every horse,
+       so rather than picking one and mislabelling it, all three are offered. */
+    var ARCH = {
+      sport:     { href:'sport-horses/',   label:'sport horses',   title:'Every sport horse we have' },
+      broodmare: { href:'breeding-mares/', label:'breeding mares', title:'Every breeding mare we have' },
+      foal:      { href:'foals/',          label:'foals',          title:'Every foal we have' }
     };
 
-    var note = document.getElementById('hz-bannerNote');
-    var cta  = document.querySelector('.hz__banner .hz__cta');
+    var note  = document.getElementById('hz-bannerNote');
+    var title = document.getElementById('hz-bannerTitle');
+    var more  = document.getElementById('hz-bannerMore');
 
     function shownIn(html){ return (html.match(/<li/g) || []).length; }
 
@@ -2952,10 +2959,18 @@
           .filter(Boolean).join(' ');
       }
 
-      if(cta){
-        var m = MORE[filter] || MORE.all;
-        cta.href = m.href;
-        cta.firstChild.textContent = m.label + ' ';
+      if(title) title.textContent = filter === 'all'
+        ? 'Every horse we have' : (ARCH[filter] || {}).title || 'Every horse we have';
+
+      if(more){
+        var arrow = ' <span class="a" aria-hidden="true">&rarr;</span>';
+        more.innerHTML = filter === 'all'
+          ? Object.keys(ARCH).map(function(k){
+              return '<a class="hz__cta" href="' + ARCH[k].href + '">See all '
+                   + ARCH[k].label + arrow + '</a>';
+            }).join('')
+          : '<a class="hz__cta" href="' + ARCH[filter].href + '">See all '
+              + ARCH[filter].label + arrow + '</a>';
       }
     }
 

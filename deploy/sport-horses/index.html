@@ -1114,6 +1114,9 @@
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius);
   }
+  /* One link per archive on the All tab, three of them, so they wrap on a
+     narrow screen rather than pushing the note out of the plate. */
+  .hz__more{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
   .hz__banner b{
     display:block; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
@@ -2197,6 +2200,26 @@
     width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  /* The narrowing that is not a yes or no. What is for sale is a chip, because
+     it is the first question and it has two answers; a studbook, a sex and a
+     year are lists, and a list of five chips beside a list of eight is a wall
+     of buttons. Same box as a form field, one size down: this is a control
+     bar, not a form. */
+  .flt__sels{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__sel select{
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:.55rem 2.4em .55rem .9rem; min-height:40px;
+    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
+    background-color:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:13px;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__sel select:hover{ border-color:var(--color-navy); }
+  .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
@@ -2862,6 +2885,31 @@
   }
 
   /* More from the same group: the homepage card again, three of them. */
+  /* The same rail as the homepage runs: a scroller with snap points, the
+     arrows half outside it on a wide screen and on it below 1180. */
+  .hmore__wrap{ position:relative; min-width:0; }
+  .hmore__run{
+    list-style:none; margin:0; padding:10px 2px 62px; display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scroll-behavior:smooth; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hmore__run::-webkit-scrollbar{ display:none; }
+  .hmore__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex; min-width:0;
+  }
+  .hmore__run > li > *{ width:100%; }
+  .hmore__wrap .topics-arrow--prev{ left:-22px; }
+  .hmore__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width: 1180px){
+    .hmore__wrap .topics-arrow--prev{ left:10px; }
+    .hmore__wrap .topics-arrow--next{ right:10px; }
+  }
+  @media (max-width: 899px){ .hmore__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){ .hmore__run > li{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){ .hmore__run{ scroll-behavior:auto; } }
+
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -2986,24 +3034,60 @@
           <button class="hz__chip" type="button" data-show="all"
                   aria-pressed="true">All <span class="c">12</span></button>
         </div>
+
+        <div class="flt__sels">
+          <label class="flt__sel">
+            <span class="visually-hidden">Sex</span>
+            <select data-facet="sex">
+              <option value="">Sex: any</option>
+              <option value="gelding">Gelding</option>
+              <option value="mare">Mare</option>
+            </select>
+          </label>
+          <label class="flt__sel">
+            <span class="visually-hidden">Studbook</span>
+            <select data-facet="studbook">
+              <option value="">Studbook: any</option>
+              <option value="bwp">BWP</option>
+              <option value="irish-breed">Irish Breed</option>
+              <option value="kwpn">KWPN</option>
+              <option value="oldenburg-international">Oldenburg International</option>
+              <option value="zangersheide">Zangersheide</option>
+            </select>
+          </label>
+          <label class="flt__sel">
+            <span class="visually-hidden">Born</span>
+            <select data-facet="born">
+              <option value="">Born: any</option>
+              <option value="2020">2020</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+              <option value="2011">2011</option>
+              <option value="2005">2005</option>
+            </select>
+          </label>
+        </div>
         <p class="flt__count" data-count aria-live="polite">twelve horses</p>
       </div>
 
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline or a country.</p>
 
       <ul class="hz__grid" data-grid>
-        <li data-sold="true" data-find="maralore kannan x cedric x lavall i kwpn 2017 italy mare"><a class="hz__card" href="/sport-horses/maralore"><span class="hz__win"><img src="/assets/img/horses/maralore-1.jpg" alt="Maralore" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Maralore</h2><span class="hz__meta">Born 2017 · Mare · KWPN · Sold to Italy</span><span class="hz__ped">Kannan x Cedric x Lavall I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="domino van den haze z zangersheide just saddle broken! 2018 czechia mare"><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Czechia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D7141A"/><path d="M0 0 12 8 0 16Z" fill="#11457E"/></svg></span>Sold<span class="visually-hidden"> to Czechia</span></span></span></span><span class="hz__body"><h2 class="hz__name">Domino Van den Haze Z</h2><span class="hz__meta">Born 2018 · Mare · Zangersheide · Sold to Czechia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="diamecho von axe z diamant de semilly x echo vant spieveld x carthago x darco x chin chin zangersheide from van’t roosakker family! 2020 italy gelding"><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diamecho Von Axe Z</h2><span class="hz__meta">Born 2020 · Gelding · Zangersheide · Sold to Italy</span><span class="hz__ped">Diamant de Semilly x Echo vant Spieveld x Carthago x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="kashillio mb z zangersheide 2016 the united states gelding"><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h2 class="hz__name">Kashillio MB Z</h2><span class="hz__meta">Born 2016 · Gelding · Zangersheide · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="contouch sva oldenburg international 2015 spain gelding"><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Spain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg></span>Sold<span class="visually-hidden"> to Spain</span></span></span></span><span class="hz__body"><h2 class="hz__name">Contouch SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Spain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="diabalou sva oldenburg international 2015 italy gelding"><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diabalou SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="gamora o kwpn 2011 france mare"><a class="hz__card" href="/sport-horses/gamora-o"><span class="hz__win"><img src="/assets/img/horses/gamora-o-1.jpg" alt="Gamora O" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to France"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#002395"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to France</span></span></span></span><span class="hz__body"><h2 class="hz__name">Gamora O</h2><span class="hz__meta">Born 2011 · Mare · KWPN · Sold to France</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="amnésia sva oldenburg international 2015 slovenia mare"><a class="hz__card" href="/sport-horses/amnesia-sva"><span class="hz__win"><img src="/assets/img/horses/amnesia-sva-1.jpg" alt="Amnésia SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Slovenia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#005DA4"/><rect y="10.67" width="24" height="5.33" fill="#ED1C24"/><path d="M4 3.2 6 6.6 8 3.2 9 7.4H3Z" fill="#005DA4" stroke="#fff" stroke-width=".5"/></svg></span>Sold<span class="visually-hidden"> to Slovenia</span></span></span></span><span class="hz__body"><h2 class="hz__name">Amnésia SVA</h2><span class="hz__meta">Born 2015 · Mare · Oldenburg International · Sold to Slovenia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="filou bwp 2005 italy mare"><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Filou</h2><span class="hz__meta">Born 2005 · Mare · BWP · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="valkyrie oldenburg international 2014 italy mare"><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Valkyrie</h2><span class="hz__meta">Born 2014 · Mare · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="diacco blue sva oldenburg international 2015 germany gelding"><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Germany"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#000"/><rect y="5.33" width="24" height="5.34" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg></span>Sold<span class="visually-hidden"> to Germany</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diacco Blue SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Germany</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li data-sold="true" data-find="bec emerald sam emerald van't ruytershof x darco x quidam junior i irish breed 2015 france gelding"><a class="hz__card" href="/sport-horses/bec-emerald-sam"><span class="hz__win"><img src="/assets/img/horses/bec-emerald-sam-1.jpg" alt="Bec Emerald Sam" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to France"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#002395"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to France</span></span></span></span><span class="hz__body"><h2 class="hz__name">Bec Emerald Sam</h2><span class="hz__meta">Born 2015 · Gelding · Irish Breed · Sold to France</span><span class="hz__ped">Emerald van't Ruytershof x Darco x Quidam Junior I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="maralore kannan x cedric x lavall i kwpn 2017 italy mare" data-sex="mare" data-studbook="kwpn" data-born="2017"><a class="hz__card" href="/sport-horses/maralore"><span class="hz__win"><img src="/assets/img/horses/maralore-1.jpg" alt="Maralore" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Maralore</h2><span class="hz__meta">Born 2017 · Mare · KWPN · Sold to Italy</span><span class="hz__ped">Kannan x Cedric x Lavall I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="domino van den haze z zangersheide just saddle broken! 2018 czechia mare" data-sex="mare" data-studbook="zangersheide" data-born="2018"><a class="hz__card" href="/sport-horses/domino-van-den-haze-z"><span class="hz__win"><img src="/assets/img/horses/domino-van-den-haze-z-1.jpg" alt="Domino Van den Haze Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Czechia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D7141A"/><path d="M0 0 12 8 0 16Z" fill="#11457E"/></svg></span>Sold<span class="visually-hidden"> to Czechia</span></span></span></span><span class="hz__body"><h2 class="hz__name">Domino Van den Haze Z</h2><span class="hz__meta">Born 2018 · Mare · Zangersheide · Sold to Czechia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diamecho von axe z diamant de semilly x echo vant spieveld x carthago x darco x chin chin zangersheide from van’t roosakker family! 2020 italy gelding" data-sex="gelding" data-studbook="zangersheide" data-born="2020"><a class="hz__card" href="/sport-horses/diamecho-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/diamecho-von-axe-z-1.jpg" alt="Diamecho Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diamecho Von Axe Z</h2><span class="hz__meta">Born 2020 · Gelding · Zangersheide · Sold to Italy</span><span class="hz__ped">Diamant de Semilly x Echo vant Spieveld x Carthago x Darco x Chin Chin</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="kashillio mb z zangersheide 2016 the united states gelding" data-sex="gelding" data-studbook="zangersheide" data-born="2016"><a class="hz__card" href="/sport-horses/kashillio-mb-z"><span class="hz__win"><img src="/assets/img/horses/kashillio-mb-z-1.jpg" alt="Kashillio MB Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h2 class="hz__name">Kashillio MB Z</h2><span class="hz__meta">Born 2016 · Gelding · Zangersheide · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="contouch sva oldenburg international 2015 spain gelding" data-sex="gelding" data-studbook="oldenburg-international" data-born="2015"><a class="hz__card" href="/sport-horses/contouch-sva"><span class="hz__win"><img src="/assets/img/horses/contouch-sva-1.jpg" alt="Contouch SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Spain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg></span>Sold<span class="visually-hidden"> to Spain</span></span></span></span><span class="hz__body"><h2 class="hz__name">Contouch SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Spain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diabalou sva oldenburg international 2015 italy gelding" data-sex="gelding" data-studbook="oldenburg-international" data-born="2015"><a class="hz__card" href="/sport-horses/diabalou-sva"><span class="hz__win"><img src="/assets/img/horses/diabalou-sva-1.jpg" alt="Diabalou SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diabalou SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="gamora o kwpn 2011 france mare" data-sex="mare" data-studbook="kwpn" data-born="2011"><a class="hz__card" href="/sport-horses/gamora-o"><span class="hz__win"><img src="/assets/img/horses/gamora-o-1.jpg" alt="Gamora O" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to France"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#002395"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to France</span></span></span></span><span class="hz__body"><h2 class="hz__name">Gamora O</h2><span class="hz__meta">Born 2011 · Mare · KWPN · Sold to France</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="amnésia sva oldenburg international 2015 slovenia mare" data-sex="mare" data-studbook="oldenburg-international" data-born="2015"><a class="hz__card" href="/sport-horses/amnesia-sva"><span class="hz__win"><img src="/assets/img/horses/amnesia-sva-1.jpg" alt="Amnésia SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Slovenia"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#005DA4"/><rect y="10.67" width="24" height="5.33" fill="#ED1C24"/><path d="M4 3.2 6 6.6 8 3.2 9 7.4H3Z" fill="#005DA4" stroke="#fff" stroke-width=".5"/></svg></span>Sold<span class="visually-hidden"> to Slovenia</span></span></span></span><span class="hz__body"><h2 class="hz__name">Amnésia SVA</h2><span class="hz__meta">Born 2015 · Mare · Oldenburg International · Sold to Slovenia</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="filou bwp 2005 italy mare" data-sex="mare" data-studbook="bwp" data-born="2005"><a class="hz__card" href="/sport-horses/filou"><span class="hz__win"><img src="/assets/img/horses/filou-1.jpg" alt="Filou" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Filou</h2><span class="hz__meta">Born 2005 · Mare · BWP · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="valkyrie oldenburg international 2014 italy mare" data-sex="mare" data-studbook="oldenburg-international" data-born="2014"><a class="hz__card" href="/sport-horses/valkyrie"><span class="hz__win"><img src="/assets/img/horses/valkyrie-1.jpg" alt="Valkyrie" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h2 class="hz__name">Valkyrie</h2><span class="hz__meta">Born 2014 · Mare · Oldenburg International · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="diacco blue sva oldenburg international 2015 germany gelding" data-sex="gelding" data-studbook="oldenburg-international" data-born="2015"><a class="hz__card" href="/sport-horses/diacco-blue-sva"><span class="hz__win"><img src="/assets/img/horses/diacco-blue-sva-1.jpg" alt="Diacco Blue SVA" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Germany"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#000"/><rect y="5.33" width="24" height="5.34" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg></span>Sold<span class="visually-hidden"> to Germany</span></span></span></span><span class="hz__body"><h2 class="hz__name">Diacco Blue SVA</h2><span class="hz__meta">Born 2015 · Gelding · Oldenburg International · Sold to Germany</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li data-sold="true" data-find="bec emerald sam emerald van't ruytershof x darco x quidam junior i irish breed 2015 france gelding" data-sex="gelding" data-studbook="irish-breed" data-born="2015"><a class="hz__card" href="/sport-horses/bec-emerald-sam"><span class="hz__win"><img src="/assets/img/horses/bec-emerald-sam-1.jpg" alt="Bec Emerald Sam" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to France"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#002395"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to France</span></span></span></span><span class="hz__body"><h2 class="hz__name">Bec Emerald Sam</h2><span class="hz__meta">Born 2015 · Gelding · Irish Breed · Sold to France</span><span class="hz__ped">Emerald van't Ruytershof x Darco x Quidam Junior I</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>
@@ -3187,6 +3271,7 @@
   var count = bar.querySelector('[data-count]');
   var none  = document.querySelector('[data-none]');
   var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var sels  = [].slice.call(bar.querySelectorAll('[data-facet]'));
   var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one","twenty two","twenty three","twenty four","twenty five","twenty six","twenty seven","twenty eight","twenty nine","thirty","thirty one","thirty two","thirty three","thirty four","thirty five","thirty six","thirty seven","thirty eight","thirty nine","forty","forty one","forty two","forty three","forty four","forty five","forty six","forty seven","forty eight","forty nine","fifty","fifty one","fifty two","fifty three","fifty four","fifty five","fifty six","fifty seven","fifty eight","fifty nine"];
   var ONE = "horse", MANY = "horses";
   var show = bar.getAttribute('data-open') || 'all';
@@ -3204,7 +3289,13 @@
       var okState = show === 'all' ||
         (state === 'true' ? show === 'sold' : state === 'false' ? show === 'available' : show === state);
       var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
-      var on = okState && okFind;
+      /* Every select has to agree, and an empty one agrees with everything, so
+         the chips, the selects and the search box narrow together rather than
+         one of them replacing the others. */
+      var okFacets = sels.every(function(sel){
+        return !sel.value || li.getAttribute('data-' + sel.getAttribute('data-facet')) === sel.value;
+      });
+      var on = okState && okFind && okFacets;
       li.hidden = !on;
       if(on) shown++;
     });
@@ -3216,6 +3307,7 @@
   chips.forEach(function(c){
     c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
   });
+  sels.forEach(function(sel){ sel.addEventListener('change', apply); });
   input.addEventListener('input', apply);
   /* A search should look through everything, not through the tab you happen
      to be on: typing widens the state filter to all by itself. */

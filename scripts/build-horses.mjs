@@ -88,6 +88,7 @@ const FLAGS = new Function(readFileSync(join(root, 'flags.js'), 'utf-8') + '; re
 const GROUPS = {
   broodmare: {
     dir: 'breeding-mares',
+    facets: ['studbook', 'born'],
     find: 'Try a sire, a damline or a studbook.',
     label: 'Breeding mares',
     kicker: 'The mares',
@@ -100,6 +101,7 @@ const GROUPS = {
   },
   foal: {
     dir: 'foals',
+    facets: ['sex', 'born', 'studbook'],
     find: 'Try a sire, a damline, a year or a country.',
     label: 'Foals',
     kicker: 'The foals',
@@ -143,6 +145,7 @@ const GROUPS = {
   },
   sport: {
     dir: 'sport-horses',
+    facets: ['sex', 'studbook', 'born'],
     find: 'Try a sire, a damline or a country.',
     label: 'Sport horses',
     kicker: 'The sport horses',
@@ -720,6 +723,31 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
   }
 
   /* More from the same group: the homepage card again, three of them. */
+  /* The same rail as the homepage runs: a scroller with snap points, the
+     arrows half outside it on a wide screen and on it below 1180. */
+  .hmore__wrap{ position:relative; min-width:0; }
+  .hmore__run{
+    list-style:none; margin:0; padding:10px 2px 62px; display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scroll-behavior:smooth; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hmore__run::-webkit-scrollbar{ display:none; }
+  .hmore__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex; min-width:0;
+  }
+  .hmore__run > li > *{ width:100%; }
+  .hmore__wrap .topics-arrow--prev{ left:-22px; }
+  .hmore__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width: 1180px){
+    .hmore__wrap .topics-arrow--prev{ left:10px; }
+    .hmore__wrap .topics-arrow--next{ right:10px; }
+  }
+  @media (max-width: 899px){ .hmore__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){ .hmore__run > li{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){ .hmore__run{ scroll-behavior:auto; } }
+
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -925,7 +953,9 @@ const card = (horse, group, full) => {
                     horse.country && COUNTRY[horse.country], SEX(horse)]
     .filter(Boolean).join(' ').toLowerCase();
 
-  return `<li${full ? ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` : ''}>` +
+  const f = facetsOf(horse);
+  return `<li${full ? ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` +
+    ` data-sex="${esc(f.sex)}" data-studbook="${esc(f.studbook)}" data-born="${esc(f.born)}"` : ''}>` +
     `<a class="hz__card" href="${href}">${win}` +
     '<span class="hz__body">' +
       `<${full ? 'h2' : 'h3'} class="hz__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
@@ -951,6 +981,69 @@ const WORDS = ['no','one','two','three','four','five','six','seven','eight','nin
                    .map((u) => `${tens} ${u}`),
                ]).slice(1)];
 const count = (n) => WORDS[n] || String(n);
+
+/* ── what an archive can be narrowed by ────────────────────────────────
+   31 Aug, Mark: more than sold and available. These are the fields their own
+   pages actually carry, counted rather than assumed:
+
+     sport horses   studbook 12/12, sex 12/12, year 12/12, height 11/12
+     breeding mares studbook 12/12, year 12/12, height 3/12
+     foals          sex 21/21, year 21/21, studbook 13/21
+
+   So the archives filter on a studbook, a sex and a year of birth, and on
+   nothing else. Height is on three of the twelve mares, which is not a filter,
+   it is a gap. And a competition level, which was asked for, is not on their
+   site at all: there is no field for it on any of the sixty three horses, so
+   there is nothing to filter and it is a question for the owners rather than
+   a control we can draw.
+
+   A year rather than an age band: an age is a year plus arithmetic that goes
+   stale on the first of January, and their own field is the year. */
+const slug = (t) => String(t || '').toLowerCase().normalize('NFD')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const facetsOf = (horse) => ({
+  sex: slug(SEX(horse)),
+  studbook: slug(horse.studbook),
+  born: bornYear(horse) || '',
+});
+
+/* One select per facet the list actually varies on. A field every horse in the
+   group shares is not a filter either: a Sex select on the breeding mares
+   would offer Mare and nothing else. */
+const facetBar = (group, list) => {
+  const wanted = group.facets || [];
+  const bars = wanted.map((key) => {
+    const seen = new Map();
+    for (const h of list) {
+      const f = facetsOf(h);
+      const v = f[key];
+      if (!v) continue;
+      /* Their studbook is already written the way a studbook is written: KWPN,
+         BWP, Zangersheide. Running it through the title case rule turned the
+         acronyms into Kwpn and Bwp. */
+      const label = key === 'born' ? String(v)
+        : key === 'sex' ? SEX(h) : String(h.studbook).trim();
+      if (!seen.has(v)) seen.set(v, label);
+    }
+    if (seen.size < 2) return '';
+    const opts = [...seen].sort((a, b) => (key === 'born'
+      ? String(b[0]).localeCompare(String(a[0]))
+      : String(a[1]).localeCompare(String(b[1]))));
+    const title = key === 'born' ? 'Born' : key === 'sex' ? 'Sex' : 'Studbook';
+    return `          <label class="flt__sel">
+            <span class="visually-hidden">${esc(title)}</span>
+            <select data-facet="${key}">
+              <option value="">${esc(title)}: any</option>
+${opts.map(([v, l]) => `              <option value="${esc(v)}">${esc(l)}</option>`).join('\n')}
+            </select>
+          </label>`;
+  }).filter(Boolean);
+  return bars.length ? `
+        <div class="flt__sels">
+${bars.join('\n')}
+        </div>` : '';
+};
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
 const gridSection = (group, list) => {
@@ -994,6 +1087,7 @@ ${group.chips === false ? '' : `        <div class="flt__chips" role="group" ari
 ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="button" data-show="${key}"
                   aria-pressed="${openOn === key ? 'true' : 'false'}">${label} <span class="c">${n}</span></button>`).join('\n')}
         </div>`}
+${facetBar(group, list)}
         <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
       </div>
 
@@ -1022,6 +1116,7 @@ const filterScript = (group) => `<script>
   var count = bar.querySelector('[data-count]');
   var none  = document.querySelector('[data-none]');
   var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
+  var sels  = [].slice.call(bar.querySelectorAll('[data-facet]'));
   var WORDS = ${JSON.stringify(WORDS)};
   var ONE = ${JSON.stringify(group.one)}, MANY = ${JSON.stringify(group.many)};
   var show = bar.getAttribute('data-open') || 'all';
@@ -1039,7 +1134,13 @@ const filterScript = (group) => `<script>
       var okState = show === 'all' ||
         (state === 'true' ? show === 'sold' : state === 'false' ? show === 'available' : show === state);
       var okFind = !q || (li.getAttribute('data-find') || '').indexOf(q) >= 0;
-      var on = okState && okFind;
+      /* Every select has to agree, and an empty one agrees with everything, so
+         the chips, the selects and the search box narrow together rather than
+         one of them replacing the others. */
+      var okFacets = sels.every(function(sel){
+        return !sel.value || li.getAttribute('data-' + sel.getAttribute('data-facet')) === sel.value;
+      });
+      var on = okState && okFind && okFacets;
       li.hidden = !on;
       if(on) shown++;
     });
@@ -1051,6 +1152,7 @@ const filterScript = (group) => `<script>
   chips.forEach(function(c){
     c.addEventListener('click', function(){ show = c.getAttribute('data-show'); apply(); });
   });
+  sels.forEach(function(sel){ sel.addEventListener('change', apply); });
   input.addEventListener('input', apply);
   /* A search should look through everything, not through the tab you happen
      to be on: typing widens the state filter to all by itself. */
@@ -1412,9 +1514,9 @@ const factRow = (horse) => {
     ['Sex', SEX(horse)],
     ['Studbook', horse.studbook],
     ['Height', horse.height],
-    ['Status', horse.sold
-      ? (horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : 'Sold')
-      : 'Available'],
+    /* No Status. It is on the photograph, where the archives put it too, and
+       carrying it in both places is what made this row five long and broke it
+       into two rows of three with a hole in the second. */
   ].filter(([, v]) => v);
   const flag = horse.sold && horse.country && FLAGS[horse.country]
     ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
@@ -1423,23 +1525,20 @@ const factRow = (horse) => {
      row stays full whatever the count, because a horse can have three of these
      or five. */
   return facts.map(([k, v]) =>
-    `<div class="hp__fact"><span class="hp__k">${esc(k)}</span><span class="hp__v">${
-      k === 'Status' ? flag : ''}${esc(v)}</span></div>`).join('\n            ');
+    `<div class="hp__fact"><span class="hp__k">${esc(k)}</span><span class="hp__v">${esc(v)}</span></div>`).join('\n            ');
 };
 
 /* How many columns the row of figures takes, so it never ends on one block
    sitting alone. Five go three and two rather than four and one, which is the
    same rule the gallery follows. */
-const factCols = (horse) => {
-  const n = [
-    horse.year,
-    horse.category === 'embryo' ? null : SEX(horse),
-    horse.studbook,
-    horse.height,
-    true,
-  ].filter(Boolean).length;
-  return n === 5 ? 3 : n;
-};
+/* Four at most, now that the status has moved onto the picture, so the row is
+   one row whatever a horse happens to carry. */
+const factCols = (horse) => [
+  horse.year,
+  horse.category === 'embryo' ? null : SEX(horse),
+  horse.studbook,
+  horse.height,
+].filter(Boolean).length || 1;
 
 /* Which photograph goes where, decided once for the whole page. Four sections
    want a picture and they used to count for themselves, which is how the same
@@ -1469,8 +1568,15 @@ const photoPlan = (horse) => {
 
 const introSection = (horse, group) => {
   const name = horseName(horse.name);
+  /* On the photograph, with the flag and the country on it, and nowhere else.
+     31 Aug: it said "Sold" here and "Sold to Ireland" again in the row of
+     facts underneath. */
+  const where = horse.sold && horse.country ? (COUNTRY[horse.country] || horse.country) : '';
+  const flagOf = horse.sold && horse.country && FLAGS[horse.country]
+    ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
   const tag = horse.sold
-    ? '<span class="hz__tag hz__tag--sold">Sold</span>'
+    ? `<span class="hz__tag hz__tag--sold"${where ? ` title="Sold to ${esc(where)}"` : ''}>${
+        flagOf}Sold${where ? ` to ${esc(where)}` : ''}</span>`
     : '<span class="hz__tag">Available</span>';
 
   /* A hero over the whole width, then the picture on the left and everything
@@ -1972,10 +2078,16 @@ const mediaScript = `<script>
    The homepage card again, three of them, and a way back to the whole set.
    Neighbours in the list rather than a random three, so two visits to two
    horses do not show the same three. */
+/* A rail, not a row of three. 31 Aug: every other run of cards on this site
+   slides and this one did not, which made the foot of a horse page read as a
+   different site. It carries up to ten of the group now rather than three,
+   because three fit on the screen and a slider with nothing to slide is a
+   worse thing than a grid. */
 const moreSection = (horse, group, list) => {
   const i = list.findIndex((h) => h.slug === horse.slug);
-  const rest = [...list.slice(i + 1), ...list.slice(0, i)].slice(0, 3);
+  const rest = [...list.slice(i + 1), ...list.slice(0, i)].slice(0, 10);
   if (!rest.length) return '';
+  const id = `more-${group.dir}`;
   return `
   <section class="hmore">
     <div class="wrap">
@@ -1983,13 +2095,53 @@ const moreSection = (horse, group, list) => {
         <h2 class="hmore__h">More <em>${esc(group.many)}</em></h2>
         <a class="hmore__all" href="/${group.dir}">All ${esc(group.many)} <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid${group.grid || ''}">
-${rest.map((h) => '        ' + (group.card ? group.card(h, false) : card(h, group))).join('\n')}
-      </ul>
+      <div class="hmore__wrap">
+        <ul class="hmore__run${group.grid || ''}" id="${id}" tabindex="0"
+            aria-label="More ${esc(group.many)}">
+${rest.map((h) => '          ' + (group.card ? group.card(h, false) : card(h, group))).join('\n')}
+        </ul>
+        <button class="topics-arrow topics-arrow--prev" data-rail="${id}" data-dir="-1"
+                aria-label="Previous ${esc(group.many)}">&larr;</button>
+        <button class="topics-arrow topics-arrow--next" data-rail="${id}" data-dir="1"
+                aria-label="Next ${esc(group.many)}">&rarr;</button>
+      </div>
     </div>
   </section>
 `;
 };
+
+/* The rail's own controller. The homepage drives its four runs from a copy of
+   this inside index.html; this is the one the sixty generated pages use, and
+   it is written once here rather than once per builder. It sets scrollLeft and
+   lets the stylesheet's scroll-behaviour decide how: passing an object to
+   scrollTo was silently ignored in this build and the arrows did nothing at
+   all, with no error to say so. */
+const railScript = `<script>
+(function(){
+  document.querySelectorAll('[data-rail]').forEach(function(btn){
+    var run = document.getElementById(btn.getAttribute('data-rail'));
+    if(!run) return;
+    btn.addEventListener('click', function(){
+      var card = run.querySelector('li');
+      var step = card ? card.getBoundingClientRect().width + 14 : run.clientWidth * .8;
+      run.scrollLeft += step * Number(btn.getAttribute('data-dir'));
+    });
+  });
+  document.querySelectorAll('.hmore__run').forEach(function(run){
+    var wrap = run.parentElement;
+    function sync(){
+      var max = run.scrollWidth - run.clientWidth;
+      wrap.querySelectorAll('[data-rail]').forEach(function(b){
+        var back = Number(b.getAttribute('data-dir')) < 0;
+        b.disabled = max < 4 || (back ? run.scrollLeft <= 3 : run.scrollLeft >= max - 3);
+      });
+    }
+    run.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync);
+    sync();
+  });
+})();
+<\/script>`;
 
 /* ── the horse page, section six: the invitation ───────────────────────
    The plate the whole site closes on, with this horse named in it. */
@@ -2168,6 +2320,7 @@ ${navScript}
 ${/class="(hgal|hvid)[ "]/.test(body) ? mediaScript : ''}
 ${body.includes('class="ask ord"') ? orderScript
   : body.includes('class="ask"') ? askScript : ''}
+${body.includes('class="hmore__run') ? railScript : ''}
 </body>
 </html>
 `;

@@ -1114,6 +1114,9 @@
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius);
   }
+  /* One link per archive on the All tab, three of them, so they wrap on a
+     narrow screen rather than pushing the note out of the plate. */
+  .hz__more{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
   .hz__banner b{
     display:block; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15;
@@ -2197,6 +2200,26 @@
     width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  /* The narrowing that is not a yes or no. What is for sale is a chip, because
+     it is the first question and it has two answers; a studbook, a sex and a
+     year are lists, and a list of five chips beside a list of eight is a wall
+     of buttons. Same box as a form field, one size down: this is a control
+     bar, not a form. */
+  .flt__sels{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .flt__sel select{
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:.55rem 2.4em .55rem .9rem; min-height:40px;
+    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
+    background-color:var(--color-base); color:var(--color-ink);
+    font-family:var(--font-body); font-size:13px;
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
+                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
+    background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+    transition:border-color .3s var(--ease);
+  }
+  .flt__sel select:hover{ border-color:var(--color-navy); }
+  .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
@@ -2862,6 +2885,31 @@
   }
 
   /* More from the same group: the homepage card again, three of them. */
+  /* The same rail as the homepage runs: a scroller with snap points, the
+     arrows half outside it on a wide screen and on it below 1180. */
+  .hmore__wrap{ position:relative; min-width:0; }
+  .hmore__run{
+    list-style:none; margin:0; padding:10px 2px 62px; display:flex; gap:var(--card-gap);
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scroll-behavior:smooth; margin-bottom:-46px;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .hmore__run::-webkit-scrollbar{ display:none; }
+  .hmore__run > li{
+    flex:0 0 calc((100% - (2 * var(--card-gap))) / 3);
+    scroll-snap-align:start; display:flex; min-width:0;
+  }
+  .hmore__run > li > *{ width:100%; }
+  .hmore__wrap .topics-arrow--prev{ left:-22px; }
+  .hmore__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width: 1180px){
+    .hmore__wrap .topics-arrow--prev{ left:10px; }
+    .hmore__wrap .topics-arrow--next{ right:10px; }
+  }
+  @media (max-width: 899px){ .hmore__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width: 560px){ .hmore__run > li{ flex-basis:84%; } }
+  @media (prefers-reduced-motion: reduce){ .hmore__run{ scroll-behavior:auto; } }
+
   .hmore__head{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     flex-wrap:wrap; margin-bottom:1.4rem;
@@ -3090,11 +3138,25 @@
         <h2 class="hmore__h">More <em>crosses</em></h2>
         <a class="hmore__all" href="/embryos">All crosses <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid ec__grid">
-        <li class="ec" data-sold="frozen" data-find="dourkhan hero z x cortina de jolie z doukhan hero z x cornet obolensky x calato x darco x chin chin 3 of the best dam lines in the world crossed in one match! chin touch hero x usha van't roosakker x qerlychin frozen embryo frozen"><a class="ec__a" href="/embryos/dourkhan-hero-z-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Dourkhan Hero Z <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">3 of the best dam lines in the world crossed in one match! Chin Touch Hero x Usha van't Roosakker x Qerlychin</span></span></a></li>
-        <li class="ec" data-sold="frozen" data-find="big star x cortina de jolie z big star x cornet obolensky x calato x darco x chin chin closest way to narcotique ii! frozen embryo frozen"><a class="ec__a" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Big Star <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Closest way to Narcotique II!</span></span></a></li>
-        <li class="ec" data-sold="frozen" data-find="uricas vd kattevennen x cortina de jolie z uricas vd kattevennen x cornet obolensky x calato x darco x chin chin chika's way - wodka ii line crossed with narcotique ii - qerlychin! frozen embryo frozen"><a class="ec__a" href="/embryos/uricas-vd-kattevennen-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Uricas vd Kattevennen <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Chika's way · Wodka II line crossed with Narcotique II · Qerlychin!</span></span></a></li>
-      </ul>
+      <div class="hmore__wrap">
+        <ul class="hmore__run ec__grid" id="more-embryos" tabindex="0"
+            aria-label="More crosses">
+          <li class="ec" data-sold="frozen" data-find="dourkhan hero z x cortina de jolie z doukhan hero z x cornet obolensky x calato x darco x chin chin 3 of the best dam lines in the world crossed in one match! chin touch hero x usha van't roosakker x qerlychin frozen embryo frozen"><a class="ec__a" href="/embryos/dourkhan-hero-z-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Dourkhan Hero Z <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">3 of the best dam lines in the world crossed in one match! Chin Touch Hero x Usha van't Roosakker x Qerlychin</span></span></a></li>
+          <li class="ec" data-sold="frozen" data-find="big star x cortina de jolie z big star x cornet obolensky x calato x darco x chin chin closest way to narcotique ii! frozen embryo frozen"><a class="ec__a" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Big Star <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Closest way to Narcotique II!</span></span></a></li>
+          <li class="ec" data-sold="frozen" data-find="uricas vd kattevennen x cortina de jolie z uricas vd kattevennen x cornet obolensky x calato x darco x chin chin chika's way - wodka ii line crossed with narcotique ii - qerlychin! frozen embryo frozen"><a class="ec__a" href="/embryos/uricas-vd-kattevennen-x-cortina-de-jolie-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Uricas vd Kattevennen <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Chika's way · Wodka II line crossed with Narcotique II · Qerlychin!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="mosito van het hellenof x carma vd berghoeve z mosito van het hellehof x comme il faut x nabab de reve x jalisco b from a direct daughter of quaranca de muze - fragrance de chalus! 2027 due 2027"><a class="ec__a" href="/embryos/mosito-van-het-hellenof-x-carma-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/mosito-van-het-hellenof-x-carma-vd-berghoeve-z-1.jpg" alt="Mosito van het Hellenof x Carma vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Mosito van het Hellenof <em>&times;</em> Carma vd Berghoeve Z</h3><span class="ec__line">Comme il faut x Nabab de Reve x Jalisco B</span><span class="ec__say">From a direct daughter of Quaranca de Muze · Fragrance de Chalus!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="cornet obolensky x agousha vd berghoeve z cornet obolensky x aganix du seigneur x diamant de semilly x darco x chin chin from a direct daughter of gatoucha van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/cornet-obolensky-x-agousha-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/cornet-obolensky-x-agousha-vd-berghoeve-z-1.jpg" alt="Cornet Obolensky x Agousha vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Cornet Obolensky <em>&times;</em> Agousha vd Berghoeve Z</h3><span class="ec__line">Aganix du Seigneur x Diamant de Semilly x Darco x Chin Chin</span><span class="ec__say">From a direct daughter of Gatoucha van't Roosakker!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="dominator 2000 z x hypnotic jt z dominator 2000 z x halifax van het kluizebos x carthago out of the sister of the olympic hardrock z! 2026 due 2026"><a class="ec__a" href="/embryos/dominator-2000-z-x-hypnotic-jt-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2026</span></span><span class="ec__box"><h3 class="ec__name">Dominator 2000 Z <em>&times;</em> Hypnotic JT Z</h3><span class="ec__line">HALIFAX VAN HET KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="united touch s x cabri vd berghoeve z united touch s x cornet obolensky x calato x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/united-touch-s-x-cabri-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg" alt="United Touch S x Cabri vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">United Touch S <em>&times;</em> Cabri vd Berghoeve Z</h3><span class="ec__line">Cornet Obolensky x Calato x Darco x Chin chin</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="zandor z x cabri vd berghoeve z zandor z x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/zandor-z-x-cabri-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-1.jpg" alt="Zandor Z x Cabri vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Zandor Z <em>&times;</em> Cabri vd Berghoeve Z</h3><span class="ec__line">CORNET OBOLENSKY x DIAMANT DE SEMILLY x DARCO x CHIN CHIN</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
+          <li class="ec" data-sold="carrying" data-find="chacco blue x cabri vd berghoeve z chacco blue x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/chacco-blue-x-cabri-vd-berghoeve-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h3 class="ec__name">Chacco Blue <em>&times;</em> Cabri vd Berghoeve Z</h3><span class="ec__line">Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
+          <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Comme il Faut <em>&times;</em> Patchina van’t Merelsnest</h3><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
+        </ul>
+        <button class="topics-arrow topics-arrow--prev" data-rail="more-embryos" data-dir="-1"
+                aria-label="Previous crosses">&larr;</button>
+        <button class="topics-arrow topics-arrow--next" data-rail="more-embryos" data-dir="1"
+                aria-label="Next crosses">&rarr;</button>
+      </div>
     </div>
   </section>
 
@@ -3276,6 +3338,32 @@
     location.href = 'mailto:studvonaxe@gmail.com'
       + '?subject=' + encodeURIComponent('Enquiry: ' + about)
       + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('[data-rail]').forEach(function(btn){
+    var run = document.getElementById(btn.getAttribute('data-rail'));
+    if(!run) return;
+    btn.addEventListener('click', function(){
+      var card = run.querySelector('li');
+      var step = card ? card.getBoundingClientRect().width + 14 : run.clientWidth * .8;
+      run.scrollLeft += step * Number(btn.getAttribute('data-dir'));
+    });
+  });
+  document.querySelectorAll('.hmore__run').forEach(function(run){
+    var wrap = run.parentElement;
+    function sync(){
+      var max = run.scrollWidth - run.clientWidth;
+      wrap.querySelectorAll('[data-rail]').forEach(function(b){
+        var back = Number(b.getAttribute('data-dir')) < 0;
+        b.disabled = max < 4 || (back ? run.scrollLeft <= 3 : run.scrollLeft >= max - 3);
+      });
+    }
+    run.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync);
+    sync();
   });
 })();
 </script>
