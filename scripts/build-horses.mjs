@@ -13,7 +13,15 @@ import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss, headerFor } from './lib/shell.mjs';
 
-const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
+const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
+/* The thirteen stallions of the ICSI semen line. Their own site has no
+   stallion page, so these cannot be harvested: the names and the pedigrees
+   are read out of the pedigree tables of their own crosses and kept in
+   semen-data.js by hand. Same shape as a horse, so everything below builds
+   the archive and the thirteen pages without knowing they arrived
+   separately. */
+const SEMEN = new Function(readFileSync(join(root, 'semen-data.js'), 'utf-8') + '; return SEMEN;')();
+const HORSES = [...HARVESTED, ...SEMEN];
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
 const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
 /* Title and poster for every film, written by scripts/fetch-videos.py. */
@@ -58,8 +66,27 @@ const GROUPS = {
     intro: 'Frozen from our own damlines or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.',
     img: 'arch-embryos.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'cross', many: 'crosses', singular: 'cross',
+    card: (h, full) => embryoCard(h, full), grid: ' ec__grid',
     ctaH: 'Ask about a <em>cross</em>.',
     ctaD: 'Frozen or already carrying. We will tell you which stage a cross is at and what it takes to bring it home.',
+  },
+  stallion: {
+    dir: 'icsi-semen',
+    label: 'ICSI semen',
+    kicker: 'ICSI semen',
+    title: 'The stallions <em>behind our crosses</em>',
+    intro: 'ICSI doses of the stallions we breed with ourselves, produced with Avantea in Cremona and shipped across the EU and for export.',
+    img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
+    one: 'stallion', many: 'stallions', singular: 'stallion',
+    /* No chips. Every other archive filters on something the data knows:
+       sold against available, frozen against carrying. Here it knows
+       nothing yet, so a chip would be a control that does nothing. The
+       search box stays, because thirteen names are worth searching. */
+    chips: false,
+    card: (h, full) => stallionCard(h, full), grid: ' ec__grid',
+    note: 'These are the stallions Stud Von Axe breeds with, and their pedigrees come from our own crosses. Which of them we hold ICSI doses of is still being confirmed, so ask and we will tell you what is in the tank.',
+    ctaH: 'Ask about a <em>dose</em>.',
+    ctaD: 'Tell us the stallion and the mare you have in mind. We will tell you what we hold and what it takes to get it to your vet.',
   },
   sport: {
     dir: 'sport-horses',
@@ -151,6 +178,16 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   .eh__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
   .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
+
+  /* Said out loud rather than left for the visitor to assume: the thirteen
+     stallions are the ones this stud breeds with, and nobody has yet
+     confirmed which of them there are doses of. It is the same sentence on
+     the archive and on every stallion page, and it goes the day the owners
+     answer. */
+  .unc{ margin:1.2rem 0 0; padding-left:.9rem; border-left:2px solid var(--color-gold);
+    font-family:var(--font-body); font-size:13px; line-height:1.55;
+    color:var(--color-navy); max-width:62ch; }
+  .arch .unc{ margin:0 0 1.6rem; }
 
   /* ── the dam ───────────────────────────────────────────────────────────
      The one section a cross earns that a horse does not: whoever is buying
@@ -727,10 +764,21 @@ const horseName = (name) => {
   name = name.replace(/\s*[–—]\s*/g, '-');
   if (name !== name.toUpperCase()) return name;
   return name.toLowerCase().split(' ').map((word, i) => {
-    if (CAPS.has(word)) return word.toUpperCase();
+    /* Their site uses both apostrophes, so the lists are matched against one
+       of them: van't and van’t are the same word. */
+    const plain = word.replace(/’/g, "'");
+    if (CAPS.has(plain)) return word.toUpperCase();
     if (word === 'x') return 'x';                 /* a cross, the way this market writes it */
-    if (i > 0 && SMALL.has(word)) return word;
-    return word.replace(/(^|[’'\-])([a-z])/g, (m, p, c) => p + c.toUpperCase());
+    if (i > 0 && SMALL.has(plain)) return word;
+    return word
+      .replace(/(^|-)([a-z])/g, (m, p, c) => p + c.toUpperCase())
+      /* After an apostrophe only when a word follows it. Capitalising every
+         letter after one turned DON’T TOUCH TIJI HERO into Don’T, VAN’T
+         ROOSAKKER into Van’T and Z'S SISTER into Z'S, which is fifty eight
+         names across the site reading as a mistake. D'Inzeo still gets its
+         capital, because a word follows the apostrophe there and a single
+         letter does not. */
+      .replace(/([’'])([a-z])(?=[a-z])/g, (m, p, c) => p + c.toUpperCase());
   }).join(' ');
 };
 
@@ -741,7 +789,15 @@ const sireOf = (horse) => {
   return first ? horseName(first) : '';
 };
 
-const meta = (horse) => [horse.year, SEX(horse), sireOf(horse)].filter(Boolean).join(' \u00b7 ');
+/* Where a sold horse went, in words. The badge on the picture shows a flag
+   and the word Sold, and the country was only ever in a title attribute and
+   a line for screen readers, so on the homepage it was invisible while the
+   archives printed it under the name. Same card, same sentence, everywhere. */
+const soldTo = (h) => (h.sold && h.country) ? `Sold to ${COUNTRY[h.country] || h.country}` : '';
+/* Born, not the raw field: eleven foals carry a full date in it, so the
+   short card read "23/04/26" where its own archive read "Born 2026". */
+const meta = (horse) => [when(horse), SEX(horse), sireOf(horse), soldTo(horse)]
+  .filter(Boolean).join(' \u00b7 ');
 
 /* The homepage card, unchanged, pointed at the horse's own page. A horse
    without a photograph gets the typographic card the homepage already uses
@@ -777,8 +833,7 @@ const card = (horse, group, full) => {
   const breeding = full && horse.genetics && horse.photos.length
     ? `<span class="hz__ped">${esc(horseName(theirWords(horse.genetics)))}</span>` : '';
   const line = full
-    ? [when(horse), SEX(horse), horse.studbook,
-       horse.sold && horse.country ? `Sold to ${COUNTRY[horse.country] || horse.country}` : '']
+    ? [when(horse), SEX(horse), horse.studbook, soldTo(horse)]
         .filter(Boolean).join(' \u00b7 ')
     : meta(horse);
 
@@ -800,9 +855,19 @@ const card = (horse, group, full) => {
 
 /* Counted, never typed: a written number goes stale the first time a horse
    is added or sold and nobody remembers the sentence. */
+/* Numbers are spelled, the way the rest of the copy spells them. The list
+   used to stop at twenty one, which was the largest archive; the homepage
+   now counts the three groups together and read "Showing six of 45" in the
+   middle of a sentence. It runs to sixty, which covers every count on the
+   site with room to grow. */
 const WORDS = ['no','one','two','three','four','five','six','seven','eight','nine','ten',
                'eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen',
-               'eighteen','nineteen','twenty','twenty one'];
+               'eighteen','nineteen','twenty',
+               ...['twenty','thirty','forty','fifty'].flatMap((tens, i) => [
+                 tens,
+                 ...['one','two','three','four','five','six','seven','eight','nine']
+                   .map((u) => `${tens} ${u}`),
+               ]).slice(1)];
 const count = (n) => WORDS[n] || String(n);
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
@@ -811,7 +876,8 @@ const gridSection = (group, list) => {
      foals and sport horses it is what is for sale. On embryos it is the
      stage, frozen against carrying, which is the split the owners asked for
      and the only one that means anything there: thirteen of the fifteen are
-     available, so an Available chip would say nothing. */
+     available, so an Available chip would say nothing. On the stallions it
+     is nothing at all, so they carry none. */
   const embryos = group.dir === 'embryos';
   /* On the embryos the first chip is All, and it is deliberate: every cross
      is for sale, so there is nothing to filter out on arrival, and the six
@@ -825,7 +891,7 @@ const gridSection = (group, list) => {
     : [['available', 'Available', list.filter((h) => !h.sold).length],
        ['sold', 'Sold', list.filter((h) => h.sold).length],
        ['all', 'All', list.length]];
-  const first = chips[0];
+  const first = group.chips === false ? ['all', 'All', list.length] : chips[0];
   const openOn = first[2] ? first[0] : 'all';
   const shown = openOn === 'all' ? list.length : first[2];
   const noun = (n) => `${count(n)} ${n === 1 ? group.one : group.many}`;
@@ -842,17 +908,18 @@ const gridSection = (group, list) => {
             <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="flt__chips" role="group" aria-label="Filter these ${esc(group.many)}">
+${group.chips === false ? '' : `        <div class="flt__chips" role="group" aria-label="Filter these ${esc(group.many)}">
 ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="button" data-show="${key}"
                   aria-pressed="${openOn === key ? 'true' : 'false'}">${label} <span class="c">${n}</span></button>`).join('\n')}
-        </div>
+        </div>`}
         <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
       </div>
 
+      ${group.note ? `<p class="unc">${esc(group.note)}</p>` : ''}
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
 
-      <ul class="hz__grid${embryos ? ' ec__grid' : ''}" data-grid>
-${list.map((h) => '        ' + (embryos ? embryoCard(h, true) : card(h, group, true))).join('\n')}
+      <ul class="hz__grid${group.grid || ''}" data-grid>
+${list.map((h) => '        ' + (group.card ? group.card(h, true) : card(h, group, true))).join('\n')}
       </ul>
     </div>
   </section>
@@ -1071,6 +1138,97 @@ ${pedigreeSection(horse)}
 ${linesSection(horse, dam, sire, damName)}
 ${contactSection(horse)}
 ${moreSection(horse, group, list)}
+`;
+};
+
+/* ── the stallion card and the stallion page ──────────────────────────
+   The same two shapes as a cross, for the same reason: a straw has no face
+   either. None of the thirteen has a photograph, so every window is the mark
+   on navy, which is the fallback the embryo cards already use. Where a cross
+   says Frozen or Due 2027, a stallion says what is honestly known about
+   getting one, which is that you have to ask. */
+const stallionLine = (h) => {
+  const p = h.pedigree || {};
+  return [p.sire, p.dam].filter(Boolean).map(horseName).join(' x ');
+};
+
+const stallionCard = (horse, full) => {
+  const line = stallionLine(horse);
+  const haystack = [horse.name, horse.genetics, line].filter(Boolean).join(' ').toLowerCase();
+  return `<li class="ec" data-sold="stallion" data-find="${esc(haystack)}">` +
+    `<a class="ec__a" href="/icsi-semen/${horse.slug}">` +
+    '<span class="ec__win"><span class="ec__mark">' +
+      '<img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">' +
+    '</span><span class="ec__fade" aria-hidden="true"></span></span>' +
+    '<span class="ec__seam"><span class="ec__stage">Availability on request</span></span>' +
+    '<span class="ec__box">' +
+      `<${full ? 'h2' : 'h3'} class="ec__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
+      (line ? `<span class="ec__line">${esc(line)}</span>` : '') +
+    '</span></a></li>';
+};
+
+const stallionPage = (horse, group, list) => {
+  const p = horse.pedigree || {};
+  const facts = [
+    ['Semen', 'ICSI'],
+    ['Availability', 'On request'],
+    p.sire ? ['Sire', horseName(p.sire)] : null,
+    p.dam ? ['Dam', horseName(p.dam)] : null,
+  ].filter(Boolean);
+
+  return `
+  <section class="eh">
+    <div class="eh__win">
+      <span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>
+      <span class="eh__veil" aria-hidden="true"></span>
+      <a class="eh__back" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
+    </div>
+    <div class="wrap">
+      <div class="eh__tray">
+        <span class="eh__stage">ICSI semen</span>
+        <h1 class="eh__h">${esc(horseName(horse.name))}</h1>
+        ${stallionLine(horse) ? `<p class="eh__say">${esc(stallionLine(horse))}</p>` : ''}
+        <div class="eh__facts">
+${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
+        </div>
+        <p class="unc">Which stallions we hold ICSI doses of is still being confirmed. Ask and we will tell you what is in the tank.</p>
+        <div class="eh__acts">
+          <a href="#ask" class="btn btn-gold btn-pill">Ask about this stallion</a>
+          <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">Message on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+${pedigreeSection(horse)}
+${crossesSection(horse)}
+${contactSection(horse)}
+${moreSection(horse, group, list)}
+`;
+};
+
+/* What this stud has actually done with the stallion, which is the one thing
+   about him that is ours to say. Every one of the thirteen is the sire of at
+   least one cross on the embryo archive, so the section is a run of those
+   crosses and nothing is written that is not already on their own pages. */
+const crossesSection = (horse) => {
+  const mine = (horse.crosses || [])
+    .map((slug) => HORSES.find((h) => h.slug === slug)).filter(Boolean);
+  if (!mine.length) return '';
+  const n = mine.length;
+  return `
+  <section class="hmore">
+    <div class="wrap">
+      <div class="hmore__head">
+        <h2 class="hmore__h">Our own <em>${n === 1 ? 'cross' : 'crosses'}</em> by him</h2>
+        <a class="hmore__all" href="/embryos">All crosses <span class="a" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="hz__grid ec__grid">
+${mine.map((h) => '        ' + embryoCard(h, false)).join('\n')}
+      </ul>
+    </div>
+  </section>
 `;
 };
 
@@ -1467,15 +1625,23 @@ ${horse.body.map((t) => `            <p>${esc(theirWords(t))}</p>`).join('\n')}
 const pedigreeSection = (horse) => {
   const p = horse.pedigree;
   if (!p || !p.sire) return '';
-  const cell = (name, cls, span) =>
-    name ? `<div class="ped__cell ${cls}" style="grid-row: span ${span}">${esc(horseName(name))}</div>` : '';
+  /* Every cell says which column and which row it is in. It used to say only
+     how many rows it spanned and let the grid place it, which works while all
+     fifteen cells are there and quietly shuffles the table when one is not:
+     a stallion has no fourth generation on record, so his own dam ended up in
+     the grandparents' column reading as his granddam. A pedigree that puts a
+     horse in the wrong generation is worse than one with a gap in it. */
+  const cell = (name, cls, col, row, span) =>
+    name ? `<div class="ped__cell ${cls}" style="grid-column:${col}; grid-row:${row} / span ${span}">${esc(horseName(name))}</div>` : '';
   const third = p.third || [];
-  const branch = (parent, gsire, gdam, from) =>
-    cell(parent, 'ped__cell--sire', 4) +
-    cell(gsire, '', 2) + cell(third[from] || '', 'ped__cell--third', 1) +
-    cell(third[from + 1] || '', 'ped__cell--third', 1) +
-    cell(gdam, '', 2) + cell(third[from + 2] || '', 'ped__cell--third', 1) +
-    cell(third[from + 3] || '', 'ped__cell--third', 1);
+  const branch = (parent, gsire, gdam, from, top) =>
+    cell(parent, 'ped__cell--sire', 2, top, 4) +
+    cell(gsire, '', 3, top, 2) +
+    cell(third[from] || '', 'ped__cell--third', 4, top, 1) +
+    cell(third[from + 1] || '', 'ped__cell--third', 4, top + 1, 1) +
+    cell(gdam, '', 3, top + 2, 2) +
+    cell(third[from + 2] || '', 'ped__cell--third', 4, top + 2, 1) +
+    cell(third[from + 3] || '', 'ped__cell--third', 4, top + 3, 1);
   return `
   <section class="ped">
     <div class="ped__mark" aria-hidden="true">
@@ -1486,10 +1652,10 @@ const pedigreeSection = (horse) => {
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
           ${horse.category === 'embryo'
-            ? `<div class="ped__cell ped__cell--next" style="grid-row: span 8">Your next embryo</div>`
-            : cell(horseName(horse.name), 'ped__cell--self', 8)}
-          ${branch(p.sire, p.sireSire, p.sireDam, 0)}
-          ${branch(p.dam, p.damSire, p.damDam, 4)}
+            ? `<div class="ped__cell ped__cell--next" style="grid-column:1; grid-row:1 / span 8">Your next embryo</div>`
+            : cell(horseName(horse.name), 'ped__cell--self', 1, 1, 8)}
+          ${branch(p.sire, p.sireSire, p.sireDam, 0, 1)}
+          ${branch(p.dam, p.damSire, p.damDam, 4, 5)}
         </div>
         ${(() => {
           if (horse.category === 'embryo') return '';
@@ -1704,8 +1870,8 @@ const moreSection = (horse, group, list) => {
         <h2 class="hmore__h">More <em>${esc(group.many)}</em></h2>
         <a class="hmore__all" href="/${group.dir}">All ${esc(group.many)} <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
-      <ul class="hz__grid${group.dir === 'embryos' ? ' ec__grid' : ''}">
-${rest.map((h) => '        ' + (group.dir === 'embryos' ? embryoCard(h, false) : card(h, group))).join('\n')}
+      <ul class="hz__grid${group.grid || ''}">
+${rest.map((h) => '        ' + (group.card ? group.card(h, false) : card(h, group))).join('\n')}
       </ul>
     </div>
   </section>
@@ -1914,7 +2080,9 @@ for (const key of Object.keys(GROUPS)) {
   written.archives++;
 
   for (const horse of list) {
-    const body = key === 'embryo'
+    const body = key === 'stallion'
+      ? stallionPage(horse, group, list)
+      : key === 'embryo'
       ? embryoPage(horse, group, list)
       /* The films sit straight after the pedigree, which is where a cross
          carries its sire and dam lines: same plate, same place. */
@@ -1949,6 +2117,7 @@ const mares  = HORSES.filter((h) => h.category === 'broodmare');
 const foals  = HORSES.filter((h) => h.category === 'foal');
 const crosses = HORSES.filter((h) => h.category === 'embryo');
 const sport  = HORSES.filter((h) => h.category === 'sport');
+const stallions = HORSES.filter((h) => h.category === 'stallion');
 
 writeFileSync(join(root, 'horses-home.js'),
 `/* Cards for the homepage runs, written by scripts/build-horses.mjs from
@@ -1961,19 +2130,28 @@ var HOME_HORSES = {
      that was the state every visitor met first. Each horse now carries its own
      page here as well, so the run is the same set of facts in all three
      filters. */
+  /* Mixed on purpose since 31 Aug: the foals moved up here as a fourth chip,
+     and All now means all three kinds in one run rather than sport horses and
+     mares only. Two of each, so no group can fill the grid on its own. */
   all: ${JSON.stringify(
-    [...sport.slice(0, 3), ...mares.slice(0, 3)]
+    [...sport.slice(0, 2), ...mares.slice(0, 2), ...foals.slice(0, 2)]
       .map((h) => card(h, GROUPS[h.category])).join('\n'))},
-  foals: ${JSON.stringify(homeCards(foals, GROUPS.foal, 8))},
+  /* Six, not eight: this run used to be the slider in the programme, where a
+     ragged last row does not exist. It is a three across grid now. */
+  foals: ${JSON.stringify(homeCards(foals, GROUPS.foal, 6))},
   /* The same card the archive uses, not a second one. A cross showed
      "Available" on the homepage and "Due 2027" on its archive, because the
      homepage run was built from the horse card and the archive from the
      embryo card. One embryo, one card, one word for its stage. */
   embryos: ${JSON.stringify(crosses.slice(0, 8).map((h) => embryoCard(h, false)).join('\n'))},
   mares: ${JSON.stringify(homeCards(mares, GROUPS.broodmare, 6))},
+  /* The ICSI stallions, in the run where the foals used to be. Same card as
+     the archive, so the run and the page say one thing. */
+  stallions: ${JSON.stringify(stallions.slice(0, 8).map((h) => stallionCard(h, false)).join('\n'))},
   sport: ${JSON.stringify(homeCards(sport, GROUPS.sport, 6))},
   counts: ${JSON.stringify({
     mares: mares.length, foals: foals.length, crosses: crosses.length, sport: sport.length,
+    stallions: stallions.length,
     damlines: damlinesOf(crosses),
     foalsAvailable: foals.filter((h) => !h.sold).length,
     crossesAvailable: crosses.filter((h) => !h.sold).length,

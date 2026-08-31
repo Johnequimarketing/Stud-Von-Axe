@@ -363,7 +363,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:1.25rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
   .primary-nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
@@ -392,18 +392,25 @@
   }
 
 
-  /* Five items beside a centred wordmark stop fitting on one line well
-     above the phone breakpoint, so the drawer takes over here rather than
-     at 860px. Measured after document.fonts.ready, with the real serif:
-     they need 426px and the space beside the mark is 455px at 1301 and
-     tops out at 497px. About came off the bar on 29 Aug and that room went
-     into the gaps rather than into another item. The gap is a flat rem
-     rather than a vw: one that grows with the screen ate the clearance on
-     a 1920 monitor, where the bar has stopped growing because it is capped
-     at the content width.
-     Measuring before the webfont lands reads 20px narrower and puts this
-     line in the wrong place, which is how it ended up at 1240. */
-  @media (max-width: 1300px){
+  /* Items beside a centred wordmark stop fitting on one line well above the
+     phone breakpoint, so the drawer takes over here rather than at 860px.
+     Measured in the browser after document.fonts.ready, with the real serif.
+     The bar is capped at the content width, so the room beside the mark
+     stops growing at 1280 and is (1280 - 51 padding - 200 mark - 35 gaps)/2
+     = 497px however wide the monitor is. Six items need 483 at this gap and
+     seven need 555, which is why Contact is not on the bar: it cannot fit at
+     any width, and it is the gold button eighteen pixels to the right of the
+     mark, so the bar already carries it.
+     497 is only reached at the cap; at 1381 the room is 491 and at 1301 it is
+     451, which is under the six items. That is why this line moved from 1300
+     to 1380 on 31 Aug: it had been measured for five items and quietly went
+     on standing while a sixth and a seventh were added, and the last item
+     spent that time sitting behind the logo.
+     The gap is a flat rem rather than a vw: one that grows with the screen
+     ate the clearance on a 1920 monitor.
+     Measuring before the webfont lands reads 20px narrower, which is how
+     this line first ended up at 1240. */
+  @media (max-width: 1380px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -2093,6 +2100,16 @@
   .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
 
+  /* Said out loud rather than left for the visitor to assume: the thirteen
+     stallions are the ones this stud breeds with, and nobody has yet
+     confirmed which of them there are doses of. It is the same sentence on
+     the archive and on every stallion page, and it goes the day the owners
+     answer. */
+  .unc{ margin:1.2rem 0 0; padding-left:.9rem; border-left:2px solid var(--color-gold);
+    font-family:var(--font-body); font-size:13px; line-height:1.55;
+    color:var(--color-navy); max-width:62ch; }
+  .arch .unc{ margin:0 0 1.6rem; }
+
   /* ── the dam ───────────────────────────────────────────────────────────
      The one section a cross earns that a horse does not: whoever is buying
      an embryo is buying her family. Her own page carries the record, so
@@ -2570,9 +2587,13 @@
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
         <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
              mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Each of the four now has an archive of its
-             own, built from their site's own listings, so these go to
-             pages rather than to a section further down.
+             Home is the mark, and Contact is the gold button at the other
+             end of the same bar: seven items beside a centred wordmark do
+             not fit at any screen width, measured, and the seventh had been
+             sitting behind the logo. Contact is on the bar at every width,
+             in the footer and at the foot of every page.
+             Each of the archives is built from their site's own listings,
+             so these go to pages rather than to a section further down.
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. About went the same way
              on 29 Aug: it was already in the footer's Navigate column, and
@@ -2583,8 +2604,7 @@
           <a href="/foals" aria-current="page">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
-          <a href="/semen">ICSI semen</a>
-          <a href="/contact">Contact</a>
+          <a href="/icsi-semen">ICSI semen</a>
         </nav>
       </div>
 
@@ -2663,9 +2683,9 @@
       <div class="ped__plate">
         <h2 class="ped__h">Three generations <em>deep</em></h2>
         <div class="ped__grid">
-          <div class="ped__cell ped__cell--self" style="grid-row: span 8">Unique Touch Von Axe Z</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">United Touch S</div><div class="ped__cell " style="grid-row: span 2">Untouched</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Untouchable</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Cantante Touch</div><div class="ped__cell " style="grid-row: span 2">Touch Of Class</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Lux Z</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Cantante Touch</div>
-          <div class="ped__cell ped__cell--sire" style="grid-row: span 4">Cortina de Jolie Z</div><div class="ped__cell " style="grid-row: span 2">Cornet Obolensky</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Clinton</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Rabanna van Costersveld</div><div class="ped__cell " style="grid-row: span 2">Fuga de Muze</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Calato</div><div class="ped__cell ped__cell--third" style="grid-row: span 1">Narcotique II</div>
+          <div class="ped__cell ped__cell--self" style="grid-column:1; grid-row:1 / span 8">Unique Touch Von Axe Z</div>
+          <div class="ped__cell ped__cell--sire" style="grid-column:2; grid-row:1 / span 4">United Touch S</div><div class="ped__cell " style="grid-column:3; grid-row:1 / span 2">Untouched</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:1 / span 1">Untouchable</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:2 / span 1">Cantante Touch</div><div class="ped__cell " style="grid-column:3; grid-row:3 / span 2">Touch Of Class</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:3 / span 1">Lux Z</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:4 / span 1">Cantante Touch</div>
+          <div class="ped__cell ped__cell--sire" style="grid-column:2; grid-row:5 / span 4">Cortina de Jolie Z</div><div class="ped__cell " style="grid-column:3; grid-row:5 / span 2">Cornet Obolensky</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:5 / span 1">Clinton</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:6 / span 1">Rabanna van Costersveld</div><div class="ped__cell " style="grid-column:3; grid-row:7 / span 2">Fuga de Muze</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:7 / span 1">Calato</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:8 / span 1">Narcotique II</div>
         </div>
         <p class="ped__note">Unique Touch Von Axe Z has no Horsetelex entry of its own yet. The dam, Cortina de Jolie Z, is on <a href="https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z" target="_blank" rel="noopener" style="color:var(--color-navy)">Horsetelex</a>.</p>
         
@@ -2781,9 +2801,9 @@
         <a class="hmore__all" href="/foals">All foals <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="hz__grid">
-        <li><a class="hz__card" href="/foals/darkhan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/darkhan-von-axe-z-1.jpg" alt="Darkhan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the Netherlands"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#AE1C28"/><rect y="10.67" width="24" height="5.33" fill="#21468B"/></svg></span>Sold<span class="visually-hidden"> to the Netherlands</span></span></span></span><span class="hz__body"><h3 class="hz__name">Darkhan Von Axe Z</h3><span class="hz__meta">07/05/25 · Colt · Dourkhan Hero Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/dune-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dune-von-axe-z-1.jpg" alt="Dune Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Dune Von Axe Z</h3><span class="hz__meta">28/03/2025 · Colt · Diamant de Semilly</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-        <li><a class="hz__card" href="/foals/cara-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cara-von-axe-z-1.jpg" alt="Cara Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cara Von Axe Z</h3><span class="hz__meta">30/04/2025 · Filly · Comilfo Plus Z</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/darkhan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/darkhan-von-axe-z-1.jpg" alt="Darkhan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the Netherlands"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#AE1C28"/><rect y="10.67" width="24" height="5.33" fill="#21468B"/></svg></span>Sold<span class="visually-hidden"> to the Netherlands</span></span></span></span><span class="hz__body"><h3 class="hz__name">Darkhan Von Axe Z</h3><span class="hz__meta">Born 2025 · Colt · Dourkhan Hero Z · Sold to the Netherlands</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/dune-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dune-von-axe-z-1.jpg" alt="Dune Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Dune Von Axe Z</h3><span class="hz__meta">Born 2025 · Colt · Diamant de Semilly · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+        <li><a class="hz__card" href="/foals/cara-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cara-von-axe-z-1.jpg" alt="Cara Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cara Von Axe Z</h3><span class="hz__meta">Born 2025 · Filly · Comilfo Plus Z · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
       </ul>
     </div>
   </section>

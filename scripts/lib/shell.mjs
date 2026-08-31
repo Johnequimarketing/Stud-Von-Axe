@@ -24,7 +24,7 @@ export const relink = (html) => html
   .replace(/href="#/g, 'href="/#')
   .replace(/href="news\/"/g, 'href="/news"')
   .replace(/href="about\/"/g, 'href="/about"')
-  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact|semen)\/"/g, 'href="/$1"')
+  .replace(/href="(breeding-mares|foals|embryos|sport-horses|contact|icsi-semen)\/"/g, 'href="/$1"')
   .replace(/(src|href)="assets\//g, '$1="/assets/')
   .replace(/href="index.html"/g, 'href="/"');
 

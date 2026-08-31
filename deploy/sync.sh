@@ -37,13 +37,12 @@ mkdir -p "$here/about"
 rm -f "$here/about/"*.html
 cp "$root/about/index.html" "$here/about/index.html"
 mkdir -p "$here/contact" && cp "$root/contact/index.html" "$here/contact/index.html"
-mkdir -p "$here/semen" && cp "$root/semen/index.html" "$here/semen/index.html"
-for group in breeding-mares foals embryos sport-horses; do
+for group in breeding-mares foals embryos sport-horses icsi-semen; do
   mkdir -p "$here/$group"
   rm -f "$here/$group/"*.html
   cp "$root/$group/"*.html "$here/$group/"
 done
-echo "copied index.html, news-data.js, the about page, $(ls "$here/news" | wc -l | tr -d ' ') news pages and $(cat "$here"/breeding-mares/*.html "$here"/foals/*.html "$here"/embryos/*.html "$here"/sport-horses/*.html 2>/dev/null | grep -c '<!DOCTYPE') horse pages"
+echo "copied index.html, news-data.js, the about page, $(ls "$here/news" | wc -l | tr -d ' ') news pages and $(cat "$here"/breeding-mares/*.html "$here"/foals/*.html "$here"/embryos/*.html "$here"/sport-horses/*.html "$here"/icsi-semen/*.html 2>/dev/null | grep -c '<!DOCTYPE') horse pages"
 
 # ── only the assets the page actually references ──────────────────────
 # Read out of index.html rather than copying the whole folder, so an
@@ -62,7 +61,8 @@ while IFS= read -r ref; do
   fi
 done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
   "$root/07-horse-contact.html" \
-  "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html "$root/contact/index.html" "$root/semen/index.html" \
+  "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
+  "$root/icsi-semen/"*.html "$root/contact/index.html" \
   | grep -oE 'assets/(img/horses|img/video|img/placeholder|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 

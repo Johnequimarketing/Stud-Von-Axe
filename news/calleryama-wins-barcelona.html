@@ -364,7 +364,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:1.25rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
   .primary-nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
@@ -393,18 +393,25 @@
   }
 
 
-  /* Five items beside a centred wordmark stop fitting on one line well
-     above the phone breakpoint, so the drawer takes over here rather than
-     at 860px. Measured after document.fonts.ready, with the real serif:
-     they need 426px and the space beside the mark is 455px at 1301 and
-     tops out at 497px. About came off the bar on 29 Aug and that room went
-     into the gaps rather than into another item. The gap is a flat rem
-     rather than a vw: one that grows with the screen ate the clearance on
-     a 1920 monitor, where the bar has stopped growing because it is capped
-     at the content width.
-     Measuring before the webfont lands reads 20px narrower and puts this
-     line in the wrong place, which is how it ended up at 1240. */
-  @media (max-width: 1300px){
+  /* Items beside a centred wordmark stop fitting on one line well above the
+     phone breakpoint, so the drawer takes over here rather than at 860px.
+     Measured in the browser after document.fonts.ready, with the real serif.
+     The bar is capped at the content width, so the room beside the mark
+     stops growing at 1280 and is (1280 - 51 padding - 200 mark - 35 gaps)/2
+     = 497px however wide the monitor is. Six items need 483 at this gap and
+     seven need 555, which is why Contact is not on the bar: it cannot fit at
+     any width, and it is the gold button eighteen pixels to the right of the
+     mark, so the bar already carries it.
+     497 is only reached at the cap; at 1381 the room is 491 and at 1301 it is
+     451, which is under the six items. That is why this line moved from 1300
+     to 1380 on 31 Aug: it had been measured for five items and quietly went
+     on standing while a sixth and a seventh were added, and the last item
+     spent that time sitting behind the logo.
+     The gap is a flat rem rather than a vw: one that grows with the screen
+     ate the clearance on a 1920 monitor.
+     Measuring before the webfont lands reads 20px narrower, which is how
+     this line first ended up at 1240. */
+  @media (max-width: 1380px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -2062,9 +2069,13 @@
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
         <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
              mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Each of the four now has an archive of its
-             own, built from their site's own listings, so these go to
-             pages rather than to a section further down.
+             Home is the mark, and Contact is the gold button at the other
+             end of the same bar: seven items beside a centred wordmark do
+             not fit at any screen width, measured, and the seventh had been
+             sitting behind the logo. Contact is on the bar at every width,
+             in the footer and at the foot of every page.
+             Each of the archives is built from their site's own listings,
+             so these go to pages rather than to a section further down.
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. About went the same way
              on 29 Aug: it was already in the footer's Navigate column, and
@@ -2075,8 +2086,7 @@
           <a href="/foals">Foals</a>
           <a href="/embryos">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
-          <a href="/semen">ICSI semen</a>
-          <a href="/contact">Contact</a>
+          <a href="/icsi-semen">ICSI semen</a>
         </nav>
       </div>
 

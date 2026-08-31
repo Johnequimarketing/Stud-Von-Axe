@@ -416,7 +416,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:1.25rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
   .primary-nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
@@ -445,18 +445,25 @@
   }
 
 
-  /* Five items beside a centred wordmark stop fitting on one line well
-     above the phone breakpoint, so the drawer takes over here rather than
-     at 860px. Measured after document.fonts.ready, with the real serif:
-     they need 426px and the space beside the mark is 455px at 1301 and
-     tops out at 497px. About came off the bar on 29 Aug and that room went
-     into the gaps rather than into another item. The gap is a flat rem
-     rather than a vw: one that grows with the screen ate the clearance on
-     a 1920 monitor, where the bar has stopped growing because it is capped
-     at the content width.
-     Measuring before the webfont lands reads 20px narrower and puts this
-     line in the wrong place, which is how it ended up at 1240. */
-  @media (max-width: 1300px){
+  /* Items beside a centred wordmark stop fitting on one line well above the
+     phone breakpoint, so the drawer takes over here rather than at 860px.
+     Measured in the browser after document.fonts.ready, with the real serif.
+     The bar is capped at the content width, so the room beside the mark
+     stops growing at 1280 and is (1280 - 51 padding - 200 mark - 35 gaps)/2
+     = 497px however wide the monitor is. Six items need 483 at this gap and
+     seven need 555, which is why Contact is not on the bar: it cannot fit at
+     any width, and it is the gold button eighteen pixels to the right of the
+     mark, so the bar already carries it.
+     497 is only reached at the cap; at 1381 the room is 491 and at 1301 it is
+     451, which is under the six items. That is why this line moved from 1300
+     to 1380 on 31 Aug: it had been measured for five items and quietly went
+     on standing while a sixth and a seventh were added, and the last item
+     spent that time sitting behind the logo.
+     The gap is a flat rem rather than a vw: one that grows with the screen
+     ate the clearance on a 1920 monitor.
+     Measuring before the webfont lands reads 20px narrower, which is how
+     this line first ended up at 1240. */
+  @media (max-width: 1380px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -1964,9 +1971,13 @@
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
         <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
              mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Each of the four now has an archive of its
-             own, built from their site's own listings, so these go to
-             pages rather than to a section further down.
+             Home is the mark, and Contact is the gold button at the other
+             end of the same bar: seven items beside a centred wordmark do
+             not fit at any screen width, measured, and the seventh had been
+             sitting behind the logo. Contact is on the bar at every width,
+             in the footer and at the foot of every page.
+             Each of the archives is built from their site's own listings,
+             so these go to pages rather than to a section further down.
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. About went the same way
              on 29 Aug: it was already in the footer's Navigate column, and
@@ -1977,8 +1988,7 @@
           <a href="foals/">Foals</a>
           <a href="embryos/">Embryos</a>
           <a href="sport-horses/">Sport horses</a>
-          <a href="semen/">ICSI semen</a>
-          <a href="contact/">Contact</a>
+          <a href="icsi-semen/">ICSI semen</a>
         </nav>
       </div>
 
@@ -2022,12 +2032,12 @@
 
 
   <div class="hero__body">
-    <p class="hero-eyebrow">Foals &middot; Embryos &middot; Semen</p>
+    <p class="hero-eyebrow">Foals &middot; Embryos &middot; ICSI semen</p>
     <h1 class="hero-heading">Bred for the biggest <span class="hero-mark">arenas</span></h1>
-    <p class="hero-sub">Foals, embryos and frozen semen, raised between our Italian and Belgian bases and sold direct to breeders worldwide.</p>
+    <p class="hero-sub">Foals, embryos and ICSI semen, raised between our Italian and Belgian bases and sold direct to breeders worldwide.</p>
     <div class="hero-actions">
       <a href="#horses" class="btn btn-gold btn-pill">View the horses</a>
-      <a href="#programme" class="btn btn-ghost btn-pill">View the foals</a>
+      <a href="#programme" class="btn btn-ghost btn-pill">View the programme</a>
     </div>
   </div>
 
@@ -2073,15 +2083,15 @@
         <span class="topic__go">How it works <span class="a" aria-hidden="true">&rarr;</span></span>
       </span>
     </a>
-    <a class="topic" href="semen/">
+    <a class="topic" href="icsi-semen/">
       <span class="topic__win">
         <img src="assets/img/semen-detail.jpg" alt="" loading="lazy">
       </span>
       <span class="topic__body">
-        <span class="topic__t">Semen</span>
+        <span class="topic__t">ICSI semen</span>
         <span class="topic__m">Avantea, Cremona</span>
-        <span class="topic__more">Frozen semen through Avantea in Cremona, shipped across the EU and for export.</span>
-        <span class="topic__go">See the semen <span class="a" aria-hidden="true">&rarr;</span></span>
+        <span class="topic__more">ICSI doses of the stallions we breed with, through Avantea in Cremona.</span>
+        <span class="topic__go">See the stallions <span class="a" aria-hidden="true">&rarr;</span></span>
       </span>
     </a>
     <a class="topic" href="#services">
@@ -2172,22 +2182,28 @@
 
   <!-- ================= THE HORSES =================
        Directly after the story, because the next question a visitor has is
-       "show me". Sport horses and broodmares, filtered by category, and the
-       sold ones stay in the run: where a horse went is the reach, so it is
-       proof rather than clutter. The foals moved down to the programme,
-       where they sit beside the embryos a buyer compares them with. -->
+       "show me". Sport horses, broodmares and foals, filtered by category,
+       and the sold ones stay in the run: where a horse went is the reach, so
+       it is proof rather than clutter.
+       The foals came back up here on 31 Aug. They had been sitting in the
+       programme beside the embryos, which reads well as a comparison and
+       badly as a place to find a foal: a foal is a horse, and this is where
+       the visitor is told to go and look at horses. The programme now runs
+       ICSI semen against embryos, which really are the two routes into the
+       same damlines. -->
   <section class="hz" id="horses">
     <div class="wrap">
       <div class="hz__head">
         <div>
           <p class="plaque">The horses</p>
           <h2 class="hz__h">Pedigree and <em>produce</em>.</h2>
-          <p class="hz__intro">The mares we breed from, and the horses bred here that have gone on.</p>
+          <p class="hz__intro">The mares we breed from, the foals on the ground, and the horses bred here that have gone on.</p>
         </div>
         <div class="hz__filters" role="group" aria-label="Filter the horses">
           <button class="hz__chip" data-hz="all"       aria-pressed="true">All horses <span class="c"></span></button>
           <button class="hz__chip" data-hz="sport"     aria-pressed="false">Sport horses <span class="c"></span></button>
           <button class="hz__chip" data-hz="broodmare" aria-pressed="false">Broodmares <span class="c"></span></button>
+          <button class="hz__chip" data-hz="foal"      aria-pressed="false">Foals <span class="c"></span></button>
         </div>
       </div>
 
@@ -2264,8 +2280,13 @@
 
   <!-- ================= THE PROGRAMME =================
        The one thing a buyer genuinely does not know: what the difference
-       between the three routes actually is. The slider names them, this
-       section explains them. -->
+       between the routes actually is. The slider names them, this section
+       explains them.
+       31 Aug: the foals moved up to the horses, where a visitor looks for a
+       horse, and ICSI semen took their run here. That is the pairing this
+       section was always describing: the same damlines, reached either by
+       putting our stallion on your mare or by taking a cross we have already
+       made. -->
   <section class="pg" id="programme">
     <div class="wrap">
       <div class="pg__head">
@@ -2273,30 +2294,30 @@
           <p class="plaque">The programme</p>
           <h2 class="pg__h">Two ways into the same <em>damlines</em>.</h2>
         </div>
-        <p class="pg__intro">Whether you take a foal, a frozen embryo or a pregnancy already carrying,
-        the bloodline is identical. What changes is who does the waiting.</p>
+        <p class="pg__intro">Whether you breed the cross yourself with our semen or take one we have
+        already made, the bloodline is identical. What changes is who does the waiting.</p>
       </div>
 
       <!-- Four across, and the first card is the section itself: the title,
            the line and the button. The three beside it are the run. -->
       <div class="pgr">
         <div class="pgr__fix">
-          <h3 class="pgr__t">Foals</h3>
-          <p class="pgr__d">Born and raised at our Belgian base, out of mares chosen for jumping
-          ability and temperament. You collect a horse already on the ground.</p>
-          <a class="pgr__cta" href="foals/">See the foals <span class="a" aria-hidden="true">&rarr;</span></a>
+          <h3 class="pgr__t">ICSI semen</h3>
+          <p class="pgr__d">ICSI doses of the stallions we breed with ourselves, produced with Avantea
+          in Cremona. You make the cross on your own mare.</p>
+          <a class="pgr__cta" href="icsi-semen/">See the stallions <span class="a" aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="pgr__wrap">
-          <ul class="pgr__run" id="pg-foals"></ul>
-          <button class="topics-arrow topics-arrow--prev" data-run="pg-foals" data-dir="-1"
-                  aria-label="Previous foals">&larr;</button>
-          <button class="topics-arrow topics-arrow--next" data-run="pg-foals" data-dir="1"
-                  aria-label="Next foals">&rarr;</button>
+          <ul class="pgr__run" id="pg-semen"></ul>
+          <button class="topics-arrow topics-arrow--prev" data-run="pg-semen" data-dir="-1"
+                  aria-label="Previous stallions">&larr;</button>
+          <button class="topics-arrow topics-arrow--next" data-run="pg-semen" data-dir="1"
+                  aria-label="Next stallions">&rarr;</button>
         </div>
       </div>
 
       <!-- The invitation, set between the two runs on purpose: it breaks the
-           section in half so the foals and the embryos read as two separate
+           section in half so the semen and the embryos read as two separate
            offers rather than one long strip of cards. -->
       <div class="pcta">
         <div class="pcta__bg" aria-hidden="true">
@@ -2305,8 +2326,8 @@
         <div class="pcta__veil" aria-hidden="true"></div>
         <div>
             <p class="pcta__h">Tell us the horse you <em>have in mind</em>.</p>
-            <p class="pcta__d">A foal on the ground, a cross still to be made, or a mare to breed
-            from. Say what you are after and we will tell you plainly what we have.</p>
+            <p class="pcta__d">A dose for your own mare, a cross already made, or a foal on the
+            ground. Say what you are after and we will tell you plainly what we have.</p>
           </div>
           <div class="pcta__acts">
             <a href="contact/" class="btn btn-gold btn-pill">Get in touch</a>
@@ -2330,7 +2351,6 @@
           is made on pedigree and on what the mare has produced.</p>
           <a class="pgr__cta" href="embryos/">See the crosses <span class="a" aria-hidden="true">&rarr;</span></a>
         </div>
-      </div>
       </div>
 
     </div>
@@ -2377,9 +2397,14 @@
         <div class="contact-side">
           <div>
             <p class="plaque">Get in touch</p>
-            <h2>Ask the people who <em>bred it</em>.</h2>
-            <p class="contact-lead">No agent and no auction ring. You speak to the two people who chose
-            the cross.</p>
+            <!-- 30 Aug: the horse pages lost this pair and the homepage kept
+                 them. "Ask the people who bred it" is not true of most of what
+                 is on this site, seventeen of the twenty four mares and sport
+                 horses were bought rather than bred here, and the line under
+                 it was positioning nobody asked for. Same words as the sixty
+                 pages now: say what happens. -->
+            <h2>Ask us about a <em>horse</em>.</h2>
+            <p class="contact-lead">Write to us and we will get back to you.</p>
           </div>
           <div class="contact-people">
             <a class="contact-p" href="https://wa.me/393495918565" target="_blank" rel="noopener">
@@ -2410,7 +2435,7 @@
               <option value="" selected>Choose one</option>
               <option>A foal</option>
               <option>An embryo</option>
-              <option>Frozen semen</option>
+              <option>ICSI semen</option>
               <option>A mare for sport or breeding</option>
               <option>Sourcing a horse</option>
               <option>Something else</option>
@@ -2587,11 +2612,11 @@
         cap:'Implanted in Belgium, where our own team manages every pregnancy.',
         plateT:'Carried under our own eyes',
         plateS:'From implantation to the day the foal leaves.', cta:'How it works' },
-      { n:'05', t:'Semen', place:'Avantea, Cremona', href:'semen/',
+      { n:'05', t:'ICSI semen', place:'Avantea, Cremona', href:'icsi-semen/',
         img:'assets/img/semen-detail.jpg',
-        cap:'Frozen semen through Avantea in Cremona, shipped across the EU.',
-        plateT:'Frozen semen through Avantea',
-        plateS:'Shipped across the EU and for export.', cta:'See the semen' },
+        cap:'ICSI doses of the stallions we breed with, through Avantea in Cremona.',
+        plateT:'ICSI semen through Avantea',
+        plateS:'Shipped across the EU and for export.', cta:'See the stallions' },
       { n:'06', t:'Sport horses', place:'Sourced and brokered', href:'sport-horses/',
         img:'assets/img/results-unguessable.jpg',
         cap:'Horses found for clients, and mares that combine sport with breeding.',
@@ -2641,143 +2666,67 @@
 
 
   /* ── The horses: filter and run ───────────────────────────────────────
-     Content audited from studvonaxe.it on 20 Aug. Carma and Electra carry
-     no photograph on purpose: their listing pages show other horses, and a
-     photo may only name a horse when it came from that horse's own page. */
+     Every card here comes from horses-home.js, which scripts/build-horses.mjs
+     writes out of horses-data.js, so the grid, the archives and the sixty
+     horse pages are one set of facts.
+     Until 31 Aug this block also carried a second copy of the herd: fourteen
+     horses typed out by hand in August, kept as a fallback for a browser that
+     never loaded the file. Nothing rendered it any more, but the chips still
+     counted it, so they read 7 / 3 / 4 over runs of six, and the line under
+     the grid said seven foals when there are twenty one. A fallback that has
+     drifted is worse than an empty grid, because it is wrong quietly. It is
+     gone, and every number below is counted from the same file as the cards. */
   (function(){
     var run = document.getElementById('hz-run');
-    if(!run) return;
+    if(!run || !window.HOME_HORSES) return;
+    var H = window.HOME_HORSES, C = H.counts, W = H.words;
+    function words(n){ return W[n] || String(n); }
 
-    /* Flags drawn inline rather than pulled from an icon set or an emoji.
-       Emoji flags do not render at all on Windows, where they fall back to
-       two letters, and an icon library is out under the project's own
-       rules. Simplified on purpose: at 18px across, detail turns to mud,
-       so each one keeps only what makes it recognisable. */
-    /* Drawn in flags.js, loaded above, so the homepage and the sixty
-       generated pages use one set. */
+    var RUNS  = { all:H.all, sport:H.sport, broodmare:H.mares, foal:H.foals };
+    /* A chip counts its whole group, not the handful on show. */
+    var TOTAL = { all:C.sport + C.mares + C.foals, sport:C.sport,
+                  broodmare:C.mares, foal:C.foals };
+    /* The button under the grid used to say "See all horses" and open the
+       sport horse archive, which is a third of them. There is no page that
+       holds every horse, so the button names the page it actually opens and
+       follows the chip. On All it opens the foals: they are the largest
+       group and the one the six mixed cards show least of. */
+    var MORE = {
+      all:       { href:'foals/',          label:'See the foals' },
+      sport:     { href:'sport-horses/',   label:'See all sport horses' },
+      broodmare: { href:'breeding-mares/', label:'See all breeding mares' },
+      foal:      { href:'foals/',          label:'See all foals' }
+    };
 
-    var COUNTRY = { GB:'Great Britain', US:'United States', NL:'Netherlands',
-                    BE:'Belgium', PL:'Poland', IE:'Ireland', BR:'Brazil', IT:'Italy' };
+    var note = document.getElementById('hz-bannerNote');
+    var cta  = document.querySelector('.hz__banner .hz__cta');
 
-    var H = [
-      { n:'Arkhana Von Axe Z',      c:'foal',      y:2026, s:'Colt',  sire:'Aganix du Seigneur Z', st:'available', img:'assets/img/horse-arkhana.jpg' },
-      { n:'Cortina de Jolie Z',     c:'broodmare', y:2019, s:'Mare',  sire:'Cornet Obolensky',     st:'available', img:'assets/img/horse-cortina.jpg' },
-      { n:'Cabri vd Berghoeve Z',   c:'broodmare', y:2020, s:'Mare',  sire:'Cornet Obolensky',     st:'available', img:'assets/img/horse-cabri.jpg' },
-      { n:'Agousha vd Berghoeve Z', c:'broodmare', y:2022, s:'Mare',  sire:'Aganix du Seigneur',   st:'available', img:'assets/img/horse-agousha.jpg' },
-      { n:'Carma vd Berghoeve Z',   c:'broodmare', y:2024, s:'Mare',  sire:'Comme il Faut',        st:'available',
-        img:'assets/img/hero-grey.jpg', placeholder:true },
-      { n:'Charina Von Axe Z',      c:'foal',      y:2026, s:'Filly', sire:'Chacco Blue',          st:'sold', to:'GB', img:'assets/img/horse-charina.jpg' },
-      { n:'Unique Touch Von Axe Z', c:'foal',      y:2026, s:'Foal',  sire:'United Touch S',       st:'sold', to:'BR', img:'assets/img/horse-unique-touch.jpg' },
-      { n:'Electra Von Axe Z',      c:'foal',      y:2026, s:'Foal',  sire:'Emerald van ’t Ruytershof', st:'sold', to:'NL',
-        img:'assets/img/intro-foal-star.jpg', placeholder:true },
-      { n:'Dune Von Axe Z',         c:'foal',      y:2025, s:'Foal',  sire:'Diamant de Semilly',   st:'sold', to:'PL', img:'assets/img/horse-dune.jpg' },
-      { n:'Coolrock Von Axe Z',     c:'foal',      y:2024, s:'Foal',  sire:'Chacco Blue',          st:'sold', to:'IE', img:'assets/img/horse-coolrock.jpg' },
-      { n:'Dourkhet Von Axe Z',     c:'foal',      y:2024, s:'Foal',  sire:'Dourkhan Hero Z',      st:'sold', to:'US', img:'assets/img/horse-dourkhet.jpg' },
-      /* TODO client-confirm: the sport horses are not in the audited horse
-         list, they are named in the site's own results and news. Only what
-         it states is here, so a missing year or sire is left out of the
-         meta line rather than guessed, and Contouch carries no country
-         because no sale destination is stated for him. */
-      { n:'Unguessable Von Axe',    c:'sport',     y:2018, s:'Mare',  sire:'by Calleryama',    st:'sold', to:'US',
-        img:'assets/img/results-unguessable.jpg' },
-      { n:'Contouch SVA',           c:'sport',                        note:'Top price, €150,000',  st:'sold',
-        img:'assets/img/results-contouch.jpg' },
-      { n:'Evoque Von Axe Z',       c:'sport',                        note:'Sold for €27,000',     st:'sold',
-        img:'assets/img/hero-cortina-wide.jpg', placeholder:true }
-    ];
+    function shownIn(html){ return (html.match(/<li/g) || []).length; }
 
-    /* The status label sits on a seam: the accent colour behind the word and
-       a hairline running off it to the right. 30 Aug, after seeing it on the
-       foal cards. The embryo run below keeps its own card design and its own
-       stage label, so nothing here touches it. */
-    function seam(h, inner){
-      return '<span class="hz__seam' + (h.st === 'sold' ? ' hz__seam--sold' : '') + '">' +
-             inner + '</span>';
-    }
-    function tag(h){
-      if(h.st !== 'sold') return seam(h, '<span class="hz__tag">Available</span>');
-      /* No stated destination means no flag: a country is a fact about the
-         sale, and an empty flag box would invent one. */
-      if(!h.to) return seam(h, '<span class="hz__tag hz__tag--sold">Sold</span>');
-      return seam(h, '<span class="hz__tag hz__tag--sold" title="Sold to ' + COUNTRY[h.to] + '">' +
-             '<span class="hz__flag">' + FLAGS[h.to] + '</span>Sold' +
-             '<span class="visually-hidden"> to ' + COUNTRY[h.to] + '</span>' +
-             '</span>');
-    }
-    /* The card shows the fields it has. Absent is absent, never a dash. */
-    function meta(h){
-      if(h.note) return h.note;
-      return [h.y, h.s, h.sire].filter(Boolean).join(' · ');
-    }
-    function card(h){
-      /* TODO client-confirm: Carma and Electra carry a stand-in frame. Their
-         own listing pages show OTHER horses, so no photograph there may name
-         them. Request originals before this goes anywhere near the client. */
-      var win = h.img
-        ? '<span class="hz__win"' + (h.placeholder ? ' data-placeholder="true"' : '') + '>' +
-          '<img src="' + h.img + '" alt="' + (h.placeholder ? 'Placeholder photograph' : h.n) + '" loading="lazy">' +
-          tag(h) + (h.placeholder ? '<span class="hz__ph">Photo pending</span>' : '') + '</span>'
-        : '<span class="hz__win typo"><p>' + h.ped + '</p>' + tag(h) + '</span>';
-      /* This template is only reached when horses-home.js has not loaded. It
-         has no page to link to, so it is not a link and does not say View. */
-      return '<li><div class="hz__card">' + win +
-        '<span class="hz__body">' +
-          '<h3 class="hz__name">' + h.n + '</h3>' +
-          '<span class="hz__meta">' + meta(h) + '</span>' +
-        '</span></div></li>';
-    }
-
-    /* The grid holds the sport horses and the broodmares. The foals are the
-       same card in the run down in the programme, rendered from this one
-       list so there is no second copy of the herd to keep in step. */
-    var foals = H.filter(function(h){ return h.c === 'foal'; });
-    var here  = H.filter(function(h){ return h.c !== 'foal'; });
-
-    var CAP = 6;   /* six leaves one behind the link, which is what gives
-                      "See all horses" something to be for */
-    /* Every number in this sentence is counted, never typed. A written count
-       goes stale the moment a horse is sold or added, and nobody remembers
-       to edit the sentence. */
-    function words(n){
-      var w = ['no','one','two','three','four','five','six','seven','eight','nine','ten',
-               'eleven','twelve','thirteen','fourteen'];
-      return w[n] || String(n);
-    }
     function render(filter){
-      var set = here.filter(function(h){ return filter === 'all' || h.c === filter; });
-      /* Every view comes from the harvested list, so the grid, the archives
-         and the horse pages are one set of facts. "All horses" used to be the
-         exception and fell back to a second copy of the herd kept here, whose
-         cards pointed at the contact form: the label said View, the link went
-         to a form, and that was the state a visitor met on arrival. The mixed
-         run is now generated with the others. The local list below survives
-         only as the fallback for a browser that never loads the file. */
-      if(window.HOME_HORSES && filter === 'sport')          run.innerHTML = HOME_HORSES.sport;
-      else if(window.HOME_HORSES && filter === 'broodmare') run.innerHTML = HOME_HORSES.mares;
-      else if(window.HOME_HORSES)                           run.innerHTML = HOME_HORSES.all;
-      else run.innerHTML = set.slice(0, CAP).map(card).join('');
-      var note = document.getElementById('hz-bannerNote');
+      var html = RUNS[filter] || RUNS.all;
+      run.innerHTML = html;
+
       if(note){
-        var base = 'Sport horses and broodmares here, and ' + words(foals.length) +
-                   ' foals further down in the programme.';
-        note.textContent = set.length > CAP
-          ? 'Showing ' + words(CAP) + ' of ' + words(set.length) + '. ' + base
-          : base;
+        var shown = shownIn(html), total = TOTAL[filter] || TOTAL.all;
+        var tail = filter === 'all'
+          ? 'Sport horses, broodmares and foals. The stallions and the crosses are further down in the programme.'
+          : '';
+        note.textContent = [shown < total
+          ? 'Showing ' + words(shown) + ' of ' + words(total) + '.' : '', tail]
+          .filter(Boolean).join(' ');
+      }
+
+      if(cta){
+        var m = MORE[filter] || MORE.all;
+        cta.href = m.href;
+        cta.firstChild.textContent = m.label + ' ';
       }
     }
 
-    /* The foals run is filled once: it is not filtered by these chips.
-       Its cards come from horses-data.js through horses-home.js, so a foal
-       shows the photograph and links to the page that exist for it. */
-    var foalRun = document.getElementById('pg-foals');
-    if(foalRun) foalRun.innerHTML = window.HOME_HORSES ? HOME_HORSES.foals : foals.map(card).join('');
-
-    /* The chip counts are filled from the same list the grid renders. */
     document.querySelectorAll('[data-hz]').forEach(function(b){
       var c = b.querySelector('.c');
-      if(c) c.textContent = b.dataset.hz === 'all'
-        ? here.length
-        : here.filter(function(h){ return h.c === b.dataset.hz; }).length;
+      if(c) c.textContent = TOTAL[b.dataset.hz];
       b.addEventListener('click', function(){
         document.querySelectorAll('[data-hz]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
         b.setAttribute('aria-pressed','true');
@@ -2786,6 +2735,14 @@
     });
 
     render('all');
+  })();
+
+  /* ── The stallions ────────────────────────────────────────────────────
+     The run in the programme where the foals used to be. Same card as the
+     ICSI semen archive, so a stallion says one thing in both places. */
+  (function(){
+    var run = document.getElementById('pg-semen');
+    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.stallions;
   })();
 
   /* ── The embryos ─────────────────────────────────────────────────────

@@ -363,7 +363,7 @@
      row of links appears under the first and pushes into the hero rather
      than handing over to the drawer. Better that it cannot wrap at all and
      the breakpoint below is the only thing that decides. */
-  .primary-nav{ display:flex; align-items:center; gap:1.25rem; flex-wrap:nowrap; }
+  .primary-nav{ display:flex; align-items:center; gap:.7rem; flex-wrap:nowrap; }
   .primary-nav a{
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
@@ -392,18 +392,25 @@
   }
 
 
-  /* Five items beside a centred wordmark stop fitting on one line well
-     above the phone breakpoint, so the drawer takes over here rather than
-     at 860px. Measured after document.fonts.ready, with the real serif:
-     they need 426px and the space beside the mark is 455px at 1301 and
-     tops out at 497px. About came off the bar on 29 Aug and that room went
-     into the gaps rather than into another item. The gap is a flat rem
-     rather than a vw: one that grows with the screen ate the clearance on
-     a 1920 monitor, where the bar has stopped growing because it is capped
-     at the content width.
-     Measuring before the webfont lands reads 20px narrower and puts this
-     line in the wrong place, which is how it ended up at 1240. */
-  @media (max-width: 1300px){
+  /* Items beside a centred wordmark stop fitting on one line well above the
+     phone breakpoint, so the drawer takes over here rather than at 860px.
+     Measured in the browser after document.fonts.ready, with the real serif.
+     The bar is capped at the content width, so the room beside the mark
+     stops growing at 1280 and is (1280 - 51 padding - 200 mark - 35 gaps)/2
+     = 497px however wide the monitor is. Six items need 483 at this gap and
+     seven need 555, which is why Contact is not on the bar: it cannot fit at
+     any width, and it is the gold button eighteen pixels to the right of the
+     mark, so the bar already carries it.
+     497 is only reached at the cap; at 1381 the room is 491 and at 1301 it is
+     451, which is under the six items. That is why this line moved from 1300
+     to 1380 on 31 Aug: it had been measured for five items and quietly went
+     on standing while a sixth and a seventh were added, and the last item
+     spent that time sitting behind the logo.
+     The gap is a flat rem rather than a vw: one that grows with the screen
+     ate the clearance on a 1920 monitor.
+     Measuring before the webfont lands reads 20px narrower, which is how
+     this line first ended up at 1240. */
+  @media (max-width: 1380px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -2093,6 +2100,16 @@
   .eh__acts .btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
   .eh__acts .btn-ghost:hover{ border-color:var(--color-navy); color:var(--color-navy); }
 
+  /* Said out loud rather than left for the visitor to assume: the thirteen
+     stallions are the ones this stud breeds with, and nobody has yet
+     confirmed which of them there are doses of. It is the same sentence on
+     the archive and on every stallion page, and it goes the day the owners
+     answer. */
+  .unc{ margin:1.2rem 0 0; padding-left:.9rem; border-left:2px solid var(--color-gold);
+    font-family:var(--font-body); font-size:13px; line-height:1.55;
+    color:var(--color-navy); max-width:62ch; }
+  .arch .unc{ margin:0 0 1.6rem; }
+
   /* ── the dam ───────────────────────────────────────────────────────────
      The one section a cross earns that a horse does not: whoever is buying
      an embryo is buying her family. Her own page carries the record, so
@@ -2570,9 +2587,13 @@
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">&#9776;</button>
         <!-- The pages the owners named on 29 Aug 2026: Home, Breeding
              mares, Foals, Embryos, ICSI semen, Sport horses, Contact.
-             Home is the mark. Each of the four now has an archive of its
-             own, built from their site's own listings, so these go to
-             pages rather than to a section further down.
+             Home is the mark, and Contact is the gold button at the other
+             end of the same bar: seven items beside a centred wordmark do
+             not fit at any screen width, measured, and the seventh had been
+             sitting behind the logo. Contact is on the bar at every width,
+             in the footer and at the foot of every page.
+             Each of the archives is built from their site's own listings,
+             so these go to pages rather than to a section further down.
              Results is gone: it was never on their list, and the news
              lives in the footer where Mark put it. About went the same way
              on 29 Aug: it was already in the footer's Navigate column, and
@@ -2583,8 +2604,7 @@
           <a href="/foals">Foals</a>
           <a href="/embryos" aria-current="page">Embryos</a>
           <a href="/sport-horses">Sport horses</a>
-          <a href="/semen">ICSI semen</a>
-          <a href="/contact">Contact</a>
+          <a href="/icsi-semen">ICSI semen</a>
         </nav>
       </div>
 
@@ -2662,6 +2682,7 @@
         <p class="flt__count" data-count aria-live="polite">fifteen crosses</p>
       </div>
 
+      
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
 
       <ul class="hz__grid ec__grid" data-grid>
@@ -2671,7 +2692,7 @@
         <li class="ec" data-sold="carrying" data-find="united touch s x cabri vd berghoeve z united touch s x cornet obolensky x calato x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/united-touch-s-x-cabri-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/united-touch-s-x-cabri-vd-berghoeve-z-1.jpg" alt="United Touch S x Cabri vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">United Touch S <em>&times;</em> Cabri vd Berghoeve Z</h2><span class="ec__line">Cornet Obolensky x Calato x Darco x Chin chin</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
         <li class="ec" data-sold="carrying" data-find="zandor z x cabri vd berghoeve z zandor z x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/zandor-z-x-cabri-vd-berghoeve-z"><span class="ec__win"><img src="/assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-1.jpg" alt="Zandor Z x Cabri vd Berghoeve Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">Zandor Z <em>&times;</em> Cabri vd Berghoeve Z</h2><span class="ec__line">CORNET OBOLENSKY x DIAMANT DE SEMILLY x DARCO x CHIN CHIN</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
         <li class="ec" data-sold="carrying" data-find="chacco blue x cabri vd berghoeve z chacco blue x cornet obolensky x diamant de semilly x darco x chin chin out of a direct daughter of hiamant van't roosakker! 2027 due 2027"><a class="ec__a" href="/embryos/chacco-blue-x-cabri-vd-berghoeve-z"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">Chacco Blue <em>&times;</em> Cabri vd Berghoeve Z</h2><span class="ec__line">Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin</span><span class="ec__say">Out of a direct daughter of Hiamant van't Roosakker!</span></span></a></li>
-        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h2 class="ec__name">Comme il Faut <em>&times;</em> Patchina Van’T Merelsnest</h2><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
+        <li class="ec" data-sold="frozen" data-find="comme il faut x patchina van’t merelsnest comme il faut x kannan x darco x hedjaz out of wendalina van't merelsnest, full sister of sapphire! frozen frozen"><a class="ec__a" href="/embryos/comme-il-faut-x-patchina-vant-merelsnest"><span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h2 class="ec__name">Comme il Faut <em>&times;</em> Patchina van’t Merelsnest</h2><span class="ec__line">KANNAN x DARCO x HEDJAZ</span><span class="ec__say">Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!</span></span></a></li>
         <li class="ec" data-sold="carrying" data-find="catoki x cortina de jolie z catoki x cornet obolensky x calato x darco x chin chin fuga de muze, narcotique ii, qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/catoki-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/catoki-x-cortina-de-jolie-z-1.jpg" alt="Catoki x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">Catoki <em>&times;</em> Cortina de Jolie Z</h2><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Fuga de muze, Narcotique II, Qerlychin!</span></span></a></li>
         <li class="ec" data-sold="carrying" data-find="for pleasure x hypnotic jt z for pleasure x halifax van kluizebos x carthago out of the sister of the olympic hardrock z! 2027 due 2027"><a class="ec__a" href="/embryos/for-pleasure-x-hypnotic-jt-z"><span class="ec__win"><img src="/assets/img/horses/for-pleasure-x-hypnotic-jt-z-1.jpg" alt="For Pleasure x Hypnotic JT Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">For Pleasure <em>&times;</em> Hypnotic JT Z</h2><span class="ec__line">HALIFAX VAN KLUIZEBOS x CARTHAGO</span><span class="ec__say">Out of the sister of the Olympic Hardrock Z!</span></span></a></li>
         <li class="ec" data-sold="carrying" data-find="aganix du seigneur z x cortina de jolie z aganix su seigneur x cornet obolesnky x calato x darco x chin chin out of fuga de muze - narcotique ii - qerlychin! 2027 due 2027"><a class="ec__a" href="/embryos/aganix-du-seigneur-z-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/aganix-du-seigneur-z-x-cortina-de-jolie-z-1.jpg" alt="Aganix du Seigneur Z x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Due 2027</span></span><span class="ec__box"><h2 class="ec__name">Aganix du Seigneur Z <em>&times;</em> Cortina de Jolie Z</h2><span class="ec__line">CORNET OBOLESNKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Out of Fuga de Muze · Narcotique II · Qerlychin!</span></span></a></li>
@@ -2811,7 +2832,7 @@
   var count = bar.querySelector('[data-count]');
   var none  = document.querySelector('[data-none]');
   var chips = [].slice.call(bar.querySelectorAll('[data-show]'));
-  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one"];
+  var WORDS = ["no","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty one","twenty two","twenty three","twenty four","twenty five","twenty six","twenty seven","twenty eight","twenty nine","thirty","thirty one","thirty two","thirty three","thirty four","thirty five","thirty six","thirty seven","thirty eight","thirty nine","forty","forty one","forty two","forty three","forty four","forty five","forty six","forty seven","forty eight","forty nine","fifty","fifty one","fifty two","fifty three","fifty four","fifty five","fifty six","fifty seven","fifty eight","fifty nine"];
   var ONE = "cross", MANY = "crosses";
   var show = bar.getAttribute('data-open') || 'all';
 

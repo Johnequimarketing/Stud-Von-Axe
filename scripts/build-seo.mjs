@@ -53,7 +53,7 @@ const pages = walk(root)
    is worse than none. */
 const priority = (u) =>
   u === '/' ? '1.0'
-  : /^\/(breeding-mares|foals|embryos|sport-horses|semen|contact|about)$/.test(u) ? '0.8'
+  : /^\/(breeding-mares|foals|embryos|sport-horses|icsi-semen|contact|about)$/.test(u) ? '0.8'
   : /^\/news$/.test(u) ? '0.6'
   : '0.5';
 

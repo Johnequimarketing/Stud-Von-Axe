@@ -1141,6 +1141,67 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">A menu item that never fitted, and a breakpoint measured for a menu that no longer existed</p>
+    <p class="said">31 Aug: Contact was the seventh item on the bar and it sat behind the logo at 1440.
+    The drawer breakpoint had been measured once, honestly, for five items, and stayed at 1300 while a
+    sixth and then a seventh were added.</p>
+    <p class="check">Measured rather than judged. The bar is capped at the content width, so the room
+    beside the centred mark is 497px however wide the monitor is: six items need 483 at this gap and
+    seven need 555. Seven cannot fit at any screen size, so Contact came off the bar and stayed as the
+    gold button at the other end of it. The breakpoint moved to 1380, which is where six items actually
+    stop fitting. A number measured once has to be re measured the next time anything beside it
+    changes.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A grid that places itself is a grid that moves a horse into the wrong generation</p>
+    <p class="said">31 Aug, on the first stallion page: Comme il Faut's own dam, Ratina Z, was drawn in
+    the grandparents' column, reading as his granddam. The pedigree cells said only how many rows they
+    spanned and let the grid place them, which works while all fifteen cells are there. A stallion has
+    no fourth generation on record, so the missing cells pulled everything up a row.</p>
+    <p class="check">Every cell now states its column and its row. A pedigree with a gap in it is fine;
+    a pedigree that puts a horse in the wrong generation is a lie about the horse, and this one would
+    have gone out on thirteen pages.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">One product, three names, and the audit could not tell</p>
+    <p class="said">31 Aug the owners settled it: they do ICSI semen only, no fresh and no frozen. Until
+    that morning the homepage sold "frozen semen through Avantea", the about page said ICSI, and the
+    semen page built the day before split into all three. Nobody reading the site could have said what
+    was for sale.</p>
+    <p class="check">A check that fails any public page naming a kind of semen they do not sell, proven
+    by putting the hero line back and watching it fail. Frozen is untouched where it means an embryo:
+    four hundred of those, and a different line of the business.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A fallback nobody renders is a fallback nobody notices has gone wrong</p>
+    <p class="said">31 Aug: the homepage chips read 7 / 3 / 4 over runs of six, and the line under the
+    grid said seven foals when there are twenty one. Both were counting a hand typed list of fourteen
+    horses kept inside index.html as the fallback for a browser that never loads horses-home.js. The
+    cards had stopped coming from it in August; the counts never had.</p>
+    <p class="check">The list is gone. Every card and every number on that section now comes from the
+    file the archives are built from. A fallback that has drifted is worse than an empty grid, because
+    it is wrong quietly.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Capitalising after every apostrophe</p>
+    <p class="said">Van’T Roosakker on fifty eight cards, Don’T Touch Tiji Hero on eleven, Mom’S Contara,
+    Z'S Sister. The title case rule capitalised the letter after any apostrophe, which is right for
+    D'Inzeo and wrong for every Dutch and English contraction in a pedigree.</p>
+    <p class="check">Capitalise after an apostrophe only when a word follows it, not a single letter.
+    D'Inzeo keeps its capital and van’t keeps its small t. It had been on the site for two days in front
+    of anyone who reads pedigrees.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">The audit kept its own list of pages, and a new page fell straight through it</p>
     <p class="said">31 Aug: the contact page was built, audited nothing, and the run still reported
     green across 79 pages. The list of pages lived in <code>scripts/audit.sh</code> as a typed array,

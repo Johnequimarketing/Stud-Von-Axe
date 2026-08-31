@@ -265,6 +265,22 @@ for (const rel of files) {
     ? fail(rel, `${horsey.length} phrase(s) a horse person would not write: ${horsey.map(([re, why]) => `"${(text.match(re) || [''])[0].trim()}" (${why})`).join('; ')}`)
     : pass('nothing in the copy reads as written from outside the sport');
 
+  /* ── one product, one name ─────────────────────────────────────────────
+     The owners confirmed on 31 Aug that ICSI is the only semen they do. Before
+     that the site said three different things: the homepage sold "frozen semen
+     through Avantea", the about page said ICSI, and the semen page split into
+     fresh, ICSI and frozen. Nobody reading it could tell what was for sale.
+     A public page may not name a kind of semen this stud does not sell.
+     Frozen on its own is untouched: four hundred of those are embryos, which
+     really are frozen and are a different line of the business. */
+  const SEMEN_WRONG = [/\bfrozen semen\b/i, /\bfresh semen\b/i, /\bchilled semen\b/i];
+  const semenHits = SEMEN_WRONG.map((re) => (text.match(re) || [''])[0]).filter(Boolean);
+  if (isInternal) pass('semen wording not applied to an internal document');
+  else semenHits.length
+    ? fail(rel, `${semenHits.length} mention(s) of semen this stud does not sell: ${
+        semenHits.map((h) => `"${h}"`).join('; ')} (they do ICSI only)`)
+    : pass('semen is named ICSI, which is the only kind they sell');
+
   /* 1 ── token consistency */
   const afterRoot = cssBlocks.replace(/:root\s*\{[\s\S]*?\n\s*\}/, '');
   /* A mask stop and an eight digit hex are treatments, not colour choices:

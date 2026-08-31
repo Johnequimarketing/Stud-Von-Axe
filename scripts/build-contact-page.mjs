@@ -160,7 +160,7 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
                 <option>An embryo</option>
                 <option>A breeding mare</option>
                 <option>A sport horse</option>
-                <option>Semen</option>
+                <option>ICSI semen</option>
                 <option>Something else</option>
               </select>
             </div>

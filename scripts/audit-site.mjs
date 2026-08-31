@@ -15,8 +15,15 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { root } from './lib/shell.mjs';
 
-const HORSES = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
-const DIRS = { broodmare: 'breeding-mares', foal: 'foals', embryo: 'embryos', sport: 'sport-horses' };
+const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
+/* The stallions are hand kept rather than harvested, but they are built by
+   the same script into the same shape, so the audit has to see them or the
+   thirteen ICSI pages would go unchecked. That is the fault this project has
+   already made twice: a page nobody listed is a page nobody audits. */
+const SEMEN = new Function(readFileSync(join(root, 'semen-data.js'), 'utf-8') + '; return SEMEN;')();
+const HORSES = [...HARVESTED, ...SEMEN];
+const DIRS = { broodmare: 'breeding-mares', foal: 'foals', embryo: 'embryos', sport: 'sport-horses',
+               stallion: 'icsi-semen' };
 
 let failures = 0, checks = 0;
 const pass = (m) => { checks++; console.log(`  \x1b[32m✓ pass\x1b[0m  ${m}`); };
@@ -96,8 +103,13 @@ for (const { h, path, src } of pages) {
   spellings.get(h.slug).add(shown);
   /* And the same name as it appears in the archive card that links here. */
   const archive = read(`${DIRS[h.category]}/index.html`);
-  const card = archive.match(new RegExp(`href="/${DIRS[h.category]}/${h.slug}"[\\s\\S]{0,600}?hz__name">([^<]*)`));
-  if (card) spellings.get(h.slug).add(card[1].trim());
+  /* Three archives name a card in .hz__name and two in .ec__name, and the
+     check only ever looked at the first, so the crosses and the stallions
+     were never compared with their own pages. Read either, and read it as
+     text, because a cross card carries an em inside the name. */
+  const card = archive.match(new RegExp(
+    `href="/${DIRS[h.category]}/${h.slug}"[\\s\\S]{0,600}?(?:hz|ec)__name">([\\s\\S]*?)</h[23]>`));
+  if (card) spellings.get(h.slug).add(textOf(card[1]).trim());
 }
 const split = [...spellings].filter(([, set]) => set.size > 1);
 split.length
