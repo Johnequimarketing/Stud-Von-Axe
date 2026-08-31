@@ -436,7 +436,7 @@
      uses, at the bar's own size. Ghost on the photograph, ink once pinned,
      and it fills with navy on hover the way the ghost buttons do. */
   .hd__wa{
-    width:36px; height:36px; border-radius:50%; flex:none;
+    width:40px; height:40px; border-radius:50%; flex:none;
     display:inline-flex; align-items:center; justify-content:center;
     border:1px solid #ffffff59; color:var(--color-white);
     transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
@@ -444,8 +444,12 @@
   .hd__wa svg{ width:19px; height:19px; display:block; }
   .hd__wa:hover{ background:var(--color-white); color:var(--color-navy); border-color:var(--color-white); }
 
+  /* Forty by forty, because it is pressed with a thumb. It was 31 by 24: the
+     glyph's own size, which is what a button is when nothing gives it a box.
+     The negative margin keeps it standing where it stood. */
   .nav-toggle{
-    display:none;
+    display:none; place-items:center;
+    width:40px; height:40px; margin-inline:-9px;
     font-size:22px; line-height:1;
     color:var(--color-white);
   }
@@ -496,7 +500,7 @@
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
     /* Rows, not a run: each one already carries a rule under it. */
     .primary-nav a + a::before{ content:none; }
-    .nav-toggle{ display:block; }
+    .nav-toggle{ display:grid; }
     /* The right hand half goes into the drawer with the rest. Its three
        links are drawn from the copies inside the drawer, so the bar keeps
        only WhatsApp and the contact button at this width. */
@@ -516,7 +520,9 @@
     .hd__row{ padding-inline:.6rem; }
     .brand{ padding-inline:.6rem; }
     .brand img{ width:96px; }
-    .hd .btn-sm{ font-size:10.5px; padding:.75em 1em; }
+    /* .95em rather than .75em: at 10.5px type the smaller padding made a
+       button 35 pixels tall, which is under a thumb. */
+    .hd .btn-sm{ font-size:10.5px; padding:1.1em 1.15em; }
     /* The mark stops being centred here, and only here. Equal shares means
        each side of a 390 bar gets ninety one pixels while the right one
        carries WhatsApp and the button and needs a hundred and fifty two, so
@@ -1209,9 +1215,12 @@
     box-shadow:inset 0 0 0 1px rgba(179,146,79,.55), 0 18px 40px -26px rgba(0,0,0,.8);
     transform:translateX(6px);
   }
+  /* A row you open, so it is a row you can hit: it was the height of its own
+     text, twenty five pixels, which is half a thumb. The negative margin holds
+     the type where it was. */
   .sv__row{
     width:100%; display:block; text-align:left; cursor:pointer;
-    background:none; border:0; padding:0;
+    background:none; border:0; padding:.55rem 0; margin-block:-.55rem;
   }
   .sv__top{ display:flex; align-items:baseline; gap:1rem; }
   .sv__no{
@@ -1298,7 +1307,9 @@
   .pgr__d{ margin:.7rem 0 0; font-size:14px; color:rgba(255,255,255,.74); }
   .pgr__cta{
     display:inline-flex; align-items:center; gap:.55em; align-self:flex-start;
-    margin-top:1.2rem; padding:.85em 1.4em; border-radius:var(--ctl-radius);
+    /* 1.05em rather than .85: at 11px type the smaller padding made a button
+       37 pixels tall, which is under a thumb. */
+    margin-top:1.2rem; padding:1.05em 1.4em; border-radius:var(--ctl-radius);
     background:var(--color-gold); color:var(--color-navy-deep); text-decoration:none;
     font-family:var(--font-body); font-size:11px; font-weight:700;
     letter-spacing:.14em; text-transform:uppercase;
@@ -1437,6 +1448,16 @@
   .nw__run > li:last-child{ scroll-snap-align:end; }
   .nw__wrap .topics-arrow--prev{ left:-22px; }
   .nw__wrap .topics-arrow--next{ right:-22px; }
+  /* The rails that hang their arrows outside themselves, brought back inside
+     below 1180. The rule that does this for the topics tray is written higher
+     up the sheet on one class, and these two are written on two, so the
+     general rule never reached them however the media query was ordered: their
+     next arrow still stood 22px past the rail and pushed the homepage two
+     pixels off the right edge of a 390 screen. Measured, not spotted. */
+  @media (max-width: 1180px){
+    .pgr__wrap .topics-arrow--prev, .nw__wrap .topics-arrow--prev{ left:10px; }
+    .pgr__wrap .topics-arrow--next, .nw__wrap .topics-arrow--next{ right:10px; }
+  }
   @media (max-width:899px){ .nw__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2.1); } }
   @media (max-width:560px){ .nw__run > li{ flex-basis:86%; } }
 
@@ -1702,7 +1723,8 @@
   }
   .lang__btn{
     display:inline-flex; align-items:center; gap:.5rem;
-    padding:.55rem .85rem; border-radius:100px;
+    /* .68rem rather than .55: it was 38 pixels tall and a thumb wants 40. */
+    padding:.68rem .85rem; border-radius:100px;
     border:1px solid var(--color-line-invert); background:var(--color-navy);
     color:var(--color-white); cursor:pointer;
     font-family:var(--font-body); font-size:11px; font-weight:700;
@@ -1824,6 +1846,12 @@
   }
   .hz__card:hover .hz__view, .hz__card:focus-visible .hz__view{
     max-height:2.4em; margin-top:.7rem; opacity:1;
+  }
+  /* On a touch screen there is no hover, so the label that says the card opens
+     something was never drawn at all: sixty cards with nothing to say they
+     were links. Where the pointer cannot hover, it is simply always there. */
+  @media (hover: none){
+    .hz__view{ max-height:2.4em; margin-top:.7rem; opacity:1; transition:none; }
   }
   /* The gold hairline draws itself, the same gesture as the hero slider.
      Inset so it follows the rounding instead of being cut in the corner. */

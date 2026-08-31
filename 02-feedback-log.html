@@ -1141,6 +1141,64 @@ td code{font-size:12.5px;background:var(--base-alt);padding:.15em .45em;border-r
 <section>
   <h2>The mistakes, and what now catches them</h2>
   <div class="item">
+    <p class="rule">An audit that only ever looked at the width where nothing breaks</p>
+    <p class="said">31 Aug: <q>kun je hem nu volledig responsive nalopen ... ook op mobiel en tablet</q>.
+    The rendered pass measured every horse page in a browser and had done so for two days, all of it at
+    1440.</p>
+    <p class="check">It measures a phone, a tablet and a desktop now, and asks six questions of each
+    rather than three. The first run found seven faults at 390 that were invisible at 1440, and every
+    one of them was real: the homepage scrolled sideways, a rail's arrow hung two pixels past the right
+    edge of the screen, and eleven kinds of control were too small to press with a thumb, down to an
+    eight pixel gallery dot. A width is a test case. One of them is not a test.</p>
+    <div class="tags"><span class="tag tag--auto">Caught</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A media query that never reached the thing it was written for</p>
+    <p class="said">The rule that brings the rail arrows inside the rail below 1180 is written on one
+    class. The programme and the news rails set their own position on two classes, further down the
+    sheet, so they kept their arrows 22 pixels outside themselves at every width and pushed the
+    homepage off the right edge of a phone.</p>
+    <p class="check">The override now sits beside the rules it overrides, not beside the ones it was
+    modelled on. Specificity is not the only thing that decides a cascade; where you write it does too,
+    and a media query does nothing for a selector it does not outrank.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">A dot is eight pixels because that is what a dot looks like. A thumb is forty.</p>
+    <p class="said">The gallery and film dots, the burger, the WhatsApp circle, the contact button, the
+    services rows and the order form's rail were all between 24 and 39 pixels on a phone.</p>
+    <p class="check">The drawn thing keeps its size and the button grows around it: padding makes the
+    target, a negative margin gives the row its spacing back, and background-clip keeps the colour on
+    the dot instead of filling the square. Nothing on the page looks different and all of it can be
+    pressed. Checked by measuring every control on a 390 screen, not by looking at them.</p>
+    <div class="tags"><span class="tag tag--hard">Hard rule</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">The label that only exists on hover, on a screen that cannot hover</p>
+    <p class="said">Every horse card carries a gold "View" that opens on hover. A touch screen has no
+    hover, so on a phone sixty cards had nothing at all to say they were links.</p>
+    <p class="check">Where the pointer cannot hover, the label is simply always there. Any reveal built
+    on hover has to answer the same question.</p>
+    <div class="tags"><span class="tag tag--eye">Eye</span></div>
+  </div>
+
+  <div class="item">
+    <p class="rule">Telling the visitor about our own paperwork</p>
+    <p class="said">The contact page told a buyer that the site names two Italian towns two hundred
+    kilometres apart and that they should ask before setting off. True, and none of their business: our
+    pages disagreeing with each other is our problem, not something to hand to somebody who wants to
+    come and see a horse.</p>
+    <p class="check">The useful half survives and the confession goes: ring us before you set off and
+    we will tell you where the horse is standing. The conflict stays where it belongs, at the top of
+    the checklist. Honesty to a client is saying what we do not know; it is not thinking out loud in
+    front of them.</p>
+    <div class="tags"><span class="tag tag--taste">Taste</span></div>
+  </div>
+
+  <div class="item">
     <p class="rule">Four arrangements of one bar in one day</p>
     <p class="said">The dropdown hid five names. The mark on the left fitted everything and split one
     menu into two, About us and News standing alone on the right: <q>ik vind het niet mooi dat news en

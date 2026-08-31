@@ -158,15 +158,18 @@ const PLACES = [
        Garfagnana; the briefing this site was written from says Desenzano del
        Garda, which is two hundred kilometres away and is named in ninety two
        places here, including the footer of this very page. Both cannot be
-       where you drive to. Marked until they say which. */
-    note: 'This is the registered company. The site also names Desenzano del Garda as where the crosses are made, and the two are two hundred kilometres apart, so ask us before you set off.',
+       where you drive to, and it is question one on the checklist.
+       What the visitor is told is the useful half of that: ring first. A
+       buyer does not need to hear that our own pages disagree with each
+       other, and telling them so is not honesty, it is noise. */
+    note: 'This is the registered address. Ring us before you set off and we will tell you where the horse you want to see is standing.',
     q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
   },
   {
     kick: 'Belgium',
     name: 'Lanaken',
     lines: ['Lanaken', 'Belgium'],
-    note: 'The street address of the Belgian yard has not been given to us yet, so this map shows the town and not the gate. Ask us and we will send you the pin.',
+    note: 'The map shows the town. Ring us for the gate and we will send you the pin.',
     q: 'Lanaken, Belgium',
   },
 ];
@@ -283,11 +286,14 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
             <p class="cn__lead">Write to us and we will get back to you. If you would rather write
             yourself, we are at <a href="mailto:studvonaxe@gmail.com" style="color:var(--color-gold)">studvonaxe@gmail.com</a>.</p>
           </div>
+          <!-- Not the same line as the heading over the maps further down.
+               One page saying "Two countries, one programme" twice reads as a
+               page that lost its place. -->
           <div class="cn__places">
             <div class="cn__place">
-              <span class="cn__pk">Two countries, one programme</span>
+              <span class="cn__pk">The two places</span>
               <span class="cn__pv">Italy and Belgium</span>
-              <span class="cn__pd">Both on the map below</span>
+              <span class="cn__pd">On the map below</span>
             </div>
           </div>
         </div>

@@ -88,6 +88,7 @@ const FLAGS = new Function(readFileSync(join(root, 'flags.js'), 'utf-8') + '; re
 const GROUPS = {
   broodmare: {
     dir: 'breeding-mares',
+    find: 'Try a sire, a damline or a studbook.',
     label: 'Breeding mares',
     kicker: 'The mares',
     title: 'The families we <em>breed from</em>',
@@ -99,6 +100,7 @@ const GROUPS = {
   },
   foal: {
     dir: 'foals',
+    find: 'Try a sire, a damline, a year or a country.',
     label: 'Foals',
     kicker: 'The foals',
     title: 'Born and raised in <em>Lanaken</em>',
@@ -110,6 +112,7 @@ const GROUPS = {
   },
   embryo: {
     dir: 'embryos',
+    find: 'Try a sire, a dam or a year.',
     label: 'Embryos',
     kicker: 'The embryos',
     title: 'The same lines, <em>a year earlier</em>',
@@ -122,6 +125,7 @@ const GROUPS = {
   },
   stallion: {
     dir: 'icsi-semen',
+    find: 'Try a name or a sire.',
     label: 'ICSI semen',
     kicker: 'ICSI semen',
     title: 'The stallions <em>behind our crosses</em>',
@@ -139,6 +143,7 @@ const GROUPS = {
   },
   sport: {
     dir: 'sport-horses',
+    find: 'Try a sire, a damline or a country.',
     label: 'Sport horses',
     kicker: 'The sport horses',
     title: 'Bred here, <em>jumping elsewhere</em>',
@@ -582,12 +587,21 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
   .hgal__bar[hidden]{ display:none; }
   .hgal__bar{ display:flex; align-items:center; justify-content:space-between;
     gap:1rem; margin-top:clamp(1rem,2vw,1.4rem); }
-  .hgal__dots{ display:flex; gap:.5rem; }
+  /* The dots keep their size and gain a thumb. A dot is eight pixels because
+     that is what a dot looks like, and eight pixels is a quarter of what a
+     finger needs, so the button is forty across with the dot drawn in the
+     middle of it: padding makes the target, the negative margin gives the row
+     its old spacing back, and background-clip keeps the colour on the dot
+     rather than filling the whole square. */
+  .hgal__dots{ display:flex; gap:.5rem; margin:-16px 0; }
   .hgal__dot{
-    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
-    background:var(--color-line); transition:background .3s var(--ease), transform .3s var(--ease);
+    width:40px; height:40px; padding:16px; border:0; border-radius:50%;
+    cursor:pointer; box-sizing:border-box;
+    background:var(--color-line); background-clip:content-box;
+    transition:background .3s var(--ease), transform .3s var(--ease);
   }
-  .hgal__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
+  .hgal__dot[aria-selected="true"]{ background:var(--color-gold); background-clip:content-box;
+    transform:scale(1.3); }
   .hgal__arrows{ display:flex; gap:.5rem; }
 
   /* ── the films ─────────────────────────────────────────────────────────
@@ -661,12 +675,17 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
   .hvid__bar[hidden]{ display:none; }
   .hvid__bar{ display:flex; align-items:center; justify-content:space-between;
     gap:1rem; margin-top:clamp(1.1rem,2.2vw,1.5rem); }
-  .hvid__dots{ display:flex; gap:.5rem; }
+  /* The same thumb the gallery dots got: the dot stays eight pixels, the
+     button is forty, and the colour is clipped to the dot. */
+  .hvid__dots{ display:flex; gap:.5rem; margin:-16px 0; }
   .hvid__dot{
-    width:8px; height:8px; padding:0; border:0; border-radius:50%; cursor:pointer;
-    background:var(--color-line-invert); transition:background .3s var(--ease), transform .3s var(--ease);
+    width:40px; height:40px; padding:16px; border:0; border-radius:50%;
+    cursor:pointer; box-sizing:border-box;
+    background:var(--color-line-invert); background-clip:content-box;
+    transition:background .3s var(--ease), transform .3s var(--ease);
   }
-  .hvid__dot[aria-selected="true"]{ background:var(--color-gold); transform:scale(1.3); }
+  .hvid__dot[aria-selected="true"]{ background:var(--color-gold); background-clip:content-box;
+    transform:scale(1.3); }
   .hvid__arrows{ display:flex; gap:.5rem; }
   .hvid__note{ margin:1.1rem 0 0; font-size:13px; color:rgba(255,255,255,.55); }
 
@@ -978,7 +997,7 @@ ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="butto
         <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
       </div>
 
-      <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline, a year or a country.</p>
+      <p class="flt__none" data-none>Nothing matches that. ${group.find}</p>
 
       <ul class="hz__grid${group.grid || ''}" data-grid>
 ${list.map((h) => '        ' + (group.card ? group.card(h, true) : card(h, group, true))).join('\n')}

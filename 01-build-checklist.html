@@ -314,11 +314,18 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         carry a description. Nothing is filled in here: a page shows the fields it has. If they want
         heights and stories, they are the only source for them.</span></span><span class="state s-client">On the client</span></li>
 
-      <li class="item" data-k="horses4"><input type="checkbox"><span class="what"><b>Two horses have no photograph, and three names are misspelled on their site</b>
+      <li class="item" data-k="horses4"><input type="checkbox"><span class="what"><b>Two horses have no photograph, and ten names are misspelled on their site</b>
         <span class="why">Hayley vd Berghoeve Z and Chacco Blue x Cabri vd Berghoeve Z carry the
-        typographic card instead of a stand-in picture of another horse. Their own pages spell
-        Bergheove for Berghoeve, Hellenof for Hellehof and Obolesnky for Obolensky; those are left exactly
-        as they wrote them and are listed here rather than quietly corrected.</span></span><span class="state s-client">On the client</span></li>
+        typographic card instead of a stand-in picture of another horse.
+        The misspellings, counted on 31 August across their own pages and left exactly as they wrote
+        them rather than quietly corrected: <b>Obolesnky</b> for Obolensky, seven times;
+        <b>Costeveld</b> for Costersveld, three; <b>Godahra</b> for Godahara, three;
+        <b>Aganix Su Seigneur</b> for Aganix du Seigneur, twice, which reads as a slip of one key and
+        stands on the front of a foal's page; and once each of <b>Bergheove</b> for Berghoeve,
+        <b>Hellenof</b> for Hellehof, <b>Venices</b> for Venise, <b>Big Sar</b> for Big Star and
+        <b>Elysitte</b> for Elisette. One list back from them and it is one rebuild; correcting a
+        stud's own spelling of its own horses without asking is not
+        ours to do.</span></span><span class="state s-client">On the client</span></li>
 
       <li class="item" data-k="about1"><input type="checkbox"><span class="what"><b>The about page is built</b>
         <span class="why">Three sections: their own motto over a photograph, how the programme runs across
@@ -504,6 +511,30 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
         marked line on the card telling them to ask before setting off, which is honest and is not a
         solution. One sentence from the owners settles it and it is one rebuild either
         way.</span></span><span class="state s-client">On the client</span></li>
+
+      <li class="item" data-k="b21"><input type="checkbox"><span class="what"><b>The whole site walked at phone, tablet and desktop</b>
+        <span class="said">"kun je hem nu volledig responsive nalopen ... alles moet nu 100% kloppen"</span>
+        <span class="why">The rendered pass now measures 390, 768 and 1440 rather than 1440 alone, and
+        asks six questions of each width instead of three: sideways scroll, anything wider than the
+        screen, anything clipped, the two columns, every control against a thumb, and every size against
+        the type scale. All ten green.
+        The first run found seven faults that were invisible at 1440. The homepage scrolled sideways on
+        a phone because the programme and news rails kept their arrows 22 pixels outside themselves at
+        every width: the rule that brings them in is written on one class and theirs is written on two,
+        so it never reached them. And eleven kinds of control were too small to press, from a 24 pixel
+        burger to an 8 pixel gallery dot. Every one is now at least forty across, with the drawn thing
+        the same size it always was.
+        On a touch screen the gold "View" on a horse card was never drawn at all, because it opens on
+        hover and a phone has none. Sixty cards with nothing to say they were links.</span></span><span class="state s-ok">Done</span></li>
+
+      <li class="item" data-k="b22"><input type="checkbox"><span class="what"><b>The copy read through again, page type by page type</b>
+        <span class="why">Four things were wrong and are fixed. The homepage form still carried "we have
+        received your message" in its markup, the sentence that form was corrected for saying: the
+        script always overwrites it, but a file should not hold a claim the page does not keep. The
+        order form labelled the stallion's name and the word ICSI as <b>optional</b>, which is an
+        invitation to leave out a field you cannot type in. The search hint offered "a year or a
+        country" on the stallion archive, which has neither. And the contact page said "Two countries,
+        one programme" twice, once in the form and once over the maps.</span></span><span class="state s-ok">Done</span></li>
 
       <li class="item" data-k="b4"><input type="checkbox"><span class="what"><b>Confirm the domain:</b> they said .com, the live site is studvonaxe.it
         <span class="why">Ask before anything goes on staging.</span></span><span class="state s-client">On the client</span></li>

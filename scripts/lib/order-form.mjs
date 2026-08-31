@@ -103,7 +103,10 @@ const field = (f, horseName) => {
      J.A. above an empty box saying J.A. looked like. */
   const wrap = (inner, showHint) =>
     `<div class="ask__row"${f.when ? ` data-when="${f.when[0]}" data-is="${esc(f.when[1])}" hidden` : ''}>` +
-    `<label for="${id}">${esc(f.l)}${f.req ? '' : ' <span class="ask__opt">optional</span>'}</label>` +
+    /* A field that is filled in and cannot be typed into is not optional: the
+       stallion's name and the word ICSI were both labelled that way, which
+       reads as an invitation to leave them out. */
+    `<label for="${id}">${esc(f.l)}${f.req || f.t === 'fixed' ? '' : ' <span class="ask__opt">optional</span>'}</label>` +
     (f.hint && showHint ? `<span class="ord__hint">${esc(f.hint)}</span>` : '') +
     inner + '</div>';
 
@@ -202,7 +205,9 @@ export const orderCss = `
   .ord__rail{ list-style:none; margin:1.6rem 0; padding:0; display:grid; gap:.15rem; }
   .ord__tab{
     display:flex; align-items:center; gap:.8rem; width:100%;
-    padding:.6rem .7rem; border-radius:var(--ctl-radius);
+    /* .78rem rather than .6: at this type the row came out 37 pixels tall and
+       the rail is how the form is walked on a phone. */
+    padding:.78rem .7rem; border-radius:var(--ctl-radius);
     background:none; border:0; cursor:pointer; text-align:left;
     color:rgba(255,255,255,.5);
     transition:background .3s var(--ease), color .3s var(--ease);
