@@ -16,6 +16,25 @@
    The dams need nothing here: all fifteen already carry a Horsetelex link
    on their own page, which the builder reads out of the data. */
 var HORSES_EXTRA = {
+  /* hippomundo: one entry per breeding mare, keyed by her slug. Paste the
+     URL of her Hippomundo page and the pedigree section draws "Her record
+     is also on Hippomundo". Asked for by the client on 3 Sep. Their own
+     site carries none of these, so every one has to come from them; empty
+     draws nothing. */
+  hippomundo: {
+    "hayley-vd-berghoeve-z": "",   /* HAYLEY VD BERGHOEVE Z */
+    "cabri-vd-berghoeve-z": "",   /* CABRI VD BERGHOEVE Z */
+    "patchina-vant-merelsnest": "",   /* Patchina Van’t Merelsnest */
+    "carma-vd-bergheove-z": "",   /* CARMA VD BERGHEOVE Z */
+    "hypnotic-jt-z": "",   /* HYPNOTIC JT Z */
+    "cortina-de-jolie-z": "",   /* CORTINA DE JOLIE Z */
+    "agousha-vd-berghoeve-z": "",   /* AGOUSHA VD BERGHOEVE Z */
+    "cartoona-blue": "",   /* CARTOONA BLUE */
+    "waikiki-vd-berghoeve": "",   /* WAIKIKI VD BERGHOEVE */
+    "heaven-vd-berghoeve-z": "",   /* HEAVEN VD BERGHOEVE Z */
+    "unguessable-von-axe": "",   /* Unguessable Von Axe */
+    "cardesse-von-axe": "",   /* Cardesse Von Axe */
+  },
   sires: {
     "AGANIX DU SEIGNEUR Z": {
       "horsetelex": "",

@@ -57,7 +57,9 @@ const CSS = homeCss + pageHeroCss + `
   .pl__h em{ font-style:italic; color:var(--color-gold); }
   .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
   .pl__grid{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
-  @media (min-width:820px){ .pl__grid{ grid-template-columns:1fr 1fr; } }
+  /* One card since 3 Sep, so from 820px it lies down: the map one side and
+     the address the other, rather than a half width card beside a gap. */
+  @media (min-width:820px){ .pl__card{ grid-template-columns:1.15fr 1fr; grid-template-rows:none; } }
   .pl__card{
     display:grid; grid-template-rows:auto 1fr; overflow:hidden;
     border-radius:var(--plate-radius); background:var(--color-base);
@@ -131,7 +133,11 @@ const WAYS = [
   ['A', 'Adriano', '+39 348 395 3433', 'Call or message', 'tel:+393483953433'],
 ];
 
-/* ── the two places, with a map each ───────────────────────────────────
+/* ── the one place, with a map ─────────────────────────────────────────
+   3 Sep: Lanaken came off at the client's request. In their words, they do
+   not have a second actual location, so a map of the town was a pin on
+   nothing. Belgium is still named in the sentence, because the foals really
+   are raised there; it just is not somewhere a visitor drives to.
    Asked for on 31 Aug: both locations under the form, with Google Maps and
    the address.
 
@@ -165,13 +171,6 @@ const PLACES = [
     note: 'This is the registered address. Ring us before you set off and we will tell you where the horse you want to see is standing.',
     q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
   },
-  {
-    kick: 'Belgium',
-    name: 'Lanaken',
-    lines: ['Lanaken', 'Belgium'],
-    note: 'The map shows the town. Ring us for the gate and we will send you the pin.',
-    q: 'Lanaken, Belgium',
-  },
 ];
 
 const placesSection = `
@@ -179,9 +178,9 @@ const placesSection = `
     <div class="wrap">
       <div class="pl__head">
         <p class="plaque">Where we are</p>
-        <h2 class="pl__h">Two countries, <em>one programme</em></h2>
+        <h2 class="pl__h">Where to <em>find us</em></h2>
         <p class="pl__intro">Every cross begins in Italy and every foal is raised in Belgium. You are
-        welcome at either, by appointment.</p>
+        welcome by appointment: ring first and we will say where to come.</p>
       </div>
       <div class="pl__grid">
 ${PLACES.map((pl) => `        <div class="pl__card">

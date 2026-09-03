@@ -169,7 +169,7 @@
        it, which it would otherwise do, being the tallest item in the row. */
     --hd-top:   clamp(10px, 1.6vh, 22px);
     --hd-bar:   clamp(52px, 6vh, 62px);
-    --hd-plate: clamp(74px, 8.6vh, 92px);
+    --hd-plate: clamp(84px, 9.4vh, 100px); /* 3 Sep: taller, so the bigger mark fits inside it */
     --tray-radius: 34px;
     --tray-pad: clamp(14px, 1.5vw, 22px);
   }
@@ -387,7 +387,7 @@
   /* Both marks in one cell, so the plate is sized by the artwork and the
      two can cross fade without either one moving. */
   .brand img{
-    grid-area:1 / 1; display:block; width:clamp(120px, 11vw, 152px); height:auto;
+    grid-area:1 / 1; display:block; width:clamp(150px, 13.5vw, 196px); height:auto;
     transition:opacity .25s var(--ease);
   }
   .brand__onlight{ opacity:0; }
@@ -447,7 +447,9 @@
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
     font-family:var(--font-display);
-    font-size:15px; font-weight:400; letter-spacing:.005em;
+    /* 3 Sep: 15 -> 17.5, the client found the names a little small. 17.5
+       rather than 17 because it is on --type-scale and 17 is not. */
+    font-size:17.5px; font-weight:400; letter-spacing:.005em;
     color:var(--color-white); white-space:nowrap;
     padding-bottom:3px;
     border-bottom:1px solid transparent;
@@ -500,7 +502,7 @@
      glyph's own size, which is what a button is when nothing gives it a box.
      The negative margin keeps it standing where it stood. */
   .nav-toggle{
-    display:none; place-items:center;
+    display:none; place-items:center; flex:none;
     width:40px; height:40px; margin-inline:-9px;
     font-size:22px; line-height:1;
     color:var(--color-white);
@@ -527,11 +529,17 @@
      time it was the same fault: a measurement taken for one arrangement left
      standing after the arrangement changed. Change anything on the bar and
      measure it again.
+     3 Sep, measured again for exactly that reason. The client asked for a
+     bigger mark (152 -> 196 at the cap) and bigger names (15 -> 17.5), and
+     the right hand group's clearance from the mark went to -2px at 1280,
+     18 at 1341, 28 at 1366, 36 from 1440 up. So the line is 1340: a 1280
+     laptop now gets the drawer, which it did not before. That is the cost
+     of items one and two on the client's list, and it is theirs to weigh.
      The gap is a flat rem rather than a vw: one that grows with the screen
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
-  @media (max-width: 1240px){
+  @media (max-width: 1340px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -546,7 +554,7 @@
     }
     .primary-nav.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
     .primary-nav a{
-      padding:.6rem 0; width:100%; font-size:15px;
+      padding:.6rem 0; width:100%; font-size:17.5px;
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
@@ -571,7 +579,7 @@
        shape and simply takes less room. */
     .hd__row{ padding-inline:.6rem; }
     .brand{ padding-inline:.6rem; }
-    .brand img{ width:96px; }
+    .brand img{ width:118px; }
     /* .95em rather than .75em: at 10.5px type the smaller padding made a
        button 35 pixels tall, which is under a thumb. */
     .hd .btn-sm{ font-size:10.5px; padding:1.1em 1.15em; }
@@ -612,14 +620,18 @@
          own, so the two gaps stay equal.
      ============================================================ */
   .hero{
-    position:relative; min-height:100svh; padding-bottom:var(--cut);
+    /* No --cut any more: the topic tray that used to rise into the hero
+       came off on 3 Sep, so the hero ends where the photograph ends. */
+    position:relative; min-height:100svh; padding-bottom:0;
     display:flex; flex-direction:column;
     background:var(--color-navy-deep);
   }
   .hero__bg{ position:absolute; inset:0; }
-    /* Pushed right so the mare sits left of the centred statement rather
-     than directly behind it. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
+  /* The focus is one variable so the photograph can be swapped without
+     touching the rule. The client's own frame (3 Sep) has the horse in the
+     upper middle and sand at the foot, which is why the statement now sits
+     at the bottom rather than in the centre: the horse is never covered. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 46%); }
   /* An even navy veil across the WHOLE frame, not a gradient that only
      bites at the foot. The old ramp dropped to 10% at 28%, which let the
      photograph's own detail fight the centred statement. It deepens over
@@ -637,7 +649,7 @@
   /* ---------- centred statement ---------- */
   .hero__body{
     position:relative; z-index:20; flex:1;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
     padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
@@ -1931,14 +1943,17 @@
      resting on the photograph rather than a label pasted onto it.
      This rule comes after .hz__tag--sold and matches it just as tightly,
      so the sold ink is restated below rather than left to lose. */
+  /* 3 Sep: a size up, asked for by the client. They like the Sold flags and
+     wanted them a little bigger; Available grows with it so the two chips
+     stay one object. */
   .hz__tag{
     top:12px; left:12px;
-    gap:.55em; padding:.42em .8em;
+    gap:.6em; padding:.5em .95em;
     border-radius:999px;
     background:rgba(var(--veil-rgb), .62);
     -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.18), 0 2px 10px rgba(0,0,0,.28);
-    font-size:9.5px; font-weight:700; letter-spacing:.16em;
+    font-size:11.5px; font-weight:700; letter-spacing:.16em;
     color:rgba(255,255,255,.92);
   }
   /* Available carries a small live dot rather than a heavier ground: the
@@ -1955,7 +1970,7 @@
   /* Smaller with the chip, and squared off just enough to still read as a
      flag inside a pill. */
   .hz__flag{
-    width:16px; height:11px; border-radius:2px;
+    width:22px; height:15px; border-radius:3px;
     box-shadow:0 0 0 1px rgba(255,255,255,.28);
   }
 
@@ -2219,99 +2234,21 @@
     <p class="hero-sub">Foals, embryos and ICSI semen, raised between our Italian and Belgian bases and sold direct to breeders worldwide.</p>
     <div class="hero-actions">
       <a href="#horses" class="btn btn-gold btn-pill">View the horses</a>
-      <a href="#programme" class="btn btn-ghost btn-pill">View the programme</a>
+      <a href="#about" class="btn btn-ghost btn-pill">About the stud</a>
     </div>
   </div>
 
 </section>
 
-  <!-- The ivory tray: the page ground rises into the hero and the four
-       cards sit inside it, so the fold is cut rather than stacked. -->
-  <div class="topics-tray">
-  <!-- The four lines the stud sells, at the foot of the fold. Plaques
-       rather than photo cards: sharp corners, a gold hairline that draws
-       itself on hover, and the numeral doing the display work. -->
-  <nav class="topics" aria-label="What we offer">
-    <a class="topic" href="#horses">
-      <span class="topic__win">
-        <img src="assets/img/offer-foal.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">Foals</span>
-        <span class="topic__m">Lanaken, Belgium</span>
-        <span class="topic__more">Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament.</span>
-        <span class="topic__go">See the foals <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-    <a class="topic" href="#horses">
-      <span class="topic__win">
-        <img src="assets/img/horse-cabri.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">Frozen embryos</span>
-        <span class="topic__m">From our own damlines</span>
-        <span class="topic__more">Frozen from our own damlines, with every cross made on pedigree and produce.</span>
-        <span class="topic__go">See the crosses <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-    <a class="topic" href="#horses">
-      <span class="topic__win">
-        <img src="assets/img/bases-yard.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">Implanted embryos</span>
-        <span class="topic__m">Pregnancies in Belgium</span>
-        <span class="topic__more">Implanted in Belgium, where our team manages the pregnancy and raises the foal.</span>
-        <span class="topic__go">How it works <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-    <a class="topic" href="icsi-semen/">
-      <span class="topic__win">
-        <img src="assets/img/semen-detail.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">ICSI semen</span>
-        <span class="topic__m">Avantea, Cremona</span>
-        <span class="topic__more">ICSI doses of the stallions we breed with, through Avantea in Cremona.</span>
-        <span class="topic__go">See the stallions <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-    <a class="topic" href="#services">
-      <span class="topic__win">
-        <img src="assets/img/results-unguessable.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">Sport horses</span>
-        <span class="topic__m">Sourced and brokered</span>
-        <span class="topic__more">Horses found for clients across Europe, and mares that combine sport with breeding.</span>
-        <span class="topic__go">See the results <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-    <a class="topic" href="#about">
-      <span class="topic__win">
-        <img src="assets/img/intro-foal-star.jpg" alt="" loading="lazy">
-      </span>
-      <span class="topic__body">
-        <span class="topic__t">The stud</span>
-        <span class="topic__m">Italy and Belgium</span>
-        <span class="topic__more">Born from a great passion for horses, after years spent on the best German farms.</span>
-        <span class="topic__go">About the stud <span class="a" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-  </nav>
-    <button class="topics-arrow topics-arrow--prev" type="button" aria-label="Previous">&#8592;</button>
-    <button class="topics-arrow topics-arrow--next" type="button" aria-label="Next">&#8594;</button>
-  </div>
 
 <main>
 
   <!-- ================= WHO THEY ARE ================= -->
   <!-- ================= THE STUD =================
-       The about section doubles as the navigator: it tells the story and
-       at the same time walks through the six things the stud sells, each
-       one linking on into the site. Photograph one side with its own
-       caption and controls, words the other, closed by a plate that
-       always points somewhere. -->
+       Photograph one side with its caption, words the other, closed by a
+       plate that points to the about page. Until 3 Sep this section was also
+       a navigator that turned through the six things the stud sells; the
+       client asked for one fixed photograph instead. -->
   <section class="stud" id="about">
     <div class="stud__mark" aria-hidden="true">
       <img src="assets/logo/icon-onlight.png" data-ground="light" alt="">
@@ -2320,6 +2257,10 @@
 
       <div class="stud__card">
         <div class="stud__win">
+          <!-- One still photograph, by the client's request of 3 Sep: the
+               six frame navigator that used to turn here is gone. They are
+               preparing a photograph for this spot; this one stands in
+               until it arrives. -->
           <img id="stud-img" src="assets/img/hero-grey.jpg" alt="">
           <span class="stud__badge">
             <img src="assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">
@@ -2329,11 +2270,7 @@
         <div class="stud__cap">
           <div>
             <p class="stud__capKick" id="stud-kick">01 &middot; The stud</p>
-            <p class="stud__capBody" id="stud-cap"></p>
-          </div>
-          <div class="stud__arrows">
-            <button class="stud__arrow" data-stud="-1" aria-label="Previous topic">&larr;</button>
-            <button class="stud__arrow" data-stud="1" aria-label="Next topic">&rarr;</button>
+            <p class="stud__capBody" id="stud-cap">Born from a great passion for horses, after years on the best German farms.</p>
           </div>
         </div>
       </div>
@@ -2354,8 +2291,8 @@
         and we sell direct. Never through auction.</p>
 
         <div class="stud__plate">
-          <div><b id="stud-plateT"></b><span id="stud-plateS"></span></div>
-          <a class="stud__pill" id="stud-plateL" href="#horses">See the horses <span class="a" aria-hidden="true">&rarr;</span></a>
+          <div><b id="stud-plateT">Two countries, one programme</b><span id="stud-plateS">Italy makes the crosses, Belgium raises the foals.</span></div>
+          <a class="stud__pill" id="stud-plateL" href="about/">About the stud <span class="a" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
 
@@ -2373,41 +2310,24 @@
        the visitor is told to go and look at horses. The programme now runs
        ICSI semen against embryos, which really are the two routes into the
        same damlines. -->
+  <!-- ================= EVERY HORSE WE HAVE =================
+       The client's round of 3 Sep took the card run off the homepage: the
+       archives hold the horses, and this band is the way into them. It keeps
+       the tray and the navy plate the run used to end on, so the seam into
+       the services band is unchanged. Three links, one per archive, because
+       no page holds every horse. -->
   <section class="hz" id="horses">
-    <div class="wrap">
-      <div class="hz__head">
-        <div>
-          <p class="plaque">The horses</p>
-          <h2 class="hz__h">Pedigree and <em>produce</em>.</h2>
-          <p class="hz__intro">The mares we breed from, the foals on the ground, and the horses bred here that have gone on.</p>
-        </div>
-        <div class="hz__filters" role="group" aria-label="Filter the horses">
-          <button class="hz__chip" data-hz="all"       aria-pressed="true">All horses <span class="c"></span></button>
-          <button class="hz__chip" data-hz="sport"     aria-pressed="false">Sport horses <span class="c"></span></button>
-          <button class="hz__chip" data-hz="broodmare" aria-pressed="false">Broodmares <span class="c"></span></button>
-          <button class="hz__chip" data-hz="foal"      aria-pressed="false">Foals <span class="c"></span></button>
-        </div>
-      </div>
-
-      <ul class="hz__grid" id="hz-run"></ul>
-
-    </div>
-
-    <!-- The ivory tray: the page ground hangs down into the services band, so
-         the cut is made of background rather than of the plate itself. -->
     <div class="hz-tray">
-      <!-- The heading and the link have to name the same thing. The heading
-           used to say "Every horse we have" beside a button reading "See the
-           foals", because there is no page that holds every horse and the
-           button had to point somewhere. On All it is now three links, one per
-           archive, which is what "more" actually means there; on a single
-           chip it is one button to that chip's own archive. -->
       <div class="hz__banner">
         <div>
-          <b id="hz-bannerTitle">Every horse we have</b>
-          <span id="hz-bannerNote"></span>
+          <b>Every horse we have</b>
+          <span>Sport horses, breeding mares and foals, each on a page of its own.</span>
         </div>
-        <div class="hz__more" id="hz-bannerMore"></div>
+        <div class="hz__more">
+          <a class="hz__cta" href="sport-horses/">See all sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="breeding-mares/">See all breeding mares <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="foals/">See all foals <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -2475,38 +2395,13 @@
        section was always describing: the same damlines, reached either by
        putting our stallion on your mare or by taking a cross we have already
        made. -->
-  <section class="pg" id="programme">
+  <!-- ================= TELL US THE HORSE =================
+       The programme comparison, ICSI semen against embryos, came off on
+       3 Sep at the client's request. The invitation that sat between its
+       two runs stays, as the one plate between what else we do and the
+       news. -->
+  <section class="pg">
     <div class="wrap">
-      <div class="pg__head">
-        <div>
-          <p class="plaque">The programme</p>
-          <h2 class="pg__h">Two ways into the same <em>damlines</em>.</h2>
-        </div>
-        <p class="pg__intro">Whether you breed the cross yourself with our semen or take one we have
-        already made, the bloodline is identical. What changes is who does the waiting.</p>
-      </div>
-
-      <!-- Four across, and the first card is the section itself: the title,
-           the line and the button. The three beside it are the run. -->
-      <div class="pgr">
-        <div class="pgr__fix">
-          <h3 class="pgr__t">ICSI semen</h3>
-          <p class="pgr__d">ICSI semen from the stallions we breed with ourselves, through Avantea
-          in Cremona.</p>
-          <a class="pgr__cta" href="icsi-semen/">See the stallions <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
-        <div class="pgr__wrap">
-          <ul class="pgr__run" id="pg-semen"></ul>
-          <button class="topics-arrow topics-arrow--prev" data-run="pg-semen" data-dir="-1"
-                  aria-label="Previous stallions">&larr;</button>
-          <button class="topics-arrow topics-arrow--next" data-run="pg-semen" data-dir="1"
-                  aria-label="Next stallions">&rarr;</button>
-        </div>
-      </div>
-
-      <!-- The invitation, set between the two runs on purpose: it breaks the
-           section in half so the semen and the embryos read as two separate
-           offers rather than one long strip of cards. -->
       <div class="pcta">
         <div class="pcta__bg" aria-hidden="true">
           <img src="assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
@@ -2523,24 +2418,6 @@
                class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
       </div>
-
-      <!-- The mirror: run on the left, fixed card on the right. -->
-      <div class="pgr pgr--rev">
-        <div class="pgr__wrap">
-          <ul class="pgr__run" id="pg-embryos"></ul>
-          <button class="topics-arrow topics-arrow--prev" data-run="pg-embryos" data-dir="-1"
-                  aria-label="Previous crosses">&larr;</button>
-          <button class="topics-arrow topics-arrow--next" data-run="pg-embryos" data-dir="1"
-                  aria-label="Next crosses">&rarr;</button>
-        </div>
-        <div class="pgr__fix">
-          <h3 class="pgr__t">Embryos</h3>
-          <p class="pgr__d">Frozen from our own damlines, or already carrying in Lanaken. Every cross
-          is made on pedigree and on what the mare has produced.</p>
-          <a class="pgr__cta" href="embryos/">See the crosses <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -2766,7 +2643,6 @@
 
 <script src="news-data.js"></script>
 <script src="flags.js"></script>
-<script src="horses-home.js"></script>
 <script>
   /* Hero marquee.
      Real horses from studvonaxe.it, and only the four whose listing
@@ -2777,295 +2653,6 @@
 
 
 
-
-  /* ── The topics run: arrows scroll by one card ─────────────────────────
-     The run works without this: it is a native scroll snap track that can
-     be dragged, swiped and keyboard scrolled. The arrows are a desktop
-     convenience, and they disable at the ends rather than wrapping, so
-     the run never appears to lose its place. */
-  (function(){
-    var track = document.querySelector('.topics');
-    var prev = document.querySelector('.topics-arrow--prev');
-    var next = document.querySelector('.topics-arrow--next');
-    if(!track || !prev || !next) return;
-
-    function step(){
-      var card = track.querySelector('.topic');
-      if(!card) return track.clientWidth;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return card.getBoundingClientRect().width + gap;
-    }
-    function sync(){
-      var max = track.scrollWidth - track.clientWidth;
-      prev.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft >= max - 1;
-    }
-    /* The scroll is animated here rather than handed to
-       scroll-behavior:smooth. Engines refuse to animate scrolls in a
-       backgrounded or occluded view, and when they refuse the scroll can
-       be dropped entirely rather than falling back to an instant jump:
-       measured as scrollLeft staying at 0 while 1910px were scrollable.
-       A rAF tween always lands, and it honours reduced motion. */
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var busy = false;
-    function glide(to){
-      var max = track.scrollWidth - track.clientWidth;
-      to = Math.max(0, Math.min(to, max));
-      if(reduce.matches){ track.scrollLeft = to; sync(); return; }
-      var from = track.scrollLeft, dist = to - from, t0 = null, dur = 420;
-      busy = true;
-      requestAnimationFrame(function tick(now){
-        if(t0 === null) t0 = now;
-        var p = Math.min((now - t0) / dur, 1);
-        var e = p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;   /* easeInOutCubic */
-        track.scrollLeft = from + dist * e;
-        if(p < 1) requestAnimationFrame(tick);
-        else { busy = false; sync(); }
-      });
-    }
-    prev.addEventListener('click', function(){ if(!busy) glide(track.scrollLeft - step()); });
-    next.addEventListener('click', function(){ if(!busy) glide(track.scrollLeft + step()); });
-    track.addEventListener('scroll', sync, {passive:true});
-    window.addEventListener('resize', sync);
-  })();
-
-
-  /* ── The stud: the about section is also the navigator ────────────────
-     One source for the six destinations, so the caption, the picture and
-     the plate can never fall out of step with each other. Every entry is
-     a real place on this page. */
-  (function(){
-    var T = [
-      { n:'01', t:'The stud', place:'Desenzano \u00b7 Lanaken', href:'about/',
-        img:'assets/img/hero-grey.jpg',
-        cap:'Born from a great passion for horses, after years on the best German farms.',
-        plateT:'Two countries, one programme',
-        plateS:'Italy makes the crosses, Belgium raises the foals.', cta:'About the stud' },
-      { n:'02', t:'Foals', place:'Lanaken, Belgium', href:'foals/',
-        img:'assets/img/offer-foal.jpg',
-        cap:'Born and raised at our Belgian base, out of mares we chose ourselves.',
-        plateT:'Foals born in Lanaken',
-        plateS:'Colts and fillies out of our own damlines, sold direct.', cta:'See the foals' },
-      { n:'03', t:'Frozen embryos', place:'From our own damlines', href:'embryos/',
-        img:'assets/img/horse-cabri.jpg',
-        cap:'Frozen from our own damlines, every cross made on pedigree and produce.',
-        plateT:'Crosses from our own damlines',
-        plateS:'Chosen on pedigree and on what a mare has produced.', cta:'See the crosses' },
-      { n:'04', t:'Implanted embryos', place:'Pregnancies in Belgium', href:'embryos/',
-        img:'assets/img/bases-yard.jpg',
-        cap:'Implanted in Belgium, where our own team manages every pregnancy.',
-        plateT:'Carried under our own eyes',
-        plateS:'From implantation to the day the foal leaves.', cta:'How it works' },
-      { n:'05', t:'ICSI semen', place:'Avantea, Cremona', href:'icsi-semen/',
-        img:'assets/img/semen-detail.jpg',
-        cap:'ICSI doses of the stallions we breed with, through Avantea in Cremona.',
-        plateT:'ICSI semen through Avantea',
-        plateS:'Shipped across the EU and for export.', cta:'See the stallions' },
-      { n:'06', t:'Sport horses', place:'Sourced and brokered', href:'sport-horses/',
-        img:'assets/img/results-unguessable.jpg',
-        cap:'Horses found for clients, and mares that combine sport with breeding.',
-        plateT:'Looking for a particular horse?',
-        plateS:'We source for clients across Europe.', cta:'See the results' }
-    ];
-    var img   = document.getElementById('stud-img');
-    if(!img) return;
-    var kick  = document.getElementById('stud-kick'),
-        cap   = document.getElementById('stud-cap'),
-        place = document.getElementById('stud-place'),
-        plateT= document.getElementById('stud-plateT'),
-        plateS= document.getElementById('stud-plateS'),
-        plateL= document.getElementById('stud-plateL');
-    var i = 0;
-
-    function show(k){
-      i = (k + T.length) % T.length;
-      var s = T[i];
-      /* Guard: an entry without a frame would set src="undefined" and
-         render a broken image rather than failing loudly. */
-      if(!s.img){ console.warn('stud navigator: no image for ' + s.t); }
-      img.src = s.img || 'assets/img/hero-grey.jpg'; img.alt = s.cap;
-      kick.textContent = s.t;
-      cap.textContent = s.cap;
-      place.textContent = s.place;
-      plateT.textContent = s.plateT;
-      plateS.textContent = s.plateS;
-      plateL.href = s.href;
-      plateL.firstChild.textContent = s.cta + ' ';
-      /* Restart the fade by removing and re-adding: without the reflow the
-         class is still there and the animation never replays. */
-      img.classList.remove('stud-fade'); void img.offsetWidth; img.classList.add('stud-fade');
-    }
-    document.querySelectorAll('[data-stud]').forEach(function(b){
-      b.addEventListener('click', function(){ show(i + Number(b.dataset.stud)); });
-    });
-    show(0);
-
-    /* The frames behind the first one are never fetched until they are
-       shown, so the first arrow click would flash an empty card. */
-    var idle = window.requestIdleCallback || function(fn){ return setTimeout(fn, 1200); };
-    idle(function(){
-      T.slice(1).forEach(function(s){ var p = new Image(); p.src = s.img; });
-    });
-  })();
-
-
-  /* ── The horses: filter and run ───────────────────────────────────────
-     Every card here comes from horses-home.js, which scripts/build-horses.mjs
-     writes out of horses-data.js, so the grid, the archives and the sixty
-     horse pages are one set of facts.
-     Until 31 Aug this block also carried a second copy of the herd: fourteen
-     horses typed out by hand in August, kept as a fallback for a browser that
-     never loaded the file. Nothing rendered it any more, but the chips still
-     counted it, so they read 7 / 3 / 4 over runs of six, and the line under
-     the grid said seven foals when there are twenty one. A fallback that has
-     drifted is worse than an empty grid, because it is wrong quietly. It is
-     gone, and every number below is counted from the same file as the cards. */
-  (function(){
-    var run = document.getElementById('hz-run');
-    if(!run || !window.HOME_HORSES) return;
-    var H = window.HOME_HORSES, C = H.counts, W = H.words;
-    function words(n){ return W[n] || String(n); }
-
-    var RUNS  = { all:H.all, sport:H.sport, broodmare:H.mares, foal:H.foals };
-    /* A chip counts its whole group, not the handful on show. */
-    var TOTAL = { all:C.sport + C.mares + C.foals, sport:C.sport,
-                  broodmare:C.mares, foal:C.foals };
-    /* What the banner says and what it opens. On a single chip that is one
-       archive and one button. On All there is no page that holds every horse,
-       so rather than picking one and mislabelling it, all three are offered. */
-    var ARCH = {
-      sport:     { href:'sport-horses/',   label:'sport horses',   title:'Every sport horse we have' },
-      broodmare: { href:'breeding-mares/', label:'breeding mares', title:'Every breeding mare we have' },
-      foal:      { href:'foals/',          label:'foals',          title:'Every foal we have' }
-    };
-
-    var note  = document.getElementById('hz-bannerNote');
-    var title = document.getElementById('hz-bannerTitle');
-    var more  = document.getElementById('hz-bannerMore');
-
-    function shownIn(html){ return (html.match(/<li/g) || []).length; }
-
-    function render(filter){
-      var html = RUNS[filter] || RUNS.all;
-      run.innerHTML = html;
-
-      if(note){
-        var shown = shownIn(html), total = TOTAL[filter] || TOTAL.all;
-        var tail = filter === 'all'
-          ? 'Sport horses, broodmares and foals. The stallions and the crosses are further down in the programme.'
-          : '';
-        note.textContent = [shown < total
-          ? 'Showing ' + words(shown) + ' of ' + words(total) + '.' : '', tail]
-          .filter(Boolean).join(' ');
-      }
-
-      if(title) title.textContent = filter === 'all'
-        ? 'Every horse we have' : (ARCH[filter] || {}).title || 'Every horse we have';
-
-      if(more){
-        var arrow = ' <span class="a" aria-hidden="true">&rarr;</span>';
-        more.innerHTML = filter === 'all'
-          ? Object.keys(ARCH).map(function(k){
-              return '<a class="hz__cta" href="' + ARCH[k].href + '">See all '
-                   + ARCH[k].label + arrow + '</a>';
-            }).join('')
-          : '<a class="hz__cta" href="' + ARCH[filter].href + '">See all '
-              + ARCH[filter].label + arrow + '</a>';
-      }
-    }
-
-    document.querySelectorAll('[data-hz]').forEach(function(b){
-      var c = b.querySelector('.c');
-      if(c) c.textContent = TOTAL[b.dataset.hz];
-      b.addEventListener('click', function(){
-        document.querySelectorAll('[data-hz]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-        b.setAttribute('aria-pressed','true');
-        render(b.dataset.hz);
-      });
-    });
-
-    render('all');
-  })();
-
-  /* ── The stallions ────────────────────────────────────────────────────
-     The run in the programme where the foals used to be. Same card as the
-     ICSI semen archive, so a stallion says one thing in both places. */
-  (function(){
-    var run = document.getElementById('pg-semen');
-    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.stallions;
-  })();
-
-  /* ── The embryos ─────────────────────────────────────────────────────
-     Their own list, read from horses-data.js through the cards that
-     scripts/build-horses.mjs writes. This block used to hold a second copy
-     of the crosses, typed out in August, and it had gone stale: their list
-     is six damlines and it claimed five. Every card now points at the
-     cross's own page and carries the photograph from it. */
-  (function(){
-    var run = document.getElementById('pg-embryos');
-    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.embryos;
-  })();
-
-  /* ── The two programme runs share the hero run's arrow behaviour ──────
-     Same rAF tween as the topics run, and for the same reason: engines
-     drop animated scrolls in an occluded view, so scroll-behavior alone
-     can leave the track where it stood. One controller, driven by the
-     data-run attribute, rather than a copy per slider. */
-  (function(){
-    var arrows = [].slice.call(document.querySelectorAll('.topics-arrow[data-run]'));
-    if(!arrows.length) return;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var busy = {};
-
-    function step(track){
-      var item = track.querySelector('li');
-      if(!item) return track.clientWidth;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return item.getBoundingClientRect().width + gap;
-    }
-    function sync(track){
-      var max = track.scrollWidth - track.clientWidth;
-      arrows.forEach(function(b){
-        if(b.dataset.run !== track.id) return;
-        b.disabled = Number(b.dataset.dir) < 0 ? track.scrollLeft <= 1 : track.scrollLeft >= max - 1;
-      });
-    }
-    function glide(track, to){
-      var max = track.scrollWidth - track.clientWidth;
-      to = Math.max(0, Math.min(to, max));
-      if(reduce.matches){ track.scrollLeft = to; sync(track); return; }
-      var from = track.scrollLeft, dist = to - from, t0 = null, dur = 420;
-      busy[track.id] = true;
-      requestAnimationFrame(function tick(now){
-        if(t0 === null) t0 = now;
-        var pr = Math.min((now - t0) / dur, 1);
-        var e = pr < .5 ? 4*pr*pr*pr : 1 - Math.pow(-2*pr + 2, 3) / 2;   /* easeInOutCubic */
-        track.scrollLeft = from + dist * e;
-        if(pr < 1) requestAnimationFrame(tick);
-        else { busy[track.id] = false; sync(track); }
-      });
-    }
-
-    arrows.forEach(function(b){
-      b.addEventListener('click', function(){
-        var track = document.getElementById(b.dataset.run);
-        if(!track || busy[track.id]) return;
-        glide(track, track.scrollLeft + Number(b.dataset.dir) * step(track));
-      });
-    });
-
-    /* The runs are filled by other scripts, so the first sync waits for
-       the cards to exist rather than reading an empty track. */
-    var tracks = {};
-    arrows.forEach(function(b){ tracks[b.dataset.run] = true; });
-    Object.keys(tracks).forEach(function(id){
-      var track = document.getElementById(id);
-      if(!track) return;
-      track.addEventListener('scroll', function(){ sync(track); }, {passive:true});
-      window.addEventListener('resize', function(){ sync(track); });
-      requestAnimationFrame(function(){ sync(track); });
-    });
-  })();
 
   /* ── The header pins, and turns ivory once the hero is behind it ─────
      Flipped on the hero's own bottom edge rather than a fixed scroll
