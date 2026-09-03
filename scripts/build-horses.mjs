@@ -88,7 +88,9 @@ const FLAGS = new Function(readFileSync(join(root, 'flags.js'), 'utf-8') + '; re
 const GROUPS = {
   broodmare: {
     dir: 'breeding-mares',
-    facets: ['studbook', 'born'],
+    /* No selects. The client took the age and studbook filters off the mares
+       on 3 Sep; the search box and the All / Available / Sold chips stay. */
+    facets: [],
     find: 'Try a sire, a damline or a studbook.',
     label: 'Breeding mares',
     kicker: 'The mares',
@@ -1054,18 +1056,21 @@ const gridSection = (group, list) => {
      available, so an Available chip would say nothing. On the stallions it
      is nothing at all, so they carry none. */
   const embryos = group.dir === 'embryos';
-  /* On the embryos the first chip is All, and it is deliberate: every cross
-     is for sale, so there is nothing to filter out on arrival, and the six
-     frozen ones have no photograph, which would make an archive that opens
-     on Frozen a wall of navy. The stage is a filter here, not a
-     pre-selection. */
+  /* All is the first chip everywhere, and the one the page opens on. The
+     client asked for it on 3 Sep, in these words: the pages look fuller at
+     first sight, and a buyer gets an overview of everything they have and
+     everything they have had before narrowing. Until then mares, foals and
+     sport horses opened on Available, which hid the sold half of the record
+     on arrival. The embryos already opened on All, for a reason that still
+     holds: the six frozen crosses have no photograph, and an archive that
+     opened on Frozen was a wall of navy. */
   const chips = embryos
     ? [['all', 'All', list.length],
        ['carrying', 'Carrying', list.filter((h) => !isFrozen(h)).length],
        ['frozen', 'Frozen', list.filter(isFrozen).length]]
-    : [['available', 'Available', list.filter((h) => !h.sold).length],
-       ['sold', 'Sold', list.filter((h) => h.sold).length],
-       ['all', 'All', list.length]];
+    : [['all', 'All', list.length],
+       ['available', 'Available', list.filter((h) => !h.sold).length],
+       ['sold', 'Sold', list.filter((h) => h.sold).length]];
   const first = group.chips === false ? ['all', 'All', list.length] : chips[0];
   const openOn = first[2] ? first[0] : 'all';
   const shown = openOn === 'all' ? list.length : first[2];
@@ -1312,7 +1317,24 @@ ${facts.map(([k, v, url]) => `          <div><span class="eh__k">${esc(k)}</span
           <a href="#ask" class="btn btn-gold btn-pill">Ask about this embryo</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
+          ${(() => {
+            /* The dam's record: from her own page when she has one, else the
+               link the cross itself carries, taken only when its slug names
+               the dam, so the label is true. Not telexOf: for a cross that
+               reads the dam's URL as the cross's own, because her name is the
+               back half of its name and the ten letter test matches. Before
+               this, three crosses holding her URL drew no button. */
+            const own = (String(horse.horsetelex || '').match(/pedigree\/\d+\/([^/?#]+)/) || [])[1] || '';
+            const url = damLink(horse) || (own && telexSame(own, damName) ? horse.horsetelex : '');
+            return url ? `<a href="${esc(url)}" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-pill">The dam on Horsetelex <span aria-hidden="true">&#8599;</span></a>` : '';
+          })()}
         </div>
+        <!-- 3 Sep, the client asked for a Horsetelex button on the embryos. It
+             opens the dam's record and says so: a cross has no entry of its
+             own, and eleven of the fifteen carry the dam's link. The small
+             link in the facts row above stays, for the reader who is
+             looking at the dam's name when they want it. -->
       </div>
     </div>
   </section>
@@ -1887,6 +1909,14 @@ const pedigreeSection = (horse) => {
         })()}
         ${horse.category === 'embryo' ? `<p class="ped__note">A cross has no Horsetelex entry of its own:
           it is not born yet. The dam's record is on her page.</p>` : ''}
+        ${(() => {
+          /* Asked for on 3 Sep: the mares' Hippomundo records under the
+             pedigree. Their site does not publish these, so the URL is typed
+             into horses-extra.js per mare, and nothing is drawn until it is:
+             a search page is not a record. */
+          const url = horse.category === 'broodmare' && (EXTRA.hippomundo || {})[horse.slug];
+          return url ? `<p class="ped__note">Her record is also on <a href="${esc(url)}" target="_blank" rel="noopener" style="color:var(--color-navy)">Hippomundo</a>.</p>` : '';
+        })()}
       </div>
     </div>
   </section>

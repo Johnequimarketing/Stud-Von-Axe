@@ -127,7 +127,7 @@
        it, which it would otherwise do, being the tallest item in the row. */
     --hd-top:   clamp(10px, 1.6vh, 22px);
     --hd-bar:   clamp(52px, 6vh, 62px);
-    --hd-plate: clamp(74px, 8.6vh, 92px);
+    --hd-plate: clamp(84px, 9.4vh, 100px); /* 3 Sep: taller, so the bigger mark fits inside it */
     --tray-radius: 34px;
     --tray-pad: clamp(14px, 1.5vw, 22px);
   }
@@ -345,7 +345,7 @@
   /* Both marks in one cell, so the plate is sized by the artwork and the
      two can cross fade without either one moving. */
   .brand img{
-    grid-area:1 / 1; display:block; width:clamp(120px, 11vw, 152px); height:auto;
+    grid-area:1 / 1; display:block; width:clamp(150px, 13.5vw, 196px); height:auto;
     transition:opacity .25s var(--ease);
   }
   .brand__onlight{ opacity:0; }
@@ -405,7 +405,9 @@
     /* The page's serif, not the body sans: the mark beside it is set in
        capitals of the same kind, and so is every heading below. */
     font-family:var(--font-display);
-    font-size:15px; font-weight:400; letter-spacing:.005em;
+    /* 3 Sep: 15 -> 17.5, the client found the names a little small. 17.5
+       rather than 17 because it is on --type-scale and 17 is not. */
+    font-size:17.5px; font-weight:400; letter-spacing:.005em;
     color:var(--color-white); white-space:nowrap;
     padding-bottom:3px;
     border-bottom:1px solid transparent;
@@ -458,7 +460,7 @@
      glyph's own size, which is what a button is when nothing gives it a box.
      The negative margin keeps it standing where it stood. */
   .nav-toggle{
-    display:none; place-items:center;
+    display:none; place-items:center; flex:none;
     width:40px; height:40px; margin-inline:-9px;
     font-size:22px; line-height:1;
     color:var(--color-white);
@@ -485,11 +487,17 @@
      time it was the same fault: a measurement taken for one arrangement left
      standing after the arrangement changed. Change anything on the bar and
      measure it again.
+     3 Sep, measured again for exactly that reason. The client asked for a
+     bigger mark (152 -> 196 at the cap) and bigger names (15 -> 17.5), and
+     the right hand group's clearance from the mark went to -2px at 1280,
+     18 at 1341, 28 at 1366, 36 from 1440 up. So the line is 1340: a 1280
+     laptop now gets the drawer, which it did not before. That is the cost
+     of items one and two on the client's list, and it is theirs to weigh.
      The gap is a flat rem rather than a vw: one that grows with the screen
      ate the clearance on a 1920 monitor.
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
-  @media (max-width: 1240px){
+  @media (max-width: 1340px){
     .primary-nav{
       position:absolute; left:0; right:0;
       /* opens just below the hairline rule, so the rule stays visible */
@@ -504,7 +512,7 @@
     }
     .primary-nav.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
     .primary-nav a{
-      padding:.6rem 0; width:100%; font-size:15px;
+      padding:.6rem 0; width:100%; font-size:17.5px;
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
@@ -529,7 +537,7 @@
        shape and simply takes less room. */
     .hd__row{ padding-inline:.6rem; }
     .brand{ padding-inline:.6rem; }
-    .brand img{ width:96px; }
+    .brand img{ width:118px; }
     /* .95em rather than .75em: at 10.5px type the smaller padding made a
        button 35 pixels tall, which is under a thumb. */
     .hd .btn-sm{ font-size:10.5px; padding:1.1em 1.15em; }
@@ -570,14 +578,18 @@
          own, so the two gaps stay equal.
      ============================================================ */
   .hero{
-    position:relative; min-height:100svh; padding-bottom:var(--cut);
+    /* No --cut any more: the topic tray that used to rise into the hero
+       came off on 3 Sep, so the hero ends where the photograph ends. */
+    position:relative; min-height:100svh; padding-bottom:0;
     display:flex; flex-direction:column;
     background:var(--color-navy-deep);
   }
   .hero__bg{ position:absolute; inset:0; }
-    /* Pushed right so the mare sits left of the centred statement rather
-     than directly behind it. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; }
+  /* The focus is one variable so the photograph can be swapped without
+     touching the rule. The client's own frame (3 Sep) has the horse in the
+     upper middle and sand at the foot, which is why the statement now sits
+     at the bottom rather than in the centre: the horse is never covered. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 46%); }
   /* An even navy veil across the WHOLE frame, not a gradient that only
      bites at the foot. The old ramp dropped to 10% at 28%, which let the
      photograph's own detail fight the centred statement. It deepens over
@@ -595,7 +607,7 @@
   /* ---------- centred statement ---------- */
   .hero__body{
     position:relative; z-index:20; flex:1;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
     padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
@@ -1889,14 +1901,17 @@
      resting on the photograph rather than a label pasted onto it.
      This rule comes after .hz__tag--sold and matches it just as tightly,
      so the sold ink is restated below rather than left to lose. */
+  /* 3 Sep: a size up, asked for by the client. They like the Sold flags and
+     wanted them a little bigger; Available grows with it so the two chips
+     stay one object. */
   .hz__tag{
     top:12px; left:12px;
-    gap:.55em; padding:.42em .8em;
+    gap:.6em; padding:.5em .95em;
     border-radius:999px;
     background:rgba(var(--veil-rgb), .62);
     -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.18), 0 2px 10px rgba(0,0,0,.28);
-    font-size:9.5px; font-weight:700; letter-spacing:.16em;
+    font-size:11.5px; font-weight:700; letter-spacing:.16em;
     color:rgba(255,255,255,.92);
   }
   /* Available carries a small live dot rather than a heavier ground: the
@@ -1913,7 +1928,7 @@
   /* Smaller with the chip, and squared off just enough to still read as a
      flag inside a pill. */
   .hz__flag{
-    width:16px; height:11px; border-radius:2px;
+    width:22px; height:15px; border-radius:3px;
     box-shadow:0 0 0 1px rgba(255,255,255,.28);
   }
 
@@ -3068,6 +3083,7 @@
           <div class="ped__cell ped__cell--sire" style="grid-column:2; grid-row:5 / span 4">Cortina de Jolie Z</div><div class="ped__cell " style="grid-column:3; grid-row:5 / span 2">Cornet Obolensky</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:5 / span 1">Clinton</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:6 / span 1">Rabanna van Costersveld</div><div class="ped__cell " style="grid-column:3; grid-row:7 / span 2">Fuga de Muze</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:7 / span 1">Calato</div><div class="ped__cell ped__cell--third" style="grid-column:4; grid-row:8 / span 1">Narcotique II</div>
         </div>
         <p class="ped__note">Unique Touch Von Axe Z has no Horsetelex entry of its own yet. The dam, Cortina de Jolie Z, is on <a href="https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z" target="_blank" rel="noopener" style="color:var(--color-navy)">Horsetelex</a>.</p>
+        
         
       </div>
     </div>
