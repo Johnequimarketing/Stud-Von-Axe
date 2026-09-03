@@ -1077,7 +1077,7 @@ const gridSection = (group, list) => {
         <div class="flt__search">
           <label class="visually-hidden" for="flt-q">Search these ${esc(group.many)}</label>
           <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
-                 placeholder="Search a name, a sire, a country">
+                 placeholder="Search a name or a sire">
           <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
             <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>

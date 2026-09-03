@@ -2179,25 +2179,37 @@
      but they are the proof of where these lines have gone, so they are one
      chip away and never removed. A group with nothing available opens on
      everything rather than on an empty grid. */
+  /* 31 Aug: one plate instead of six controls loose on the page ground. The
+     bar is the only thing on an archive that is not a horse, and standing on
+     the ivory it read as a row of odds and ends between the hero and the
+     grid. On navy it is one object, it matches the plates the rest of the
+     site is built from, and the grid below it starts cleanly.
+     Everything inside it inverts: the field, the chips and the selects are
+     the same shapes they were, in the colours a navy ground needs. */
   .flt{
     display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.1rem;
-    margin-bottom:1.7rem; padding-bottom:1.4rem; border-bottom:1px solid var(--color-line);
+    margin-bottom:clamp(1.6rem,3vw,2.4rem);
+    padding:clamp(1rem,1.8vw,1.3rem) clamp(1.1rem,2vw,1.5rem);
+    border-radius:var(--plate-radius);
+    background:var(--color-navy-deep);
+    box-shadow:0 26px 60px -44px rgba(var(--veil-rgb),.5);
   }
-  .flt__search{ position:relative; flex:1 1 240px; max-width:320px; min-width:0; }
+  .flt__search{ position:relative; flex:1 1 220px; max-width:290px; min-width:0; }
   .flt__search input{
     width:100%; appearance:none; -webkit-appearance:none;
     padding:.7rem 2.3rem .7rem .95rem;
-    border:1px solid var(--color-line); border-radius:100px;
-    background:var(--color-base); color:var(--color-ink);
+    border:1px solid var(--color-line-invert); border-radius:100px;
+    background:rgba(255,255,255,.06); color:var(--color-white);
     font-family:var(--font-body); font-size:14.5px;
-    transition:border-color .3s var(--ease);
+    transition:border-color .3s var(--ease), background .3s var(--ease);
   }
-  .flt__search input::placeholder{ color:var(--color-ink-soft); }
-  .flt__search input:focus{ outline:none; border-color:var(--color-navy); }
+  .flt__search input::placeholder{ color:rgba(255,255,255,.55); }
+  .flt__search input:focus{ outline:none; border-color:var(--color-gold);
+    background:rgba(255,255,255,.1); }
   .flt__search input:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
   .flt__ico{
     position:absolute; right:.95rem; top:50%; transform:translateY(-50%);
-    width:14px; height:14px; pointer-events:none; color:var(--color-ink-soft);
+    width:14px; height:14px; pointer-events:none; color:rgba(255,255,255,.55);
   }
   .flt__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
   /* The narrowing that is not a yes or no. What is for sale is a chip, because
@@ -2209,20 +2221,34 @@
   .flt__sel select{
     appearance:none; -webkit-appearance:none; cursor:pointer;
     padding:.55rem 2.4em .55rem .9rem; min-height:40px;
-    border:1px solid var(--color-line); border-radius:var(--ctl-radius);
-    background-color:var(--color-base); color:var(--color-ink);
+    border:1px solid var(--color-line-invert); border-radius:var(--ctl-radius);
+    background-color:rgba(255,255,255,.06); color:var(--color-white);
     font-family:var(--font-body); font-size:13px;
-    background-image:linear-gradient(45deg, transparent 50%, var(--color-navy) 50%),
-                     linear-gradient(135deg, var(--color-navy) 50%, transparent 50%);
+    background-image:linear-gradient(45deg, transparent 50%, var(--color-white) 50%),
+                     linear-gradient(135deg, var(--color-white) 50%, transparent 50%);
     background-position:calc(100% - 1.05em) 55%, calc(100% - .75em) 55%;
     background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
-    transition:border-color .3s var(--ease);
+    transition:border-color .3s var(--ease), background-color .3s var(--ease);
   }
-  .flt__sel select:hover{ border-color:var(--color-navy); }
+  /* The list itself is drawn by the operating system and takes the page's own
+     colours, not the plate's, so its options are set back to ink on ivory. */
+  .flt__sel option{ background:var(--color-base); color:var(--color-ink); }
+  .flt__sel select:hover{ border-color:var(--color-gold); background-color:rgba(255,255,255,.1); }
   .flt__sel select:focus-visible{ outline:2px solid var(--color-gold); outline-offset:2px; }
+
+  /* The chips, on the plate. Ivory when they are off and gold when they are
+     on: navy on navy would have been a hole rather than a pressed button. */
+  .flt .hz__chip{
+    background:rgba(255,255,255,.06); border-color:var(--color-line-invert);
+    color:var(--color-white);
+  }
+  .flt .hz__chip:hover{ border-color:var(--color-gold); }
+  .flt .hz__chip[aria-pressed="true"]{
+    background:var(--color-gold); border-color:var(--color-gold); color:var(--color-navy);
+  }
   .flt__count{
     margin-left:auto; font-family:var(--font-body); font-weight:700; font-size:11px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-ink-soft); white-space:nowrap;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold); white-space:nowrap;
   }
   .flt__none{ display:none; margin:2.4rem 0 1rem; font-size:16px; color:var(--color-ink-soft); }
   .flt__none.is-on{ display:block; }
@@ -3020,7 +3046,7 @@
         <div class="flt__search">
           <label class="visually-hidden" for="flt-q">Search these horses</label>
           <input type="search" id="flt-q" data-find autocomplete="off" spellcheck="false"
-                 placeholder="Search a name, a sire, a country">
+                 placeholder="Search a name or a sire">
           <svg class="flt__ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/>
             <path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
