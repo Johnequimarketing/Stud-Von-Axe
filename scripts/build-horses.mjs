@@ -914,18 +914,39 @@ const meta = (horse) => [when(horse), SEX(horse), sireOf(horse), soldTo(horse)]
 /* The homepage card, unchanged, pointed at the horse's own page. A horse
    without a photograph gets the typographic card the homepage already uses
    for one, rather than a stand-in picture of a different horse. */
+/* Sold or available, with the flag and the country, as one piece of markup.
+   It was written inside card(); the trial card below needs the same badge,
+   and two copies of a status label is exactly how the same horse comes to
+   read differently on two pages. */
+const statusLabel = (horse) => {
+  const flag = horse.sold && horse.country && FLAGS[horse.country]
+    ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
+  return horse.sold
+    ? `<span class="hz__tag hz__tag--sold"${horse.country ? ` title="Sold to ${esc(COUNTRY[horse.country] || horse.country)}"` : ''}>${flag}Sold${
+        horse.country ? `<span class="visually-hidden"> to ${esc(COUNTRY[horse.country] || horse.country)}</span>` : ''}</span>`
+    : '<span class="hz__tag">Available</span>';
+};
+
+/* Everything the chips, the selects and the search box read off a card.
+   Lifted for the same reason as the label: a trial card that carries a
+   different set of attributes stands still while the rest of the grid
+   filters, and it looks like the filter is broken rather than the card. */
+const cardData = (horse) => {
+  const haystack = [horse.name, horse.genetics, horse.studbook, horse.tagline, horse.year,
+                    horse.country && COUNTRY[horse.country], SEX(horse)]
+    .filter(Boolean).join(' ').toLowerCase();
+  const f = facetsOf(horse);
+  return ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` +
+    ` data-sex="${esc(f.sex)}" data-studbook="${esc(f.studbook)}" data-born="${esc(f.born)}"`;
+};
+
 const card = (horse, group, full) => {
   const href = `/${group.dir}/${horse.slug}`;
   /* A sold horse shows where it went, with the flag: the homepage cards have
      always done this and the generated ones quietly did not, so the same horse
      read differently depending on which page you met it on. No destination
      means no flag rather than an empty box. */
-  const flag = horse.sold && horse.country && FLAGS[horse.country]
-    ? `<span class="hz__flag">${FLAGS[horse.country]}</span>` : '';
-  const label = horse.sold
-    ? `<span class="hz__tag hz__tag--sold"${horse.country ? ` title="Sold to ${esc(COUNTRY[horse.country] || horse.country)}"` : ''}>${flag}Sold${
-        horse.country ? `<span class="visually-hidden"> to ${esc(COUNTRY[horse.country] || horse.country)}</span>` : ''}</span>`
-    : '<span class="hz__tag">Available</span>';
+  const label = statusLabel(horse);
   /* The status label the way the embryo cards wear theirs: the accent colour
      behind the word and a hairline running off it to the right. Kept at the
      top of the frame here rather than on the seam under it, because these
@@ -949,15 +970,7 @@ const card = (horse, group, full) => {
         .filter(Boolean).join(' \u00b7 ')
     : meta(horse);
 
-  /* Everything the search reads, lowercased once here rather than on every
-     keystroke: name, breeding, studbook, year and their own line. */
-  const haystack = [horse.name, horse.genetics, horse.studbook, horse.tagline, horse.year,
-                    horse.country && COUNTRY[horse.country], SEX(horse)]
-    .filter(Boolean).join(' ').toLowerCase();
-
-  const f = facetsOf(horse);
-  return `<li${full ? ` data-sold="${horse.sold ? 'true' : 'false'}" data-find="${esc(haystack)}"` +
-    ` data-sex="${esc(f.sex)}" data-studbook="${esc(f.studbook)}" data-born="${esc(f.born)}"` : ''}>` +
+  return `<li${full ? cardData(horse) : ''}>` +
     `<a class="hz__card" href="${href}">${win}` +
     '<span class="hz__body">' +
       `<${full ? 'h2' : 'h3'} class="hz__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
@@ -1048,6 +1061,55 @@ ${bars.join('\n')}
 };
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
+/* ── the foals in the crosses' card, first row only ────────────────────
+   3 Sep, Mark: put the embryo format on the foals so the client can choose
+   between the two. Only the first row, and only on the foals archive, so
+   the two designs stand on the same page, one scroll apart, in the same
+   light and at the same width. A whole archive switched over is not a
+   comparison, it is a decision already taken.
+
+   What the format is: the navy card, the photograph fading into it, the
+   gold pill on the seam and the horse's own line in gold at the foot. What
+   it carries here that a cross does not: the sold badge with the flag and
+   the country, in the frame where Mark asked for it, and every attribute
+   the filters read, so the first row narrows with the rest of the grid.
+
+   The pill reads "Born 2026" where a cross reads "Due 2027" and "Frozen":
+   the same stamp saying the same kind of thing.
+
+   This is a trial. When the client picks, either the archive moves to this
+   card and card() goes, or this function goes. It is not a third design to
+   keep. */
+const TRIAL_ROW = 3;
+const foalTrialCard = (horse, group) => {
+  const win = horse.photos.length
+    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">` +
+      `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${statusLabel(horse)}</span>` +
+      '<span class="ec__fade" aria-hidden="true"></span></span>'
+    : `<span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>` +
+      `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${statusLabel(horse)}</span>` +
+      '<span class="ec__fade" aria-hidden="true"></span></span>';
+  const ped = horse.pedigree || {};
+  /* The breeding, in the shape the crosses wear it. Their genetics row is
+     the fallback, because eight of the twenty one foals have no dam named. */
+  const cross = ped.sire && ped.dam
+    ? `${esc(horseName(ped.sire))} &times; ${esc(horseName(ped.dam))}`
+    : esc(horseName(theirWords(horse.genetics || '')));
+  /* The same facts the card below it carries, so the client is choosing
+     between two designs and not between two amounts of information. The
+     year is left out: it is on the pill. */
+  const facts = [SEX(horse), horse.studbook, soldTo(horse)].filter(Boolean).join(' \u00b7 ');
+  const line = cross + (facts ? `<br>${esc(facts)}` : '');
+  return `<li class="ec"${cardData(horse)}>` +
+    `<a class="ec__a" href="/${group.dir}/${horse.slug}">${win}` +
+    `<span class="ec__seam"><span class="ec__stage">${esc(when(horse) || 'Foal')}</span></span>` +
+    '<span class="ec__box">' +
+      `<h2 class="ec__name">${esc(horseName(horse.name))}</h2>` +
+      `<span class="ec__line">${line}</span>` +
+      (horse.tagline ? `<span class="ec__say">${esc(theirWords(horse.tagline))}</span>` : '') +
+    '</span></a></li>';
+};
+
 const gridSection = (group, list) => {
   /* The chips differ per archive because the question differs. On mares,
      foals and sport horses it is what is for sale. On embryos it is the
@@ -1099,7 +1161,8 @@ ${facetBar(group, list)}
       <p class="flt__none" data-none>Nothing matches that. ${group.find}</p>
 
       <ul class="hz__grid${group.grid || ''}" data-grid>
-${list.map((h) => '        ' + (group.card ? group.card(h, true) : card(h, group, true))).join('\n')}
+${list.map((h, i) => '        ' + (group.card ? group.card(h, true)
+    : (group.dir === 'foals' && i < TRIAL_ROW ? foalTrialCard(h, group) : card(h, group, true)))).join('\n')}
       </ul>
     </div>
   </section>
