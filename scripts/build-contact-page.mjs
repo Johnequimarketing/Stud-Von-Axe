@@ -57,9 +57,15 @@ const CSS = homeCss + pageHeroCss + `
   .pl__h em{ font-style:italic; color:var(--color-gold); }
   .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
   .pl__grid{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
-  /* One card since 3 Sep, so from 820px it lies down: the map one side and
-     the address the other, rather than a half width card beside a gap. */
+  /* Both cards lie down from 820px, the window one side and the words the
+     other, and they stack rather than sitting side by side: the Italian one
+     carries a four line address and a map button and would be cramped in a
+     half. Stacked, the difference in shape between them is the point you
+     can see, which is the difference between a company and a place. */
   @media (min-width:820px){ .pl__card{ grid-template-columns:1.15fr 1fr; grid-template-rows:none; } }
+  /* Nothing under the note on the place card, so its words sit against the
+     middle of the photograph instead of hanging from the top of a tall box. */
+  @media (min-width:820px){ .pl__card--place .pl__body{ align-content:center; } }
   .pl__card{
     display:grid; grid-template-rows:auto 1fr; overflow:hidden;
     border-radius:var(--plate-radius); background:var(--color-base);
@@ -70,6 +76,10 @@ const CSS = homeCss + pageHeroCss + `
      the map itself after, at the same size either way, so nothing on the page
      jumps when somebody presses the button. */
   .pl__map{ position:relative; aspect-ratio:16/10; background:var(--color-navy-deep); }
+  /* The Belgian card's window. Same box as the map so the two cards line up
+     across the row, holding the one thing that place is: the foals. */
+  .pl__pic{ position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--color-navy-deep); }
+  .pl__pic img{ width:100%; height:100%; object-fit:cover; object-position:50% 46%; display:block; }
   .pl__map iframe{ width:100%; height:100%; border:0; display:block; }
   .pl__ask{
     position:absolute; inset:0; display:flex; flex-direction:column;
@@ -133,11 +143,17 @@ const WAYS = [
   ['A', 'Adriano', '+39 348 395 3433', 'Call or message', 'tel:+393483953433'],
 ];
 
-/* ── the one place, with a map ─────────────────────────────────────────
-   3 Sep: Lanaken came off at the client's request. In their words, they do
-   not have a second actual location, so a map of the town was a pin on
-   nothing. Belgium is still named in the sentence, because the foals really
-   are raised there; it just is not somewhere a visitor drives to.
+/* ── where they are, and where the foals are ───────────────────────────
+   3 Sep, twice. First the client took Lanaken off: they do not have a second
+   actual location, so a map of the town was a pin on nothing. Then Mark:
+   name it anyway, as a place in Belgium and not as a business.
+   So there are two cards and they are deliberately not the same shape. Italy
+   is the company: a map, the registered address, a way to open it in Google
+   Maps. Belgium is a place: the town, the country, and one line saying what
+   happens there. No map, because the client took it off. No address, because
+   none has ever been given and a pin on a town centre is not their stable.
+   No phone number, because nobody is reached there. A card that cannot be
+   mistaken for a second office is the whole point of the difference.
    Asked for on 31 Aug: both locations under the form, with Google Maps and
    the address.
 
@@ -171,6 +187,12 @@ const PLACES = [
     note: 'This is the registered address. Ring us before you set off and we will tell you where the horse you want to see is standing.',
     q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
   },
+  {
+    kick: 'Belgium',
+    name: 'Lanaken',
+    place: true,
+    note: 'Where the foals are carried and raised until the day they leave. It is not an office and there is nobody to visit: everything goes through Italy.',
+  },
 ];
 
 const placesSection = `
@@ -183,22 +205,22 @@ const placesSection = `
         welcome by appointment: ring first and we will say where to come.</p>
       </div>
       <div class="pl__grid">
-${PLACES.map((pl) => `        <div class="pl__card">
-          <div class="pl__map" data-map="${esc(`https://www.google.com/maps?q=${encodeURIComponent(pl.q)}&output=embed`)}">
+${PLACES.map((pl) => `        <div class="pl__card${pl.place ? ' pl__card--place' : ''}">
+          ${pl.place ? `<div class="pl__pic"><img src="/assets/img/offer-foal.jpg" alt="" loading="lazy" width="1200" height="883"></div>` : `<div class="pl__map" data-map="${esc(`https://www.google.com/maps?q=${encodeURIComponent(pl.q)}&output=embed`)}">
             <div class="pl__ask">
               <p class="pl__askT">Google Maps</p>
               <p class="pl__askD">The map is not loaded until you ask for it, because loading it hands
               your IP address to Google.</p>
               <button class="btn btn-gold btn-pill btn-sm" type="button" data-load>Show the map</button>
             </div>
-          </div>
+          </div>`}
           <div class="pl__body">
             <p class="pl__kick">${esc(pl.kick)}</p>
             <h3 class="pl__name">${esc(pl.name)}</h3>
-            <address class="pl__addr">${pl.lines.map(esc).join('<br>')}</address>
+            ${pl.lines ? `<address class="pl__addr">${pl.lines.map(esc).join('<br>')}</address>` : ''}
             ${pl.note ? `<p class="pl__note">${esc(pl.note)}</p>` : ''}
-            <a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=${esc(encodeURIComponent(pl.q))}"
-               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>
+            ${pl.place ? '' : `<a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=${esc(encodeURIComponent(pl.q))}"
+               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>`}
           </div>
         </div>`).join('\n')}
       </div>

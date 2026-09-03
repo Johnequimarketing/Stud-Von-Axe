@@ -1963,6 +1963,12 @@ const pedigreeSection = (horse) => {
         </div>
         ${(() => {
           if (horse.category === 'embryo') return '';
+          /* Not on a mare. The client asked for Hippomundo under the mares'
+             pedigrees and Horsetelex under the embryos', and this note put
+             Horsetelex under the mares, which is the swap they flagged on
+             3 Sep. Her Horsetelex record is not lost: it is the button in
+             the row above, where their own site puts it. */
+          if (horse.category === 'broodmare') return '';
           const t = telexOf(horse);
           if (!t) return '';
           const link = (label) => `<a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:var(--color-navy)">${label}</a>`;
@@ -1979,6 +1985,10 @@ const pedigreeSection = (horse) => {
              a search page is not a record. */
           const url = horse.category === 'broodmare' && (EXTRA.hippomundo || {})[horse.slug];
           return url ? `<p class="ped__note">Her record is also on <a href="${esc(url)}" target="_blank" rel="noopener" style="color:var(--color-navy)">Hippomundo</a>.</p>` : '';
+          /* Twelve empty keys today. Hippomundo refuses automated access in
+             so many words, so these cannot be looked up here: each URL is
+             opened by hand and pasted into horses-extra.js, and the line
+             appears on that mare's page the moment it is. */
         })()}
       </div>
     </div>
