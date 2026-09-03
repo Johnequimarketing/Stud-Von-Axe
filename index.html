@@ -30,11 +30,15 @@
 <meta name="twitter:description" content="Foals and embryos out of our own damlines, crossed in Italy and raised in Belgium.">
 <meta name="twitter:image" content="https://www.studvonaxe.it/assets/img/hero-jump.jpg">
 
-<!-- Structured data. Deliberately WITHOUT a postal address: the old site
-     gives Castelnuovo Garfagnana and the brief gives Desenzano del Garda,
-     250km apart, and search engines act on what is written here. The address
-     goes in once the client confirms which yard is the registered one.
-     TODO client-confirm: the registered address, and the VAT number. -->
+<!-- Structured data, now WITH the postal address. It was left out while the
+     site named two Italian towns two hundred kilometres apart, because a
+     search engine acts on what is written here and one of the two was wrong.
+     Mark settled it on 3 Sep: anywhere a place is an address or a company
+     detail, and structured data is both, it is the registered one and nothing
+     stands beside it. Anywhere a place is only positioning, no village is
+     named at all: the region, so that a line written today does not go stale
+     the day they move a yard. Hence Tuscany in the prose and Castelnuovo
+     Garfagnana here. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,7 +46,15 @@
   "name": "Stud Von Axe",
   "url": "https://www.studvonaxe.it/",
   "logo": "https://www.studvonaxe.it/assets/logo/logo-horizontal-onlight.png",
-  "description": "Sport horse breeding from Desenzano del Garda, Italy. The foals are raised in Lanaken, Belgium.",
+  "description": "Sport horse breeding in Tuscany, Italy. The foals are raised in Lanaken, Belgium.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via per Arni 30",
+    "postalCode": "55032",
+    "addressLocality": "Castelnuovo Garfagnana",
+    "addressRegion": "LU",
+    "addressCountry": "IT"
+  },
   "email": "studvonaxe@gmail.com",
   "contactPoint": [
     { "@type": "ContactPoint", "name": "Elisabetta", "telephone": "+393495918565", "contactType": "sales", "availableLanguage": ["it", "en", "nl"] },
@@ -2272,7 +2284,7 @@
           <img id="stud-img" src="assets/img/hero-grey.jpg" alt="">
           <span class="stud__badge">
             <img src="assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">
-            <span><b>Stud Von Axe</b><span id="stud-place">Desenzano &middot; Lanaken</span></span>
+            <span><b>Stud Von Axe</b><span id="stud-place">Tuscany &middot; Lanaken</span></span>
           </span>
         </div>
         <div class="stud__cap">
@@ -2286,13 +2298,13 @@
       <div class="stud__copy">
         <p class="plaque">About Stud Von Axe</p>
         <!-- Their own sentence, three lines below this one: every cross begins
-             in Desenzano and the foal is raised in Lanaken until the day it
+             in Tuscany and the foal is raised in Lanaken until the day it
              leaves. Nothing invented, and it names the whole chain. -->
         <h2 class="stud__h">From the cross <br><span class="soft">to the day it leaves</span></h2>
         <p class="stud__lead">We do not buy a pedigree and hope. Every mare here was chosen after years
         on the best German farms and long research into the families that actually produce sport horses,
         not the ones that only read well on paper.</p>
-        <p class="stud__body">Every cross begins in <b>Desenzano del Garda</b>. Our own team in
+        <p class="stud__body">Every cross begins in <b>Tuscany</b>. Our own team in
         <b>Lanaken</b> implants the embryo, carries the pregnancy and raises the foal until the day it
         leaves. Nothing is handed to a third party halfway.</p>
         <p class="stud__body">We tell a buyer what we see in a horse, the limits as well as the strengths,
@@ -2542,7 +2554,7 @@
           <img src="assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
                alt="Von Axe, breeding and horse trading" width="190" height="84">
         </a>
-        <p>Sport horse breeding from Desenzano del Garda, Italy. The foals are raised in Lanaken, Belgium.</p>
+        <p>Sport horse breeding in Tuscany, Italy. The foals are raised in Lanaken, Belgium.</p>
       </div>
 
       <div class="footer-col">
@@ -2568,7 +2580,7 @@
           <li><a href="mailto:studvonaxe@gmail.com">studvonaxe@gmail.com</a></li>
           <li><a href="tel:+393495918565">Elisabetta &#9743; +39 349 591 8565</a></li>
           <li><a href="tel:+393483953433">Adriano &#9743; +39 348 395 3433</a></li>
-          <li style="opacity:.85; font-size:14px;">Desenzano del Garda, Italy</li>
+          <li style="opacity:.85; font-size:14px;">Castelnuovo Garfagnana (LU), Italy</li>
         </ul>
       </div>
 

@@ -19,9 +19,10 @@
  * The company details are the ones Mark sent on 31 Aug, which are also the
  * ones on their own site's footer: Stud Von Axe Az. Agr. s.s., Via per Arni 30,
  * 55032 Castelnuovo Garfagnana (LU), P. IVA IT02519980466. That settles the
- * registered address. Whether the crosses are still made in Desenzano del
- * Garda, which is what the briefing said and what this site says in five
- * places, is a separate question and is on the checklist.
+ * registered address, and since 3 Sep it is the only Italian address the
+ * site gives. Desenzano del Garda, which the briefing named, is off every
+ * page: where a place is positioning rather than an address the site now
+ * says Tuscany.
  *
  * Run: node scripts/build-legal.mjs
  */

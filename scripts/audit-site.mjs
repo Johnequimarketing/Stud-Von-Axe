@@ -302,11 +302,21 @@ if (existsSync(join(root, 'sitemap.xml'))) {
     }
     return e.name.endsWith('.html') && !e.name.startsWith('_') ? [rel] : [];
   });
-  const BANNED = [
+  const BELGIUM = [
     'belgian base', 'belgium base', 'our belgian', 'belgian yard',
     'italian and belgian bases', 'our bases', 'the two places',
   ];
-  const hits = [];
+  /* One Italian place, settled by Mark on 3 Sep. The site named two towns two
+     hundred kilometres apart for weeks: the register and their own footer say
+     Castelnuovo Garfagnana, the briefing said Desenzano del Garda, and both
+     stood on the contact page at once. Where a place is an address it is the
+     registered one; where it is positioning it is the region and no village
+     at all. So no public page names the other town.
+     Two lists and two messages rather than one: a check that reports a
+     Desenzano hit as "Belgium is a place of business" sends the reader to the
+     wrong paragraph, which is its own kind of wrong. */
+  const ITALY = ['desenzano'];
+  const belgium = [], italy = [];
   for (const f of walk('')) {
     const h = read(f);
     if (/<meta name="internal-doc"/.test(h)) continue;
@@ -316,11 +326,15 @@ if (existsSync(join(root, 'sitemap.xml'))) {
        prove the check walked straight past it. */
     const metas = (h.match(/<meta [^>]*content="([^"]*)"/g) || []).join(' ');
     const t = (textOf(h) + ' ' + metas).toLowerCase();
-    for (const phrase of BANNED) if (t.includes(phrase)) hits.push(`${f}: "${phrase}"`);
+    for (const phrase of BELGIUM) if (t.includes(phrase)) belgium.push(`${f}: "${phrase}"`);
+    for (const phrase of ITALY) if (t.includes(phrase)) italy.push(`${f}: "${phrase}"`);
   }
-  hits.length
-    ? fail('a public page makes Belgium a place of business', hits)
+  belgium.length
+    ? fail('a public page makes Belgium a place of business', belgium)
     : pass('Belgium is named as a place, never as a second base');
+  italy.length
+    ? fail('a public page names an Italian town that is not the registered one', italy)
+    : pass('one Italian place on the site, and it is the registered one');
 }
 
 console.log('\n══════════════════════════════════════════════');

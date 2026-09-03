@@ -176,7 +176,7 @@ const page = `<!DOCTYPE html>
 <head>
 ${head({
   title: 'About',
-  desc: 'Mares chosen after years on the best German farms, every cross begun in Desenzano del Garda, every foal carried and raised in Lanaken.',
+  desc: 'Mares chosen after years on the best German farms, every cross begun in Tuscany, every foal carried and raised in Lanaken.',
   path: '/about',
   image: 'about-hero.jpg',
   ldType: 'AboutPage',
@@ -241,7 +241,7 @@ ${headerFor('/about')}
         <h2 class="abst__h">Two countries, <em>one programme</em></h2>
         <p class="abst__lead">We do not buy a pedigree and hope. Every mare here was chosen for what her
         family actually produces in sport, not for how the paper reads.</p>
-        <p class="abst__body">Every cross begins in <b>Desenzano del Garda</b>. Our own team in
+        <p class="abst__body">Every cross begins in <b>Tuscany</b>. Our own team in
         <b>Lanaken</b> implants the embryo, carries the pregnancy and raises the foal until the day it
         leaves. Nothing is handed to a third party halfway.</p>
         <p class="abst__body">We tell a buyer what we see in a horse, the limits as well as the
@@ -250,7 +250,7 @@ ${headerFor('/about')}
         <div class="abpl">
           <div>
             <span class="abpl__k">Italy</span>
-            <span class="abpl__v">Desenzano del Garda</span>
+            <span class="abpl__v">Tuscany</span>
             <span class="abpl__d">Where every cross begins</span>
           </div>
           <div>

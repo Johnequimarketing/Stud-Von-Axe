@@ -176,14 +176,14 @@ const PLACES = [
     kick: 'Italy',
     name: 'Castelnuovo Garfagnana',
     lines: ['Stud Von Axe Az. Agr. s.s.', 'Via per Arni 30', '55032 Castelnuovo Garfagnana (LU)', 'Italy'],
-    /* Their own footer and the company register both say Castelnuovo
-       Garfagnana; the briefing this site was written from says Desenzano del
-       Garda, which is two hundred kilometres away and is named in ninety two
-       places here, including the footer of this very page. Both cannot be
-       where you drive to, and it is question one on the checklist.
-       What the visitor is told is the useful half of that: ring first. A
-       buyer does not need to hear that our own pages disagree with each
-       other, and telling them so is not honesty, it is noise. */
+    /* Settled by Mark on 3 Sep, and the site now says one thing. Their own
+       footer and the company register both say Castelnuovo Garfagnana; the
+       briefing said Desenzano del Garda, two hundred kilometres away. Where
+       a place is an address or a company detail, here and in the footer and
+       in the structured data, it is Castelnuovo and nothing stands beside
+       it. Where a place is positioning, it is the region and no village at
+       all. Desenzano is off the site.
+       What the visitor is told stays the useful half: ring first. */
     note: 'This is the registered address. Ring us before you set off and we will tell you where the horse you want to see is standing.',
     q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
   },
@@ -253,7 +253,7 @@ const page = `<!DOCTYPE html>
 <head>
 ${head({
   title: 'Contact',
-  desc: 'Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from the stud in Desenzano del Garda in Italy.',
+  desc: 'Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from the stud in Tuscany and the foals raised in Belgium.',
   path: '/contact',
   image: 'hero-neck-wide.jpg',
   ldType: 'ContactPage',
