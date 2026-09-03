@@ -310,7 +310,9 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
      and figures stand beside it, which is also how the reference pages Mark
      sent are laid out. The header wears its pinned colours from the first
      pixel because there is no photograph behind it. */
-  .hp{ padding-block:clamp(6.5rem,14vh,9rem) clamp(2.4rem,5vw,3.6rem); }
+  /* The top clears the hero and is measured in vh on purpose; the foot is
+     the scale like every other section. */
+  .hp{ padding-block:clamp(6.5rem,14vh,9rem) var(--sec-half); }
   /* With a hero the section starts at the top of the page and the two columns
      hang into the photograph from below, the same move the embryo tray makes,
      so a horse page and a cross page open the same way. */

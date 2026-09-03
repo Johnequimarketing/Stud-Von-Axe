@@ -208,10 +208,13 @@ export const archiveCss = `
   /* The space between sections is one rule, not six: every section carries
      half of it on each side, so two neighbours add up to the same gap
      wherever they meet, and the first and last still clear the hero and the
-     footer. */
-  :root{ --sec-half:clamp(2.2rem,4.6vw,3.6rem); }
+     footer. That was the intention here and the line under it broke it: it
+     redeclared --sec-half with a different value from the one in :root, so
+     the same token meant 56px on the homepage and 57.6 on the eighty eight
+     pages this stylesheet is lifted into. Declared once now, in :root, where
+     --sec-full and --gap-section are. */
   .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
-  .abcta{ padding-block:var(--sec-half) clamp(3.4rem,6.4vw,5.4rem); }
+  .abcta{ padding-block:var(--sec-half) var(--sec-full); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
     text-transform:uppercase; color:var(--color-gold); margin:0 0 1.4rem;
@@ -318,7 +321,7 @@ export const storyCss = `
      sheet above and bleeds off the right edge. */
   .abst{
     position:relative; isolation:isolate; overflow-x:clip;
-    padding-block:clamp(3.2rem,6vw,5rem);
+    padding-block:var(--sec-full);
   }
   .abst__grid{ position:relative; z-index:1; display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:center; }
   @media (min-width:900px){ .abst__grid{ grid-template-columns:.95fr 1.05fr; } }

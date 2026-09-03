@@ -44,7 +44,7 @@ const CSS = homeCss + pageHeroCss + `
   /* The page hero and its two heading parts live in lib/shell.mjs:
      the about page wears the same one. */
   /* ---- the archive grid reuses .nw__card from the homepage sheet ---- */
-  .arch{ padding:clamp(2rem,4.5vw,3.2rem) 0 clamp(3rem,7vw,5rem); }
+  .arch{ padding:var(--sec-half) 0 var(--sec-full); }
   .arch__grid{ display:grid; gap:var(--card-gap); }
   @media (min-width:680px){ .arch__grid{ grid-template-columns:1fr 1fr; } }
   @media (min-width:1040px){ .arch__grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
@@ -85,7 +85,7 @@ const CSS = homeCss + pageHeroCss + `
   .ahero__crumb span{ margin:0 .35rem; opacity:.5; }
 
   /* ---- the story: text one side, the picture the other ---- */
-  .art{ padding:clamp(2.4rem,5vw,3.6rem) 0 clamp(3rem,7vw,5rem); }
+  .art{ padding:var(--sec-half) 0 var(--sec-full); }
   .art__grid{ display:grid; gap:clamp(1.8rem,4vw,3.2rem); align-items:start; }
   @media (min-width:900px){ .art__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); } }
   .art__body p{ margin:0 0 1.15em; font-size:17.5px; line-height:1.68; color:var(--color-ink); }

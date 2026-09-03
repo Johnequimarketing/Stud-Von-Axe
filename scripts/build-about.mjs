@@ -91,7 +91,7 @@ const CSS = homeCss + pageHeroCss + storyCss + `
      the same trick the invitation plays on the homepage: it breaks the run
      rather than lining four boxes up like a table. And the whole card is
      the link, so there is no button to hunt for. */
-  .aboff{ padding-bottom:clamp(2.8rem,6vw,4.6rem); }
+  .aboff{ padding-bottom:var(--sec-full); }
   .aboff__grid{ display:grid; gap:1.1rem; margin-top:1.9rem; }
   @media (min-width:600px){ .aboff__grid{ grid-template-columns:1fr 1fr; gap:1.2rem; } }
   @media (min-width:1000px){
@@ -168,7 +168,9 @@ const CSS = homeCss + pageHeroCss + storyCss + `
   }
 
   /* ---- the invitation, the homepage plate, held to the page width ---- */
-  .abcta{ padding-bottom:clamp(3.2rem,6vw,5rem); }
+  /* .abcta's spacing is in shell.mjs, where the component is. A second copy
+     here quietly overrode it and the block sat on a different rhythm from the
+     one every other page gives it. */
 `;
 
 const page = `<!DOCTYPE html>

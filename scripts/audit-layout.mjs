@@ -98,7 +98,51 @@ async function load(url, w, h){
 }
 
 function measure(d, w, phone){
-  var out = { wide: [], clipped: [], small: [], tiny: [], sideways: '' };
+  var out = { wide: [], clipped: [], small: [], tiny: [], rhythm: [], sideways: '' };
+
+  /* The space between sections comes off one scale, or it comes off nobody's.
+     3 Sep: the homepage had five sections and five different hand written
+     clamps, so the gap between two neighbours was anywhere from 144 to 226
+     pixels depending on which pair you looked at, and shell.mjs redeclared
+     --sec-half with a value the homepage's :root did not have, so the same
+     token meant two different things on two pages. Both are the sort of thing
+     nobody sees until it is measured side by side.
+     Every <section> now pads itself with 0, the half step or the full step.
+     Two are exempt and named: the services band's top has to clear the
+     diagonal cut above it, and a horse page's first section has to clear the
+     hero, which is measured in vh rather than in the scale. */
+  /* Resolved, not declared: getPropertyValue hands back the clamp() as it was
+     written, so comparing a computed "48px" with "clamp(2rem,3.4vw,3rem)"
+     fails on every page. A probe in the page's own document turns each step
+     into the pixels this width actually gives. */
+  var probe = d.createElement('div');
+  probe.style.cssText = 'position:absolute;left:-9999px;top:0;height:0;'
+    + 'padding-top:var(--sec-half);padding-bottom:var(--sec-full)';
+  d.body.appendChild(probe);
+  var pcs = getComputedStyle(probe);
+  var STEP = { '0px': 1 };
+  STEP[pcs.paddingTop] = 1;
+  STEP[pcs.paddingBottom] = 1;
+  probe.remove();
+  var EXEMPT = { sv: 'top clears the diagonal cut', hp: 'top clears the hero' };
+  /* Page sections only. On the legal pages every clause is a <section> of its
+     own inside one, and a clause is a block with its own spacing, not a step
+     in the page's rhythm. */
+  var secs = d.querySelectorAll('body > section, body > main > section, main > section');
+  for (var si = 0; si < secs.length; si++){
+    var sec = secs[si];
+    var scs = getComputedStyle(sec);
+    if (scs.display === 'none') continue;
+    var classes = (sec.className || '').trim().split(/\\s+/);
+    var first = classes[0];
+    var pt = scs.paddingTop, pb = scs.paddingBottom;
+    var skipTop = false;
+    for (var ci = 0; ci < classes.length; ci++){
+      if (Object.prototype.hasOwnProperty.call(EXEMPT, classes[ci])) skipTop = true;
+    }
+    if (!skipTop && !STEP[pt] && out.rhythm.length < 6) out.rhythm.push(name(sec) + ' top ' + pt);
+    if (!STEP[pb] && out.rhythm.length < 6) out.rhythm.push(name(sec) + ' bottom ' + pb);
+  }
   /* Against the page's own client width, not the width we asked the iframe
      for: an iframe reports two pixels more than it was given, and comparing
      with the request calls that a sideways scroll on every page. */
@@ -278,13 +322,19 @@ report(!tiny.length, tiny.length
   : `no text under ${MIN_TEXT}px on a phone`,
   tiny.map(([p, , m]) => `${p}: ${m.tiny.join(', ')}`));
 
+const rhythm = rows.filter(([, , m]) => m.rhythm && m.rhythm.length);
+report(!rhythm.length, rhythm.length
+  ? `${rhythm.length} page(s) where a section sets its own vertical space`
+  : 'every section takes its vertical space from the one scale',
+  rhythm.map(([p, w, m]) => `${p} at ${w}: ${m.rhythm.join(', ')}`));
+
 const uneven = cols.filter(([, col, tray]) => Math.abs(col - tray) > 2);
 report(!uneven.length, uneven.length
   ? `${uneven.length} page(s) where the columns do not end on the same line`
   : `${cols.length} page(s), both columns ending on the same line`,
   uneven.map(([p, c, t]) => `${p}: picture ${c}px, plate ${t}px`));
 
-const checks = WIDTHS.length * 2 + 4;
+const checks = WIDTHS.length * 2 + 5;
 console.log('\n══════════════════════════════════════════════');
 console.log(`${failures} failure(s) across ${checks} rendered check(s), `
   + `${pages.length} page(s) at ${WIDTHS.join(', ')} and ${cols.length} measured for columns\n`);
