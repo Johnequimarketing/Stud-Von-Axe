@@ -47,7 +47,7 @@ const CSS = homeCss + pageHeroCss + `
     text-transform:uppercase; color:var(--color-gold); margin-top:.5rem;
   }
 
-  /* ── the two places ───────────────────────────────────────────────── */
+  /* ── where we are ─────────────────────────────────────────────────── */
   .pl{ padding-block:0 var(--sec-full); }
   .pl__head{ max-width:52ch; margin-bottom:clamp(1.6rem,3vw,2.4rem); }
   .pl__h{
