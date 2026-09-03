@@ -58,12 +58,16 @@ const CSS = homeCss + pageHeroCss + `
   .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
   /* One card, so no grid: a one column grid with a gap under it is a row
      still waiting for its second item. */
-  /* From 820px the card lies down, the map one side and the address the
-     other, and the words sit against the middle of the map rather than
-     hanging from the top of it. */
+  /* From 820px the card lies down: the address on the left, the map on the
+     right, and the words against the middle of it rather than hanging from
+     the top. Mark, 3 Sep. Swapped by order rather than by moving the markup,
+     so the map still comes first in the source and on a phone, where the
+     card stacks and the picture belongs at the top of it. The map keeps the
+     wider column: it is the thing you look at. */
   @media (min-width:820px){
-    .pl__card{ grid-template-columns:1.15fr 1fr; grid-template-rows:none; }
-    .pl__body{ align-content:center; }
+    .pl__card{ grid-template-columns:1fr 1.15fr; grid-template-rows:none; }
+    .pl__map{ order:2; }
+    .pl__body{ order:1; align-content:center; }
   }
   .pl__card{
     display:grid; grid-template-rows:auto 1fr; overflow:hidden;
