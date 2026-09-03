@@ -570,19 +570,14 @@
          show. Do not remove that media query.
       5. Cards are links, so the reveal also fires on keyboard focus,
          with a visible focus ring.
-      6. The headline was full size until 3 Sep. The client's own hero
-         photograph has the horse across the middle 14 to 61 per cent of
-         the frame, and they asked for the statement under it, with the
-         horse never covered. Measured at 1440x900: the horse's hooves end
-         at 585px and a centred full size statement starts at 415, so the
-         two cannot share the frame. From 900px up the statement therefore
-         stands bottom LEFT, in the column beside the horse (which spans
-         41 to 61 per cent of the width), and the headline is capped so
-         that column holds it. On a phone the frame is shown full height
-         and the statement stays centred under the horse; the sub line
-         goes there, because with it the block began behind the hooves.
-         The size cap and the left column are the price of the client's
-         photograph, and they are theirs to weigh against it.
+      6. The headline is full size. An earlier build capped it to force
+         everything above the fold and it read as a downgrade. No
+         height based query touches it. On 3 Sep it was briefly sized
+         down and moved bottom left so it would clear the horse in the
+         client's photograph; John asked for it back in the centre at
+         full size, so on desktop the statement now sits over the horse's
+         legs, which is the geometry of that frame and a choice made
+         knowingly.
       7. The air above and below the statement is one token, --hero-air,
          applied once by .hero__body. The reel adds no padding of its
          own, so the two gaps stay equal.
@@ -619,38 +614,15 @@
     position:relative; z-index:20; flex:1;
     display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
     text-align:center;
-    /* Clear of the bar, which now carries the mark inside it. Less air at
-       the foot than the top since 3 Sep: every pixel of it pushes the
-       statement up into the horse. */
-    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) clamp(28px, 4vh, 44px);
-  }
-  /* From 900px the statement moves to the left column, beside the horse
-     rather than under it, and stays left aligned. See decision 6 above. */
-  @media (min-width: 900px){
-    .hero__body{ align-items:flex-start; text-align:left; }
-    .hero__body > *{ margin-left:0; }
-    .hero-actions{ justify-content:flex-start; }
-  }
-  /* On a phone the sub line goes: with it the block started 110px behind
-     the horse's legs, without it the statement clears the hooves. The
-     eyebrow above says the same three words. */
-  @media (max-width: 899px){
-    .hero-sub{ display:none; }
+    /* Clear of the bar, which now carries the mark inside it. */
+    padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
   .hero-heading{
     font-family:var(--font-display);
     font-weight:400;
-    /* 3 Sep: sized to the column left of the horse, which is about 41 per
-       cent of the width at every desktop aspect, because the photograph is
-       width fitted there. "BIGGEST ARENAS" runs 8.2em, so 4.2vw keeps its
-       tail inside the column: measured gaps to the horse's left edge are
-       2px at 1024, 31 at 1280, 38 at 1366, 46 at 1440, 49 at 1536, and the
-       4.2rem cap holds from 1600 up. The fixed 4.2rem cap that preceded
-       this cleared 1440 and 1920 and ran 44px into the hooves at 1366x768
-       and 109 at 1024x768: short viewports leave the column no taller. */
-    font-size:clamp(2.4rem, 4.2vw, 4.2rem);
+    font-size:clamp(2.4rem, 7.4vw, 6.4rem);
     line-height:.9; letter-spacing:-0.015em;
     text-transform:uppercase;
     color:var(--color-white);
@@ -664,7 +636,7 @@
   .hero-sub{
     margin-top:clamp(1.4rem, 3vh, 2.1rem);
     font-size:clamp(1rem, 1.6vw, 1.15rem);
-    max-width:46ch;
+    max-width:52ch;
     color:#f2ede4dd;
   }
   .hero-actions{
