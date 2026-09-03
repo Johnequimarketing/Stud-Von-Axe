@@ -281,6 +281,48 @@ if (existsSync(join(root, 'sitemap.xml'))) {
   fail('there is no sitemap.xml');
 }
 
+/* ── Belgium is a place, not a place of business ───────────────────────
+   Mark, 3 Sep, after the client took Lanaken off the contact map: Belgium
+   is where the foals are raised and nothing more. They have no second
+   office there, no address a buyer can drive to and nobody to write to.
+   The site had drifted the other way in six places at once, calling it
+   "our Belgian base", putting Lanaken under Contact as if it were an
+   address, and telling a reader on the contact page that there were "two
+   places" while one map card stood below it.
+   The phrases below are the ones that make it a business. Naming Belgium
+   as where a foal is born, carried or raised is right and is not caught
+   here: the programme really does run across two countries. */
+{
+  const dir = (d) => existsSync(join(root, d)) ? readdirSync(join(root, d), { withFileTypes: true }) : [];
+  const walk = (d) => dir(d).flatMap((e) => {
+    const rel = d ? `${d}/${e.name}` : e.name;
+    if (e.isDirectory()) {
+      return /^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(e.name)
+        ? [] : walk(rel);
+    }
+    return e.name.endsWith('.html') && !e.name.startsWith('_') ? [rel] : [];
+  });
+  const BANNED = [
+    'belgian base', 'belgium base', 'our belgian', 'belgian yard',
+    'italian and belgian bases', 'our bases', 'the two places',
+  ];
+  const hits = [];
+  for (const f of walk('')) {
+    const h = read(f);
+    if (/<meta name="internal-doc"/.test(h)) continue;
+    /* The visible words and the ones only a search result or a pasted link
+       shows. A description is public too, and the first attempt at this
+       check read the body alone: the phrase put back into a meta tag to
+       prove the check walked straight past it. */
+    const metas = (h.match(/<meta [^>]*content="([^"]*)"/g) || []).join(' ');
+    const t = (textOf(h) + ' ' + metas).toLowerCase();
+    for (const phrase of BANNED) if (t.includes(phrase)) hits.push(`${f}: "${phrase}"`);
+  }
+  hits.length
+    ? fail('a public page makes Belgium a place of business', hits)
+    : pass('Belgium is named as a place, never as a second base');
+}
+
 console.log('\n══════════════════════════════════════════════');
 console.log(`${failures} failure(s) across ${checks} site-wide check(s)\n`);
 process.exit(failures ? 1 : 0);

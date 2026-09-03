@@ -284,7 +284,7 @@ ${headerFor('/about')}
           <span class="aboff__foot">
             <span class="aboff__k">Lanaken, Belgium</span>
             <h3 class="aboff__t">Foals</h3>
-            <span class="aboff__d">Born and raised at our Belgian base, out of mares chosen for jumping ability and temperament. You collect a horse already on the ground.</span>
+            <span class="aboff__d">Born and raised in Belgium, out of mares chosen for jumping ability and temperament. You collect a horse already on the ground.</span>
             <span class="aboff__a">See the foals <span class="a" aria-hidden="true">&rarr;</span></span>
           </span>
         </a>

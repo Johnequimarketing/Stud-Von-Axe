@@ -108,7 +108,7 @@ const GROUPS = {
     label: 'Foals',
     kicker: 'The foals',
     title: 'Born and raised in <em>Lanaken</em>',
-    intro: 'Out of our own damlines, raised at our Belgian base until the day they leave. Sold direct, and the ones that have gone stay here with the country they went to.',
+    intro: 'Out of our own damlines, raised in Belgium until the day they leave. Sold direct, and the ones that have gone stay here with the country they went to.',
     img: 'arch-foals.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'foal', many: 'foals', singular: 'foal',
     ctaH: 'Tell us what you are <em>looking for</em>.',

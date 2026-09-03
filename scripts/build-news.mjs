@@ -190,7 +190,7 @@ const cards = NEWS.map((n) => `      <li><a class="nw__card" href="/news/${n.slu
 writeFileSync(join(root, 'news', 'index.html'), `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head('News and results', 'Results in the ring, horses sold, and news from Desenzano and Lanaken.', '', 'news-hero.jpg')}
+${head('News and results', 'Results in the ring, horses sold, and news from the stud in Italy and the foals growing up in Belgium.', '', 'news-hero.jpg')}
 </head>
 <body>
 ${header}

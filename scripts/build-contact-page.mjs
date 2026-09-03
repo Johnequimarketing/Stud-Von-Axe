@@ -231,7 +231,7 @@ const page = `<!DOCTYPE html>
 <head>
 ${head({
   title: 'Contact',
-  desc: 'Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from Desenzano del Garda in Italy and Lanaken in Belgium.',
+  desc: 'Write to Stud Von Axe. Elisabetta and Adriano answer themselves, from the stud in Desenzano del Garda in Italy.',
   path: '/contact',
   image: 'hero-neck-wide.jpg',
   ldType: 'ContactPage',
@@ -290,8 +290,8 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
                page that lost its place. -->
           <div class="cn__places">
             <div class="cn__place">
-              <span class="cn__pk">The two places</span>
-              <span class="cn__pv">Italy and Belgium</span>
+              <span class="cn__pk">Where we are</span>
+              <span class="cn__pv">Italy</span>
               <span class="cn__pd">On the map below</span>
             </div>
           </div>
