@@ -111,6 +111,7 @@ const GROUPS = {
     intro: 'Out of our own damlines, raised in Belgium until the day they leave. Sold direct, and the ones that have gone stay here with the country they went to.',
     img: 'arch-foals.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'foal', many: 'foals', singular: 'foal',
+    card: (h, full) => foalCard(h, GROUPS.foal, full), grid: ' ec__grid',
     ctaH: 'Tell us what you are <em>looking for</em>.',
     ctaD: 'A foal on the ground, or a cross still to be made. Say what you are after and we will tell you plainly what we have.',
   },
@@ -1063,27 +1064,21 @@ ${bars.join('\n')}
 };
 
 /* ── section two: the grid ─────────────────────────────────────────────── */
-/* ── the foals in the crosses' card, first row only ────────────────────
-   3 Sep, Mark: put the embryo format on the foals so the client can choose
-   between the two. Only the first row, and only on the foals archive, so
-   the two designs stand on the same page, one scroll apart, in the same
-   light and at the same width. A whole archive switched over is not a
-   comparison, it is a decision already taken.
+/* ── the foals' card ───────────────────────────────────────────────────
+   The crosses' card, with what a foal needs added. Trialled on the first
+   row of the archive on 3 Sep so the client could see the two designs on
+   one page; chosen on 4 Sep, so every foal wears it now and the old card
+   is no longer built for this group.
 
    What the format is: the navy card, the photograph fading into it, the
    gold pill on the seam and the horse's own line in gold at the foot. What
-   it carries here that a cross does not: the sold badge with the flag and
-   the country, in the frame where Mark asked for it, and every attribute
-   the filters read, so the first row narrows with the rest of the grid.
+   it carries that a cross does not: the sold badge with the flag and the
+   country, in the frame rather than under it, and every attribute the
+   filters read.
 
    The pill reads "Born 2026" where a cross reads "Due 2027" and "Frozen":
-   the same stamp saying the same kind of thing.
-
-   This is a trial. When the client picks, either the archive moves to this
-   card and card() goes, or this function goes. It is not a third design to
-   keep. */
-const TRIAL_ROW = 3;
-const foalTrialCard = (horse, group) => {
+   the same stamp saying the same kind of thing. */
+const foalCard = (horse, group, full) => {
   const win = horse.photos.length
     ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">` +
       `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${statusLabel(horse)}</span>` +
@@ -1106,7 +1101,7 @@ const foalTrialCard = (horse, group) => {
     `<a class="ec__a" href="/${group.dir}/${horse.slug}">${win}` +
     `<span class="ec__seam"><span class="ec__stage">${esc(when(horse) || 'Foal')}</span></span>` +
     '<span class="ec__box">' +
-      `<h2 class="ec__name">${esc(horseName(horse.name))}</h2>` +
+      `<${full ? 'h2' : 'h3'} class="ec__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
       `<span class="ec__line">${line}</span>` +
       (horse.tagline ? `<span class="ec__say">${esc(theirWords(horse.tagline))}</span>` : '') +
     '</span></a></li>';
@@ -1163,8 +1158,7 @@ ${facetBar(group, list)}
       <p class="flt__none" data-none>Nothing matches that. ${group.find}</p>
 
       <ul class="hz__grid${group.grid || ''}" data-grid>
-${list.map((h, i) => '        ' + (group.card ? group.card(h, true)
-    : (group.dir === 'foals' && i < TRIAL_ROW ? foalTrialCard(h, group) : card(h, group, true)))).join('\n')}
+${list.map((h) => '        ' + (group.card ? group.card(h, true) : card(h, group, true))).join('\n')}
       </ul>
     </div>
   </section>
@@ -2436,9 +2430,24 @@ ${body.includes('class="hmore__run') ? railScript : ''}
    in the "more" run of its neighbours in one command. */
 const written = { archives: 0, horses: 0 };
 
+/* ── available first ───────────────────────────────────────────────────
+   Mark, 4 Sep. All is the chip every archive opens on since the client's
+   round, and on these three that means a visitor lands on a record that is
+   mostly sold: twelve of twelve sport horses, twenty of twenty one foals,
+   seven of twelve mares. What is for sale should be the first thing in it
+   rather than scattered through the rest.
+   Stable, and it only moves the two halves past each other: inside each
+   half the order their own site gave is untouched. Not on the embryos,
+   which split on frozen and carrying rather than on sold, and not on the
+   stallions, which carry no chips at all. */
+const availableFirst = (group, list) =>
+  (group.dir === 'embryos' || group.chips === false)
+    ? list
+    : [...list.filter((h) => !h.sold), ...list.filter((h) => h.sold)];
+
 for (const key of Object.keys(GROUPS)) {
   const group = GROUPS[key];
-  const list = HORSES.filter((h) => h.category === key);
+  const list = availableFirst(group, HORSES.filter((h) => h.category === key));
   mkdirSync(join(root, group.dir), { recursive: true });
 
   writeFileSync(join(root, group.dir, 'index.html'), page({
