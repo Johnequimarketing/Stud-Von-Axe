@@ -979,7 +979,25 @@
     position:relative; z-index:1;
     display:grid; gap:clamp(2.5rem, 6vw, 5.5rem); align-items:center;
   }
-  @media (min-width:960px){ .stud__grid{ grid-template-columns:1fr 1fr; } }
+  /* Not two equal halves any more. Mark, 4 Sep: the photograph should stand
+     taller. Its shape is fixed at 4/3.4, so height comes from width, and
+     width comes from here: the picture takes 1.15 of the row against .85,
+     which at 1440 takes it from 541 by 460 to about 685 by 580. Nothing is
+     cropped differently by that, because cover shows the same slice of a
+     photograph whatever size the box is. */
+  /* Stacked, the photograph follows the words. The client asked for it on
+     4 Sep: on a phone you meet "About us" first and the family under it,
+     rather than a picture of people before you are told who they are.
+     Done with order rather than by moving the markup, so the source keeps
+     reading picture then words on the wide layout.
+     It has to stand before the media query, not after it: same specificity,
+     and the last one wins. Written after it, this line sent the picture to
+     the right hand column on the desktop as well. */
+  .stud__card{ order:2; }
+  @media (min-width:960px){
+    .stud__grid{ grid-template-columns:1.15fr .85fr; }
+    .stud__card{ order:0; }
+  }
 
   /* ---- the photo card ---- */
   .stud__card{ border-radius:var(--plate-radius); }
@@ -1022,7 +1040,7 @@
   /* The second line steps back rather than changing colour outright, so the
      two halves still read as one sentence. */
   .stud__h .soft{ color:color-mix(in srgb, var(--color-navy) 36%, var(--color-base)); }
-  .stud__lead{ font-size:18px; color:var(--color-ink); max-width:48ch; }
+  .stud__lead{ font-size:16px; color:var(--color-ink-soft); max-width:50ch; }
   .stud__body{ font-size:16px; color:var(--color-ink-soft); max-width:50ch; }
   .stud__body b{ font-weight:700; color:var(--color-navy); }
 
@@ -2175,12 +2193,11 @@
      inside with room to spare and the block still stands as tall as the
      column of type beside it, which is what held the section together. */
   .stud__win{ border-radius:0; aspect-ratio:4/3.4; }
-  .stud__win::after{
-    content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .10) 0%, rgba(var(--veil-rgb), .22) 40%,
-      rgba(var(--veil-rgb), .72) 72%, rgba(var(--veil-rgb), .95) 100%);
-  }
+  /* No veil over this picture. It was built for a horse against a bright
+     field and for a caption strip that used to sit on it; the caption went
+     on 3 Sep and the picture is now a family, where a navy wash over the
+     faces is the wrong thing entirely. Mark, 4 Sep. The badge keeps its own
+     translucent ground and blur, so nothing on the photograph relies on it. */
   /* The identity pill wears the fold's glass rather than white paper. */
   .stud__badge{
     z-index:3;
