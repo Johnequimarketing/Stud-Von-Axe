@@ -166,6 +166,15 @@ export const pageHeroCss = `
     display:grid; align-items:end;
     background:var(--color-navy-deep);
   }
+  /* Room at the foot for the filter bar to sit in, on the archives only. The
+     words do not move: this is padding under them, so the photograph runs on
+     past where the type stops and the bar has picture behind it rather than
+     ivory. 4 Sep, Mark, and it is the homepage's old trick: a plate that
+     hangs into the band above it, which the horses tray still does. */
+  .nhero--cut{ padding-bottom:var(--cut-bar); }
+  /* How far the bar reaches up into the photograph. One value, used twice:
+       here as the hero's extra foot, and below as the bar's lift. */
+  :root{ --cut-bar: clamp(38px, 5vw, 64px); }
   .nhero__bg{ position:absolute; inset:0; z-index:0; }
   .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
   /* Type crosses the whole width, so the veil is a foot gradient: open at
@@ -214,6 +223,19 @@ export const archiveCss = `
      pages this stylesheet is lifted into. Declared once now, in :root, where
      --sec-full and --gap-section are. */
   .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
+  /* The bar climbs into the hero by exactly the room the hero made for it,
+     so the two cannot drift apart: one token, both sides of the seam. The
+     plate keeps its own rounded corners, which is what makes the cut read
+     as a plate laid on the photograph rather than a band across it. */
+  .arch{ padding-top:0; }
+  .arch .flt{
+    position:relative; z-index:2; margin-top:calc(-1 * var(--cut-bar));
+    /* A deeper shadow than the bar wears on ivory. Measured at 1440: it sits
+       64px inside the photograph and 26 below it, and the top two thirds are
+       navy on a navy veil, so without this the plate has no edge and reads
+       as part of the picture rather than laid on it. */
+    box-shadow:0 30px 70px -30px rgba(var(--veil-rgb),.75);
+  }
   .abcta{ padding-block:var(--sec-half) var(--sec-full); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;

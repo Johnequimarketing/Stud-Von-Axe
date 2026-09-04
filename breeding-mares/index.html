@@ -1264,14 +1264,31 @@
      once the script has run, which is why the bar holds <a> elements and not
      buttons: without JavaScript they navigate. */
   .svt{ display:block; }
+  /* The title and the tabs share a line from 900 up, the title on the left
+     and the tabs running from it, with the hairline under both. Mark, 4 Sep:
+     the tabs under the title made two stacked rows of the same thing. Below
+     900 they go back to stacking, because a title and five tabs do not sit
+     on a phone. */
+  .svt__head{ display:grid; gap:.2rem; }
+  @media (min-width:900px){
+    .svt__head{
+      grid-template-columns:auto minmax(0,1fr); align-items:end;
+      column-gap:clamp(1.6rem,3vw,2.8rem);
+      border-bottom:1px solid var(--color-line-invert);
+    }
+  }
   .svt__title{
     margin:0 0 1rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15; color:var(--color-white);
   }
+  @media (min-width:900px){ .svt__title{ margin:0 0 .9rem; } }
   .svt__bar{
     display:flex; flex-wrap:wrap; gap:.2rem 1.6rem;
     border-bottom:1px solid var(--color-line-invert);
   }
+  /* The rule moves to the head once they share a line, so it runs under the
+     title as well and there is one line rather than two. */
+  @media (min-width:900px){ .svt__bar{ border-bottom:0; justify-content:flex-end; } }
   .svt__tab{
     position:relative; padding:.55rem 0 .9rem;
     font-family:var(--font-body); font-weight:700; font-size:11.5px;
@@ -1328,10 +1345,8 @@
   .svt.is-turning .svt__copy{ opacity:0; }
   .svt__copy{ display:flex; flex-direction:column; align-items:flex-start; gap:.55rem;
     transition:opacity .3s var(--ease); }
-  .svt__count{
-    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
-  }
+  /* .svt__count is gone: it read "TWELVE HORSES" and that is a number in
+     the copy, which is the one thing Mark has asked twice not to have. */
   .svt__d{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.78); max-width:46ch; }
   .svt__copy .hz__cta{ margin-top:.45rem; }
   @media (max-width:560px){
@@ -2402,6 +2417,15 @@
     display:grid; align-items:end;
     background:var(--color-navy-deep);
   }
+  /* Room at the foot for the filter bar to sit in, on the archives only. The
+     words do not move: this is padding under them, so the photograph runs on
+     past where the type stops and the bar has picture behind it rather than
+     ivory. 4 Sep, Mark, and it is the homepage's old trick: a plate that
+     hangs into the band above it, which the horses tray still does. */
+  .nhero--cut{ padding-bottom:var(--cut-bar); }
+  /* How far the bar reaches up into the photograph. One value, used twice:
+       here as the hero's extra foot, and below as the bar's lift. */
+  :root{ --cut-bar: clamp(38px, 5vw, 64px); }
   .nhero__bg{ position:absolute; inset:0; z-index:0; }
   .nhero__bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 58%; }
   /* Type crosses the whole width, so the veil is a foot gradient: open at
@@ -2464,6 +2488,19 @@
      pages this stylesheet is lifted into. Declared once now, in :root, where
      --sec-full and --gap-section are. */
   .ped, .ln, .hvid, .hgal, .hmore, .arch{ padding-block:var(--sec-half); }
+  /* The bar climbs into the hero by exactly the room the hero made for it,
+     so the two cannot drift apart: one token, both sides of the seam. The
+     plate keeps its own rounded corners, which is what makes the cut read
+     as a plate laid on the photograph rather than a band across it. */
+  .arch{ padding-top:0; }
+  .arch .flt{
+    position:relative; z-index:2; margin-top:calc(-1 * var(--cut-bar));
+    /* A deeper shadow than the bar wears on ivory. Measured at 1440: it sits
+       64px inside the photograph and 26 below it, and the top two thirds are
+       navy on a navy veil, so without this the plate has no edge and reads
+       as part of the picture rather than laid on it. */
+    box-shadow:0 30px 70px -30px rgba(var(--veil-rgb),.75);
+  }
   .abcta{ padding-block:var(--sec-half) var(--sec-full); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;
@@ -3341,7 +3378,11 @@
 
 <main id="main">
 
-  <section class="nhero">
+  <!-- nhero--cut: this hero makes room at its foot for the filter bar to
+       climb into. Only the archives have a bar, so only they carry it; the
+       about, contact, news and legal heroes wear plain .nhero and keep the
+       section rhythm the audit holds every section to. -->
+  <section class="nhero nhero--cut">
     <div class="nhero__bg" aria-hidden="true">
       <img src="/assets/img/hero-cortina-wide.jpg" alt="" fetchpriority="high" width="1920" height="1150"
            style="object-position:50% 46%">
@@ -3379,7 +3420,13 @@
                   aria-pressed="false">Sold <span class="c">7</span></button>
         </div>
 
-        <p class="flt__count" data-count aria-live="polite">twelve mares</p>
+        <!-- No count here. The rule is Mark's and it is older than this bar:
+             never write a number that can change, because it changes and the
+             sentence does not. It was computed rather than typed, which was
+             the wrong half of the fix: a computed "twenty one foals" is still
+             a number in the copy. The chips keep their numerals, because a
+             numeral on a filter is that control saying how much it will
+             leave, not a claim in a sentence. -->
       </div>
 
       <p class="flt__none" data-none>Nothing matches that. Try a sire, a damline or a studbook.</p>
@@ -3608,7 +3655,7 @@
       li.hidden = !on;
       if(on) shown++;
     });
-    count.textContent = words(shown);
+    if (count) count.textContent = words(shown);
     if(none) none.classList.toggle('is-on', shown === 0);
     chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
   }

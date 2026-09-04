@@ -124,7 +124,14 @@ function measure(d, w, phone){
   STEP[pcs.paddingTop] = 1;
   STEP[pcs.paddingBottom] = 1;
   probe.remove();
-  var EXEMPT = { sv: 'top clears the diagonal cut', hp: 'top clears the hero' };
+  /* Each exemption names the end it covers, because two of these are about a
+     section's head and the third is about its foot, and a list that only ever
+     meant "top" quietly let a bottom through. */
+  var EXEMPT = {
+    sv:           { end: 'top',    why: 'clears the diagonal cut above it' },
+    hp:           { end: 'top',    why: 'clears the hero' },
+    'nhero--cut': { end: 'bottom', why: 'makes room for the filter bar to climb into it' }
+  };
   /* Page sections only. On the legal pages every clause is a <section> of its
      own inside one, and a clause is a block with its own spacing, not a step
      in the page's rhythm. */
@@ -136,12 +143,15 @@ function measure(d, w, phone){
     var classes = (sec.className || '').trim().split(/\\s+/);
     var first = classes[0];
     var pt = scs.paddingTop, pb = scs.paddingBottom;
-    var skipTop = false;
+    var skipTop = false, skipBottom = false;
     for (var ci = 0; ci < classes.length; ci++){
-      if (Object.prototype.hasOwnProperty.call(EXEMPT, classes[ci])) skipTop = true;
+      var e = EXEMPT[classes[ci]];
+      if (!e) continue;
+      if (e.end === 'top') skipTop = true;
+      if (e.end === 'bottom') skipBottom = true;
     }
     if (!skipTop && !STEP[pt] && out.rhythm.length < 6) out.rhythm.push(name(sec) + ' top ' + pt);
-    if (!STEP[pb] && out.rhythm.length < 6) out.rhythm.push(name(sec) + ' bottom ' + pb);
+    if (!skipBottom && !STEP[pb] && out.rhythm.length < 6) out.rhythm.push(name(sec) + ' bottom ' + pb);
   }
   /* Against the page's own client width, not the width we asked the iframe
      for: an iframe reports two pixels more than it was given, and comparing

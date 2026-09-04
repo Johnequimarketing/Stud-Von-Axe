@@ -138,7 +138,7 @@ const GROUPS = {
        fixed prices, no extra costs for embryos produced. It is the only
        thing on that card besides the names and the two telephone numbers,
        so it belongs in the line that opens the page. */
-    intro: 'ICSI semen from twenty four stallions, ours and the ones we breed with. Fixed prices, and no extra cost for the embryos produced.',
+    intro: 'ICSI semen from the stallions we breed with, and the ones we would. Fixed prices, and no extra cost for the embryos produced.',
     img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
     one: 'stallion', many: 'stallions', singular: 'stallion',
     /* No chips. Every other archive filters on something the data knows:
@@ -1156,7 +1156,13 @@ ${chips.map(([key, label, n]) => `          <button class="hz__chip" type="butto
                   aria-pressed="${openOn === key ? 'true' : 'false'}">${label} <span class="c">${n}</span></button>`).join('\n')}
         </div>`}
 ${facetBar(group, list)}
-        <p class="flt__count" data-count aria-live="polite">${noun(shown)}</p>
+        <!-- No count here. The rule is Mark's and it is older than this bar:
+             never write a number that can change, because it changes and the
+             sentence does not. It was computed rather than typed, which was
+             the wrong half of the fix: a computed "twenty one foals" is still
+             a number in the copy. The chips keep their numerals, because a
+             numeral on a filter is that control saying how much it will
+             leave, not a claim in a sentence. -->
       </div>
 
       <p class="flt__none" data-none>Nothing matches that. ${group.find}</p>
@@ -1212,7 +1218,7 @@ const filterScript = (group) => `<script>
       li.hidden = !on;
       if(on) shown++;
     });
-    count.textContent = words(shown);
+    if (count) count.textContent = words(shown);
     if(none) none.classList.toggle('is-on', shown === 0);
     chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-show') === show ? 'true' : 'false'); });
   }
@@ -2372,7 +2378,11 @@ const ctaSection = (group) => `
 
 /* ── section one: the hero ─────────────────────────────────────────────── */
 const heroSection = (g) => `
-  <section class="nhero">
+  <!-- nhero--cut: this hero makes room at its foot for the filter bar to
+       climb into. Only the archives have a bar, so only they carry it; the
+       about, contact, news and legal heroes wear plain .nhero and keep the
+       section rhythm the audit holds every section to. -->
+  <section class="nhero nhero--cut">
     <div class="nhero__bg" aria-hidden="true">
       <img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
            style="object-position:${g.pos}">

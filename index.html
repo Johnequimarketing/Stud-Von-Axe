@@ -1318,14 +1318,31 @@
      once the script has run, which is why the bar holds <a> elements and not
      buttons: without JavaScript they navigate. */
   .svt{ display:block; }
+  /* The title and the tabs share a line from 900 up, the title on the left
+     and the tabs running from it, with the hairline under both. Mark, 4 Sep:
+     the tabs under the title made two stacked rows of the same thing. Below
+     900 they go back to stacking, because a title and five tabs do not sit
+     on a phone. */
+  .svt__head{ display:grid; gap:.2rem; }
+  @media (min-width:900px){
+    .svt__head{
+      grid-template-columns:auto minmax(0,1fr); align-items:end;
+      column-gap:clamp(1.6rem,3vw,2.8rem);
+      border-bottom:1px solid var(--color-line-invert);
+    }
+  }
   .svt__title{
     margin:0 0 1rem; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15; color:var(--color-white);
   }
+  @media (min-width:900px){ .svt__title{ margin:0 0 .9rem; } }
   .svt__bar{
     display:flex; flex-wrap:wrap; gap:.2rem 1.6rem;
     border-bottom:1px solid var(--color-line-invert);
   }
+  /* The rule moves to the head once they share a line, so it runs under the
+     title as well and there is one line rather than two. */
+  @media (min-width:900px){ .svt__bar{ border-bottom:0; justify-content:flex-end; } }
   .svt__tab{
     position:relative; padding:.55rem 0 .9rem;
     font-family:var(--font-body); font-weight:700; font-size:11.5px;
@@ -1382,10 +1399,8 @@
   .svt.is-turning .svt__copy{ opacity:0; }
   .svt__copy{ display:flex; flex-direction:column; align-items:flex-start; gap:.55rem;
     transition:opacity .3s var(--ease); }
-  .svt__count{
-    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
-  }
+  /* .svt__count is gone: it read "TWELVE HORSES" and that is a number in
+     the copy, which is the one thing Mark has asked twice not to have. */
   .svt__d{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.78); max-width:46ch; }
   .svt__copy .hz__cta{ margin-top:.45rem; }
   @media (max-width:560px){
@@ -2668,6 +2683,7 @@
            and fills the panel from home-tabs.js, which the builder writes,
            so the counts and the lines cannot drift from the archives. -->
       <div class="hz__banner svt" data-tabs>
+        <div class="svt__head">
         <p class="svt__title">Every horse we have</p>
         <div class="svt__bar" role="tablist" aria-label="What we sell">
           <a class="svt__tab" data-key="sport"     href="sport-horses/">Sport horses</a>
@@ -2676,12 +2692,12 @@
           <a class="svt__tab" data-key="embryo"    href="embryos/">Embryos</a>
           <a class="svt__tab" data-key="stallion"  href="icsi-semen/">ICSI semen</a>
         </div>
+        </div>
         <div class="svt__panel" id="svt-panel" hidden>
           <span class="svt__win">
             <img id="svt-img" src="" alt="" loading="lazy" decoding="async">
           </span>
           <div class="svt__copy">
-            <p class="svt__count" id="svt-count"></p>
             <p class="svt__d" id="svt-d"></p>
             <a class="hz__cta" id="svt-cta" href="sport-horses/">See all sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
           </div>
@@ -3249,7 +3265,6 @@
     var tabs  = [].slice.call(root.querySelectorAll('.svt__tab'));
     var panel = document.getElementById('svt-panel');
     var img   = document.getElementById('svt-img');
-    var count = document.getElementById('svt-count');
     var desc  = document.getElementById('svt-d');
     var ctas  = [document.getElementById('svt-cta'), document.getElementById('svt-cta2')]
                   .filter(Boolean);
@@ -3268,7 +3283,6 @@
     function paint(t){
       img.src = t.img;
       img.alt = t.label + ' at Stud Von Axe';
-      count.textContent = t.words + ' ' + t.noun;
       desc.textContent  = t.blurb;
       ctas.forEach(function(c){
         c.href = t.href;

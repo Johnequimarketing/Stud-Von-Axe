@@ -50,7 +50,7 @@ var HOME_TABS = [
     "label": "ICSI semen",
     "href": "/icsi-semen",
     "img": "/assets/img/arch-semen.jpg",
-    "blurb": "ICSI semen from twenty four stallions, ours and the ones we breed with.",
+    "blurb": "ICSI semen from the stallions we breed with, and the ones we would.",
     "cta": "See all stallions",
     "count": 24,
     "noun": "stallions",
