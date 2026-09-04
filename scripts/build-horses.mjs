@@ -2542,3 +2542,53 @@ var HOME_HORSES = {
 };
 `);
 console.log('wrote horses-home.js for the homepage runs');
+
+/* ── what the homepage's tabs say ──────────────────────────────────────
+   One entry per archive: the name on the tab, the line under it, the count,
+   the picture and where it goes. Written here rather than typed into
+   index.html for the reason every count on this site is: five numbers kept
+   by hand go stale the first time a horse is added and nobody remembers the
+   sentence. The blurb is each archive's own intro, which is already their
+   approved copy, cut at its first sentence so it fits a tab.
+   4 Sep, Mark: the band that offered five gold buttons becomes a tabbed
+   panel, so a visitor can see everything they sell without leaving the
+   homepage. */
+{
+  const firstSentence = (t) => {
+    const m = String(t).match(/^[^.]*\./);
+    return (m ? m[0] : String(t)).trim();
+  };
+  /* The menu's order, not the builder's: a visitor meets these five names in
+     the header and in the footer, and meeting them in a third order here
+     would read as a different list. */
+  const ORDER = ['sport', 'broodmare', 'foal', 'embryo', 'stallion'];
+  /* Written out, not made from the label. "See all " + the label lowercased
+     turns ICSI semen into "icsi semen", and the archive of stallions is not
+     called "all ICSI semen" anyway: it is the stallions. */
+  const CTA = {
+    sport: 'See all sport horses', broodmare: 'See all breeding mares',
+    foal: 'See all foals', embryo: 'See all crosses', stallion: 'See all stallions',
+  };
+  const tabs = ORDER.map((key) => {
+    const g = GROUPS[key];
+    const list = HORSES.filter((h) => h.category === key);
+    return {
+      key,
+      label: g.label,
+      href: `/${g.dir}`,
+      img: `/assets/img/${g.img}`,
+      blurb: firstSentence(g.intro),
+      cta: CTA[key],
+      count: list.length,
+      noun: list.length === 1 ? g.one : g.many,
+      words: count(list.length),
+    };
+  });
+  writeFileSync(join(root, 'home-tabs.js'),
+`/* What the homepage's tabs say, written by scripts/build-horses.mjs.
+   Do not edit: rebuild. */
+var HOME_TABS = ${JSON.stringify(tabs, null, 2)};
+if (typeof module !== 'undefined') { module.exports = HOME_TABS; }
+`);
+  console.log(`wrote home-tabs.js for the homepage tabs (${tabs.length} archives)`);
+}

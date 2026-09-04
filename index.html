@@ -1298,6 +1298,91 @@
     display:block; margin-top:.3rem; font-size:14px;
     color:rgba(255,255,255,.72); max-width:52ch;
   }
+  /* ---- the five archives, as tabs ----
+     One plate: a title, a row of tabs, and a panel that changes under them.
+     Written so the tabs work as plain links first and become a tablist only
+     once the script has run, which is why the bar holds <a> elements and not
+     buttons: without JavaScript they navigate. */
+  .svt{ display:block; }
+  .svt__title{
+    margin:0 0 1rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15; color:var(--color-white);
+  }
+  .svt__bar{
+    display:flex; flex-wrap:wrap; gap:.2rem 1.6rem;
+    border-bottom:1px solid var(--color-line-invert);
+  }
+  .svt__tab{
+    position:relative; padding:.55rem 0 .9rem;
+    font-family:var(--font-body); font-weight:700; font-size:11.5px;
+    letter-spacing:.14em; text-transform:uppercase;
+    color:rgba(255,255,255,.62); white-space:nowrap;
+    transition:color .3s var(--ease);
+  }
+  /* The gold rule under the open tab. On its own element rather than a
+     border, so it can slide the width of the word without moving the row. */
+  .svt__tab::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+    background:var(--color-gold); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s var(--ease);
+  }
+  .svt__tab:hover{ color:rgba(255,255,255,.9); }
+  .svt__tab[aria-selected="true"]{ color:var(--color-white); }
+  .svt__tab[aria-selected="true"]::after{ transform:scaleX(1); }
+  .svt__tab:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
+  .svt__panel{ display:grid; gap:clamp(1.1rem,2.4vw,1.9rem); margin-top:clamp(1.2rem,2.4vw,1.7rem); }
+  /* The button lives twice: once at the end of the words for the stacked
+     layout, once in its own column for the wide one. Only ever one of them
+     is drawn, and both carry the same href, written by the same line of
+     script.
+     These two lines stand BEFORE the media query that flips them. Written
+     after it they win on source order at the same specificity and the button
+     disappears at every width, which is exactly what happened the first time
+     and what happened to the About photograph's order an hour earlier. */
+  .svt__act{ display:none; }
+
+  /* Three columns from 900: the picture, the words, and the button on its
+     own at the end, which is where Mark asked for it. Two columns left a
+     stretch of empty navy to the right of a 46ch paragraph. Below 900 they
+     stack and the button falls under the words. */
+  @media (min-width:900px){
+    .svt__panel{ grid-template-columns:minmax(0,.36fr) minmax(0,1fr) auto; align-items:center;
+      gap:clamp(1.4rem,3vw,2.6rem); }
+    .svt__copy{ justify-content:center; }
+    .svt__copy .hz__cta{ display:none; }
+    .svt__act{ display:flex; }
+  }
+  .svt__panel[hidden]{ display:none; }
+  .svt__win{
+    position:relative; display:block; aspect-ratio:4/3; overflow:hidden;
+    border-radius:var(--card-radius); background:rgba(255,255,255,.06);
+  }
+  .svt__win img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:opacity .4s var(--ease);
+  }
+  /* The picture fades out and back rather than cutting, which is the whole
+     reason the panel is worth a script at all. */
+  .svt.is-turning .svt__win img,
+  .svt.is-turning .svt__copy{ opacity:0; }
+  .svt__copy{ display:flex; flex-direction:column; align-items:flex-start; gap:.55rem;
+    transition:opacity .3s var(--ease); }
+  .svt__count{
+    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .svt__d{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.78); max-width:46ch; }
+  .svt__copy .hz__cta{ margin-top:.45rem; }
+  @media (max-width:560px){
+    /* The bar scrolls rather than wrapping to three lines on a phone. */
+    .svt__bar{ flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:1.2rem; }
+    .svt__bar::-webkit-scrollbar{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .svt__tab, .svt__tab::after, .svt__win img, .svt__copy{ transition:none; }
+  }
+
   .hz__cta{
     display:inline-flex; align-items:center; gap:.55em; white-space:nowrap;
     background:var(--color-gold); color:var(--color-navy);
@@ -2485,18 +2570,36 @@
          are here because the embryos and the ICSI semen have no other route
          on this page. -->
     <div class="hz-tray">
-      <div class="hz__banner">
-        <div>
-          <b>Every horse we have</b>
-          <span>Sport horses, breeding mares and foals on the ground, and the
-          same damlines as embryos and as ICSI semen. Each on a page of its own.</span>
+      <!-- The five archives, as tabs rather than as five gold buttons in a
+           row. 4 Sep, Mark: a visitor should be able to see everything they
+           sell without leaving the page, and read what each one is before
+           deciding to open it.
+           The five links below are the markup, not a scaffold: without
+           JavaScript they are exactly the row of links this band was, and a
+           crawler follows all five. The script upgrades them into a tablist
+           and fills the panel from home-tabs.js, which the builder writes,
+           so the counts and the lines cannot drift from the archives. -->
+      <div class="hz__banner svt" data-tabs>
+        <p class="svt__title">Every horse we have</p>
+        <div class="svt__bar" role="tablist" aria-label="What we sell">
+          <a class="svt__tab" data-key="sport"     href="sport-horses/">Sport horses</a>
+          <a class="svt__tab" data-key="broodmare" href="breeding-mares/">Breeding mares</a>
+          <a class="svt__tab" data-key="foal"      href="foals/">Foals</a>
+          <a class="svt__tab" data-key="embryo"    href="embryos/">Embryos</a>
+          <a class="svt__tab" data-key="stallion"  href="icsi-semen/">ICSI semen</a>
         </div>
-        <div class="hz__more">
-          <a class="hz__cta" href="sport-horses/">Sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
-          <a class="hz__cta" href="breeding-mares/">Breeding mares <span class="a" aria-hidden="true">&rarr;</span></a>
-          <a class="hz__cta" href="foals/">Foals <span class="a" aria-hidden="true">&rarr;</span></a>
-          <a class="hz__cta" href="embryos/">Embryos <span class="a" aria-hidden="true">&rarr;</span></a>
-          <a class="hz__cta" href="icsi-semen/">ICSI semen <span class="a" aria-hidden="true">&rarr;</span></a>
+        <div class="svt__panel" id="svt-panel" hidden>
+          <span class="svt__win">
+            <img id="svt-img" src="" alt="" loading="lazy" decoding="async">
+          </span>
+          <div class="svt__copy">
+            <p class="svt__count" id="svt-count"></p>
+            <p class="svt__d" id="svt-d"></p>
+            <a class="hz__cta" id="svt-cta" href="sport-horses/">See all sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="svt__act">
+            <a class="hz__cta" id="svt-cta2" href="sport-horses/">See all sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -2815,6 +2918,7 @@
   </script>
 </footer>
 
+<script src="home-tabs.js"></script>
 <script src="news-data.js"></script>
 <script src="flags.js"></script>
 <script>
@@ -3018,6 +3122,87 @@
     });
   })();
 
+
+  /* ── the five archives, as tabs ───────────────────────────────────────
+     The bar holds five links, which is what a visitor without JavaScript
+     gets and what a crawler follows. This turns them into a tablist: the
+     panel below opens, the picture and the line change under the bar, and
+     the link the tab carried becomes the panel's button instead.
+     Everything it says comes from home-tabs.js, which the builder writes out
+     of the same records as the archives, so a count here cannot drift from
+     the page it points at. */
+  (function(){
+    var root = document.querySelector('[data-tabs]');
+    if(!root || typeof HOME_TABS === 'undefined') return;
+    var tabs  = [].slice.call(root.querySelectorAll('.svt__tab'));
+    var panel = document.getElementById('svt-panel');
+    var img   = document.getElementById('svt-img');
+    var count = document.getElementById('svt-count');
+    var desc  = document.getElementById('svt-d');
+    var ctas  = [document.getElementById('svt-cta'), document.getElementById('svt-cta2')]
+                  .filter(Boolean);
+    if(!tabs.length || !panel || !ctas.length) return;
+
+    var byKey = {};
+    HOME_TABS.forEach(function(t){ byKey[t.key] = t; });
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var current = null;
+
+    /* The pictures are fetched once, quietly, so the first turn of a tab is
+       not a blank box while the file arrives. */
+    HOME_TABS.forEach(function(t){ var p = new Image(); p.src = t.img; });
+
+    function paint(t){
+      img.src = t.img;
+      img.alt = t.label + ' at Stud Von Axe';
+      count.textContent = t.words + ' ' + t.noun;
+      desc.textContent  = t.blurb;
+      ctas.forEach(function(c){
+        c.href = t.href;
+        c.innerHTML = t.cta + ' <span class="a" aria-hidden="true">&rarr;</span>';
+      });
+    }
+
+    function show(key, focus){
+      var t = byKey[key];
+      if(!t || key === current) return;
+      var first = current === null;
+      current = key;
+      tabs.forEach(function(a){
+        var on = a.dataset.key === key;
+        a.setAttribute('aria-selected', on ? 'true' : 'false');
+        a.setAttribute('tabindex', on ? '0' : '-1');
+        if(on && focus) a.focus();
+      });
+      if(first || reduce.matches){ paint(t); return; }
+      root.classList.add('is-turning');
+      setTimeout(function(){ paint(t); root.classList.remove('is-turning'); }, 180);
+    }
+
+    tabs.forEach(function(a, i){
+      a.setAttribute('role', 'tab');
+      a.setAttribute('aria-controls', 'svt-panel');
+      a.addEventListener('click', function(e){
+        /* Only take the click once the panel is doing its job. A modified
+           click still opens the archive in a new tab, which is what a link
+           is for. */
+        if(e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+        e.preventDefault();
+        show(a.dataset.key);
+      });
+      a.addEventListener('keydown', function(e){
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if(d){ e.preventDefault(); show(tabs[(i + d + tabs.length) % tabs.length].dataset.key, true); }
+        else if(e.key === 'Home'){ e.preventDefault(); show(tabs[0].dataset.key, true); }
+        else if(e.key === 'End'){ e.preventDefault(); show(tabs[tabs.length - 1].dataset.key, true); }
+      });
+    });
+
+    panel.hidden = false;
+    panel.setAttribute('role', 'tabpanel');
+    show(tabs[0].dataset.key);
+  })();
 </script>
 
 </body>
