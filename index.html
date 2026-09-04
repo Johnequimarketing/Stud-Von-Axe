@@ -705,11 +705,22 @@
      they are sending will not have the horse in the same place. */
   .hero__haze{
     position:absolute; inset:0; z-index:1; pointer-events:none;
-    -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+    /* A long ramp, not a short one. 4 Sep: the change from sharp to soft
+       happened over about a quarter of the frame and read as an edge lying
+       across the photograph. It now begins at 40 per cent and is not full
+       until 96, so more than half the frame is the transition itself and
+       there is no line to find. Three stops rather than two, because a
+       linear ramp still shows its start: the middle one holds it back early
+       so the horse keeps his edge. */
     -webkit-mask-image:linear-gradient(180deg,
-      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+      transparent var(--hero-haze, 40%),
+      rgba(0,0,0,.28) calc(var(--hero-haze, 40%) + 22%),
+      #000 96%, #000 100%);
     mask-image:linear-gradient(180deg,
-      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+      transparent var(--hero-haze, 40%),
+      rgba(0,0,0,.28) calc(var(--hero-haze, 40%) + 22%),
+      #000 96%, #000 100%);
   }
 
   /* The navy, rising from the foot. It used to be an even veil across the
@@ -723,11 +734,11 @@
     content:"";
     position:absolute; inset:0; z-index:2;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .14) 0%,
-      rgba(var(--veil-rgb), .18) 30%,
-      rgba(var(--veil-rgb), .52) 58%,
-      rgba(var(--veil-rgb), .82) 80%,
-      rgba(var(--veil-rgb), .94) 100%);
+      rgba(var(--veil-rgb), .20) 0%,
+      rgba(var(--veil-rgb), .26) 30%,
+      rgba(var(--veil-rgb), .60) 58%,
+      rgba(var(--veil-rgb), .88) 80%,
+      rgba(var(--veil-rgb), .96) 100%);
   }
 
   /* ---------- centred statement ---------- */
