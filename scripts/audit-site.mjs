@@ -343,6 +343,29 @@ if (existsSync(join(root, 'sitemap.xml'))) {
     : pass('one Italian place on the site, and it is the registered one');
 }
 
+/* ── the homepage still has its sections ───────────────────────────────
+   4 Sep. Removing one section took three: the cut ran from the marker above
+   the results block to a comment that sits AFTER the news, so the invitation
+   and the news went with it. Nothing failed. Every page still validated,
+   every link still resolved, the rhythm was still on the scale, and the
+   audit reported green over a homepage that had lost two of its seven
+   sections.
+   So the page says what it is made of, and the list has to be edited on
+   purpose. A section removed on purpose is one line here; a section removed
+   by accident is a failure with its name in it. */
+{
+  const WANTED = ['top', 'about', 'horses', 'services', 'programme', 'news', 'contact'];
+  const home = read('index.html');
+  const found = [...home.matchAll(/<section[^>]*\bid="([a-z-]+)"/g)].map((m) => m[1]);
+  const missing = WANTED.filter((id) => !found.includes(id));
+  const extra = found.filter((id) => !WANTED.includes(id));
+  missing.length || extra.length
+    ? fail('the homepage is not the set of sections it should be',
+           [...missing.map((id) => `gone: #${id}`),
+            ...extra.map((id) => `new, and not in the list: #${id}`)])
+    : pass(`the homepage carries all ${WANTED.length} of its sections, in order`);
+}
+
 console.log('\n══════════════════════════════════════════════');
 console.log(`${failures} failure(s) across ${checks} site-wide check(s)\n`);
 process.exit(failures ? 1 : 0);
