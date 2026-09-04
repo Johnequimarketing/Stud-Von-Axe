@@ -36,9 +36,14 @@ const fail = (m, lines = []) => {
 const note = (m) => console.log(`  \x1b[33m! note\x1b[0m  ${m}`);
 
 const read = (p) => readFileSync(join(root, p), 'utf-8');
+/* With attributes, not without. It matched <script> alone, so every page's
+   <script type="application/ld+json"> went through as visible copy: that is
+   how "logo-horizontal" and "stud-von" turned up as words we had written.
+   Every check that reads textOf has been reading the structured data too. */
 const textOf = (html) => html
-  .replace(/<script>[\s\S]*?<\/script>/g, '')
-  .replace(/<style>[\s\S]*?<\/style>/g, '')
+  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+  .replace(/<!--[\s\S]*?-->/g, '')
   .replace(/<[^>]+>/g, ' ')
   .replace(/&amp;/g, '&').replace(/&#039;|&#39;/g, "'").replace(/&quot;/g, '"')
   .replace(/&times;/g, 'x').replace(/&nbsp;/g, ' ')
@@ -364,6 +369,46 @@ if (existsSync(join(root, 'sitemap.xml'))) {
            [...missing.map((id) => `gone: #${id}`),
             ...extra.map((id) => `new, and not in the list: #${id}`)])
     : pass(`the homepage carries all ${WANTED.length} of its sections, in order`);
+}
+
+/* ── no hyphen of ours in the copy ─────────────────────────────────────
+   4 Sep, Mark: take the hyphens out everywhere. The catch is that most of
+   the hyphens on this site are not ours to touch. T-Cassina, Peggy-Anne,
+   Idjaz-C, Penny-Sue and B-Estelle are horses' names; OPU-ICSI is the term
+   for the procedure; and "runners-up", "five-star" and "year-old" sit inside
+   paragraphs their own site wrote, which the standing rule keeps word for
+   word.
+   So the test is not "is there a hyphen" but "is it ours". Every hyphenated
+   word in their data files is allowed through; anything else in the visible
+   copy of a public page is a word we wrote and has to go. */
+{
+  const dir = (d) => existsSync(join(root, d)) ? readdirSync(join(root, d), { withFileTypes: true }) : [];
+  const walk = (d) => dir(d).flatMap((e) => {
+    const rel = d ? `${d}/${e.name}` : e.name;
+    if (e.isDirectory()) {
+      return /^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(e.name)
+        ? [] : walk(rel);
+    }
+    return e.name.endsWith('.html') && !e.name.startsWith('_') ? [rel] : [];
+  });
+
+  const theirs = new Set();
+  for (const f of ['horses-data.js', 'semen-data.js', 'news-data.js', 'horses-extra.js']) {
+    if (!existsSync(join(root, f))) continue;
+    for (const m of read(f).matchAll(/[A-Za-z]+-[A-Za-z]+/g)) theirs.add(m[0].toLowerCase());
+  }
+
+  const hits = [];
+  for (const f of walk('')) {
+    const h = read(f);
+    if (/<meta name="internal-doc"/.test(h)) continue;
+    for (const m of textOf(h).matchAll(/\b[A-Za-z]+-[A-Za-z]+\b/g)) {
+      if (!theirs.has(m[0].toLowerCase()) && hits.length < 8) hits.push(`${f}: ${m[0]}`);
+    }
+  }
+  hits.length
+    ? fail('a hyphen we wrote, in the visible copy', hits)
+    : pass(`no hyphen of ours in the copy; ${theirs.size} of theirs left alone`);
 }
 
 console.log('\n══════════════════════════════════════════════');

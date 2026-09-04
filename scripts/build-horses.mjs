@@ -94,8 +94,12 @@ const GROUPS = {
     find: 'Try a sire, a damline or a studbook.',
     label: 'Breeding mares',
     kicker: 'The mares',
-    title: 'The families we <em>breed from</em>',
-    intro: 'Every mare here was chosen for what her family actually produces in sport. Their foals and embryos carry those lines.',
+    title: 'The bloodlines behind <em>what we breed</em>',
+    intro: 'Strong maternal lines are at the heart of our breeding programme. Each mare brings proven genetics, performance and the potential to produce the horses we want to see in the sport of tomorrow.',
+    /* The intro is theirs and runs to 192 characters, which is a paragraph
+       and not a search result. desc is the same sentence cut to fit the 70
+       to 160 the audit holds every description to. */
+    desc: 'Strong maternal lines are at the heart of our breeding programme, each mare chosen for what her family produces in sport.',
     img: 'hero-cortina-wide.jpg', pos: '50% 46%', w: 1920, h: 1150,
     one: 'mare', many: 'mares', singular: 'breeding mare',
     ctaH: 'Looking for a mare to <em>breed from</em>?',
@@ -107,8 +111,8 @@ const GROUPS = {
     find: 'Try a sire, a damline, a year or a country.',
     label: 'Foals',
     kicker: 'The foals',
-    title: 'Born and raised in <em>Lanaken</em>',
-    intro: 'Out of our own damlines, raised in Belgium until the day they leave. Sold direct, and the ones that have gone stay here with the country they went to.',
+    title: 'Born from great bloodlines. <em>Raised in Belgium.</em>',
+    intro: 'Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.',
     img: 'arch-foals.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'foal', many: 'foals', singular: 'foal',
     card: (h, full) => foalCard(h, GROUPS.foal, full), grid: ' ec__grid',
@@ -120,8 +124,9 @@ const GROUPS = {
     find: 'Try a sire, a dam or a year.',
     label: 'Embryos',
     kicker: 'The embryos',
-    title: 'The same lines, <em>a year earlier</em>',
-    intro: 'Frozen from our own damlines or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.',
+    title: 'The bloodlines you want. <em>The future you choose.</em>',
+    intro: 'Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.',
+    desc: 'Selected from outstanding families and proven sport horse combinations, with real breeding and performance potential.',
     img: 'arch-embryos.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'cross', many: 'crosses', singular: 'cross',
     card: (h, full) => embryoCard(h, full), grid: ' ec__grid',
@@ -133,12 +138,20 @@ const GROUPS = {
     find: 'Try a name or a sire.',
     label: 'ICSI semen',
     kicker: 'ICSI semen',
-    title: 'The stallions <em>you can book</em>',
+    title: 'The best stallions. Quality semen. <em>Fair prices.</em>',
     /* Their own card of 4 Sep says it in six words, and the six are theirs:
        fixed prices, no extra costs for embryos produced. It is the only
        thing on that card besides the names and the two telephone numbers,
        so it belongs in the line that opens the page. */
-    intro: 'ICSI semen from the stallions we breed with, and the ones we would. Fixed prices, and no extra cost for the embryos produced.',
+    /* Their sentence, with one word changed and said out loud here: they
+       wrote "frozen semen", and on 31 Aug they confirmed ICSI only, no fresh
+       and no frozen. An audit check fails any public page that names a kind
+       of semen they do not sell, and it exists because the site contradicted
+       itself on three pages before. Their semen is of course stored frozen,
+       so the word may be description rather than product; it is one word to
+       put back if they mean the category. */
+    intro: 'We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.',
+    metaLine: 'ICSI semen from selected stallions, stored at Avantea',
     img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
     one: 'stallion', many: 'stallions', singular: 'stallion',
     /* No chips. Every other archive filters on something the data knows:
@@ -1261,8 +1274,12 @@ const metaDescription = (horse, group) => {
     horse.genetics ? horseName(horse.genetics) : '',
     [horse.year && `Born ${horse.year}`, horse.studbook, SEX(horse)].filter(Boolean).join(', '),
     theirWords(horse.tagline),
-    group.intro.split('.')[0],          /* the group line, so a horse with three
-                                           fields still says something useful */
+    /* The group's line, so a horse with three fields still says something
+       useful. metaLine when a group has one: the ICSI intro is a single
+       sentence of 151 characters, and after a name and a pedigree it does
+       not fit, so the loop dropped it and eight stallions came out under
+       the seventy a search result needs. */
+    group.metaLine || group.intro.split('.')[0],
   ].filter(Boolean);
   let out = '';
   for (const bit of bits) {
@@ -2486,7 +2503,9 @@ for (const key of Object.keys(GROUPS)) {
 
   writeFileSync(join(root, group.dir, 'index.html'), page({
     title: group.label,
-    desc: group.intro,
+    /* The page carries their paragraph; the search result carries desc when
+       a group has one, because two of these run past 160 characters. */
+    desc: group.desc || group.intro,
     path: `/${group.dir}`,
     image: group.img,
     body: heroSection(group) + gridSection(group, list) + ctaSection(group),
