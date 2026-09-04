@@ -1391,10 +1391,26 @@
     .res__intro{ grid-column:span 2; }
   }
   .res__intro{
+    position:relative; isolation:isolate; overflow:hidden;
     display:flex; flex-direction:column; align-items:flex-start; gap:.7rem;
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--plate-radius); padding:clamp(1.5rem,3vw,2.2rem);
   }
+  /* .res__ghost, not .res__mark: the figure on every result card was already
+     called .res__mark, so these rules landed on the prices and the placings
+     and made them 90px wide, absolutely positioned and six per cent opaque.
+     That is what put 21px of sideways scroll on the homepage at 390 and 15
+     at 768.
+     Sized by the plate's height and contained, the rule every other ghost on
+     this site follows: the file is 420 by 914, so sizing it by width stands
+     it twice as tall as the box it is in and the box clips its ears. */
+  .res__ghost{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:clamp(-8px, 1vw, 1.4rem); top:10%; bottom:10%;
+    width:clamp(90px, 12vw, 170px); opacity:.06;
+  }
+  .res__ghost img{ width:100%; height:100%; object-fit:contain; object-position:right center; display:block; }
+  .res__intro > :not(.res__ghost){ position:relative; z-index:1; }
   .res__h{
     margin:.2rem 0 0; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.5rem,2vw + .5rem,2.1rem); line-height:1.08; color:var(--color-white);
