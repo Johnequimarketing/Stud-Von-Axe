@@ -87,7 +87,15 @@
     /* The air around the centred hero statement. Applied ONCE, by
        .hero__body, which owns the gap above and below. The card reel adds
        no padding of its own, so the two gaps stay equal. */
-    --hero-air: clamp(60px, 10.5vh, 132px);
+    /* Lowered on 4 Sep, at Mark's word: the statement should sit clear below
+       the jumping horse rather than against him. It only moves the foot of
+       the block, because the head of it is held by the header instead: that
+       padding is a max() of this and the bar's own height, and the bar wins.
+       Measured at 1440x900 the block gained 31px of clearance, at 1366x768
+       27 and at 1920x1080 38. The horse's own position in the frame changes
+       with the screen's shape, so this buys room everywhere rather than
+       pinning the type to one photograph. */
+    --hero-air: clamp(44px, 7vh, 96px);
 
     /* Height the sticky header reserves, and gives back to the hero. */
 
@@ -557,6 +565,19 @@
     .hd__row{ gap:.75rem; }
     .hd__end{ gap:.75rem; }
   }
+
+  /* The contact button comes off the phone so the mark can stand in the
+     middle of the bar. Measured, not guessed: the mark's centre sat 55px
+     left of the screen's at 390, 44 at 520 and 38 at 560, because the right
+     hand group carried a 103px button against a 40px burger on the left.
+     From 600 it is 17px, which is the width of the WhatsApp circle against
+     the burger and reads as centred.
+     560 is where it flips and is already a breakpoint in this stylesheet,
+     so no new one is invented for it. Contact is not lost: it is in the
+     drawer above, and in the footer. */
+  @media (max-width: 560px){
+    .hd .btn-sm{ display:none; }
+  }
   @media (max-width: 560px){
     .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
     /* The plate is narrower than the old full width bar, so at this width
@@ -621,19 +642,38 @@
      touching the rule. The client's own frame (3 Sep) has the horse in the
      upper middle and sand at the foot, which is why the statement now sits
      at the bottom rather than in the centre: the horse is never covered. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); }
-  /* An even navy veil across the WHOLE frame, not a gradient that only
-     bites at the foot. The old ramp dropped to 10% at 28%, which let the
-     photograph's own detail fight the centred statement. It deepens over
-     the last quarter so the topic plaques still have a dark base. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); z-index:0; }
+
+  /* Where the frame goes soft. Nothing at the top, all of it at the foot,
+     so the horse and the trees keep their edge and the words below him sit
+     on something quiet. --hero-haze is where the softening starts, as a
+     share of the frame's height; it is a variable because the photograph
+     they are sending will not have the horse in the same place. */
+  .hero__haze{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    -webkit-mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+    mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+  }
+
+  /* The navy, rising from the foot. It used to be an even veil across the
+     whole frame, which is what made the top of the photograph read grey
+     rather than green: Mark asked on 4 Sep for the upper part in its own
+     colour and the blue coming up from below. The top keeps a breath of it,
+     .14, because the menu stands there in white type and measured against
+     bare photograph the brightest pixel behind it is the rider's white
+     breeches. The letters carry their own shadow as well. */
   .hero__bg::after{
     content:"";
-    position:absolute; inset:0;
+    position:absolute; inset:0; z-index:2;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .70) 0%,
-      rgba(var(--veil-rgb), .64) 42%,
-      rgba(var(--veil-rgb), .72) 74%,
-      rgba(var(--veil-rgb), .90) 100%);
+      rgba(var(--veil-rgb), .14) 0%,
+      rgba(var(--veil-rgb), .18) 30%,
+      rgba(var(--veil-rgb), .52) 58%,
+      rgba(var(--veil-rgb), .82) 80%,
+      rgba(var(--veil-rgb), .94) 100%);
   }
 
   /* ---------- centred statement ---------- */
@@ -643,6 +683,15 @@
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
     padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
+  }
+  /* The language dock is fixed to the foot of the screen on the left, and
+     once the buttons are wide enough they reach across to it: measured, at
+     560 the row starts at 99 and the dock ends at 116, and lowering the
+     statement put their boxes two pixels into each other. Above 620 the row
+     starts well clear of it, so the floor is only here. 620 is already a
+     breakpoint in this stylesheet. */
+  @media (max-width: 620px){
+    .hero__body{ padding-bottom:76px; }
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
@@ -3029,6 +3078,10 @@
           <a href="/foals" aria-current="page" class="hd__drawerOnly">Foals</a>
           <a href="/embryos" class="hd__drawerOnly">Embryos</a>
           <a href="/icsi-semen" class="hd__drawerOnly">ICSI semen</a>
+          <!-- Contact belongs in the drawer because the button beside the
+               mark is hidden on a phone, and it was the only way to the
+               contact page from this bar. Mark, 4 Sep. -->
+          <a href="/contact" class="hd__drawerOnly">Contact us</a>
         </nav>
       </div>
 
@@ -3043,6 +3096,15 @@
              in the supplied artwork, not in the resize. Until a corrected
              export arrives this keeps the white file that is complete.
              Never repaired here: the mark is theirs. -->
+        <!-- 4 Sep: the phone was going to be served the strapline free file,
+             because at 390 the mark draws about 110px wide and "BREEDING AND
+             HORSE TRADING" comes out under two pixels tall. It cannot be:
+             both white files without the strapline read "ON AXE". Checked at
+             source, not at display size: logo-plain-ondark.png and the
+             high resolution "Middel 6logo zonder subtekst wit" are missing
+             the V, while both navy versions of the same artwork are whole.
+             So the phone keeps the file with the strapline until a corrected
+             white export arrives. Never repaired here: the mark is theirs. -->
         <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
              alt="Von Axe, breeding and horse trading" width="600" height="264">
         <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
@@ -3232,18 +3294,18 @@
         <a class="hmore__all" href="/foals">All foals <span class="a" aria-hidden="true">&rarr;</span></a>
       </div>
       <div class="hmore__wrap">
-        <ul class="hmore__run" id="more-foals" tabindex="0"
+        <ul class="hmore__run ec__grid" id="more-foals" tabindex="0"
             aria-label="More foals">
-          <li><a class="hz__card" href="/foals/coolrock-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/coolrock-von-axe-z-1.jpg" alt="Coolrock Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Coolrock Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Chacco Blue · Sold to Ireland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/cumax-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cumax-von-axe-z-1.jpg" alt="Cumax Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cumax Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Cumano · Sold to Ireland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/cosmopolitan-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cosmopolitan Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Comme il Faut · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/cacao-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Argentina"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#74ACDF"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><circle cx="12" cy="8" r="1.7" fill="#F6B40E"/></svg></span>Sold<span class="visually-hidden"> to Argentina</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cacao Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Chacco Blue · Sold to Argentina</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/dourkhet-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span></span><span class="hz__body"><h3 class="hz__name">Dourkhet Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Dourkhan Hero Z · Sold to the United States</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/hyori-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span></span><span class="hz__body"><h3 class="hz__name">Hyōri Von Axe Z</h3><span class="hz__meta">Born 2024 · Colt · Heartbreaker · Sold to Great Britain</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/bellavista-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/bellavista-von-axe-z-1.jpg" alt="Bellavista Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Bellavista Von Axe Z</h3><span class="hz__meta">Born 2023 · Filly · Balou du Reventon · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/delilah-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Delilah Von Axe Z</h3><span class="hz__meta">Born 2024 · Filly · Dominator 2000 Z · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/baltimore-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Baltimore Von Axe Z</h3><span class="hz__meta">Born 2025 · Colt · Big Star · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/foals/purple-rain-von-axe-z"><span class="hz__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Purple Rain Von Axe Z</h3><span class="hz__meta">Born 2023 · Filly · Pegase van't Ruytershof · Sold to Poland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li class="ec" data-sold="true" data-find="coolrock von axe z chacco blue x halifax van het kluizebos x carthago zangersheide out of hardrock z's sister! 14/06/2024 ireland colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/coolrock-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/coolrock-von-axe-z-1.jpg" alt="Coolrock Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Coolrock Von Axe Z</h3><span class="ec__line">Chacco Blue &times; Hypnotic JT Z<br>Colt · Zangersheide · Sold to Ireland</span><span class="ec__say">OUT OF HARDROCK Z'S SISTER!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="cumax von axe z cumano x halifax van het kluizebos x carthago zangersheide out of hardrock's sister! 06/06/2024 ireland colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/cumax-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/cumax-von-axe-z-1.jpg" alt="Cumax Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Cumax Von Axe Z</h3><span class="ec__line">Cumano &times; Hypnotic JT Z<br>Colt · Zangersheide · Sold to Ireland</span><span class="ec__say">OUT OF HARDROCK'S SISTER!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="cosmopolitan von axe z comme il faut x kannan x darco zangersheide out of glasgow's sister! 16/05/2024 italy colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/cosmopolitan-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/cosmopolitan-von-axe-z-1.jpg" alt="Cosmopolitan Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Cosmopolitan Von Axe Z</h3><span class="ec__line">Comme il Faut &times; Patchina van’t Merelsnest<br>Colt · Zangersheide · Sold to Italy</span><span class="ec__say">OUT OF GLASGOW'S SISTER!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="cacao von axe z chacco blue x cornet obolensky x calato x darco x chin chin zangersheide best stallion in the world crossed with one of the best families! 08/04/2024 argentina colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/cacao-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/cacao-von-axe-z-1.jpg" alt="Cacao Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Argentina"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#74ACDF"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><circle cx="12" cy="8" r="1.7" fill="#F6B40E"/></svg></span>Sold<span class="visually-hidden"> to Argentina</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Cacao Von Axe Z</h3><span class="ec__line">Chacco Blue &times; Cortina de Jolie Z<br>Colt · Zangersheide · Sold to Argentina</span><span class="ec__say">Best stallion in the world crossed with one of the best families!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="dourkhet von axe z dourkhan hero z x cornet obolensky x calato x darco x chin chin zangersheide 3 great damlines in one match! china touch hero x usha van't roosakker out of qerlychin mare! 13/05/2024 the united states colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/dourkhet-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/dourkhet-von-axe-z-1.jpg" alt="Dourkhet Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to the United States"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><g fill="#B31942"><rect y="0" width="24" height="2.28"/><rect y="4.57" width="24" height="2.28"/><rect y="9.14" width="24" height="2.28"/><rect y="13.71" width="24" height="2.29"/></g><rect width="10" height="8.6" fill="#0A3161"/></svg></span>Sold<span class="visually-hidden"> to the United States</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Dourkhet Von Axe Z</h3><span class="ec__line">Dourkhan Hero Z &times; Cortina de Jolie Z<br>Colt · Zangersheide · Sold to the United States</span><span class="ec__say">3 Great damlines in one match! China touch Hero x Usha van't Roosakker out of Qerlychin mare!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="hyōri von axe z heartbreaker x kannan x darco zangersheide out of the sister of glasgow van't merelsnest! sapphire family 06/03/2024 great britain colt" data-sex="colt" data-studbook="zangersheide" data-born="2024"><a class="ec__a" href="/foals/hyori-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/hyori-von-axe-z-1.jpg" alt="Hyōri Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Great Britain"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.1"/></svg></span>Sold<span class="visually-hidden"> to Great Britain</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Hyōri Von Axe Z</h3><span class="ec__line">Heartbreaker &times; Patchina van’t Merelsnest<br>Colt · Zangersheide · Sold to Great Britain</span><span class="ec__say">OUT OF THE SISTER OF GLASGOW VAN'T MERELSNEST! SAPPHIRE FAMILY</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="bellavista von axe z balou du reventon x halifax van het kluizebos x carthago zangersheide from the sister of hardrock z! 03/03/2023 italy filly" data-sex="filly" data-studbook="zangersheide" data-born="2023"><a class="ec__a" href="/foals/bellavista-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/bellavista-von-axe-z-1.jpg" alt="Bellavista Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2023</span></span><span class="ec__box"><h3 class="ec__name">Bellavista Von Axe Z</h3><span class="ec__line">Balou du Reventon &times; Hypnotic JT Z<br>Filly · Zangersheide · Sold to Italy</span><span class="ec__say">From the sister of Hardrock Z!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="delilah von axe z dominator 2000 z x cartoon x chacco blue scope is never enough! 01/05/2024 poland filly" data-sex="filly" data-studbook="" data-born="2024"><a class="ec__a" href="/foals/delilah-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/delilah-von-axe-z-1.jpg" alt="Delilah Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2024</span></span><span class="ec__box"><h3 class="ec__name">Delilah Von Axe Z</h3><span class="ec__line">Dominator 2000 Z &times; Cartoona Blue<br>Filly · Sold to Poland</span><span class="ec__say">Scope is never enough!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="baltimore von axe z big star x cornet obolensky x calato x darco x chin chin zangersheide fuga de muze - narcotique ii - qerlychin! 02/04/2025 poland colt" data-sex="colt" data-studbook="zangersheide" data-born="2025"><a class="ec__a" href="/foals/baltimore-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/baltimore-von-axe-z-1.jpg" alt="Baltimore Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2025</span></span><span class="ec__box"><h3 class="ec__name">Baltimore Von Axe Z</h3><span class="ec__line">Big Sar &times; Cortina de Jolie Z<br>Colt · Zangersheide · Sold to Poland</span><span class="ec__say">Fuga de Muze · Narcotique II · Qerlychin!</span></span></a></li>
+          <li class="ec" data-sold="true" data-find="purple rain von axe z pegase van't ruytershof x cartoon x chacco blue zangersheide from great jumping mare and sport family! 01/05/2023 poland filly" data-sex="filly" data-studbook="zangersheide" data-born="2023"><a class="ec__a" href="/foals/purple-rain-von-axe-z"><span class="ec__win"><img src="/assets/img/horses/purple-rain-von-axe-z-1.jpg" alt="Purple Rain Von Axe Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Poland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg></span>Sold<span class="visually-hidden"> to Poland</span></span></span><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Born 2023</span></span><span class="ec__box"><h3 class="ec__name">Purple Rain Von Axe Z</h3><span class="ec__line">Pegase van’t Ruytershof &times; Cartoona Blue<br>Filly · Zangersheide · Sold to Poland</span><span class="ec__say">FROM GREAT JUMPING MARE AND SPORT FAMILY!</span></span></a></li>
         </ul>
         <button class="topics-arrow topics-arrow--prev" data-rail="more-foals" data-dir="-1"
                 aria-label="Previous foals">&larr;</button>

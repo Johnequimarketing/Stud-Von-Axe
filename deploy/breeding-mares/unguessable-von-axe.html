@@ -87,7 +87,15 @@
     /* The air around the centred hero statement. Applied ONCE, by
        .hero__body, which owns the gap above and below. The card reel adds
        no padding of its own, so the two gaps stay equal. */
-    --hero-air: clamp(60px, 10.5vh, 132px);
+    /* Lowered on 4 Sep, at Mark's word: the statement should sit clear below
+       the jumping horse rather than against him. It only moves the foot of
+       the block, because the head of it is held by the header instead: that
+       padding is a max() of this and the bar's own height, and the bar wins.
+       Measured at 1440x900 the block gained 31px of clearance, at 1366x768
+       27 and at 1920x1080 38. The horse's own position in the frame changes
+       with the screen's shape, so this buys room everywhere rather than
+       pinning the type to one photograph. */
+    --hero-air: clamp(44px, 7vh, 96px);
 
     /* Height the sticky header reserves, and gives back to the hero. */
 
@@ -557,6 +565,19 @@
     .hd__row{ gap:.75rem; }
     .hd__end{ gap:.75rem; }
   }
+
+  /* The contact button comes off the phone so the mark can stand in the
+     middle of the bar. Measured, not guessed: the mark's centre sat 55px
+     left of the screen's at 390, 44 at 520 and 38 at 560, because the right
+     hand group carried a 103px button against a 40px burger on the left.
+     From 600 it is 17px, which is the width of the WhatsApp circle against
+     the burger and reads as centred.
+     560 is where it flips and is already a breakpoint in this stylesheet,
+     so no new one is invented for it. Contact is not lost: it is in the
+     drawer above, and in the footer. */
+  @media (max-width: 560px){
+    .hd .btn-sm{ display:none; }
+  }
   @media (max-width: 560px){
     .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
     /* The plate is narrower than the old full width bar, so at this width
@@ -621,19 +642,38 @@
      touching the rule. The client's own frame (3 Sep) has the horse in the
      upper middle and sand at the foot, which is why the statement now sits
      at the bottom rather than in the centre: the horse is never covered. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); }
-  /* An even navy veil across the WHOLE frame, not a gradient that only
-     bites at the foot. The old ramp dropped to 10% at 28%, which let the
-     photograph's own detail fight the centred statement. It deepens over
-     the last quarter so the topic plaques still have a dark base. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); z-index:0; }
+
+  /* Where the frame goes soft. Nothing at the top, all of it at the foot,
+     so the horse and the trees keep their edge and the words below him sit
+     on something quiet. --hero-haze is where the softening starts, as a
+     share of the frame's height; it is a variable because the photograph
+     they are sending will not have the horse in the same place. */
+  .hero__haze{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    -webkit-mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+    mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+  }
+
+  /* The navy, rising from the foot. It used to be an even veil across the
+     whole frame, which is what made the top of the photograph read grey
+     rather than green: Mark asked on 4 Sep for the upper part in its own
+     colour and the blue coming up from below. The top keeps a breath of it,
+     .14, because the menu stands there in white type and measured against
+     bare photograph the brightest pixel behind it is the rider's white
+     breeches. The letters carry their own shadow as well. */
   .hero__bg::after{
     content:"";
-    position:absolute; inset:0;
+    position:absolute; inset:0; z-index:2;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .70) 0%,
-      rgba(var(--veil-rgb), .64) 42%,
-      rgba(var(--veil-rgb), .72) 74%,
-      rgba(var(--veil-rgb), .90) 100%);
+      rgba(var(--veil-rgb), .14) 0%,
+      rgba(var(--veil-rgb), .18) 30%,
+      rgba(var(--veil-rgb), .52) 58%,
+      rgba(var(--veil-rgb), .82) 80%,
+      rgba(var(--veil-rgb), .94) 100%);
   }
 
   /* ---------- centred statement ---------- */
@@ -643,6 +683,15 @@
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
     padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
+  }
+  /* The language dock is fixed to the foot of the screen on the left, and
+     once the buttons are wide enough they reach across to it: measured, at
+     560 the row starts at 99 and the dock ends at 116, and lowering the
+     statement put their boxes two pixels into each other. Above 620 the row
+     starts well clear of it, so the floor is only here. 620 is already a
+     breakpoint in this stylesheet. */
+  @media (max-width: 620px){
+    .hero__body{ padding-bottom:76px; }
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
@@ -3029,6 +3078,10 @@
           <a href="/foals" class="hd__drawerOnly">Foals</a>
           <a href="/embryos" class="hd__drawerOnly">Embryos</a>
           <a href="/icsi-semen" class="hd__drawerOnly">ICSI semen</a>
+          <!-- Contact belongs in the drawer because the button beside the
+               mark is hidden on a phone, and it was the only way to the
+               contact page from this bar. Mark, 4 Sep. -->
+          <a href="/contact" class="hd__drawerOnly">Contact us</a>
         </nav>
       </div>
 
@@ -3043,6 +3096,15 @@
              in the supplied artwork, not in the resize. Until a corrected
              export arrives this keeps the white file that is complete.
              Never repaired here: the mark is theirs. -->
+        <!-- 4 Sep: the phone was going to be served the strapline free file,
+             because at 390 the mark draws about 110px wide and "BREEDING AND
+             HORSE TRADING" comes out under two pixels tall. It cannot be:
+             both white files without the strapline read "ON AXE". Checked at
+             source, not at display size: logo-plain-ondark.png and the
+             high resolution "Middel 6logo zonder subtekst wit" are missing
+             the V, while both navy versions of the same artwork are whole.
+             So the phone keeps the file with the strapline until a corrected
+             white export arrives. Never repaired here: the mark is theirs. -->
         <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
              alt="Von Axe, breeding and horse trading" width="600" height="264">
         <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
@@ -3270,11 +3332,11 @@
           <li><a class="hz__card" href="/breeding-mares/cardesse-von-axe"><span class="hz__win"><img src="/assets/img/horses/cardesse-von-axe-1.jpg" alt="Cardesse Von Axe" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Italy"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg></span>Sold<span class="visually-hidden"> to Italy</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cardesse Von Axe</h3><span class="hz__meta">Born 2018 · Mare · Sold to Italy</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/hayley-vd-berghoeve-z"><span class="hz__win typo"><p>HEARTBREAKER X DIAMANT DE SEMILLY X DARCO X CHIN CHIN</p><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Hayley vd Berghoeve Z</h3><span class="hz__meta">Born 2024 · Mare · Heartbreaker</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/cabri-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/cabri-vd-berghoeve-z-1.jpg" alt="Cabri vd Berghoeve Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Cabri vd Berghoeve Z</h3><span class="hz__meta">Born 2020 · Mare · Cornet Obolensky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/breeding-mares/patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/patchina-vant-merelsnest-1.jpg" alt="Patchina Van’t Merelsnest" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Belgium"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#2D2926"/><rect x="8" width="8" height="16" fill="#FAE042"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to Belgium</span></span></span></span><span class="hz__body"><h3 class="hz__name">Patchina Van’t Merelsnest</h3><span class="hz__meta">Born 2015 · Mare · Kannan · Sold to Belgium</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/carma-vd-bergheove-z"><span class="hz__win"><img src="/assets/img/horses/carma-vd-bergheove-z-1.jpg" alt="Carma vd Bergheove Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Carma vd Bergheove Z</h3><span class="hz__meta">Born 2024 · Mare · Comme il Faut</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
-          <li><a class="hz__card" href="/breeding-mares/hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Brazil"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.2 21.6 8 12 13.8 2.4 8Z" fill="#FFDF00"/><circle cx="12" cy="8" r="3.4" fill="#002776"/></svg></span>Sold<span class="visually-hidden"> to Brazil</span></span></span></span><span class="hz__body"><h3 class="hz__name">Hypnotic JT Z</h3><span class="hz__meta">Born 2018 · Mare · Halifax van het Kluizebos · Sold to Brazil</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/cortina-de-jolie-z"><span class="hz__win"><img src="/assets/img/horses/cortina-de-jolie-z-1.jpg" alt="Cortina de Jolie Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Cortina de Jolie Z</h3><span class="hz__meta">Born 2019 · Mare · Cornet Obolesnky</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/agousha-vd-berghoeve-z"><span class="hz__win"><img src="/assets/img/horses/agousha-vd-berghoeve-z-1.jpg" alt="Agousha vd Berghoeve Z" loading="lazy"><span class="hz__seam"><span class="hz__tag">Available</span></span></span><span class="hz__body"><h3 class="hz__name">Agousha vd Berghoeve Z</h3><span class="hz__meta">Born 2022 · Mare · Aganix du Seigneur</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/breeding-mares/patchina-vant-merelsnest"><span class="hz__win"><img src="/assets/img/horses/patchina-vant-merelsnest-1.jpg" alt="Patchina Van’t Merelsnest" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Belgium"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#2D2926"/><rect x="8" width="8" height="16" fill="#FAE042"/><rect x="16" width="8" height="16" fill="#ED2939"/></svg></span>Sold<span class="visually-hidden"> to Belgium</span></span></span></span><span class="hz__body"><h3 class="hz__name">Patchina Van’t Merelsnest</h3><span class="hz__meta">Born 2015 · Mare · Kannan · Sold to Belgium</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
+          <li><a class="hz__card" href="/breeding-mares/hypnotic-jt-z"><span class="hz__win"><img src="/assets/img/horses/hypnotic-jt-z-1.jpg" alt="Hypnotic JT Z" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Brazil"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.2 21.6 8 12 13.8 2.4 8Z" fill="#FFDF00"/><circle cx="12" cy="8" r="3.4" fill="#002776"/></svg></span>Sold<span class="visually-hidden"> to Brazil</span></span></span></span><span class="hz__body"><h3 class="hz__name">Hypnotic JT Z</h3><span class="hz__meta">Born 2018 · Mare · Halifax van het Kluizebos · Sold to Brazil</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/cartoona-blue"><span class="hz__win"><img src="/assets/img/horses/cartoona-blue-1.jpg" alt="Cartoona Blue" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Lithuania"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#FDB913"/><rect y="5.33" width="24" height="5.34" fill="#006A44"/><rect y="10.67" width="24" height="5.33" fill="#C1272D"/></svg></span>Sold<span class="visually-hidden"> to Lithuania</span></span></span></span><span class="hz__body"><h3 class="hz__name">Cartoona Blue</h3><span class="hz__meta">Born 2011 · Mare · Cartoon · Sold to Lithuania</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
           <li><a class="hz__card" href="/breeding-mares/waikiki-vd-berghoeve"><span class="hz__win"><img src="/assets/img/horses/waikiki-vd-berghoeve-1.jpg" alt="Waikiki vd Berghoeve" loading="lazy"><span class="hz__seam hz__seam--sold"><span class="hz__tag hz__tag--sold" title="Sold to Ireland"><span class="hz__flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#169B62"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#FF883E"/></svg></span>Sold<span class="visually-hidden"> to Ireland</span></span></span></span><span class="hz__body"><h3 class="hz__name">Waikiki vd Berghoeve</h3><span class="hz__meta">Born 2022 · Mare · Catoki · Sold to Ireland</span><span class="hz__view">View <span class="a" aria-hidden="true">&rarr;</span></span></span></a></li>
         </ul>

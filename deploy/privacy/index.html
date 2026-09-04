@@ -87,7 +87,15 @@
     /* The air around the centred hero statement. Applied ONCE, by
        .hero__body, which owns the gap above and below. The card reel adds
        no padding of its own, so the two gaps stay equal. */
-    --hero-air: clamp(60px, 10.5vh, 132px);
+    /* Lowered on 4 Sep, at Mark's word: the statement should sit clear below
+       the jumping horse rather than against him. It only moves the foot of
+       the block, because the head of it is held by the header instead: that
+       padding is a max() of this and the bar's own height, and the bar wins.
+       Measured at 1440x900 the block gained 31px of clearance, at 1366x768
+       27 and at 1920x1080 38. The horse's own position in the frame changes
+       with the screen's shape, so this buys room everywhere rather than
+       pinning the type to one photograph. */
+    --hero-air: clamp(44px, 7vh, 96px);
 
     /* Height the sticky header reserves, and gives back to the hero. */
 
@@ -557,6 +565,19 @@
     .hd__row{ gap:.75rem; }
     .hd__end{ gap:.75rem; }
   }
+
+  /* The contact button comes off the phone so the mark can stand in the
+     middle of the bar. Measured, not guessed: the mark's centre sat 55px
+     left of the screen's at 390, 44 at 520 and 38 at 560, because the right
+     hand group carried a 103px button against a 40px burger on the left.
+     From 600 it is 17px, which is the width of the WhatsApp circle against
+     the burger and reads as centred.
+     560 is where it flips and is already a breakpoint in this stylesheet,
+     so no new one is invented for it. Contact is not lost: it is in the
+     drawer above, and in the footer. */
+  @media (max-width: 560px){
+    .hd .btn-sm{ display:none; }
+  }
   @media (max-width: 560px){
     .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
     /* The plate is narrower than the old full width bar, so at this width
@@ -621,19 +642,38 @@
      touching the rule. The client's own frame (3 Sep) has the horse in the
      upper middle and sand at the foot, which is why the statement now sits
      at the bottom rather than in the centre: the horse is never covered. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); }
-  /* An even navy veil across the WHOLE frame, not a gradient that only
-     bites at the foot. The old ramp dropped to 10% at 28%, which let the
-     photograph's own detail fight the centred statement. It deepens over
-     the last quarter so the topic plaques still have a dark base. */
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); z-index:0; }
+
+  /* Where the frame goes soft. Nothing at the top, all of it at the foot,
+     so the horse and the trees keep their edge and the words below him sit
+     on something quiet. --hero-haze is where the softening starts, as a
+     share of the frame's height; it is a variable because the photograph
+     they are sending will not have the horse in the same place. */
+  .hero__haze{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    -webkit-mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+    mask-image:linear-gradient(180deg,
+      transparent var(--hero-haze, 48%), #000 calc(var(--hero-haze, 48%) + 26%), #000 100%);
+  }
+
+  /* The navy, rising from the foot. It used to be an even veil across the
+     whole frame, which is what made the top of the photograph read grey
+     rather than green: Mark asked on 4 Sep for the upper part in its own
+     colour and the blue coming up from below. The top keeps a breath of it,
+     .14, because the menu stands there in white type and measured against
+     bare photograph the brightest pixel behind it is the rider's white
+     breeches. The letters carry their own shadow as well. */
   .hero__bg::after{
     content:"";
-    position:absolute; inset:0;
+    position:absolute; inset:0; z-index:2;
     background:linear-gradient(180deg,
-      rgba(var(--veil-rgb), .70) 0%,
-      rgba(var(--veil-rgb), .64) 42%,
-      rgba(var(--veil-rgb), .72) 74%,
-      rgba(var(--veil-rgb), .90) 100%);
+      rgba(var(--veil-rgb), .14) 0%,
+      rgba(var(--veil-rgb), .18) 30%,
+      rgba(var(--veil-rgb), .52) 58%,
+      rgba(var(--veil-rgb), .82) 80%,
+      rgba(var(--veil-rgb), .94) 100%);
   }
 
   /* ---------- centred statement ---------- */
@@ -643,6 +683,15 @@
     text-align:center;
     /* Clear of the bar, which now carries the mark inside it. */
     padding:max(var(--hero-air), calc(var(--hd-top) + var(--hd-plate) + 28px)) var(--gutter) var(--hero-air);
+  }
+  /* The language dock is fixed to the foot of the screen on the left, and
+     once the buttons are wide enough they reach across to it: measured, at
+     560 the row starts at 99 and the dock ends at 116, and lowering the
+     statement put their boxes two pixels into each other. Above 620 the row
+     starts well clear of it, so the floor is only here. 620 is already a
+     breakpoint in this stylesheet. */
+  @media (max-width: 620px){
+    .hero__body{ padding-bottom:76px; }
   }
   /* Type comes from the one eyebrow rule; only the spacing is local. */
   .hero-eyebrow{ margin-bottom:clamp(1rem, 2.2vh, 1.6rem); }
@@ -2310,6 +2359,10 @@
           <a href="/foals" class="hd__drawerOnly">Foals</a>
           <a href="/embryos" class="hd__drawerOnly">Embryos</a>
           <a href="/icsi-semen" class="hd__drawerOnly">ICSI semen</a>
+          <!-- Contact belongs in the drawer because the button beside the
+               mark is hidden on a phone, and it was the only way to the
+               contact page from this bar. Mark, 4 Sep. -->
+          <a href="/contact" class="hd__drawerOnly">Contact us</a>
         </nav>
       </div>
 
@@ -2324,6 +2377,15 @@
              in the supplied artwork, not in the resize. Until a corrected
              export arrives this keeps the white file that is complete.
              Never repaired here: the mark is theirs. -->
+        <!-- 4 Sep: the phone was going to be served the strapline free file,
+             because at 390 the mark draws about 110px wide and "BREEDING AND
+             HORSE TRADING" comes out under two pixels tall. It cannot be:
+             both white files without the strapline read "ON AXE". Checked at
+             source, not at display size: logo-plain-ondark.png and the
+             high resolution "Middel 6logo zonder subtekst wit" are missing
+             the V, while both navy versions of the same artwork are whole.
+             So the phone keeps the file with the strapline until a corrected
+             white export arrives. Never repaired here: the mark is theirs. -->
         <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
              alt="Von Axe, breeding and horse trading" width="600" height="264">
         <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
