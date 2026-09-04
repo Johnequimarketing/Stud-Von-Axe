@@ -169,8 +169,14 @@ const GROUPS = {
     find: 'Try a sire, a damline or a country.',
     label: 'Sport horses',
     kicker: 'The sport horses',
-    title: 'Bred here, <em>jumping elsewhere</em>',
-    intro: 'Horses out of this programme that have gone on into sport, and mares that can still do both. Bred here, sold direct, listed with where they went.',
+    title: 'Selected for potential. <em>Developed for performance.</em>',
+    intro: 'Some are bred here. Others are carefully sourced and developed. What they share is the quality, potential and attention that define every horse we choose to represent.',
+    /* Their paragraph is 167 characters, so the search result gets its own
+       cut. And the horse pages need a third line: metaDescription appends
+       the group's first sentence, which here is "Some are bred here", and
+       that reads as a fragment under a horse's name. */
+    desc: 'Some are bred here, others carefully sourced and developed, all chosen for the quality and potential we want to represent.',
+    metaLine: 'Bred here or carefully sourced, and developed for the sport',
     img: 'arch-sport.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'horse', many: 'horses', singular: 'sport horse',
     ctaH: 'Looking for a particular <em>horse</em>?',
