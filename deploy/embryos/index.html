@@ -1244,6 +1244,91 @@
     display:block; margin-top:.3rem; font-size:14px;
     color:rgba(255,255,255,.72); max-width:52ch;
   }
+  /* ---- the five archives, as tabs ----
+     One plate: a title, a row of tabs, and a panel that changes under them.
+     Written so the tabs work as plain links first and become a tablist only
+     once the script has run, which is why the bar holds <a> elements and not
+     buttons: without JavaScript they navigate. */
+  .svt{ display:block; }
+  .svt__title{
+    margin:0 0 1rem; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.15; color:var(--color-white);
+  }
+  .svt__bar{
+    display:flex; flex-wrap:wrap; gap:.2rem 1.6rem;
+    border-bottom:1px solid var(--color-line-invert);
+  }
+  .svt__tab{
+    position:relative; padding:.55rem 0 .9rem;
+    font-family:var(--font-body); font-weight:700; font-size:11.5px;
+    letter-spacing:.14em; text-transform:uppercase;
+    color:rgba(255,255,255,.62); white-space:nowrap;
+    transition:color .3s var(--ease);
+  }
+  /* The gold rule under the open tab. On its own element rather than a
+     border, so it can slide the width of the word without moving the row. */
+  .svt__tab::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+    background:var(--color-gold); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s var(--ease);
+  }
+  .svt__tab:hover{ color:rgba(255,255,255,.9); }
+  .svt__tab[aria-selected="true"]{ color:var(--color-white); }
+  .svt__tab[aria-selected="true"]::after{ transform:scaleX(1); }
+  .svt__tab:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
+
+  .svt__panel{ display:grid; gap:clamp(1.1rem,2.4vw,1.9rem); margin-top:clamp(1.2rem,2.4vw,1.7rem); }
+  /* The button lives twice: once at the end of the words for the stacked
+     layout, once in its own column for the wide one. Only ever one of them
+     is drawn, and both carry the same href, written by the same line of
+     script.
+     These two lines stand BEFORE the media query that flips them. Written
+     after it they win on source order at the same specificity and the button
+     disappears at every width, which is exactly what happened the first time
+     and what happened to the About photograph's order an hour earlier. */
+  .svt__act{ display:none; }
+
+  /* Three columns from 900: the picture, the words, and the button on its
+     own at the end, which is where Mark asked for it. Two columns left a
+     stretch of empty navy to the right of a 46ch paragraph. Below 900 they
+     stack and the button falls under the words. */
+  @media (min-width:900px){
+    .svt__panel{ grid-template-columns:minmax(0,.36fr) minmax(0,1fr) auto; align-items:center;
+      gap:clamp(1.4rem,3vw,2.6rem); }
+    .svt__copy{ justify-content:center; }
+    .svt__copy .hz__cta{ display:none; }
+    .svt__act{ display:flex; }
+  }
+  .svt__panel[hidden]{ display:none; }
+  .svt__win{
+    position:relative; display:block; aspect-ratio:4/3; overflow:hidden;
+    border-radius:var(--card-radius); background:rgba(255,255,255,.06);
+  }
+  .svt__win img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:opacity .4s var(--ease);
+  }
+  /* The picture fades out and back rather than cutting, which is the whole
+     reason the panel is worth a script at all. */
+  .svt.is-turning .svt__win img,
+  .svt.is-turning .svt__copy{ opacity:0; }
+  .svt__copy{ display:flex; flex-direction:column; align-items:flex-start; gap:.55rem;
+    transition:opacity .3s var(--ease); }
+  .svt__count{
+    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-gold);
+  }
+  .svt__d{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.78); max-width:46ch; }
+  .svt__copy .hz__cta{ margin-top:.45rem; }
+  @media (max-width:560px){
+    /* The bar scrolls rather than wrapping to three lines on a phone. */
+    .svt__bar{ flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:1.2rem; }
+    .svt__bar::-webkit-scrollbar{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .svt__tab, .svt__tab::after, .svt__win img, .svt__copy{ transition:none; }
+  }
+
   .hz__cta{
     display:inline-flex; align-items:center; gap:.55em; white-space:nowrap;
     background:var(--color-gold); color:var(--color-navy);
