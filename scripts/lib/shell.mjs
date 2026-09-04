@@ -228,14 +228,22 @@ export const archiveCss = `
      plate keeps its own rounded corners, which is what makes the cut read
      as a plate laid on the photograph rather than a band across it. */
   .arch{ padding-top:0; }
-  .arch .flt{
-    position:relative; z-index:2; margin-top:calc(-1 * var(--cut-bar));
-    /* A deeper shadow than the bar wears on ivory. Measured at 1440: it sits
-       64px inside the photograph and 26 below it, and the top two thirds are
-       navy on a navy veil, so without this the plate has no edge and reads
-       as part of the picture rather than laid on it. */
-    box-shadow:0 30px 70px -30px rgba(var(--veil-rgb),.75);
+  /* The grid keeps the page gutter; only the tray is wider than .wrap. */
+  .arch > .wrap{ padding-top:clamp(1.6rem,3vw,2.4rem); }
+  /* The tray carries the ivory up into the photograph and the bar rides on
+     it, so the plate sits in a notch of the page's own ground rather than
+     lying on the picture. Same width rule and same padding as the homepage
+     tray, and the radius on the two corners that meet the hero. */
+  .arch-tray{
+    position:relative; z-index:2;
+    width:min(calc(var(--wrap) + (2 * var(--tray-pad))), 100% - (2 * var(--gutter)));
+    margin:calc(-1 * var(--cut-bar)) auto 0;
+    padding:var(--tray-pad);
+    background:var(--color-base);
+    border-radius:var(--tray-radius) var(--tray-radius) 0 0;
   }
+  /* No lift of its own any more: the notch is the separation. */
+  .arch .flt{ margin-bottom:0; }
   .abcta{ padding-block:var(--sec-half) var(--sec-full); }
   .arch__count{
     font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.22em;

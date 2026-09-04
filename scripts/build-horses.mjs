@@ -1140,7 +1140,14 @@ const gridSection = (group, list) => {
   const noun = (n) => `${count(n)} ${n === 1 ? group.one : group.many}`;
   return `
   <section class="arch">
-    <div class="wrap">
+    <!-- The tray: the page's own ivory, reaching up into the photograph and
+         carrying the bar with it. Rounded at the top, where it meets the
+         hero. This is the homepage's trick the other way round: there the
+         tray hangs down out of the ivory into the band below, here it climbs
+         up out of the ivory into the hero above. Mark, 4 Sep: the bar lying
+         straight on the photograph was not it; the ground has to come with
+         it. -->
+    <div class="arch-tray">
       <div class="flt" data-filter data-open="${openOn}">
         <div class="flt__search">
           <label class="visually-hidden" for="flt-q">Search these ${esc(group.many)}</label>
@@ -1165,6 +1172,9 @@ ${facetBar(group, list)}
              leave, not a claim in a sentence. -->
       </div>
 
+    </div>
+
+    <div class="wrap">
       <p class="flt__none" data-none>Nothing matches that. ${group.find}</p>
 
       <ul class="hz__grid${group.grid || ''}" data-grid>
