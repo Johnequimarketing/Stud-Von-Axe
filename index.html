@@ -2397,32 +2397,29 @@
        what they asked to keep, and it is the way in, so it carries all five.
        Mark, 3 Sep. -->
   <section class="hz" id="horses">
-    <div class="wrap">
-      <div class="hz__head">
-        <div>
-          <p class="plaque">The horses</p>
-          <h2 class="hz__h">Pedigree and <em>produce</em>.</h2>
-          <p class="hz__intro">The mares we breed from, the foals on the ground, and the horses bred here that have gone on.</p>
-        </div>
-        <div class="hz__filters" role="group" aria-label="Filter the horses">
-          <button class="hz__chip" data-hz="all"       aria-pressed="true">All horses <span class="c"></span></button>
-          <button class="hz__chip" data-hz="sport"     aria-pressed="false">Sport horses <span class="c"></span></button>
-          <button class="hz__chip" data-hz="broodmare" aria-pressed="false">Broodmares <span class="c"></span></button>
-          <button class="hz__chip" data-hz="foal"      aria-pressed="false">Foals <span class="c"></span></button>
-        </div>
-      </div>
-
-      <ul class="hz__grid" id="hz-run"></ul>
-
-    </div>
-
+    <!-- The card run and its chips came off on 4 Sep at Mark's word, for the
+         second time: the client's round took them on 3 Sep, they went back
+         the same day, and this is his decision after seeing both. What he
+         asked to keep is this band, so the section is the band now.
+         With no run there is nothing to count, so the band is written out
+         rather than rendered: it named "six of forty five" and offered a
+         link per archive, and only the links still mean anything. The five
+         are here because the embryos and the ICSI semen have no other route
+         on this page. -->
     <div class="hz-tray">
       <div class="hz__banner">
         <div>
-          <b id="hz-bannerTitle">Every horse we have</b>
-          <span id="hz-bannerNote"></span>
+          <b>Every horse we have</b>
+          <span>Sport horses, breeding mares and foals on the ground, and the
+          same damlines as embryos and as ICSI semen. Each on a page of its own.</span>
         </div>
-        <div class="hz__more" id="hz-bannerMore"></div>
+        <div class="hz__more">
+          <a class="hz__cta" href="sport-horses/">Sport horses <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="breeding-mares/">Breeding mares <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="foals/">Foals <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="embryos/">Embryos <span class="a" aria-hidden="true">&rarr;</span></a>
+          <a class="hz__cta" href="icsi-semen/">ICSI semen <span class="a" aria-hidden="true">&rarr;</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -2491,37 +2488,15 @@
        putting our stallion on your mare or by taking a cross we have already
        made. -->
   <section class="pg" id="programme">
+    <!-- The two runs, ICSI semen against embryos, came off on 4 Sep at
+         Mark's word: the same decision as the horses above. What he asked to
+         keep is the invitation that used to sit between them, so the section
+         is the invitation now. Both are still reached from the band above
+         this one and from the menu. -->
     <div class="wrap">
-      <div class="pg__head">
-        <div>
-          <p class="plaque">The programme</p>
-          <h2 class="pg__h">Two ways into the same <em>damlines</em>.</h2>
-        </div>
-        <p class="pg__intro">Whether you breed the cross yourself with our semen or take one we have
-        already made, the bloodline is identical. What changes is who does the waiting.</p>
-      </div>
-
-      <!-- Four across, and the first card is the section itself: the title,
-           the line and the button. The three beside it are the run. -->
-      <div class="pgr">
-        <div class="pgr__fix">
-          <h3 class="pgr__t">ICSI semen</h3>
-          <p class="pgr__d">ICSI semen from the stallions we breed with ourselves, through Avantea
-          in Cremona.</p>
-          <a class="pgr__cta" href="icsi-semen/">See the stallions <span class="a" aria-hidden="true">&rarr;</span></a>
-        </div>
-        <div class="pgr__wrap">
-          <ul class="pgr__run" id="pg-semen"></ul>
-          <button class="topics-arrow topics-arrow--prev" data-run="pg-semen" data-dir="-1"
-                  aria-label="Previous stallions">&larr;</button>
-          <button class="topics-arrow topics-arrow--next" data-run="pg-semen" data-dir="1"
-                  aria-label="Next stallions">&rarr;</button>
-        </div>
-      </div>
-
-      <!-- The invitation, set between the two runs on purpose: it breaks the
-           section in half so the semen and the embryos read as two separate
-           offers rather than one long strip of cards. -->
+      <!-- The invitation. It used to break this section in half so the semen
+           and the embryos read as two offers rather than one strip of cards;
+           the runs are gone and it is the section. -->
       <div class="pcta">
         <div class="pcta__bg" aria-hidden="true">
           <img src="assets/img/hero-grey-wide.jpg" alt="" loading="lazy">
@@ -2536,23 +2511,6 @@
             <a href="contact/" class="btn btn-gold btn-pill">Get in touch</a>
             <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
                class="btn btn-ghost btn-pill">Message on WhatsApp</a>
-        </div>
-      </div>
-
-      <!-- The mirror: run on the left, fixed card on the right. -->
-      <div class="pgr pgr--rev">
-        <div class="pgr__wrap">
-          <ul class="pgr__run" id="pg-embryos"></ul>
-          <button class="topics-arrow topics-arrow--prev" data-run="pg-embryos" data-dir="-1"
-                  aria-label="Previous crosses">&larr;</button>
-          <button class="topics-arrow topics-arrow--next" data-run="pg-embryos" data-dir="1"
-                  aria-label="Next crosses">&rarr;</button>
-        </div>
-        <div class="pgr__fix">
-          <h3 class="pgr__t">Embryos</h3>
-          <p class="pgr__d">Frozen from our own damlines, or already carrying in Lanaken. Every cross
-          is made on pedigree and on what the mare has produced.</p>
-          <a class="pgr__cta" href="embryos/">See the crosses <span class="a" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
 
@@ -2779,7 +2737,6 @@
   </script>
 </footer>
 
-<script src="horses-home.js"></script>
 <script src="news-data.js"></script>
 <script src="flags.js"></script>
 <script>
@@ -2916,108 +2873,11 @@
   }).join('');
 })();
 
-  /* ── The horses: filter and run ───────────────────────────────────────
-     Every card here comes from horses-home.js, which scripts/build-horses.mjs
-     writes out of horses-data.js, so the grid, the archives and the sixty
-     horse pages are one set of facts.
-     Until 31 Aug this block also carried a second copy of the herd: fourteen
-     horses typed out by hand in August, kept as a fallback for a browser that
-     never loaded the file. Nothing rendered it any more, but the chips still
-     counted it, so they read 7 / 3 / 4 over runs of six, and the line under
-     the grid said seven foals when there are twenty one. A fallback that has
-     drifted is worse than an empty grid, because it is wrong quietly. It is
-     gone, and every number below is counted from the same file as the cards. */
-  (function(){
-    var run = document.getElementById('hz-run');
-    if(!run || !window.HOME_HORSES) return;
-    var H = window.HOME_HORSES, C = H.counts, W = H.words;
-    function words(n){ return W[n] || String(n); }
-
-    var RUNS  = { all:H.all, sport:H.sport, broodmare:H.mares, foal:H.foals };
-    /* A chip counts its whole group, not the handful on show. */
-    var TOTAL = { all:C.sport + C.mares + C.foals, sport:C.sport,
-                  broodmare:C.mares, foal:C.foals };
-    /* What the banner says and what it opens. On a single chip that is one
-       archive and one button. On All there is no page that holds every horse,
-       so rather than picking one and mislabelling it, all three are offered. */
-    var ARCH = {
-      sport:     { href:'sport-horses/',   label:'sport horses',   title:'Every sport horse we have' },
-      broodmare: { href:'breeding-mares/', label:'breeding mares', title:'Every breeding mare we have' },
-      foal:      { href:'foals/',          label:'foals',          title:'Every foal we have' },
-      /* Not chips: the run holds horses on the ground and these two are not
-         that. They are in this list because the band is the way into the
-         archives and it offered three of the five, so between the hero and
-         the footer the page linked to neither of the other two. Mark, 3 Sep. */
-      embryo:    { href:'embryos/',        label:'embryos',        title:'Every cross we have' },
-      semen:     { href:'icsi-semen/',     label:'ICSI semen',     title:'Every stallion we have' }
-    };
-
-    var note  = document.getElementById('hz-bannerNote');
-    var title = document.getElementById('hz-bannerTitle');
-    var more  = document.getElementById('hz-bannerMore');
-
-    function shownIn(html){ return (html.match(/<li/g) || []).length; }
-
-    function render(filter){
-      var html = RUNS[filter] || RUNS.all;
-      run.innerHTML = html;
-
-      if(note){
-        var shown = shownIn(html), total = TOTAL[filter] || TOTAL.all;
-        var tail = filter === 'all'
-          ? 'Sport horses, broodmares and foals. The stallions and the crosses are further down in the programme.'
-          : '';
-        note.textContent = [shown < total
-          ? 'Showing ' + words(shown) + ' of ' + words(total) + '.' : '', tail]
-          .filter(Boolean).join(' ');
-      }
-
-      if(title) title.textContent = filter === 'all'
-        ? 'Every horse we have' : (ARCH[filter] || {}).title || 'Every horse we have';
-
-      if(more){
-        var arrow = ' <span class="a" aria-hidden="true">&rarr;</span>';
-        more.innerHTML = filter === 'all'
-          ? Object.keys(ARCH).map(function(k){
-              return '<a class="hz__cta" href="' + ARCH[k].href + '">See all '
-                   + ARCH[k].label + arrow + '</a>';
-            }).join('')
-          : '<a class="hz__cta" href="' + ARCH[filter].href + '">See all '
-              + ARCH[filter].label + arrow + '</a>';
-      }
-    }
-
-    document.querySelectorAll('[data-hz]').forEach(function(b){
-      var c = b.querySelector('.c');
-      if(c) c.textContent = TOTAL[b.dataset.hz];
-      b.addEventListener('click', function(){
-        document.querySelectorAll('[data-hz]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-        b.setAttribute('aria-pressed','true');
-        render(b.dataset.hz);
-      });
-    });
-
-    render('all');
-  })();
-
-  /* ── The stallions ────────────────────────────────────────────────────
-     The run in the programme where the foals used to be. Same card as the
-     ICSI semen archive, so a stallion says one thing in both places. */
-  (function(){
-    var run = document.getElementById('pg-semen');
-    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.stallions;
-  })();
-
-  /* ── The embryos ─────────────────────────────────────────────────────
-     Their own list, read from horses-data.js through the cards that
-     scripts/build-horses.mjs writes. This block used to hold a second copy
-     of the crosses, typed out in August, and it had gone stale: their list
-     is six damlines and it claimed five. Every card now points at the
-     cross's own page and carries the photograph from it. */
-  (function(){
-    var run = document.getElementById('pg-embryos');
-    if(run && window.HOME_HORSES) run.innerHTML = HOME_HORSES.embryos;
-  })();
+  /* The three blocks that filled this page's runs stood here: the horses
+     grid with its chips, the stallions rail and the crosses rail. All three
+     runs came off on 4 Sep, so all three are gone with them, and so is the
+     horses-home.js they read. The arrow controller below stays: the news
+     rail still uses it. */
 
   /* ── The two programme runs share the hero run's arrow behaviour ──────
      Same rAF tween as the topics run, and for the same reason: engines
