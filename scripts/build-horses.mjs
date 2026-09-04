@@ -12,7 +12,7 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, esc, askScript, archiveCss, headerFor } from './lib/shell.mjs';
-import { orderSection, orderCss, orderScript } from './lib/order-form.mjs';
+import { orderScript } from './lib/order-form.mjs';
 
 const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8') + '; return HORSES;')();
 /* The thirteen stallions of the ICSI semen line. Their own site has no
@@ -165,7 +165,12 @@ const GROUPS = {
   },
 };
 
-const CSS = homeCss + pageHeroCss + storyCss + archiveCss + orderCss + `
+/* orderCss is out of the bundle: the five step order form came off the
+   stallion pages on 4 Sep and nothing draws .ord any more, so its rules were
+   riding on all hundred and four pages for nothing. scripts/lib/order-form.mjs
+   stays on disk, whole: if the configurator is wanted again it is this import
+   and one call, not a rebuild. */
+const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   /* ── horse pages only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the top of the page and the header hangs over it. */
@@ -1476,7 +1481,7 @@ const stallionPage = (horse, group, list) => {
 ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
         </div>
         <div class="eh__acts">
-          <a href="#order" class="btn btn-gold btn-pill">Order this stallion</a>
+          <a href="#ask" class="btn btn-gold btn-pill">Ask about this stallion</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -1485,7 +1490,12 @@ ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><spa
   </section>
 
 ${pedigreeSection(horse)}
-${orderSection(horseName(horse.name))}
+<!-- The same form every other horse on this site carries, not the five step
+     configurator. Mark, 4 Sep: a stallion page is a page you write from, and
+     the stepped order form asked for a mare, a season, a shipping address and
+     a vet before the visitor had said hello. The form knows which stallion it
+     is on and says so, which is what the configurator's first step was for. -->
+${contactSection(horse)}
 ${crossesSection(horse)}
 ${moreSection(horse, group, list)}
 `;
