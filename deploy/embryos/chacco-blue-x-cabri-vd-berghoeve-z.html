@@ -112,6 +112,10 @@
     --nav-gap: 1.25rem;
     --sec-full: clamp(3.5rem, 6vw, 5.5rem);
     --sec-half: clamp(2rem, 3.4vw, 3rem);
+    /* The third step, and it has one job: a boundary is normally made of two
+       sections each giving half of it, and a full bleed hero has no padding
+       to give. The section under one takes the whole gap itself. */
+    --sec-double: calc(var(--sec-full) * 2);
     /* The page's shape language. It was square at 2px; these three values
        turn every card, plate and photograph together. */
     /* The type scale. Every literal pixel size on this site comes from this
@@ -954,7 +958,12 @@
     position:relative; isolation:isolate;
     /* Less air at the foot than at the head: the horses grid below opens
        with its own generous top padding, so the two were stacking up. */
-    padding:var(--sec-full) 0;
+    /* Twice the step at the head, once at the foot. Every other boundary on
+       this page is made of two sections each giving half; the hero above is
+       a full bleed photograph with no padding to give, so this one carried
+       86px where the rest carry 172 and read as cramped. The section after a
+       full bleed neighbour takes the whole gap. */
+    padding:var(--sec-double) 0 var(--sec-full);
     /* the mark bleeds off the right edge and is clipped here */
     overflow-x:clip;
   }
@@ -1235,7 +1244,11 @@
   .hz-tray{
     position:relative; z-index:3;
     width:min(calc(var(--wrap) + (2 * var(--tray-pad))), 100% - (2 * var(--gutter)));
-    margin:clamp(1.6rem,3vw,2.4rem) auto calc(-1 * var(--cut-band));
+    /* Only the lift into the services band below is its own. The 1.6 to
+       2.4rem it used to carry on top was the air under the card run that
+       stood above it; that run went and the margin stayed, adding 38px to
+       the section's padding. */
+    margin:0 auto calc(-1 * var(--cut-band));
     padding:var(--tray-pad);
     background:var(--color-base);
     border-radius:0 0 var(--tray-radius) var(--tray-radius);
@@ -1324,7 +1337,7 @@
      stretch of empty navy to the right of a 46ch paragraph. Below 900 they
      stack and the button falls under the words. */
   @media (min-width:900px){
-    .svt__panel{ grid-template-columns:minmax(0,.36fr) minmax(0,1fr) auto; align-items:center;
+    .svt__panel{ grid-template-columns:minmax(0,.52fr) minmax(0,1fr) auto; align-items:center;
       gap:clamp(1.4rem,3vw,2.6rem); }
     .svt__copy{ justify-content:center; }
     .svt__copy .hz__cta{ display:none; }
@@ -1332,7 +1345,10 @@
   }
   .svt__panel[hidden]{ display:none; }
   .svt__win{
-    position:relative; display:block; aspect-ratio:4/3; overflow:hidden;
+    /* Three by two rather than four by three: these are 1920 by 853
+       panoramas and the squarer the window, the narrower the slice of them
+       it shows. */
+    position:relative; display:block; aspect-ratio:3/2; overflow:hidden;
     border-radius:var(--card-radius); background:rgba(255,255,255,.06);
   }
   .svt__win img{
@@ -1363,22 +1379,16 @@
      ivory. Six cells in three columns from 1000: the card and five results,
      which fills two rows exactly. */
   .res{ padding-block:var(--sec-full); }
+  /* One grid, not a block beside a list. Three columns from 1000, the navy
+     card taking two of them on the first row and the results filling the
+     rest: one card finishes that row, three make the next. That is the
+     layout Mark sent, and a nested grid could not make the two rows line up
+     because the block and the cards were measuring themselves separately. */
   .res__grid{ display:grid; gap:var(--card-gap); }
-  .res__run{ display:grid; gap:var(--card-gap); }
+  @media (min-width:620px){ .res__grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
   @media (min-width:1000px){
-    .res__grid{ grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:start; }
-    .res__run{ grid-template-columns:repeat(2, minmax(0,1fr)); }
-  }
-  @media (min-width:620px) and (max-width:999px){
-    .res__run{ grid-template-columns:repeat(2, minmax(0,1fr)); }
-  }
-  /* An odd number of results leaves the last one beside a hole. It takes the
-     whole row instead, which reads as the end of the list rather than as a
-     card that lost its neighbour. Written on the count rather than on the
-     five there are today: a sixth result makes it stop, a seventh brings it
-     back, and nobody has to remember. */
-  @media (min-width:620px){
-    .res__card:last-child:nth-child(odd){ grid-column:1 / -1; }
+    .res__grid{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+    .res__intro{ grid-column:span 2; }
   }
   .res__intro{
     display:flex; flex-direction:column; align-items:flex-start; gap:.7rem;
@@ -1401,6 +1411,12 @@
   }
   /* The number is the point of the card, so it is the display face at a size
      nothing else on the card comes near. */
+  /* What the number is. Three of these are a price and two are a placing,
+     and the figures alone do not say which. */
+  .res__kind{
+    font-family:var(--font-body); font-weight:700; font-size:9.5px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--color-ink-soft);
+  }
   .res__mark{
     font-family:var(--font-display); font-weight:400; font-style:italic;
     font-size:clamp(1.6rem,2.4vw,2.2rem); line-height:1; color:var(--color-gold);
@@ -1670,7 +1686,11 @@
      breaking the page's edges, which a full bleed band did badly here. */
   .pcta{
     position:relative; isolation:isolate; overflow:hidden;
-    margin-block:clamp(2.4rem,5vw,3.6rem);
+    /* No margin of its own. It carried 2.4 to 3.6rem top and bottom for when
+       it sat between the programme's two runs and had to break them apart.
+       The runs went on 4 Sep and the margin stayed, which put 58px on top of
+       the section's own 86 and made this one gap the widest on the page. The
+       section's padding is the rhythm now, here as everywhere. */
     border-radius:var(--plate-radius);
     padding:clamp(1.8rem,4vw,3.2rem);
     background:var(--color-navy-deep); color:var(--color-white);

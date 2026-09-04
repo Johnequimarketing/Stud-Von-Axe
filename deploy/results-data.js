@@ -11,9 +11,15 @@
    No dates. Their own stamps were unreliable enough that the news pages show
    none either; a wrong date on a result is worse than no date.
 
-   Order: the sport result first, then the prices, largest first. */
+   Order: the sport result first, then the prices, largest first.
+
+   `kind` says what the number is, because three of these five are what a
+   horse made at auction and two are where one finished in the ring, and a
+   card showing 150,000 beside a card showing 1st has to say which is which.
+   Mark asked exactly that on 4 Sep. */
 var RESULTS = [
   {
+    kind: 'In the ring',
     mark: '1st',
     horse: 'Calleryama',
     sire: 'Casall x Contender x Corrado',
@@ -23,6 +29,7 @@ var RESULTS = [
     from: 'calleryama-wins-barcelona',
   },
   {
+    kind: 'Sold at auction',
     mark: '€150,000',
     horse: 'Contouch SVA',
     sire: 'Conthargos x Toulon x Cento',
@@ -31,6 +38,7 @@ var RESULTS = [
     from: 'contouch-top-price',
   },
   {
+    kind: 'Sold at auction',
     mark: '€57,000',
     horse: 'Foal out of the three quarter sister of Hypnotic JT Z',
     event: 'Zangersheide auction, Lanaken',
@@ -38,6 +46,7 @@ var RESULTS = [
     from: 'results-from-lanaken',
   },
   {
+    kind: 'Sold at auction',
     mark: '€40,000',
     horse: 'Colt out of Cortina de Jolie Z',
     sire: 'by For Pleasure',
@@ -46,6 +55,7 @@ var RESULTS = [
     from: 'results-from-lanaken',
   },
   {
+    kind: 'In the ring',
     mark: 'Final',
     horse: 'Costantino Van’t Ravennest',
     event: 'Seven year olds, World Championships, Lanaken',
