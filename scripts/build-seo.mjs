@@ -30,7 +30,14 @@ const walk = (dir) => readdirSync(dir).flatMap((name) => {
     if (SKIP_DIR.has(name) || name.startsWith('v2-') || name.startsWith('.')) return [];
     return walk(full);
   }
-  return name.endsWith('.html') ? [full] : [];
+  /* A leading underscore means "not a page of this site". audit.sh's page
+     list has honoured it since the list was made to find pages rather than
+     hold a typed one, and audit-site.mjs's walk was taught it on 4 Sep when
+     an export of one section failed the sitemap check. This was the third
+     place that had to know, and it did not: it put that same export in the
+     sitemap, so the check then failed the other way round. One convention,
+     read the same way in all three. */
+  return name.endsWith('.html') && !name.startsWith('_') ? [full] : [];
 });
 
 /* An internal document is one that says so in its own head. That is the same

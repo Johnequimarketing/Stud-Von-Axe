@@ -50,11 +50,11 @@ var HOME_TABS = [
     "label": "ICSI semen",
     "href": "/icsi-semen",
     "img": "/assets/img/arch-semen.jpg",
-    "blurb": "ICSI semen from the stallions we breed with ourselves.",
+    "blurb": "ICSI semen from twenty four stallions, ours and the ones we breed with.",
     "cta": "See all stallions",
-    "count": 13,
+    "count": 24,
     "noun": "stallions",
-    "words": "thirteen"
+    "words": "twenty four"
   }
 ];
 if (typeof module !== 'undefined') { module.exports = HOME_TABS; }

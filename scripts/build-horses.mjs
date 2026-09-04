@@ -133,14 +133,18 @@ const GROUPS = {
     find: 'Try a name or a sire.',
     label: 'ICSI semen',
     kicker: 'ICSI semen',
-    title: 'The stallions <em>behind our crosses</em>',
-    intro: 'ICSI semen from the stallions we breed with ourselves. Availability per stallion on request.',
+    title: 'The stallions <em>you can book</em>',
+    /* Their own card of 4 Sep says it in six words, and the six are theirs:
+       fixed prices, no extra costs for embryos produced. It is the only
+       thing on that card besides the names and the two telephone numbers,
+       so it belongs in the line that opens the page. */
+    intro: 'ICSI semen from twenty four stallions, ours and the ones we breed with. Fixed prices, and no extra cost for the embryos produced.',
     img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
     one: 'stallion', many: 'stallions', singular: 'stallion',
     /* No chips. Every other archive filters on something the data knows:
        sold against available, frozen against carrying. Here it knows
-       nothing yet, so a chip would be a control that does nothing. The
-       search box stays, because thirteen names are worth searching. */
+       nothing to split on, so a chip would be a control that does nothing.
+       The search box stays, and twenty four names earn it. */
     chips: false,
     card: (h, full) => stallionCard(h, full), grid: ' ec__grid',
     ctaH: 'Order your ICSI <em>through us</em>.',
