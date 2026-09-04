@@ -581,6 +581,15 @@
      drawer above, and in the footer. */
   @media (max-width: 560px){
     .hd .btn-sm{ display:none; }
+    /* And the mark goes to the true middle of the bar. Taking the button off
+       got it from 55px out to 13, but 13 it stayed: in the drawer the two
+       side groups stop being equal columns, so the row shares its free space
+       between a burger, an empty group and a circle, and the middle item
+       lands wherever that leaves it. Centred on the bar itself instead, out
+       of the flow, so it cannot be pushed by what stands beside it.
+       Measured after: 0px from the centre of the bar and of the screen. */
+    .hd__row{ position:relative; }
+    .brand{ position:absolute; left:50%; transform:translateX(-50%); }
   }
   @media (max-width: 560px){
     .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
@@ -705,6 +714,10 @@
      statement put their boxes two pixels into each other. Above 620 the row
      starts well clear of it, so the floor is only here. 620 is already a
      breakpoint in this stylesheet. */
+  /* The floor that kept the button row clear of the language dock. The row
+     went on 4 Sep and the sub line is narrower than it was, but the dock is
+     still fixed to the foot on the left, so the statement keeps its distance
+     from it. Re-measured after the buttons came off. */
   @media (max-width: 620px){
     .hero__body{ padding-bottom:76px; }
   }
@@ -730,10 +743,9 @@
     max-width:52ch;
     color:#f2ede4dd;
   }
-  .hero-actions{
-    margin-top:clamp(1.6rem, 3.6vh, 2.5rem);
-    display:flex; gap:.7rem; flex-wrap:wrap; justify-content:center;
-  }
+  /* .hero-actions is gone, 4 Sep: the two buttons came off so the statement
+     falls further down the frame. Both destinations are in the bar above and
+     in the band below, so nothing is lost but the height they took. */
 
   /* ---------- horse marquee ---------- */
   /* No padding-top here on purpose: .hero__body already owns the gap
@@ -1373,81 +1385,6 @@
   @media (prefers-reduced-motion: reduce){
     .svt__tab, .svt__tab::after, .svt__win img, .svt__copy{ transition:none; }
   }
-
-  /* ---- the record ----
-     A navy card that says what the section is, and the results beside it on
-     ivory. Six cells in three columns from 1000: the card and five results,
-     which fills two rows exactly. */
-  .res{ padding-block:var(--sec-full); }
-  /* One grid, not a block beside a list. Three columns from 1000, the navy
-     card taking two of them on the first row and the results filling the
-     rest: one card finishes that row, three make the next. That is the
-     layout Mark sent, and a nested grid could not make the two rows line up
-     because the block and the cards were measuring themselves separately. */
-  .res__grid{ display:grid; gap:var(--card-gap); }
-  @media (min-width:620px){ .res__grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
-  @media (min-width:1000px){
-    .res__grid{ grid-template-columns:repeat(3, minmax(0,1fr)); }
-    .res__intro{ grid-column:span 2; }
-  }
-  .res__intro{
-    position:relative; isolation:isolate; overflow:hidden;
-    display:flex; flex-direction:column; align-items:flex-start; gap:.7rem;
-    background:var(--color-navy-deep); color:var(--color-white);
-    border-radius:var(--plate-radius); padding:clamp(1.5rem,3vw,2.2rem);
-  }
-  /* .res__ghost, not .res__mark: the figure on every result card was already
-     called .res__mark, so these rules landed on the prices and the placings
-     and made them 90px wide, absolutely positioned and six per cent opaque.
-     That is what put 21px of sideways scroll on the homepage at 390 and 15
-     at 768.
-     Sized by the plate's height and contained, the rule every other ghost on
-     this site follows: the file is 420 by 914, so sizing it by width stands
-     it twice as tall as the box it is in and the box clips its ears. */
-  .res__ghost{
-    position:absolute; z-index:0; pointer-events:none; user-select:none;
-    right:clamp(-8px, 1vw, 1.4rem); top:10%; bottom:10%;
-    width:clamp(90px, 12vw, 170px); opacity:.06;
-  }
-  .res__ghost img{ width:100%; height:100%; object-fit:contain; object-position:right center; display:block; }
-  .res__intro > :not(.res__ghost){ position:relative; z-index:1; }
-  .res__h{
-    margin:.2rem 0 0; font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.5rem,2vw + .5rem,2.1rem); line-height:1.08; color:var(--color-white);
-    text-wrap:balance;
-  }
-  .res__h em{ font-style:italic; color:var(--color-gold); }
-  .res__d{ margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,.76); max-width:40ch; }
-  .res__intro .hz__cta{ margin-top:.6rem; }
-
-  .res__card{
-    display:flex; flex-direction:column; gap:.35rem;
-    background:var(--color-base); border:1px solid var(--color-line);
-    border-radius:var(--plate-radius); padding:clamp(1.2rem,2.2vw,1.6rem);
-  }
-  /* The number is the point of the card, so it is the display face at a size
-     nothing else on the card comes near. */
-  /* What the number is. Three of these are a price and two are a placing,
-     and the figures alone do not say which. */
-  .res__kind{
-    font-family:var(--font-body); font-weight:700; font-size:9.5px;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--color-ink-soft);
-  }
-  .res__mark{
-    font-family:var(--font-display); font-weight:400; font-style:italic;
-    font-size:clamp(1.6rem,2.4vw,2.2rem); line-height:1; color:var(--color-gold);
-  }
-  .res__name{
-    margin:.5rem 0 0; font-family:var(--font-body); font-weight:700;
-    font-size:15.5px; line-height:1.3; letter-spacing:.02em;
-    text-transform:uppercase; color:var(--color-navy);
-  }
-  .res__sire{ font-family:var(--font-display); font-style:italic; font-size:14px; color:var(--color-ink-soft); }
-  .res__rule{ height:1px; background:var(--color-line); margin:.7rem 0 .1rem; }
-  .res__event{ font-size:14.5px; line-height:1.5; color:var(--color-ink); }
-  .res__with{ font-size:14px; color:var(--color-ink-soft); }
-  .res__with b{ font-weight:700; color:var(--color-navy); }
-  .res__note{ margin-top:.35rem; font-size:13.5px; line-height:1.5; color:var(--color-ink-soft); }
 
   .hz__cta{
     /* Forty is the floor the audit holds every control to, and this pill
@@ -2642,95 +2579,6 @@
     .flt__count{ margin-left:0; }
   }
 
-  /* The rail is the configurator: five numbered steps down the navy half,
-     the one you are on in gold, the ones behind you in white. It is the
-     progress bar and the way back in one control. */
-  .ord__rail{ list-style:none; margin:1.6rem 0; padding:0; display:grid; gap:.15rem; }
-  .ord__tab{
-    display:flex; align-items:center; gap:.8rem; width:100%;
-    /* .78rem rather than .6: at this type the row came out 37 pixels tall and
-       the rail is how the form is walked on a phone. */
-    padding:.78rem .7rem; border-radius:var(--ctl-radius);
-    background:none; border:0; cursor:pointer; text-align:left;
-    color:rgba(255,255,255,.5);
-    transition:background .3s var(--ease), color .3s var(--ease);
-  }
-  .ord__tab:hover{ color:var(--color-white); background:rgba(255,255,255,.06); }
-  .ord__tab .ord__no{
-    flex:none; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; color:inherit;
-  }
-  .ord__tt{ font-family:var(--font-display); font-size:15px; line-height:1.2; }
-  .ord__tab.is-done{ color:rgba(255,255,255,.82); }
-  .ord__tab[aria-current="step"]{ background:var(--color-gold); color:var(--color-navy); }
-  .ord__tab[aria-current="step"] .ord__tt{ font-weight:400; }
-
-  /* The panel. A fieldset carries a border and padding of its own in every
-     browser; this one is a plain block, and its legend is the heading. */
-  .ord__step{ border:0; margin:0; padding:0; min-width:0; }
-  /* The hidden attribute is a browser default of display:none, and a default
-     loses to any class in the sheet. .ask__row is display:flex and .btn is
-     display:inline-flex, so a row waiting on an answer and a button waiting
-     for its step were both drawn anyway: the company name stood there with
-     nothing choosing it, and Next and Send were on screen at once. */
-  .ord__step[hidden]{ display:none; }
-  .ask__row[hidden]{ display:none; }
-  .ord__acts .btn[hidden]{ display:none; }
-  .ord__h{
-    display:flex; align-items:baseline; gap:.7rem; padding:0; margin:0 0 .3rem;
-    font-family:var(--font-display); font-weight:400;
-    font-size:clamp(1.3rem,1.4vw + .8rem,1.7rem); line-height:1.1; color:var(--color-ink);
-  }
-  .ord__h .ord__no{
-    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    color:var(--color-gold);
-  }
-  .ord__lead{ margin:0 0 1.4rem; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
-  .ord__grid{ display:grid; gap:0 1rem; }
-  @media (min-width:620px){ .ord__grid{ grid-template-columns:1fr 1fr; } }
-  /* The three that need the full width whatever the screen does. */
-  .ord__grid > .ask__row:has(textarea),
-  .ord__grid > .ord__check{ grid-column:1 / -1; }
-  .ord__hint{
-    font-family:var(--font-body); font-size:12.5px; line-height:1.4;
-    color:var(--color-ink-soft); margin-top:-.15rem;
-  }
-  .ord__step input[readonly]{
-    background:var(--color-base-alt); color:var(--color-ink); cursor:default;
-  }
-
-  /* A checkbox is the one control here that reads left to right. */
-  .ord__check label{
-    display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
-    font-family:var(--font-body); font-weight:400; font-size:14px; line-height:1.5;
-    letter-spacing:0; text-transform:none; color:var(--color-ink);
-  }
-  .ord__check input{ flex:none; width:18px; height:18px; margin-top:.15rem; accent-color:var(--color-gold); }
-  .ord__check a{ color:var(--color-navy); border-bottom:1px solid var(--color-line); }
-  .ord__check a:hover{ border-color:var(--color-gold); }
-
-  /* The summary. Their answers back to them, in the order they were asked. */
-  .ord__sum{ margin:0 0 1.4rem; display:grid; gap:0; }
-  .ord__sum div{
-    display:flex; flex-wrap:wrap; gap:.2rem 1rem; justify-content:space-between;
-    padding:.55rem 0; border-top:1px solid var(--color-line);
-  }
-  .ord__sum dt{
-    font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--color-gold);
-  }
-  .ord__sum dd{ margin:0; font-family:var(--font-display); font-size:15px; color:var(--color-ink);
-    text-align:right; }
-
-  .ord__acts{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem; }
-  .ord__note{ margin:1rem 0 0; font-size:14px; line-height:1.55; color:var(--color-ink-soft); }
-  .ord__note.is-bad{ color:var(--color-navy); }
-  /* The form is a walk, not a column: it starts at the top of its half.
-     Named on its own class rather than scoped through .ord, so the class in
-     the markup has a rule of its own and the audit can see it. It is later in
-     the sheet than .ask__form, so it wins the centring. */
-  .ord__form{ justify-content:flex-start; }
-
   /* ── horse pages only. Everything above is the homepage stylesheet. ── */
 
   /* The hero starts at the top of the page and the header hangs over it. */
@@ -3440,7 +3288,7 @@
           <div><span class="eh__k">Dam</span><span class="eh__v">Tequila van’t Spieveld</span></div>
         </div>
         <div class="eh__acts">
-          <a href="#order" class="btn btn-gold btn-pill">Order this stallion</a>
+          <a href="#ask" class="btn btn-gold btn-pill">Ask about this stallion</a>
           <a href="https://wa.me/393495918565" target="_blank" rel="noopener"
              class="btn btn-ghost btn-pill">Message on WhatsApp</a>
         </div>
@@ -3468,109 +3316,58 @@
     </div>
   </section>
 
+<!-- The same form every other horse on this site carries, not the five step
+     configurator. Mark, 4 Sep: a stallion page is a page you write from, and
+     the stepped order form asked for a mare, a season, a shipping address and
+     a vet before the visitor had said hello. The form knows which stallion it
+     is on and says so, which is what the configurator's first step was for. -->
 
-  <section class="ask ord" id="order">
+  <section class="ask" id="ask">
     <div class="wrap">
       <div class="ask__box">
         <div class="ask__side">
           <div>
-            <p class="plaque">ICSI semen</p>
-            <h2 class="ask__h">Order your ICSI <em>through us</em></h2>
-            <p class="ask__lead">Five steps. We answer with what we hold of Echo van't Spieveld, what it
-            costs and when it can leave.</p>
+            <p class="plaque">Get in touch</p>
+            <h2 class="ask__h">Ask us about <em>Echo van't Spieveld</em></h2>
+            <p class="ask__lead">Write to us and we will get back to you.</p>
           </div>
-          <ol class="ord__rail">
-            <li><button class="ord__tab" type="button" data-go="0" aria-current="step">
-              <span class="ord__no">01</span><span class="ord__tt">Your details</span></button></li>
-            <li><button class="ord__tab" type="button" data-go="1">
-              <span class="ord__no">02</span><span class="ord__tt">Billing address</span></button></li>
-            <li><button class="ord__tab" type="button" data-go="2">
-              <span class="ord__no">03</span><span class="ord__tt">Stallion and mare</span></button></li>
-            <li><button class="ord__tab" type="button" data-go="3">
-              <span class="ord__no">04</span><span class="ord__tt">Delivery</span></button></li>
-            <li><button class="ord__tab" type="button" data-go="4">
-              <span class="ord__no">05</span><span class="ord__tt">Summary</span></button></li>
-          </ol>
           <div class="ask__people">
             <a class="ask__p" href="tel:+393495918565">
               <span class="ask__pk">Elisabetta</span><span class="ask__pv">+39 349 591 8565</span></a>
+            <a class="ask__p" href="tel:+393483953433">
+              <span class="ask__pk">Adriano</span><span class="ask__pv">+39 348 395 3433</span></a>
             <a class="ask__p" href="mailto:studvonaxe@gmail.com">
               <span class="ask__pk">By mail</span><span class="ask__pv">studvonaxe@gmail.com</span></a>
           </div>
         </div>
-
-        <form class="ask__form ord__form" data-horse="Echo van't Spieveld">
-          <fieldset class="ord__step">
-            <legend class="ord__h"><span class="ord__no">01</span> Your details</legend>
-            <p class="ord__lead">So we know who we are talking to.</p>
-            <div class="ord__grid">
-              <div class="ask__row"><label for="ord-title">Title</label><select id="ord-title" name="title" data-req="1"><option value="">Choose one</option><option>Mr</option><option>Mrs</option></select></div>
-              <div class="ask__row"><label for="ord-initials">Initials <span class="ask__opt">optional</span></label><input type="text" id="ord-initials" name="initials" placeholder="J.A."></div>
-              <div class="ask__row"><label for="ord-firstname">First name</label><input type="text" id="ord-firstname" name="firstname" data-req="1"></div>
-              <div class="ask__row"><label for="ord-lastname">Last name</label><input type="text" id="ord-lastname" name="lastname" data-req="1"></div>
-              <div class="ask__row"><label for="ord-kind">Type of enquiry</label><select id="ord-kind" name="kind" data-req="1"><option value="">Choose one</option><option>Private</option><option>Business</option></select></div>
-              <div class="ask__row" data-when="kind" data-is="Business" hidden><label for="ord-company">Company name</label><input type="text" id="ord-company" name="company" data-req="1"></div>
-              <div class="ask__row"><label for="ord-tel">Telephone</label><input type="tel" id="ord-tel" name="tel" data-req="1" placeholder="+39 349 591 8565"></div>
-              <div class="ask__row"><label for="ord-email">Email</label><input type="email" id="ord-email" name="email" data-req="1" placeholder="you@example.com"></div>
+        <form class="ask__form" data-horse="Echo van't Spieveld">
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-name">Your name</label>
+              <input id="ask-name" name="name" type="text" required autocomplete="name" placeholder="Name">
             </div>
-          </fieldset>
-          <fieldset class="ord__step" hidden>
-            <legend class="ord__h"><span class="ord__no">02</span> Billing address</legend>
-            <p class="ord__lead">Also the delivery address, unless you say otherwise below.</p>
-            <div class="ord__grid">
-              <div class="ask__row"><label for="ord-street">Street and number</label><input type="text" id="ord-street" name="street" data-req="1"></div>
-              <div class="ask__row"><label for="ord-postcode">Postcode</label><input type="text" id="ord-postcode" name="postcode" data-req="1"></div>
-              <div class="ask__row"><label for="ord-town">Town</label><input type="text" id="ord-town" name="town" data-req="1"></div>
-              <div class="ask__row"><label for="ord-country">Country</label><select id="ord-country" name="country" data-req="1"><option value="">Choose one</option><option>Italy</option><option>Belgium</option><option>Netherlands</option><option>Germany</option><option>France</option><option>Other</option></select></div>
-              <div class="ask__row ord__check"><label for="ord-same"><input type="checkbox" id="ord-same" name="same" checked><span>The delivery address is the same as the billing address</span></label></div>
-              <div class="ask__row" data-when="same" data-is="" hidden><label for="ord-dstreet">Delivery street and number</label><input type="text" id="ord-dstreet" name="dstreet" data-req="1"></div>
-              <div class="ask__row" data-when="same" data-is="" hidden><label for="ord-dpostcode">Delivery postcode</label><input type="text" id="ord-dpostcode" name="dpostcode" data-req="1"></div>
-              <div class="ask__row" data-when="same" data-is="" hidden><label for="ord-dtown">Delivery town</label><input type="text" id="ord-dtown" name="dtown" data-req="1"></div>
-              <div class="ask__row" data-when="same" data-is="" hidden><label for="ord-dcountry">Delivery country</label><select id="ord-dcountry" name="dcountry" data-req="1"><option value="">Choose one</option><option>Italy</option><option>Belgium</option><option>Netherlands</option><option>Germany</option><option>France</option><option>Other</option></select></div>
+            <div class="ask__row">
+              <label for="ask-email">Email</label>
+              <input id="ask-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
             </div>
-          </fieldset>
-          <fieldset class="ord__step" hidden>
-            <legend class="ord__h"><span class="ord__no">03</span> Stallion and mare</legend>
-            <p class="ord__lead">The stallion is the page you came from. Tell us the mare.</p>
-            <div class="ord__grid">
-              <div class="ask__row"><label for="ord-stallion">Stallion</label><input type="text" id="ord-stallion" name="stallion" value="Echo van't Spieveld" readonly></div>
-              <div class="ask__row"><label for="ord-mare">Name of the mare</label><input type="text" id="ord-mare" name="mare" data-req="1"></div>
-              <div class="ask__row"><label for="ord-ueln">Life number of the mare <span class="ask__opt">optional</span></label><input type="text" id="ord-ueln" name="ueln" placeholder="UELN"></div>
-              <div class="ask__row"><label for="ord-studbook">Studbook of the mare <span class="ask__opt">optional</span></label><input type="text" id="ord-studbook" name="studbook" placeholder="KWPN, BWP, Zangersheide"></div>
-            </div>
-          </fieldset>
-          <fieldset class="ord__step" hidden>
-            <legend class="ord__h"><span class="ord__no">04</span> Delivery</legend>
-            <p class="ord__lead">When you want it and anything we should know.</p>
-            <div class="ord__grid">
-              <div class="ask__row"><label for="ord-date">Preferred delivery date</label><input type="date" id="ord-date" name="date" data-req="1"></div>
-              <div class="ask__row"><label for="ord-form">Form of semen</label><span class="ord__hint">The only kind this stud produces</span><input type="text" id="ord-form" name="form" value="ICSI" readonly></div>
-              <div class="ask__row"><label for="ord-notes">Notes <span class="ask__opt">optional</span></label><textarea id="ord-notes" name="notes" rows="4" placeholder="The cycle of your mare, or a moment that suits you"></textarea></div>
-            </div>
-          </fieldset>
-
-          <fieldset class="ord__step" hidden>
-            <legend class="ord__h"><span class="ord__no">05</span> Summary</legend>
-            <p class="ord__lead">Everything you have filled in. This is what reaches us, word for word.</p>
-            <dl class="ord__sum"></dl>
-            <!-- Both link out since 31 Aug: a box asking somebody to agree to a
-                 document they cannot open is not worth ticking. -->
-            <div class="ask__row ord__check">
-              <label for="ord-terms"><input type="checkbox" id="ord-terms" name="terms" data-req="1">
-              <span>I agree to the <a href="/terms" target="_blank" rel="noopener">terms and conditions</a></span></label>
-            </div>
-            <div class="ask__row ord__check">
-              <label for="ord-privacy"><input type="checkbox" id="ord-privacy" name="privacy" data-req="1">
-              <span>I agree to the <a href="/privacy" target="_blank" rel="noopener">privacy policy</a></span></label>
-            </div>
-          </fieldset>
-
-          <p class="ord__note" role="status" aria-live="polite"></p>
-          <div class="ord__acts">
-            <button type="button" class="btn btn-ghost btn-pill" data-ord="back" hidden>Back</button>
-            <button type="button" class="btn btn-gold btn-pill" data-ord="next">Next <span class="a" aria-hidden="true">&rarr;</span></button>
-            <button type="submit" class="btn btn-gold btn-pill" data-ord="send" hidden>Send the order <span class="a" aria-hidden="true">&rarr;</span></button>
           </div>
+          <div class="ask__pair">
+            <div class="ask__row">
+              <label for="ask-tel">Telephone <span class="ask__opt">optional</span></label>
+              <input id="ask-tel" name="tel" type="tel" autocomplete="tel" placeholder="+39 …">
+            </div>
+            <div class="ask__row">
+              <label for="ask-about">About</label>
+              <input id="ask-about" name="about" type="text" value="Echo van't Spieveld">
+            </div>
+          </div>
+          <div class="ask__row">
+            <label for="ask-msg">Your message</label>
+            <textarea id="ask-msg" name="message" rows="4" required
+              placeholder="What would you like to know about Echo van't Spieveld?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold btn-pill">Send it <span class="a" aria-hidden="true">&rarr;</span></button>
+          <p class="ask__note" role="status"></p>
         </form>
       </div>
     </div>
@@ -3759,136 +3556,32 @@
 
 <script>
 (function(){
-  var form = document.querySelector('.ord__form');
-  if(!form) return;
-  var steps = [].slice.call(form.querySelectorAll('.ord__step'));
-  var tabs  = [].slice.call(document.querySelectorAll('.ord__tab'));
-  var back  = form.querySelector('[data-ord="back"]');
-  var next  = form.querySelector('[data-ord="next"]');
-  var send  = form.querySelector('[data-ord="send"]');
-  var note  = form.querySelector('.ord__note');
-  var sum   = form.querySelector('.ord__sum');
-  var last  = steps.length - 1;
-  var at = 0;
-  var seen = 0;   /* the furthest step that has been filled in and passed */
-
-  /* A row that only applies while another answer holds a value. The empty
-     string means "while that box is NOT ticked", which is how the delivery
-     address works. */
-  function conditions(){
-    form.querySelectorAll('[data-when]').forEach(function(row){
-      var src = form.elements[row.getAttribute('data-when')];
-      if(!src) return;
-      var want = row.getAttribute('data-is');
-      var have = src.type === 'checkbox' ? (src.checked ? 'on' : '') : src.value;
-      row.hidden = have !== want;
-    });
-  }
-  form.addEventListener('change', conditions);
-  conditions();
-
-  function live(el){
-    var row = el.closest('.ask__row');
-    return !(row && row.hidden);
-  }
-
-  function check(i){
-    var bad = [];
-    steps[i].querySelectorAll('[data-req]').forEach(function(el){
-      if(!live(el)) return;
-      var ok = el.type === 'checkbox' ? el.checked : el.value.trim() !== '';
-      if(ok && el.type === 'email') ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim());
-      if(!ok) bad.push(el);
-    });
-    if(!bad.length) return true;
-    note.textContent = bad.length === 1
-      ? 'One answer is still missing or not complete on this step.'
-      : bad.length + ' answers are still missing or not complete on this step.';
-    note.classList.add('is-bad');
-    bad[0].focus();
-    return false;
-  }
-
-  /* Every answer that was actually asked, in the order it was asked, which is
-     both the summary on screen and the body of the mail. */
-  function answers(){
-    var out = [];
-    steps.slice(0, last).forEach(function(step){
-      step.querySelectorAll('input, select, textarea').forEach(function(el){
-        if(!live(el)) return;
-        var row = el.closest('.ask__row');
-        var label = row && row.querySelector('label');
-        var name = label ? label.textContent.replace(/optional/i, '').trim() : el.name;
-        var value = el.type === 'checkbox' ? (el.checked ? 'Yes' : 'No') : el.value.trim();
-        if(value) out.push([name, value]);
-      });
-    });
-    return out;
-  }
-
-  function fill(){
-    sum.innerHTML = answers().map(function(p){
-      return '<div><dt>' + p[0] + '</dt><dd>' + p[1] + '</dd></div>';
-    }).join('');
-  }
-
-  /* The heading takes focus when somebody walks to a step, so a screen reader
-     lands on the new panel rather than staying on the button. Not on arrival:
-     that scrolled the page down to the form and drew a focus ring around a
-     heading nobody had touched. */
-  function show(i, move){
-    at = Math.max(0, Math.min(i, last));
-    steps.forEach(function(s, n){ s.hidden = n !== at; });
-    tabs.forEach(function(t, n){
-      if(n === at) t.setAttribute('aria-current', 'step');
-      else t.removeAttribute('aria-current');
-      t.classList.toggle('is-done', n < at);
-    });
-    back.hidden = at === 0;
-    next.hidden = at === last;
-    send.hidden = at !== last;
-    note.textContent = '';
-    note.classList.remove('is-bad');
-    if(at === last) fill();
-    var h = steps[at].querySelector('.ord__h');
-    if(h && move){ h.setAttribute('tabindex', '-1'); h.focus(); }
-  }
-
-  next.addEventListener('click', function(){
-    if(!check(at)) return;
-    seen = Math.max(seen, at + 1);
-    show(at + 1, true);
-  });
-  back.addEventListener('click', function(){ show(at - 1, true); });
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      var to = Number(t.getAttribute('data-go'));
-      /* Back to anything already filled in, forward only through the door. */
-      if(to > at && !check(at)) return;
-      if(to > seen && to > at + 1) return;
-      if(to > at) seen = Math.max(seen, to);
-      show(to, true);
-    });
-  });
-
+  var form = document.querySelector('.ask__form');
+  if (!form) return;
+  var note = form.querySelector('.ask__note');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    /* Walk to the step that is short of an answer and say what is missing
-       there. check() writes the line and show() clears it, so the check is
-       run again once the step is on screen: without that the send button
-       simply did nothing on a page with an unticked box. */
-    for(var i = 0; i <= last; i++){ if(!check(i)){ show(i, true); check(i); return; } }
-    var horse = form.getAttribute('data-horse');
-    var body = answers().map(function(p){ return p[0] + ': ' + p[1]; });
-    body.push('', 'Agreed to the breeding terms and the privacy statement.');
-    note.classList.remove('is-bad');
-    note.textContent = 'Opening your mail app with the order ready to send. If nothing happens, write to studvonaxe@gmail.com.';
+    if (!form.reportValidity()) return;
+    var get = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
+    var about = get('about') || form.getAttribute('data-horse');
+    var body = [
+      'About: ' + about,
+      'Name: ' + get('name'),
+      'Email: ' + get('email'),
+      get('tel') ? 'Telephone: ' + get('tel') : '',
+      '',
+      get('message')
+    /* Escaped twice on purpose: this file is a template literal, so a single
+       backslash-n written here becomes a real line break in the page and
+       leaves the string open. The closing script tag has the same trap, which
+       is why naming it inside this comment closed the script and broke all
+       sixty pages: a comment is still text in the output. */
+    ].filter(function(l){ return l !== ''; }).join('\n');
+    note.textContent = 'Opening your mail app with the message ready to send. If nothing happens, write to studvonaxe@gmail.com.';
     location.href = 'mailto:studvonaxe@gmail.com'
-      + '?subject=' + encodeURIComponent('ICSI order: ' + horse)
-      + '&body=' + encodeURIComponent(body.join('\n'));
+      + '?subject=' + encodeURIComponent('Enquiry: ' + about)
+      + '&body=' + encodeURIComponent(body);
   });
-
-  show(0, false);
 })();
 </script>
 <script>
