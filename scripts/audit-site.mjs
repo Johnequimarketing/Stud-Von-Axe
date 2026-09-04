@@ -261,6 +261,12 @@ if (existsSync(join(root, 'sitemap.xml'))) {
         if (/^(deploy|_archive|_to_delete|content|node_modules|assets|scripts|logs|v2-.*|\..*)$/.test(name.name)) continue;
         walk(rel);
       } else if (name.name.endsWith('.html')) {
+        /* A leading underscore means "not a page of this site". Every other
+           pass has honoured it since the page list was made to find pages
+           rather than hold a typed list; this one did not, and the first file
+           to prove it was an export of one section written for another site.
+           One convention, read the same way everywhere. */
+        if (name.name.startsWith('_')) continue;
         if (/<meta name="internal-doc"/.test(read(rel))) continue;
         /* The 404 is public and audited like any page, and it is the one page
            that must not be in the sitemap: that file says come and fetch this. */
