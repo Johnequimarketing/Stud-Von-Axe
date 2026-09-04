@@ -2153,7 +2153,11 @@
   /* ---- the horse cards ---- */
   .hz__card{
     position:relative; overflow:hidden; isolation:isolate;
-    min-height:clamp(320px, 27vw, 400px);
+    /* The photograph is the card here, so the card is what carries the shape.
+       It was a min-height of 27vw, which came out square at 1440 by accident
+       and at nothing else. A ratio is the rule; the min-height stays as a
+       floor for a very narrow card. */
+    aspect-ratio:1/1; min-height:280px;
     padding:0;
     background:var(--color-navy-deep);
     box-shadow:0 16px 38px -22px rgba(var(--veil-rgb), .5);
@@ -2164,7 +2168,9 @@
     position:absolute; inset:0; z-index:0;
     aspect-ratio:auto; border-radius:0; background:none;
   }
-  .hz__win img{ object-position:50% 30%; }
+  /* The middle, both cards. It was 50% 30% here and the browser's own centre
+     there. One square asks for one crop. */
+  .hz__win img{ object-position:50% 50%; }
   /* One gradient: near clear at the head so the horse shows, deep navy at
      the foot so the name never fights the picture. */
   .hz__win::after{
@@ -2273,7 +2279,11 @@
     transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
   .ec__a:hover{ transform:translateY(-5px); box-shadow:0 32px 60px -34px rgba(var(--veil-rgb), .6); }
   .ec__a:focus-visible{ outline:2px solid var(--color-gold); outline-offset:3px; }
-  .ec__win{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+  /* Square, and the same square the horse cards use. 4 Sep, Mark: one shape
+     across all five archives, cover, and the middle of the picture whichever
+     way round it was taken. It was 4/3 here and a hair under square there,
+     which is two shapes and neither was a decision. */
+  .ec__win{ position:relative; display:block; aspect-ratio:1/1; overflow:hidden; }
   .ec__win img{ width:100%; height:100%; object-fit:cover; display:block;
     transition:transform 1s var(--ease); }
   .ec__a:hover .ec__win img{ transform:scale(1.04); }
