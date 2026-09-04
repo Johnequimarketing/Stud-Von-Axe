@@ -117,12 +117,17 @@ function measure(d, w, phone){
      into the pixels this width actually gives. */
   var probe = d.createElement('div');
   probe.style.cssText = 'position:absolute;left:-9999px;top:0;height:0;'
-    + 'padding-top:var(--sec-half);padding-bottom:var(--sec-full)';
+    + 'padding-top:var(--sec-half);padding-bottom:var(--sec-full);'
+    + 'padding-left:var(--sec-double)';
   d.body.appendChild(probe);
   var pcs = getComputedStyle(probe);
   var STEP = { '0px': 1 };
   STEP[pcs.paddingTop] = 1;
   STEP[pcs.paddingBottom] = 1;
+  /* The double step joined the scale on 4 Sep: a boundary is two sections
+     each giving half, and a full bleed hero has none to give, so the section
+     under one carries the whole gap. It is a step, not an exception. */
+  STEP[pcs.paddingLeft] = 1;
   probe.remove();
   /* Each exemption names the end it covers, because two of these are about a
      section's head and the third is about its foot, and a list that only ever

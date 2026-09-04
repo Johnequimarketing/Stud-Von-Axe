@@ -157,7 +157,7 @@ const GROUPS = {
     label: 'Sport horses',
     kicker: 'The sport horses',
     title: 'Bred here, <em>jumping elsewhere</em>',
-    intro: 'Horses out of this programme that have gone on into sport, and mares that can still do both.',
+    intro: 'Horses out of this programme that have gone on into sport, and mares that can still do both. Bred here, sold direct, listed with where they went.',
     img: 'arch-sport.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'horse', many: 'horses', singular: 'sport horse',
     ctaH: 'Looking for a particular <em>horse</em>?',
@@ -2578,10 +2578,10 @@ console.log('wrote horses-home.js for the homepage runs');
    panel, so a visitor can see everything they sell without leaving the
    homepage. */
 {
-  const firstSentence = (t) => {
-    const m = String(t).match(/^[^.]*\./);
-    return (m ? m[0] : String(t)).trim();
-  };
+  /* The whole intro, not its first sentence. It was cut to fit and came out
+     as five one line labels; Mark, 4 Sep: the panel reads small and simple.
+     These are each archive's own approved paragraph, which is two sentences
+     for four of the five. */
   /* The menu's order, not the builder's: a visitor meets these five names in
      the header and in the footer, and meeting them in a third order here
      would read as a different list. */
@@ -2601,7 +2601,11 @@ console.log('wrote horses-home.js for the homepage runs');
       label: g.label,
       href: `/${g.dir}`,
       img: `/assets/img/${g.img}`,
-      blurb: firstSentence(g.intro),
+      blurb: g.intro,
+      /* The same focus the archive's own hero uses. These are 1920 by 853
+         panoramas and the panel's window is nothing like that shape, so
+         without a focus the crop lands wherever the middle happens to be. */
+      pos: g.pos,
       cta: CTA[key],
       count: list.length,
       noun: list.length === 1 ? g.one : g.many,
