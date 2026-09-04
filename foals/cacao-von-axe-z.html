@@ -655,7 +655,16 @@
      touching the rule. The client's own frame (3 Sep) has the horse in the
      upper middle and sand at the foot, which is why the statement now sits
      at the bottom rather than in the centre: the horse is never covered. */
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position:var(--hero-focus, 50% 32%); z-index:0; }
+  /* Lit, not just uncovered. 4 Sep: taking the navy off the middle showed
+     the horse but did not make him shine, and the file itself is flat: the
+     frame was shot into the light and the greens sit around a fifth of the
+     range. A modest lift, not a wash, and it lands where it is wanted
+     because the two ends are painted over it anyway. */
+  .hero__bg img{
+    width:100%; height:100%; object-fit:cover;
+    object-position:var(--hero-focus, 50% 32%); z-index:0;
+    filter:brightness(1.16) contrast(1.04) saturate(1.06);
+  }
 
   /* The softening is gone. It blurred the foot of the frame so the type had
      a quiet ground; the client's mock up reaches solid navy there instead,
@@ -680,10 +689,14 @@
        the top pale, and the middle carried .26 to .60 over the horse.
        Nothing over him now between a quarter and a half down the frame. */
     background:linear-gradient(180deg,
+      /* The band above is for the mark and the menu and nothing else, so it
+         is finished before the horse begins. It used to run to 36 per cent,
+         which is a third of the frame and the whole of his shoulder. He
+         starts at about 14. */
       rgba(var(--veil-rgb), .86) 0%,
-      rgba(var(--veil-rgb), .54) 10%,
-      rgba(var(--veil-rgb), .10) 23%,
-      rgba(var(--veil-rgb), 0) 36%,
+      rgba(var(--veil-rgb), .46) 7%,
+      rgba(var(--veil-rgb), .08) 15%,
+      rgba(var(--veil-rgb), 0) 22%,
       rgba(var(--veil-rgb), 0) 48%,
       /* The ramp starts where the horse ends and is firm by the time the type
          begins. Measured on a 1440 by 900 frame rather than judged from a
