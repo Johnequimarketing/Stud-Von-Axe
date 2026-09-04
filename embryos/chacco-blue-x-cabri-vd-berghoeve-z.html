@@ -557,6 +557,19 @@
     .hd__row{ gap:.75rem; }
     .hd__end{ gap:.75rem; }
   }
+
+  /* The contact button comes off the phone so the mark can stand in the
+     middle of the bar. Measured, not guessed: the mark's centre sat 55px
+     left of the screen's at 390, 44 at 520 and 38 at 560, because the right
+     hand group carried a 103px button against a 40px burger on the left.
+     From 600 it is 17px, which is the width of the WhatsApp circle against
+     the burger and reads as centred.
+     560 is where it flips and is already a breakpoint in this stylesheet,
+     so no new one is invented for it. Contact is not lost: it is in the
+     drawer above, and in the footer. */
+  @media (max-width: 560px){
+    .hd .btn-sm{ display:none; }
+  }
   @media (max-width: 560px){
     .hd .btn-sm{ font-size:11px; padding:.8em 1.25em; }
     /* The plate is narrower than the old full width bar, so at this width
@@ -3029,6 +3042,10 @@
           <a href="/foals" class="hd__drawerOnly">Foals</a>
           <a href="/embryos" aria-current="page" class="hd__drawerOnly">Embryos</a>
           <a href="/icsi-semen" class="hd__drawerOnly">ICSI semen</a>
+          <!-- Contact belongs in the drawer because the button beside the
+               mark is hidden on a phone, and it was the only way to the
+               contact page from this bar. Mark, 4 Sep. -->
+          <a href="/contact" class="hd__drawerOnly">Contact us</a>
         </nav>
       </div>
 
@@ -3043,6 +3060,15 @@
              in the supplied artwork, not in the resize. Until a corrected
              export arrives this keeps the white file that is complete.
              Never repaired here: the mark is theirs. -->
+        <!-- 4 Sep: the phone was going to be served the strapline free file,
+             because at 390 the mark draws about 110px wide and "BREEDING AND
+             HORSE TRADING" comes out under two pixels tall. It cannot be:
+             both white files without the strapline read "ON AXE". Checked at
+             source, not at display size: logo-plain-ondark.png and the
+             high resolution "Middel 6logo zonder subtekst wit" are missing
+             the V, while both navy versions of the same artwork are whole.
+             So the phone keeps the file with the strapline until a corrected
+             white export arrives. Never repaired here: the mark is theirs. -->
         <img class="brand__ondark" src="/assets/logo/logo-horizontal-ondark.webp" data-ground="dark"
              alt="Von Axe, breeding and horse trading" width="600" height="264">
         <img class="brand__onlight" src="/assets/logo/logo-plain-onlight.png" data-ground="light"
