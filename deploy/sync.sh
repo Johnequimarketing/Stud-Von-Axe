@@ -19,8 +19,6 @@ root="$(dirname "$here")"
 
 # ── the pages ─────────────────────────────────────────────────────────
 cp "$root/index.html" "$here/index.html"
-cp "$root/news-data.js" "$here/news-data.js"
-cp "$root/horses-home.js" "$here/horses-home.js"
 cp "$root/sitemap.xml" "$here/sitemap.xml"
 cp "$root/robots.txt" "$here/robots.txt"
 # Four variation documents used to be published here so Mark could pick a
@@ -43,6 +41,30 @@ for group in breeding-mares foals embryos sport-horses icsi-semen; do
   cp "$root/$group/"*.html "$here/$group/"
 done
 echo "copied index.html, news-data.js, the about page, $(ls "$here/news" | wc -l | tr -d ' ') news pages and $(cat "$here"/breeding-mares/*.html "$here"/foals/*.html "$here"/embryos/*.html "$here"/sport-horses/*.html "$here"/icsi-semen/*.html 2>/dev/null | grep -c '<!DOCTYPE') horse pages"
+
+# ── the scripts the pages actually reference ──────────────────────────
+# Read out of the pages, the way the photographs below are, and for the same
+# reason. This was two typed lines, news-data.js and horses-home.js, and on
+# 4 Sep it cost a published page its content: home-tabs.js and
+# results-data.js were added to index.html, nobody added them here, and the
+# tab panel on the live homepage stayed shut because the file it reads was a
+# 404. The same list was still copying horses-home.js, which nothing has
+# referenced since the card runs came off.
+# A missing script refuses the publish, exactly like a missing photograph.
+rm -f "$here/"*.js
+while IFS= read -r js; do
+  if [[ -f "$root/$js" ]]; then
+    cp "$root/$js" "$here/$js"
+  else
+    echo "MISSING script, refusing to publish: $js" >&2
+    exit 1
+  fi
+done < <(cat "$root/index.html" "$root/news/"*.html "$root/about/index.html" \
+  "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html \
+  "$root/sport-horses/"*.html "$root/icsi-semen/"*.html "$root/contact/index.html" \
+  "$root/privacy/index.html" "$root/terms/index.html" "$root/404.html" 2>/dev/null \
+  | grep -o 'src="[^"]*\.js"' | sed 's/src="//;s/"//' | sort -u)
+echo "copied $(ls "$here"/*.js 2>/dev/null | wc -l | tr -d ' ') script(s) the pages reference"
 
 # ── only the assets the page actually references ──────────────────────
 # Read out of index.html rather than copying the whole folder, so an
