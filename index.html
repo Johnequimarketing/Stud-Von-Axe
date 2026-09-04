@@ -1445,10 +1445,26 @@
     .res__intro{ grid-column:span 2; }
   }
   .res__intro{
+    position:relative; isolation:isolate; overflow:hidden;
     display:flex; flex-direction:column; align-items:flex-start; gap:.7rem;
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--plate-radius); padding:clamp(1.5rem,3vw,2.2rem);
   }
+  /* .res__ghost, not .res__mark: the figure on every result card was already
+     called .res__mark, so these rules landed on the prices and the placings
+     and made them 90px wide, absolutely positioned and six per cent opaque.
+     That is what put 21px of sideways scroll on the homepage at 390 and 15
+     at 768.
+     Sized by the plate's height and contained, the rule every other ghost on
+     this site follows: the file is 420 by 914, so sizing it by width stands
+     it twice as tall as the box it is in and the box clips its ears. */
+  .res__ghost{
+    position:absolute; z-index:0; pointer-events:none; user-select:none;
+    right:clamp(-8px, 1vw, 1.4rem); top:10%; bottom:10%;
+    width:clamp(90px, 12vw, 170px); opacity:.06;
+  }
+  .res__ghost img{ width:100%; height:100%; object-fit:contain; object-position:right center; display:block; }
+  .res__intro > :not(.res__ghost){ position:relative; z-index:1; }
   .res__h{
     margin:.2rem 0 0; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.5rem,2vw + .5rem,2.1rem); line-height:1.08; color:var(--color-white);
@@ -2805,6 +2821,12 @@
     <div class="wrap">
       <div class="res__grid" id="res-grid">
         <div class="res__intro">
+          <!-- The mark, on the dark ground: the white file, the same ghost
+               the news and the pedigree plates carry. Never drawn, always
+               the supplied artwork. Mark, 4 Sep. -->
+          <div class="res__ghost" aria-hidden="true">
+            <img src="assets/logo/icon-ondark.png" data-ground="dark" alt="">
+          </div>
           <p class="plaque">The record</p>
           <h2 class="res__h">Out of this programme, <em>into the ring</em></h2>
           <p class="res__d">Horses we bred and sold, and what they have done since. The
@@ -3359,7 +3381,17 @@
     var grid = document.getElementById('res-grid');
     if(!grid || typeof RESULTS === 'undefined') return;
     function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-    grid.insertAdjacentHTML('beforeend', RESULTS.map(function(r){
+    /* Four, because the layout holds four: the navy card takes two columns of
+       three on the first row, one result finishes it and three make the next.
+       A fifth would stand alone on a third row, which is the thing Mark
+       spotted. The file keeps five in the order they should be shown, so
+       nothing true is thrown away and the fifth is one line from returning.
+       The one that waits is Costantino Van't Ravennest, and it is the right
+       one to hold back on the facts as well as the arithmetic: he is a half
+       brother to a horse of theirs rather than a horse of theirs, which is
+       the softest claim of the five under a heading about this programme. */
+    var SHOWN = 4;
+    grid.insertAdjacentHTML('beforeend', RESULTS.slice(0, SHOWN).map(function(r){
       return '<div class="res__card">'
         + (r.kind ? '<span class="res__kind">' + esc(r.kind) + '</span>' : '')
         + '<span class="res__mark">' + esc(r.mark) + '</span>'
