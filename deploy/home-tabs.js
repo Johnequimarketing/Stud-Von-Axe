@@ -6,7 +6,7 @@ var HOME_TABS = [
     "label": "Sport horses",
     "href": "/sport-horses",
     "img": "/assets/img/arch-sport.jpg",
-    "blurb": "Horses out of this programme that have gone on into sport, and mares that can still do both. Bred here, sold direct, listed with where they went.",
+    "blurb": "Some are bred here. Others are carefully sourced and developed. What they share is the quality, potential and attention that define every horse we choose to represent.",
     "pos": "50% 50%",
     "cta": "See all sport horses",
     "count": 12,
