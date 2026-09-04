@@ -995,8 +995,15 @@
      the right hand column on the desktop as well. */
   .stud__card{ order:2; }
   @media (min-width:960px){
-    .stud__grid{ grid-template-columns:1.15fr .85fr; }
+    .stud__grid{ grid-template-columns:1fr 1fr; align-items:stretch; }
     .stud__card{ order:0; }
+    /* Both columns end on the same line. 4 Sep, Mark: the picture and the
+       words beside it should be one block, not two of different lengths.
+       Side by side the photograph stops carrying its own shape and takes the
+       height the words set; the shape comes back the moment they stack,
+       where there is no second column to match. */
+    .stud__card, .stud__win{ height:100%; }
+    .stud__win{ aspect-ratio:auto; }
   }
 
   /* ---- the photo card ---- */
@@ -1045,10 +1052,17 @@
   .stud__body b{ font-weight:700; color:var(--color-navy); }
 
   .stud__plate{
-    display:flex; flex-wrap:wrap; gap:1.2rem; align-items:center; justify-content:space-between;
+    /* The button stands to the right of the title and the line, always. It
+       wrapped underneath once the column narrowed on 4 Sep; nowrap keeps the
+       row and min-width:0 lets the words give up the space instead. */
+    display:flex; flex-wrap:nowrap; gap:1.2rem; align-items:center; justify-content:space-between;
     background:var(--color-navy-deep); color:var(--color-white);
     border-radius:var(--card-radius); padding:1.25rem 1.4rem; margin-top:2rem;
   }
+  /* The words give up the room, not the button: without this the flex item
+     refuses to go under its content's width and the button is pushed out of
+     the plate instead of the line wrapping. */
+  .stud__plate > div{ min-width:0; }
   .stud__plate b{ display:block; font-family:var(--font-display); font-weight:400; font-size:1.15rem; }
   .stud__plate span{
     display:block; margin-top:.2rem; font-size:13.5px;
