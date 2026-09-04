@@ -984,7 +984,7 @@
   /* ---- the photo card ---- */
   .stud__card{ border-radius:var(--plate-radius); }
   .stud__win{ position:relative; overflow:hidden; background:var(--color-base-alt); }
-  .stud__win img{ width:100%; height:100%; object-fit:cover; object-position:50% 32%; }
+  .stud__win img{ width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
   /* The identity pill. It names the stud on every frame, which is what
      keeps the card reading as one object while its picture changes. */
   .stud__badge{
@@ -2167,7 +2167,14 @@
     padding:0; background:var(--color-navy-deep);
     box-shadow:0 34px 76px -44px rgba(var(--veil-rgb), .6);
   }
-  .stud__win{ border-radius:0; aspect-ratio:4/4.6; }
+  /* 4 Sep: the frame opens up for the photograph the client sent. It was
+     4/4.6, an upright box built around a horse standing sideways; the new
+     picture is a group across the full width of a landscape frame, and at
+     that shape it showed only the middle 58 per cent, which took the woman's
+     shoulder off one side and the man's off the other. At 4/3.4 everyone is
+     inside with room to spare and the block still stands as tall as the
+     column of type beside it, which is what held the section together. */
+  .stud__win{ border-radius:0; aspect-ratio:4/3.4; }
   .stud__win::after{
     content:""; position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg,
