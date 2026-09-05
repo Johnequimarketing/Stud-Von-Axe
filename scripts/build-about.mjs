@@ -202,11 +202,11 @@ ${headerFor('/about')}
       <div class="nhero__grid">
         <div>
           <p class="eyebrow">About Stud Von Axe</p>
-          <h1 class="arch__h">The blood never <em>lies</em></h1>
+          <h1 class="arch__h">From sport to the <em>next generation</em></h1>
         </div>
-        <p class="arch__intro">Stud Von Axe was born from a great passion for horses. The mares behind
-        it were chosen after years spent on the best German farms and long research into the families
-        that produce sport horses.</p>
+        <p class="arch__intro">Our mares combine sport and breeding in Italy, where they compete and
+        produce embryos. Pregnancies are then carried out in Belgium, where the foals are born and
+        raised, bringing together two countries in one carefully managed breeding programme.</p>
       </div>
     </div>
   </section>
