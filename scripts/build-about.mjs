@@ -305,7 +305,7 @@ ${headerFor('/about')}
           </span>
         </a>
 
-        <a class="aboff__i" href="/news/icsi-semen-available">
+        <a class="aboff__i" href="/icsi-semen">
           <span class="aboff__bg" aria-hidden="true">
             <img src="/assets/img/offer-semen.jpg" alt="" loading="lazy" width="1200" height="872"
                  style="object-position:48% 44%">
@@ -314,8 +314,8 @@ ${headerFor('/about')}
           <span class="aboff__foot">
             <span class="aboff__k">With Avantea, Cremona</span>
             <h3 class="aboff__t">ICSI semen</h3>
-            <span class="aboff__d">Worked with our own mares through OPU and ICSI. The stallions we hold are named on request rather than listed.</span>
-            <span class="aboff__a">Read the story <span class="a" aria-hidden="true">&rarr;</span></span>
+            <span class="aboff__d">Worked with our own mares through OPU and ICSI. The stallions we offer are listed with their pedigrees, at fixed prices.</span>
+            <span class="aboff__a">See the stallions <span class="a" aria-hidden="true">&rarr;</span></span>
           </span>
         </a>
 
