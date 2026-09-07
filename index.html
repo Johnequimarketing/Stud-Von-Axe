@@ -105,13 +105,22 @@
        which is not this palette, and on a photograph it reads as black.
        Mark, 29 Aug: "we werken met donkerblauw niet met zwart". */
     --veil-rgb:          10, 21, 38;
-  /* The components of navy-soft, for the top of the hero veil. The client
-     asked on 5 Sep for the shadow behind the mark to read blue rather than
-     near black. Over this photograph navy-deep composites to a band whose
-     red and blue are twelve points apart, which reads as ink; navy-soft puts
-     them forty one apart, which reads as blue. Nothing invented: it is a
-     colour the palette already holds. */
-  --veil-top-rgb:      44, 68, 104;
+  /* The components of navy, for the top of the hero veil.
+     It was navy-soft, 44/68/104, from 5 Sep: the client asked for the shadow
+     behind the mark to read blue rather than near black, and navy-deep
+     composited to a band whose red and blue were only twelve points apart,
+     which reads as ink. Navy-soft answered that and nothing else on the site
+     used it, which is what Mark caught on 7 Sep: every other dark ground
+     here is navy or navy-deep, and the one over the mark was a third blue
+     belonging to nothing.
+     Navy is the site's own and settles both halves of it. Behind the mark it
+     composites thirty points of blue over red, against navy-soft's fifty six
+     and navy-deep's twenty six, so it still reads blue rather than ink. And
+     it is dark enough to land where the client's own frame sits: navy-soft
+     floors this band at 71 of 255 because that is its own luminance, and
+     their frame reads 54. With navy at .88 the band comes to 60 and the band
+     behind the mark to 88 against their 91. */
+  --veil-top-rgb:      13, 29, 54;
     --color-navy-soft:   #2c4468;
     /* The head icon's gold, sampled from the file. NOTE: the horizontal
        logo carries a different, more orange gold (#b57f24). The two supplied
@@ -814,12 +823,12 @@
          trees instead. 71 is the floor: at full opacity this band is
          navy-soft itself, and their 54 would need a darker blue than the one
          we were told to keep. */
-      rgba(var(--veil-top-rgb), .97) 0%,
-      rgba(var(--veil-top-rgb), .97) 8%,
-      rgba(var(--veil-top-rgb), .78) 15%,
-      rgba(var(--veil-top-rgb), .46) 22%,
-      rgba(var(--veil-top-rgb), .18) 29%,
-      rgba(var(--veil-rgb), 0) 36%,
+      rgba(var(--veil-top-rgb), .88) 0%,
+      rgba(var(--veil-top-rgb), .88) 4%,
+      rgba(var(--veil-top-rgb), .69) 11%,
+      rgba(var(--veil-top-rgb), .40) 18%,
+      rgba(var(--veil-top-rgb), .16) 25%,
+      rgba(var(--veil-rgb), 0) 30%,
       rgba(var(--veil-rgb), 0) 46%,
       /* The ramp starts where the horse ends and is firm by the time the type
          begins. Measured on a 1440 by 900 frame rather than judged from a
