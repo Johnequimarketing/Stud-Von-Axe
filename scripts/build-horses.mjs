@@ -1558,6 +1558,7 @@ const stallionPage = (horse, group, list) => {
     ['Semen', 'ICSI'],
     ['Availability', 'On request'],
     horse.year ? ['Born', horse.year] : null,
+    horse.studbook ? ['Studbook', horse.studbook] : null,
     p.sire ? ['Sire', horseName(p.sire)] : null,
     p.dam ? ['Dam', horseName(p.dam)] : null,
   ].filter(Boolean);
