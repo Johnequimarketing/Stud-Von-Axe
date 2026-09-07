@@ -57,44 +57,24 @@ const CSS = homeCss + pageHeroCss + `
   .pl__h em{ font-style:italic; color:var(--color-gold); }
   .pl__intro{ margin:0; font-size:16px; line-height:1.7; color:var(--color-ink-soft); }
   /* One card, so no grid: a one column grid with a gap under it is a row
-     still waiting for its second item. */
-  /* From 820px the card lies down: the address on the left, the map on the
-     right, and the words against the middle of it rather than hanging from
-     the top. Mark, 3 Sep. Swapped by order rather than by moving the markup,
-     so the map still comes first in the source and on a phone, where the
-     card stacks and the picture belongs at the top of it. The map keeps the
-     wider column: it is the thing you look at. */
+     still waiting for its second item.
+     The map came off on 7 Sep at the owners' word, and with it the whole
+     right hand column: what stands at Castelnuovo Garfagnana is the office,
+     not the yard, so a pin on it points a visitor at the wrong door. From
+     820px the two halves that are left, the address and the warning that
+     goes with it, lie side by side rather than leaving that column empty. */
   @media (min-width:820px){
-    .pl__card{ grid-template-columns:1fr 1.15fr; grid-template-rows:none; }
-    .pl__map{ order:2; }
-    .pl__body{ order:1; align-content:center; }
+    .pl__body{ grid-template-columns:1fr 1fr; column-gap:clamp(1.6rem,3vw,2.6rem); align-items:start; }
+    .pl__kick, .pl__name, .pl__addr{ grid-column:1; }
+    .pl__note{ grid-column:2; grid-row:1 / span 3; margin-top:0; align-self:center; }
   }
   .pl__card{
-    display:grid; grid-template-rows:auto 1fr; overflow:hidden;
+    overflow:hidden;
     border-radius:var(--plate-radius); background:var(--color-base);
     border:1px solid var(--color-line);
     box-shadow:0 26px 60px -44px rgba(var(--veil-rgb),.5);
   }
-  /* The map's own frame. It holds the invitation before the map arrives and
-     the map itself after, at the same size either way, so nothing on the page
-     jumps when somebody presses the button. */
-  .pl__map{ position:relative; aspect-ratio:16/10; background:var(--color-navy-deep); }
-  .pl__map iframe{ width:100%; height:100%; border:0; display:block; }
-  /* Centred, not sitting on the floor of the plate. It was bottom left while
-     it was one card of two and the eye ran down a column of them; on a single
-     card lying beside a centred address it read as having slipped. */
-  .pl__ask{
-    position:absolute; inset:0; display:flex; flex-direction:column;
-    align-items:flex-start; justify-content:center; gap:.5rem;
-    padding:clamp(1.4rem,3vw,2.4rem);
-  }
-  .pl__askT{
-    margin:0; font-family:var(--font-body); font-weight:700; font-size:10px;
-    letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
-  }
-  .pl__askD{ margin:0 0 .5rem; font-size:13px; line-height:1.55;
-    color:rgba(255,255,255,.7); max-width:34ch; }
-  .pl__body{ padding:clamp(1.2rem,2.2vw,1.7rem); display:grid; align-content:start; gap:.1rem; }
+  .pl__body{ padding:clamp(1.4rem,2.6vw,2.1rem); display:grid; align-content:start; gap:.1rem; }
   .pl__kick{
     margin:0 0 .35rem; font-family:var(--font-body); font-weight:700; font-size:10px;
     letter-spacing:.18em; text-transform:uppercase; color:var(--color-gold);
@@ -110,16 +90,6 @@ const CSS = homeCss + pageHeroCss + `
     box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 45%, transparent);
     font-family:var(--font-body); font-size:13px; line-height:1.6; color:var(--color-navy);
   }
-  .pl__go{
-    margin-top:1rem; justify-self:start;
-    font-family:var(--font-body); font-weight:700; font-size:11px; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--color-navy);
-    border-bottom:1px solid var(--color-line); padding-bottom:2px;
-    transition:border-color .3s var(--ease), color .3s var(--ease);
-  }
-  .pl__go:hover{ color:var(--color-gold); border-color:var(--color-gold); }
-  .pl__go .a{ color:var(--color-gold); font-size:.9em; }
-
   /* The form, the same split plate the sixty horse pages carry, minus the
      About field: on a horse page it names the horse, here there is none. */
   .cn__box{ display:grid; border-radius:var(--plate-radius); overflow:hidden;
@@ -156,27 +126,28 @@ const WAYS = [
    address instead of stacked on top of it, and no grid gap under it waiting
    for a second card that is never coming.
    Asked for on 31 Aug: both locations under the form, with Google Maps and
-   the address.
+   the address. The map came off again on 7 Sep, and this time for a reason
+   no amount of loading care would have fixed. The owners: the stable is not
+   at Castelnuovo Garfagnana, the office is, so there is no sense in looking
+   at the map. A map is a promise that the pin is where you should drive to,
+   and this pin never was. The address stays, because an Italian company has
+   to carry its seat where a visitor can find it, and the note beside it now
+   says in so many words that no horse stands there.
 
-   The map does not load until somebody asks for it. An embedded Google map
-   fetches from Google the moment the page opens and hands over the visitor's
-   IP address whether they wanted a map or not, and /privacy says on this same
-   site that nothing on a page comes from anywhere but our own server. So each
-   map is a plate with the address on it and a button; press it and the map
-   arrives in place. The address, the postcode and a link that opens Google
-   Maps in a new tab are all there without loading anything, which is what most
-   people came for anyway.
+   Gone with it: the deferred loader, the plate that asked before fetching,
+   and the link that opened Google Maps in a new tab. Nothing on this page
+   now comes from anywhere but our own server, which is what /privacy has
+   claimed on this same site all along.
 
    What is real here and what is not: the Italian address is the registered
-   company, word for word as Mark sent it. Lanaken is a town and nothing more,
-   because no street address for the Belgian yard has ever been given, and a
-   pin dropped on a town centre is not where their stable is. It says so
-   rather than guessing. */
+   company, word for word as Mark sent it on 7 Sep. Lanaken is a town and
+   nothing more, because no street address for the Belgian yard has ever been
+   given. */
 const PLACES = [
   {
     kick: 'Italy',
     name: 'Castelnuovo Garfagnana',
-    lines: ['Stud Von Axe Az. Agr. s.s.', 'Via per Arni 30', '55032 Castelnuovo Garfagnana (LU)', 'Italy'],
+    lines: ['Stud Von Axe SRL', 'Via per Arni', '55032 Castelnuovo Garfagnana (LU)', 'Italy'],
     /* Settled by Mark on 3 Sep, and the site now says one thing. Their own
        footer and the company register both say Castelnuovo Garfagnana; the
        briefing said Desenzano del Garda, two hundred kilometres away. Where
@@ -185,8 +156,7 @@ const PLACES = [
        it. Where a place is positioning, it is the region and no village at
        all. Desenzano is off the site.
        What the visitor is told stays the useful half: ring first. */
-    note: 'This is the registered address. Ring us before you set off and we will tell you where the horse you want to see is standing.',
-    q: 'Via per Arni 30, 55032 Castelnuovo Garfagnana LU, Italy',
+    note: 'This is the office, not the yard. No horse stands here. Ring us before you set off and we will tell you where the one you want to see is.',
   },
 ];
 
@@ -200,46 +170,16 @@ const placesSection = `
         welcome by appointment: ring first and we will say where to come.</p>
       </div>
 ${PLACES.map((pl) => `        <div class="pl__card">
-          <div class="pl__map" data-map="${esc(`https://www.google.com/maps?q=${encodeURIComponent(pl.q)}&output=embed`)}">
-            <div class="pl__ask">
-              <p class="pl__askT">Google Maps</p>
-              <p class="pl__askD">The map is not loaded until you ask for it, because loading it hands
-              your IP address to Google.</p>
-              <button class="btn btn-gold btn-pill btn-sm" type="button" data-load>Show the map</button>
-            </div>
-          </div>
           <div class="pl__body">
             <p class="pl__kick">${esc(pl.kick)}</p>
             <h3 class="pl__name">${esc(pl.name)}</h3>
             <address class="pl__addr">${pl.lines.map(esc).join('<br>')}</address>
             ${pl.note ? `<p class="pl__note">${esc(pl.note)}</p>` : ''}
-            <a class="pl__go" href="https://www.google.com/maps/search/?api=1&amp;query=${esc(encodeURIComponent(pl.q))}"
-               target="_blank" rel="noopener">Open in Google Maps <span class="a" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>`).join('\n')}
     </div>
   </section>
 `;
-
-const placesScript = `<script>
-(function(){
-  var maps = [].slice.call(document.querySelectorAll('[data-map]'));
-  maps.forEach(function(box){
-    var btn = box.querySelector('[data-load]');
-    if(!btn) return;
-    btn.addEventListener('click', function(){
-      var f = document.createElement('iframe');
-      f.src = box.getAttribute('data-map');
-      f.title = 'Map';
-      f.loading = 'lazy';
-      f.referrerPolicy = 'no-referrer-when-downgrade';
-      f.setAttribute('allowfullscreen', '');
-      box.innerHTML = '';
-      box.appendChild(f);
-    });
-  });
-})();
-<\/script>`;
 
 const page = `<!DOCTYPE html>
 <html lang="en">
@@ -307,7 +247,7 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
             <div class="cn__place">
               <span class="cn__pk">Where we are</span>
               <span class="cn__pv">Italy</span>
-              <span class="cn__pd">On the map below</span>
+              <span class="cn__pd">Castelnuovo Garfagnana</span>
             </div>
           </div>
         </div>
@@ -358,7 +298,6 @@ ${placesSection}
 ${footer}
 ${navScript}
 ${askScript}
-${placesScript}
 </body>
 </html>
 `;

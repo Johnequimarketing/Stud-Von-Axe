@@ -17,7 +17,7 @@
  *              back in the catalogue.
  *
  * The company details are the ones Mark sent on 31 Aug, which are also the
- * ones on their own site's footer: Stud Von Axe Az. Agr. s.s., Via per Arni 30,
+ * ones Mark sent on 7 Sep: Stud Von Axe SRL, Via per Arni,
  * 55032 Castelnuovo Garfagnana (LU), P. IVA IT02519980466. That settles the
  * registered address, and since 3 Sep it is the only Italian address the
  * site gives. Desenzano del Garda, which the briefing named, is off every
@@ -249,7 +249,7 @@ ${sections.map(section).join('\n')}
 `,
 });
 
-const COMPANY = 'Stud Von Axe Az. Agr. s.s., Via per Arni 30, 55032 Castelnuovo Garfagnana (LU), Italy. '
+const COMPANY = 'Stud Von Axe SRL, Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy. '
   + 'P. IVA IT02519980466.';
 
 /* ── privacy ─────────────────────────────────────────────────────────── */
