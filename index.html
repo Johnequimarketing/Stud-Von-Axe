@@ -884,13 +884,19 @@
      of the three. So each sits on its own white card and is contained rather
      than covered, which is also why the cards are a fixed height and the
      images are not: a logo that is cropped is a logo that is wrong. */
-  .pt{ padding-block:0 var(--sec-full); }
-  .pt__head{ display:flex; align-items:baseline; justify-content:space-between;
-    gap:1rem; flex-wrap:wrap; margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  /* The same ground as the contact section above it, and no rule between
+     them, so the two read as one closing block rather than as a strip that
+     landed on the page ground by itself. Mark, 7 Sep. The contact section
+     carries the top border of the pair; this one carries the foot. */
+  .pt{ padding-block:var(--sec-half) var(--sec-full); background:var(--color-base-alt); }
+  /* Centred, unlike every other section head on this page, because there is
+     nothing in the right hand column any more: the line that stood there said
+     what the logos already say. A head left aligned over an empty half reads
+     as a column that failed to load. */
+  .pt__head{ text-align:center; margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
   .pt__h{ margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
     font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-ink); }
   .pt__h em{ font-style:italic; color:var(--color-gold); }
-  .pt__note{ margin:0; font-size:14px; line-height:1.6; color:var(--color-ink-soft); max-width:44ch; }
   .pt__wrap{ position:relative; min-width:0; }
   .pt__run{
     display:flex; gap:var(--card-gap); list-style:none; margin:0; padding:10px 2px 26px;
@@ -2109,7 +2115,9 @@
   /* ============================================================
      10. CONTACT
      ============================================================ */
-  .contact{ padding:var(--gap-section) 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
+  /* The foot of this section is now the partners rail's, which wears the
+     same ground and closes the pair. */
+  .contact{ padding:var(--gap-section) 0 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
   /* One box: the people on a navy panel, the form on paper beside them. The
      two names are the point of the section, so they sit on the dark half
      where nothing competes with them. */
@@ -3031,11 +3039,8 @@
   <section class="pt" id="partners" aria-labelledby="partners-h">
     <div class="wrap">
       <div class="pt__head">
-        <div>
-          <p class="plaque">Partners</p>
-          <h2 class="pt__h" id="partners-h">The people <em>behind us</em>.</h2>
-        </div>
-        <p class="pt__note">The businesses that stand behind the stud.</p>
+        <p class="plaque">Partners</p>
+        <h2 class="pt__h" id="partners-h">The people <em>behind us</em>.</h2>
       </div>
       <div class="pt__wrap">
         <ul class="pt__run" id="pt-run">
