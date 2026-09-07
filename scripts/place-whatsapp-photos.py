@@ -61,6 +61,11 @@ SUPPLIED = {
     # that the whole horse survives the square card crop on its own. It needs
     # no composed background, which is why it is not in SQUARE.
     'unguessable-von-axe': 'content/manual-photos/unguessable-von-axe.jpeg',
+    'waikiki-vd-berghoeve': 'content/manual-photos/waikiki-vd-berghoeve.jpeg',
+    # A better frame, but still 1.58 to 1, so the square card would take his
+    # muzzle off. This one is supplied AND composed: the new photograph on a
+    # square ground of its own.
+    'diamecho-von-axe-z': 'content/manual-photos/diamecho-von-axe-z.jpeg',
 }
 
 # The card window is square and a landscape photograph loses a third of its
@@ -69,7 +74,7 @@ SUPPLIED = {
 # with the space around him filled from the same photograph, enlarged and
 # blurred. Nothing is invented and nothing of the horse is lost. Mark named
 # these four on 7 September.
-SQUARE = {'diamecho-von-axe-z', 'waikiki-vd-berghoeve', 'cacao-von-axe-z'}
+SQUARE = {'diamecho-von-axe-z', 'cacao-von-axe-z'}
 
 
 def to_square(im, margin=0.03):
