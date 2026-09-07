@@ -707,7 +707,16 @@
        moves from 187/181/195 to 209/196/187 and the horse from 103/99/111 to
        115/105/100. The trees were the limit: past this they turn olive. hue-rotate was measured first and goes the wrong way,
        to 26 under. */
-    filter:brightness(1.28) contrast(1.05) sepia(.42) saturate(1.50);
+    /* 7 Sep. They put their frame and ours side by side and asked for one
+       thing: darker at the top, and the photograph standing out more.
+       Measured off the two screenshots, aligned on the hero and read band by
+       band, ours came out far lighter everywhere: 96 against their 54 across
+       the top eighth, 164 against 91 behind the logo, 108 against 82 over
+       the picture itself. Brightness 1.28 was what made it milky, so it
+       comes down and the contrast goes up in its place, which is the half of
+       the ask that says "spring out". The warmth they asked for on 5 and 7
+       September is untouched: sepia and saturate stand where they were. */
+    filter:brightness(1.05) contrast(1.15) sepia(.42) saturate(1.50);
   }
 
   /* The softening is gone. It blurred the foot of the frame so the type had
@@ -743,22 +752,30 @@
          white measures 4.89 at 1440 and 4.45 at 390, both better than the
          4.68 and 4.06 the old navy gave, and blue by 41 points of red to
          blue against the old 12. Bluer and darker at once. */
+      /* Held, not faded away. The logo sits from 1 to 12 per cent down this
+         hero on a phone, and the old ramp was already at .12 by 16 and gone
+         by 22, which is why the band behind the mark read 164 against their
+         91. It now holds full strength past the logo and lets go over the
+         trees instead. 71 is the floor: at full opacity this band is
+         navy-soft itself, and their 54 would need a darker blue than the one
+         we were told to keep. */
       rgba(var(--veil-top-rgb), .97) 0%,
-      rgba(var(--veil-top-rgb), .82) 6%,
-      rgba(var(--veil-top-rgb), .46) 11%,
-      rgba(var(--veil-top-rgb), .12) 16%,
-      rgba(var(--veil-rgb), 0) 22%,
-      rgba(var(--veil-rgb), 0) 48%,
+      rgba(var(--veil-top-rgb), .97) 8%,
+      rgba(var(--veil-top-rgb), .78) 15%,
+      rgba(var(--veil-top-rgb), .46) 22%,
+      rgba(var(--veil-top-rgb), .18) 29%,
+      rgba(var(--veil-rgb), 0) 36%,
+      rgba(var(--veil-rgb), 0) 46%,
       /* The ramp starts where the horse ends and is firm by the time the type
          begins. Measured on a 1440 by 900 frame rather than judged from a
          thumbnail: his hooves clear at about 48 per cent, the gold line opens
          at 58.9 and the headline at 62.6. At .34 the gold sat on the jump
          standards and could not be read. */
-      rgba(var(--veil-rgb), .22) 54%,
-      rgba(var(--veil-rgb), .58) 59%,
-      rgba(var(--veil-rgb), .84) 66%,
-      rgba(var(--veil-rgb), .97) 76%,
-      rgba(var(--veil-rgb), 1) 86%,
+      rgba(var(--veil-rgb), .30) 52%,
+      rgba(var(--veil-rgb), .66) 58%,
+      rgba(var(--veil-rgb), .88) 64%,
+      rgba(var(--veil-rgb), .98) 74%,
+      rgba(var(--veil-rgb), 1) 84%,
       rgba(var(--veil-rgb), 1) 100%);
   }
 

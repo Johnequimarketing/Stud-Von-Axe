@@ -119,7 +119,23 @@ const GROUPS = {
        and not a search result. desc is the same sentence cut to fit the 70
        to 160 the audit holds every description to. */
     desc: 'Strong maternal lines are at the heart of our breeding programme, each mare chosen for what her family produces in sport.',
-    img: 'hero-cortina-wide.jpg', pos: '50% 46%', lift: 1.25, w: 1920, h: 1150,
+    /* 7 Sep, Mark: put a different photograph up there. What stood here was
+       a fragment, the top of a grey mare's head in a band three times as wide
+       as it is tall, and it read 50 of 255 under the veil, which is why it
+       needed a lift at all.
+       This is the same mare, Cortina de Jolie Z, in the frame their
+       photographer shot next: her whole head and neck, plaited, against an
+       open sky. The original was still on disk at 2560 by 2402, so both cuts
+       come from that rather than from the 1100px copy the site was built on.
+       It reads 92 without any lift, against the 72 of the foals, so the lift
+       comes off with the old picture.
+       The 55 per cent was found in the browser at 1440, not reasoned out: a
+       hero three times as wide as it is tall shows barely half this file's
+       height, and it is a choice between her ears and her eye. At 10 and 30
+       the band held the forehead and the halter and her face fell out of the
+       bottom; at 45 the eye sat on the edge; at 55 it is properly inside.
+       The phone gets the upright cut and keeps the lot. */
+    img: 'arch-mares.jpg', tall: 'arch-mares-tall.jpg', pos: '50% 55%', w: 1920, h: 1150,
     one: 'mare', many: 'mares', singular: 'breeding mare',
     ctaH: 'Looking for a mare to <em>breed from</em>?',
     ctaD: 'Tell us the line you are after. If she is not here, we will say so, and we will tell you what is coming out of the same families.',
