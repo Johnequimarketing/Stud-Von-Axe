@@ -132,7 +132,7 @@ const GROUPS = {
     kicker: 'The foals',
     title: 'Born from great bloodlines. <em>Raised in Belgium.</em>',
     intro: 'Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.',
-    img: 'arch-foals.jpg', pos: '50% 50%', w: 1920, h: 853,
+    img: 'arch-foals.jpg', tall: 'arch-foals-tall.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'foal', many: 'foals', singular: 'foal',
     card: (h, full) => foalCard(h, GROUPS.foal, full), grid: ' ec__grid',
     ctaH: 'Tell us what you are <em>looking for</em>.',
@@ -196,7 +196,7 @@ const GROUPS = {
        that reads as a fragment under a horse's name. */
     desc: 'Some are bred here, others carefully sourced and developed, all chosen for the quality and potential we want to represent.',
     metaLine: 'Bred here or carefully sourced, and developed for the sport',
-    img: 'arch-sport.jpg', pos: '50% 50%', w: 1920, h: 853,
+    img: 'arch-sport.jpg', tall: 'arch-sport-tall.jpg', pos: '50% 50%', w: 1920, h: 853,
     one: 'horse', many: 'horses', singular: 'sport horse',
     ctaH: 'Looking for a particular <em>horse</em>?',
     ctaD: 'We also look on a client\'s behalf, across Europe and as far as America. Tell us what you need and we will go and find it.',
@@ -2524,8 +2524,23 @@ const heroSection = (g) => `
        section rhythm the audit holds every section to. -->
   <section class="nhero nhero--cut">
     <div class="nhero__bg" aria-hidden="true">
-      <img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
-           style="object-position:${g.pos}">
+      <!-- Two cuts of one photograph, because a phone does not get a band.
+           On a phone this hero is taller than it is wide, about 390 by 440,
+           and cover fills the height: a 1920 by 853 band then shows 39 per
+           cent of its own width and throws the other 61 away. That is the
+           zoom the owners saw on the foals page, where the foal ends up
+           filling the frame nose to shoulder.
+           So where we still have the photograph they sent, before it was cut
+           into a band, a second file is cut upright from it with the whole
+           horse in the frame, and the phone gets that one. Above 700px
+           nothing changes. Three archives have no such original left and so
+           have no upright cut; they render exactly as they did. -->
+      ${g.tall ? `<picture>
+        <source media="(max-width: 700px)" srcset="/assets/img/${g.tall}">
+        <img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
+             style="object-position:${g.pos}">
+      </picture>` : `<img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
+           style="object-position:${g.pos}">`}
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
