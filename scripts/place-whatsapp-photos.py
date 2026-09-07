@@ -29,7 +29,7 @@ Two things this will NOT flip, and both are deliberate:
 Usage:  python3 scripts/place-whatsapp-photos.py [--dry-run]
 """
 
-import json, os, sys, io
+import json, os, sys, io, re, subprocess
 from PIL import Image, ImageOps
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +37,27 @@ SRC = os.path.join(ROOT, 'content', 'whatsapp-2026-09-06')
 DST = os.path.join(ROOT, 'assets', 'img', 'horses')
 
 WIDTH, QUALITY, FLOOR, CEILING = 1100, 78, 68, 500 * 1024
+
+# The commit before the WhatsApp batch went in. Everything a horse owned at
+# that point is read from here, so running this script twice cannot stack.
+BASELINE = '2422cdb'
+BEFORE = subprocess.run(
+    ['git', 'ls-tree', '-r', '--name-only', BASELINE, 'assets/img/horses/'],
+    cwd=ROOT, capture_output=True, text=True).stdout.split()
+
+def git_show(path):
+    return subprocess.run(['git', 'show', BASELINE + ':' + path],
+                          cwd=ROOT, capture_output=True).stdout
+
+# Photographs Mark supplied on 7 September, which take the card slot from
+# whatever was there. Diabalou is the same shoot as hers, framed wider, so
+# the horse survives the square crop; Filou's old one is a competition shot
+# with another photographer's watermark across it. Their file is dropped, not
+# pushed back, because in both cases the new one is the better of the two.
+SUPPLIED = {
+    'filou': 'content/manual-photos/filou.jpeg',
+    'diabalou-sva': 'content/manual-photos/diabalou-sva.jpeg',
+}
 
 # the direction each archive settles on, counted off her own pictures
 FACING = {'broodmare': 'left', 'foal': 'right', 'sport': 'right', 'stallion': 'right'}
@@ -48,8 +69,16 @@ NO_FLIP = {
 }
 
 
-def facing_of(index, table):
-    return table.get(index)
+# A horse she never sent a new photograph of, but whose old one has to turn.
+# Agousha, 6 September 09:24: "Can you turn also Agousha to have all of them
+# looking to the same side". She sent a picture of her own screen with it, not
+# a picture of the horse, so the one already on the site is the one to flip.
+TURN_EXISTING = {
+    'agousha-vd-berghoeve-z',
+    # Purple Rain is a sold foal she sent no new picture of, and the one on
+    # the site faced left while the other nineteen foals face right.
+    'purple-rain-von-axe-z',
+}
 
 
 def save(im, path, mirror):
@@ -104,18 +133,18 @@ def main():
                 flipped.append('%s  %s  %s -> %s' % (row['name'], sh['at'], has, want))
             incoming.append((src, mirror))
 
-        # whatever the horse already had, behind hers, without repeating a file
-        existing = []
-        n = 1
-        while True:
-            p = os.path.join(DST, '%s-%d.jpg' % (slug, n))
-            if not os.path.exists(p):
-                break
-            existing.append(p)
-            n += 1
+        # What the horse had before this batch, read out of the commit that
+        # came before it rather than off the disk. Reading the directory made
+        # the script count its own previous output as "existing", so every run
+        # appended her photographs again: 151 files became 215, then 271.
+        # git is the one record of the state before 6 September that a re-run
+        # cannot corrupt, which is what makes this repeatable.
+        existing = [p for p in BEFORE if re.fullmatch(re.escape(slug) + r'-\d+\.jpg', os.path.basename(p))]
+        existing.sort(key=lambda p: int(re.search(r'-(\d+)\.jpg$', p).group(1)))
+        old_bytes = [git_show(p) for p in existing]
 
-        # read the old files before anything is overwritten
-        old_bytes = [open(p, 'rb').read() for p in existing]
+        if slug in SUPPLIED:
+            incoming = [(os.path.join(ROOT, SUPPLIED[slug]), False)]
 
         paths = []
         idx = 1
@@ -125,12 +154,13 @@ def main():
                 save(Image.open(src), dst, mirror)
             paths.append('assets/img/horses/%s-%d.jpg' % (slug, idx))
             idx += 1
-        for blob in old_bytes:
+        turn = slug in TURN_EXISTING
+        for n, blob in enumerate(old_bytes):
             if idx > 8:
                 break
             dst = os.path.join(DST, '%s-%d.jpg' % (slug, idx))
             if not dry:
-                save(Image.open(io.BytesIO(blob)), dst, False)
+                save(Image.open(io.BytesIO(blob)), dst, turn and n == 0)
             paths.append('assets/img/horses/%s-%d.jpg' % (slug, idx))
             idx += 1
 
@@ -142,6 +172,36 @@ def main():
 
         out[slug] = {'name': row['name'], 'photos': paths,
                      'hers': len(incoming), 'kept': len(old_bytes)}
+
+    # A horse she sent nothing for is never in data['rows'], so the loop above
+    # never reaches it. Purple Rain is one: a sold foal facing the wrong way
+    # with no replacement coming. Turned here, from the baseline, so a re-run
+    # gives the same picture rather than flipping it back and forth.
+    # a supplied photograph for a horse she sent nothing for
+    for slug, rel in SUPPLIED.items():
+        if slug in out:
+            continue
+        old = [p for p in BEFORE if re.fullmatch(re.escape(slug) + r'-\d+\.jpg', os.path.basename(p))]
+        if not dry:
+            save(Image.open(os.path.join(ROOT, rel)),
+                 os.path.join(DST, '%s-1.jpg' % slug), False)
+        for n in range(2, len(old) + 2):
+            f = os.path.join(DST, '%s-%d.jpg' % (slug, n))
+            if os.path.exists(f) and not dry:
+                os.remove(f)
+        out[slug] = {'name': slug, 'photos': ['assets/img/horses/%s-1.jpg' % slug],
+                     'hers': 1, 'kept': 0}
+
+    for slug in TURN_EXISTING:
+        if slug in out:
+            continue
+        first = 'assets/img/horses/%s-1.jpg' % slug
+        if first not in BEFORE:
+            skipped.append(slug + ' (nothing to turn)')
+            continue
+        if not dry:
+            save(Image.open(io.BytesIO(git_show(first))), os.path.join(ROOT, first), True)
+        flipped.append('%s  the picture already on the site, turned' % slug)
 
     # the two archive heroes she offered, and her screen shot, which is not a horse
     heroes = {}

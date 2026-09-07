@@ -1603,11 +1603,37 @@ const crossesSection = (horse) => {
   const what = born.length && crosses.length ? 'produce'
     : crosses.length ? (crosses.length === 1 ? 'cross' : 'crosses')
     : born.length === 1 ? 'horse' : 'horses';
-  const row = (label, list, cross) => list.length ? `
-      ${born.length && crosses.length ? `<p class="hmore__lab">${label}</p>` : ''}
+  /* The grid is three columns wide, so a fourth card opens a second row and
+     a fifth leaves it half empty. Past three the row becomes a rail with the
+     arrows this page already carries for "More stallions". Mark, 7 Sep. */
+  const row = (label, list, cross) => {
+    if (!list.length) return '';
+    const lab = born.length && crosses.length ? `<p class="hmore__lab">${label}</p>` : '';
+    const cards = list
+      .map((h) => '          ' + (cross ? embryoCard(h, false) : card(h, GROUPS[h.category])))
+      .join('\n');
+    if (list.length <= 3) {
+      return `
+      ${lab}
       <ul class="hz__grid${cross ? ' ec__grid' : ''}">
-${list.map((h) => '        ' + (cross ? embryoCard(h, false) : card(h, GROUPS[h.category]))).join('\n')}
-      </ul>` : '';
+${cards}
+      </ul>`;
+    }
+    const id = `byhim-${cross ? 'crosses' : 'born'}`;
+    const what = cross ? 'crosses' : 'horses';
+    return `
+      ${lab}
+      <div class="hmore__wrap">
+        <ul class="hmore__run${cross ? ' ec__grid' : ''}" id="${id}" tabindex="0"
+            aria-label="${esc(horseName(horse.name))}, ${what}">
+${cards}
+        </ul>
+        <button class="topics-arrow topics-arrow--prev" data-rail="${id}" data-dir="-1"
+                aria-label="Previous ${what}">&larr;</button>
+        <button class="topics-arrow topics-arrow--next" data-rail="${id}" data-dir="1"
+                aria-label="Next ${what}">&rarr;</button>
+      </div>`;
+  };
   return `
   <section class="hmore">
     <div class="wrap">

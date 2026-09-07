@@ -491,6 +491,12 @@ var WHATSAPP = {
    "year": "21/03/2027",
    "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z"
   },
+  "filou": {
+   "photos": [
+    "assets/img/horses/filou-1.jpg"
+   ],
+   "source": "WhatsApp, Stud Von Axe, 6 September 2026"
+  },
   "agousha-vd-berghoeve-z": {
    "body": [
     "Directly out of Gatoucha van’t Roosakker, from one of the most influential families in modern show jumping.",
