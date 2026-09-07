@@ -119,7 +119,7 @@ const GROUPS = {
        and not a search result. desc is the same sentence cut to fit the 70
        to 160 the audit holds every description to. */
     desc: 'Strong maternal lines are at the heart of our breeding programme, each mare chosen for what her family produces in sport.',
-    img: 'hero-cortina-wide.jpg', pos: '50% 46%', w: 1920, h: 1150,
+    img: 'hero-cortina-wide.jpg', pos: '50% 46%', lift: 1.25, w: 1920, h: 1150,
     one: 'mare', many: 'mares', singular: 'breeding mare',
     ctaH: 'Looking for a mare to <em>breed from</em>?',
     ctaD: 'Tell us the line you are after. If she is not here, we will say so, and we will tell you what is coming out of the same families.',
@@ -146,7 +146,7 @@ const GROUPS = {
     title: 'The bloodlines you want. <em>The future you choose.</em>',
     intro: 'Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.',
     desc: 'Selected from outstanding families and proven sport horse combinations, with real breeding and performance potential.',
-    img: 'arch-embryos.jpg', pos: '50% 50%', w: 1920, h: 853,
+    img: 'arch-embryos.jpg', pos: '50% 50%', lift: 1.25, w: 1920, h: 853,
     one: 'cross', many: 'crosses', singular: 'cross',
     card: (h, full) => embryoCard(h, full), grid: ' ec__grid',
     ctaH: 'Ask about a <em>cross</em>.',
@@ -171,7 +171,7 @@ const GROUPS = {
        put back if they mean the category. */
     intro: 'We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.',
     metaLine: 'ICSI semen from selected stallions, stored at Avantea',
-    img: 'arch-semen.jpg', pos: '50% 42%', w: 1920, h: 853,
+    img: 'arch-semen.jpg', pos: '50% 42%', lift: 1.35, w: 1920, h: 853,
     one: 'stallion', many: 'stallions', singular: 'stallion',
     /* No chips. Every other archive filters on something the data knows:
        sold against available, frozen against carrying. Here it knows
@@ -2535,12 +2535,33 @@ const heroSection = (g) => `
            horse in the frame, and the phone gets that one. Above 700px
            nothing changes. Three archives have no such original left and so
            have no upright cut; they render exactly as they did. -->
-      ${g.tall ? `<picture>
+      ${(() => {
+        /* A lift, where the photograph itself is dark. Three of these five
+           are a dark subject in shade, and under a veil that starts at 46%
+           and closes to 96% they go to nearly nothing: measured over the top
+           half of the hero on a phone, the mares read 50 of 255, the crosses
+           47 and the ICSI page 40, against 70 and 72 for the two that read.
+           7 Sep, Mark, about the mares: the background is too covered.
+           The number is per photograph and measured, not one filter over
+           all five. It was raised until the top half read about the same as
+           the two that already worked, then pulled back to where the
+           highlights start to clip: on the grey mare 1.5 reaches 71 but
+           blows 14% of the frame, and 1.25 reaches 61 blowing 4%. The
+           warmth is the homepage's, at about a third of its strength.
+           Two of them cannot be rescued this way. The crosses and the ICSI
+           photographs would need 2.15 to read, which is a blown picture, and
+           both are cropped so tight that no exposure would tell you what
+           animal it is. Those two want a different photograph. */
+        const f = g.lift ? ` filter:brightness(${g.lift}) contrast(1.02) sepia(.18) saturate(1.18);` : '';
+        const img = `<img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
+             style="object-position:${g.pos};${f}">`;
+        return g.tall
+          ? `<picture>
         <source media="(max-width: 700px)" srcset="/assets/img/${g.tall}">
-        <img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
-             style="object-position:${g.pos}">
-      </picture>` : `<img src="/assets/img/${g.img}" alt="" fetchpriority="high" width="${g.w}" height="${g.h}"
-           style="object-position:${g.pos}">`}
+        ${img}
+      </picture>`
+          : img;
+      })()}
     </div>
     <div class="nhero__veil" aria-hidden="true"></div>
     <div class="wrap">
