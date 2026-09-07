@@ -374,7 +374,9 @@ if (existsSync(join(root, 'sitemap.xml'))) {
    purpose. A section removed on purpose is one line here; a section removed
    by accident is a failure with its name in it. */
 {
-  const WANTED = ['top', 'about', 'horses', 'services', 'programme', 'news', 'contact'];
+  /* partners joined on 7 September, under the contact card and above the
+     foot, which is where Mark asked for it. */
+  const WANTED = ['top', 'about', 'horses', 'services', 'programme', 'news', 'contact', 'partners'];
   const home = read('index.html');
   const found = [...home.matchAll(/<section[^>]*\bid="([a-z-]+)"/g)].map((m) => m[1]);
   const missing = WANTED.filter((id) => !found.includes(id));

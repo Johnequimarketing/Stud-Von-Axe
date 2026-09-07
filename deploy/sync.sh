@@ -70,11 +70,16 @@ echo "copied $(ls "$here"/*.js 2>/dev/null | wc -l | tr -d ' ') script(s) the pa
 # Read out of index.html rather than copying the whole folder, so an
 # unused or unreleased photograph can never reach the internet by sitting
 # in the same directory as one that is used.
-mkdir -p "$here/assets/img/horses" "$here/assets/img/video" "$here/assets/img/placeholder" "$here/assets/img/share" "$here/assets/logo"
-rm -f "$here/assets/img/"*.jpg "$here/assets/img/"*.png "$here/assets/img/horses/"* "$here/assets/img/video/"* "$here/assets/img/placeholder/"* "$here/assets/img/share/"* "$here/assets/logo/"*
+# The whole assets tree goes and is rebuilt from what the pages ask for.
+# It used to be a hand-written list of the five folders to create, and on
+# 7 Sep a partners folder appeared and the publish stopped on a directory
+# that did not exist. Making each folder as its file arrives cannot fall
+# behind the site the way a list does.
+rm -rf "$here/assets"
 count=0
 while IFS= read -r ref; do
   if [[ -f "$root/$ref" ]]; then
+    mkdir -p "$(dirname "$here/$ref")"
     cp "$root/$ref" "$here/$ref"
     count=$((count + 1))
   else
@@ -92,7 +97,7 @@ done < <(cat "$root/index.html" "$root/news/"*.html "$root/about/index.html" \
   "$root/icsi-semen/"*.html "$root/contact/index.html" \
   "$root/privacy/index.html" "$root/terms/index.html" "$root/404.html" \
   "$here/"*.js \
-  | grep -oE 'assets/(img/horses|img/video|img/placeholder|img/share|img|logo)/[A-Za-z0-9._-]+' | sort -u)
+  | grep -oE 'assets/(img/horses|img/video|img/placeholder|img/share|img/partners|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 
 echo
