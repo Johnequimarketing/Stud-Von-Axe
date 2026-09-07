@@ -13,7 +13,8 @@
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, headerFor } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, storyCss, header, footer, head, navScript, headerFor,
+         partners, partnersScript } from './lib/shell.mjs';
 
 const CSS = homeCss + pageHeroCss + storyCss + `
   /* ── about page only. Everything above is the homepage stylesheet. ── */
@@ -358,9 +359,13 @@ ${headerFor('/about')}
     </div>
   </section>
 
+
+${partners}
+
 </main>
 ${footer}
 ${navScript}
+${partnersScript}
 <script>
 /* The picture fades between three, five seconds apart. It stops on hover,
    on focus and on a click of the hairlines, and it never starts at all for

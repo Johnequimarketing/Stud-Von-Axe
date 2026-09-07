@@ -888,7 +888,7 @@
      them, so the two read as one closing block rather than as a strip that
      landed on the page ground by itself. Mark, 7 Sep. The contact section
      carries the top border of the pair; this one carries the foot. */
-  .pt{ padding-block:var(--sec-half) var(--sec-full); background:var(--color-base-alt); }
+  .pt{ padding-block:var(--sec-full) var(--sec-full); background:var(--color-base-alt); }
   /* Centred, unlike every other section head on this page, because there is
      nothing in the right hand column any more: the line that stood there said
      what the logos already say. A head left aligned over an empty half reads
@@ -3035,7 +3035,11 @@
   </section>
 
   <!-- ================= PARTNERS ================= -->
-
+  <!-- The about and contact pages carry this same rail. shell.mjs lifts it
+       from between these two markers rather than keeping a second copy, the
+       way it already lifts the header and the foot, so there is one partners
+       list on the site and it is this one. -->
+  <!-- partners:start -->
   <section class="pt" id="partners" aria-labelledby="partners-h">
     <div class="wrap">
       <div class="pt__head">
@@ -3067,6 +3071,7 @@
       </div>
     </div>
   </section>
+  <!-- partners:end -->
 
 </main>
 
@@ -3303,6 +3308,7 @@
      horses-home.js they read. The arrow controller below stays: the news
      rail still uses it. */
 
+  /* rail-run:start */
   /* ── The two programme runs share the hero run's arrow behaviour ──────
      Same rAF tween as the topics run, and for the same reason: engines
      drop animated scrolls in an occluded view, so scroll-behavior alone
@@ -3370,6 +3376,7 @@
       window.addEventListener('load', function(){ sync(track); });
     });
   })();
+  /* rail-run:end */
 
 
   /* ── the five archives, as tabs ───────────────────────────────────────

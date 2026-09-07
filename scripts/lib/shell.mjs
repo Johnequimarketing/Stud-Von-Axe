@@ -64,9 +64,24 @@ export const footer = relink(
              home.indexOf('</footer>') + '</footer>'.length)
 );
 
+/* The partners rail, and the arrow controller that drives it. Both are lifted
+   from between markers in index.html rather than kept a second time here, so
+   a partner added to the homepage appears on the about and contact pages
+   without anyone remembering to. The controller is the homepage's own: these
+   pages have no other rail, and a second implementation of one behaviour is
+   the drift this file exists to prevent. */
+const between = (a, b) => {
+  const i = home.indexOf(a), j = home.indexOf(b);
+  return i < 0 || j < 0 ? '' : home.slice(i + a.length, j);
+};
+export const partners = relink(between('<!-- partners:start -->', '<!-- partners:end -->').trim());
+export const partnersScript =
+  '<script>\n' + between('/* rail-run:start */', '/* rail-run:end */').trim() + '\n<\/script>';
+
 /* A lift that silently returns nothing is worse than a crash: the page would
    build, look wrong, and pass an audit that only reads what is there. */
-for (const [piece, name] of [[homeCss, 'stylesheet'], [header, 'header'], [footer, 'footer']]) {
+for (const [piece, name] of [[homeCss, 'stylesheet'], [header, 'header'], [footer, 'footer'],
+                             [partners, 'partners rail'], [partnersScript, 'rail controller']]) {
   if (!piece || piece.length < 400) throw new Error(`could not lift the ${name} from index.html`);
 }
 

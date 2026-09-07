@@ -815,6 +815,61 @@
       rgba(var(--veil-rgb), 1) 100%);
   }
 
+  /* ---------- partners ---------- */
+  /* 7 Sep, Mark: their partners, under the contact card and above the foot.
+     A rail rather than a row, on the same controller the news and programme
+     runs use: the data-run attribute drives one script, so this slider is
+     three lines of markup and no new JavaScript. With three logos it does not
+     scroll on a desktop and the arrows disable themselves, which is the
+     behaviour asked for on the ICSI page last week; on a phone it does.
+
+     Each logo keeps its own ground. These three do not share one: De
+     Brabander is a green striped strip, Centro Medico is white on maroon,
+     SEMAP is navy on white, and any single background would misrepresent two
+     of the three. So each sits on its own white card and is contained rather
+     than covered, which is also why the cards are a fixed height and the
+     images are not: a logo that is cropped is a logo that is wrong. */
+  /* The same ground as the contact section above it, and no rule between
+     them, so the two read as one closing block rather than as a strip that
+     landed on the page ground by itself. Mark, 7 Sep. The contact section
+     carries the top border of the pair; this one carries the foot. */
+  .pt{ padding-block:var(--sec-full) var(--sec-full); background:var(--color-base-alt); }
+  /* Centred, unlike every other section head on this page, because there is
+     nothing in the right hand column any more: the line that stood there said
+     what the logos already say. A head left aligned over an empty half reads
+     as a column that failed to load. */
+  .pt__head{ text-align:center; margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  .pt__h{ margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-ink); }
+  .pt__h em{ font-style:italic; color:var(--color-gold); }
+  .pt__wrap{ position:relative; min-width:0; }
+  .pt__run{
+    display:flex; gap:var(--card-gap); list-style:none; margin:0; padding:10px 2px 26px;
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .pt__run::-webkit-scrollbar{ display:none; }
+  .pt__run > li{ flex:0 0 calc((100% - (2 * var(--card-gap))) / 3); scroll-snap-align:start; }
+  .pt__run > li:last-child{ scroll-snap-align:end; }
+  @media (max-width:900px){ .pt__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width:560px){ .pt__run > li{ flex-basis:78%; } }
+  .pt__card{
+    height:148px; padding:1rem 1.4rem;
+    border-radius:var(--card-radius); background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 14px 34px -24px rgba(var(--veil-rgb), .45);
+  }
+  /* contain on a box the card sizes, not max-height on the image. A
+     percentage height inside a grid whose row is sized by that same image
+     resolves to auto, so max-height:100% did nothing and a 600px square logo
+     stood 334px tall in a 132px card. Measured in the browser, not guessed. */
+  .pt__card img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .pt__wrap .topics-arrow--prev{ left:-22px; }
+  .pt__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width:1180px){
+    .pt__wrap .topics-arrow--prev{ left:10px; }
+    .pt__wrap .topics-arrow--next{ right:10px; }
+  }
+
   /* ---------- centred statement ---------- */
   .hero__body{
     position:relative; z-index:20; flex:1;
@@ -2005,7 +2060,9 @@
   /* ============================================================
      10. CONTACT
      ============================================================ */
-  .contact{ padding:var(--gap-section) 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
+  /* The foot of this section is now the partners rail's, which wears the
+     same ground and closes the pair. */
+  .contact{ padding:var(--gap-section) 0 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
   /* One box: the people on a navy panel, the form on paper beside them. The
      two names are the point of the section, so they sit on the dark half
      where nothing competes with them. */
@@ -2839,6 +2896,37 @@
     </div>
   </section>
 
+<section class="pt" id="partners" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="pt__head">
+        <p class="plaque">Partners</p>
+        <h2 class="pt__h" id="partners-h">The people <em>behind us</em>.</h2>
+      </div>
+      <div class="pt__wrap">
+        <ul class="pt__run" id="pt-run">
+          <li>
+            <div class="pt__card">
+              <img src="/assets/img/partners/de-brabander.jpg" alt="De Brabander" loading="lazy">
+            </div>
+          </li>
+          <li>
+            <div class="pt__card">
+              <img src="/assets/img/partners/centro-medico-ippocrate.jpg" alt="Centro Medico Ippocrate" loading="lazy">
+            </div>
+          </li>
+          <li>
+            <div class="pt__card">
+              <img src="/assets/img/partners/semap.jpg" alt="SEMAP Marble &amp; Surface" loading="lazy">
+            </div>
+          </li>
+        </ul>
+        <button class="topics-arrow topics-arrow--prev" data-run="pt-run" data-dir="-1"
+                aria-label="Previous partner">&larr;</button>
+        <button class="topics-arrow topics-arrow--next" data-run="pt-run" data-dir="1"
+                aria-label="Next partner">&rarr;</button>
+      </div>
+    </div>
+  </section>
 
 </main>
 <footer class="site-footer">
@@ -3021,6 +3109,75 @@
       + '&body=' + encodeURIComponent(body);
   });
 })();
+</script>
+<script>
+/* ── The two programme runs share the hero run's arrow behaviour ──────
+     Same rAF tween as the topics run, and for the same reason: engines
+     drop animated scrolls in an occluded view, so scroll-behavior alone
+     can leave the track where it stood. One controller, driven by the
+     data-run attribute, rather than a copy per slider. */
+  (function(){
+    var arrows = [].slice.call(document.querySelectorAll('.topics-arrow[data-run]'));
+    if(!arrows.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var busy = {};
+
+    function step(track){
+      var item = track.querySelector('li');
+      if(!item) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return item.getBoundingClientRect().width + gap;
+    }
+    function sync(track){
+      var max = track.scrollWidth - track.clientWidth;
+      arrows.forEach(function(b){
+        if(b.dataset.run !== track.id) return;
+        b.disabled = Number(b.dataset.dir) < 0 ? track.scrollLeft <= 1 : track.scrollLeft >= max - 1;
+      });
+    }
+    function glide(track, to){
+      var max = track.scrollWidth - track.clientWidth;
+      to = Math.max(0, Math.min(to, max));
+      if(reduce.matches){ track.scrollLeft = to; sync(track); return; }
+      var from = track.scrollLeft, dist = to - from, t0 = null, dur = 420;
+      busy[track.id] = true;
+      requestAnimationFrame(function tick(now){
+        if(t0 === null) t0 = now;
+        var pr = Math.min((now - t0) / dur, 1);
+        var e = pr < .5 ? 4*pr*pr*pr : 1 - Math.pow(-2*pr + 2, 3) / 2;   /* easeInOutCubic */
+        track.scrollLeft = from + dist * e;
+        if(pr < 1) requestAnimationFrame(tick);
+        else { busy[track.id] = false; sync(track); }
+      });
+    }
+
+    arrows.forEach(function(b){
+      b.addEventListener('click', function(){
+        var track = document.getElementById(b.dataset.run);
+        if(!track || busy[track.id]) return;
+        glide(track, track.scrollLeft + Number(b.dataset.dir) * step(track));
+      });
+    });
+
+    /* The runs are filled by other scripts, so the first sync waits for
+       the cards to exist rather than reading an empty track. */
+    var tracks = {};
+    arrows.forEach(function(b){ tracks[b.dataset.run] = true; });
+    Object.keys(tracks).forEach(function(id){
+      var track = document.getElementById(id);
+      if(!track) return;
+      track.addEventListener('scroll', function(){ sync(track); }, {passive:true});
+      window.addEventListener('resize', function(){ sync(track); });
+      requestAnimationFrame(function(){ sync(track); });
+      /* And again once everything has loaded. The rAF above reads the track
+         before the layout has settled, which never showed while every rail
+         on the page overflowed: max came out positive either way. The
+         partners rail holds three cards and does not overflow on a desktop,
+         and there both arrows sat enabled on a track that cannot move until
+         something resized the window. */
+      window.addEventListener('load', function(){ sync(track); });
+    });
+  })();
 </script>
 </body>
 </html>

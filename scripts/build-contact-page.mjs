@@ -11,7 +11,8 @@
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, homeCss, pageHeroCss, header, footer, head, navScript, askScript, headerFor } from './lib/shell.mjs';
+import { root, homeCss, pageHeroCss, header, footer, head, navScript, askScript, headerFor,
+         partners, partnersScript } from './lib/shell.mjs';
 
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -293,11 +294,13 @@ ${WAYS.map(([i, name, value, action, href]) => `        <a class="cn__way" href=
   </section>
 
 ${placesSection}
+${partners}
 
 </main>
 ${footer}
 ${navScript}
 ${askScript}
+${partnersScript}
 </body>
 </html>
 `;
