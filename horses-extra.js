@@ -38,55 +38,68 @@ var HORSES_EXTRA = {
   sires: {
     "AGANIX DU SEIGNEUR Z": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/166591/aganix-du-seigneur",
-      "line": ""
+      "line": "By Ogano Sitte, jumping at the highest level with Jos Lansink until an injury ended his sport early. What he passes on is blood and scope, and Agana van het Gerendal Z shows it at five star level.",
+      "source": "Zangersheide and Hippomundo, read 7 September 2026"
     },
     "BIG STAR": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/240686/big-star",
-      "line": ""
+      "line": "Nick Skelton's horse: team gold in London, individual gold in Rio. A KWPN stallion by Quick Star out of a Nimmerdor mare, and named KWPN Stallion of the Year after he left the sport.",
+      "source": "Wikipedia and World of Showjumping, read 7 September 2026"
     },
     "CATOKI": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/38151/catoki",
-      "line": ""
+      "line": "A Holsteiner by Cambridge, one of the best sons of Caletto I. He won the Grand Prix of Rastede with Gerd Sosath and went on to World Cup shows, and his son Canoso topped the Holstein licensing.",
+      "source": "Breeding News for Sport Horses and Hof Sosath, read 7 September 2026"
     },
     "CHACCO BLUE": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/118901/chacco-blue",
-      "line": ""
+      "line": "Chacco Blue has led the WBFSH ranking of jumping sires, and his stock carried him there: Explosion W with Ben Maher, Chaqui Z with Shane Sweetnam. His dam Contara brought the thoroughbred blood that keeps his offspring quick.",
+      "source": "World of Showjumping and The Horse Magazine, read 7 September 2026"
     },
     "COMME IL FAUT": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/285153/comme-il-faut",
-      "line": ""
+      "line": "By Cornet Obolensky out of Ratina Z. He won at the highest level with Marcus Ehning and stood in the German team that took silver at the European Championship in Rotterdam.",
+      "source": "Hippomundo and Jumper News, read 7 September 2026"
     },
     "CORNET OBOLENSKY": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/34480/cornet-obolensky",
-      "line": ""
+      "line": "A grey by Clinton out of Rabanna van Costersveld. European team champion and an Olympic horse with Marco Kutscher, and the sire of Cornet d'Amour, who won the World Cup Final and led the world ranking.",
+      "source": "The Horse Magazine and Groupe France Elevage, read 7 September 2026"
     },
     "DOMINATOR 2000 Z": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/1684104/dominator-2000-z",
-      "line": ""
+      "line": "One of the most important sons of Diamant de Semilly. With Christian Ahlmann he won Global Champions Tour Grands Prix in Stockholm and Hamburg, and his dam Cephale 2000 has produced a run of licensed stallions.",
+      "source": "Zangersheide and The Horse Magazine, read 7 September 2026"
     },
     "DOURKHAN HERO Z": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/2016609/dourkhan-hero-z",
-      "line": ""
+      "line": "Vice World Champion at seven, and his first five star Grand Prix at ten, in Hamburg with Christian Ahlmann. A young Zangersheide stallion whose first foals are already out at the World Breeding Championship.",
+      "source": "Zangersheide and Hippomundo, read 7 September 2026"
     },
     "FOR PLEASURE": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/15154/for-pleasure",
-      "line": ""
+      "line": "Two Olympic team golds with Lars Nieberg, Atlanta and Sydney, and Hanoverian Stallion of the Year. He stayed in the sport until he was twenty, and his sons stand in studbooks across Europe.",
+      "source": "Wikipedia and Eurodressage, read 7 September 2026"
     },
     "MOSITO VAN HET HELLENOF": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/1692956/mosito-van-het-hellehof",
-      "line": ""
+      "line": "One of the first approved sons of Elvis ter Putte. Second in the Rolex Grand Prix of Knokke with Bernardo Alves, and his first crop stood in force in the final of the Belgian championship for five year olds.",
+      "source": "Joris De Brabander and Hippomundo, read 7 September 2026"
     },
     "UNITED TOUCH S": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/1677488/united-touch-s",
-      "line": ""
+      "line": "Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.",
+      "source": "FEI and Rolex Grand Slam, read 7 September 2026"
     },
     "URICAS VD KATTEVENNEN": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/1761945/uricas-v-d-kattevennen",
-      "line": ""
+      "line": "Two five star Grands Prix in one season, St Gallen and Riesenbeck, and the Olympic Games in Paris with the Dutch team. His granddam Chika's Way jumped at the highest level, and behind her stands Wodka II.",
+      "source": "Harrie Smolders and Oldenburger Pferdezuchtverband, read 7 September 2026"
     },
     "ZANDOR Z": {
       "horsetelex": "https://www.horsetelex.com/horses/pedigree/26151/zandor-z",
-      "line": ""
+      "line": "He jumped Grands Prix with Jos Lansink, Bordeaux among them twice, and stood at Zangersheide in Lanaken to the end. Zekina Z, Zeta de Hus and ZZ Top vh Schaarbroek Z all carry his name.",
+      "source": "Equnews and Hippomundo, read 7 September 2026"
     }
   },
   crosses: {
