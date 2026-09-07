@@ -81,10 +81,17 @@ while IFS= read -r ref; do
     echo "MISSING asset, refusing to publish: $ref" >&2
     exit 1
   fi
-done < <(cat "$root/index.html" "$root/news-data.js" "$root/news/"*.html "$root/about/index.html" \
+# Every page that is published, and every script that is published with it.
+# The scripts were a hand-picked one, news-data.js, and on 7 Sep the five new
+# tab pictures went live as 404s because home-tabs.js is the only file that
+# names them and nothing was reading it. The scripts in "$here" are exactly
+# the ones the pages asked for, copied a few lines above, so scanning those
+# closes the hole rather than lengthening the list again.
+done < <(cat "$root/index.html" "$root/news/"*.html "$root/about/index.html" \
   "$root/breeding-mares/"*.html "$root/foals/"*.html "$root/embryos/"*.html "$root/sport-horses/"*.html \
   "$root/icsi-semen/"*.html "$root/contact/index.html" \
   "$root/privacy/index.html" "$root/terms/index.html" "$root/404.html" \
+  "$here/"*.js \
   | grep -oE 'assets/(img/horses|img/video|img/placeholder|img/share|img|logo)/[A-Za-z0-9._-]+' | sort -u)
 echo "copied $count assets"
 
