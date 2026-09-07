@@ -497,6 +497,12 @@ var WHATSAPP = {
    ],
    "source": "WhatsApp, Stud Von Axe, 6 September 2026"
   },
+  "cacao-von-axe-z": {
+   "photos": [
+    "assets/img/horses/cacao-von-axe-z-1.jpg"
+   ],
+   "source": "WhatsApp, Stud Von Axe, 6 September 2026"
+  },
   "agousha-vd-berghoeve-z": {
    "body": [
     "Directly out of Gatoucha van’t Roosakker, from one of the most influential families in modern show jumping.",

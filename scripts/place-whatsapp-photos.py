@@ -66,6 +66,7 @@ SUPPLIED = {
     # muzzle off. This one is supplied AND composed: the new photograph on a
     # square ground of its own.
     'diamecho-von-axe-z': 'content/manual-photos/diamecho-von-axe-z.jpeg',
+    'cacao-von-axe-z': 'content/manual-photos/cacao-von-axe-z.jpeg',
 }
 
 # The card window is square and a landscape photograph loses a third of its
@@ -74,7 +75,12 @@ SUPPLIED = {
 # with the space around him filled from the same photograph, enlarged and
 # blurred. Nothing is invented and nothing of the horse is lost. Mark named
 # these four on 7 September.
-SQUARE = {'diamecho-von-axe-z', 'cacao-von-axe-z'}
+# Empty, and that is the good outcome. Four horses were listed here on
+# 7 September because the square card cut them; Mark then found a wider frame
+# of each, and a real photograph beats a composed one every time. Diamecho is
+# the one exception and he is handled below. The machinery stays: the next
+# horse whose card cuts him goes in here and needs nothing else.
+SQUARE = {'diamecho-von-axe-z'}
 
 
 def to_square(im, margin=0.03):
