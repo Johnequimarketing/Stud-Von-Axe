@@ -75,12 +75,14 @@ SUPPLIED = {
 # with the space around him filled from the same photograph, enlarged and
 # blurred. Nothing is invented and nothing of the horse is lost. Mark named
 # these four on 7 September.
-# Empty, and that is the good outcome. Four horses were listed here on
-# 7 September because the square card cut them; Mark then found a wider frame
-# of each, and a real photograph beats a composed one every time. Diamecho is
-# the one exception and he is handled below. The machinery stays: the next
-# horse whose card cuts him goes in here and needs nothing else.
-SQUARE = {'diamecho-von-axe-z'}
+# Empty, and that is the outcome Mark wanted. Four horses were listed here on
+# 7 September because the square card cut them, and each got a composed
+# square: the whole horse on a blurred ground of its own. He looked at
+# Diamecho on the archive and said no, the cards are to stay covered rather
+# than sit contained in a soft background, so the last one came out too. By
+# then he had found a wider frame of every one of them anyway.
+# The machinery stays for a case where there is no better frame to be had.
+SQUARE = set()
 
 
 def to_square(im, margin=0.03):
