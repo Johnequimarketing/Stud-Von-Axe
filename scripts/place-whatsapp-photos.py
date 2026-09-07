@@ -30,7 +30,7 @@ Usage:  python3 scripts/place-whatsapp-photos.py [--dry-run]
 """
 
 import json, os, sys, io, re, subprocess
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageFilter, ImageEnhance
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'content', 'whatsapp-2026-09-06')
@@ -57,7 +57,35 @@ def git_show(path):
 SUPPLIED = {
     'filou': 'content/manual-photos/filou.jpeg',
     'diabalou-sva': 'content/manual-photos/diabalou-sva.jpeg',
+    # Sent later the same afternoon: the same shoot again, framed wide enough
+    # that the whole horse survives the square card crop on its own. It needs
+    # no composed background, which is why it is not in SQUARE.
+    'unguessable-von-axe': 'content/manual-photos/unguessable-von-axe.jpeg',
 }
+
+# The card window is square and a landscape photograph loses a third of its
+# width to it, which is why these four lost a head or a tail. Their card
+# picture is composed onto a square instead of cut to one: the whole horse,
+# with the space around him filled from the same photograph, enlarged and
+# blurred. Nothing is invented and nothing of the horse is lost. Mark named
+# these four on 7 September.
+SQUARE = {'diamecho-von-axe-z', 'waikiki-vd-berghoeve', 'cacao-von-axe-z'}
+
+
+def to_square(im, margin=0.03):
+    side = max(im.size)
+    w, h = im.size
+    bg = im.resize((int(w * max(side / w, side / h) * 1.25),
+                    int(h * max(side / w, side / h) * 1.25)), Image.LANCZOS)
+    bg = bg.crop(((bg.width - side) // 2, (bg.height - side) // 2,
+                  (bg.width - side) // 2 + side, (bg.height - side) // 2 + side))
+    bg = ImageEnhance.Brightness(bg.filter(ImageFilter.GaussianBlur(side // 40))).enhance(0.82)
+    inner = int(side * (1 - margin * 2))
+    f = min(inner / w, inner / h)
+    fg = im.resize((int(w * f), int(h * f)), Image.LANCZOS)
+    bg.paste(fg, ((side - fg.width) // 2, (side - fg.height) // 2))
+    return bg
+
 
 # the direction each archive settles on, counted off her own pictures
 FACING = {'broodmare': 'left', 'foal': 'right', 'sport': 'right', 'stallion': 'right'}
@@ -81,9 +109,11 @@ TURN_EXISTING = {
 }
 
 
-def save(im, path, mirror):
+def save(im, path, mirror, square=False):
     if mirror:
         im = ImageOps.mirror(im)
+    if square:
+        im = to_square(im)
     w, h = im.size
     if w > WIDTH:
         im = im.resize((WIDTH, round(h * WIDTH / w)), Image.LANCZOS)
@@ -151,7 +181,7 @@ def main():
         for src, mirror in incoming:
             dst = os.path.join(DST, '%s-%d.jpg' % (slug, idx))
             if not dry:
-                save(Image.open(src), dst, mirror)
+                save(Image.open(src), dst, mirror, square=(idx == 1 and slug in SQUARE))
             paths.append('assets/img/horses/%s-%d.jpg' % (slug, idx))
             idx += 1
         turn = slug in TURN_EXISTING
@@ -160,7 +190,8 @@ def main():
                 break
             dst = os.path.join(DST, '%s-%d.jpg' % (slug, idx))
             if not dry:
-                save(Image.open(io.BytesIO(blob)), dst, turn and n == 0)
+                save(Image.open(io.BytesIO(blob)), dst, turn and n == 0,
+                     square=(idx == 1 and slug in SQUARE))
             paths.append('assets/img/horses/%s-%d.jpg' % (slug, idx))
             idx += 1
 
@@ -192,7 +223,7 @@ def main():
         out[slug] = {'name': slug, 'photos': ['assets/img/horses/%s-1.jpg' % slug],
                      'hers': 1, 'kept': 0}
 
-    for slug in TURN_EXISTING:
+    for slug in sorted(SQUARE | TURN_EXISTING):
         if slug in out:
             continue
         first = 'assets/img/horses/%s-1.jpg' % slug
@@ -200,8 +231,10 @@ def main():
             skipped.append(slug + ' (nothing to turn)')
             continue
         if not dry:
-            save(Image.open(io.BytesIO(git_show(first))), os.path.join(ROOT, first), True)
-        flipped.append('%s  the picture already on the site, turned' % slug)
+            save(Image.open(io.BytesIO(git_show(first))), os.path.join(ROOT, first),
+                 slug in TURN_EXISTING, square=slug in SQUARE)
+        flipped.append('%s  the picture already on the site, %s' % (
+            slug, 'turned' if slug in TURN_EXISTING else 'squared'))
 
     # the two archive heroes she offered, and her screen shot, which is not a horse
     heroes = {}
