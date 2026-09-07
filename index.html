@@ -603,19 +603,42 @@
       /* opens just below the hairline rule, so the rule stays visible */
       top:calc(100% + 1.15rem + 1px);
       background:var(--color-base);
-      flex-direction:column; align-items:flex-start;
-      padding:1.4rem var(--gutter) 1.8rem;
-      border-bottom:1px solid var(--color-line);
+      flex-direction:column; align-items:stretch;
+      /* A plate, like every other plate on this site. It was a square slab
+         with a hairline under it, the one panel on the page with corners.
+         Mark, 7 Sep. */
+      border:1px solid var(--color-line);
+      border-radius:var(--plate-radius);
+      box-shadow:0 26px 50px -30px rgba(var(--veil-rgb), .55);
+      padding:.55rem 1.15rem;
       transform:translateY(-8px);
       opacity:0; visibility:hidden; pointer-events:none;
       transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
     }
     .primary-nav.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
     .primary-nav a{
-      padding:.6rem 0; width:100%; font-size:17.5px;
+      padding:.92rem .25rem; width:100%; font-size:17.5px;
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
+      transition:color .25s var(--ease);
     }
+    /* The bar's links stand on a photograph and carry a shadow for it; in
+       here they stand on ivory, where it reads as a smudge. Written at the
+       same weight as the rule that sets it, or it loses: a media query adds
+       no specificity of its own. */
+    .hd:not(.is-pinned) .primary-nav a{ text-shadow:none; }
+    /* The last row closes the plate; a rule under it draws a line to nowhere. */
+    .primary-nav a:last-child{ border-bottom:0; }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
+    /* White, on ivory. It is the colour the bar uses over the hero, and it
+       came into the drawer with it: the current page was the one item you
+       could not read. Navy, with the gold rule it already had. */
+    .primary-nav a[aria-current="page"]{
+      color:var(--color-navy); font-weight:500;
+      border-color:var(--color-gold);
+    }
+    .primary-nav a[aria-current="page"]:last-child{
+      border-bottom:1px solid var(--color-gold);
+    }
     /* Rows, not a run: each one already carries a rule under it. */
     .primary-nav a + a::before{ content:none; }
     .nav-toggle{ display:grid; }
@@ -1562,7 +1585,13 @@
     display:grid; gap:clamp(2rem,4vw,3.5rem);
   }
   @media (min-width:900px){
-    .sv__inner{ grid-template-columns:1fr 1.05fr; align-items:center; }
+    .sv__inner{
+      grid-template-columns:1fr 1.05fr; align-items:center;
+      column-gap:clamp(2rem,4vw,3.5rem); row-gap:0;
+    }
+    .sv__inner > div:first-of-type{ grid-column:1; grid-row:1; }
+    .sv__acts{ grid-column:1; grid-row:2; margin-top:clamp(1.6rem,3vw,2.2rem); }
+    .sv__list{ grid-column:2; grid-row:1 / span 2; }
   }
   .sv__kick{ margin:0; }
   .sv__h{
@@ -1576,8 +1605,10 @@
   }
   .sv__acts{
     display:flex; flex-wrap:wrap; gap:.7rem;
-    margin-top:clamp(1.6rem,3vw,2.2rem);
+    /* on a phone the grid gap does the spacing, so no margin of its own */
+    margin-top:0; order:2;
   }
+  .sv__list{ order:1; }
 
   .sv__list{ list-style:none; margin:0; padding:0; display:grid; gap:.7rem; }
   /* The same dark glass the hero cards and the status chips wear, so the
@@ -2728,10 +2759,15 @@
         broker carefully selected sport horses and breeding mares for clients who value quality,
         transparency and expertise. Every search begins with understanding what the client needs,
         and ends with finding the right opportunity.</p>
-        <div class="sv__acts">
-          <a href="contact/" class="btn btn-gold btn-pill">Tell us what you need</a>
-          <a href="breeding-mares/" class="btn btn-ghost btn-pill">See our mares</a>
-        </div>
+      </div>
+      <!-- The two buttons are a block of the grid, not the last thing in the
+           text column. They have to be, for the phone: Mark asked on 7 Sep for
+           them to sit under the three services, and order can only reshuffle
+           blocks that share a parent. On the wide layout they go back under
+           the words, which is where they were. -->
+      <div class="sv__acts">
+        <a href="contact/" class="btn btn-gold btn-pill">Tell us what you need</a>
+        <a href="breeding-mares/" class="btn btn-ghost btn-pill">See our mares</a>
       </div>
       <!-- Three blocks, a title each. Mark, 5 Sep: no panels and no tabs
            under them. So there is nothing to open, which means no button, no

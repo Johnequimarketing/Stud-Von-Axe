@@ -2733,12 +2733,15 @@ console.log('wrote horses-home.js for the homepage runs');
       key,
       label: g.label,
       href: `/${g.dir}`,
-      img: `/assets/img/${g.img}`,
+      /* Its own picture, not the archive's hero. The heroes are 1920 by 853
+         panoramas and this window is 1.5 to 1, so three of the five arrived
+         as a crop of a crop: a head with the ears cut off, beside two wide
+         scenes. Mark, 7 Sep. These five are cut to the window's own shape
+         and all show a whole horse. */
+      img: `/assets/img/tab-${key}.jpg`,
       blurb: g.intro,
-      /* The same focus the archive's own hero uses. These are 1920 by 853
-         panoramas and the panel's window is nothing like that shape, so
-         without a focus the crop lands wherever the middle happens to be. */
-      pos: g.pos,
+      /* Cut to shape already, so the middle is the right place. */
+      pos: '50% 50%',
       cta: CTA[key],
       count: list.length,
       noun: list.length === 1 ? g.one : g.many,
