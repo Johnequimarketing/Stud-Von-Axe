@@ -37,55 +37,55 @@ var HORSES_EXTRA = {
   },
   sires: {
     "AGANIX DU SEIGNEUR Z": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/166591/aganix-du-seigneur",
       "line": ""
     },
     "BIG STAR": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/240686/big-star",
       "line": ""
     },
     "CATOKI": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/38151/catoki",
       "line": ""
     },
     "CHACCO BLUE": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/118901/chacco-blue",
       "line": ""
     },
     "COMME IL FAUT": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/285153/comme-il-faut",
       "line": ""
     },
     "CORNET OBOLENSKY": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/34480/cornet-obolensky",
       "line": ""
     },
     "DOMINATOR 2000 Z": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/1684104/dominator-2000-z",
       "line": ""
     },
     "DOURKHAN HERO Z": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/2016609/dourkhan-hero-z",
       "line": ""
     },
     "FOR PLEASURE": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/15154/for-pleasure",
       "line": ""
     },
     "MOSITO VAN HET HELLENOF": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/1692956/mosito-van-het-hellehof",
       "line": ""
     },
     "UNITED TOUCH S": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/1677488/united-touch-s",
       "line": ""
     },
     "URICAS VD KATTEVENNEN": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/1761945/uricas-v-d-kattevennen",
       "line": ""
     },
     "ZANDOR Z": {
-      "horsetelex": "",
+      "horsetelex": "https://www.horsetelex.com/horses/pedigree/26151/zandor-z",
       "line": ""
     }
   },

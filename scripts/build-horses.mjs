@@ -1373,8 +1373,18 @@ const damOfCross = (h) => {
    reading CABRI VD BERGHOEVE Z that opens HIAMANT VAN'T ROOSAKKER is a lie the
    visitor only finds out about after clicking. A link that goes somewhere we
    cannot name is not shown at all and is asked about in the checklist. */
+/* The particles go before the letters are run together. Horsetelex files
+   URICAS V/D KATTEVENNEN where their own record says URICAS VAN KATTEVENNEN,
+   and a straight letter comparison reads those as two horses: the link was
+   verified by hand on 7 September and still went undrawn. Dutch and Belgian
+   names carry van, v/d, vd, van den, van het and 't, and which one a registry
+   wrote down says nothing about which horse it is. */
 const telexLetters = (t) => String(t || '').toLowerCase()
-  .normalize('NFD').replace(/[^a-z]/g, '');
+  .normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .replace(/[^a-z0-9]+/g, ' ')
+  .split(' ')
+  .filter((w) => w && !['van', 'vd', 'v', 'd', 'den', 'der', 'het', 't', 'de'].includes(w))
+  .join('');
 const telexSame = (slug, name) => {
   const a = telexLetters(slug), b = telexLetters(name);
   if (!a || !b) return false;
@@ -1488,9 +1498,14 @@ const stallionCard = (horse, full) => {
   const haystack = [horse.name, horse.genetics, line].filter(Boolean).join(' ').toLowerCase();
   return `<li class="ec" data-sold="stallion" data-find="${esc(haystack)}">` +
     `<a class="ec__a" href="/icsi-semen/${horse.slug}">` +
-    '<span class="ec__win"><span class="ec__mark">' +
-      '<img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">' +
-    '</span><span class="ec__fade" aria-hidden="true"></span></span>' +
+    /* Every one of these fell back to the mark until 6 September, when the
+       owners sent a photograph of all twenty four. Same window as a cross,
+       so the two archives read as one family. */
+    (horse.photos && horse.photos.length
+      ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span>`
+      : '<span class="ec__win"><span class="ec__mark">' +
+        '<img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">' +
+        '</span><span class="ec__fade" aria-hidden="true"></span></span>') +
     '<span class="ec__seam"><span class="ec__stage">Availability on request</span></span>' +
     '<span class="ec__box">' +
       `<${full ? 'h2' : 'h3'} class="ec__name">${esc(horseName(horse.name))}</${full ? 'h2' : 'h3'}>` +
@@ -1507,10 +1522,13 @@ const stallionPage = (horse, group, list) => {
     p.dam ? ['Dam', horseName(p.dam)] : null,
   ].filter(Boolean);
 
+  const shot = (horse.photos && horse.photos[0]) || '';
   return `
   <section class="eh">
     <div class="eh__win">
-      <span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>
+      ${shot
+        ? `<img src="/${shot}" alt="${esc(horseName(horse.name))}" fetchpriority="high">`
+        : `<span class="eh__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>`}
       <span class="eh__veil" aria-hidden="true"></span>
       <a class="eh__back" href="/${group.dir}"><span aria-hidden="true">&larr;</span> ${esc(group.label)}</a>
     </div>
@@ -1637,8 +1655,15 @@ const linesSection = (horse, dam, sireName, damName) => {
           ${c.ped ? `<span class="ln__p">${esc(c.ped)}</span>` : ''}
           ${c.text
             ? `<p class="ln__t">${esc(theirWords(c.text))}</p>`
-            : `<p class="ln__t ln__t--waiting">Nothing published on this line yet. It goes in with the
-               Horsetelex link.</p>`}
+            /* The sentence used to promise the Horsetelex link. The links went
+               in on 7 September, so with one present the promise is stale and
+               the line has to say what is actually still missing: their own
+               words about this line. */
+            : c.link
+              ? `<p class="ln__t ln__t--waiting">The pedigree is on Horsetelex. What the owners
+                 say about this line goes here.</p>`
+              : `<p class="ln__t ln__t--waiting">Nothing published on this line yet. It goes in with the
+                 Horsetelex link.</p>`}
           <span class="ln__go">
             ${c.href ? `<a href="${esc(c.href)}">See ${esc(c.name)} <span class="a" aria-hidden="true">&rarr;</span></a>` : ''}
             ${c.link ? `<a href="${esc(c.link)}" target="_blank" rel="noopener">On Horsetelex <span aria-hidden="true">&#8599;</span></a>` : ''}

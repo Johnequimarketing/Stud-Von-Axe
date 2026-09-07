@@ -59,14 +59,15 @@ var WHATSAPP = {
    "photos": [
     "assets/img/horses/hayley-vd-berghoeve-z-1.jpg"
    ],
-   "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 18:43",
+   "source": "Horsetelex, looked up 7 September 2026",
    "body": [
     "A direct daughter of Hiamant van’t Roosakker, from one of Belgium’s most influential sport horse families.",
     "Born in 2024, and following in the footsteps of her older sister Cabri vd Berghoeve Z, Hayley combines the exceptional influence of Heartbreaker with the proven maternal strength of the van’t Roosakker family.",
     "Her dam has already produced several international performers, including VDL Group Elegant Hero Z and H5 Ganesh Hero Z at 1.60m, Cattouchka Hero Z at 1.55m, Quintus VDK and Sevilla vd Berghoeve Z at 1.50m, as well as Kerswin Van’t Roosakker, Gin de Pao and Kamalah Hero Z at 1.45m.",
     "This outstanding production underlines Hiamant’s ability to consistently produce horses for the highest level of sport.",
     "With Heartbreaker adding his legendary blood, Hayley represents a powerful combination of proven performance genetics and exceptional maternal strength."
-   ]
+   ],
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/3069576/hayley-vd-berghoeve-z"
   },
   "unguessable-von-axe": {
    "photos": [
@@ -487,7 +488,8 @@ var WHATSAPP = {
     "assets/img/horses/zandor-z-x-cabri-vd-berghoeve-z-2.jpg"
    ],
    "source": "WhatsApp, Stud Von Axe, 6 September 2026, her list at 11:11",
-   "year": "21/03/2027"
+   "year": "21/03/2027",
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z"
   },
   "agousha-vd-berghoeve-z": {
    "body": [
@@ -548,11 +550,13 @@ var WHATSAPP = {
    "source": "WhatsApp, Stud Von Axe, 6 September 2026, the sire's photograph at her word",
    "photos": [
     "assets/img/horses/chacco-blue-1.jpg"
-   ]
+   ],
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z"
   },
   "united-touch-s-x-cabri-vd-berghoeve-z": {
    "year": "26/03/2027",
-   "source": "WhatsApp, Stud Von Axe, 6 September 2026, her list at 11:11"
+   "source": "WhatsApp, Stud Von Axe, 6 September 2026, her list at 11:11",
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z"
   },
   "aganix-du-seigneur-z-x-cortina-de-jolie-z": {
    "year": "15/04/2027",
@@ -595,6 +599,10 @@ var WHATSAPP = {
     "assets/img/horses/comme-il-faut-1.jpg"
    ],
    "source": "WhatsApp, Stud Von Axe, 6 September 2026, the sire's photograph at her word"
+  },
+  "cabri-vd-berghoeve-z": {
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+   "source": "Horsetelex, looked up 7 September 2026"
   }
  },
  "NEW": [
@@ -949,7 +957,7 @@ var WHATSAPP = {
    "studbook": "",
    "sex": "-",
    "height": "",
-   "horsetelex": "https://www.horsetelex.com/horses/pedigree/1550217/hiamant-van-t-roosakker",
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
    "pedigree": {
     "sire": "UNITED TOUCH S",
     "dam": "CABRI VD BERGHOEVE Z",
@@ -1025,7 +1033,7 @@ var WHATSAPP = {
    "studbook": "",
    "sex": "-",
    "height": "",
-   "horsetelex": "https://www.horsetelex.com/horses/pedigree/1550217/hiamant-van-t-roosakker",
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
    "pedigree": {
     "sire": "CHACCO BLUE",
     "dam": "CABRI VD BERGHOEVE Z",
@@ -1063,7 +1071,7 @@ var WHATSAPP = {
    "studbook": "",
    "sex": "-",
    "height": "",
-   "horsetelex": "https://www.horsetelex.com/horses/pedigree/1550217/hiamant-van-t-roosakker",
+   "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
    "pedigree": {
     "sire": "ZANDOR Z",
     "dam": "CABRI VD BERGHOEVE Z",

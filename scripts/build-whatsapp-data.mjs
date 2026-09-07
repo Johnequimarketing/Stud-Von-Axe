@@ -245,6 +245,32 @@ for (const h of siteEmbryos) {
   borrowed++;
 }
 
+/* ---------- 2b. two Horsetelex records ----------
+   Not from WhatsApp: looked up on 7 September, in a real browser, one horse
+   at a time, and accepted only where the sire and the dam on their record
+   agree with the sire and the dam on ours. It lives in this file because
+   this is the layer a fresh harvest cannot overwrite.
+
+   Cabri matters twice over. Her link pointed at HIAMANT VAN'T ROOSAKKER,
+   which is her own dam, so from a cross out of Cabri it lands on a
+   grandmother and telexOf refused to draw it at all. She has a record of her
+   own, and with it the three crosses out of her get a link that resolves. */
+const LOOKED_UP = {
+  'hayley-vd-berghoeve-z': 'https://www.horsetelex.com/horses/pedigree/3069576/hayley-vd-berghoeve-z',
+  'cabri-vd-berghoeve-z': 'https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z',
+};
+for (const [slug, url] of Object.entries(LOOKED_UP)) {
+  patch(slug, { horsetelex: url, source: 'Horsetelex, looked up 7 September 2026' });
+}
+/* a cross carries its dam's link, so the crosses out of Cabri follow her */
+for (const h of siteEmbryos) {
+  if (!/cabri/i.test(h.pedigree && h.pedigree.dam || '')) continue;
+  patch(h.slug, { horsetelex: LOOKED_UP['cabri-vd-berghoeve-z'] });
+}
+for (const rec of NEW) {
+  if (/cabri/i.test(rec.pedigree.dam || '')) rec.horsetelex = LOOKED_UP['cabri-vd-berghoeve-z'];
+}
+
 /* ---------- 3. what comes off ---------- */
 const DROP = [{
   slug: 'electra-von-axe-z',
