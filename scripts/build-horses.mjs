@@ -275,6 +275,8 @@ const CSS = homeCss + pageHeroCss + storyCss + archiveCss + `
   .eh__h em{ font-style:italic; color:var(--color-gold); }
   .eh__say{ margin:.6rem 0 1.2rem; font-family:var(--font-display); font-style:italic;
     font-size:16px; line-height:1.5; color:var(--color-navy); max-width:52ch; }
+  .eh__story{ margin:0 0 1.2rem; font-size:15px; line-height:1.62;
+    color:var(--color-ink-soft); max-width:56ch; }
   .eh__facts{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.4rem;
     padding-top:1.1rem; border-top:1px solid var(--color-line); }
   @media (min-width:760px){ .eh__facts{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
@@ -1537,6 +1539,14 @@ const stallionPage = (horse, group, list) => {
         <span class="eh__stage">ICSI semen</span>
         <h1 class="eh__h">${esc(horseName(horse.name))}</h1>
         ${stallionLine(horse) ? `<p class="eh__say">${esc(stallionLine(horse))}</p>` : ''}
+        ${/* Who the horse is, before how he is bred. Researched on 7 September
+              rather than written: every sentence is a fact from a published
+              source, and semen-data.js records which one beside the text. The
+              same discipline as everywhere else on this site, only the source
+              is a magazine rather than the owners. */
+          (horse.body && horse.body.length)
+            ? horse.body.map((t) => `<p class="eh__story">${esc(theirWords(t))}</p>`).join('\n        ')
+            : ''}
         <div class="eh__facts">
 ${facts.map(([k, v]) => `          <div><span class="eh__k">${esc(k)}</span><span class="eh__v">${esc(v)}</span></div>`).join('\n')}
         </div>
