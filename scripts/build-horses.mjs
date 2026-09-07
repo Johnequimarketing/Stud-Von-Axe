@@ -992,6 +992,23 @@ const cardData = (horse) => {
     ` data-sex="${esc(f.sex)}" data-studbook="${esc(f.studbook)}" data-born="${esc(f.born)}"`;
 };
 
+/* Where the square cuts a horse in half.
+   A card window is a square and most of these photographs are landscape, so
+   the middle of the frame is what survives. That is right nearly everywhere
+   and wrong where the horse stands at one end of a wide picture: United
+   Touch S is jumping left to right across a 16 by 9 frame and the centre
+   crop took his head off at the nose. 7 Sep, Mark: get his head into the
+   middle, pull that one to the left.
+   Named horses only, and only where it was looked at in the browser. The
+   default stays the middle; a horse is added here when the middle is
+   demonstrably wrong, not on a hunch. */
+const CARD_FOCUS = {
+  'united-touch-s-x-cabri-vd-berghoeve-z': 'left center',
+  'united-touch-s-x-cabri-vd-berghoeve-z-frozen': 'left center',
+};
+const focus = (horse) => CARD_FOCUS[horse.slug]
+  ? ` style="object-position:${CARD_FOCUS[horse.slug]}"` : '';
+
 const card = (horse, group, full) => {
   const href = `/${group.dir}/${horse.slug}`;
   /* A sold horse shows where it went, with the flag: the homepage cards have
@@ -1006,7 +1023,7 @@ const card = (horse, group, full) => {
      30 Aug and taken to all three archives the same day. */
   const tag = `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${label}</span>`;
   const win = horse.photos.length
-    ? `<span class="hz__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">${tag}</span>`
+    ? `<span class="hz__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"${focus(horse)}>${tag}</span>`
     : `<span class="hz__win typo"><p>${esc(theirWords(horse.genetics || horse.tagline || ''))}</p>${tag}</span>`;
 
   /* The archive card carries the breeding. On a broodmare the sire line is
@@ -1129,7 +1146,7 @@ ${bars.join('\n')}
    the same stamp saying the same kind of thing. */
 const foalCard = (horse, group, full) => {
   const win = horse.photos.length
-    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy">` +
+    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"${focus(horse)}>` +
       `<span class="hz__seam${horse.sold ? ' hz__seam--sold' : ''}">${statusLabel(horse)}</span>` +
       '<span class="ec__fade" aria-hidden="true"></span></span>'
     : `<span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span>` +
@@ -1331,7 +1348,7 @@ const damlineOf = (h) => horseName(theirWords((h.genetics || '').split(/\s+X\s+/
    breeder reads is the pairing and the damline. */
 const embryoCard = (horse, full) => {
   const win = horse.photos.length
-    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span>`
+    ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"${focus(horse)}><span class="ec__fade" aria-hidden="true"></span></span>`
     : `<span class="ec__win"><span class="ec__mark"><img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true"></span><span class="ec__fade" aria-hidden="true"></span></span>`;
   const haystack = [horse.name, horse.genetics, horse.tagline, horse.year, stageOf(horse)]
     .filter(Boolean).join(' ').toLowerCase();
@@ -1504,7 +1521,7 @@ const stallionCard = (horse, full) => {
        owners sent a photograph of all twenty four. Same window as a cross,
        so the two archives read as one family. */
     (horse.photos && horse.photos.length
-      ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span>`
+      ? `<span class="ec__win"><img src="/${horse.photos[0]}" alt="${esc(horseName(horse.name))}" loading="lazy"${focus(horse)}><span class="ec__fade" aria-hidden="true"></span></span>`
       : '<span class="ec__win"><span class="ec__mark">' +
         '<img src="/assets/logo/icon-ondark.png" data-ground="dark" alt="" aria-hidden="true">' +
         '</span><span class="ec__fade" aria-hidden="true"></span></span>') +

@@ -245,6 +245,65 @@ for (const h of siteEmbryos) {
   borrowed++;
 }
 
+/* ---------- 2a. the gold line under every cross ----------
+   7 Sep, Mark: some crosses carry the gold plate with their line in it and
+   some do not, and they should all have one. Fifteen of the thirty had none.
+   Nothing here is written by us. The line comes from one of two places, in
+   this order:
+
+     the twin      A cross that is both carrying and frozen is two records of
+                   one pairing, so the frozen one says what the carrying one
+                   says. Same sire, same dam, same sentence.
+     the dam       Failing that, her own line off her own page. Read the
+                   lines she did write and they are all about the mare:
+                   "Out of a direct daughter of Hiamant van't Roosakker!"
+                   is Cabri, and it stands over all three crosses out of
+                   Cabri. So a cross with nothing of its own borrows the
+                   mare's, which is her sentence about the family the foal
+                   comes from.
+
+   Not written: a line for a cross whose dam has none either. There are none
+   of those today, and if one appears the plate stays off rather than being
+   filled with something we made up.
+
+   The photograph follows the same first rule, and for the same reason: the
+   frozen Aganix cross had no picture while its carrying twin did. */
+const crossKeyOf = h => crossKey(h.name);
+const damTagline = new Map();
+for (const h of HORSES) {
+  if (h.category !== 'broodmare') continue;
+  const t = (PATCH[h.slug] && PATCH[h.slug].tagline) || h.tagline;
+  if (t && t.trim()) damTagline.set(fold(h.name), t.trim());
+}
+/* every embryo as it will stand after this file is applied */
+const allCrosses = [
+  ...siteEmbryos.map(h => ({ slug: h.slug, rec: h, patched: PATCH[h.slug] || {} })),
+  ...NEW.map(r => ({ slug: r.slug, rec: r, patched: r })),
+];
+const lineOf = c => ((c.patched.tagline ?? c.rec.tagline) || '').trim();
+const shotOf = c => (c.patched.photos ?? c.rec.photos) || [];
+let lined = 0, twinned = 0;
+for (const c of allCrosses) {
+  const key = crossKeyOf(c.rec);
+  const twin = allCrosses.find(o => o !== c && crossKeyOf(o.rec) === key);
+  if (!lineOf(c)) {
+    const line = (twin && lineOf(twin)) || damTagline.get(fold(c.rec.pedigree && c.rec.pedigree.dam)) || '';
+    if (line) {
+      const why = (twin && lineOf(twin)) ? ', the line off its own twin' : ', the dam\'s own line';
+      if (c.rec === c.patched) c.rec.tagline = line;
+      else patch(c.slug, { tagline: line, source: SOURCE + why });
+      lined++;
+    }
+  }
+  if (!shotOf(c).length && twin && shotOf(twin).length) {
+    const shot = shotOf(twin);
+    if (c.rec === c.patched) c.rec.photos = shot.slice();
+    else patch(c.slug, { photos: shot.slice(), source: SOURCE + ', the photograph off its own twin' });
+    twinned++;
+  }
+}
+console.log(`  ${lined} cross(es) given a line, ${twinned} given a photograph off its twin`);
+
 /* ---------- 2b. two Horsetelex records ----------
    Not from WhatsApp: looked up on 7 September, in a real browser, one horse
    at a time, and accepted only where the sire and the dam on their record
