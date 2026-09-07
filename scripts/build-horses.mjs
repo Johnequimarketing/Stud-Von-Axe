@@ -1550,9 +1550,14 @@ const stallionCard = (horse, full) => {
 
 const stallionPage = (horse, group, list) => {
   const p = horse.pedigree || {};
+  /* Year of birth where we have it. The eight added on 7 September carry
+     one because it was on the record we looked them up in; the twenty four
+     before them do not, and an empty row is not drawn. Absent is absent, the
+     same rule the horse pages keep. */
   const facts = [
     ['Semen', 'ICSI'],
     ['Availability', 'On request'],
+    horse.year ? ['Born', horse.year] : null,
     p.sire ? ['Sire', horseName(p.sire)] : null,
     p.dam ? ['Dam', horseName(p.dam)] : null,
   ].filter(Boolean);

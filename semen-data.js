@@ -1,4 +1,5 @@
-/* The ICSI semen list: the twenty four stallions Stud Von Axe offers doses of.
+/* The ICSI semen list: the stallions Stud Von Axe offers doses of. Twenty
+ * four on 4 September, eight more on 7 September, so thirty two.
  *
  * THE LIST IS THEIRS. They sent it on 4 Sep 2026 as their own card, headed
  * "ICSI SEMEN - Book your spot!", with three of the twenty four crowned:
@@ -109,5 +110,58 @@ var SEMEN = [
   /* their own pedigree tables, via MEDILLÍN VON AXE Z */
   {"slug": "mumbai-vd-moerhoeve", "category": "stallion", "name": "MUMBAI VD MOERHOEVE", "sold": false, "tagline": "", "genetics": "Diamant de semilly x Nabab de Reve", "year": "", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "https://www.horsetelex.com/horses/pedigree/1692953/mumbai", "pedigree": {"sire": "Diamant de semilly", "dam": "Ischgl de muze", "sireSire": "Le tot de Semilly", "sireDam": "Venise des Cresles", "damSire": "Nabab de Reve", "damDam": "VDL group Aureka", "third": []}, "body": ["By Diamant de Semilly out of Ischgl de Muze, who jumped internationally herself with Joe Clee. He reached the final of the World Championships for seven year olds with Christian Kukuk, and Ludger Beerbaum bought into him."],
   "sourceText": "World of Showjumping and Belgian Warmblood, read 7 September 2026", "photos": [], "videos": [], "country": "", "crowned": false, "crosses": []},
+
+  /* ── eight more, 7 September 2026 ──────────────────────────────────────
+     Their list, sent through Mark, with a photograph for each: Bamako,
+     Elvis ter Putte, Kasanova de la Pomme, Mosito van het Hellenof, Darco,
+     Clinton, Kashmir van 't Schuttershof and Tinka's Boy. Mosito carries the
+     photograph the embryo card already uses, at Mark's word.
+
+     Same discipline as the twenty four above. Where their own pedigree
+     tables hold a stallion he is read out of those first and the comment
+     says which horse he came from; the rest are looked up and the sources
+     named on the record. Nothing is filled in from memory, and one cell,
+     Darco's sire's dam, is left empty because three sources give three
+     different names for it.
+
+     No Horsetelex link for any of the eight. horsetelex.com runs a bot
+     check, and each URL has to be opened by hand and pasted here; nothing
+     is drawn for a link that is not there. */
+  /* looked up 7 Sep 2026: BWP, Global Equine Sires and the Anglo European
+     Studbook. His dam's dam is the one contested cell, Nifrane against
+     Tanagra; two sources give Nifrane and one gives Tanagra, so Nifrane
+     stands. Fragance de Chalus is already in their own tables, under the
+     Mosito cross. */
+  {"slug": "bamako-de-muze", "category": "stallion", "name": "BAMAKO DE MUZE", "sold": false, "tagline": "", "genetics": "DARCO x JALISCO B", "year": "2001", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "DARCO", "dam": "FRAGANCE DE CHALUS", "sireSire": "LUGANO VAN LA ROCHE", "sireDam": "OCOUCHA", "damSire": "JALISCO B", "damDam": "NIFRANE", "third": []}, "body": ["By Darco out of Fragance de Chalus, and jumped to 1.60m with Karline De Brabander. He sired Don Juan van de Donkhoeve, team silver at Tokyo with Jessica Springsteen, and Kasanova de la Pomme, champion of the 2013 BWP licensing."], "sourceText": "Anglo European Studbook, Global Equine Sires and USEF, read 7 September 2026", "photos": ["assets/img/horses/bamako-de-muze-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
+  /* looked up 7 Sep 2026. He is Bamako de Muze's son, so the male line on
+     this page runs Darco, Bamako, Kasanova, all three of them now on it. */
+  {"slug": "kasanova-de-la-pomme", "category": "stallion", "name": "KASANOVA DE LA POMME", "sold": false, "tagline": "", "genetics": "BAMAKO DE MUZE x MALITO DE REVE", "year": "2010", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "BAMAKO DE MUZE", "dam": "EVERLYCHIN DE LA POMME", "sireSire": "DARCO", "sireDam": "FRAGANCE DE CHALUS", "damSire": "MALITO DE REVE", "damDam": "WERLY CHIN DE MUZE", "third": []}, "body": ["Champion of the 2013 BWP stallion licensing. He won the Sires of the World Grand Prix at Zangersheide in 2021 with Koen Vereecke, and jumped double clear for Belgium at the Nations Cup Final in Barcelona in 2022, the year Belgium won it."], "sourceText": "Stallion AI, Eurodressage, Equnews and Horse Sport, read 7 September 2026", "photos": ["assets/img/horses/kasanova-de-la-pomme-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
+  /* their own pedigree table, via MOSITO VAN HET HELLENOF X CARMA VD
+     BERGHOEVE Z, and confirmed against BWP. The grandparents on both
+     sides come out of that same table. */
+  {"slug": "elvis-ter-putte", "category": "stallion", "name": "ELVIS TER PUTTE", "sold": false, "tagline": "", "genetics": "DIAMANT DE SEMILLY x DARCO", "year": "2004", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "DIAMANT DE SEMILLY", "dam": "UKASE TER PUTTE", "sireSire": "LE TOT DE SEMILLY", "sireDam": "VENISE DES CRESLES", "damSire": "DARCO", "damDam": "QUINETTE TER PUTTE", "third": []}, "body": ["By Diamant de Semilly out of a Darco mare. Sixth at the World Championship for six year olds at Lanaken with Karline De Brabander, and the sire of Mosito van het Hellenof and of Manchester van 't Paradijs, champion of the 2015 BWP approvals."], "sourceText": "Belgian Warmblood, Select Breeders and Elite Stallions, read 7 September 2026", "photos": ["assets/img/horses/elvis-ter-putte-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
+  /* their own pedigree table, via the same cross, confirmed against BWP
+     and the breeder's own page. A spelling note: BWP and Joris De
+     Brabander both write "van het Hellehof", and so does the genetics
+     line on their own embryo record. The name here follows the one
+     their site publishes, so the stallion and the cross read as one
+     horse. Correcting it means correcting both. */
+  {"slug": "mosito-van-het-hellenof", "category": "stallion", "name": "MOSITO VAN HET HELLENOF", "sold": false, "tagline": "", "genetics": "ELVIS TER PUTTE x NABAB DE REVE", "year": "2012", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "ELVIS TER PUTTE", "dam": "HADISE VAN HET HELLEHOF", "sireSire": "DIAMANT DE SEMILLY", "sireDam": "UKASE TER PUTTE", "damSire": "NABAB DE REVE", "damDam": "VALENTIANA", "third": []}, "body": ["Second in the Rolex Grand Prix at Knokke Hippique in 2022 with Bernardo Alves, and winner of the CSI3* Grand Prix at the same meeting. Nine of his foals reached the final of the Belgian championship for five year olds in 2021. His dam also produced Kasper van het Hellehof."], "sourceText": "Belgian Warmblood, Joris De Brabander and World of Showjumping, read 7 September 2026", "photos": ["assets/img/horses/mosito-van-het-hellenof-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": ["mosito-van-het-hellenof-x-carma-vd-berghoeve-z"]},
+  /* looked up 7 Sep 2026. He already stood in their own tables, in the
+     third generation of Hayley and of Cabri, and he is Bamako's sire.
+     His sire's dam is left empty: three sources give three names for
+     that one cell, so the page says "To be filled in" rather than pick
+     one of them. */
+  {"slug": "darco", "category": "stallion", "name": "DARCO", "sold": false, "tagline": "", "genetics": "LUGANO VAN LA ROCHE x CODEX", "year": "1980", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "LUGANO VAN LA ROCHE", "dam": "OCOUCHA", "sireSire": "LUGANO I", "sireDam": "", "damSire": "CODEX", "damDam": "LATOUCHA", "third": []}, "body": ["Sixth at the World Equestrian Games in Stockholm and seventh at the Barcelona Olympic Games with Ludo Philippaerts. He led the WBFSH ranking of jumping sires for five years running from 2007, and sired Sapphire, Winningmood and Parco."], "sourceText": "Belgian Warmblood, The Horse Magazine and rimondo, read 7 September 2026", "photos": ["assets/img/horses/darco-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
+  /* their own pedigree table, via CABRI VD BERGHOEVE Z, gives his sire and
+     dam; the grandparents are looked up and confirmed twice. Two sources
+     register his dam as Urte I. */
+  {"slug": "clinton", "category": "stallion", "name": "CLINTON", "sold": false, "tagline": "", "genetics": "CORRADO I x MASETTO", "year": "1993", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "CORRADO I", "dam": "URTE", "sireSire": "COR DE LA BRYERE", "sireDam": "SOLEIL", "damSire": "MASETTO", "damDam": "OHRA", "third": []}, "body": ["Fifth individually at the Athens Olympic Games with Dirk Demeersman, and winner of the Grand Prix of Lummen. More than fifty of his sons have been licensed, among them Cornet Obolensky, who stands on this page and behind three of their own horses."], "sourceText": "Team Nijhof, The Horse Magazine and the Holsteiner Verband, read 7 September 2026", "photos": ["assets/img/horses/clinton-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
+  /* their own pedigree table, via Kashillio MB Z, three generations deep,
+     and every cell of it confirmed against two outside sources. */
+  {"slug": "kashmir-van-t-schuttershof", "category": "stallion", "name": "KASHMIR VAN T SCHUTTERSHOF", "sold": false, "tagline": "", "genetics": "NABAB DE REVE x TENOR MANCIAIS", "year": "1994", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "NABAB DE REVE", "dam": "FINES VAN KAMEREN", "sireSire": "QUIDAM DE REVEL", "sireDam": "MELODIE EN FA", "damSire": "TENOR MANCIAIS", "damDam": "GOTHA", "third": []}, "body": ["Second in the Nations Cups of Lucerne and Rotterdam with Philippe Lejeune. He stood seventh on the WBFSH ranking of jumping sires in 2015 and again in 2020, and sired H&M All In, Olympic individual silver in Rio, and Gazelle with Kent Farrington."], "sourceText": "The Horse Magazine, Elite Stallions and Indebus, read 7 September 2026", "photos": ["assets/img/horses/kashmir-van-t-schuttershof-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": ["kashillio-mb-z"]},
+  /* looked up 7 Sep 2026, and the only one of the eight who is in none of
+     their own tables. */
+  {"slug": "tinkas-boy", "category": "stallion", "name": "TINKA'S BOY", "sold": false, "tagline": "", "genetics": "ZUIDPOOL x ZEUS", "year": "1989", "studbook": "", "sex": "Stallion", "height": "", "horsetelex": "", "pedigree": {"sire": "ZUIDPOOL", "dam": "ESPRIT", "sireSire": "AMOR", "sireDam": "OLGA", "damSire": "ZEUS", "damDam": "URLOFFINE", "third": []}, "body": ["Winner of the World Cup Final in Gothenburg in 2001 with Markus Fuchs, team silver at the Sydney Olympic Games and team and individual silver at the European Championship at Hickstead. He won twenty six international Grands Prix."], "sourceText": "Wikipedia, rimondo and Equnews, read 7 September 2026", "photos": ["assets/img/horses/tinkas-boy-1.jpg"], "videos": [], "country": "", "crowned": false, "crosses": []},
 ];
 if (typeof module !== 'undefined') { module.exports = SEMEN; }

@@ -57,9 +57,9 @@ var HOME_TABS = [
     "blurb": "We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.",
     "pos": "50% 50%",
     "cta": "See all stallions",
-    "count": 24,
+    "count": 32,
     "noun": "stallions",
-    "words": "twenty four"
+    "words": "thirty two"
   }
 ];
 if (typeof module !== 'undefined') { module.exports = HOME_TABS; }

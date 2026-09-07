@@ -815,6 +815,61 @@
       rgba(var(--veil-rgb), 1) 100%);
   }
 
+  /* ---------- partners ---------- */
+  /* 7 Sep, Mark: their partners, under the contact card and above the foot.
+     A rail rather than a row, on the same controller the news and programme
+     runs use: the data-run attribute drives one script, so this slider is
+     three lines of markup and no new JavaScript. With three logos it does not
+     scroll on a desktop and the arrows disable themselves, which is the
+     behaviour asked for on the ICSI page last week; on a phone it does.
+
+     Each logo keeps its own ground. These three do not share one: De
+     Brabander is a green striped strip, Centro Medico is white on maroon,
+     SEMAP is navy on white, and any single background would misrepresent two
+     of the three. So each sits on its own white card and is contained rather
+     than covered, which is also why the cards are a fixed height and the
+     images are not: a logo that is cropped is a logo that is wrong. */
+  /* The same ground as the contact section above it, and no rule between
+     them, so the two read as one closing block rather than as a strip that
+     landed on the page ground by itself. Mark, 7 Sep. The contact section
+     carries the top border of the pair; this one carries the foot. */
+  .pt{ padding-block:var(--sec-full) var(--sec-full); background:var(--color-base-alt); }
+  /* Centred, unlike every other section head on this page, because there is
+     nothing in the right hand column any more: the line that stood there said
+     what the logos already say. A head left aligned over an empty half reads
+     as a column that failed to load. */
+  .pt__head{ text-align:center; margin-bottom:clamp(1.2rem,2.4vw,1.8rem); }
+  .pt__h{ margin:.4rem 0 0; font-family:var(--font-display); font-weight:400;
+    font-size:clamp(1.5rem,1.8vw + .8rem,2rem); line-height:1.06; color:var(--color-ink); }
+  .pt__h em{ font-style:italic; color:var(--color-gold); }
+  .pt__wrap{ position:relative; min-width:0; }
+  .pt__run{
+    display:flex; gap:var(--card-gap); list-style:none; margin:0; padding:10px 2px 26px;
+    overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .pt__run::-webkit-scrollbar{ display:none; }
+  .pt__run > li{ flex:0 0 calc((100% - (2 * var(--card-gap))) / 3); scroll-snap-align:start; }
+  .pt__run > li:last-child{ scroll-snap-align:end; }
+  @media (max-width:900px){ .pt__run > li{ flex-basis:calc((100% - var(--card-gap)) / 2); } }
+  @media (max-width:560px){ .pt__run > li{ flex-basis:78%; } }
+  .pt__card{
+    height:148px; padding:1rem 1.4rem;
+    border-radius:var(--card-radius); background:var(--color-white);
+    box-shadow:inset 0 0 0 1px var(--color-line), 0 14px 34px -24px rgba(var(--veil-rgb), .45);
+  }
+  /* contain on a box the card sizes, not max-height on the image. A
+     percentage height inside a grid whose row is sized by that same image
+     resolves to auto, so max-height:100% did nothing and a 600px square logo
+     stood 334px tall in a 132px card. Measured in the browser, not guessed. */
+  .pt__card img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .pt__wrap .topics-arrow--prev{ left:-22px; }
+  .pt__wrap .topics-arrow--next{ right:-22px; }
+  @media (max-width:1180px){
+    .pt__wrap .topics-arrow--prev{ left:10px; }
+    .pt__wrap .topics-arrow--next{ right:10px; }
+  }
+
   /* ---------- centred statement ---------- */
   .hero__body{
     position:relative; z-index:20; flex:1;
@@ -2005,7 +2060,9 @@
   /* ============================================================
      10. CONTACT
      ============================================================ */
-  .contact{ padding:var(--gap-section) 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
+  /* The foot of this section is now the partners rail's, which wears the
+     same ground and closes the pair. */
+  .contact{ padding:var(--gap-section) 0 0; background:var(--color-base-alt); border-top:1px solid var(--color-line); }
   /* One box: the people on a navy panel, the form on paper beside them. The
      two names are the point of the section, so they sit on the dark half
      where nothing competes with them. */
@@ -3520,11 +3577,11 @@
           <li class="ec" data-sold="stallion" data-find="echo van't spieveld heartbreaker heartbreaker x tequila van’t spieveld"><a class="ec__a" href="/icsi-semen/echo-van-t-spieveld"><span class="ec__win"><img src="/assets/img/horses/echo-van-t-spieveld-1.jpg" alt="Echo van't Spieveld" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Echo van't Spieveld</h3><span class="ec__line">Heartbreaker x Tequila van’t Spieveld</span></span></a></li>
           <li class="ec" data-sold="stallion" data-find="el torreo de muze taran de la pomme taran de la pomme x funky music"><a class="ec__a" href="/icsi-semen/el-torreo-de-muze"><span class="ec__win"><img src="/assets/img/horses/el-torreo-de-muze-1.jpg" alt="El Torreo de Muze" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">El Torreo de Muze</h3><span class="ec__line">Taran de la Pomme x Funky Music</span></span></a></li>
           <li class="ec" data-sold="stallion" data-find="mumbai vd moerhoeve diamant de semilly x nabab de reve diamant de semilly x ischgl de muze"><a class="ec__a" href="/icsi-semen/mumbai-vd-moerhoeve"><span class="ec__win"><img src="/assets/img/horses/mumbai-vd-moerhoeve-1.jpg" alt="Mumbai vd Moerhoeve" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Mumbai vd Moerhoeve</h3><span class="ec__line">Diamant de semilly x Ischgl de muze</span></span></a></li>
-          <li class="ec" data-sold="stallion" data-find="chacco blue chambertin x contender chambertin x contara"><a class="ec__a" href="/icsi-semen/chacco-blue"><span class="ec__win"><img src="/assets/img/horses/chacco-blue-1.jpg" alt="Chacco Blue" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Chacco Blue</h3><span class="ec__line">Chambertin x Contara</span></span></a></li>
-          <li class="ec" data-sold="stallion" data-find="cumano cassini i x landgraf i cassini i x chanel ii"><a class="ec__a" href="/icsi-semen/cumano"><span class="ec__win"><img src="/assets/img/horses/cumano-1.jpg" alt="Cumano" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Cumano</h3><span class="ec__line">Cassini I x Chanel II</span></span></a></li>
-          <li class="ec" data-sold="stallion" data-find="united touch s untouched x lux z untouched x touch of class"><a class="ec__a" href="/icsi-semen/united-touch-s"><span class="ec__win"><img src="/assets/img/horses/united-touch-s-1.jpg" alt="United Touch S" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">United Touch S</h3><span class="ec__line">Untouched x Touch Of Class</span></span></a></li>
-          <li class="ec" data-sold="stallion" data-find="conthargos converter i x carthago z converter i x cajandra z"><a class="ec__a" href="/icsi-semen/conthargos"><span class="ec__win"><img src="/assets/img/horses/conthargos-1.jpg" alt="Conthargos" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Conthargos</h3><span class="ec__line">Converter I x Cajandra Z</span></span></a></li>
-          <li class="ec" data-sold="stallion" data-find="uricas van kattevennen uriko x cassini i uriko x t-cassina"><a class="ec__a" href="/icsi-semen/uricas-van-kattevennen"><span class="ec__win"><img src="/assets/img/horses/uricas-van-kattevennen-1.jpg" alt="Uricas van Kattevennen" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Uricas van Kattevennen</h3><span class="ec__line">Uriko x T-Cassina</span></span></a></li>
+          <li class="ec" data-sold="stallion" data-find="bamako de muze darco x jalisco b darco x fragance de chalus"><a class="ec__a" href="/icsi-semen/bamako-de-muze"><span class="ec__win"><img src="/assets/img/horses/bamako-de-muze-1.jpg" alt="Bamako de Muze" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Bamako de Muze</h3><span class="ec__line">Darco x Fragance de Chalus</span></span></a></li>
+          <li class="ec" data-sold="stallion" data-find="kasanova de la pomme bamako de muze x malito de reve bamako de muze x everlychin de la pomme"><a class="ec__a" href="/icsi-semen/kasanova-de-la-pomme"><span class="ec__win"><img src="/assets/img/horses/kasanova-de-la-pomme-1.jpg" alt="Kasanova de la Pomme" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Kasanova de la Pomme</h3><span class="ec__line">Bamako de Muze x Everlychin de la Pomme</span></span></a></li>
+          <li class="ec" data-sold="stallion" data-find="elvis ter putte diamant de semilly x darco diamant de semilly x ukase ter putte"><a class="ec__a" href="/icsi-semen/elvis-ter-putte"><span class="ec__win"><img src="/assets/img/horses/elvis-ter-putte-1.jpg" alt="Elvis Ter Putte" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Elvis Ter Putte</h3><span class="ec__line">Diamant de Semilly x Ukase Ter Putte</span></span></a></li>
+          <li class="ec" data-sold="stallion" data-find="mosito van het hellenof elvis ter putte x nabab de reve elvis ter putte x hadise van het hellehof"><a class="ec__a" href="/icsi-semen/mosito-van-het-hellenof"><span class="ec__win"><img src="/assets/img/horses/mosito-van-het-hellenof-1.jpg" alt="Mosito van het Hellenof" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Mosito van het Hellenof</h3><span class="ec__line">Elvis Ter Putte x Hadise van het Hellehof</span></span></a></li>
+          <li class="ec" data-sold="stallion" data-find="darco lugano van la roche x codex lugano van la roche x ocoucha"><a class="ec__a" href="/icsi-semen/darco"><span class="ec__win"><img src="/assets/img/horses/darco-1.jpg" alt="Darco" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Availability on request</span></span><span class="ec__box"><h3 class="ec__name">Darco</h3><span class="ec__line">Lugano van la Roche x Ocoucha</span></span></a></li>
         </ul>
         <button class="topics-arrow topics-arrow--prev" data-rail="more-icsi-semen" data-dir="-1"
                 aria-label="Previous stallions">&larr;</button>
