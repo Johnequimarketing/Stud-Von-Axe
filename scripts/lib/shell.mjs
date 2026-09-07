@@ -122,11 +122,20 @@ const shareCard = (image) => {
   return `/assets/img/share/${stem}.jpg`;
 };
 
+/* The name of the stud closes every title, but not at the cost of the title
+   itself: a search result shows about sixty two characters and cuts the rest.
+   The crosses she added on 6 September run to fifty two characters before the
+   brand, and two of them carry "frozen" or "carrying" as well because they
+   exist twice. Where both will not fit, the horse wins and the brand goes:
+   the page is still ours, and a name cut in half helps nobody. */
+const BRAND = ' | Stud Von Axe';
+const titleTag = (t) => (t.length + BRAND.length <= 62 ? t + BRAND : t);
+
 export const head = ({ title, desc, path, image = 'hero-sport.jpg', ldType = 'WebPage',
                        ogType = 'website', ldExtra = {} }) =>
 `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} | Stud Von Axe</title>
+<title>${esc(titleTag(title))}</title>
 <meta name="description" content="${esc(desc)}">
 <!-- CONCEPT, NOT LIVE. Remove the robots line on the day it goes live. -->
 <meta name="robots" content="noindex, nofollow">

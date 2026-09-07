@@ -21,7 +21,22 @@ const HARVESTED = new Function(readFileSync(join(root, 'horses-data.js'), 'utf-8
    thirteen ICSI pages would go unchecked. That is the fault this project has
    already made twice: a page nobody listed is a page nobody audits. */
 const SEMEN = new Function(readFileSync(join(root, 'semen-data.js'), 'utf-8') + '; return SEMEN;')();
-const HORSES = [...HARVESTED, ...SEMEN];
+/* The WhatsApp batch of 6 September, laid over the harvest exactly the way
+   build-horses.mjs lays it. The audit has to see the same horses the builder
+   saw or it checks the pages against data that is no longer true: without
+   this it read a stale year off a cross whose date she had moved, and counted
+   fifteen embryos against the thirty on the page. */
+const WA = new Function(readFileSync(join(root, 'horses-whatsapp.js'), 'utf-8') + '; return WHATSAPP;')();
+const DROPPED = new Set(WA.DROP.map((d) => d.slug));
+const HORSES = [...HARVESTED, ...SEMEN]
+  .filter((h) => !DROPPED.has(h.slug))
+  .map((h) => {
+    const p = WA.PATCH[h.slug];
+    if (!p) return h;
+    const { renamedFrom, said, ...fields } = p;
+    return { ...h, ...fields };
+  })
+  .concat(WA.NEW);
 const DIRS = { broodmare: 'breeding-mares', foal: 'foals', embryo: 'embryos', sport: 'sport-horses',
                stallion: 'icsi-semen' };
 
@@ -393,7 +408,10 @@ if (existsSync(join(root, 'sitemap.xml'))) {
   });
 
   const theirs = new Set();
-  for (const f of ['horses-data.js', 'semen-data.js', 'news-data.js', 'horses-extra.js']) {
+  /* horses-whatsapp.js joined the list on 7 Sep: their own hyphens arrived
+     with the mare texts, and a word they wrote is a word they keep. */
+  for (const f of ['horses-data.js', 'semen-data.js', 'news-data.js', 'horses-extra.js',
+                   'horses-whatsapp.js']) {
     if (!existsSync(join(root, f))) continue;
     for (const m of read(f).matchAll(/[A-Za-z]+-[A-Za-z]+/g)) theirs.add(m[0].toLowerCase());
   }

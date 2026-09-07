@@ -71,7 +71,26 @@ for (const st of SEMEN) {
     .flatMap((n) => { const r = of(n); return [r.sire, r.dam]; });
 }
 
-const HORSES = [...HARVESTED, ...SEMEN];
+/* What the owners sent through WhatsApp on 6 September: photographs for
+   fifty eight horses, their nine rewritten mare texts, one horse they finally
+   named, fifteen more crosses, and one foal taken out of the catalogue. It
+   lives in its own file rather than in horses-data.js because that one says
+   "regenerate, do not edit" and harvest-horses.mjs rewrites it whole; laid
+   over the harvest here, a fresh harvest cannot undo any of it.
+   Written by scripts/build-whatsapp-data.mjs. */
+const WA = new Function(readFileSync(join(root, 'horses-whatsapp.js'), 'utf-8') + '; return WHATSAPP;')();
+
+const DROPPED = new Set(WA.DROP.map((d) => d.slug));
+const HORSES = [...HARVESTED, ...SEMEN]
+  .filter((h) => !DROPPED.has(h.slug))
+  .map((h) => {
+    const p = WA.PATCH[h.slug];
+    if (!p) return h;
+    /* renamedFrom and said are the record of why, not fields of a horse */
+    const { renamedFrom, said, ...fields } = p;
+    return { ...h, ...fields };
+  })
+  .concat(WA.NEW);
 /* Hand filled fields the harvest must never overwrite: see horses-extra.js. */
 const EXTRA = new Function(readFileSync(join(root, 'horses-extra.js'), 'utf-8') + '; return HORSES_EXTRA;')();
 /* Title and poster for every film, written by scripts/fetch-videos.py. */
@@ -2446,11 +2465,29 @@ const heroSection = (g) => `
 /* The horse page: every section above, in the order they are defined, with
    the ones that have nothing to show left out entirely rather than drawn
    empty. */
+/* A cross they hold both ways is two records under one name: a pregnancy
+   with a date, and straws of the same cross in the tank. Nine of them, off
+   her list of 6 September. The pages are different pages and a search result
+   has to be able to tell them apart, so the stage goes in the title of those
+   and of nothing else. */
+const nameKey = (n) => (n || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const TWICE = new Set(
+  Object.entries(
+    HORSES.filter((h) => h.category === 'embryo')
+      .reduce((m, h) => ((m[nameKey(h.name)] = (m[nameKey(h.name)] || 0) + 1), m), {})
+  ).filter(([, n]) => n > 1).map(([k]) => k)
+);
+const pageTitle = (h) => {
+  const n = horseName(h.name);
+  if (h.category !== 'embryo' || !TWICE.has(nameKey(h.name))) return n;
+  return `${n}, ${/frozen/i.test(h.year || '') ? 'frozen' : 'carrying'}`;
+};
+
 const horsePage = (horse, group, body) => `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${head({
-  title: horseName(horse.name),
+  title: pageTitle(horse),
   desc: metaDescription(horse, group),
   path: `/${group.dir}/${horse.slug}`,
   image: horse.photos[0] ? horse.photos[0].replace('assets/img/', '') : 'hero-sport.jpg',

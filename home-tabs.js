@@ -33,9 +33,9 @@ var HOME_TABS = [
     "blurb": "Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.",
     "pos": "50% 50%",
     "cta": "See all foals",
-    "count": 21,
+    "count": 20,
     "noun": "foals",
-    "words": "twenty one"
+    "words": "twenty"
   },
   {
     "key": "embryo",
@@ -45,9 +45,9 @@ var HOME_TABS = [
     "blurb": "Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.",
     "pos": "50% 50%",
     "cta": "See all crosses",
-    "count": 15,
+    "count": 30,
     "noun": "crosses",
-    "words": "fifteen"
+    "words": "thirty"
   },
   {
     "key": "stallion",

@@ -30,7 +30,12 @@ v2-b-notturno/
 v2-c-tenuta/
 v2-d-cielo/
 
-# 292 MB of horse content harvested from the live site
+# 292 MB of horse content harvested from the live site, and since 7 Sep the
+# WhatsApp export of 6 Sep as well: 55 MB of their media. The photographs
+# that survive that batch are committed under assets/img/horses at the site's
+# own size, so the raw copies would be the same pictures twice. Provenance
+# does not depend on keeping them: every record this batch touches carries a
+# source naming the message and its timestamp.
 content/
 
 # 575 MB of zip parts from an old transfer
