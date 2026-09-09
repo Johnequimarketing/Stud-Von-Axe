@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "155ef3a8",
+   "id": "4cd4cb3e",
    "settings": {
     "flex_direction": "column",
     "flex_gap": {
@@ -38,7 +38,7 @@
      "sizes": []
     },
     "__dynamic__": {
-     "link": "[elementor-tag id=\"bc875097\" name=\"post-url\" settings=\"%7B%7D\"]"
+     "link": "[elementor-tag id=\"31b9bf21\" name=\"post-url\" settings=\"%7B%7D\"]"
     },
     "link": {
      "url": "#",
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "01de6e71",
+     "id": "4616948b",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -69,7 +69,7 @@
      },
      "elements": [
       {
-       "id": "2fc4e3c5",
+       "id": "6049668c",
        "settings": {
         "image_size": "large",
         "custom_css": "selector img{aspect-ratio:1/1;object-fit:cover;object-position:50% 40%;width:100%;display:block}"
@@ -80,7 +80,7 @@
        "elType": "widget"
       },
       {
-       "id": "d843c645",
+       "id": "e5a7af57",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -129,7 +129,7 @@
        },
        "elements": [
         {
-         "id": "9d2c2216",
+         "id": "dbacb136",
          "settings": {
           "title": "",
           "header_size": "span",
@@ -143,7 +143,7 @@
           },
           "typography_font_weight": "400",
           "__dynamic__": {
-           "title": "[elementor-tag id=\"a63f45f9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_flag%22%7D\"]"
+           "title": "[elementor-tag id=\"960fe80e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_flag%22%7D\"]"
           }
          },
          "elements": [],
@@ -152,7 +152,7 @@
          "elType": "widget"
         },
         {
-         "id": "e1ec1bcd",
+         "id": "d1f8fd39",
          "settings": {
           "title": "",
           "header_size": "span",
@@ -172,7 +172,7 @@
            "sizes": []
           },
           "__dynamic__": {
-           "title": "[elementor-tag id=\"b9b07ae9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_status_line%22%7D\"]"
+           "title": "[elementor-tag id=\"a534cd93\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_status_line%22%7D\"]"
           }
          },
          "elements": [],
@@ -189,7 +189,7 @@
      "elType": "container"
     },
     {
-     "id": "f81a9be3",
+     "id": "3dfb3013",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -211,7 +211,7 @@
      },
      "elements": [
       {
-       "id": "b7c9eb55",
+       "id": "baeb243c",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -231,7 +231,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"b5341ad6\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_year_of_birth%22%7D\"]"
+         "title": "[elementor-tag id=\"8119ca3c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_year_of_birth%22%7D\"]"
         },
         "custom_css": "selector .elementor-heading-title::before{content:\"Born \"}selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -241,7 +241,7 @@
        "elType": "widget"
       },
       {
-       "id": "74f95bc0",
+       "id": "ceaff131",
        "settings": {
         "title": "Horse name",
         "header_size": "h2",
@@ -265,7 +265,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"d7ad9999\" name=\"post-title\" settings=\"%7B%7D\"]"
+         "title": "[elementor-tag id=\"f660eed6\" name=\"post-title\" settings=\"%7B%7D\"]"
         }
        },
        "elements": [],
@@ -274,7 +274,7 @@
        "elType": "widget"
       },
       {
-       "id": "d4ab22a9",
+       "id": "956ad844",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -298,7 +298,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"867eaa24\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_genetics%22%7D\"]"
+         "title": "[elementor-tag id=\"00d8e9e4\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_genetics%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -308,7 +308,7 @@
        "elType": "widget"
       },
       {
-       "id": "d675a6a3",
+       "id": "254d4529",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -332,7 +332,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"9c4137d1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_meta_line%22%7D\"]"
+         "title": "[elementor-tag id=\"a0cc58a3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_meta_line%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -342,7 +342,7 @@
        "elType": "widget"
       },
       {
-       "id": "b4e961d7",
+       "id": "3503975f",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -361,7 +361,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"ce35986e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_tagline%22%7D\"]"
+         "title": "[elementor-tag id=\"2a5f0f14\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_tagline%22%7D\"]"
         },
         "custom_css": "selector .elementor-heading-title{display:block;padding:10px 13px;border-radius:10px;background:#b59148;color:#0a1526}selector:has(.elementor-heading-title:empty){display:none}"
        },

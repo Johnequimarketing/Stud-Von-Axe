@@ -239,8 +239,16 @@ def films(post_type):
     # sportpaarden. Een lege filmsectie leest als een fout, dus de sectie draagt
     # een klasse waarop custom-code-hide-empty.txt hem weghaalt als er niets in
     # staat.
+    # Hun eigen kop: "<naam> in motion". Er stond "See the horse move" en dat
+    # had ik zelf bedacht.
+    kop_ = W("theme-post-title", dict({"header_size": "h2", "title_color": WIT,
+                                       "after_title": " in motion"},
+                                      **typo("typography", SERIF, 32, "400",
+                                             size_mobile=24, letter_spacing=-0.64,
+                                             line_height_em=1.08)))
     return section([wrap([
-        sec_head("On film", "See the horse move"),
+        C({"content_width": "full", "flex_direction": "column", "flex_gap": gap(0, 10),
+           "padding": box(0, 0, 32, 0)}, [eyebrow("On film"), kop_]),
         speler,
     ], gap_px=0)], bg=NAVY, extra={"background_color": NAVY,
                                    "css_classes": "sva-hide-if-empty"})
@@ -255,18 +263,38 @@ def galerij(post_type):
         "open_lightbox": "yes",
         "custom_css": f"selector .e-gallery-image{{border-radius:{R}px}}",
     }, **dyn("gallery", "acf-gallery", veld(post_type, "gallery"))))
-    return section([wrap([sec_head("Photographs", "More of this horse"), g], gap_px=0)],
-                   bg=BG, extra={"css_classes": "sva-hide-if-empty"})
-
-
-def verhaal(post_type, kop_tekst="In their own words"):
+    kop_ = W("theme-post-title", dict({"header_size": "h2", "title_color": INK,
+                                       "before_title": "More of "},
+                                      **typo("typography", SERIF, 32, "400",
+                                             size_mobile=24, letter_spacing=-0.64,
+                                             line_height_em=1.08)))
     return section([wrap([
-        sec_head("The story", kop_tekst),
-        W("text-editor", dict({"editor": "", "text_color": INK_SOFT},
-                              **typo(size=18, weight="400", line_height_em=1.7),
-                              **{"custom_css": "selector{max-width:760px}"},
+        C({"content_width": "full", "flex_direction": "column", "flex_gap": gap(0, 10),
+           "padding": box(0, 0, 32, 0)}, [eyebrow("Photographs"), kop_]),
+        g,
+    ], gap_px=0)], bg=BG, extra={"css_classes": "sva-hide-if-empty"})
+
+
+def verhaal(post_type, bovenkop="The damline", ouder="dam"):
+    """Wat de klant over de lijn schrijft.
+
+    De statische site heeft geen sectie met de kop "In their own words" — die
+    had ik zelf bedacht. Wat er staat is een lijnensectie: het bovenkopje "The
+    damline" of "The sire", daaronder de naam van die ouder als kop, en dan hun
+    tekst. Bij tien van de twaalf merries gaat de tekst over de moederlijn.
+    """
+    kop_ = W("heading", dict({"title": "", "header_size": "h2", "title_color": INK},
+                             **typo("typography", SERIF, 32, "400", size_mobile=24,
+                                    letter_spacing=-0.64, line_height_em=1.08),
+                             **acf("title", post_type, ouder)))
+    return section([wrap([
+        C({"content_width": "full", "flex_direction": "column", "flex_gap": gap(0, 10),
+           "padding": box(0, 0, 26, 0)}, [eyebrow(bovenkop), kop_]),
+        W("text-editor", dict({"editor": "", "text_color": INK,
+                               "custom_css": "selector{max-width:70ch}"},
+                              **typo(size=18, weight="400", line_height_em=1.75),
                               **acf("editor", post_type, "body"))),
-    ], gap_px=0)], bg=BG)
+    ], gap_px=0)], bg=BG, extra={"css_classes": "sva-hide-if-text-empty"})
 
 
 def vraagblok():
@@ -301,12 +329,20 @@ def vraagblok():
         "button_background_color": GOUD, "button_text_color": DARK,
         "_element_id": "ask-form",
     })
+    # Hun eigen woorden, en niet meer dan dat: "Get in touch" boven, "Ask us
+    # about <naam>" als kop, en één regel eronder. De eerste versie beloofde
+    # hier dat ze in vier talen antwoorden, en dat staat nergens — dat had ik
+    # zelf bedacht.
     binnen = wrap([
-        sec_head("Ask us", "Ask about this horse",
-                 "Tell us what you would like to know. We answer in Italian, English, "
-                 "French and German."),
+        eyebrow("Get in touch", color=GOUD),
+        W("theme-post-title", dict({"header_size": "h2", "title_color": WIT,
+                                    "before_title": "Ask us about "},
+                                   **typo("typography", SERIF, 32, "400",
+                                          size_mobile=24, letter_spacing=-0.64,
+                                          line_height_em=1.08))),
+        para("Write to us and we will get back to you.", color=WIT_75, max_w=560),
         form,
-    ], width=780, gap_px=0)
+    ], width=780, extra={"flex_gap": gap(0, 14)})
     return C({
         "background_background": "gradient", "background_color": NAVY,
         "background_color_b": DARK,
@@ -319,13 +355,20 @@ def vraagblok():
     }, [binnen], is_inner=False)
 
 
-def meer(post_type, label, url):
+def meer(post_type, kop_tekst, knop, url):
+    """De rail onderaan. Hun eigen woorden: "More horses" met "All horses →",
+    "More crosses" met "All crosses →", "More stallions" met "All stallions →".
+    Er stond "More sport horses" en "All sport horses", en dat zei de site
+    nergens."""
     return section([wrap([
-        sec_head("More", f"More {label.lower()}"),
+        C({"content_width": "full", "flex_direction": "row", "flex_wrap": "wrap",
+           "flex_align_items": "center", "flex_justify_content": "space-between",
+           "flex_gap": gap(14), "padding": box(0, 0, 26, 0)}, [
+            title(kop_tekst, level="h2", size=32, size_tablet=28, size_mobile=24),
+            btn("ghost", f"{knop} &rarr;", url, klein=True),
+        ]),
         loop_grid(post_type, columns=4, per_page=8, orderby="rand",
                   nothing_found="", extra={"columns_tablet": "2", "columns_mobile": "1"}),
-        C({"content_width": "full", "flex_direction": "row", "padding": box(20, 0, 0, 0)},
-          [btn("ghost", f"All {label.lower()}", url)]),
     ], gap_px=0)], bg=BG_ALT)
 
 
@@ -347,7 +390,7 @@ def paardpagina(post_type, stage, bestand, label, url):
         films(post_type),
         galerij(post_type),
         vraagblok(),
-        meer(post_type, label, url),
+        meer(post_type, "More horses", "All horses", url),
     ]
     return save(inhoud, f"Stud Von Axe — {label} single", uit(stage, bestand), "single")
 
@@ -391,17 +434,23 @@ def embryopagina():
         ], extra={"z_index": 2, "flex_gap": gap(0, 12)}),
     ], is_inner=False)
 
+    # Geen sectiekop: op de statische pagina staan er twee koppen, de naam van
+    # de vader en de naam van de moeder, elk boven hun eigen stuk tekst.
     lijnen = section([wrap([
-        sec_head("The lines", "Where this cross comes from"),
         row([
-            cell([W("heading", dict({"title": "Sire line", "header_size": "h3",
-                                     "title_color": INK}, **typo(SERIF and "typography",
-                                                                 SERIF, 21, "400"))),
+            cell([eyebrow("The sire"),
+                  W("heading", dict({"title": "", "header_size": "h2", "title_color": INK},
+                                    **typo("typography", SERIF, 26, "400",
+                                           line_height_em=1.12),
+                                    **acf("title", pt, "sire_name"))),
                   W("text-editor", dict({"editor": "", "text_color": INK_SOFT},
                                         **typo(size=17, weight="400", line_height_em=1.7),
                                         **acf("editor", pt, "sire_line")))], 50),
-            cell([W("heading", dict({"title": "Dam line", "header_size": "h3",
-                                     "title_color": INK}, **typo("typography", SERIF, 21, "400"))),
+            cell([eyebrow("The damline"),
+                  W("heading", dict({"title": "", "header_size": "h2", "title_color": INK},
+                                    **typo("typography", SERIF, 26, "400",
+                                           line_height_em=1.12),
+                                    **acf("title", pt, "dam_name"))),
                   W("text-editor", dict({"editor": "", "text_color": INK_SOFT},
                                         **typo(size=17, weight="400", line_height_em=1.7),
                                         **acf("editor", pt, "dam_line")))], 50),
@@ -409,7 +458,7 @@ def embryopagina():
     ], gap_px=0)], bg=BG)
 
     return save([hero, stamboom(pt, "Your next embryo"), lijnen, galerij(pt), vraagblok(),
-                 meer(pt, "Embryos", "/embryos/")],
+                 meer(pt, "More crosses", "All crosses", "/embryos/")],
                 "Stud Von Axe — Embryo single",
                 uit("stage-6-embryos", "single-embryos.json"), "single")
 
@@ -444,6 +493,13 @@ def hengstpagina():
             W("heading", dict({"title": "", "header_size": "span", "title_color": WIT_75},
                               **typo(size=16, weight="500"),
                               **acf("title", pt, "genetics"))),
+            # Hun tekst staat op de statische pagina hier, in de hero onder de
+            # fokregel, en niet in een eigen sectie met een kop erboven. Alle 32
+            # hengsten hebben er een.
+            W("text-editor", dict({"editor": "", "text_color": WIT_75,
+                                   "custom_css": "selector{max-width:66ch}"},
+                                  **typo(size=17, weight="400", line_height_em=1.7),
+                                  **acf("editor", pt, "body"))),
             C({"content_width": "full", "flex_direction": "row", "flex_gap": gap(10),
                "flex_wrap": "wrap", "padding": box(8, 0, 0, 0)},
               [btn("goud", "Ask about this stallion", "#ask")]),
@@ -459,7 +515,8 @@ def hengstpagina():
     # een relatieveld met een gerelateerde query; het loop item is dat van de
     # kruisingen uit stage 6, dus dat moet gekoppeld worden.
     kruisingen = section([wrap([
-        sec_head("The crosses", "Embryos by this stallion"),
+        # Hun eigen kop. Mark noemde hem ook zo: "Our own crosses by him".
+        title("Our own crosses by him", level="h2", size=32, size_tablet=28, size_mobile=24),
         loop_grid("embryo", columns=4, per_page=12, orderby="menu_order",
                   nothing_found="No crosses by this stallion on the site yet.",
                   extra={"columns_tablet": "2", "columns_mobile": "1",
@@ -467,8 +524,8 @@ def hengstpagina():
                          "post_query_relationship_field": veld(pt, "crosses")}),
     ], gap_px=0)], bg=BG_ALT)
 
-    return save([hero, stamboom(pt), verhaal(pt, "About this stallion"), kruisingen,
-                 galerij(pt), vraagblok(), meer(pt, "ICSI semen", "/icsi-semen/")],
+    return save([hero, stamboom(pt), kruisingen,
+                 galerij(pt), vraagblok(), meer(pt, "More stallions", "All stallions", "/icsi-semen/")],
                 "Stud Von Axe — ICSI stallion single",
                 uit("stage-7-icsi-semen", "single-icsi-semen.json"), "single")
 
@@ -525,10 +582,9 @@ def nieuwspagina():
                               **acf("editor", pt, "body"))),
     ], width=780, gap_px=0)], bg=BG)
 
-    return save([hero, tekst, cta_band(
-        "Want to hear it first?",
-        "Ask us about a foal, a cross or a dose and we will tell you what we have.",
-        [btn("goud", "Contact us", "/contact/")])],
+    # Ook hier geen slotblok dat ik zelf bedacht heb; het nieuwsbericht op de
+    # statische site eindigt met de tekst.
+    return save([hero, tekst],
         "Stud Von Axe — News single",
         uit("stage-9-about-news-legal", "single-news.json"), "single")
 

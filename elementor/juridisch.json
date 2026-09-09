@@ -1,0 +1,97 @@
+{
+ "privacy": {
+  "secties": [
+   {
+    "anker": "s1",
+    "titel": "Who we are",
+    "html": "<p>The company behind this site is Stud Von Axe SRL, Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy. P. IVA IT02519980466.</p>\n<p>Write to studvonaxe@gmail.com, or telephone Elisabetta on +39 349 591 8565 or Adriano on +39 348 395 3433.</p>"
+   },
+   {
+    "anker": "s2",
+    "titel": "What this site collects",
+    "html": "<p>Nothing. There is no analytics on these pages, no advertising, no tracking pixel and no cookie of our own. Nothing is stored in your browser and nothing about your visit reaches us.</p>\n<p>The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else arrives on a page by itself.</p>\n<p>The contact page can show a Google map of each of our two places, and that map is not loaded until you press the button on it. Until you do, nothing has been asked of Google beyond the typefaces; once you do, Google sees your IP address the way it would if you had opened Google Maps yourself. The address is written out on the page either way, so you never have to load the map to read it.</p>"
+   },
+   {
+    "anker": "s3",
+    "titel": "The forms",
+    "html": "<p>The forms on this site do not send anything anywhere by themselves. When you press send, your own mail programme opens with the answers written into a message addressed to us, and nothing leaves your computer until you send that message yourself.</p>\n<p>So we receive what you choose to send: your name, how to reach you, and what you tell us about your mare or the horse you are asking about.</p>"
+   },
+   {
+    "anker": "s4",
+    "titel": "What we do with it",
+    "html": "<p>We read it and we answer it. We do not sell it, we do not pass it to anyone else, and we do not add you to a mailing list.</p>\n<p><b>Still to come from the owners</b>How long a message and its details are kept, and whether the details of an order are held for longer than the enquiry.</p>"
+   },
+   {
+    "anker": "s5",
+    "titel": "Your rights",
+    "html": "<p>Under the General Data Protection Regulation you can ask us what we hold about you, ask for it to be corrected, or ask for it to be deleted. Write to studvonaxe@gmail.com and we will answer.</p>\n<p>If you think we have handled your details badly you can complain to the Italian supervisory authority, the Garante per la protezione dei dati personali.</p>"
+   },
+   {
+    "anker": "s6",
+    "titel": "When this site changes",
+    "html": "<p>This site is being rebuilt. When it moves to its new form it may add things this page does not describe yet, and this page is written again on the day that happens rather than afterwards.</p>\n<p><b>Still to come from the owners</b>Whether the rebuilt site will carry analytics or a newsletter, which decides whether it needs a cookie notice.</p>"
+   }
+  ],
+  "stempel": "Last written on 31 August 2026. Two things on this page are still to be confirmed by the owners and are marked where they sit."
+ },
+ "terms": {
+  "secties": [
+   {
+    "anker": "s1",
+    "titel": "Who these terms apply to",
+    "html": "<p>These terms apply to every order placed with Stud Von Axe SRL, Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy. P. IVA IT02519980466.</p>\n<p>They apply from the moment you send an order and we confirm it.</p>"
+   },
+   {
+    "anker": "s2",
+    "titel": "Prices and VAT",
+    "html": "<p><b>Still to come from the owners</b>The price per ICSI dose, whether it differs per stallion, and whether the prices shown are with or without VAT. Also whether a price holds for a season or is quoted per order.</p>"
+   },
+   {
+    "anker": "s3",
+    "titel": "Ordering ICSI semen",
+    "html": "<p>An order is placed through the form on a stallion’s page. We answer with what we hold of that stallion, what it costs and when it can leave.</p>\n<p><b>Still to come from the owners</b>Whether an order is binding once confirmed, and what happens if the stallion is out of stock after a confirmation.</p>"
+   },
+   {
+    "anker": "s4",
+    "titel": "Delivery and shipping",
+    "html": "<p>ICSI doses are produced with Avantea in Cremona and ship across the European Union and for export.</p>\n<p><b>Still to come from the owners</b>Who arranges and pays for shipping, which carrier is used, what happens to a shipment that arrives late or thawed, and which countries are excluded.</p>"
+   },
+   {
+    "anker": "s5",
+    "titel": "Guarantees",
+    "html": "<p><b>Still to come from the owners</b>Whether there is a live foal guarantee or a replacement dose, on what conditions, and what a buyer has to send in to claim one.</p>"
+   },
+   {
+    "anker": "s6",
+    "titel": "Payment",
+    "html": "<p><b>Still to come from the owners</b>When payment is due, which methods are accepted, and whether the goods leave before or after payment.</p>"
+   },
+   {
+    "anker": "s7",
+    "titel": "Papers and registration",
+    "html": "<p><b>Still to come from the owners</b>Which papers travel with a dose, an embryo or a horse, and who registers a resulting foal with which studbook.</p>"
+   },
+   {
+    "anker": "s8",
+    "titel": "Health and veterinary",
+    "html": "<p><b>Still to come from the owners</b>The health status the stud guarantees, the tests carried out, and what a buyer’s own vet is expected to do on arrival.</p>"
+   },
+   {
+    "anker": "s9",
+    "titel": "Cancelling an order",
+    "html": "<p><b>Still to come from the owners</b>Whether an order can be cancelled, until when, and what it costs.</p>"
+   },
+   {
+    "anker": "s10",
+    "titel": "Liability",
+    "html": "<p><b>Still to come from the owners</b>What the stud is and is not answerable for once the goods have left.</p>"
+   },
+   {
+    "anker": "s11",
+    "titel": "Which law applies",
+    "html": "<p><b>Still to come from the owners</b>Italian law and an Italian court is the usual answer for a company registered here, but it is theirs to state.</p>"
+   }
+  ],
+  "stempel": "This page is a framework, not a contract. Every block marked in gold is waiting for the owners to say what their terms actually are, and until they do nothing on this page binds anyone."
+ }
+}

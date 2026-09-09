@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "cdf509ed",
+   "id": "c6c7a5f0",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -49,7 +49,7 @@
    },
    "elements": [
     {
-     "id": "6267a496",
+     "id": "0456d82c",
      "settings": {
       "content_width": "full",
       "width": {
@@ -77,7 +77,7 @@
      },
      "elements": [
       {
-       "id": "d2bd4770",
+       "id": "e14b18c5",
        "settings": {
         "title": "Foals &middot; Embryos &middot; ICSI semen",
         "header_size": "span",
@@ -104,7 +104,7 @@
        "elType": "widget"
       },
       {
-       "id": "f697862b",
+       "id": "c6e9fb14",
        "settings": {
         "title": "Bred for the biggest <span style=\"color:#b59148\">arenas</span>",
         "header_size": "h1",
@@ -145,7 +145,7 @@
        "elType": "widget"
       },
       {
-       "id": "f0013306",
+       "id": "680a9be5",
        "settings": {
         "editor": "<p>Foals, embryos and ICSI semen: the crosses made in Italy, the foals raised in Belgium, sold direct to breeders worldwide.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -179,7 +179,7 @@
    "elType": "container"
   },
   {
-   "id": "3e952257",
+   "id": "cc984da6",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -203,7 +203,7 @@
    },
    "elements": [
     {
-     "id": "6c6dc5bc",
+     "id": "1f9863a3",
      "settings": {
       "content_width": "full",
       "width": {
@@ -223,7 +223,7 @@
      },
      "elements": [
       {
-       "id": "fc9e6c7d",
+       "id": "8ba1a6c9",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -239,7 +239,7 @@
        },
        "elements": [
         {
-         "id": "5047180e",
+         "id": "c415f93d",
          "settings": {
           "content_width": "full",
           "width": {
@@ -263,7 +263,7 @@
          },
          "elements": [
           {
-           "id": "de6bf20e",
+           "id": "979afdda",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/about-owners.jpg",
@@ -285,7 +285,7 @@
          "elType": "container"
         },
         {
-         "id": "b9486d55",
+         "id": "10c5219f",
          "settings": {
           "content_width": "full",
           "width": {
@@ -309,7 +309,7 @@
          },
          "elements": [
           {
-           "id": "f231c8c5",
+           "id": "63f8d64d",
            "settings": {
             "title": "About Stud Von Axe",
             "header_size": "span",
@@ -336,7 +336,7 @@
            "elType": "widget"
           },
           {
-           "id": "04aca4dd",
+           "id": "55928072",
            "settings": {
             "title": "The vision behind Stud Von Axe",
             "header_size": "h2",
@@ -377,7 +377,7 @@
            "elType": "widget"
           },
           {
-           "id": "631594e6",
+           "id": "61b84ded",
            "settings": {
             "editor": "<p>Over the years, we have carefully developed a select group of exceptional mares from some of the world's most distinguished dam lines. Every breeding decision reflects our passion for show jumping and our commitment to producing horses of the highest quality.</p>",
             "text_color": "#4d5761",
@@ -402,7 +402,7 @@
            "elType": "widget"
           },
           {
-           "id": "747ad120",
+           "id": "f6bcbead",
            "settings": {
             "editor": "<p>By combining proven, high performing mares with carefully chosen stallions, we strive to produce modern sport horses with the talent, athleticism and pedigree required to succeed at the highest levels of international competition.</p>",
             "text_color": "#4d5761",
@@ -427,7 +427,7 @@
            "elType": "widget"
           },
           {
-           "id": "bcc147a5",
+           "id": "934dfe06",
            "settings": {
             "content_width": "full",
             "flex_direction": "row",
@@ -450,7 +450,7 @@
            },
            "elements": [
             {
-             "id": "0517dbc2",
+             "id": "23f2bce4",
              "settings": {
               "text": "About the stud &rarr;",
               "link": {
@@ -539,7 +539,7 @@
    "elType": "container"
   },
   {
-   "id": "69a3fdd6",
+   "id": "b0dd55d3",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -563,7 +563,7 @@
    },
    "elements": [
     {
-     "id": "f1af28e8",
+     "id": "8e2114f5",
      "settings": {
       "content_width": "full",
       "width": {
@@ -583,7 +583,7 @@
      },
      "elements": [
       {
-       "id": "408af0e6",
+       "id": "5a36f026",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -607,7 +607,7 @@
        },
        "elements": [
         {
-         "id": "60cd9300",
+         "id": "2e364f77",
          "settings": {
           "title": "Every horse we have",
           "header_size": "span",
@@ -634,7 +634,7 @@
          "elType": "widget"
         },
         {
-         "id": "d00d1ec7",
+         "id": "8d4c16ca",
          "settings": {
           "title": "Five ways in",
           "header_size": "h2",
@@ -679,7 +679,7 @@
        "elType": "container"
       },
       {
-       "id": "dbddd984",
+       "id": "1b79fe76",
        "settings": {
         "tabs": [
          {
@@ -716,7 +716,7 @@
        },
        "elements": [
         {
-         "id": "dfdae5a7",
+         "id": "0330bd74",
          "settings": {
           "content_width": "full",
           "flex_direction": "row",
@@ -740,7 +740,7 @@
          },
          "elements": [
           {
-           "id": "43c30140",
+           "id": "051b1293",
            "settings": {
             "content_width": "full",
             "width": {
@@ -764,7 +764,7 @@
            },
            "elements": [
             {
-             "id": "0108861f",
+             "id": "ab1b5f8a",
              "settings": {
               "image": {
                "url": "https://stud-von-axe-ten.vercel.app/assets/img/tab-sport.jpg",
@@ -786,7 +786,7 @@
            "elType": "container"
           },
           {
-           "id": "086ba1ac",
+           "id": "42e26101",
            "settings": {
             "content_width": "full",
             "width": {
@@ -810,7 +810,7 @@
            },
            "elements": [
             {
-             "id": "e876af36",
+             "id": "e74c11f0",
              "settings": {
               "editor": "<p>Some are bred here. Others are carefully sourced and developed. What they share is the quality, potential and attention that define every horse we choose to represent.</p>",
               "text_color": "#4d5761",
@@ -835,7 +835,7 @@
              "elType": "widget"
             },
             {
-             "id": "af2884ea",
+             "id": "5bf01b7e",
              "settings": {
               "text": "See all sport horses &rarr;",
               "link": {
@@ -912,7 +912,7 @@
          "elType": "container"
         },
         {
-         "id": "74353f4d",
+         "id": "59dbd2e5",
          "settings": {
           "content_width": "full",
           "flex_direction": "row",
@@ -936,7 +936,7 @@
          },
          "elements": [
           {
-           "id": "a3927064",
+           "id": "83bc65e8",
            "settings": {
             "content_width": "full",
             "width": {
@@ -960,7 +960,7 @@
            },
            "elements": [
             {
-             "id": "286d27d3",
+             "id": "87f801b5",
              "settings": {
               "image": {
                "url": "https://stud-von-axe-ten.vercel.app/assets/img/tab-broodmare.jpg",
@@ -982,7 +982,7 @@
            "elType": "container"
           },
           {
-           "id": "48d20e1b",
+           "id": "ebf6c5f3",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1006,7 +1006,7 @@
            },
            "elements": [
             {
-             "id": "f49d62fb",
+             "id": "c43d91c4",
              "settings": {
               "editor": "<p>Strong maternal lines are at the heart of our breeding programme. Each mare brings proven genetics, performance and the potential to produce the horses we want to see in the sport of tomorrow.</p>",
               "text_color": "#4d5761",
@@ -1031,7 +1031,7 @@
              "elType": "widget"
             },
             {
-             "id": "457651c7",
+             "id": "0a2591e6",
              "settings": {
               "text": "See all breeding mares &rarr;",
               "link": {
@@ -1108,7 +1108,7 @@
          "elType": "container"
         },
         {
-         "id": "d44c62ac",
+         "id": "393acc10",
          "settings": {
           "content_width": "full",
           "flex_direction": "row",
@@ -1132,7 +1132,7 @@
          },
          "elements": [
           {
-           "id": "65419cf0",
+           "id": "7abe7bd5",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1156,7 +1156,7 @@
            },
            "elements": [
             {
-             "id": "eb6e6878",
+             "id": "390a8d35",
              "settings": {
               "image": {
                "url": "https://stud-von-axe-ten.vercel.app/assets/img/tab-foal.jpg",
@@ -1178,7 +1178,7 @@
            "elType": "container"
           },
           {
-           "id": "fb4763d5",
+           "id": "ca010770",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1202,7 +1202,7 @@
            },
            "elements": [
             {
-             "id": "9c66ad88",
+             "id": "b2bd3d28",
              "settings": {
               "editor": "<p>Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.</p>",
               "text_color": "#4d5761",
@@ -1227,7 +1227,7 @@
              "elType": "widget"
             },
             {
-             "id": "829272fa",
+             "id": "bf93dfe3",
              "settings": {
               "text": "See all foals &rarr;",
               "link": {
@@ -1304,7 +1304,7 @@
          "elType": "container"
         },
         {
-         "id": "b16d654d",
+         "id": "0600959b",
          "settings": {
           "content_width": "full",
           "flex_direction": "row",
@@ -1328,7 +1328,7 @@
          },
          "elements": [
           {
-           "id": "0863c3d2",
+           "id": "bc3ba47c",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1352,7 +1352,7 @@
            },
            "elements": [
             {
-             "id": "f805432c",
+             "id": "d183fcb1",
              "settings": {
               "image": {
                "url": "https://stud-von-axe-ten.vercel.app/assets/img/tab-embryo.jpg",
@@ -1374,7 +1374,7 @@
            "elType": "container"
           },
           {
-           "id": "39e036b4",
+           "id": "a08d0903",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1398,7 +1398,7 @@
            },
            "elements": [
             {
-             "id": "047762ca",
+             "id": "647a323d",
              "settings": {
               "editor": "<p>Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.</p>",
               "text_color": "#4d5761",
@@ -1423,7 +1423,7 @@
              "elType": "widget"
             },
             {
-             "id": "88907dea",
+             "id": "ba063427",
              "settings": {
               "text": "See all crosses &rarr;",
               "link": {
@@ -1500,7 +1500,7 @@
          "elType": "container"
         },
         {
-         "id": "0a15c431",
+         "id": "91d5b4cf",
          "settings": {
           "content_width": "full",
           "flex_direction": "row",
@@ -1524,7 +1524,7 @@
          },
          "elements": [
           {
-           "id": "18bff2c6",
+           "id": "e8bd7ad1",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1548,7 +1548,7 @@
            },
            "elements": [
             {
-             "id": "138c4930",
+             "id": "be60ec7d",
              "settings": {
               "image": {
                "url": "https://stud-von-axe-ten.vercel.app/assets/img/tab-stallion.jpg",
@@ -1570,7 +1570,7 @@
            "elType": "container"
           },
           {
-           "id": "555bf5a3",
+           "id": "b2cd5f74",
            "settings": {
             "content_width": "full",
             "width": {
@@ -1594,7 +1594,7 @@
            },
            "elements": [
             {
-             "id": "a6509354",
+             "id": "3fd115c3",
              "settings": {
               "editor": "<p>We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.</p>",
               "text_color": "#4d5761",
@@ -1619,7 +1619,7 @@
              "elType": "widget"
             },
             {
-             "id": "106951e6",
+             "id": "e18e690b",
              "settings": {
               "text": "See all stallions &rarr;",
               "link": {
@@ -1709,7 +1709,7 @@
    "elType": "container"
   },
   {
-   "id": "153ef8bf",
+   "id": "ec40085c",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -1733,7 +1733,7 @@
    },
    "elements": [
     {
-     "id": "6fd13217",
+     "id": "744ffc1e",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1753,7 +1753,7 @@
      },
      "elements": [
       {
-       "id": "084d6d40",
+       "id": "6ea4da29",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -1769,7 +1769,7 @@
        },
        "elements": [
         {
-         "id": "77c1cd8a",
+         "id": "750f8c9d",
          "settings": {
           "content_width": "full",
           "width": {
@@ -1793,7 +1793,7 @@
          },
          "elements": [
           {
-           "id": "1cc55d60",
+           "id": "6c14479f",
            "settings": {
             "title": "What else we do",
             "header_size": "span",
@@ -1820,7 +1820,7 @@
            "elType": "widget"
           },
           {
-           "id": "11f8ebe6",
+           "id": "8f349d7b",
            "settings": {
             "title": "We also look on your behalf.",
             "header_size": "h2",
@@ -1861,7 +1861,7 @@
            "elType": "widget"
           },
           {
-           "id": "f0de1ddb",
+           "id": "5b578a49",
            "settings": {
             "editor": "<p>Our work extends beyond the horses we breed ourselves. We source and broker carefully selected sport horses and breeding mares for clients who value quality, transparency and expertise. Every search begins with understanding what the client needs, and ends with finding the right opportunity.</p>",
             "text_color": "#4d5761",
@@ -1886,7 +1886,7 @@
            "elType": "widget"
           },
           {
-           "id": "ef8b17f3",
+           "id": "3683a492",
            "settings": {
             "content_width": "full",
             "flex_direction": "row",
@@ -1909,7 +1909,7 @@
            },
            "elements": [
             {
-             "id": "3cff7334",
+             "id": "cfc1639e",
              "settings": {
               "text": "Tell us what you need",
               "link": {
@@ -1978,7 +1978,7 @@
              "elType": "widget"
             },
             {
-             "id": "b8dc769a",
+             "id": "9df8bc6f",
              "settings": {
               "text": "See our mares",
               "link": {
@@ -2055,7 +2055,7 @@
          "elType": "container"
         },
         {
-         "id": "0928c3ad",
+         "id": "f6b185fb",
          "settings": {
           "content_width": "full",
           "width": {
@@ -2079,7 +2079,7 @@
          },
          "elements": [
           {
-           "id": "c867ff9f",
+           "id": "f2187153",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/results-unguessable.jpg",
@@ -2113,7 +2113,7 @@
    "elType": "container"
   },
   {
-   "id": "98fd071f",
+   "id": "77bba8c5",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -2159,7 +2159,7 @@
    },
    "elements": [
     {
-     "id": "1e855548",
+     "id": "b1c56fae",
      "settings": {
       "content_width": "full",
       "width": {
@@ -2187,7 +2187,7 @@
      },
      "elements": [
       {
-       "id": "2b6707b4",
+       "id": "51fadf78",
        "settings": {
         "title": "Tell us the horse you have <span style=\"color:#b59148\">in mind</span>.",
         "header_size": "h2",
@@ -2228,7 +2228,7 @@
        "elType": "widget"
       },
       {
-       "id": "a38e0195",
+       "id": "e088426d",
        "settings": {
         "editor": "<p>A dose for your own mare, a cross already made, or a foal on the ground. Say what you are after and we will tell you plainly what we have.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -2254,7 +2254,7 @@
        "elType": "widget"
       },
       {
-       "id": "85ccddfc",
+       "id": "bbac04f8",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -2278,7 +2278,7 @@
        },
        "elements": [
         {
-         "id": "21e62a8b",
+         "id": "b3521187",
          "settings": {
           "text": "Get in touch",
           "link": {
@@ -2347,7 +2347,7 @@
          "elType": "widget"
         },
         {
-         "id": "81bdc8b7",
+         "id": "bb909e58",
          "settings": {
           "text": "Message on WhatsApp",
           "link": {
@@ -2428,7 +2428,7 @@
    "elType": "container"
   },
   {
-   "id": "7af7b8ca",
+   "id": "ed9f889b",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -2452,7 +2452,7 @@
    },
    "elements": [
     {
-     "id": "4506edd0",
+     "id": "cdf9d3e2",
      "settings": {
       "content_width": "full",
       "width": {
@@ -2472,7 +2472,7 @@
      },
      "elements": [
       {
-       "id": "120fcfd7",
+       "id": "b067b2b4",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -2496,7 +2496,7 @@
        },
        "elements": [
         {
-         "id": "e55353dc",
+         "id": "84e43a5a",
          "settings": {
           "title": "News and results",
           "header_size": "span",
@@ -2523,7 +2523,7 @@
          "elType": "widget"
         },
         {
-         "id": "ae575016",
+         "id": "dd490dde",
          "settings": {
           "title": "The latest from the stud.",
           "header_size": "h2",
@@ -2564,7 +2564,7 @@
          "elType": "widget"
         },
         {
-         "id": "04e520f9",
+         "id": "e02bd178",
          "settings": {
           "editor": "<p>Results, stories and moments from the stud. Follow the horses we breed, develop and represent, from the sport arena to the breeding programme.</p>",
           "text_color": "#4d5761",
@@ -2594,7 +2594,7 @@
        "elType": "container"
       },
       {
-       "id": "0cdb82e6",
+       "id": "008b7227",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -2631,7 +2631,7 @@
    "elType": "container"
   },
   {
-   "id": "0dd4f227",
+   "id": "873c9729",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -2663,7 +2663,7 @@
    },
    "elements": [
     {
-     "id": "908f8e0c",
+     "id": "b6b31fbc",
      "settings": {
       "content_width": "full",
       "width": {
@@ -2690,7 +2690,7 @@
      },
      "elements": [
       {
-       "id": "24561500",
+       "id": "c50a5ed8",
        "settings": {
         "title": "Get in touch",
         "header_size": "span",
@@ -2717,7 +2717,7 @@
        "elType": "widget"
       },
       {
-       "id": "c6b7cf00",
+       "id": "874749da",
        "settings": {
         "title": "Ask us about a horse.",
         "header_size": "h2",
@@ -2758,7 +2758,7 @@
        "elType": "widget"
       },
       {
-       "id": "431516d2",
+       "id": "3089ccea",
        "settings": {
         "editor": "<p>Write to us and we will get back to you.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -2783,7 +2783,7 @@
        "elType": "widget"
       },
       {
-       "id": "c3f6b0d3",
+       "id": "e07db486",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -2799,7 +2799,7 @@
        },
        "elements": [
         {
-         "id": "aed534c6",
+         "id": "3d0e6aff",
          "settings": {
           "content_width": "full",
           "width": {
@@ -2823,7 +2823,7 @@
          },
          "elements": [
           {
-           "id": "75a1f9a3",
+           "id": "745b2860",
            "settings": {
             "form_name": "Contact",
             "form_fields": [
@@ -2901,7 +2901,7 @@
          "elType": "container"
         },
         {
-         "id": "9a74df3c",
+         "id": "543a0222",
          "settings": {
           "content_width": "full",
           "width": {
@@ -2925,7 +2925,7 @@
          },
          "elements": [
           {
-           "id": "df9cbf24",
+           "id": "9142ef07",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -2972,7 +2972,7 @@
            },
            "elements": [
             {
-             "id": "4c2efa94",
+             "id": "08473e16",
              "settings": {
               "title": "WhatsApp",
               "header_size": "span",
@@ -2998,7 +2998,7 @@
              "elType": "widget"
             },
             {
-             "id": "34c6951a",
+             "id": "c30cae70",
              "settings": {
               "title": "Message us",
               "header_size": "span",
@@ -3018,7 +3018,7 @@
              "elType": "widget"
             },
             {
-             "id": "e2786b25",
+             "id": "2be0ba1c",
              "settings": {
               "title": "Fastest reply",
               "header_size": "span",
@@ -3042,7 +3042,7 @@
            "elType": "container"
           },
           {
-           "id": "5734df38",
+           "id": "eaf6aa61",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -3089,7 +3089,7 @@
            },
            "elements": [
             {
-             "id": "10ad827f",
+             "id": "529eebb3",
              "settings": {
               "title": "Elisabetta",
               "header_size": "span",
@@ -3115,7 +3115,7 @@
              "elType": "widget"
             },
             {
-             "id": "758a14f1",
+             "id": "10e9b9c0",
              "settings": {
               "title": "+39 349 591 8565",
               "header_size": "span",
@@ -3135,7 +3135,7 @@
              "elType": "widget"
             },
             {
-             "id": "b7c5507f",
+             "id": "db458120",
              "settings": {
               "title": "Call or message",
               "header_size": "span",
@@ -3159,7 +3159,7 @@
            "elType": "container"
           },
           {
-           "id": "8ba4b6e8",
+           "id": "ca44ddfb",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -3206,7 +3206,7 @@
            },
            "elements": [
             {
-             "id": "c2623980",
+             "id": "2cb74a04",
              "settings": {
               "title": "Adriano",
               "header_size": "span",
@@ -3232,7 +3232,7 @@
              "elType": "widget"
             },
             {
-             "id": "8557505d",
+             "id": "acc7b4b8",
              "settings": {
               "title": "+39 348 395 3433",
               "header_size": "span",
@@ -3252,7 +3252,7 @@
              "elType": "widget"
             },
             {
-             "id": "7dd78a26",
+             "id": "147a4735",
              "settings": {
               "title": "Call or message",
               "header_size": "span",
@@ -3276,7 +3276,7 @@
            "elType": "container"
           },
           {
-           "id": "296fdce1",
+           "id": "b126986f",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -3323,7 +3323,7 @@
            },
            "elements": [
             {
-             "id": "f241afab",
+             "id": "baecae7f",
              "settings": {
               "title": "By mail",
               "header_size": "span",
@@ -3349,7 +3349,7 @@
              "elType": "widget"
             },
             {
-             "id": "30bb14ec",
+             "id": "8ee2b61b",
              "settings": {
               "title": "studvonaxe@gmail.com",
               "header_size": "span",
@@ -3369,9 +3369,9 @@
              "elType": "widget"
             },
             {
-             "id": "361eda55",
+             "id": "2d7b8ee1",
              "settings": {
-              "title": "We answer in four languages",
+              "title": "Write to us",
               "header_size": "span",
               "title_color": "rgba(238,241,245,.55)",
               "typography_typography": "custom",
@@ -3409,7 +3409,7 @@
    "elType": "container"
   },
   {
-   "id": "415ea19c",
+   "id": "2a67147c",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -3433,7 +3433,7 @@
    },
    "elements": [
     {
-     "id": "ed1a38a4",
+     "id": "b91fe399",
      "settings": {
       "content_width": "full",
       "width": {
@@ -3453,7 +3453,7 @@
      },
      "elements": [
       {
-       "id": "bedf4c65",
+       "id": "2a718514",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -3477,7 +3477,7 @@
        },
        "elements": [
         {
-         "id": "da099918",
+         "id": "f8545199",
          "settings": {
           "title": "Partners",
           "header_size": "span",
@@ -3504,7 +3504,7 @@
          "elType": "widget"
         },
         {
-         "id": "0afe6cad",
+         "id": "34967979",
          "settings": {
           "title": "The people behind us.",
           "header_size": "h2",
@@ -3549,7 +3549,7 @@
        "elType": "container"
       },
       {
-       "id": "c44f8a35",
+       "id": "389f4e94",
        "settings": {
         "template_id": 0,
         "_skin": "post",

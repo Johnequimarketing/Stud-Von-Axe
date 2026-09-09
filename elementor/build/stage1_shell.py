@@ -259,15 +259,17 @@ def footer():
 # ───────────────────────── 404 ───────────────────────────────────────────────
 def notfound():
     binnen = wrap([
-        eyebrow("404", align="center"),
-        paginakop("This page has left the yard", color=WIT, align="center"),
-        para("The address is not one of ours, or the page has moved. "
-             "The five archives below hold everything we have.",
+        # Hun eigen woorden, van 404.html. Er stond "This page has left the
+        # yard" en dat had ik zelf bedacht.
+        eyebrow("Page not found", align="center"),
+        paginakop("That page is not here", color=WIT, align="center"),
+        para("Either it never was, or it has moved while this site was being rebuilt. "
+             "Everything the stud has is one of these.",
              color=WIT_75, align="center", max_w=560),
         C({"content_width": "full", "flex_direction": "row", "flex_gap": gap(10),
            "flex_wrap": "wrap", "flex_justify_content": "center",
            "padding": box(14, 0, 0, 0)}, [
-            btn("goud", "Back to the homepage", "/"),
+            btn("goud", "Home &rarr;", "/"),
             btn("ghostw", "Sport horses", "/sport-horses/"),
             btn("ghostw", "Breeding mares", "/breeding-mares/"),
             btn("ghostw", "Foals", "/foals/"),

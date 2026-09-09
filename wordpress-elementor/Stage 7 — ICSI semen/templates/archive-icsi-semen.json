@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "d291545c",
+   "id": "0b7b0d39",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -54,7 +54,7 @@
    },
    "elements": [
     {
-     "id": "12493d93",
+     "id": "c676f502",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "79d42451",
+       "id": "386c2117",
        "settings": {
         "title": "ICSI semen",
         "header_size": "span",
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "f9122d82",
+       "id": "becb4859",
        "settings": {
         "title": "The best stallions. Quality semen. <span style=\"color:#b59148\">Fair prices.</span>",
         "header_size": "h1",
@@ -148,7 +148,7 @@
        "elType": "widget"
       },
       {
-       "id": "df9d307c",
+       "id": "0c147ec4",
        "settings": {
         "editor": "<p>We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +182,7 @@
    "elType": "container"
   },
   {
-   "id": "7348130d",
+   "id": "2d2d4350",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +213,7 @@
    },
    "elements": [
     {
-     "id": "2b6a689d",
+     "id": "c3e154dc",
      "settings": {
       "content_width": "full",
       "width": {
@@ -263,7 +263,7 @@
      },
      "elements": [
       {
-       "id": "0d181c79",
+       "id": "20774fc9",
        "settings": {
         "placeholder": "Try a name or a sire.",
         "query_id": "sva_stallions",
@@ -291,7 +291,7 @@
        "elType": "widget"
       },
       {
-       "id": "746defd3",
+       "id": "f58f2eb3",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -307,7 +307,7 @@
        },
        "elements": [
         {
-         "id": "8620c9a3",
+         "id": "bdd9d3a0",
          "settings": {
           "query_id": "sva_stallions",
           "taxonomy": "studbook",
@@ -329,7 +329,7 @@
          "elType": "widget"
         },
         {
-         "id": "e9d3fff5",
+         "id": "7631c3fe",
          "settings": {
           "query_id": "sva_stallions",
           "taxonomy": "birth_year",
@@ -359,7 +359,7 @@
      "elType": "container"
     },
     {
-     "id": "1055d1e5",
+     "id": "a7577eb7",
      "settings": {
       "content_width": "full",
       "width": {
@@ -379,7 +379,7 @@
      },
      "elements": [
       {
-       "id": "93280b1e",
+       "id": "ab6c5f36",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -416,7 +416,7 @@
    "elType": "container"
   },
   {
-   "id": "ab1918a4",
+   "id": "f5f54043",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -462,7 +462,7 @@
    },
    "elements": [
     {
-     "id": "7a843bc2",
+     "id": "7ba1d08f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -490,7 +490,7 @@
      },
      "elements": [
       {
-       "id": "8fbc68a2",
+       "id": "f17c1ba2",
        "settings": {
         "title": "Order your ICSI <span style=\"color:#b59148\">through us</span>.",
         "header_size": "h2",
@@ -531,7 +531,7 @@
        "elType": "widget"
       },
       {
-       "id": "745ae074",
+       "id": "700b69dc",
        "settings": {
         "editor": "<p>Open a stallion and the order form asks for everything we need: you, your mare, and when you want the dose.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -557,7 +557,7 @@
        "elType": "widget"
       },
       {
-       "id": "e9dad42d",
+       "id": "7bdb146c",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -581,7 +581,7 @@
        },
        "elements": [
         {
-         "id": "6149a69e",
+         "id": "9a7ae5e1",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -650,7 +650,7 @@
          "elType": "widget"
         },
         {
-         "id": "cf4cbe6a",
+         "id": "7a50c017",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

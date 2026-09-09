@@ -251,10 +251,11 @@ def archief(post_type, g):
 # ───────────────────────── het nieuwsarchief ─────────────────────────────────
 def nieuwsarchief():
     binnen = wrap([
-        eyebrow("News", align="center"),
-        paginakop("What is happening at the yard", color=WIT, align="center"),
-        para("Foals born, horses sold, semen available. The short version, as it happens.",
-             color=WIT_75, align="center", max_w=560),
+        # Hun eigen woorden, van news/index.html.
+        eyebrow("News and results", align="center"),
+        paginakop("The latest from the stud.", color=WIT, align="center"),
+        para("Results in the ring, horses sold, and news from the programme. Every item here "
+             "is one the stud published itself.", color=WIT_75, align="center", max_w=620),
     ], extra={"flex_align_items": "center", "text_align": "center", "flex_gap": gap(0, 12)})
 
     h = C({
@@ -271,9 +272,9 @@ def nieuwsarchief():
     lijst = section([wrap([loop_grid("news_item", columns=3, per_page=24, orderby="menu_order",
                                      nothing_found="No news yet.")])], bg=BG)
 
-    return save([h, lijst, cta_band(
-        "Want to hear it first?", "The quickest way to hear about a foal or a cross is to ask.",
-        [btn("goud", "Contact us", "/contact/")])],
+    # Geen slotblok: het nieuwsarchief op de statische site heeft er geen, en
+    # "Want to hear it first?" had ik zelf bedacht.
+    return save([h, lijst],
         "Stud Von Axe — News archive",
         uit("stage-9-about-news-legal", "archive-news.json"), "archive")
 

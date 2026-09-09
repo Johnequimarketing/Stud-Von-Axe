@@ -84,7 +84,7 @@ AAN_AFZENDER = romp(
      </table>
      <p style="margin:18px 0 0;">If it is urgent, WhatsApp is the fastest way to reach
        us: <a href="https://wa.me/393495918565" style="color:{GOUD};">+39 349 591 8565</a>.</p>
-     <p style="margin:14px 0 0;">We answer in Italian, English, French and German.</p>
+
      <p style="margin:22px 0 0;">
       <a href="https://studvonaxe.com/foals/"
          style="display:inline-block;background:{GOUD};color:{DARK};text-decoration:none;

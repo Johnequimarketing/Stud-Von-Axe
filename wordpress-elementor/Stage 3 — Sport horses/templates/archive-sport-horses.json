@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "20e469ec",
+   "id": "3528e433",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -63,7 +63,7 @@
    },
    "elements": [
     {
-     "id": "35b297bc",
+     "id": "024a042c",
      "settings": {
       "content_width": "full",
       "width": {
@@ -90,7 +90,7 @@
      },
      "elements": [
       {
-       "id": "edbeffc3",
+       "id": "33c091f6",
        "settings": {
         "title": "The sport horses",
         "header_size": "span",
@@ -117,7 +117,7 @@
        "elType": "widget"
       },
       {
-       "id": "a37ba2e5",
+       "id": "9ca9bad8",
        "settings": {
         "title": "Selected for potential. <span style=\"color:#b59148\">Developed for performance.</span>",
         "header_size": "h1",
@@ -157,7 +157,7 @@
        "elType": "widget"
       },
       {
-       "id": "63157403",
+       "id": "9d32e813",
        "settings": {
         "editor": "<p>Some are bred here. Others are carefully sourced and developed. What they share is the quality, potential and attention that define every horse we choose to represent.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -191,7 +191,7 @@
    "elType": "container"
   },
   {
-   "id": "0ddf4e57",
+   "id": "5c063286",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -222,7 +222,7 @@
    },
    "elements": [
     {
-     "id": "bac23e08",
+     "id": "bf475030",
      "settings": {
       "content_width": "full",
       "width": {
@@ -272,7 +272,7 @@
      },
      "elements": [
       {
-       "id": "27f68d33",
+       "id": "09479645",
        "settings": {
         "placeholder": "Try a sire, a damline or a country.",
         "query_id": "sva_sport",
@@ -300,7 +300,7 @@
        "elType": "widget"
       },
       {
-       "id": "51bf384a",
+       "id": "fcc933ae",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -316,7 +316,7 @@
        },
        "elements": [
         {
-         "id": "d4f1f211",
+         "id": "ebd569d8",
          "settings": {
           "query_id": "sva_sport",
           "taxonomy": "availability",
@@ -342,7 +342,7 @@
        "elType": "container"
       },
       {
-       "id": "0415e3fd",
+       "id": "1823391e",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -358,7 +358,7 @@
        },
        "elements": [
         {
-         "id": "e1eb1f66",
+         "id": "411250bd",
          "settings": {
           "query_id": "sva_sport",
           "taxonomy": "horse_sex",
@@ -380,7 +380,7 @@
          "elType": "widget"
         },
         {
-         "id": "5222ee39",
+         "id": "1725fc09",
          "settings": {
           "query_id": "sva_sport",
           "taxonomy": "studbook",
@@ -402,7 +402,7 @@
          "elType": "widget"
         },
         {
-         "id": "694be814",
+         "id": "99b37142",
          "settings": {
           "query_id": "sva_sport",
           "taxonomy": "birth_year",
@@ -432,7 +432,7 @@
      "elType": "container"
     },
     {
-     "id": "b700d421",
+     "id": "b2c33555",
      "settings": {
       "content_width": "full",
       "width": {
@@ -452,7 +452,7 @@
      },
      "elements": [
       {
-       "id": "b51e80a3",
+       "id": "1b19a71f",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -489,7 +489,7 @@
    "elType": "container"
   },
   {
-   "id": "b28ed06c",
+   "id": "393091ac",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -535,7 +535,7 @@
    },
    "elements": [
     {
-     "id": "35d84010",
+     "id": "173812f4",
      "settings": {
       "content_width": "full",
       "width": {
@@ -563,7 +563,7 @@
      },
      "elements": [
       {
-       "id": "6074e66e",
+       "id": "7d8b00b3",
        "settings": {
         "title": "Looking for a particular <span style=\"color:#b59148\">horse</span>?",
         "header_size": "h2",
@@ -604,7 +604,7 @@
        "elType": "widget"
       },
       {
-       "id": "a1c4215d",
+       "id": "73c82b80",
        "settings": {
         "editor": "<p>We also look on a client's behalf, across Europe and as far as America. Tell us what you need and we will go and find it.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -630,7 +630,7 @@
        "elType": "widget"
       },
       {
-       "id": "fefb4393",
+       "id": "620b0788",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -654,7 +654,7 @@
        },
        "elements": [
         {
-         "id": "03875028",
+         "id": "8fb1f383",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -723,7 +723,7 @@
          "elType": "widget"
         },
         {
-         "id": "49f2054f",
+         "id": "c6acac44",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

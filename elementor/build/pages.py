@@ -4,7 +4,7 @@ De teksten staan hier woord voor woord zoals ze op de statische site staan.
 Niets is hier opnieuw geschreven of ingekort: wat de klant heeft goedgekeurd is
 wat er staat, en waar hun zin lang is blijft hij lang.
 """
-import sys, os
+import sys, os, json
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from lib_axe import *          # noqa: F401,F403
@@ -211,7 +211,7 @@ def contactkaart(met_kop=True):
         ("W", "WhatsApp", "Message us", WA, "Fastest reply"),
         ("E", "Elisabetta", "+39 349 591 8565", "tel:+393495918565", "Call or message"),
         ("A", "Adriano", "+39 348 395 3433", "tel:+393483953433", "Call or message"),
-        ("@", "By mail", CONTACT["email"], f"mailto:{CONTACT['email']}", "We answer in four languages"),
+        ("@", "By mail", CONTACT["email"], f"mailto:{CONTACT['email']}", "Write to us"),
     ):
         kanalen.append(C({
             "content_width": "full", "flex_direction": "column", "flex_gap": gap(2),
@@ -412,21 +412,24 @@ def contact():
         sec_head("Where we are", "Where to find us",
                  "Every cross begins in Italy and every foal is raised in Belgium. You are "
                  "welcome by appointment: ring first and we will say where to come."),
+        # Eén adres, want de echte pagina noemt er één. Er stond hier ook een
+        # blok "Belgium" met een zin die ik zelf bedacht had; Lanaken is geen
+        # staladres en dat is een staande afspraak: twee landen, één programma,
+        # nooit twee stallen.
         row([
             cell([
                 W("heading", dict({"title": "Italy", "header_size": "h3", "title_color": INK},
                                   **typo("typography", SERIF, 21, "400"))),
-                para(f"{CONTACT['bedrijf']}<br>{CONTACT['adres']}", size=15),
+                W("heading", dict({"title": "Castelnuovo Garfagnana", "header_size": "span",
+                                   "title_color": GOUD},
+                                  **typo(size=11, weight="700", transform="uppercase",
+                                         letter_spacing=2.42))),
+                para(f"{CONTACT['bedrijf']}<br>Via per Arni<br>"
+                     f"55032 Castelnuovo Garfagnana (LU)<br>Italy", size=15),
                 para("This is the office, not the yard. No horse stands here. Ring us before "
                      "you set off and we will tell you where the one you want to see is.",
                      size=14, color=GRIJS),
-            ], 50, gap_px=8),
-            cell([
-                W("heading", dict({"title": "Belgium", "header_size": "h3",
-                                   "title_color": INK}, **typo("typography", SERIF, 21, "400"))),
-                para("Lanaken. Our own team implants the embryos, carries the pregnancies and "
-                     "raises the foals until the day they leave.", size=15),
-            ], 50, gap_px=8),
+            ], 60, gap_px=8),
         ], gap_px=26),
     ], gap_px=0)], bg=BG)
 
@@ -436,7 +439,20 @@ def contact():
 
 
 # ───────────────────────── privacy en voorwaarden ────────────────────────────
-def juridisch(titel, bestand, bovenkop, onder):
+# De tekst komt uit elementor/juridisch.json, dat elementor/lees-juridisch.py
+# letterlijk van de statische pagina's leest. Niet overtypen en niet
+# samenvatten: dit is juridische tekst die de klant heeft goedgekeurd, en één
+# letter anders is een andere belofte. De eerste versie van dit sjabloon droeg
+# een plaatshouder met "de tekst komt tijdens de bouw over", en dat is werk
+# doorschuiven naar iemand die de tekst niet kent.
+with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                       "juridisch.json"), encoding="utf-8") as _f:
+    JURIDISCH = json.load(_f)
+
+
+def juridisch(titel, bestand, sleutel, bovenkop, onder):
+    d = JURIDISCH[sleutel]
+
     hero = C({
         "background_background": "classic", "background_color": NAVY,
         "padding": box(150, PAD_X, 60, PAD_X),
@@ -446,19 +462,42 @@ def juridisch(titel, bestand, bovenkop, onder):
               para(onder, color=WIT_75, size=16, max_w=640)],
              extra={"flex_gap": gap(0, 12)})], is_inner=False)
 
+    # de inhoudsopgave, uit dezelfde bron als de secties, dus hij kan niet
+    # verwijzen naar een kop die er niet is
+    toc = W("text-editor", dict({
+        "editor": "<p><strong>On this page</strong></p><ol data-sva-toc>"
+                  + "".join(f'<li><a href="#{x["anker"]}">{x["titel"]}</a></li>'
+                            for x in d["secties"])
+                  + "</ol>"
+                  + (f'<p class="sva-stamp">{d["stempel"]}</p>' if d["stempel"] else ""),
+        "text_color": INK_SOFT,
+        "custom_css": ("selector ol{list-style:none;padding:0;counter-reset:s}"
+                       "selector li{counter-increment:s;margin:0 0 .5rem}"
+                       'selector li::before{content:counter(s,decimal-leading-zero) "  ";'
+                       f"color:{GOUD};font-weight:700}}"
+                       f"selector .sva-stamp{{margin-top:1.4rem;font-size:12px;color:{GRIJS}}}"),
+    }, **typo(size=14, weight="500", line_height_em=1.6)))
+
+    # elke sectie een eigen kop met een anker, zodat de inhoudsopgave werkt en
+    # de scrollmarkering iets heeft om op te wijzen
+    kolom = []
+    for i, x in enumerate(d["secties"], 1):
+        kolom.append(W("heading", dict({
+            "title": f"{i:02d}", "header_size": "span", "title_color": GOUD,
+        }, **typo(size=11, weight="700", letter_spacing=2.42))))
+        kolom.append(W("heading", dict({
+            "title": x["titel"], "header_size": "h2", "title_color": INK,
+            "_element_id": x["anker"],
+        }, **typo("typography", SERIF, 24, "400", line_height_em=1.15))))
+        kolom.append(W("text-editor", dict({
+            "editor": x["html"], "text_color": INK,
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+        }, **typo(size=17, weight="400", line_height_em=1.75))))
+
     inhoud = section([wrap([row([
-        cell([W("text-editor", dict({
-            "editor": ('<p><strong>On this page</strong></p>'
-                       '<ul data-sva-toc><li>The sections are filled in during the build, '
-                       'from the headings below.</li></ul>'),
-            "text_color": INK_SOFT}, **typo(size=14, weight="500", line_height_em=1.9)))],
-            28, extra={"position": "sticky", "_offset_y": sz(112),
-                       "custom_css": "selector{position:sticky;top:112px;align-self:start}"}),
-        cell([W("text-editor", dict({
-            "editor": f"<h2>{titel}</h2><p>The text of this page comes across from the "
-                      f"static site during the build. It is one long text with headings, so "
-                      f"it lives in one editor rather than in fields.</p>",
-            "text_color": INK}, **typo(size=17, weight="400", line_height_em=1.75)))], 72),
+        cell([toc], 28, extra={"custom_css": "selector{position:sticky;top:112px;"
+                                             "align-self:start}"}),
+        cell(kolom, 72, gap_px=10),
     ], gap_px=34, align="stretch")], gap_px=0)], bg=BG)
 
     return save([hero, inhoud], f"Stud Von Axe — {titel}",
@@ -468,10 +507,13 @@ def juridisch(titel, bestand, bovenkop, onder):
 if __name__ == "__main__":
     paden = [
         home(), contact(), about(),
-        juridisch("Privacy policy", "privacy.json", "Legal",
-                  "What we do with what you send us, and what we do not do."),
-        juridisch("Terms and conditions", "terms.json", "Legal",
-                  "The terms under which we sell a horse, an embryo or a dose."),
+        # Kop en onderregel woord voor woord van de statische pagina.
+        juridisch("What happens with your details", "privacy.json", "privacy", "Privacy",
+                  "This site collects nothing about you by itself. What you send us by mail "
+                  "we keep only to answer you."),
+        juridisch("The ground an order stands on", "terms.json", "terms", "Terms",
+                  "The terms an order for ICSI semen, an embryo or a horse is made under. "
+                  "The headings are here; most of the wording is the owners' to write."),
     ]
     for p in paden:
         print(f"  {os.path.basename(p)}")

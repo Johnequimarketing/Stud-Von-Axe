@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "c2a1cf53",
+   "id": "b23563bf",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -27,7 +27,7 @@
    },
    "elements": [
     {
-     "id": "7b27d987",
+     "id": "453eb7e9",
      "settings": {
       "content_width": "full",
       "width": {
@@ -54,9 +54,9 @@
      },
      "elements": [
       {
-       "id": "2fe23a46",
+       "id": "d1d00b0e",
        "settings": {
-        "title": "Legal",
+        "title": "Terms",
         "header_size": "span",
         "title_color": "#b59148",
         "align": "left",
@@ -81,9 +81,9 @@
        "elType": "widget"
       },
       {
-       "id": "cb97ac5c",
+       "id": "37c228ef",
        "settings": {
-        "title": "Terms and conditions",
+        "title": "The ground an order stands on",
         "header_size": "h1",
         "title_color": "#ffffff",
         "align": "left",
@@ -122,9 +122,9 @@
        "elType": "widget"
       },
       {
-       "id": "b933d180",
+       "id": "29f18f3a",
        "settings": {
-        "editor": "<p>The terms under which we sell a horse, an embryo or a dose.</p>",
+        "editor": "<p>The terms an order for ICSI semen, an embryo or a horse is made under. The headings are here; most of the wording is the owners' to write.</p>",
         "text_color": "rgba(238,241,245,.75)",
         "align": "left",
         "typography_typography": "custom",
@@ -156,7 +156,7 @@
    "elType": "container"
   },
   {
-   "id": "afbf9735",
+   "id": "be0c9773",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -180,7 +180,7 @@
    },
    "elements": [
     {
-     "id": "0edfd0d5",
+     "id": "40b5a784",
      "settings": {
       "content_width": "full",
       "width": {
@@ -200,7 +200,7 @@
      },
      "elements": [
       {
-       "id": "72d0803a",
+       "id": "477cd645",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -216,7 +216,7 @@
        },
        "elements": [
         {
-         "id": "d53d4e2a",
+         "id": "ff3f0d9f",
          "settings": {
           "content_width": "full",
           "width": {
@@ -237,20 +237,15 @@
            "size": "",
            "isLinked": true
           },
-          "position": "sticky",
-          "_offset_y": {
-           "unit": "px",
-           "size": 112,
-           "sizes": []
-          },
           "custom_css": "selector{position:sticky;top:112px;align-self:start}"
          },
          "elements": [
           {
-           "id": "9203418c",
+           "id": "c7c64dcb",
            "settings": {
-            "editor": "<p><strong>On this page</strong></p><ul data-sva-toc><li>The sections are filled in during the build, from the headings below.</li></ul>",
+            "editor": "<p><strong>On this page</strong></p><ol data-sva-toc><li><a href=\"#s1\">Who these terms apply to</a></li><li><a href=\"#s2\">Prices and VAT</a></li><li><a href=\"#s3\">Ordering ICSI semen</a></li><li><a href=\"#s4\">Delivery and shipping</a></li><li><a href=\"#s5\">Guarantees</a></li><li><a href=\"#s6\">Payment</a></li><li><a href=\"#s7\">Papers and registration</a></li><li><a href=\"#s8\">Health and veterinary</a></li><li><a href=\"#s9\">Cancelling an order</a></li><li><a href=\"#s10\">Liability</a></li><li><a href=\"#s11\">Which law applies</a></li></ol><p class=\"sva-stamp\">This page is a framework, not a contract. Every block marked in gold is waiting for the owners to say what their terms actually are, and until they do nothing on this page binds anyone.</p>",
             "text_color": "#4d5761",
+            "custom_css": "selector ol{list-style:none;padding:0;counter-reset:s}selector li{counter-increment:s;margin:0 0 .5rem}selector li::before{content:counter(s,decimal-leading-zero) \"  \";color:#b59148;font-weight:700}selector .sva-stamp{margin-top:1.4rem;font-size:12px;color:#4d5761}",
             "typography_typography": "custom",
             "typography_font_family": "Manrope",
             "typography_font_size": {
@@ -261,7 +256,7 @@
             "typography_font_weight": "500",
             "typography_line_height": {
              "unit": "em",
-             "size": 1.9,
+             "size": 1.6,
              "sizes": []
             }
            },
@@ -275,7 +270,7 @@
          "elType": "container"
         },
         {
-         "id": "cf3b967b",
+         "id": "7e519375",
          "settings": {
           "content_width": "full",
           "width": {
@@ -290,8 +285,8 @@
           },
           "flex_direction": "column",
           "flex_gap": {
-           "column": "16",
-           "row": "16",
+           "column": "10",
+           "row": "10",
            "unit": "px",
            "size": "",
            "isLinked": true
@@ -299,10 +294,822 @@
          },
          "elements": [
           {
-           "id": "b1f36dc7",
+           "id": "daf78561",
            "settings": {
-            "editor": "<h2>Terms and conditions</h2><p>The text of this page comes across from the static site during the build. It is one long text with headings, so it lives in one editor rather than in fields.</p>",
+            "title": "01",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "8dc70d66",
+           "settings": {
+            "title": "Who these terms apply to",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s1",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "b6f5c723",
+           "settings": {
+            "editor": "<p>These terms apply to every order placed with Stud Von Axe SRL, Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy. P. IVA IT02519980466.</p>\n<p>They apply from the moment you send an order and we confirm it.</p>",
             "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "ff446392",
+           "settings": {
+            "title": "02",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "05e37214",
+           "settings": {
+            "title": "Prices and VAT",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s2",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "2fe68716",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>The price per ICSI dose, whether it differs per stallion, and whether the prices shown are with or without VAT. Also whether a price holds for a season or is quoted per order.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "72712ce3",
+           "settings": {
+            "title": "03",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "7b135068",
+           "settings": {
+            "title": "Ordering ICSI semen",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s3",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "47f7a4b1",
+           "settings": {
+            "editor": "<p>An order is placed through the form on a stallion’s page. We answer with what we hold of that stallion, what it costs and when it can leave.</p>\n<p><b>Still to come from the owners</b>Whether an order is binding once confirmed, and what happens if the stallion is out of stock after a confirmation.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "1e259a48",
+           "settings": {
+            "title": "04",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "a1a7f6e9",
+           "settings": {
+            "title": "Delivery and shipping",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s4",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "f1fec377",
+           "settings": {
+            "editor": "<p>ICSI doses are produced with Avantea in Cremona and ship across the European Union and for export.</p>\n<p><b>Still to come from the owners</b>Who arranges and pays for shipping, which carrier is used, what happens to a shipment that arrives late or thawed, and which countries are excluded.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "591d1bdf",
+           "settings": {
+            "title": "05",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "1b551886",
+           "settings": {
+            "title": "Guarantees",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s5",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "7af713b6",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>Whether there is a live foal guarantee or a replacement dose, on what conditions, and what a buyer has to send in to claim one.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "f366d124",
+           "settings": {
+            "title": "06",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "38da209e",
+           "settings": {
+            "title": "Payment",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s6",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "07d8d99b",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>When payment is due, which methods are accepted, and whether the goods leave before or after payment.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "572e5845",
+           "settings": {
+            "title": "07",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "a5a8a055",
+           "settings": {
+            "title": "Papers and registration",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s7",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "cadae2b7",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>Which papers travel with a dose, an embryo or a horse, and who registers a resulting foal with which studbook.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "81284815",
+           "settings": {
+            "title": "08",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "e114b50e",
+           "settings": {
+            "title": "Health and veterinary",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s8",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "727e36bd",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>The health status the stud guarantees, the tests carried out, and what a buyer’s own vet is expected to do on arrival.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "be1503cd",
+           "settings": {
+            "title": "09",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "225a8697",
+           "settings": {
+            "title": "Cancelling an order",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s9",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "01a30b85",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>Whether an order can be cancelled, until when, and what it costs.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "6580e9cc",
+           "settings": {
+            "title": "10",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "9938a703",
+           "settings": {
+            "title": "Liability",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s10",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "275ffad1",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>What the stud is and is not answerable for once the goods have left.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "785f6fa8",
+           "settings": {
+            "title": "11",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "6f9685e5",
+           "settings": {
+            "title": "Which law applies",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s11",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "d1e168b3",
+           "settings": {
+            "editor": "<p><b>Still to come from the owners</b>Italian law and an Italian court is the usual answer for a company registered here, but it is theirs to state.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
             "typography_typography": "custom",
             "typography_font_family": "Manrope",
             "typography_font_size": {
@@ -343,6 +1150,6 @@
   "hide_title": "yes"
  },
  "version": "0.4",
- "title": "Stud Von Axe — Terms and conditions",
+ "title": "Stud Von Axe — The ground an order stands on",
  "type": "page"
 }

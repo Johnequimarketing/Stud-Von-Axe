@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "56fc1eb8",
+   "id": "7da1cdb3",
    "settings": {
     "flex_direction": "column",
     "flex_gap": {
@@ -38,7 +38,7 @@
      "sizes": []
     },
     "__dynamic__": {
-     "link": "[elementor-tag id=\"232412d3\" name=\"post-url\" settings=\"%7B%7D\"]"
+     "link": "[elementor-tag id=\"2709d5c6\" name=\"post-url\" settings=\"%7B%7D\"]"
     },
     "link": {
      "url": "#",
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "847a35ec",
+     "id": "9d1d0213",
      "settings": {
       "image_size": "large",
       "custom_css": "selector img{aspect-ratio:16/10;object-fit:cover;object-position:50% 45%;width:100%;display:block}"
@@ -59,7 +59,7 @@
      "elType": "widget"
     },
     {
-     "id": "fa76e67e",
+     "id": "1743c886",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "f48eb96f",
+       "id": "132842d7",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -106,7 +106,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"efcafb56\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
+         "title": "[elementor-tag id=\"85cdc64e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -116,7 +116,7 @@
        "elType": "widget"
       },
       {
-       "id": "19b286b2",
+       "id": "5a118d25",
        "settings": {
         "title": "Horse name",
         "header_size": "h3",
@@ -140,7 +140,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"4e1fe6fc\" name=\"post-title\" settings=\"%7B%7D\"]"
+         "title": "[elementor-tag id=\"35546ec4\" name=\"post-title\" settings=\"%7B%7D\"]"
         }
        },
        "elements": [],
@@ -149,7 +149,7 @@
        "elType": "widget"
       },
       {
-       "id": "018cf031",
+       "id": "178ba626",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -173,7 +173,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"a33d0e65\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_excerpt%22%7D\"]"
+         "title": "[elementor-tag id=\"b069ae69\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_excerpt%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -183,7 +183,7 @@
        "elType": "widget"
       },
       {
-       "id": "15cbbc08",
+       "id": "fd508126",
        "settings": {
         "title": "Read more &rarr;",
         "header_size": "span",

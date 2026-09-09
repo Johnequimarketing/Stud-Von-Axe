@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "7af9dd78",
+   "id": "c337909a",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -27,7 +27,7 @@
    },
    "elements": [
     {
-     "id": "35ca5d55",
+     "id": "d6e26c37",
      "settings": {
       "content_width": "full",
       "width": {
@@ -54,9 +54,9 @@
      },
      "elements": [
       {
-       "id": "4070fd49",
+       "id": "48f867ca",
        "settings": {
-        "title": "Legal",
+        "title": "Privacy",
         "header_size": "span",
         "title_color": "#b59148",
         "align": "left",
@@ -81,9 +81,9 @@
        "elType": "widget"
       },
       {
-       "id": "5a121eea",
+       "id": "364f5c68",
        "settings": {
-        "title": "Privacy policy",
+        "title": "What happens with your details",
         "header_size": "h1",
         "title_color": "#ffffff",
         "align": "left",
@@ -122,9 +122,9 @@
        "elType": "widget"
       },
       {
-       "id": "1c2499c1",
+       "id": "9dd767a2",
        "settings": {
-        "editor": "<p>What we do with what you send us, and what we do not do.</p>",
+        "editor": "<p>This site collects nothing about you by itself. What you send us by mail we keep only to answer you.</p>",
         "text_color": "rgba(238,241,245,.75)",
         "align": "left",
         "typography_typography": "custom",
@@ -156,7 +156,7 @@
    "elType": "container"
   },
   {
-   "id": "e362ddf6",
+   "id": "1c2c2df8",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -180,7 +180,7 @@
    },
    "elements": [
     {
-     "id": "4887d991",
+     "id": "cc246bd3",
      "settings": {
       "content_width": "full",
       "width": {
@@ -200,7 +200,7 @@
      },
      "elements": [
       {
-       "id": "b0000294",
+       "id": "902cabbb",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -216,7 +216,7 @@
        },
        "elements": [
         {
-         "id": "be52e83b",
+         "id": "859e73a2",
          "settings": {
           "content_width": "full",
           "width": {
@@ -237,20 +237,15 @@
            "size": "",
            "isLinked": true
           },
-          "position": "sticky",
-          "_offset_y": {
-           "unit": "px",
-           "size": 112,
-           "sizes": []
-          },
           "custom_css": "selector{position:sticky;top:112px;align-self:start}"
          },
          "elements": [
           {
-           "id": "d1db99b8",
+           "id": "006fa3ba",
            "settings": {
-            "editor": "<p><strong>On this page</strong></p><ul data-sva-toc><li>The sections are filled in during the build, from the headings below.</li></ul>",
+            "editor": "<p><strong>On this page</strong></p><ol data-sva-toc><li><a href=\"#s1\">Who we are</a></li><li><a href=\"#s2\">What this site collects</a></li><li><a href=\"#s3\">The forms</a></li><li><a href=\"#s4\">What we do with it</a></li><li><a href=\"#s5\">Your rights</a></li><li><a href=\"#s6\">When this site changes</a></li></ol><p class=\"sva-stamp\">Last written on 31 August 2026. Two things on this page are still to be confirmed by the owners and are marked where they sit.</p>",
             "text_color": "#4d5761",
+            "custom_css": "selector ol{list-style:none;padding:0;counter-reset:s}selector li{counter-increment:s;margin:0 0 .5rem}selector li::before{content:counter(s,decimal-leading-zero) \"  \";color:#b59148;font-weight:700}selector .sva-stamp{margin-top:1.4rem;font-size:12px;color:#4d5761}",
             "typography_typography": "custom",
             "typography_font_family": "Manrope",
             "typography_font_size": {
@@ -261,7 +256,7 @@
             "typography_font_weight": "500",
             "typography_line_height": {
              "unit": "em",
-             "size": 1.9,
+             "size": 1.6,
              "sizes": []
             }
            },
@@ -275,7 +270,7 @@
          "elType": "container"
         },
         {
-         "id": "19cc8305",
+         "id": "2118c679",
          "settings": {
           "content_width": "full",
           "width": {
@@ -290,8 +285,8 @@
           },
           "flex_direction": "column",
           "flex_gap": {
-           "column": "16",
-           "row": "16",
+           "column": "10",
+           "row": "10",
            "unit": "px",
            "size": "",
            "isLinked": true
@@ -299,10 +294,442 @@
          },
          "elements": [
           {
-           "id": "0f29f511",
+           "id": "84289bae",
            "settings": {
-            "editor": "<h2>Privacy policy</h2><p>The text of this page comes across from the static site during the build. It is one long text with headings, so it lives in one editor rather than in fields.</p>",
+            "title": "01",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "5dade0ab",
+           "settings": {
+            "title": "Who we are",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s1",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "23c5d3e5",
+           "settings": {
+            "editor": "<p>The company behind this site is Stud Von Axe SRL, Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy. P. IVA IT02519980466.</p>\n<p>Write to studvonaxe@gmail.com, or telephone Elisabetta on +39 349 591 8565 or Adriano on +39 348 395 3433.</p>",
             "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "48b50b66",
+           "settings": {
+            "title": "02",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "818ba666",
+           "settings": {
+            "title": "What this site collects",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s2",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "86cf933d",
+           "settings": {
+            "editor": "<p>Nothing. There is no analytics on these pages, no advertising, no tracking pixel and no cookie of our own. Nothing is stored in your browser and nothing about your visit reaches us.</p>\n<p>The one exception is worth naming plainly: the two typefaces are loaded from Google Fonts, so opening a page asks Google for those files and Google sees your IP address in the request. Nothing else arrives on a page by itself.</p>\n<p>The contact page can show a Google map of each of our two places, and that map is not loaded until you press the button on it. Until you do, nothing has been asked of Google beyond the typefaces; once you do, Google sees your IP address the way it would if you had opened Google Maps yourself. The address is written out on the page either way, so you never have to load the map to read it.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "33d4be7c",
+           "settings": {
+            "title": "03",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "06d78997",
+           "settings": {
+            "title": "The forms",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s3",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "3500b893",
+           "settings": {
+            "editor": "<p>The forms on this site do not send anything anywhere by themselves. When you press send, your own mail programme opens with the answers written into a message addressed to us, and nothing leaves your computer until you send that message yourself.</p>\n<p>So we receive what you choose to send: your name, how to reach you, and what you tell us about your mare or the horse you are asking about.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "ca9e0ee3",
+           "settings": {
+            "title": "04",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "17760025",
+           "settings": {
+            "title": "What we do with it",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s4",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "a8f6cbb4",
+           "settings": {
+            "editor": "<p>We read it and we answer it. We do not sell it, we do not pass it to anyone else, and we do not add you to a mailing list.</p>\n<p><b>Still to come from the owners</b>How long a message and its details are kept, and whether the details of an order are held for longer than the enquiry.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "b1ac2185",
+           "settings": {
+            "title": "05",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "df3d9e85",
+           "settings": {
+            "title": "Your rights",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s5",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "d8c85a1c",
+           "settings": {
+            "editor": "<p>Under the General Data Protection Regulation you can ask us what we hold about you, ask for it to be corrected, or ask for it to be deleted. Write to studvonaxe@gmail.com and we will answer.</p>\n<p>If you think we have handled your details badly you can complain to the Italian supervisory authority, the Garante per la protezione dei dati personali.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "e74912a5",
+           "settings": {
+            "title": "06",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "c5fc0eb0",
+           "settings": {
+            "title": "When this site changes",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "_element_id": "s6",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "c0ded370",
+           "settings": {
+            "editor": "<p>This site is being rebuilt. When it moves to its new form it may add things this page does not describe yet, and this page is written again on the day that happens rather than afterwards.</p>\n<p><b>Still to come from the owners</b>Whether the rebuilt site will carry analytics or a newsletter, which decides whether it needs a cookie notice.</p>",
+            "text_color": "#14202e",
+            "custom_css": "selector{max-width:70ch}selector li{margin:0 0 .4rem}",
             "typography_typography": "custom",
             "typography_font_family": "Manrope",
             "typography_font_size": {
@@ -343,6 +770,6 @@
   "hide_title": "yes"
  },
  "version": "0.4",
- "title": "Stud Von Axe — Privacy policy",
+ "title": "Stud Von Axe — What happens with your details",
  "type": "page"
 }

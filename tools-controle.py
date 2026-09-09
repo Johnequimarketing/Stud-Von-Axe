@@ -176,6 +176,146 @@ def controle_bindingen():
     return len(gebruikt)
 
 
+# ── 4b. staat elke vaste zin in een sjabloon ook op de statische pagina ────
+# De controle die de rest niet kan doen. Een sjabloon mag beeld en velden van de
+# site lenen, maar vaste kopij hoort van de klant te komen. Bij de eindronde
+# stonden er twee dingen in die ik zelf had bedacht: een blok "Belgium" met een
+# adres dat niet bestaat, en de belofte dat ze in vier talen antwoorden. Beide
+# zagen er volkomen normaal uit.
+#
+# Wat hij niet kan zien: een zin die wél op de site staat maar op de verkeerde
+# pagina is beland.
+
+# Zinnen die met opzet van ons zijn: opschriften, lege staten en de labels van
+# een formulier dat op de statische site niet bestond. Per stuk een reden.
+EIGEN_KOPIJ = {
+    "Five ways in": "opschrift boven de vijf tabbladen; de statische site heeft daar geen kop",
+    "Nothing here yet.": "de lege staat van een loop grid",
+    "Nothing matches that yet. Clear the search and try again.": "de lege staat van een archief",
+    "No crosses by this stallion on the site yet.": "de lege staat van het kruisingenraster",
+    "To be filled in": "een leeg stamboomvakje, precies zoals de site het zegt",
+    "This link is the pedigree of ": "de regel die zegt van wie een Horsetelex-link is",
+    "Example story — not published news": "de markering op een voorbeeldbericht",
+    "On this page": "het opschrift van de inhoudsopgave, zoals op de juridische pagina's",
+    "Send": "de knop van het formulier",
+    "Your name": "formulierlabel", "Your email": "formulierlabel",
+    "Telephone": "formulierlabel", "About": "formulierlabel",
+    "Your message": "formulierlabel", "Horse enquiry": "de naam van het formulier",
+    "Contact": "de naam van het formulier",
+    "Write to us": "onder het mailadres in de contactkaart",
+    "Fastest reply": "onder WhatsApp, zoals op de contactpagina",
+    "Call or message": "onder een telefoonnummer, zoals op de contactpagina",
+    "Legal": "het bovenkopje van de twee juridische pagina's",
+    "Four ways in": "opschrift boven de vier aanbodkaarten",
+    "404": "het bovenkopje van de 404",
+    "News": "het bovenkopje van het nieuwsarchief",
+    "The story": "het bovenkopje boven het verhaal van een paard",
+    "More": "het bovenkopje boven de rail met meer paarden",
+    "Photographs": "het bovenkopje boven de galerij",
+    "On film": "het bovenkopje boven de film",
+    "The pedigree": "het bovenkopje boven de stamboom",
+    "The cross": "het bovenkopje op een kruisingspagina",
+    "The lines": "het bovenkopje boven de vader- en moederlijn",
+    "Sire line": "kop boven de vaderlijn",
+    "Dam line": "kop boven de moederlijn",
+    "The crosses": "het bovenkopje boven de kruisingen van een hengst",
+    "Ask us": "het bovenkopje boven het formulier",
+    "Get in touch": "het bovenkopje boven het formulier, hun eigen woorden",
+    "Partners": "het bovenkopje boven de partnerstrook",
+    "Where we are": "het bovenkopje boven het adres",
+    "Every horse we have": "hun eigen kop boven de tabbladen",
+}
+
+
+def _zinnen(sjabloon):
+    """Elke vaste zin uit een sjabloon: koppen, tekstblokken en knoppen."""
+    doc = json.load(open(sjabloon, encoding="utf-8"))
+    uit = []
+
+    def loop(el):
+        s = el.get("settings", {}) or {}
+        dyn = s.get("__dynamic__") or {}
+        for sleutel in ("title", "editor", "text"):
+            if sleutel in dyn:          # een dynamische waarde komt uit een veld
+                continue
+            waarde = s.get(sleutel)
+            if not isinstance(waarde, str) or not waarde.strip():
+                continue
+            uit.append(waarde)
+        for kind in el.get("elements", []) or []:
+            loop(kind)
+
+    for el in doc.get("content", []) or []:
+        loop(el)
+    return uit
+
+
+def _kaal(t):
+    # aria-label, title en alt dragen echte kopij: "Message us on WhatsApp"
+    # staat op de site alleen in een attribuut. Ze worden apart geoogst en
+    # achteraan gezet, niet ter plekke vervangen — dan staan ze nog tussen de
+    # punthaken en eet de tagstripper ze een regel later alsnog op.
+    attributen = " ".join(re.findall(r'(?:aria-label|title|alt)="([^"]*)"', t))
+    t = re.sub(r"<[^>]+>", " ", t) + " " + attributen
+    t = (t.replace("&rarr;", "").replace("&larr;", "").replace("&middot;", "·")
+          .replace("&times;", "x").replace("&#9743;", "").replace("&nbsp;", " ")
+          .replace("&ccedil;", "c").replace("&copy;", "").replace("&#169;", "")
+          .replace("&#8599;", "").replace("&amp;", "&"))
+    t = re.sub(r"[^a-z0-9 ]+", " ", t.lower())
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def controle_kopij():
+    kop("4b", "Staat elke vaste zin in een sjabloon ook op de statische pagina",
+        "of een zin op de júiste pagina staat. Hij zoekt in alles wat de site "
+        "zegt — alle 122 pagina's, plus de gegevensbestanden en de aria-labels "
+        "— want een zin kan met opzet ergens anders staan")
+    dek = json.load(open(DEKKING, encoding="utf-8"))
+    # één grote hooiberg van alles wat de statische site zegt. Per pagina zoeken
+    # gaf valse alarmen: de vijf zinnen bij de tabbladen op de homepagina zijn de
+    # intro's van de vijf archieven en staan dus op die archieven.
+    bron = ""
+    for pagina in sorted({d["pagina"] for d in dek.values()}):
+        vol = os.path.join(WORTEL, pagina)
+        if os.path.exists(vol):
+            bron += _kaal(open(vol, encoding="utf-8").read()) + " "
+    # Ook de gegevensbestanden, want een zin kan in de data staan en op één
+    # pagina tegelijk gerenderd worden: de vijf knoppen bij de tabbladen komen
+    # uit home-tabs.js en maar één ervan staat in de HTML.
+    for extra in ("home-tabs.js", "news-data.js", "horses-extra.js"):
+        vol = os.path.join(WORTEL, extra)
+        if os.path.exists(vol):
+            bron += _kaal(open(vol, encoding="utf-8").read()) + " "
+    # En één representatieve detailpagina per soort: koppen als "Our own crosses
+    # by him" staan alleen op een record dat er meer dan één heeft.
+    import glob as _g
+    for map_ in ("sport-horses", "breeding-mares", "foals", "embryos", "icsi-semen", "news"):
+        for vol in sorted(_g.glob(os.path.join(WORTEL, map_, "*.html"))):
+            bron += _kaal(open(vol, encoding="utf-8").read()) + " "
+    n = eigen = vreemd = 0
+    for pad in SJABLONEN:
+        naam = os.path.basename(pad)
+        if naam not in dek:
+            continue
+        for zin in _zinnen(pad):
+            plat = _kaal(zin)
+            woorden = plat.split()
+            if len(woorden) < 3:        # losse woorden zeggen niets
+                continue
+            n += 1
+            if " ".join(woorden) in bron:
+                continue
+            if any(_kaal(k) and _kaal(k).strip() in plat for k in EIGEN_KOPIJ):
+                eigen += 1
+                continue
+            vreemd += 1
+            fout(f"{naam}: \"{re.sub(r'<[^>]+>', '', zin)[:70]}\" staat nergens op de "
+                 f"statische site en staat niet op de lijst van eigen kopij")
+    print(f"   {n} vaste zinnen, {n - eigen - vreemd} letterlijk van de site, "
+          f"{eigen} met opzet van ons, {vreemd} onbekend")
+    return n
+
+
 # ── 5. staat in elke stagemap wat zijn README noemt ─────────────────────────
 def controle_stages():
     kop(5, "Staat in elke stagemap wat zijn README noemt",
@@ -206,6 +346,7 @@ if __name__ == "__main__":
     controle_dekking()
     controle_beeld(online="--offline" not in sys.argv)
     controle_bindingen()
+    controle_kopij()
     controle_stages()
 
     print("\nwat deze controles niet kunnen zien")

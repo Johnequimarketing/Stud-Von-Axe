@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "815411e8",
+   "id": "3cbdb4fe",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "3c500399",
+     "id": "630819f3",
      "settings": {
       "content_width": "full",
       "width": {
@@ -70,9 +70,9 @@
      },
      "elements": [
       {
-       "id": "a5382e7f",
+       "id": "64b0b433",
        "settings": {
-        "title": "404",
+        "title": "Page not found",
         "header_size": "span",
         "title_color": "#b59148",
         "align": "center",
@@ -97,9 +97,9 @@
        "elType": "widget"
       },
       {
-       "id": "c06c42a0",
+       "id": "a5593ee7",
        "settings": {
-        "title": "This page has left the yard",
+        "title": "That page is not here",
         "header_size": "h1",
         "title_color": "#ffffff",
         "align": "center",
@@ -138,9 +138,9 @@
        "elType": "widget"
       },
       {
-       "id": "3eb24799",
+       "id": "cf170cb4",
        "settings": {
-        "editor": "<p>The address is not one of ours, or the page has moved. The five archives below hold everything we have.</p>",
+        "editor": "<p>Either it never was, or it has moved while this site was being rebuilt. Everything the stud has is one of these.</p>",
         "text_color": "rgba(238,241,245,.75)",
         "align": "center",
         "typography_typography": "custom",
@@ -164,7 +164,7 @@
        "elType": "widget"
       },
       {
-       "id": "688fd4e9",
+       "id": "86d1251c",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -188,9 +188,9 @@
        },
        "elements": [
         {
-         "id": "e1fced8c",
+         "id": "914c8079",
          "settings": {
-          "text": "Back to the homepage",
+          "text": "Home &rarr;",
           "link": {
            "url": "/",
            "is_external": "",
@@ -257,7 +257,7 @@
          "elType": "widget"
         },
         {
-         "id": "8bd0e23d",
+         "id": "089896f0",
          "settings": {
           "text": "Sport horses",
           "link": {
@@ -326,7 +326,7 @@
          "elType": "widget"
         },
         {
-         "id": "6424fcfd",
+         "id": "6e82924a",
          "settings": {
           "text": "Breeding mares",
           "link": {
@@ -395,7 +395,7 @@
          "elType": "widget"
         },
         {
-         "id": "08bdc3f8",
+         "id": "71e1192a",
          "settings": {
           "text": "Foals",
           "link": {
@@ -464,7 +464,7 @@
          "elType": "widget"
         },
         {
-         "id": "abcbab6a",
+         "id": "142d6fb7",
          "settings": {
           "text": "Embryos",
           "link": {
@@ -533,7 +533,7 @@
          "elType": "widget"
         },
         {
-         "id": "716ca9fe",
+         "id": "a7380082",
          "settings": {
           "text": "ICSI semen",
           "link": {

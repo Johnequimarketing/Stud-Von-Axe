@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "e445cfbc",
+   "id": "41e24ba7",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -40,7 +40,7 @@
    },
    "elements": [
     {
-     "id": "665f1fd2",
+     "id": "16cfbf38",
      "settings": {
       "content_width": "full",
       "width": {
@@ -69,9 +69,9 @@
      },
      "elements": [
       {
-       "id": "d38d3640",
+       "id": "52537da9",
        "settings": {
-        "title": "News",
+        "title": "News and results",
         "header_size": "span",
         "title_color": "#b59148",
         "align": "center",
@@ -96,9 +96,9 @@
        "elType": "widget"
       },
       {
-       "id": "b5eb0fb9",
+       "id": "6e92b49a",
        "settings": {
-        "title": "What is happening at the yard",
+        "title": "The latest from the stud.",
         "header_size": "h1",
         "title_color": "#ffffff",
         "align": "center",
@@ -137,9 +137,9 @@
        "elType": "widget"
       },
       {
-       "id": "09c92d69",
+       "id": "4b5918d1",
        "settings": {
-        "editor": "<p>Foals born, horses sold, semen available. The short version, as it happens.</p>",
+        "editor": "<p>Results in the ring, horses sold, and news from the programme. Every item here is one the stud published itself.</p>",
         "text_color": "rgba(238,241,245,.75)",
         "align": "center",
         "typography_typography": "custom",
@@ -155,7 +155,7 @@
          "size": 1.65,
          "sizes": []
         },
-        "custom_css": "selector { max-width: 560px; }"
+        "custom_css": "selector { max-width: 620px; }"
        },
        "elements": [],
        "isInner": false,
@@ -171,7 +171,7 @@
    "elType": "container"
   },
   {
-   "id": "c686d222",
+   "id": "6e815e5f",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -195,7 +195,7 @@
    },
    "elements": [
     {
-     "id": "3466d2b1",
+     "id": "84988031",
      "settings": {
       "content_width": "full",
       "width": {
@@ -215,7 +215,7 @@
      },
      "elements": [
       {
-       "id": "dd5a7f20",
+       "id": "0827ac83",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -241,252 +241,6 @@
        "isInner": false,
        "widgetType": "loop-grid",
        "elType": "widget"
-      }
-     ],
-     "isInner": true,
-     "elType": "container"
-    }
-   ],
-   "isInner": false,
-   "elType": "container"
-  },
-  {
-   "id": "26ec42c1",
-   "settings": {
-    "background_background": "gradient",
-    "background_color": "#0d1d36",
-    "background_color_b": "#0a1526",
-    "background_gradient_angle": {
-     "unit": "deg",
-     "size": 150,
-     "sizes": []
-    },
-    "padding": {
-     "unit": "px",
-     "top": "72",
-     "right": "40",
-     "bottom": "72",
-     "left": "40",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "52",
-     "right": "20",
-     "bottom": "52",
-     "left": "20",
-     "isLinked": false
-    },
-    "border_radius": {
-     "unit": "px",
-     "top": "26",
-     "right": "26",
-     "bottom": "26",
-     "left": "26",
-     "isLinked": true
-    },
-    "flex_direction": "column",
-    "margin": {
-     "unit": "px",
-     "top": "0",
-     "right": "14",
-     "bottom": "0",
-     "left": "14",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "a2657320",
-     "settings": {
-      "content_width": "full",
-      "width": {
-       "unit": "px",
-       "size": 1280,
-       "sizes": []
-      },
-      "flex_direction": "column",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "unit": "px",
-       "size": "",
-       "isLinked": true
-      },
-      "flex_align_items": "center",
-      "margin": {
-       "unit": "px",
-       "top": "0",
-       "right": "auto",
-       "bottom": "0",
-       "left": "auto",
-       "isLinked": false
-      }
-     },
-     "elements": [
-      {
-       "id": "a161b878",
-       "settings": {
-        "title": "Want to hear it first?",
-        "header_size": "h2",
-        "title_color": "#ffffff",
-        "align": "center",
-        "typography_typography": "custom",
-        "typography_font_family": "Fraunces",
-        "typography_font_size": {
-         "unit": "px",
-         "size": 51,
-         "sizes": []
-        },
-        "typography_font_weight": "400",
-        "typography_font_size_tablet": {
-         "unit": "px",
-         "size": 42,
-         "sizes": []
-        },
-        "typography_font_size_mobile": {
-         "unit": "px",
-         "size": 32,
-         "sizes": []
-        },
-        "typography_letter_spacing": {
-         "unit": "px",
-         "size": -1.02,
-         "sizes": []
-        },
-        "typography_line_height": {
-         "unit": "em",
-         "size": 1.04,
-         "sizes": []
-        }
-       },
-       "elements": [],
-       "isInner": false,
-       "widgetType": "heading",
-       "elType": "widget"
-      },
-      {
-       "id": "cdb91f66",
-       "settings": {
-        "editor": "<p>The quickest way to hear about a foal or a cross is to ask.</p>",
-        "text_color": "rgba(238,241,246,.8)",
-        "align": "center",
-        "typography_typography": "custom",
-        "typography_font_family": "Manrope",
-        "typography_font_size": {
-         "unit": "px",
-         "size": 18,
-         "sizes": []
-        },
-        "typography_font_weight": "400",
-        "typography_line_height": {
-         "unit": "em",
-         "size": 1.65,
-         "sizes": []
-        },
-        "custom_css": "selector { max-width: 620px; }"
-       },
-       "elements": [],
-       "isInner": false,
-       "widgetType": "text-editor",
-       "elType": "widget"
-      },
-      {
-       "id": "dbdd134f",
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "row",
-        "flex_gap": {
-         "column": "10",
-         "row": "10",
-         "unit": "px",
-         "size": "",
-         "isLinked": true
-        },
-        "flex_wrap": "wrap",
-        "flex_justify_content": "center",
-        "padding": {
-         "unit": "px",
-         "top": "8",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": false
-        }
-       },
-       "elements": [
-        {
-         "id": "e1bd2d9b",
-         "settings": {
-          "text": "Contact us",
-          "link": {
-           "url": "/contact/",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "border_radius": {
-           "unit": "px",
-           "top": "999",
-           "right": "999",
-           "bottom": "999",
-           "left": "999",
-           "isLinked": true
-          },
-          "text_padding": {
-           "unit": "px",
-           "top": "12",
-           "right": "20",
-           "bottom": "12",
-           "left": "20",
-           "isLinked": false
-          },
-          "button_padding": {
-           "unit": "px",
-           "top": "12",
-           "right": "20",
-           "bottom": "12",
-           "left": "20",
-           "isLinked": false
-          },
-          "hover_animation": "float",
-          "border_border": "solid",
-          "border_width": {
-           "unit": "px",
-           "top": "1",
-           "right": "1",
-           "bottom": "1",
-           "left": "1",
-           "isLinked": true
-          },
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12.5,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.25,
-           "sizes": []
-          },
-          "button_text_color": "#0a1526",
-          "background_color": "#b59148",
-          "button_background_color": "#b59148",
-          "border_color": "#b59148",
-          "button_background_hover_color": "#c9a86a",
-          "button_hover_border_color": "#c9a86a",
-          "button_text_color_hover": "#0a1526"
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "button",
-         "elType": "widget"
-        }
-       ],
-       "isInner": true,
-       "elType": "container"
       }
      ],
      "isInner": true,

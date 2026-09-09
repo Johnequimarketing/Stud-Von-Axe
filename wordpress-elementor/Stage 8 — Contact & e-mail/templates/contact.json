@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "b0df5dc2",
+   "id": "371a3f5d",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -55,7 +55,7 @@
    },
    "elements": [
     {
-     "id": "dfdf4e20",
+     "id": "8c1985a8",
      "settings": {
       "content_width": "full",
       "width": {
@@ -82,7 +82,7 @@
      },
      "elements": [
       {
-       "id": "d7fb2637",
+       "id": "3ed2d206",
        "settings": {
         "title": "Contact",
         "header_size": "span",
@@ -109,7 +109,7 @@
        "elType": "widget"
       },
       {
-       "id": "1675aeff",
+       "id": "90a39b27",
        "settings": {
         "title": "Write to us directly",
         "header_size": "h1",
@@ -150,7 +150,7 @@
        "elType": "widget"
       },
       {
-       "id": "7e9de402",
+       "id": "b44344e9",
        "settings": {
         "editor": "<p>There is nobody in between. Elisabetta and Adriano read what comes in and one of them answers.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -184,7 +184,7 @@
    "elType": "container"
   },
   {
-   "id": "c9d22d54",
+   "id": "8d751253",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -216,7 +216,7 @@
    },
    "elements": [
     {
-     "id": "a63c2f92",
+     "id": "f7870bff",
      "settings": {
       "content_width": "full",
       "width": {
@@ -243,7 +243,7 @@
      },
      "elements": [
       {
-       "id": "eb27c928",
+       "id": "286a05bd",
        "settings": {
         "title": "Get in touch",
         "header_size": "span",
@@ -270,7 +270,7 @@
        "elType": "widget"
       },
       {
-       "id": "edfe2f2d",
+       "id": "108a9fc9",
        "settings": {
         "title": "Ask us about a horse.",
         "header_size": "h2",
@@ -311,7 +311,7 @@
        "elType": "widget"
       },
       {
-       "id": "e9612c3f",
+       "id": "19b4a93c",
        "settings": {
         "editor": "<p>Write to us and we will get back to you.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -336,7 +336,7 @@
        "elType": "widget"
       },
       {
-       "id": "ade5cb6c",
+       "id": "a8bd3fcc",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -352,7 +352,7 @@
        },
        "elements": [
         {
-         "id": "c7714d03",
+         "id": "47bca7f6",
          "settings": {
           "content_width": "full",
           "width": {
@@ -376,7 +376,7 @@
          },
          "elements": [
           {
-           "id": "b580571e",
+           "id": "e5209145",
            "settings": {
             "form_name": "Contact",
             "form_fields": [
@@ -454,7 +454,7 @@
          "elType": "container"
         },
         {
-         "id": "5e3eb126",
+         "id": "c177f142",
          "settings": {
           "content_width": "full",
           "width": {
@@ -478,7 +478,7 @@
          },
          "elements": [
           {
-           "id": "9c7985fc",
+           "id": "472f7e71",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -525,7 +525,7 @@
            },
            "elements": [
             {
-             "id": "daa3ab02",
+             "id": "7f4af374",
              "settings": {
               "title": "WhatsApp",
               "header_size": "span",
@@ -551,7 +551,7 @@
              "elType": "widget"
             },
             {
-             "id": "e6839f1f",
+             "id": "d74453b4",
              "settings": {
               "title": "Message us",
               "header_size": "span",
@@ -571,7 +571,7 @@
              "elType": "widget"
             },
             {
-             "id": "5d8de0cf",
+             "id": "e6636e36",
              "settings": {
               "title": "Fastest reply",
               "header_size": "span",
@@ -595,7 +595,7 @@
            "elType": "container"
           },
           {
-           "id": "a2b21e81",
+           "id": "823df0cb",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -642,7 +642,7 @@
            },
            "elements": [
             {
-             "id": "9367710e",
+             "id": "aea162b8",
              "settings": {
               "title": "Elisabetta",
               "header_size": "span",
@@ -668,7 +668,7 @@
              "elType": "widget"
             },
             {
-             "id": "6665abef",
+             "id": "58c9452f",
              "settings": {
               "title": "+39 349 591 8565",
               "header_size": "span",
@@ -688,7 +688,7 @@
              "elType": "widget"
             },
             {
-             "id": "23354ec3",
+             "id": "771b051e",
              "settings": {
               "title": "Call or message",
               "header_size": "span",
@@ -712,7 +712,7 @@
            "elType": "container"
           },
           {
-           "id": "4838f388",
+           "id": "e78694f9",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -759,7 +759,7 @@
            },
            "elements": [
             {
-             "id": "355cfbe4",
+             "id": "b4621e76",
              "settings": {
               "title": "Adriano",
               "header_size": "span",
@@ -785,7 +785,7 @@
              "elType": "widget"
             },
             {
-             "id": "6a74fd96",
+             "id": "d9cc510a",
              "settings": {
               "title": "+39 348 395 3433",
               "header_size": "span",
@@ -805,7 +805,7 @@
              "elType": "widget"
             },
             {
-             "id": "b765ffad",
+             "id": "e5c52c45",
              "settings": {
               "title": "Call or message",
               "header_size": "span",
@@ -829,7 +829,7 @@
            "elType": "container"
           },
           {
-           "id": "374a0560",
+           "id": "83315104",
            "settings": {
             "content_width": "full",
             "flex_direction": "column",
@@ -876,7 +876,7 @@
            },
            "elements": [
             {
-             "id": "581cd524",
+             "id": "2de45438",
              "settings": {
               "title": "By mail",
               "header_size": "span",
@@ -902,7 +902,7 @@
              "elType": "widget"
             },
             {
-             "id": "b2a99e91",
+             "id": "29e440c9",
              "settings": {
               "title": "studvonaxe@gmail.com",
               "header_size": "span",
@@ -922,9 +922,9 @@
              "elType": "widget"
             },
             {
-             "id": "b8052dd5",
+             "id": "bb331396",
              "settings": {
-              "title": "We answer in four languages",
+              "title": "Write to us",
               "header_size": "span",
               "title_color": "rgba(238,241,245,.55)",
               "typography_typography": "custom",
@@ -962,7 +962,7 @@
    "elType": "container"
   },
   {
-   "id": "4f8accb2",
+   "id": "8803568e",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -986,7 +986,7 @@
    },
    "elements": [
     {
-     "id": "78ff7f62",
+     "id": "1595ff9b",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1006,7 +1006,7 @@
      },
      "elements": [
       {
-       "id": "cb3e0015",
+       "id": "90aa3f28",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1030,7 +1030,7 @@
        },
        "elements": [
         {
-         "id": "7ab974c3",
+         "id": "955df5e1",
          "settings": {
           "title": "Where we are",
           "header_size": "span",
@@ -1057,7 +1057,7 @@
          "elType": "widget"
         },
         {
-         "id": "033dec17",
+         "id": "05b4ea2f",
          "settings": {
           "title": "Where to find us",
           "header_size": "h2",
@@ -1098,7 +1098,7 @@
          "elType": "widget"
         },
         {
-         "id": "f85b13ba",
+         "id": "a135e740",
          "settings": {
           "editor": "<p>Every cross begins in Italy and every foal is raised in Belgium. You are welcome by appointment: ring first and we will say where to come.</p>",
           "text_color": "#4d5761",
@@ -1128,7 +1128,7 @@
        "elType": "container"
       },
       {
-       "id": "bf5742d1",
+       "id": "fd4b37d6",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -1144,12 +1144,12 @@
        },
        "elements": [
         {
-         "id": "450db856",
+         "id": "081ad498",
          "settings": {
           "content_width": "full",
           "width": {
            "unit": "%",
-           "size": 50,
+           "size": 60,
            "sizes": []
           },
           "width_mobile": {
@@ -1168,7 +1168,7 @@
          },
          "elements": [
           {
-           "id": "d834ad05",
+           "id": "d3edd015",
            "settings": {
             "title": "Italy",
             "header_size": "h3",
@@ -1188,9 +1188,35 @@
            "elType": "widget"
           },
           {
-           "id": "17fc3cb8",
+           "id": "f8cebdb7",
            "settings": {
-            "editor": "<p>Stud Von Axe SRL<br>Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy</p>",
+            "title": "Castelnuovo Garfagnana",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "64709051",
+           "settings": {
+            "editor": "<p>Stud Von Axe SRL<br>Via per Arni<br>55032 Castelnuovo Garfagnana (LU)<br>Italy</p>",
             "text_color": "#4d5761",
             "align": "left",
             "typography_typography": "custom",
@@ -1213,7 +1239,7 @@
            "elType": "widget"
           },
           {
-           "id": "2a7c5c79",
+           "id": "c6bb3db7",
            "settings": {
             "editor": "<p>This is the office, not the yard. No horse stands here. Ring us before you set off and we will tell you where the one you want to see is.</p>",
             "text_color": "#4d5761",
@@ -1223,79 +1249,6 @@
             "typography_font_size": {
              "unit": "px",
              "size": 14,
-             "sizes": []
-            },
-            "typography_font_weight": "400",
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.65,
-             "sizes": []
-            }
-           },
-           "elements": [],
-           "isInner": false,
-           "widgetType": "text-editor",
-           "elType": "widget"
-          }
-         ],
-         "isInner": true,
-         "elType": "container"
-        },
-        {
-         "id": "842b60e5",
-         "settings": {
-          "content_width": "full",
-          "width": {
-           "unit": "%",
-           "size": 50,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          },
-          "flex_direction": "column",
-          "flex_gap": {
-           "column": "8",
-           "row": "8",
-           "unit": "px",
-           "size": "",
-           "isLinked": true
-          }
-         },
-         "elements": [
-          {
-           "id": "abcf2ce3",
-           "settings": {
-            "title": "Belgium",
-            "header_size": "h3",
-            "title_color": "#14202e",
-            "typography_typography": "custom",
-            "typography_font_family": "Fraunces",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 21,
-             "sizes": []
-            },
-            "typography_font_weight": "400"
-           },
-           "elements": [],
-           "isInner": false,
-           "widgetType": "heading",
-           "elType": "widget"
-          },
-          {
-           "id": "d4bb7cc7",
-           "settings": {
-            "editor": "<p>Lanaken. Our own team implants the embryos, carries the pregnancies and raises the foals until the day they leave.</p>",
-            "text_color": "#4d5761",
-            "align": "left",
-            "typography_typography": "custom",
-            "typography_font_family": "Manrope",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 15,
              "sizes": []
             },
             "typography_font_weight": "400",
@@ -1327,7 +1280,7 @@
    "elType": "container"
   },
   {
-   "id": "66ae0c22",
+   "id": "82da68f0",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -1351,7 +1304,7 @@
    },
    "elements": [
     {
-     "id": "fe5bca1e",
+     "id": "068c6884",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1371,7 +1324,7 @@
      },
      "elements": [
       {
-       "id": "d5abfadd",
+       "id": "524c5626",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1395,7 +1348,7 @@
        },
        "elements": [
         {
-         "id": "d15a2a01",
+         "id": "e9cf7178",
          "settings": {
           "title": "Partners",
           "header_size": "span",
@@ -1422,7 +1375,7 @@
          "elType": "widget"
         },
         {
-         "id": "ae6c456b",
+         "id": "c3f1bf92",
          "settings": {
           "title": "The people behind us.",
           "header_size": "h2",
@@ -1467,7 +1420,7 @@
        "elType": "container"
       },
       {
-       "id": "9a3b3073",
+       "id": "0ba268fb",
        "settings": {
         "template_id": 0,
         "_skin": "post",

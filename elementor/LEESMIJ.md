@@ -13,7 +13,7 @@ JSON. Elk getal hieronder komt uit `python3 tools-controle.py`.
   5 pagina's
 - 356 containers en 523 widgets
 - 135 ACF-bindingen, allemaal naar een veld dat de plugin werkelijk aanmaakt
-- 3 stukjes eigen code, samen ongeveer 90 regels
+- 4 stukjes eigen code, samen ongeveer 110 regels
 - 251 foto's verdeeld over de elf stagemappen
 - 3.845 regels: 564 bibliotheek, 170 validator, 2.292 bouwscripts, 819 gereedschap
 
@@ -27,6 +27,7 @@ Alle controles op groen:
 | Beeld dat de site toont en nergens meereist | 0 |
 | Bindingen naar een veld dat niet bestaat | 0 |
 | Velden die geen sjabloon toont | 27, alle 27 met een vastgelegde reden |
+| Vaste zinnen die letterlijk van de site komen | 176 van 179; de 3 andere staan met reden op een lijst |
 | Foto's byte voor byte gelijk aan het origineel | 251 van 251 |
 | Pagina's op de afvinklijst tegen de site | 122 tegen 122 |
 | Bestanden die een README noemt | 39, allemaal aanwezig |
@@ -171,6 +172,40 @@ verkochte paarden hebben er een · 44 van 106 zonder verhaaltekst · 24 van 32
 hengsten zonder jaar en stamboek · 18 van 30 kruisingen zonder eigen foto, die
 dragen die van de vader · de nieuwsberichten zonder datum, want hun eigen datums
 klopten niet.
+
+---
+
+## 6c. En wat er bij het naslaan van de kopij uitkwam
+
+De vraag "hebben we alles compleet" leverde één controle op die er nog niet was:
+staat elke vaste zin in een sjabloon ook werkelijk op de statische site. Van de
+179 vaste zinnen bleken er **27 van mij** en niet van de klant. De ergste twee:
+
+- een blok **"Belgium"** op de contactpagina met een adres dat daar niet staat.
+  De echte pagina noemt één adres, en Lanaken is geen staladres — dat is een
+  staande afspraak: twee landen, één programma, nooit twee stallen.
+- de belofte dat ze **"in vier talen antwoorden"**. Dat staat nergens. De
+  taalkiezer gaat over de site, niet over hoe zij mailen.
+
+En verder een reeks koppen die ik zelf had verzonnen waar de site zijn eigen
+woorden heeft: "See the horse move" tegen hun "<naam> in motion", "In their own
+words" tegen hun lijnensectie, "This page has left the yard" tegen hun "That
+page is not here", "What is happening at the yard" tegen hun "The latest from
+the stud." Alle 27 vervangen of geschrapt.
+
+Twee sluitblokken zijn helemaal weg: het nieuwsarchief en het nieuwsbericht op
+de statische site eindigen met de tekst, en "Want to hear it first?" was van mij.
+
+De **privacy- en voorwaardenpagina droegen een plaatshouder**: "de tekst komt
+tijdens de bouw over". Dat is werk doorschuiven naar iemand die de tekst niet
+kent, en het is juridische tekst die de klant heeft goedgekeurd. Nu staan de 6
+en 11 secties er letterlijk in, met de inhoudsopgave uit dezelfde bron zodat hij
+niet naar een kop kan wijzen die er niet is.
+
+`tools-controle.py` controle 4b doet dit voortaan bij elke bouw. Hij vond
+onderweg drie keer zijn eigen fout voordat hij iets van de sjablonen vond: te
+kleine hooiberg, en een regex die attribuuttekst vrijmaakte maar nog tussen de
+punthaken liet staan zodat de tagstripper hem alsnog opat.
 
 ---
 

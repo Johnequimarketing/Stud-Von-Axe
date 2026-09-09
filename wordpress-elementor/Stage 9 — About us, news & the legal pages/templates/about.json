@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "9b02c4b0",
+   "id": "692ae5f2",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -54,7 +54,7 @@
    },
    "elements": [
     {
-     "id": "292f6584",
+     "id": "235b622a",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "93b77799",
+       "id": "7cc22bb4",
        "settings": {
         "title": "About Stud Von Axe",
         "header_size": "span",
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "e96d53b9",
+       "id": "7af0c9c7",
        "settings": {
         "title": "From sport to the next generation",
         "header_size": "h1",
@@ -149,7 +149,7 @@
        "elType": "widget"
       },
       {
-       "id": "3388067b",
+       "id": "334190db",
        "settings": {
         "editor": "<p>Our mares combine sport and breeding in Italy, where they compete and produce embryos. Pregnancies are then carried out in Belgium, where the foals are born and raised, bringing together two countries in one carefully managed breeding programme.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -183,7 +183,7 @@
    "elType": "container"
   },
   {
-   "id": "98659a54",
+   "id": "d9fc92d3",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -207,7 +207,7 @@
    },
    "elements": [
     {
-     "id": "638a1361",
+     "id": "c79046c4",
      "settings": {
       "content_width": "full",
       "width": {
@@ -227,7 +227,7 @@
      },
      "elements": [
       {
-       "id": "13121ba2",
+       "id": "f1fd1de8",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -243,7 +243,7 @@
        },
        "elements": [
         {
-         "id": "37ea4c64",
+         "id": "7cdbd70c",
          "settings": {
           "content_width": "full",
           "width": {
@@ -267,7 +267,7 @@
          },
          "elements": [
           {
-           "id": "60873314",
+           "id": "ca83f492",
            "settings": {
             "slides": [
              {
@@ -330,7 +330,7 @@
          "elType": "container"
         },
         {
-         "id": "2074b4a9",
+         "id": "0e46ac58",
          "settings": {
           "content_width": "full",
           "width": {
@@ -354,7 +354,7 @@
          },
          "elements": [
           {
-           "id": "c3a410db",
+           "id": "609446d3",
            "settings": {
             "title": "How we work",
             "header_size": "span",
@@ -381,7 +381,7 @@
            "elType": "widget"
           },
           {
-           "id": "b84b40b3",
+           "id": "212eb406",
            "settings": {
             "title": "Two countries, one programme",
             "header_size": "h2",
@@ -422,7 +422,7 @@
            "elType": "widget"
           },
           {
-           "id": "8a7cf4e3",
+           "id": "a16b13c4",
            "settings": {
             "editor": "<p>We do not buy a pedigree and hope. Every mare here was chosen for what her family actually produces in sport, not for how the paper reads.</p>",
             "text_color": "#4d5761",
@@ -447,7 +447,7 @@
            "elType": "widget"
           },
           {
-           "id": "b5e1dcb8",
+           "id": "f1c9eee9",
            "settings": {
             "editor": "<p>Every cross begins in Tuscany. Our own team in Lanaken implants the embryo, carries the pregnancy and raises the foal until the day it leaves. Nothing is handed to a third party halfway.</p>",
             "text_color": "#4d5761",
@@ -472,7 +472,7 @@
            "elType": "widget"
           },
           {
-           "id": "4d22a9ac",
+           "id": "fc9ea2ac",
            "settings": {
             "editor": "<p>We tell a buyer what we see in a horse, the limits as well as the strengths, and we sell direct.</p>",
             "text_color": "#4d5761",
@@ -513,7 +513,7 @@
    "elType": "container"
   },
   {
-   "id": "c51ce58d",
+   "id": "d0fcc813",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -537,7 +537,7 @@
    },
    "elements": [
     {
-     "id": "4062ef5a",
+     "id": "ba5000fc",
      "settings": {
       "content_width": "full",
       "width": {
@@ -557,7 +557,7 @@
      },
      "elements": [
       {
-       "id": "717380de",
+       "id": "c732fe20",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -581,7 +581,7 @@
        },
        "elements": [
         {
-         "id": "7a67d634",
+         "id": "d7f756c0",
          "settings": {
           "title": "What we offer",
           "header_size": "span",
@@ -608,7 +608,7 @@
          "elType": "widget"
         },
         {
-         "id": "e417a026",
+         "id": "7550ddd9",
          "settings": {
           "title": "Four ways in",
           "header_size": "h2",
@@ -653,7 +653,7 @@
        "elType": "container"
       },
       {
-       "id": "52525846",
+       "id": "404b62bc",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -669,7 +669,7 @@
        },
        "elements": [
         {
-         "id": "c26a0170",
+         "id": "785b4e2a",
          "settings": {
           "content_width": "full",
           "width": {
@@ -726,7 +726,7 @@
          },
          "elements": [
           {
-           "id": "18c0df1d",
+           "id": "f96bed24",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-foal.jpg",
@@ -744,7 +744,7 @@
            "elType": "widget"
           },
           {
-           "id": "71029a70",
+           "id": "b60e9726",
            "settings": {
             "title": "Lanaken, Belgium",
             "header_size": "span",
@@ -770,7 +770,7 @@
            "elType": "widget"
           },
           {
-           "id": "d27d3fe7",
+           "id": "d3490f64",
            "settings": {
             "title": "Foals",
             "header_size": "h3",
@@ -795,7 +795,7 @@
            "elType": "widget"
           },
           {
-           "id": "c70261ad",
+           "id": "c8a378f5",
            "settings": {
             "editor": "<p>Born and raised in Belgium, out of mares chosen for jumping ability and temperament. You collect a horse already on the ground.</p>",
             "text_color": "#4d5761",
@@ -820,7 +820,7 @@
            "elType": "widget"
           },
           {
-           "id": "1ad860dc",
+           "id": "5afab948",
            "settings": {
             "text": "See the foals &rarr;",
             "link": {
@@ -893,7 +893,7 @@
          "elType": "container"
         },
         {
-         "id": "b45f29f0",
+         "id": "85afbbe6",
          "settings": {
           "content_width": "full",
           "width": {
@@ -950,7 +950,7 @@
          },
          "elements": [
           {
-           "id": "2adf3757",
+           "id": "1ff691bc",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-embryo.jpg",
@@ -968,7 +968,7 @@
            "elType": "widget"
           },
           {
-           "id": "3644834b",
+           "id": "ea7f2b31",
            "settings": {
             "title": "Frozen or carrying",
             "header_size": "span",
@@ -994,7 +994,7 @@
            "elType": "widget"
           },
           {
-           "id": "45299c5b",
+           "id": "b06900e2",
            "settings": {
             "title": "Embryos",
             "header_size": "h3",
@@ -1019,7 +1019,7 @@
            "elType": "widget"
           },
           {
-           "id": "44c0adef",
+           "id": "e45fc740",
            "settings": {
             "editor": "<p>Frozen from our own damlines, or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.</p>",
             "text_color": "#4d5761",
@@ -1044,7 +1044,7 @@
            "elType": "widget"
           },
           {
-           "id": "64c19931",
+           "id": "3dd66319",
            "settings": {
             "text": "See the crosses &rarr;",
             "link": {
@@ -1117,7 +1117,7 @@
          "elType": "container"
         },
         {
-         "id": "57d03cc6",
+         "id": "529e319c",
          "settings": {
           "content_width": "full",
           "width": {
@@ -1174,7 +1174,7 @@
          },
          "elements": [
           {
-           "id": "f38d0eb7",
+           "id": "b0e04cde",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-semen.jpg",
@@ -1192,7 +1192,7 @@
            "elType": "widget"
           },
           {
-           "id": "5931681a",
+           "id": "a7e6c833",
            "settings": {
             "title": "With Avantea, Cremona",
             "header_size": "span",
@@ -1218,7 +1218,7 @@
            "elType": "widget"
           },
           {
-           "id": "77200ba7",
+           "id": "b857d1ee",
            "settings": {
             "title": "ICSI semen",
             "header_size": "h3",
@@ -1243,7 +1243,7 @@
            "elType": "widget"
           },
           {
-           "id": "cba040ca",
+           "id": "4f2ef9f8",
            "settings": {
             "editor": "<p>Worked with our own mares through OPU and ICSI. The stallions we offer are listed with their pedigrees, at fixed prices.</p>",
             "text_color": "#4d5761",
@@ -1268,7 +1268,7 @@
            "elType": "widget"
           },
           {
-           "id": "eb829079",
+           "id": "239c5bd0",
            "settings": {
             "text": "See the stallions &rarr;",
             "link": {
@@ -1341,7 +1341,7 @@
          "elType": "container"
         },
         {
-         "id": "1acc84af",
+         "id": "8c940570",
          "settings": {
           "content_width": "full",
           "width": {
@@ -1398,7 +1398,7 @@
          },
          "elements": [
           {
-           "id": "875b5b28",
+           "id": "47ba17ec",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/img/results-unguessable.jpg",
@@ -1416,7 +1416,7 @@
            "elType": "widget"
           },
           {
-           "id": "c975f96d",
+           "id": "ae17db37",
            "settings": {
             "title": "Sourced and brokered",
             "header_size": "span",
@@ -1442,7 +1442,7 @@
            "elType": "widget"
           },
           {
-           "id": "04bae43b",
+           "id": "6d0da43f",
            "settings": {
             "title": "Sport horses",
             "header_size": "h3",
@@ -1467,7 +1467,7 @@
            "elType": "widget"
           },
           {
-           "id": "b70ceaa1",
+           "id": "0fac24d3",
            "settings": {
             "editor": "<p>Several of our mares are available to compete or to breed from. We also look on a client's behalf, across Europe and as far as America.</p>",
             "text_color": "#4d5761",
@@ -1492,7 +1492,7 @@
            "elType": "widget"
           },
           {
-           "id": "9a67e6f2",
+           "id": "1dd6dbf8",
            "settings": {
             "text": "See the horses &rarr;",
             "link": {
@@ -1577,7 +1577,7 @@
    "elType": "container"
   },
   {
-   "id": "be5ce106",
+   "id": "a9a86177",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -1623,7 +1623,7 @@
    },
    "elements": [
     {
-     "id": "2d86272e",
+     "id": "bea1d80f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1651,7 +1651,7 @@
      },
      "elements": [
       {
-       "id": "a1dff777",
+       "id": "a5602e84",
        "settings": {
         "title": "Tell us what you are <span style=\"color:#b59148\">looking for</span>.",
         "header_size": "h2",
@@ -1692,7 +1692,7 @@
        "elType": "widget"
       },
       {
-       "id": "12f9b704",
+       "id": "fbd3a983",
        "settings": {
         "editor": "<p>A foal on the ground, an embryo, a cross still to be made, or a mare to breed from. Say what you are after and we will tell you plainly what we have.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -1718,7 +1718,7 @@
        "elType": "widget"
       },
       {
-       "id": "38315b0f",
+       "id": "3a86423e",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -1742,7 +1742,7 @@
        },
        "elements": [
         {
-         "id": "9cf93dc6",
+         "id": "96024ab9",
          "settings": {
           "text": "Get in touch",
           "link": {
@@ -1811,7 +1811,7 @@
          "elType": "widget"
         },
         {
-         "id": "bc6b5980",
+         "id": "6e8e4633",
          "settings": {
           "text": "Message on WhatsApp",
           "link": {
@@ -1892,7 +1892,7 @@
    "elType": "container"
   },
   {
-   "id": "83ef2667",
+   "id": "974043b8",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -1916,7 +1916,7 @@
    },
    "elements": [
     {
-     "id": "c83341ea",
+     "id": "81f717d3",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1936,7 +1936,7 @@
      },
      "elements": [
       {
-       "id": "5dd531bb",
+       "id": "872b5af0",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1960,7 +1960,7 @@
        },
        "elements": [
         {
-         "id": "be6343b2",
+         "id": "f029712a",
          "settings": {
           "title": "Partners",
           "header_size": "span",
@@ -1987,7 +1987,7 @@
          "elType": "widget"
         },
         {
-         "id": "500b9f7b",
+         "id": "a3ffe972",
          "settings": {
           "title": "The people behind us.",
           "header_size": "h2",
@@ -2032,7 +2032,7 @@
        "elType": "container"
       },
       {
-       "id": "66da9061",
+       "id": "37be16ab",
        "settings": {
         "template_id": 0,
         "_skin": "post",
