@@ -129,8 +129,14 @@ def stamboom(post_type, onderwerp_tekst="This horse"):
 
 # ───────────────────────── de hero van een paardpagina ───────────────────────
 def paardhero(post_type, terug_label, terug_url):
+    # Eén foto, twee sneden. Waar een paard maar één foto heeft, snijdt de band
+    # hoog op datzelfde bestand, zodat de band de kop toont en de kolom eronder
+    # het hele paard. Mark heeft drie keer gemeld dat de kop eraf viel; op de
+    # statische site is dit `.eh__win--high { object-position: center 22% }`.
+    # Hier hangt het aan de tweede foto: is die er niet, dan snijdt de band hoog.
     achter = W("theme-post-featured-image", {
         "image_size": "full",
+        "css_classes": "sva-hero-img",
         "custom_css": ("selector{position:absolute;inset:0;z-index:0}"
                        "selector img{width:100%;height:100%;object-fit:cover;"
                        "object-position:50% 38%}"),
@@ -185,6 +191,7 @@ def paardhero(post_type, terug_label, terug_url):
     rij = row([
         cell([W("image", dict({
             "image_size": "large",
+            "css_classes": "sva-second",
             "custom_css": (f"selector img{{border-radius:{R_LG}px;width:100%;"
                            "aspect-ratio:4/3.4;object-fit:cover}}"
                            # een paard met maar één foto laat dit vlak weg; de
@@ -209,6 +216,9 @@ def paardhero(post_type, terug_label, terug_url):
         "padding_mobile": box(110, PAD_X_M, PAD_SECTION_M, PAD_X_M),
         "flex_direction": "column", "position": "relative", "overflow": "hidden",
         "_element_id": "top", "css_classes": "sva-hero",
+        "custom_css": (
+            "selector:not(:has(.sva-second img)) .sva-hero-img img"
+            "{object-position:center 22%}"),
     }, [achter, veil, binnen], is_inner=False)
 
 
@@ -353,8 +363,11 @@ def embryopagina():
     }, [
         W("theme-post-featured-image", {
             "image_size": "full",
+            # 27 van de 30 kruisingen dragen één foto, meestal die van de vader,
+            # dus ook hier de hoge snede zodat de kop in de band staat
             "custom_css": ("selector{position:absolute;inset:0;z-index:0}"
-                           "selector img{width:100%;height:100%;object-fit:cover}")}),
+                           "selector img{width:100%;height:100%;object-fit:cover;"
+                           "object-position:center 22%}")}),
         W("html", {"html": "", "custom_css": (
             "selector{position:absolute;inset:0;z-index:1;"
             f"background:linear-gradient(to bottom,rgba({VEIL_TOP},.74) 0%,"
@@ -412,9 +425,12 @@ def hengstpagina():
     }, [
         W("theme-post-featured-image", {
             "image_size": "full",
+            # Alle 32 hengsten hebben precies één foto, dus hier is de hoge
+            # snede niet voorwaardelijk maar de regel. Dit is het antwoord op
+            # "kop nog steeds afgeknipt", drie keer gemeld op deze pagina's.
             "custom_css": ("selector{position:absolute;inset:0;z-index:0}"
                            "selector img{width:100%;height:100%;object-fit:cover;"
-                           "object-position:50% 35%}")}),
+                           "object-position:center 22%}")}),
         W("html", {"html": "", "custom_css": (
             "selector{position:absolute;inset:0;z-index:1;"
             f"background:linear-gradient(to bottom,rgba({VEIL_TOP},.7) 0%,"

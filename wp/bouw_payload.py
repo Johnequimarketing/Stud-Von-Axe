@@ -166,6 +166,13 @@ const gerekend = horses.map(h => ({
   status_line: (h.sold && h.country)
     ? 'Sold to ' + (COUNTRY[h.country] || h.country)
     : (h.sold ? 'Sold' : 'Available'),
+  /* Het vlaggetje. De statische site tekent per land een eigen SVG; een
+     ACF-veld kan geen tekening dragen, dus dit is het vlagteken zelf, twee
+     regionale letters die elk toetsenbord als vlag toont. Mark heeft er twee
+     keer om gevraagd en hij ontbrak nog op de WordPress-kaart. */
+  flag: (h.sold && h.country && /^[A-Z]{2}$/.test(h.country))
+    ? String.fromCodePoint(...[...h.country].map(c => 0x1F1E6 + c.charCodeAt(0) - 65))
+    : '',
   /* Het plaatje op de badge is de klant zijn eigen vraag: een sneeuwvlok bij
      bevroren, een zandloper bij dragend. \uFE0E houdt het een letterteken en
      geen kleurenemoji, zodat het naast de tekst niet uit de regel springt. */
@@ -270,6 +277,7 @@ def paardrecord(h, videos):
         "sold_to": c["country"],
         "meta_line": c["meta_line"],
         "status_line": c["status_line"],
+        "flag": c["flag"],
         "horsetelex": c["telex"],
         "horsetelex_of": c["telex_of"],
         "body": html(h.get("body") or []),
@@ -616,6 +624,50 @@ def controleer_de_kaarten(payload):
     return n
 
 
+def zet_de_volgorde(payload):
+    """Geeft elk record de plek die het op zijn eigen archief heeft.
+
+    Geen enkel archief staat alfabetisch. De hengsten en de sportpaarden staan
+    in de orde die de klant zelf aanleverde, de merries en de veulens staan met
+    de beschikbare eerst, en de kruisingen met de dragende voor de bevroren —
+    dat laatste heeft de klant schriftelijk gevraagd. Een `orderby` op titel in
+    WordPress zou alle vijf hersorteren en dat zou nergens als fout opvallen,
+    omdat een alfabetische lijst er volkomen normaal uitziet.
+
+    De volgorde wordt niet nagerekend maar van de gerenderde archiefpagina
+    gelezen. Dat is de enige bron die niet uiteen kan lopen met wat de bezoeker
+    ziet, en een record dat niet op zijn eigen archief staat is meteen een fout.
+
+    Wat dit niet kan zien: of de volgorde op het archief zelf klopt. Dat is een
+    keuze van de site en die is elders gecontroleerd.
+    """
+    gezet = 0
+    for groep, map_ in GERENDERD.items():
+        pagina = ROOT / map_ / "index.html"
+        if not pagina.exists():
+            fout(f"{groep}: het archief {map_}/index.html bestaat niet")
+            continue
+        html = pagina.read_text(encoding="utf-8")
+        # de kaarten in de orde waarin ze staan, aan hun eigen webadres herkend
+        orde = []
+        for m in re.finditer(rf'href="/{map_}/([a-z0-9-]+)"', html):
+            if m.group(1) not in orde:
+                orde.append(m.group(1))
+        plek = {slug: i for i, slug in enumerate(orde)}
+        for r in payload[groep]:
+            if r["slug"] not in plek:
+                fout(f"{groep}/{r['slug']}: staat niet op {map_}/index.html, dus er is "
+                     f"geen volgorde voor")
+                continue
+            r["menu_order"] = plek[r["slug"]]
+            gezet += 1
+    # het nieuws houdt de orde waarin news-data.js het aanlevert
+    for i, r in enumerate(payload["news"]):
+        r["menu_order"] = i
+        gezet += 1
+    return gezet
+
+
 def verslag(payload):
     print("\ngeschreven:")
     for groep in payload:
@@ -725,6 +777,7 @@ def main():
     controleer(payload)
     cellen = controleer_tegen_site(payload)
     kaarten = controleer_de_kaarten(payload)
+    plekken = zet_de_volgorde(payload)
 
     if fouten:
         print("BOUW GESTOPT, er is niets geschreven\n")
@@ -737,6 +790,7 @@ def main():
     print(f"\ngecontroleerd tegen de gerenderde site: {cellen} waarden en "
           f"{sum(len(payload[g]) for g in GERENDERD)} titels op de detailpagina's, "
           f"{kaarten} spiegelwaarden op de archiefkaarten, 0 afwijkingen")
+    print(f"volgorde overgenomen van de archiefpagina's voor {plekken} records")
     return 0
 
 

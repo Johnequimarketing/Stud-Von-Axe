@@ -162,6 +162,11 @@
                     "type": "text",
                     "label": "Status badge"
                 },
+                "flag": {
+                    "key": "field_sva_sp_flag",
+                    "type": "text",
+                    "label": "Flag"
+                },
                 "sire": {
                     "key": "field_sva_sp_sire",
                     "type": "text",
@@ -335,6 +340,11 @@
                     "type": "text",
                     "label": "Status badge"
                 },
+                "flag": {
+                    "key": "field_sva_bm_flag",
+                    "type": "text",
+                    "label": "Flag"
+                },
                 "sire": {
                     "key": "field_sva_bm_sire",
                     "type": "text",
@@ -507,6 +517,11 @@
                     "key": "field_sva_fo_status_line",
                     "type": "text",
                     "label": "Status badge"
+                },
+                "flag": {
+                    "key": "field_sva_fo_flag",
+                    "type": "text",
+                    "label": "Flag"
                 },
                 "sire": {
                     "key": "field_sva_fo_sire",

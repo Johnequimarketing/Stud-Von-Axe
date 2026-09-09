@@ -172,10 +172,41 @@ LEEG = KOP + """<!-- Secties die zichzelf weghalen als er niets in staat.
 """
 
 
+UITSNEDE = KOP + """<!-- De kaarten waarvan de uitsnede met de hand is gezet.
+
+     Eén kaart op de hele site staat anders: United Touch S x Cabri vd
+     Berghoeve Z, links uitgelijnd zodat het hoofd van het paard in beeld valt.
+     Mark heeft daar apart om gevraagd, en het geldt voor de dragende en de
+     bevroren versie van diezelfde kruising.
+
+     Elementor kan een uitsnede niet per record uit een veld lezen. Deze vier
+     regels zoeken de kaart op zijn eigen webadres, dus ze werken ongeacht welk
+     post-id de import toevallig geeft.
+
+     Komt er een paard bij dat scheef staat, dan is dat één regel erbij: het
+     stuk van het adres, en de uitsnede die het moet krijgen.
+-->
+<script>
+(function () {
+  var UITSNEDE = {
+    'united-touch-s-x-cabri-vd-berghoeve-z': 'left center',
+    'united-touch-s-x-cabri-vd-berghoeve-z-frozen': 'left center'
+  };
+  Object.keys(UITSNEDE).forEach(function (slug) {
+    document.querySelectorAll('a[href*="/' + slug + '"] img').forEach(function (img) {
+      img.style.objectPosition = UITSNEDE[slug];
+    });
+  });
+})();
+</script>
+"""
+
+
 if __name__ == "__main__":
     for stage, naam, tekst in (
         ("stage-2-homepage", "custom-code-rails.txt", RAILS),
         ("stage-3-sport-horses", "custom-code-hide-empty.txt", LEEG),
+        ("stage-6-embryos", "custom-code-card-crop.txt", UITSNEDE),
         ("stage-9-about-news-legal", "custom-code-toc.txt", TOC),
     ):
         print(f"  {os.path.basename(schrijf(stage, naam, tekst))}")

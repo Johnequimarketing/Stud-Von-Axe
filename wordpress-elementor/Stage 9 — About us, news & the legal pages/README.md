@@ -17,6 +17,7 @@ Build the remaining pages: the story of the stud, the news archive and its singl
 
 ## Worth knowing
 
+- **The partners strip is on this page, on the contact page and on the homepage.** It is the same Loop Grid over the Partner post type all three times — build it once in stage 2 and reuse it, do not draw it again. The client asked for it on all three.
 - The About page has three photographs that fade into each other every five seconds. That is Elementor's own Slides widget, no code. It stops when you hover or tab into it and it never starts at all for a visitor who has asked for less motion.
 - The four news reports **have no dates**. Their own dates did not match what actually happened, so rather than publish a wrong date there is none. Two of the four are marked as examples in the `is_placeholder` field; the template shows a quiet marker on those.
 - There is a second body field `body_it` for the Italian version later. It is empty and the template ignores it while it is empty.

@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "ada9cba5",
+   "id": "7af9dd78",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -27,7 +27,7 @@
    },
    "elements": [
     {
-     "id": "5566689b",
+     "id": "35ca5d55",
      "settings": {
       "content_width": "full",
       "width": {
@@ -54,7 +54,7 @@
      },
      "elements": [
       {
-       "id": "777a086f",
+       "id": "4070fd49",
        "settings": {
         "title": "Legal",
         "header_size": "span",
@@ -81,7 +81,7 @@
        "elType": "widget"
       },
       {
-       "id": "521f0a44",
+       "id": "5a121eea",
        "settings": {
         "title": "Privacy policy",
         "header_size": "h1",
@@ -122,7 +122,7 @@
        "elType": "widget"
       },
       {
-       "id": "58e9e6a0",
+       "id": "1c2499c1",
        "settings": {
         "editor": "<p>What we do with what you send us, and what we do not do.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -156,7 +156,7 @@
    "elType": "container"
   },
   {
-   "id": "952cdc44",
+   "id": "e362ddf6",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -180,7 +180,7 @@
    },
    "elements": [
     {
-     "id": "0b98a91b",
+     "id": "4887d991",
      "settings": {
       "content_width": "full",
       "width": {
@@ -200,7 +200,7 @@
      },
      "elements": [
       {
-       "id": "dacf97e6",
+       "id": "b0000294",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -216,7 +216,7 @@
        },
        "elements": [
         {
-         "id": "54e25d5a",
+         "id": "be52e83b",
          "settings": {
           "content_width": "full",
           "width": {
@@ -247,7 +247,7 @@
          },
          "elements": [
           {
-           "id": "f1986163",
+           "id": "d1db99b8",
            "settings": {
             "editor": "<p><strong>On this page</strong></p><ul data-sva-toc><li>The sections are filled in during the build, from the headings below.</li></ul>",
             "text_color": "#4d5761",
@@ -275,7 +275,7 @@
          "elType": "container"
         },
         {
-         "id": "c167b1c3",
+         "id": "19cc8305",
          "settings": {
           "content_width": "full",
           "width": {
@@ -299,7 +299,7 @@
          },
          "elements": [
           {
-           "id": "0b6f0448",
+           "id": "0f29f511",
            "settings": {
             "editor": "<h2>Privacy policy</h2><p>The text of this page comes across from the static site during the build. It is one long text with headings, so it lives in one editor rather than in fields.</p>",
             "text_color": "#14202e",

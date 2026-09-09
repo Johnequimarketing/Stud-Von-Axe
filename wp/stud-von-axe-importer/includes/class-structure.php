@@ -270,8 +270,12 @@ class SVA_Imp_Structure {
 					'instructions' => 'Written by the importer, not by hand. On a sport horse and a broodmare: year, sex, studbook and country joined with a middle dot. On a foal: sex and country, because the foal card carries the year in its own badge. Whatever is empty is left out, separator and all.',
 					'readonly'     => 1,
 				) ) ),
-				$this->f( $p . '_status_line', 'Status badge', 'status_line', 'text', array_merge( $this->w( 50 ), array(
+				$this->f( $p . '_status_line', 'Status badge', 'status_line', 'text', array_merge( $this->w( 34 ), array(
 					'instructions' => 'Written by the importer: the badge over the photograph. "Available", or "Sold to" and the country.',
+					'readonly'     => 1,
+				) ) ),
+				$this->f( $p . '_flag', 'Flag', 'flag', 'text', array_merge( $this->w( 16 ), array(
+					'instructions' => 'The flag of the country the horse went to, as one character. Empty when the horse is still available. Written by the importer from the country beside it. The client asked twice for a little flag on the sold badge, and a drawn flag per country is not something a field can hold.',
 					'readonly'     => 1,
 				) ) ),
 			),

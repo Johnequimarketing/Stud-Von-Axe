@@ -56,6 +56,38 @@ def veldregel(post_type, naam, kleur=INK_SOFT, maat=13, gewicht="500", ls=0.2,
     return W("heading", s)
 
 
+def vlagbadge(post_type):
+    """De statusplaat mét het vlaggetje ervoor.
+
+    Mark heeft twee keer om een vlaggetje bij "sold" gevraagd. De statische
+    site tekent per land een eigen SVG; een ACF-veld kan geen tekening dragen,
+    dus het vlagteken zelf staat in een eigen veld ernaast. Twee widgets in één
+    plaat: het vlaggetje en de tekst, en allebei leeg bij een paard dat nog te
+    koop is — dan verdwijnt de hele plaat.
+    """
+    vlag = W("heading", dict({"title": "", "header_size": "span", "title_color": WIT},
+                             **typo(size=13, weight="400"),
+                             **acf("title", post_type, "flag")))
+    tekst = W("heading", dict({"title": "", "header_size": "span", "title_color": WIT},
+                              **typo(size=11, weight="700", transform="uppercase",
+                                     letter_spacing=1.6),
+                              **acf("title", post_type, "status_line")))
+    return C({
+        "content_width": "full", "flex_direction": "row", "flex_gap": gap(7),
+        "flex_align_items": "center", "width": sz(0),
+        "background_background": "classic",
+        "background_color": f"rgba({VEIL},.55)",
+        "border_radius": radius(999),
+        "border_border": "solid", "border_width": radius(1), "border_color": LIJN_DARK,
+        "padding": box(6, 12, 6, 12),
+        "custom_css": ("selector{-webkit-backdrop-filter:blur(10px) saturate(1.3);"
+                       "backdrop-filter:blur(10px) saturate(1.3)}"
+                       # geen tekst betekent geen plaat, geen leeg pilletje
+                       "selector:not(:has(.elementor-heading-title:not(:empty)))"
+                       "{display:none}"),
+    }, [vlag, tekst])
+
+
 def badge(post_type, naam, op_foto=True):
     """De plaat over de foto. Matglas over een foto, zoals op de site: een
     doorzichtige navy laag met een blur erachter, zodat de tekst leesbaar is
@@ -104,7 +136,7 @@ def paardkaart(post_type, bestand, stage):
                        "position:absolute;inset:0;z-index:0}"
                        "selector>.elementor-widget-heading{position:relative;z-index:1}"),
         "min_height": sz(260),
-    }, [kaartfoto("4/3"), badge(post_type, "status_line")])
+    }, [kaartfoto("4/3"), vlagbadge(post_type)])
 
     lijf = C({
         "content_width": "full", "flex_direction": "column", "flex_gap": gap(6),
@@ -130,8 +162,7 @@ def eckaart(post_type, bestand, stage, badge_veld=None, badge_tekst=None,
     wegloopt, met de tekst op die verloop in plaats van eronder."""
     plaatjes = [kaartfoto("1/1", "50% 40%")]
     if post_type != "icsi_stallion":
-        plaatjes.append(badge(post_type, "status_line") if badge_veld == "status_line"
-                        else None)
+        plaatjes.append(vlagbadge(post_type) if badge_veld == "status_line" else None)
     plaatjes = [x for x in plaatjes if x]
 
     beeld = C({

@@ -70,6 +70,11 @@ STAGES = [
     "into an ivory bar with the dark logo. That is not Elementor's sticky header — it measures "
     "the hero's own bottom edge, not a scroll distance. The fifteen lines that do it are in "
     "`custom-code-header.txt`: Elementor → Custom Code → Add New, place in `</body>`.",
+    "Every hero carries a veil over the photograph. That is not atmosphere but a readability "
+    "measure: a heading over a photograph does not reach contrast on its own. The client said "
+    "once that the mares' hero covered too much of the picture, so the veil is lighter in the "
+    "middle and heavier top and bottom. It is in the template — do not replace it with a flat "
+    "overlay.",
     "There are two logo files, not one, and they crossfade. Both are in `media-reference/` so "
     "you can see which is which.",
     "The language switcher in the footer is **decoration**: English / Italiano / Français / "
@@ -141,12 +146,14 @@ STAGES = [
 GROEPEN = [
  dict(n=3, slug="sport-horses", pt="sport_horse", drive="Sport horses",
       label="Sport horses", page="sport-horses/index.html", aantal=12,
+      vlag=True, tall=True,
       chips="All · Available · Sold", filters="Sex, Studbook, Year of birth",
       eigen=["The single page carries the pedigree, the films, the photo gallery and the enquiry "
              "form. Breeding mares and foals use the same shape, so what you settle here is "
              "settled three times over."]),
  dict(n=4, slug="breeding-mares", pt="breeding_mare", drive="Breeding mares",
       label="Breeding mares", page="breeding-mares/index.html", aantal=12,
+      vlag=True, tall=True,
       chips="All · Available · Sold", filters="",
       eigen=["**No selects on this archive.** The client took the age and studbook filters off "
              "the mares on 3 September. That is a choice, not an omission.",
@@ -154,6 +161,7 @@ GROEPEN = [
              "and only where the client gave us one. An empty link hides itself."]),
  dict(n=5, slug="foals", pt="foal", drive="Foals",
       label="Foals", page="foals/index.html", aantal=20,
+      vlag=True, tall=True,
       chips="All · Available · Sold", filters="Sex, Studbook, Year of birth",
       eigen=["A foal that grows into a sport horse has to be moved by hand later, and its web "
              "address changes with it. That is the price of seven separate post types, and it "
@@ -162,19 +170,44 @@ GROEPEN = [
              "check that on a foal that has none."]),
  dict(n=6, slug="embryos", pt="embryo", drive="Embryos",
       label="Embryos", page="embryos/index.html", aantal=30,
+      vlag=False, tall=False,
       chips="All · Carrying · Frozen", filters="Sire",
       eigen=["**The order matters and the client asked for it in writing: implanted embryos "
-             "first, then the frozen ones, never mixed.** The archive query sorts on the Stage "
-             "taxonomy for exactly this reason. Do not change it to alphabetical.",
-             "The stage badge carries an emoji: ❄ for frozen, ⏳ for carrying.",
+             "first, then the frozen ones, never mixed.** The importer numbers them that way "
+             "and the grid reads Menu Order, so it comes out right by itself. Check it anyway "
+             "on the first screen; it is the one thing on this page the client will look at.",
+             "**Every cross carries the gold tagline plate under the breeding line.** The "
+             "client asked for that explicitly: all of them, not some of them. A cross without "
+             "a sentence of its own borrows its dam's, so none should be empty. If one is, "
+             "that is the field and not the template.",
+             "One card is cropped by hand: United Touch S x Cabri vd Berghoeve Z, aligned left "
+             "so the horse's head is in frame, on both the carrying and the frozen version. "
+             "Mark asked for that separately. It is the four lines in "
+             "`custom-code-card-crop.txt`, keyed on the web address so it does not matter "
+             "which post id the import happens to give.",
+             "The stage badge carries an emoji: ❄ for frozen, ⏳ for carrying. The client asked "
+             "for that by name — a snowflake on the frozen ones. It is written by the importer "
+             "into one field, because Elementor cannot join a symbol, a word and a date that is "
+             "sometimes empty.",
              "18 of the 30 frozen embryos have no photograph of their own and show the sire's "
              "picture instead. That is intended, not a gap."]),
  dict(n=7, slug="icsi-semen", pt="icsi_stallion", drive="ICSI semen",
       label="ICSI semen", page="icsi-semen/index.html", aantal=32,
+      vlag=False, tall=False,
       chips="none",
       filters="Studbook, Year of birth",
       eigen=["This archive has **no status chips**. Semen is not sold or available in the way a "
              "horse is; it is on request. The filter bar is search plus the two selects.",
+             "**The order is the client's own list order**, not alphabetical. It came off their "
+             "own sheet in that order and the importer keeps it.",
+             "Three stallions carry a crown on the owners' own card. Nobody has said what it "
+             "means, so nothing is drawn for it. The field is there for the day they say.",
+             "**Open question for Mark, not a build task.** Mark once asked for a stepped order "
+             "configurator on these pages rather than a plain enquiry form: 'een groter "
+             "formulier, in een configurator achtig gevoel, dus met stappen'. The static site "
+             "has the plain form; the five-step version was built and then taken off on "
+             "4 September. Elementor Pro's form does multiple steps natively, so it is a "
+             "half-day if it is still wanted. Ask before building it.",
              "Each stallion links to the embryos he is the sire of, through the Crosses "
              "relationship field. That grid is a Loop Grid with a related query, so it needs the "
              "embryo loop item from stage 6 linked to it."]),
@@ -202,9 +235,11 @@ for g in GROEPEN:
         + " All three are Elementor Pro's own widgets and they are already in the template; "
           "check that the Loop Grid and every filter carry the same query id.",
         "Open three records and compare them with the live preview: one with everything filled "
-        "in, one without a photograph, and one that is sold.",
-        "Walk the archive at 1440, 768 and 390 pixels wide. The hero on a phone uses an "
-        "upright crop of its own where there is one, so look at that too.",
+        "in, one without a photograph, and "
+        + ("one that is sold." if g["vlag"] else "one without a film or a gallery."),
+        "Walk the archive at 1440, 768 and 390 pixels wide."
+        + (" The hero on a phone uses an upright crop of its own, so look at that too."
+           if g["tall"] else ""),
       ] + ([
         "Elementor \u2192 Custom Code \u2192 add `custom-code-hide-empty.txt`. Not every horse "
         "has a film or spare photographs, and a section headed 'See the horse move' with an "
@@ -227,15 +262,30 @@ for g in GROEPEN:
         "'Sold 24'. The chips filter correctly; only the number is missing. That is "
         "decoration and not function, and it is not worth a plugin for. Tell Mark if the "
         "client asks after it.",
+        "**The order is the client's own and it is not alphabetical.** The importer gives every "
+        "record the place it has on the static archive, and the Loop Grid is set to Menu Order "
+        "to read it. Do not switch it to Title: an alphabetical list looks perfectly normal, "
+        "so nobody would notice it had been resorted.",
         "The pedigree is a grid of fifteen cells, built with containers and dynamic fields, not "
         "a table. An empty cell shows 'To be filled in' by itself through the field's fallback. "
         "Check that on a horse whose third generation is unknown.",
-        "The card grid on a phone is taller than it is wide, on purpose. If a photograph is cut "
-        "badly, tell Mark which horse — the crop is set per horse and is easy to move.",
+        "The card grid on a phone is taller than it is wide, on purpose. The client asked for "
+        "that. If a photograph is cut badly, tell Mark which one — the crop is set per record "
+        "and is easy to move.",
+      ] + ([
+        "**The sold badge carries the flag of the country.** The client asked for it twice and "
+        "it had gone missing once before. The flag is a field of its own next to the badge "
+        "text, because a drawn flag per country is not something a field can hold. One that is "
+        "still available shows no badge at all rather than an empty pill.",
+      ] if g["vlag"] else []) + [
+        "Where a record has only one photograph the hero crops high on that same file, so the "
+        "band shows the head and the panel below shows the whole horse. Mark reported the head "
+        "being cut off three times, so if you see it again, say so straight away.",
         NOUPLOAD,
       ],
       files=([f"archive-{g['slug']}.json", f"loop-{g['slug']}.json", f"single-{g['slug']}.json"]
-             + (["custom-code-hide-empty.txt"] if g["n"] == 3 else [])),
+             + (["custom-code-hide-empty.txt"] if g["n"] == 3 else [])
+             + (["custom-code-card-crop.txt"] if g["n"] == 6 else [])),
     ))
 
 STAGES += [
@@ -295,6 +345,9 @@ STAGES += [
     "table of contents.",
   ],
   notes=[
+    "**The partners strip is on this page, on the contact page and on the homepage.** It is "
+    "the same Loop Grid over the Partner post type all three times — build it once in stage 2 "
+    "and reuse it, do not draw it again. The client asked for it on all three.",
     "The About page has three photographs that fade into each other every five seconds. That is "
     "Elementor's own Slides widget, no code. It stops when you hover or tab into it and it never "
     "starts at all for a visitor who has asked for less motion.",

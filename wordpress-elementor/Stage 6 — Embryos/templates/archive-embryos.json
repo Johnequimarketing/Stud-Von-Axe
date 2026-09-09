@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "59825f5b",
+   "id": "d904abda",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -54,7 +54,7 @@
    },
    "elements": [
     {
-     "id": "58a1b855",
+     "id": "6297ca17",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "d8229431",
+       "id": "e732ecdf",
        "settings": {
         "title": "The embryos",
         "header_size": "span",
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "b7484aa5",
+       "id": "d66f94a4",
        "settings": {
         "title": "The bloodlines you want. <span style=\"color:#b59148\">The future you choose.</span>",
         "header_size": "h1",
@@ -148,7 +148,7 @@
        "elType": "widget"
       },
       {
-       "id": "5428a956",
+       "id": "17f9eeac",
        "settings": {
         "editor": "<p>Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +182,7 @@
    "elType": "container"
   },
   {
-   "id": "4f5157bd",
+   "id": "e8f5abf1",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +213,7 @@
    },
    "elements": [
     {
-     "id": "056d38be",
+     "id": "a24603c4",
      "settings": {
       "content_width": "full",
       "width": {
@@ -263,7 +263,7 @@
      },
      "elements": [
       {
-       "id": "52a77f00",
+       "id": "575bf8e7",
        "settings": {
         "placeholder": "Try a sire, a dam or a year.",
         "query_id": "sva_embryos",
@@ -291,7 +291,7 @@
        "elType": "widget"
       },
       {
-       "id": "833d14aa",
+       "id": "b29f88bd",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -307,7 +307,7 @@
        },
        "elements": [
         {
-         "id": "e18f5d6a",
+         "id": "0972eb02",
          "settings": {
           "query_id": "sva_embryos",
           "taxonomy": "embryo_stage",
@@ -333,7 +333,7 @@
        "elType": "container"
       },
       {
-       "id": "a4dd8906",
+       "id": "bf591477",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -349,7 +349,7 @@
        },
        "elements": [
         {
-         "id": "546a9186",
+         "id": "a0dbd76a",
          "settings": {
           "query_id": "sva_embryos",
           "taxonomy": "sire",
@@ -379,7 +379,7 @@
      "elType": "container"
     },
     {
-     "id": "adc9e5c3",
+     "id": "9317ea7f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -399,7 +399,7 @@
      },
      "elements": [
       {
-       "id": "46f2aa19",
+       "id": "c620ef85",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -436,7 +436,7 @@
    "elType": "container"
   },
   {
-   "id": "3999431c",
+   "id": "fc2e9007",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -482,7 +482,7 @@
    },
    "elements": [
     {
-     "id": "7fad6d30",
+     "id": "c8f396a1",
      "settings": {
       "content_width": "full",
       "width": {
@@ -510,7 +510,7 @@
      },
      "elements": [
       {
-       "id": "b1b706d0",
+       "id": "9de1dd76",
        "settings": {
         "title": "Ask about a <span style=\"color:#b59148\">cross</span>.",
         "header_size": "h2",
@@ -551,7 +551,7 @@
        "elType": "widget"
       },
       {
-       "id": "55259bec",
+       "id": "9220b6e6",
        "settings": {
         "editor": "<p>Frozen or already carrying. We will tell you which stage a cross is at and what it takes to bring it home.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -577,7 +577,7 @@
        "elType": "widget"
       },
       {
-       "id": "1451b6d0",
+       "id": "27cd5f5b",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -601,7 +601,7 @@
        },
        "elements": [
         {
-         "id": "ef042db9",
+         "id": "af50e3e5",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -670,7 +670,7 @@
          "elType": "widget"
         },
         {
-         "id": "d8473dbb",
+         "id": "7cf3a74f",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

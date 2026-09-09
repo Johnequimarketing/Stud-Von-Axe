@@ -212,8 +212,17 @@ def filterplaat(post_type, g):
 def raster(post_type, g):
     return loop_grid(post_type, columns=g["kolommen"], per_page=48,
                      query_id=g["query_id"],
-                     orderby=("title" if g["volgorde"] == "title"
-                              else "date" if g["volgorde"] == "date" else "menu_order"),
+                     # Altijd menu_order. Geen enkel archief staat alfabetisch:
+                     # de hengsten en de sportpaarden staan in de orde die de
+                     # klant aanleverde, de merries en de veulens met de
+                     # beschikbare eerst, en de kruisingen met de dragende voor
+                     # de bevroren — dat laatste heeft de klant schriftelijk
+                     # gevraagd. De importer heeft die orde per record
+                     # meegekregen, van de archiefpagina zelf gelezen. Op titel
+                     # sorteren zou alle vijf hersorteren, en een alfabetische
+                     # lijst ziet er volkomen normaal uit, dus dat zou nergens
+                     # opvallen.
+                     orderby="menu_order",
                      nothing_found="Nothing matches that yet. Clear the search and try again.",
                      extra={"columns_tablet": "2", "columns_mobile": "1",
                             "row_gap": sz(22), "column_gap": sz(22)})
@@ -259,7 +268,7 @@ def nieuwsarchief():
         "_element_id": "top", "css_classes": "sva-hero",
     }, [binnen], is_inner=False)
 
-    lijst = section([wrap([loop_grid("news_item", columns=3, per_page=24, orderby="date",
+    lijst = section([wrap([loop_grid("news_item", columns=3, per_page=24, orderby="menu_order",
                                      nothing_found="No news yet.")])], bg=BG)
 
     return save([h, lijst, cta_band(

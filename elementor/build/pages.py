@@ -189,7 +189,9 @@ def home():
         sec_head("News and results", "The latest from the stud.",
                  "Results, stories and moments from the stud. Follow the horses we breed, "
                  "develop and represent, from the sport arena to the breeding programme."),
-        loop_grid("news_item", columns=3, per_page=6, orderby="date",
+        # De vier berichten hebben geen datum — die van hun eigen site klopten
+        # niet — dus op datum sorteren zou een willekeurige orde geven.
+        loop_grid("news_item", columns=3, per_page=6, orderby="menu_order",
                   nothing_found="", extra={"columns_tablet": "2", "columns_mobile": "1",
                                            "_element_id": "sva-news-rail"}),
     ], gap_px=0)], bg=BG_ALT)

@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "fe6802d0",
+   "id": "7c5d0f80",
    "settings": {
     "flex_direction": "column",
     "flex_gap": {
@@ -38,7 +38,7 @@
      "sizes": []
     },
     "__dynamic__": {
-     "link": "[elementor-tag id=\"f2d3a04b\" name=\"post-url\" settings=\"%7B%7D\"]"
+     "link": "[elementor-tag id=\"6b34221c\" name=\"post-url\" settings=\"%7B%7D\"]"
     },
     "link": {
      "url": "#",
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "89039ad0",
+     "id": "74153529",
      "settings": {
       "image_size": "large",
       "custom_css": "selector img{aspect-ratio:16/10;object-fit:cover;object-position:50% 45%;width:100%;display:block}"
@@ -59,7 +59,7 @@
      "elType": "widget"
     },
     {
-     "id": "565aa1aa",
+     "id": "2659ae1e",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "25c7f0c7",
+       "id": "2fe792d1",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -106,7 +106,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"3f84bd3f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
+         "title": "[elementor-tag id=\"7c32878c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -116,7 +116,7 @@
        "elType": "widget"
       },
       {
-       "id": "cb9ac3e8",
+       "id": "0c1a2fa0",
        "settings": {
         "title": "Horse name",
         "header_size": "h3",
@@ -140,7 +140,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"0dbda5fa\" name=\"post-title\" settings=\"%7B%7D\"]"
+         "title": "[elementor-tag id=\"2af921c1\" name=\"post-title\" settings=\"%7B%7D\"]"
         }
        },
        "elements": [],
@@ -149,7 +149,7 @@
        "elType": "widget"
       },
       {
-       "id": "5c65e216",
+       "id": "d317d2db",
        "settings": {
         "title": "Read more &rarr;",
         "header_size": "span",

@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "abb68046",
+   "id": "ef9f1958",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -63,7 +63,7 @@
    },
    "elements": [
     {
-     "id": "3f465326",
+     "id": "42f2bf28",
      "settings": {
       "content_width": "full",
       "width": {
@@ -90,7 +90,7 @@
      },
      "elements": [
       {
-       "id": "164a89d4",
+       "id": "f21c3e89",
        "settings": {
         "title": "The foals",
         "header_size": "span",
@@ -117,7 +117,7 @@
        "elType": "widget"
       },
       {
-       "id": "0bbf1cda",
+       "id": "a72115fb",
        "settings": {
         "title": "Born from great bloodlines. <span style=\"color:#b59148\">Raised in Belgium.</span>",
         "header_size": "h1",
@@ -157,7 +157,7 @@
        "elType": "widget"
       },
       {
-       "id": "5a0bdc44",
+       "id": "8a4a39d4",
        "settings": {
         "editor": "<p>Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -191,7 +191,7 @@
    "elType": "container"
   },
   {
-   "id": "cf63f744",
+   "id": "c5ed278b",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -222,7 +222,7 @@
    },
    "elements": [
     {
-     "id": "8a8c35e5",
+     "id": "c2a45c1a",
      "settings": {
       "content_width": "full",
       "width": {
@@ -272,7 +272,7 @@
      },
      "elements": [
       {
-       "id": "e59f5ee5",
+       "id": "2c12bee7",
        "settings": {
         "placeholder": "Try a sire, a damline, a year or a country.",
         "query_id": "sva_foals",
@@ -300,7 +300,7 @@
        "elType": "widget"
       },
       {
-       "id": "d0110ab4",
+       "id": "250ef388",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -316,7 +316,7 @@
        },
        "elements": [
         {
-         "id": "65371487",
+         "id": "59ec1b7d",
          "settings": {
           "query_id": "sva_foals",
           "taxonomy": "availability",
@@ -342,7 +342,7 @@
        "elType": "container"
       },
       {
-       "id": "9e8709c8",
+       "id": "5e56e281",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -358,7 +358,7 @@
        },
        "elements": [
         {
-         "id": "128dc859",
+         "id": "5c5d7457",
          "settings": {
           "query_id": "sva_foals",
           "taxonomy": "horse_sex",
@@ -380,7 +380,7 @@
          "elType": "widget"
         },
         {
-         "id": "84701562",
+         "id": "7af55aa9",
          "settings": {
           "query_id": "sva_foals",
           "taxonomy": "birth_year",
@@ -402,7 +402,7 @@
          "elType": "widget"
         },
         {
-         "id": "ac93fe0e",
+         "id": "750a5e2d",
          "settings": {
           "query_id": "sva_foals",
           "taxonomy": "studbook",
@@ -432,7 +432,7 @@
      "elType": "container"
     },
     {
-     "id": "bee095a7",
+     "id": "554c3dcb",
      "settings": {
       "content_width": "full",
       "width": {
@@ -452,7 +452,7 @@
      },
      "elements": [
       {
-       "id": "ada57e92",
+       "id": "6abe6a3e",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -471,7 +471,7 @@
         },
         "post_query_post_type": "foal",
         "post_query_posts_per_page": 48,
-        "post_query_orderby": "date",
+        "post_query_orderby": "menu_order",
         "nothing_found_message": "Nothing matches that yet. Clear the search and try again.",
         "post_query_query_id": "sva_foals"
        },
@@ -489,7 +489,7 @@
    "elType": "container"
   },
   {
-   "id": "0d1c2831",
+   "id": "56ccf892",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -535,7 +535,7 @@
    },
    "elements": [
     {
-     "id": "93ba0d5b",
+     "id": "2cdc7080",
      "settings": {
       "content_width": "full",
       "width": {
@@ -563,7 +563,7 @@
      },
      "elements": [
       {
-       "id": "13377784",
+       "id": "c2973fcf",
        "settings": {
         "title": "Tell us what you are <span style=\"color:#b59148\">looking for</span>.",
         "header_size": "h2",
@@ -604,7 +604,7 @@
        "elType": "widget"
       },
       {
-       "id": "88b19d0f",
+       "id": "d8fd6588",
        "settings": {
         "editor": "<p>A foal on the ground, or a cross still to be made. Say what you are after and we will tell you plainly what we have.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -630,7 +630,7 @@
        "elType": "widget"
       },
       {
-       "id": "c0a7cd69",
+       "id": "2e7988bc",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -654,7 +654,7 @@
        },
        "elements": [
         {
-         "id": "aa6fd84e",
+         "id": "e348ebcc",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -723,7 +723,7 @@
          "elType": "widget"
         },
         {
-         "id": "3d13f473",
+         "id": "b247a19a",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

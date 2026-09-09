@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "12d4d36c",
+   "id": "e445cfbc",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -40,7 +40,7 @@
    },
    "elements": [
     {
-     "id": "9295c317",
+     "id": "665f1fd2",
      "settings": {
       "content_width": "full",
       "width": {
@@ -69,7 +69,7 @@
      },
      "elements": [
       {
-       "id": "d880ca35",
+       "id": "d38d3640",
        "settings": {
         "title": "News",
         "header_size": "span",
@@ -96,7 +96,7 @@
        "elType": "widget"
       },
       {
-       "id": "58e2cba5",
+       "id": "b5eb0fb9",
        "settings": {
         "title": "What is happening at the yard",
         "header_size": "h1",
@@ -137,7 +137,7 @@
        "elType": "widget"
       },
       {
-       "id": "d3eb2041",
+       "id": "09c92d69",
        "settings": {
         "editor": "<p>Foals born, horses sold, semen available. The short version, as it happens.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -171,7 +171,7 @@
    "elType": "container"
   },
   {
-   "id": "9399881c",
+   "id": "c686d222",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -195,7 +195,7 @@
    },
    "elements": [
     {
-     "id": "69ee4d54",
+     "id": "3466d2b1",
      "settings": {
       "content_width": "full",
       "width": {
@@ -215,7 +215,7 @@
      },
      "elements": [
       {
-       "id": "2d8b19b3",
+       "id": "dd5a7f20",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -234,7 +234,7 @@
         },
         "post_query_post_type": "news_item",
         "post_query_posts_per_page": 24,
-        "post_query_orderby": "date",
+        "post_query_orderby": "menu_order",
         "nothing_found_message": "No news yet."
        },
        "elements": [],
@@ -251,7 +251,7 @@
    "elType": "container"
   },
   {
-   "id": "46c6b350",
+   "id": "26ec42c1",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -297,7 +297,7 @@
    },
    "elements": [
     {
-     "id": "c3d0f5ab",
+     "id": "a2657320",
      "settings": {
       "content_width": "full",
       "width": {
@@ -325,7 +325,7 @@
      },
      "elements": [
       {
-       "id": "90cabf36",
+       "id": "a161b878",
        "settings": {
         "title": "Want to hear it first?",
         "header_size": "h2",
@@ -366,7 +366,7 @@
        "elType": "widget"
       },
       {
-       "id": "01697b4b",
+       "id": "cdb91f66",
        "settings": {
         "editor": "<p>The quickest way to hear about a foal or a cross is to ask.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -392,7 +392,7 @@
        "elType": "widget"
       },
       {
-       "id": "b0be0373",
+       "id": "dbdd134f",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -416,7 +416,7 @@
        },
        "elements": [
         {
-         "id": "3bb42202",
+         "id": "e1bd2d9b",
          "settings": {
           "text": "Contact us",
           "link": {
