@@ -1,0 +1,348 @@
+{
+ "content": [
+  {
+   "id": "03451e2e",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#0d1d36",
+    "padding": {
+     "unit": "px",
+     "top": "150",
+     "right": "40",
+     "bottom": "60",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "115",
+     "right": "20",
+     "bottom": "44",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "_element_id": "top",
+    "css_classes": "sva-hero"
+   },
+   "elements": [
+    {
+     "id": "f8ca8a06",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "12",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "2a862ede",
+       "settings": {
+        "title": "Legal",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "e99e5d81",
+       "settings": {
+        "title": "Privacy policy",
+        "header_size": "h1",
+        "title_color": "#ffffff",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 48,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -0.96,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "9311b4fe",
+       "settings": {
+        "editor": "<p>What we do with what you send us, and what we do not do.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 640px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "2d78b4a5",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "797769bc",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "a9c53a94",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "34",
+         "row": "34",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "7d65ba60",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 28,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "position": "sticky",
+          "_offset_y": {
+           "unit": "px",
+           "size": 112,
+           "sizes": []
+          },
+          "custom_css": "selector{position:sticky;top:112px;align-self:start}"
+         },
+         "elements": [
+          {
+           "id": "d9e8541e",
+           "settings": {
+            "editor": "<p><strong>On this page</strong></p><ul data-sva-toc><li>The sections are filled in during the build, from the headings below.</li></ul>",
+            "text_color": "#4d5761",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.9,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "39605b82",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 72,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "c1c1256a",
+           "settings": {
+            "editor": "<h2>Privacy policy</h2><p>The text of this page comes across from the static site during the build. It is one long text with headings, so it lives in one editor rather than in fields.</p>",
+            "text_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.75,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes"
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — Privacy policy",
+ "type": "page"
+}

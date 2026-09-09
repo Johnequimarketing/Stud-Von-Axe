@@ -1,0 +1,25 @@
+<!-- Stud Von Axe — de kopbalk die omslaat op de onderrand van de hero.
+
+     Elementor's sticky header meet een scrollafstand. Deze meet de onderrand
+     van de hero zelf, want de balk zit in de hero en moet precies omslaan waar
+     de foto ophoudt. Een vaste afstand klopt op de homepagina niet en op een
+     archief evenmin, want die hero's zijn niet even hoog.
+
+     Plaatsen: Elementor -> Custom Code -> Add New -> Location: </body>.
+     Voorwaarde: Entire Site. -->
+<script>
+(function(){
+  var hd = document.getElementById('sva-header');
+  if (!hd) return;
+  var hero = document.querySelector('.sva-hero');
+  function sync(){
+    if (!hero) { hd.classList.add('is-pinned'); return; }
+    hd.classList.toggle('is-pinned',
+      hero.getBoundingClientRect().bottom <= hd.offsetHeight + 8);
+  }
+  addEventListener('scroll', sync, { passive: true });
+  addEventListener('resize', sync);
+  addEventListener('load', sync);
+  sync();
+})();
+</script>

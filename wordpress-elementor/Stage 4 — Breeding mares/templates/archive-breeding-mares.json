@@ -1,0 +1,785 @@
+{
+ "content": [
+  {
+   "id": "cddab5f4",
+   "settings": {
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/arch-mares.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_position": "50% 55%",
+    "background_size": "cover",
+    "background_overlay_background": "gradient",
+    "background_overlay_color": "rgba(13, 29, 54, .78)",
+    "background_overlay_color_b": "rgba(10, 21, 38, .58)",
+    "background_overlay_gradient_angle": {
+     "unit": "deg",
+     "size": 180,
+     "sizes": []
+    },
+    "min_height": {
+     "unit": "px",
+     "size": 468,
+     "sizes": []
+    },
+    "min_height_mobile": {
+     "unit": "px",
+     "size": 420,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "150",
+     "right": "40",
+     "bottom": "64",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "120",
+     "right": "20",
+     "bottom": "48",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_justify_content": "flex-end",
+    "_element_id": "top",
+    "css_classes": "sva-hero"
+   },
+   "elements": [
+    {
+     "id": "998e0dc1",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "14",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1bec6b81",
+       "settings": {
+        "title": "The mares",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "e62ea72d",
+       "settings": {
+        "title": "The bloodlines behind <span style=\"color:#b59148\">what we breed</span>",
+        "header_size": "h1",
+        "title_color": "#ffffff",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "30eedc21",
+       "settings": {
+        "editor": "<p>Strong maternal lines are at the heart of our breeding programme. Each mare brings proven genetics, performance and the potential to produce the horses we want to see in the sport of tomorrow.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 680px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "339254a6",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_gap": {
+     "column": "0",
+     "row": "34",
+     "unit": "px",
+     "size": "",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "2d8f15e0",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "background_background": "classic",
+      "background_color": "#0d1d36",
+      "border_radius": {
+       "unit": "px",
+       "top": "26",
+       "right": "26",
+       "bottom": "26",
+       "left": "26",
+       "isLinked": true
+      },
+      "padding": {
+       "unit": "px",
+       "top": "20",
+       "right": "22",
+       "bottom": "20",
+       "left": "22",
+       "isLinked": false
+      },
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "14",
+       "row": "14",
+       "unit": "px",
+       "size": "",
+       "isLinked": true
+      },
+      "flex_align_items": "center",
+      "margin": {
+       "unit": "px",
+       "top": "-56",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "_element_id": "sva-filter-bar",
+      "z_index": 3
+     },
+     "elements": [
+      {
+       "id": "ed167255",
+       "settings": {
+        "placeholder": "Try a sire, a damline or a studbook.",
+        "button_type": "icon",
+        "input_padding": {
+         "unit": "px",
+         "top": "13",
+         "right": "16",
+         "bottom": "13",
+         "left": "16",
+         "isLinked": false
+        },
+        "input_background_color": "rgba(255,255,255,.08)",
+        "input_text_color": "#ffffff",
+        "input_border_color": "rgba(255,255,255,.17)",
+        "input_border_width": {
+         "unit": "px",
+         "top": "1",
+         "right": "1",
+         "bottom": "1",
+         "left": "1",
+         "isLinked": true
+        },
+        "input_border_radius": {
+         "unit": "px",
+         "top": "999",
+         "right": "999",
+         "bottom": "999",
+         "left": "999",
+         "isLinked": true
+        },
+        "button_background_color": "#b59148",
+        "button_color": "#0a1526",
+        "_element_id": "sva-search"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "search-form",
+       "elType": "widget"
+      },
+      {
+       "id": "144d3022",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "8",
+         "row": "8",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_wrap": "wrap",
+        "_element_id": "sva-chips"
+       },
+       "elements": [
+        {
+         "id": "78e0edc3",
+         "settings": {
+          "title": "All",
+          "header_size": "span",
+          "title_color": "#0a1526",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.0,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "8ecbf1f1",
+         "settings": {
+          "title": "Available",
+          "header_size": "span",
+          "title_color": "#ffffff",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.0,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "9a76b3cd",
+         "settings": {
+          "title": "Sold",
+          "header_size": "span",
+          "title_color": "#ffffff",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.0,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    },
+    {
+     "id": "ffc228b6",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "3104a71b",
+       "settings": {
+        "template_id": 0,
+        "_skin": "post",
+        "columns": "3",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "row_gap": {
+         "unit": "px",
+         "size": 22,
+         "sizes": []
+        },
+        "column_gap": {
+         "unit": "px",
+         "size": 22,
+         "sizes": []
+        },
+        "post_query_post_type": "breeding_mare",
+        "post_query_posts_per_page": 48,
+        "post_query_orderby": "title",
+        "nothing_found_message": "Nothing matches that yet. Clear the search and try again."
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "loop-grid",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "6ae319f3",
+   "settings": {
+    "background_background": "gradient",
+    "background_color": "#0d1d36",
+    "background_color_b": "#0a1526",
+    "background_gradient_angle": {
+     "unit": "deg",
+     "size": 150,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "72",
+     "right": "40",
+     "bottom": "72",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "52",
+     "right": "20",
+     "bottom": "52",
+     "left": "20",
+     "isLinked": false
+    },
+    "border_radius": {
+     "unit": "px",
+     "top": "26",
+     "right": "26",
+     "bottom": "26",
+     "left": "26",
+     "isLinked": true
+    },
+    "flex_direction": "column",
+    "margin": {
+     "unit": "px",
+     "top": "0",
+     "right": "14",
+     "bottom": "0",
+     "left": "14",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "802c3a44",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "unit": "px",
+       "size": "",
+       "isLinked": true
+      },
+      "flex_align_items": "center",
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "f086afdc",
+       "settings": {
+        "title": "Looking for a mare to <span style=\"color:#b59148\">breed from</span>?",
+        "header_size": "h2",
+        "title_color": "#ffffff",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "2c2a69d1",
+       "settings": {
+        "editor": "<p>Tell us the line you are after. If she is not here, we will say so, and we will tell you what is coming out of the same families.</p>",
+        "text_color": "rgba(238,241,246,.8)",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 620px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      },
+      {
+       "id": "b4a91c9b",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "10",
+         "row": "10",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_wrap": "wrap",
+        "flex_justify_content": "center",
+        "padding": {
+         "unit": "px",
+         "top": "8",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "8803bd08",
+         "settings": {
+          "text": "Contact us",
+          "link": {
+           "url": "/contact/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#0a1526",
+          "background_color": "#b59148",
+          "button_background_color": "#b59148",
+          "border_color": "#b59148",
+          "button_background_hover_color": "#c9a86a",
+          "button_hover_border_color": "#c9a86a",
+          "button_text_color_hover": "#0a1526"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        },
+        {
+         "id": "2ea175d9",
+         "settings": {
+          "text": "Message us on WhatsApp",
+          "link": {
+           "url": "https://wa.me/393495918565",
+           "is_external": "yes",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#ffffff",
+          "background_color": "rgba(0,0,0,0)",
+          "button_background_color": "rgba(0,0,0,0)",
+          "border_color": "rgba(255,255,255,.17)",
+          "button_background_hover_color": "#ffffff",
+          "button_hover_border_color": "#ffffff",
+          "button_text_color_hover": "#0d1d36"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes"
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — The mares archive",
+ "type": "archive"
+}

@@ -1,0 +1,42 @@
+<!-- Elementor -> Custom Code -> Add New
+     Location: </body>   Conditions: Entire Site
+     ------------------------------------------------------------------ -->
+<!-- De inhoudsopgave op de privacy- en voorwaardenpagina.
+
+     Sticky doet Elementor zelf. Wat hij niet doet is meelopen: markeren welke
+     sectie je aan het lezen bent. Dit zet aria-current op de dichtstbijzijnde
+     link en laat de opmaak daarop reageren.
+-->
+<script>
+(function () {
+  var toc = document.querySelector('[data-sva-toc]');
+  if (!toc) return;
+  var links = [].slice.call(toc.querySelectorAll('a[href^="#"]'));
+  if (!links.length) return;
+  var doelen = links.map(function (a) {
+    return document.getElementById(a.getAttribute('href').slice(1));
+  });
+
+  function marge() {
+    var hd = document.getElementById('sva-header');
+    return (hd ? hd.offsetHeight : 0) + 24;
+  }
+
+  function sync() {
+    var grens = marge(), actief = 0;
+    doelen.forEach(function (el, i) {
+      if (el && el.getBoundingClientRect().top <= grens) actief = i;
+    });
+    links.forEach(function (a, i) {
+      if (i === actief) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  addEventListener('scroll', sync, { passive: true });
+  addEventListener('resize', sync);
+  sync();
+})();
+</script>
+<style>
+  [data-sva-toc] a[aria-current="true"] { color: #8a6d2f; font-weight: 700; }
+</style>

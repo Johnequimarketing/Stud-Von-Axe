@@ -1,0 +1,111 @@
+{
+ "content": [
+  {
+   "id": "77fb83a7",
+   "settings": {
+    "flex_direction": "column",
+    "flex_justify_content": "center",
+    "flex_align_items": "center",
+    "flex_gap": {
+     "column": "8",
+     "row": "8",
+     "unit": "px",
+     "size": "",
+     "isLinked": true
+    },
+    "background_background": "classic",
+    "background_color": "#ffffff",
+    "border_radius": {
+     "unit": "px",
+     "top": "18",
+     "right": "18",
+     "bottom": "18",
+     "left": "18",
+     "isLinked": true
+    },
+    "padding": {
+     "unit": "px",
+     "top": "18",
+     "right": "22",
+     "bottom": "18",
+     "left": "22",
+     "isLinked": false
+    },
+    "min_height": {
+     "unit": "px",
+     "size": 148,
+     "sizes": []
+    },
+    "border_border": "solid",
+    "border_width": {
+     "unit": "px",
+     "top": "1",
+     "right": "1",
+     "bottom": "1",
+     "left": "1",
+     "isLinked": true
+    },
+    "border_color": "rgba(20,32,46,.12)",
+    "__dynamic__": {
+     "link": "[elementor-tag id=\"d61f79f6\" name=\"acf-url\" settings=\"%7B%22key%22%3A%20%22field_sva_pa_website%22%7D\"]"
+    },
+    "link": {
+     "url": "",
+     "is_external": "yes",
+     "nofollow": ""
+    }
+   },
+   "elements": [
+    {
+     "id": "573f332a",
+     "settings": {
+      "image_size": "medium",
+      "custom_css": "selector{height:112px}selector img{width:100%;height:100%;object-fit:contain;display:block}",
+      "__dynamic__": {
+       "image": "[elementor-tag id=\"aa56ffba\" name=\"acf-image\" settings=\"%7B%22key%22%3A%20%22field_sva_pa_logo%22%7D\"]"
+      }
+     },
+     "elements": [],
+     "isInner": false,
+     "widgetType": "image",
+     "elType": "widget"
+    },
+    {
+     "id": "500a793a",
+     "settings": {
+      "title": "",
+      "header_size": "span",
+      "title_color": "#4d5761",
+      "custom_css": "selector{text-align:center}selector:has(.elementor-heading-title:empty){display:none}",
+      "typography_typography": "custom",
+      "typography_font_family": "Manrope",
+      "typography_font_size": {
+       "unit": "px",
+       "size": 12,
+       "sizes": []
+      },
+      "typography_font_weight": "500",
+      "typography_line_height": {
+       "unit": "em",
+       "size": 1.45,
+       "sizes": []
+      },
+      "__dynamic__": {
+       "title": "[elementor-tag id=\"423744d0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_pa_blurb%22%7D\"]"
+      }
+     },
+     "elements": [],
+     "isInner": false,
+     "widgetType": "heading",
+     "elType": "widget"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {},
+ "version": "0.4",
+ "title": "Stud Von Axe — Partner logo",
+ "type": "loop-item"
+}

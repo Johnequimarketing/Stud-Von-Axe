@@ -1,0 +1,282 @@
+{
+ "content": [
+  {
+   "id": "132fc90d",
+   "settings": {
+    "flex_direction": "column",
+    "flex_gap": {
+     "column": "0",
+     "row": "0",
+     "unit": "px",
+     "size": "",
+     "isLinked": true
+    },
+    "background_background": "classic",
+    "background_color": "#ffffff",
+    "border_radius": {
+     "unit": "px",
+     "top": "18",
+     "right": "18",
+     "bottom": "18",
+     "left": "18",
+     "isLinked": true
+    },
+    "overflow": "hidden",
+    "border_border": "solid",
+    "border_width": {
+     "unit": "px",
+     "top": "1",
+     "right": "1",
+     "bottom": "1",
+     "left": "1",
+     "isLinked": true
+    },
+    "border_color": "rgba(20,32,46,.12)",
+    "height": {
+     "unit": "%",
+     "size": 100,
+     "sizes": []
+    },
+    "__dynamic__": {
+     "link": "[elementor-tag id=\"15e7c652\" name=\"post-url\" settings=\"%7B%7D\"]"
+    },
+    "link": {
+     "url": "#",
+     "is_external": "",
+     "nofollow": ""
+    }
+   },
+   "elements": [
+    {
+     "id": "42aeba5a",
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "flex_justify_content": "flex-start",
+      "flex_align_items": "flex-start",
+      "padding": {
+       "unit": "px",
+       "top": "14",
+       "right": "14",
+       "bottom": "14",
+       "left": "14",
+       "isLinked": true
+      },
+      "position": "relative",
+      "css_classes": "sva-card-win",
+      "custom_css": "selector{position:relative}selector>.elementor-widget-theme-post-featured-image{position:absolute;inset:0;z-index:0}selector>.elementor-widget-heading{position:relative;z-index:1}",
+      "min_height": {
+       "unit": "px",
+       "size": 260,
+       "sizes": []
+      }
+     },
+     "elements": [
+      {
+       "id": "de1559ed",
+       "settings": {
+        "image_size": "large",
+        "custom_css": "selector img{aspect-ratio:4/3;object-fit:cover;object-position:50% 42%;width:100%;display:block}"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "theme-post-featured-image",
+       "elType": "widget"
+      },
+      {
+       "id": "ad768c0a",
+       "settings": {
+        "title": "",
+        "header_size": "span",
+        "title_color": "#ffffff",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 1.6,
+         "sizes": []
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"be2c0a15\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_sp_status_line%22%7D\"]"
+        },
+        "custom_css": "selector .elementor-heading-title{display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(10, 21, 38,.55);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);border:1px solid rgba(255,255,255,.17)}selector:has(.elementor-heading-title:empty){display:none}"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    },
+    {
+     "id": "d2766af6",
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "6",
+       "row": "6",
+       "unit": "px",
+       "size": "",
+       "isLinked": true
+      },
+      "padding": {
+       "unit": "px",
+       "top": "18",
+       "right": "20",
+       "bottom": "20",
+       "left": "20",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "915e900e",
+       "settings": {
+        "title": "Horse name",
+        "header_size": "h2",
+        "title_color": "#14202e",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 21,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -0.42,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.12,
+         "sizes": []
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"9ea92ac6\" name=\"post-title\" settings=\"%7B%7D\"]"
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "2ebe7499",
+       "settings": {
+        "title": "",
+        "header_size": "span",
+        "title_color": "#4d5761",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13,
+         "sizes": []
+        },
+        "typography_font_weight": "500",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 0.2,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.45,
+         "sizes": []
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"b5dedd69\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_sp_meta_line%22%7D\"]"
+        },
+        "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "3d32014b",
+       "settings": {
+        "title": "",
+        "header_size": "span",
+        "title_color": "#2c4468",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13,
+         "sizes": []
+        },
+        "typography_font_weight": "600",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 0.2,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.45,
+         "sizes": []
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"969725c6\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_sp_genetics%22%7D\"]"
+        },
+        "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "a619a1c7",
+       "settings": {
+        "title": "View &rarr;",
+        "header_size": "span",
+        "title_color": "#8a6d2f",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 12,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 1.0,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {},
+ "version": "0.4",
+ "title": "Stud Von Axe — sport_horse card",
+ "type": "loop-item"
+}

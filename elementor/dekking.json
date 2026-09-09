@@ -1,0 +1,411 @@
+{
+ "home.json": {
+  "pagina": "index.html",
+  "secties": 8,
+  "klassen": [
+   "hero",
+   "stud",
+   "hz",
+   "sv",
+   "pg",
+   "nw",
+   "contact",
+   "pt"
+  ],
+  "h1_h2": 6,
+  "koppen": [
+   "Bred for the biggest arenas",
+   "The vision behind Stud Von Axe",
+   "We also look on your behalf.",
+   "The latest from the stud.",
+   "Ask us about a horse.",
+   "The people behind us."
+  ]
+ },
+ "about.json": {
+  "pagina": "about/index.html",
+  "secties": 5,
+  "klassen": [
+   "nhero abhero",
+   "abst",
+   "aboff",
+   "abcta",
+   "pt"
+  ],
+  "h1_h2": 4,
+  "koppen": [
+   "From sport to the next generation",
+   "Two countries, one programme",
+   "What we sell",
+   "The people behind us."
+  ]
+ },
+ "contact.json": {
+  "pagina": "contact/index.html",
+  "secties": 4,
+  "klassen": [
+   "nhero cnhero",
+   "cn",
+   "pl",
+   "pt"
+  ],
+  "h1_h2": 4,
+  "koppen": [
+   "Write to us directly",
+   "Tell us what you are looking for",
+   "Where to find us",
+   "The people behind us."
+  ]
+ },
+ "privacy.json": {
+  "pagina": "privacy/index.html",
+  "secties": 2,
+  "klassen": [
+   "nhero",
+   "lg"
+  ],
+  "h1_h2": 7,
+  "koppen": [
+   "What happens with your details",
+   "Who we are",
+   "What this site collects",
+   "The forms",
+   "What we do with it",
+   "Your rights",
+   "When this site changes"
+  ]
+ },
+ "terms.json": {
+  "pagina": "terms/index.html",
+  "secties": 2,
+  "klassen": [
+   "nhero",
+   "lg"
+  ],
+  "h1_h2": 12,
+  "koppen": [
+   "The ground an order stands on",
+   "Who these terms apply to",
+   "Prices and VAT",
+   "Ordering ICSI semen",
+   "Delivery and shipping",
+   "Guarantees",
+   "Payment",
+   "Papers and registration",
+   "Health and veterinary",
+   "Cancelling an order",
+   "Liability",
+   "Which law applies"
+  ]
+ },
+ "404.json": {
+  "pagina": "404.html",
+  "secties": 1,
+  "klassen": [
+   "nf"
+  ],
+  "h1_h2": 1,
+  "koppen": [
+   "That page is not here"
+  ]
+ },
+ "archive-sport-horses.json": {
+  "pagina": "sport-horses/index.html",
+  "secties": 3,
+  "klassen": [
+   "nhero nhero--cut",
+   "arch",
+   "abcta"
+  ],
+  "h1_h2": 13,
+  "koppen": [
+   "Selected for potential. Developed for performance.",
+   "Maralore",
+   "Domino Van den Haze Z",
+   "Diamecho Von Axe Z",
+   "Kashillio MB Z",
+   "Contouch SVA",
+   "Diabalou SVA",
+   "Gamora O",
+   "Amnésia SVA",
+   "Filou",
+   "Valkyrie",
+   "Diacco Blue SVA",
+   "Bec Emerald Sam"
+  ]
+ },
+ "archive-breeding-mares.json": {
+  "pagina": "breeding-mares/index.html",
+  "secties": 3,
+  "klassen": [
+   "nhero nhero--cut",
+   "arch",
+   "abcta"
+  ],
+  "h1_h2": 13,
+  "koppen": [
+   "The bloodlines behind what we breed",
+   "Hayley vd Berghoeve Z",
+   "Cabri vd Berghoeve Z",
+   "Carma vd Bergheove Z",
+   "Cortina de Jolie Z",
+   "Agousha vd Berghoeve Z",
+   "Patchina Van’t Merelsnest",
+   "Hypnotic JT Z",
+   "Cartoona Blue",
+   "Waikiki vd Berghoeve",
+   "Heaven vd Berghoeve Z",
+   "Unguessable Von Axe",
+   "Cardesse Von Axe"
+  ]
+ },
+ "archive-foals.json": {
+  "pagina": "foals/index.html",
+  "secties": 3,
+  "klassen": [
+   "nhero nhero--cut",
+   "arch",
+   "abcta"
+  ],
+  "h1_h2": 21,
+  "koppen": [
+   "Born from great bloodlines. Raised in Belgium.",
+   "Arkhana Von Axe Z",
+   "Charina Von Axe Z",
+   "Claire Von Axe Z",
+   "Unique Touch Von Axe Z",
+   "Darkhan Von Axe Z",
+   "Dune Von Axe Z",
+   "Cara Von Axe Z",
+   "Coolrock Von Axe Z",
+   "Cumax Von Axe Z",
+   "Cosmopolitan Von Axe Z",
+   "Cacao Von Axe Z",
+   "Dourkhet Von Axe Z",
+   "Hyōri Von Axe Z",
+   "Bellavista Von Axe Z",
+   "Delilah Von Axe Z",
+   "Baltimore Von Axe Z",
+   "Purple Rain Von Axe Z",
+   "Medillín Von Axe Z",
+   "Evoque Von Axe Z",
+   "Coachella Von Axe"
+  ]
+ },
+ "archive-embryos.json": {
+  "pagina": "embryos/index.html",
+  "secties": 3,
+  "klassen": [
+   "nhero nhero--cut",
+   "arch",
+   "abcta"
+  ],
+  "h1_h2": 31,
+  "koppen": [
+   "The bloodlines you want. The future you choose.",
+   "Mosito van het Hellenof &times; Carma vd Berghoeve Z",
+   "Cornet Obolensky &times; Agousha vd Berghoeve Z",
+   "Dominator 2000 Z &times; Hypnotic JT Z",
+   "United Touch S &times; Cabri vd Berghoeve Z",
+   "Zandor Z &times; Cabri vd Berghoeve Z",
+   "Chacco Blue &times; Cabri vd Berghoeve Z",
+   "Catoki &times; Cortina de Jolie Z",
+   "For Pleasure &times; Hypnotic JT Z",
+   "Aganix du Seigneur Z &times; Cortina de Jolie Z",
+   "Comme il Faut &times; Agousha vd Berghoeve Z",
+   "Emerald van't Ruytershof &times; Cortina de Jolie Z",
+   "United Touch S &times; Hypnotic JT Z",
+   "Comme il Faut &times; Patchina van’t Merelsnest",
+   "Catoki &times; Hypnotic JT Z",
+   "United Touch S &times; Cortina de Jolie Z",
+   "Dourkhan Hero Z &times; Cortina de Jolie Z",
+   "Big Star &times; Cortina de Jolie Z",
+   "Uricas vd Kattevennen &times; Cortina de Jolie Z",
+   "Diamant de Semilly &times; Hypnotic JT Z",
+   "United Touch S &times; Hypnotic JT Z",
+   "Aganix du Seigneur Z &times; Cortina de Jolie Z",
+   "Comme il Faut &times; Hypnotic JT Z",
+   "For Pleasure &times; Hypnotic JT Z",
+   "Dominator 2000 Z &times; Hypnotic JT Z",
+   "United Touch S &times; Cabri vd Berghoeve Z",
+   "Catoki &times; Cortina de Jolie Z",
+   "Chacco Blue &times; Cabri vd Berghoeve Z",
+   "Zandor Z &times; Cabri vd Berghoeve Z",
+   "Emerald van't Ruytershof &times; Cortina de Jolie Z",
+   "Cornet Obolensky &times; Agousha vd Berghoeve Z"
+  ]
+ },
+ "archive-icsi-semen.json": {
+  "pagina": "icsi-semen/index.html",
+  "secties": 3,
+  "klassen": [
+   "nhero nhero--cut",
+   "arch",
+   "abcta"
+  ],
+  "h1_h2": 33,
+  "koppen": [
+   "The best stallions. Quality semen. Fair prices.",
+   "Chacco Blue",
+   "Cumano",
+   "United Touch S",
+   "Conthargos",
+   "Uricas van Kattevennen",
+   "Baloubet du Rouet",
+   "Catoki",
+   "Big Star",
+   "Cornet Obolensky",
+   "Diamant de Semilly",
+   "Casall",
+   "Stakkato Gold",
+   "Vigo D'Arsouilles",
+   "For Pleasure",
+   "Comme il Faut",
+   "Nabab de Reve",
+   "Heartbreaker",
+   "Emerald van't Ruytershof",
+   "Kannan",
+   "Untouchable",
+   "Toulon",
+   "Echo van't Spieveld",
+   "El Torreo de Muze",
+   "Mumbai vd Moerhoeve",
+   "Bamako de Muze",
+   "Kasanova de la Pomme",
+   "Elvis Ter Putte",
+   "Mosito van het Hellenof",
+   "Darco",
+   "Clinton",
+   "Kashmir van't Schuttershof",
+   "Tinka's Boy"
+  ]
+ },
+ "archive-news.json": {
+  "pagina": "news/index.html",
+  "secties": 1,
+  "klassen": [
+   "nhero"
+  ],
+  "h1_h2": 5,
+  "koppen": [
+   "The latest from the stud.",
+   "Contouch SVA takes the top price",
+   "Calleryama wins the Nations Cup of Barcelona",
+   "Results from Lanaken",
+   "ICSI semen available for breeders"
+  ]
+ },
+ "single-sport-horses.json": {
+  "pagina": "sport-horses/contouch-sva.html",
+  "secties": 6,
+  "klassen": [
+   "hp hp--hero",
+   "ped",
+   "hvid",
+   "hgal",
+   "ask",
+   "hmore"
+  ],
+  "h1_h2": 6,
+  "koppen": [
+   "Contouch SVA",
+   "Three generations deep",
+   "Contouch SVA in motion",
+   "More of Contouch SVA",
+   "Ask us about Contouch SVA",
+   "More horses"
+  ]
+ },
+ "single-breeding-mares.json": {
+  "pagina": "breeding-mares/cortina-de-jolie-z.html",
+  "secties": 6,
+  "klassen": [
+   "hp hp--hero",
+   "ped",
+   "hvid",
+   "hgal",
+   "ask",
+   "hmore"
+  ],
+  "h1_h2": 6,
+  "koppen": [
+   "Cortina de Jolie Z",
+   "Three generations deep",
+   "Cortina de Jolie Z in motion",
+   "More of Cortina de Jolie Z",
+   "Ask us about Cortina de Jolie Z",
+   "More mares"
+  ]
+ },
+ "single-foals.json": {
+  "pagina": "foals/arkhana-von-axe-z.html",
+  "secties": 6,
+  "klassen": [
+   "hp hp--hero",
+   "ped",
+   "hvid is-stand",
+   "hgal",
+   "ask",
+   "hmore"
+  ],
+  "h1_h2": 6,
+  "koppen": [
+   "Arkhana Von Axe Z",
+   "Three generations deep",
+   "Arkhana Von Axe Z in motion",
+   "More of Arkhana Von Axe Z",
+   "Ask us about Arkhana Von Axe Z",
+   "More foals"
+  ]
+ },
+ "single-embryos.json": {
+  "pagina": "embryos/big-star-x-cortina-de-jolie-z.html",
+  "secties": 5,
+  "klassen": [
+   "eh",
+   "ped",
+   "ln",
+   "ask",
+   "hmore"
+  ],
+  "h1_h2": 6,
+  "koppen": [
+   "Big Star &times; Cortina de Jolie Z",
+   "Three generations deep",
+   "Big Star",
+   "Cortina de Jolie Z",
+   "Ask us about this cross",
+   "More crosses"
+  ]
+ },
+ "single-icsi-semen.json": {
+  "pagina": "icsi-semen/big-star.html",
+  "secties": 5,
+  "klassen": [
+   "eh",
+   "ped",
+   "ask",
+   "hmore",
+   "hmore"
+  ],
+  "h1_h2": 5,
+  "koppen": [
+   "Big Star",
+   "Three generations deep",
+   "Ask us about Big Star",
+   "Our own cross by him",
+   "More stallions"
+  ]
+ },
+ "single-news.json": {
+  "pagina": "news/icsi-semen-available.html",
+  "secties": 1,
+  "klassen": [
+   "ahero"
+  ],
+  "h1_h2": 1,
+  "koppen": [
+   "ICSI semen available for breeders"
+  ]
+ }
+}

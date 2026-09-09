@@ -228,6 +228,16 @@ class SVA_Imp_Structure {
 	}
 
 	/** Shared by sport horses, breeding mares and foals. */
+	/**
+	 * A flat mirror of what the card actually prints.
+	 *
+	 * Elementor writes one dynamic tag per widget and cannot join four fields
+	 * with a separator that disappears when a field is empty. The card line
+	 * "Born 2017 · Mare · KWPN · Sold to Italy" is exactly that, so it is
+	 * composed once in the generator and shipped as its own field. The parts
+	 * stay in their own fields beside it; this is a mirror, not a replacement,
+	 * and both come out of the same source so they cannot drift.
+	 */
 	private function horse_fields( $p ) {
 		return array_merge(
 			array(
@@ -255,6 +265,14 @@ class SVA_Imp_Structure {
 				) ) ),
 				$this->f( $p . '_horsetelex_of', 'The link belongs to', 'horsetelex_of', 'text', array_merge( $this->w( 50 ), array(
 					'instructions' => 'Empty when the link is this horse\'s own. Otherwise the name of the parent it belongs to, because twenty one of these links point at the mother and the page has to say so rather than pretend.',
+				) ) ),
+				$this->f( $p . '_meta_line', 'Card line', 'meta_line', 'text', array_merge( $this->w( 50 ), array(
+					'instructions' => 'Written by the importer, not by hand. On a sport horse and a broodmare: year, sex, studbook and country joined with a middle dot. On a foal: sex and country, because the foal card carries the year in its own badge. Whatever is empty is left out, separator and all.',
+					'readonly'     => 1,
+				) ) ),
+				$this->f( $p . '_status_line', 'Status badge', 'status_line', 'text', array_merge( $this->w( 50 ), array(
+					'instructions' => 'Written by the importer: the badge over the photograph. "Available", or "Sold to" and the country.',
+					'readonly'     => 1,
 				) ) ),
 			),
 			$this->pedigree_fields( $p ),
@@ -326,6 +344,10 @@ class SVA_Imp_Structure {
 					'instructions' => 'Empty when the link is this horse\'s own. Otherwise the name of the parent it belongs to, because twenty one of these links point at the mother and the page has to say so rather than pretend.',
 				) ) ),
 
+				$this->f( $p . '_stage_badge', 'Stage badge', 'stage_badge', 'text', array_merge( $this->w( 100 ), array(
+					'instructions' => 'Written by the importer: the badge on the card, with the emoji the client asked for. A snowflake and "Frozen", or an hourglass and the due date. Stage and due date stay in their own fields above.',
+					'readonly'     => 1,
+				) ) ),
 			),
 			$this->pedigree_fields( $p ),
 			array(

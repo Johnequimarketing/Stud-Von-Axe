@@ -1,0 +1,67 @@
+<!-- Elementor -> Custom Code -> Add New
+     Location: </body>   Conditions: Entire Site
+     ------------------------------------------------------------------ -->
+<!-- De rails: nieuws, partners en "more horses".
+
+     Elementor's carousel heeft geen pijl die zichzelf uitschakelt aan het eind
+     en geen scroll-snap. Dit is dezelfde controller als op de statische site.
+     Zet op de loop grid die een rail moet worden de CSS-klasse `sva-rail` en
+     geef de twee knoppen ernaast `sva-arrow` met data-run="<id van de rail>".
+-->
+<script>
+(function () {
+  var still = matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll('[data-run]').forEach(function (knop) {
+    var rail = document.getElementById(knop.getAttribute('data-run'));
+    if (!rail) return;
+    var richting = knop.getAttribute('data-dir') === 'prev' ? -1 : 1;
+
+    function stap() {
+      var kaart = rail.firstElementChild;
+      if (!kaart) return rail.clientWidth;
+      var gat = parseFloat(getComputedStyle(rail).columnGap) || 0;
+      return kaart.getBoundingClientRect().width + gat;
+    }
+
+    /* Een eigen tween in plaats van scroll-behavior:smooth. Engines laten die
+       laatste vallen zodra het element niet zichtbaar is, en dan springt de
+       rail in plaats van te glijden. */
+    function glijd(naar) {
+      if (still.matches) { rail.scrollLeft = naar; return; }
+      var van = rail.scrollLeft, begin = performance.now(), duur = 420;
+      (function stap_(nu) {
+        var t = Math.min(1, (nu - begin) / duur);
+        var e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        rail.scrollLeft = van + (naar - van) * e;
+        if (t < 1) requestAnimationFrame(stap_);
+      })(begin);
+    }
+
+    knop.addEventListener('click', function () {
+      glijd(rail.scrollLeft + richting * stap());
+    });
+  });
+
+  /* Een pijl die niets meer kan, leest als een pijl die niets meer kan. */
+  function sync() {
+    document.querySelectorAll('[data-run]').forEach(function (knop) {
+      var rail = document.getElementById(knop.getAttribute('data-run'));
+      if (!rail) return;
+      var eind = rail.scrollWidth - rail.clientWidth - 1;
+      knop.disabled = knop.getAttribute('data-dir') === 'prev'
+        ? rail.scrollLeft <= 0
+        : rail.scrollLeft >= eind;
+    });
+  }
+  document.querySelectorAll('.sva-rail').forEach(function (r) {
+    r.addEventListener('scroll', sync, { passive: true });
+  });
+  addEventListener('resize', sync);
+  /* Ook op load, niet alleen op een rAF: op de statische site liep de eerste
+     sync voordat de opmaak klaar was, en dan denkt elke rail dat hij overloopt
+     en staat geen enkele pijl ooit uit. */
+  addEventListener('load', sync);
+  sync();
+})();
+</script>

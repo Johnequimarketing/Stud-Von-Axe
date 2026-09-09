@@ -1,0 +1,1512 @@
+{
+ "content": [
+  {
+   "id": "ee6a8316",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#0d1d36",
+    "background_image": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/hero-contact.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_position": "center 40%",
+    "background_size": "cover",
+    "background_overlay_background": "gradient",
+    "background_overlay_color": "rgba(13, 29, 54, .82)",
+    "background_overlay_color_b": "rgba(10, 21, 38, .66)",
+    "background_overlay_gradient_angle": {
+     "unit": "deg",
+     "size": 180,
+     "sizes": []
+    },
+    "min_height": {
+     "unit": "px",
+     "size": 420,
+     "sizes": []
+    },
+    "min_height_mobile": {
+     "unit": "px",
+     "size": 360,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "150",
+     "right": "40",
+     "bottom": "64",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "120",
+     "right": "20",
+     "bottom": "48",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_justify_content": "flex-end",
+    "_element_id": "top",
+    "css_classes": "sva-hero"
+   },
+   "elements": [
+    {
+     "id": "48d6c45b",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "14",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "e70ca3ba",
+       "settings": {
+        "title": "Contact",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "bc1843a6",
+       "settings": {
+        "title": "Write to us directly",
+        "header_size": "h1",
+        "title_color": "#ffffff",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 48,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -0.96,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "f47a5713",
+       "settings": {
+        "editor": "<p>There is nobody in between. Elisabetta and Adriano read what comes in and one of them answers.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 640px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "4b5b844c",
+   "settings": {
+    "background_background": "gradient",
+    "background_color": "#0d1d36",
+    "background_color_b": "#0a1526",
+    "background_gradient_angle": {
+     "unit": "deg",
+     "size": 150,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "_element_id": "contact",
+    "custom_css": "selector .elementor-field-group>label{color:rgba(238,241,245,.75)}"
+   },
+   "elements": [
+    {
+     "id": "0c7a4a15",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "22",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "57bab459",
+       "settings": {
+        "title": "Get in touch",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "349427ef",
+       "settings": {
+        "title": "Ask us about a horse.",
+        "header_size": "h2",
+        "title_color": "#ffffff",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "9e828fd7",
+       "settings": {
+        "editor": "<p>Write to us and we will get back to you.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      },
+      {
+       "id": "d293984b",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "26",
+         "row": "26",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "5f1774f6",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 58,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "4d2744c3",
+           "settings": {
+            "form_name": "Contact",
+            "form_fields": [
+             {
+              "_id": "name",
+              "field_type": "text",
+              "field_label": "Your name",
+              "placeholder": "Your name",
+              "required": "true",
+              "width": "50"
+             },
+             {
+              "_id": "email",
+              "field_type": "email",
+              "field_label": "Your email",
+              "placeholder": "you@example.com",
+              "required": "true",
+              "width": "50"
+             },
+             {
+              "_id": "topic",
+              "field_type": "select",
+              "field_label": "About",
+              "field_options": "A foal\nAn embryo\nICSI semen\nA sport horse\nA breeding mare\nSomething else",
+              "required": "",
+              "width": "100"
+             },
+             {
+              "_id": "message",
+              "field_type": "textarea",
+              "field_label": "Your message",
+              "placeholder": "What would you like to know?",
+              "required": "true",
+              "width": "100",
+              "rows": 5
+             }
+            ],
+            "button_text": "Send",
+            "submit_actions": [
+             "email",
+             "email2"
+            ],
+            "email_to": "studvonaxe@gmail.com",
+            "email_subject": "Enquiry from the website",
+            "label_color": "rgba(238,241,245,.75)",
+            "field_text_color": "#ffffff",
+            "field_background_color": "rgba(255,255,255,.08)",
+            "border_color": "rgba(255,255,255,.17)",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "field_border_radius": {
+             "unit": "px",
+             "top": "12",
+             "right": "12",
+             "bottom": "12",
+             "left": "12",
+             "isLinked": true
+            },
+            "button_background_color": "#b59148",
+            "button_text_color": "#0a1526"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "form",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "a618f545",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 42,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "9b964470",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "https://wa.me/393495918565",
+             "is_external": "yes",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "da7dd60e",
+             "settings": {
+              "title": "WhatsApp",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "57e535a4",
+             "settings": {
+              "title": "Message us",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "2ddead1a",
+             "settings": {
+              "title": "Fastest reply",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "4dddef6e",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "tel:+393495918565",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "ed8efee6",
+             "settings": {
+              "title": "Elisabetta",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "7210715c",
+             "settings": {
+              "title": "+39 349 591 8565",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "0fb7ef12",
+             "settings": {
+              "title": "Call or message",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "d9ff8c69",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "tel:+393483953433",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "5137bc9e",
+             "settings": {
+              "title": "Adriano",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "641416cd",
+             "settings": {
+              "title": "+39 348 395 3433",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "da5cb1b2",
+             "settings": {
+              "title": "Call or message",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "d8fcc531",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "mailto:studvonaxe@gmail.com",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "b2e92849",
+             "settings": {
+              "title": "By mail",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "f735811a",
+             "settings": {
+              "title": "studvonaxe@gmail.com",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "5a45c50b",
+             "settings": {
+              "title": "We answer in four languages",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "91432ecb",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "b07b43c6",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "70402905",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "flex-start",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "left"
+       },
+       "elements": [
+        {
+         "id": "6fbcd887",
+         "settings": {
+          "title": "Where we are",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "3087049d",
+         "settings": {
+          "title": "Where to find us",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "7ab65de9",
+         "settings": {
+          "editor": "<p>Every cross begins in Italy and every foal is raised in Belgium. You are welcome by appointment: ring first and we will say where to come.</p>",
+          "text_color": "#4d5761",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 18,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.65,
+           "sizes": []
+          },
+          "custom_css": "selector { max-width: 640px; }"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "text-editor",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "05d31210",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "26",
+         "row": "26",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "19d0c88a",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 50,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "8",
+           "row": "8",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "955cee8d",
+           "settings": {
+            "title": "Italy",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "53db1322",
+           "settings": {
+            "editor": "<p>Stud Von Axe SRL<br>Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "018b2474",
+           "settings": {
+            "editor": "<p>This is the office, not the yard. No horse stands here. Ring us before you set off and we will tell you where the one you want to see is.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "e8aa3572",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 50,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "8",
+           "row": "8",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "7efea547",
+           "settings": {
+            "title": "Belgium",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "7ed797a8",
+           "settings": {
+            "editor": "<p>Lanaken. Our own team implants the embryos, carries the pregnancies and raises the foals until the day they leave.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "f3727e95",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "ce014b59",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "64ccd5db",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "center"
+       },
+       "elements": [
+        {
+         "id": "aad6c585",
+         "settings": {
+          "title": "Partners",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "3b58239c",
+         "settings": {
+          "title": "The people behind us.",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "713ea531",
+       "settings": {
+        "template_id": 0,
+        "_skin": "post",
+        "columns": "5",
+        "columns_tablet": "3",
+        "columns_mobile": "2",
+        "row_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "column_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "post_query_post_type": "partner",
+        "post_query_posts_per_page": 12,
+        "post_query_orderby": "menu_order",
+        "nothing_found_message": ""
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "loop-grid",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes"
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — Contact",
+ "type": "page"
+}

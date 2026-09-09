@@ -1,0 +1,651 @@
+{
+ "content": [
+  {
+   "id": "d378e00d",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#0a1526",
+    "background_overlay_background": "classic",
+    "background_overlay_image": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/logo/icon-ondark.png",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_overlay_position": "center right",
+    "background_overlay_repeat": "no-repeat",
+    "background_overlay_size": "contain",
+    "background_overlay_opacity": {
+     "unit": "px",
+     "size": 0.05,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "72",
+     "right": "40",
+     "bottom": "40",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "32",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_gap": {
+     "column": "0",
+     "row": "26",
+     "unit": "px",
+     "size": "",
+     "isLinked": false
+    },
+    "overflow": "hidden"
+   },
+   "elements": [
+    {
+     "id": "5a765ffb",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "z_index": 2
+     },
+     "elements": [
+      {
+       "id": "9e3578c9",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "32",
+         "row": "32",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "932b280b",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 30,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "a832fbe1",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/logo/logo-horizontal-ondark.webp",
+             "id": 0,
+             "size": "",
+             "alt": "Von Axe, breeding and horse trading",
+             "source": "library"
+            },
+            "align": "left",
+            "width": {
+             "unit": "px",
+             "size": 190,
+             "sizes": []
+            },
+            "link_to": "custom",
+            "link": {
+             "url": "/",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "f6deb4f9",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 22,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "bbfc1e62",
+           "settings": {
+            "title": "Navigate",
+            "header_size": "h2",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "3fc5eca4",
+           "settings": {
+            "editor": "<ul><li><a href=\"/sport-horses/\">Sport horses</a></li><li><a href=\"/breeding-mares/\">Breeding mares</a></li><li><a href=\"/foals/\">Foals</a></li><li><a href=\"/embryos/\">Embryos</a></li><li><a href=\"/icsi-semen/\">ICSI semen</a></li><li><a href=\"/about/\">About us</a></li><li><a href=\"/news/\">News</a></li><li><a href=\"/contact/\">Contact</a></li></ul>",
+            "text_color": "rgba(238,241,245,.75)",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 2.0,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "34dc3457",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 22,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "a7ed82c1",
+           "settings": {
+            "title": "Contact",
+            "header_size": "h2",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "53264025",
+           "settings": {
+            "editor": "<ul><li><a href=\"mailto:studvonaxe@gmail.com\">studvonaxe@gmail.com</a></li><li><a href=\"tel:+393495918565\">Elisabetta &#9743; +39 349 591 8565</a></li><li><a href=\"tel:+393483953433\">Adriano &#9743; +39 348 395 3433</a></li></ul>",
+            "text_color": "rgba(238,241,245,.75)",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 2.0,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "421f5f34",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 22,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "e23baacb",
+           "settings": {
+            "title": "Follow",
+            "header_size": "h2",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "8c36591f",
+           "settings": {
+            "editor": "<ul><li><a href=\"https://instagram.com/studvonaxe\" target=\"_blank\" rel=\"noopener\">Instagram &#8599;</a></li><li><a href=\"https://facebook.com/StudVonAxe\" target=\"_blank\" rel=\"noopener\">Facebook &#8599;</a></li><li><a href=\"https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg\" target=\"_blank\" rel=\"noopener\">YouTube &#8599;</a></li></ul>",
+            "text_color": "rgba(238,241,245,.75)",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 2.0,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    },
+    {
+     "id": "a7e3346b",
+     "settings": {
+      "color": "rgba(255,255,255,.17)",
+      "weight": {
+       "unit": "px",
+       "size": 1,
+       "sizes": []
+      },
+      "gap": {
+       "unit": "px",
+       "size": 28,
+       "sizes": []
+      }
+     },
+     "elements": [],
+     "isInner": false,
+     "widgetType": "divider",
+     "elType": "widget"
+    },
+    {
+     "id": "12c31ccf",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "z_index": 2
+     },
+     "elements": [
+      {
+       "id": "1b9a1094",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "18",
+         "row": "18",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "f4035d31",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 60,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "6a3cbbb6",
+           "settings": {
+            "editor": "<p>&#169; 2026 Von Axe. All rights reserved. <span>Made by <a href=\"https://equimarketing.com\" target=\"_blank\" rel=\"noopener\">EquiMarketing</a></span></p>",
+            "text_color": "rgba(238,241,245,.75)",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "400"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "b8ffa956",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 40,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "flex_align_items": "flex-end"
+         },
+         "elements": [
+          {
+           "id": "1dccb087",
+           "settings": {
+            "editor": "<p><a href=\"/privacy/\">Privacy policy</a> &nbsp; <a href=\"/terms/\">Terms and conditions</a></p>",
+            "text_color": "rgba(238,241,245,.75)",
+            "align": "right",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "400"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    },
+    {
+     "id": "43a785d8",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "z_index": 2
+     },
+     "elements": [
+      {
+       "id": "0af50944",
+       "settings": {
+        "editor": "<p>Stud Von Axe SRL &middot; Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy &middot; P. IVA IT02519980466</p>",
+        "text_color": "rgba(238,241,245,.55)",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13,
+         "sizes": []
+        },
+        "typography_font_weight": "400"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    },
+    {
+     "id": "abbc54c5",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "z_index": 2
+     },
+     "elements": [
+      {
+       "id": "8c8cfe65",
+       "settings": {
+        "editor": "<p><span aria-current=\"true\">English</span> &middot; <span>Italiano</span> &middot; <span>Fran&ccedil;ais</span> &middot; <span>Deutsch</span></p>",
+        "text_color": "rgba(238,241,245,.42)",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 12,
+         "sizes": []
+        },
+        "typography_font_weight": "500",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 0.6,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {},
+ "version": "0.4",
+ "title": "Stud Von Axe — Footer",
+ "type": "footer"
+}

@@ -1,0 +1,2077 @@
+{
+ "content": [
+  {
+   "id": "28ab3668",
+   "settings": {
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/about-hero.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_position": "center center",
+    "background_size": "cover",
+    "background_overlay_background": "gradient",
+    "background_overlay_color": "rgba(13, 29, 54, .78)",
+    "background_overlay_color_b": "rgba(10, 21, 38, .58)",
+    "background_overlay_gradient_angle": {
+     "unit": "deg",
+     "size": 180,
+     "sizes": []
+    },
+    "min_height": {
+     "unit": "px",
+     "size": 520,
+     "sizes": []
+    },
+    "min_height_mobile": {
+     "unit": "px",
+     "size": 440,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "150",
+     "right": "40",
+     "bottom": "70",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "120",
+     "right": "20",
+     "bottom": "50",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_justify_content": "flex-end",
+    "_element_id": "top",
+    "css_classes": "sva-hero"
+   },
+   "elements": [
+    {
+     "id": "af51d2ee",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "14",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "e86ba598",
+       "settings": {
+        "title": "About Stud Von Axe",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "0bb2c4e3",
+       "settings": {
+        "title": "From sport to the next generation",
+        "header_size": "h1",
+        "title_color": "#ffffff",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 48,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -0.96,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "ee747f6a",
+       "settings": {
+        "editor": "<p>Our mares combine sport and breeding in Italy, where they compete and produce embryos. Pregnancies are then carried out in Belgium, where the foals are born and raised, bringing together two countries in one carefully managed breeding programme.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 700px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "400184b4",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "e178e06f",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "f68ce115",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "34",
+         "row": "34",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "b457ab4f",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 46,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "e0d55f41",
+           "settings": {
+            "slides": [
+             {
+              "_id": "s0",
+              "background_background": "classic",
+              "background_image": {
+               "url": "https://stud-von-axe-ten.vercel.app/assets/img/bases-yard.jpg",
+               "id": 0,
+               "size": "",
+               "alt": "",
+               "source": "library"
+              },
+              "background_size": "cover"
+             },
+             {
+              "_id": "s1",
+              "background_background": "classic",
+              "background_image": {
+               "url": "https://stud-von-axe-ten.vercel.app/assets/img/intro-foal-star.jpg",
+               "id": 0,
+               "size": "",
+               "alt": "",
+               "source": "library"
+              },
+              "background_size": "cover"
+             },
+             {
+              "_id": "s2",
+              "background_background": "classic",
+              "background_image": {
+               "url": "https://stud-von-axe-ten.vercel.app/assets/img/hero-grey.jpg",
+               "id": 0,
+               "size": "",
+               "alt": "",
+               "source": "library"
+              },
+              "background_size": "cover"
+             }
+            ],
+            "slides_height": {
+             "unit": "px",
+             "size": 440,
+             "sizes": []
+            },
+            "navigation": "dots",
+            "autoplay": "yes",
+            "autoplay_speed": 5000,
+            "pause_on_hover": "yes",
+            "pause_on_interaction": "yes",
+            "transition": "fade",
+            "custom_css": "selector .swiper{border-radius:26px}"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "slides",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "9ebb0716",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 54,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "c187f51a",
+           "settings": {
+            "title": "How we work",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "131fb821",
+           "settings": {
+            "title": "Two countries, one programme",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 51,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_font_size_tablet": {
+             "unit": "px",
+             "size": 42,
+             "sizes": []
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 32,
+             "sizes": []
+            },
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": -1.02,
+             "sizes": []
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.04,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "4df92523",
+           "settings": {
+            "editor": "<p>We do not buy a pedigree and hope. Every mare here was chosen for what her family actually produces in sport, not for how the paper reads.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "2f7cb42a",
+           "settings": {
+            "editor": "<p>Every cross begins in Tuscany. Our own team in Lanaken implants the embryo, carries the pregnancy and raises the foal until the day it leaves. Nothing is handed to a third party halfway.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "0a27bb99",
+           "settings": {
+            "editor": "<p>We tell a buyer what we see in a horse, the limits as well as the strengths, and we sell direct.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "8b105996",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "394e5721",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "18e7df52",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "center"
+       },
+       "elements": [
+        {
+         "id": "2ec35955",
+         "settings": {
+          "title": "What we offer",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "c931cff6",
+         "settings": {
+          "title": "Four ways in",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "cd91bc39",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "18",
+         "row": "18",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "93eda16c",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 25,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "border_radius": {
+           "unit": "px",
+           "top": "18",
+           "right": "18",
+           "bottom": "18",
+           "left": "18",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "22",
+           "right": "22",
+           "bottom": "22",
+           "left": "22",
+           "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "border_color": "rgba(20,32,46,.12)",
+          "width_tablet": {
+           "unit": "%",
+           "size": 48,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "d1234a0e",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-foal.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "Foals",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 10px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          },
+          {
+           "id": "55324ef0",
+           "settings": {
+            "title": "Lanaken, Belgium",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "9ae7ca06",
+           "settings": {
+            "title": "Foals",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "65cba4bb",
+           "settings": {
+            "editor": "<p>Born and raised in Belgium, out of mares chosen for jumping ability and temperament. You collect a horse already on the ground.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "6c3043e6",
+           "settings": {
+            "text": "See the foals &rarr;",
+            "link": {
+             "url": "/foals/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "999",
+             "right": "999",
+             "bottom": "999",
+             "left": "999",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "button_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "hover_animation": "float",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11.5,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.25,
+             "sizes": []
+            },
+            "button_text_color": "#14202e",
+            "background_color": "rgba(0,0,0,0)",
+            "button_background_color": "rgba(0,0,0,0)",
+            "border_color": "rgba(20,32,46,.12)",
+            "button_background_hover_color": "#0d1d36",
+            "button_hover_border_color": "#0d1d36",
+            "button_text_color_hover": "#faf7f2"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "button",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "6d7e332f",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 25,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "border_radius": {
+           "unit": "px",
+           "top": "18",
+           "right": "18",
+           "bottom": "18",
+           "left": "18",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "22",
+           "right": "22",
+           "bottom": "22",
+           "left": "22",
+           "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "border_color": "rgba(20,32,46,.12)",
+          "width_tablet": {
+           "unit": "%",
+           "size": 48,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "3b843ca3",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-embryo.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "Embryos",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 10px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          },
+          {
+           "id": "65f30278",
+           "settings": {
+            "title": "Frozen or carrying",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "5699ecf1",
+           "settings": {
+            "title": "Embryos",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "9d91fdd1",
+           "settings": {
+            "editor": "<p>Frozen from our own damlines, or already carrying in Lanaken. Every cross is made on pedigree and on what the mare has produced.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "216905c6",
+           "settings": {
+            "text": "See the crosses &rarr;",
+            "link": {
+             "url": "/embryos/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "999",
+             "right": "999",
+             "bottom": "999",
+             "left": "999",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "button_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "hover_animation": "float",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11.5,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.25,
+             "sizes": []
+            },
+            "button_text_color": "#14202e",
+            "background_color": "rgba(0,0,0,0)",
+            "button_background_color": "rgba(0,0,0,0)",
+            "border_color": "rgba(20,32,46,.12)",
+            "button_background_hover_color": "#0d1d36",
+            "button_hover_border_color": "#0d1d36",
+            "button_text_color_hover": "#faf7f2"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "button",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "1b1cfbfd",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 25,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "border_radius": {
+           "unit": "px",
+           "top": "18",
+           "right": "18",
+           "bottom": "18",
+           "left": "18",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "22",
+           "right": "22",
+           "bottom": "22",
+           "left": "22",
+           "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "border_color": "rgba(20,32,46,.12)",
+          "width_tablet": {
+           "unit": "%",
+           "size": 48,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "6916de5b",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/offer-semen.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "ICSI semen",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 10px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          },
+          {
+           "id": "a8973924",
+           "settings": {
+            "title": "With Avantea, Cremona",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "37456912",
+           "settings": {
+            "title": "ICSI semen",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "b90ffa5c",
+           "settings": {
+            "editor": "<p>Worked with our own mares through OPU and ICSI. The stallions we offer are listed with their pedigrees, at fixed prices.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "1b379d68",
+           "settings": {
+            "text": "See the stallions &rarr;",
+            "link": {
+             "url": "/icsi-semen/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "999",
+             "right": "999",
+             "bottom": "999",
+             "left": "999",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "button_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "hover_animation": "float",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11.5,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.25,
+             "sizes": []
+            },
+            "button_text_color": "#14202e",
+            "background_color": "rgba(0,0,0,0)",
+            "button_background_color": "rgba(0,0,0,0)",
+            "border_color": "rgba(20,32,46,.12)",
+            "button_background_hover_color": "#0d1d36",
+            "button_hover_border_color": "#0d1d36",
+            "button_text_color_hover": "#faf7f2"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "button",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "9731601a",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 25,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          },
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "border_radius": {
+           "unit": "px",
+           "top": "18",
+           "right": "18",
+           "bottom": "18",
+           "left": "18",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "22",
+           "right": "22",
+           "bottom": "22",
+           "left": "22",
+           "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "border_color": "rgba(20,32,46,.12)",
+          "width_tablet": {
+           "unit": "%",
+           "size": 48,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "1ef7ac85",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/results-unguessable.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "Sport horses",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 10px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          },
+          {
+           "id": "5f2d60e7",
+           "settings": {
+            "title": "Sourced and brokered",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "ddd7c2dc",
+           "settings": {
+            "title": "Sport horses",
+            "header_size": "h3",
+            "title_color": "#14202e",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.15,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "688e7b2b",
+           "settings": {
+            "editor": "<p>Several of our mares are available to compete or to breed from. We also look on a client's behalf, across Europe and as far as America.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "d0bb598c",
+           "settings": {
+            "text": "See the horses &rarr;",
+            "link": {
+             "url": "/sport-horses/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "999",
+             "right": "999",
+             "bottom": "999",
+             "left": "999",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "button_padding": {
+             "unit": "px",
+             "top": "10",
+             "right": "17",
+             "bottom": "10",
+             "left": "17",
+             "isLinked": false
+            },
+            "hover_animation": "float",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11.5,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.25,
+             "sizes": []
+            },
+            "button_text_color": "#14202e",
+            "background_color": "rgba(0,0,0,0)",
+            "button_background_color": "rgba(0,0,0,0)",
+            "border_color": "rgba(20,32,46,.12)",
+            "button_background_hover_color": "#0d1d36",
+            "button_hover_border_color": "#0d1d36",
+            "button_text_color_hover": "#faf7f2"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "button",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "91199146",
+   "settings": {
+    "background_background": "gradient",
+    "background_color": "#0d1d36",
+    "background_color_b": "#0a1526",
+    "background_gradient_angle": {
+     "unit": "deg",
+     "size": 150,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "72",
+     "right": "40",
+     "bottom": "72",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "52",
+     "right": "20",
+     "bottom": "52",
+     "left": "20",
+     "isLinked": false
+    },
+    "border_radius": {
+     "unit": "px",
+     "top": "26",
+     "right": "26",
+     "bottom": "26",
+     "left": "26",
+     "isLinked": true
+    },
+    "flex_direction": "column",
+    "margin": {
+     "unit": "px",
+     "top": "0",
+     "right": "14",
+     "bottom": "0",
+     "left": "14",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "48fd8067",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "unit": "px",
+       "size": "",
+       "isLinked": true
+      },
+      "flex_align_items": "center",
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "9dc9407e",
+       "settings": {
+        "title": "Tell us what you are <span style=\"color:#b59148\">looking for</span>.",
+        "header_size": "h2",
+        "title_color": "#ffffff",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "be8755b7",
+       "settings": {
+        "editor": "<p>A foal on the ground, an embryo, a cross still to be made, or a mare to breed from. Say what you are after and we will tell you plainly what we have.</p>",
+        "text_color": "rgba(238,241,246,.8)",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 620px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      },
+      {
+       "id": "39e16baa",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "10",
+         "row": "10",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_wrap": "wrap",
+        "flex_justify_content": "center",
+        "padding": {
+         "unit": "px",
+         "top": "8",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "11510206",
+         "settings": {
+          "text": "Get in touch",
+          "link": {
+           "url": "/contact/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#0a1526",
+          "background_color": "#b59148",
+          "button_background_color": "#b59148",
+          "border_color": "#b59148",
+          "button_background_hover_color": "#c9a86a",
+          "button_hover_border_color": "#c9a86a",
+          "button_text_color_hover": "#0a1526"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        },
+        {
+         "id": "b0cbd671",
+         "settings": {
+          "text": "Message on WhatsApp",
+          "link": {
+           "url": "https://wa.me/393495918565",
+           "is_external": "yes",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#ffffff",
+          "background_color": "rgba(0,0,0,0)",
+          "button_background_color": "rgba(0,0,0,0)",
+          "border_color": "rgba(255,255,255,.17)",
+          "button_background_hover_color": "#ffffff",
+          "button_hover_border_color": "#ffffff",
+          "button_text_color_hover": "#0d1d36"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "00715cca",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "23a66ce6",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "e650df6e",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "center"
+       },
+       "elements": [
+        {
+         "id": "49b7fb90",
+         "settings": {
+          "title": "Partners",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "e7e1fcb2",
+         "settings": {
+          "title": "The people behind us.",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "0746d94d",
+       "settings": {
+        "template_id": 0,
+        "_skin": "post",
+        "columns": "5",
+        "columns_tablet": "3",
+        "columns_mobile": "2",
+        "row_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "column_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "post_query_post_type": "partner",
+        "post_query_posts_per_page": 12,
+        "post_query_orderby": "menu_order",
+        "nothing_found_message": ""
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "loop-grid",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes"
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — About us",
+ "type": "page"
+}

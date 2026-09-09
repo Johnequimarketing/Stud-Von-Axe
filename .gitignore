@@ -59,3 +59,8 @@ deploy/assets/
 deploy/index.html
 deploy/news/
 deploy/news-data.js
+
+# de stagemappen dragen 251 foto's en drie plugin-zips; die staan al in
+# assets/ en in wp/uit/ en horen niet nog een derde keer in de geschiedenis
+wordpress-elementor/*/media-reference/
+wordpress-elementor/*/templates/*.zip

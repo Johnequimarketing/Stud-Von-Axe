@@ -143,6 +143,35 @@ const gerekend = horses.map(h => ({
      dit stonden 95 fokregels in de import in kapitalen terwijl de site ze in
      gemengd schrift toont. */
   genetics: horseName(theirWords(h.genetics || '')),
+  /* De twee spiegels die de archiefkaart afdrukt. Elementor schrijft één
+     dynamische tag per widget en kan vier velden niet aaneenrijgen met een
+     scheidingsteken dat verdwijnt als een veld leeg is, dus die regel wordt
+     hier één keer samengesteld. Precies de samenstelling die cardOf() in
+     scripts/build-horses.mjs doet, met dezelfde gelichte helpers; controle 5
+     leest de archiefpagina's terug en bewijst dat ze gelijk zijn. */
+  meta_line: (h.category === 'foal'
+    /* De veulenkaart draagt het jaar in zijn eigen badge, dus die regel begint
+       bij het geslacht. Verder dezelfde onderdelen in dezelfde volgorde. */
+    ? [SEX(h), h.studbook || '',
+       (h.sold && h.country) ? 'Sold to ' + (COUNTRY[h.country] || h.country) : '']
+    : [
+        h.year ? 'Born ' + bornYear(h) : '',
+        SEX(h),
+        h.studbook || '',
+        (h.sold && h.country) ? 'Sold to ' + (COUNTRY[h.country] || h.country) : '',
+      ]).filter(Boolean).join(' \u00b7 '),
+  /* De badge over de foto. Een veulen dat te koop is draagt "Available", een
+     verkocht paard het land. Dat staat nergens als één veld, en Elementor kan
+     "Sold to " + land niet met een lege staat combineren. */
+  status_line: (h.sold && h.country)
+    ? 'Sold to ' + (COUNTRY[h.country] || h.country)
+    : (h.sold ? 'Sold' : 'Available'),
+  /* Het plaatje op de badge is de klant zijn eigen vraag: een sneeuwvlok bij
+     bevroren, een zandloper bij dragend. \uFE0E houdt het een letterteken en
+     geen kleurenemoji, zodat het naast de tekst niet uit de regel springt. */
+  stage_badge: isFrozen(h)
+    ? '\u2744\uFE0E Frozen'
+    : (h.year ? '\u23F3\uFE0E Due ' + h.year : ''),
   /* De damline op een kruising is de fokregel min de eerste naam, precies zoals
      damlineOf() op de site hem samenstelt. */
   damline: horseName(theirWords((h.genetics || '').split(/\s+X\s+/i).slice(1).join(' x '))),
@@ -239,6 +268,8 @@ def paardrecord(h, videos):
         "height": h.get("height", ""),
         "sold": bool(h.get("sold")),
         "sold_to": c["country"],
+        "meta_line": c["meta_line"],
+        "status_line": c["status_line"],
         "horsetelex": c["telex"],
         "horsetelex_of": c["telex_of"],
         "body": html(h.get("body") or []),
@@ -280,6 +311,7 @@ def embryorecord(h, sirelijnen):
         "genetics": c["genetics"],
         "stage": "frozen" if bevroren else "carrying",
         "due_date": "" if bevroren else h.get("year", ""),
+        "stage_badge": c["stage_badge"],
         "horsetelex": c["telex"],
         "horsetelex_of": c["telex_of"],
         "sire_line": html([sirelijnen[vader.upper()]]) if vader.upper() in sirelijnen else "",
@@ -542,6 +574,38 @@ def controleer_tegen_site(payload):
     return n
 
 
+def controleer_de_kaarten(payload):
+    """De vijfde controle: de twee spiegelvelden tegen de archiefkaarten.
+
+    `meta_line` en `stage_badge` staan op geen enkele detailpagina — ze bestaan
+    alleen omdat de kaart op het archief ze afdrukt en Elementor vier velden
+    niet aaneen kan rijgen. Controle 4 leest de detailpagina's en kan ze dus
+    per definitie niet zien. Zonder deze controle zou een spiegel die
+    stilletjes iets anders samenstelt dan de kaart nergens opvallen: dat is
+    precies het gat dat bij het vorige project een hele categorie beeld miste.
+
+    Wat hij niet kan zien: of de spiegel op de WordPress-kaart even mooi
+    afbreekt als hier. Dat is een ontwerpvraag, geen gegevensvraag.
+    """
+    n = 0
+    for groep, map_ in GERENDERD.items():
+        pagina = ROOT / map_ / "index.html"
+        if not pagina.exists():
+            fout(f"{groep}: het archief {map_}/index.html bestaat niet")
+            continue
+        plat = _plat(pagina.read_text(encoding="utf-8"))
+        for r in payload[groep]:
+            for veld in ("meta_line", "status_line", "stage_badge"):
+                waarde = r["fields"].get(veld) or ""
+                if not waarde:
+                    continue
+                n += 1
+                if _plat(waarde) not in plat:
+                    fout(f"{groep}/{r['slug']}: {veld} \"{waarde}\" staat niet zo op "
+                         f"{map_}/index.html")
+    return n
+
+
 def verslag(payload):
     print("\ngeschreven:")
     for groep in payload:
@@ -650,6 +714,7 @@ def main():
 
     controleer(payload)
     cellen = controleer_tegen_site(payload)
+    kaarten = controleer_de_kaarten(payload)
 
     if fouten:
         print("BOUW GESTOPT, er is niets geschreven\n")
@@ -659,8 +724,9 @@ def main():
 
     schrijf(payload)
     verslag(payload)
-    print(f"\ngecontroleerd tegen de gerenderde site: {cellen} stamboomcellen "
-          f"en {sum(len(payload[g]) for g in GERENDERD)} titels, 0 afwijkingen")
+    print(f"\ngecontroleerd tegen de gerenderde site: {cellen} waarden en "
+          f"{sum(len(payload[g]) for g in GERENDERD)} titels op de detailpagina's, "
+          f"{kaarten} spiegelwaarden op de archiefkaarten, 0 afwijkingen")
     return 0
 
 

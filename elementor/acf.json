@@ -1,0 +1,936 @@
+{
+    "post_types": {
+        "sport_horse": {
+            "key": "sva_sport_horse",
+            "archive": true,
+            "label": "Sport horses"
+        },
+        "breeding_mare": {
+            "key": "sva_breeding_mare",
+            "archive": true,
+            "label": "Breeding mares"
+        },
+        "foal": {
+            "key": "sva_foal",
+            "archive": true,
+            "label": "Foals"
+        },
+        "embryo": {
+            "key": "sva_embryo",
+            "archive": true,
+            "label": "Embryos"
+        },
+        "icsi_stallion": {
+            "key": "sva_icsi_stallion",
+            "archive": true,
+            "label": "ICSI semen"
+        },
+        "news_item": {
+            "key": "sva_news_item",
+            "archive": true,
+            "label": "News"
+        },
+        "partner": {
+            "key": "sva_partner",
+            "archive": false,
+            "label": "Partners"
+        }
+    },
+    "taxonomies": {
+        "availability": {
+            "key": "sva_availability",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal"
+            ]
+        },
+        "embryo_stage": {
+            "key": "sva_embryo_stage",
+            "on": [
+                "embryo"
+            ]
+        },
+        "horse_sex": {
+            "key": "sva_horse_sex",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal"
+            ]
+        },
+        "studbook": {
+            "key": "sva_studbook",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal",
+                "icsi_stallion"
+            ]
+        },
+        "birth_year": {
+            "key": "sva_birth_year",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal"
+            ]
+        },
+        "sire": {
+            "key": "sva_sire",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal",
+                "embryo",
+                "icsi_stallion"
+            ]
+        },
+        "sold_to": {
+            "key": "sva_sold_to",
+            "on": [
+                "sport_horse",
+                "breeding_mare",
+                "foal"
+            ]
+        }
+    },
+    "groups": {
+        "group_sva_sport_horse": {
+            "post_types": [
+                "sport_horse"
+            ],
+            "title": "Sport horse",
+            "fields": {
+                "tagline": {
+                    "key": "field_sva_sp_tagline",
+                    "type": "text",
+                    "label": "Tagline"
+                },
+                "genetics": {
+                    "key": "field_sva_sp_genetics",
+                    "type": "text",
+                    "label": "Breeding line"
+                },
+                "sex": {
+                    "key": "field_sva_sp_sex",
+                    "type": "text",
+                    "label": "Sex"
+                },
+                "year_of_birth": {
+                    "key": "field_sva_sp_year_of_birth",
+                    "type": "text",
+                    "label": "Year of birth"
+                },
+                "studbook": {
+                    "key": "field_sva_sp_studbook",
+                    "type": "text",
+                    "label": "Studbook"
+                },
+                "height": {
+                    "key": "field_sva_sp_height",
+                    "type": "text",
+                    "label": "Height"
+                },
+                "sold": {
+                    "key": "field_sva_sp_sold",
+                    "type": "true_false",
+                    "label": "Sold"
+                },
+                "sold_to": {
+                    "key": "field_sva_sp_sold_to",
+                    "type": "text",
+                    "label": "Sold to"
+                },
+                "horsetelex": {
+                    "key": "field_sva_sp_horsetelex",
+                    "type": "url",
+                    "label": "Horsetelex"
+                },
+                "horsetelex_of": {
+                    "key": "field_sva_sp_horsetelex_of",
+                    "type": "text",
+                    "label": "The link belongs to"
+                },
+                "meta_line": {
+                    "key": "field_sva_sp_meta_line",
+                    "type": "text",
+                    "label": "Card line"
+                },
+                "status_line": {
+                    "key": "field_sva_sp_status_line",
+                    "type": "text",
+                    "label": "Status badge"
+                },
+                "sire": {
+                    "key": "field_sva_sp_sire",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam": {
+                    "key": "field_sva_sp_dam",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "sire_sire": {
+                    "key": "field_sva_sp_sire_sire",
+                    "type": "text",
+                    "label": "Sire's sire"
+                },
+                "sire_dam": {
+                    "key": "field_sva_sp_sire_dam",
+                    "type": "text",
+                    "label": "Sire's dam"
+                },
+                "dam_sire": {
+                    "key": "field_sva_sp_dam_sire",
+                    "type": "text",
+                    "label": "Dam's sire"
+                },
+                "dam_dam": {
+                    "key": "field_sva_sp_dam_dam",
+                    "type": "text",
+                    "label": "Dam's dam"
+                },
+                "gp_1": {
+                    "key": "field_sva_sp_gp_1",
+                    "type": "text",
+                    "label": "Sire's sire's sire"
+                },
+                "gp_2": {
+                    "key": "field_sva_sp_gp_2",
+                    "type": "text",
+                    "label": "Sire's sire's dam"
+                },
+                "gp_3": {
+                    "key": "field_sva_sp_gp_3",
+                    "type": "text",
+                    "label": "Sire's dam's sire"
+                },
+                "gp_4": {
+                    "key": "field_sva_sp_gp_4",
+                    "type": "text",
+                    "label": "Sire's dam's dam"
+                },
+                "gp_5": {
+                    "key": "field_sva_sp_gp_5",
+                    "type": "text",
+                    "label": "Dam's sire's sire"
+                },
+                "gp_6": {
+                    "key": "field_sva_sp_gp_6",
+                    "type": "text",
+                    "label": "Dam's sire's dam"
+                },
+                "gp_7": {
+                    "key": "field_sva_sp_gp_7",
+                    "type": "text",
+                    "label": "Dam's dam's sire"
+                },
+                "gp_8": {
+                    "key": "field_sva_sp_gp_8",
+                    "type": "text",
+                    "label": "Dam's dam's dam"
+                },
+                "body": {
+                    "key": "field_sva_sp_body",
+                    "type": "wysiwyg",
+                    "label": "Story"
+                },
+                "gallery": {
+                    "key": "field_sva_sp_gallery",
+                    "type": "gallery",
+                    "label": "Photographs"
+                },
+                "video_1_id": {
+                    "key": "field_sva_sp_video_1_id",
+                    "type": "text",
+                    "label": "First video"
+                },
+                "videos": {
+                    "key": "field_sva_sp_videos",
+                    "type": "repeater",
+                    "label": "All videos"
+                },
+                "source": {
+                    "key": "field_sva_sp_source",
+                    "type": "text",
+                    "label": "Where this came from"
+                }
+            }
+        },
+        "group_sva_breeding_mare": {
+            "post_types": [
+                "breeding_mare"
+            ],
+            "title": "Breeding mare",
+            "fields": {
+                "tagline": {
+                    "key": "field_sva_bm_tagline",
+                    "type": "text",
+                    "label": "Tagline"
+                },
+                "genetics": {
+                    "key": "field_sva_bm_genetics",
+                    "type": "text",
+                    "label": "Breeding line"
+                },
+                "sex": {
+                    "key": "field_sva_bm_sex",
+                    "type": "text",
+                    "label": "Sex"
+                },
+                "year_of_birth": {
+                    "key": "field_sva_bm_year_of_birth",
+                    "type": "text",
+                    "label": "Year of birth"
+                },
+                "studbook": {
+                    "key": "field_sva_bm_studbook",
+                    "type": "text",
+                    "label": "Studbook"
+                },
+                "height": {
+                    "key": "field_sva_bm_height",
+                    "type": "text",
+                    "label": "Height"
+                },
+                "sold": {
+                    "key": "field_sva_bm_sold",
+                    "type": "true_false",
+                    "label": "Sold"
+                },
+                "sold_to": {
+                    "key": "field_sva_bm_sold_to",
+                    "type": "text",
+                    "label": "Sold to"
+                },
+                "horsetelex": {
+                    "key": "field_sva_bm_horsetelex",
+                    "type": "url",
+                    "label": "Horsetelex"
+                },
+                "horsetelex_of": {
+                    "key": "field_sva_bm_horsetelex_of",
+                    "type": "text",
+                    "label": "The link belongs to"
+                },
+                "meta_line": {
+                    "key": "field_sva_bm_meta_line",
+                    "type": "text",
+                    "label": "Card line"
+                },
+                "status_line": {
+                    "key": "field_sva_bm_status_line",
+                    "type": "text",
+                    "label": "Status badge"
+                },
+                "sire": {
+                    "key": "field_sva_bm_sire",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam": {
+                    "key": "field_sva_bm_dam",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "sire_sire": {
+                    "key": "field_sva_bm_sire_sire",
+                    "type": "text",
+                    "label": "Sire's sire"
+                },
+                "sire_dam": {
+                    "key": "field_sva_bm_sire_dam",
+                    "type": "text",
+                    "label": "Sire's dam"
+                },
+                "dam_sire": {
+                    "key": "field_sva_bm_dam_sire",
+                    "type": "text",
+                    "label": "Dam's sire"
+                },
+                "dam_dam": {
+                    "key": "field_sva_bm_dam_dam",
+                    "type": "text",
+                    "label": "Dam's dam"
+                },
+                "gp_1": {
+                    "key": "field_sva_bm_gp_1",
+                    "type": "text",
+                    "label": "Sire's sire's sire"
+                },
+                "gp_2": {
+                    "key": "field_sva_bm_gp_2",
+                    "type": "text",
+                    "label": "Sire's sire's dam"
+                },
+                "gp_3": {
+                    "key": "field_sva_bm_gp_3",
+                    "type": "text",
+                    "label": "Sire's dam's sire"
+                },
+                "gp_4": {
+                    "key": "field_sva_bm_gp_4",
+                    "type": "text",
+                    "label": "Sire's dam's dam"
+                },
+                "gp_5": {
+                    "key": "field_sva_bm_gp_5",
+                    "type": "text",
+                    "label": "Dam's sire's sire"
+                },
+                "gp_6": {
+                    "key": "field_sva_bm_gp_6",
+                    "type": "text",
+                    "label": "Dam's sire's dam"
+                },
+                "gp_7": {
+                    "key": "field_sva_bm_gp_7",
+                    "type": "text",
+                    "label": "Dam's dam's sire"
+                },
+                "gp_8": {
+                    "key": "field_sva_bm_gp_8",
+                    "type": "text",
+                    "label": "Dam's dam's dam"
+                },
+                "body": {
+                    "key": "field_sva_bm_body",
+                    "type": "wysiwyg",
+                    "label": "Story"
+                },
+                "gallery": {
+                    "key": "field_sva_bm_gallery",
+                    "type": "gallery",
+                    "label": "Photographs"
+                },
+                "video_1_id": {
+                    "key": "field_sva_bm_video_1_id",
+                    "type": "text",
+                    "label": "First video"
+                },
+                "videos": {
+                    "key": "field_sva_bm_videos",
+                    "type": "repeater",
+                    "label": "All videos"
+                },
+                "source": {
+                    "key": "field_sva_bm_source",
+                    "type": "text",
+                    "label": "Where this came from"
+                }
+            }
+        },
+        "group_sva_foal": {
+            "post_types": [
+                "foal"
+            ],
+            "title": "Foal",
+            "fields": {
+                "tagline": {
+                    "key": "field_sva_fo_tagline",
+                    "type": "text",
+                    "label": "Tagline"
+                },
+                "genetics": {
+                    "key": "field_sva_fo_genetics",
+                    "type": "text",
+                    "label": "Breeding line"
+                },
+                "sex": {
+                    "key": "field_sva_fo_sex",
+                    "type": "text",
+                    "label": "Sex"
+                },
+                "year_of_birth": {
+                    "key": "field_sva_fo_year_of_birth",
+                    "type": "text",
+                    "label": "Year of birth"
+                },
+                "studbook": {
+                    "key": "field_sva_fo_studbook",
+                    "type": "text",
+                    "label": "Studbook"
+                },
+                "height": {
+                    "key": "field_sva_fo_height",
+                    "type": "text",
+                    "label": "Height"
+                },
+                "sold": {
+                    "key": "field_sva_fo_sold",
+                    "type": "true_false",
+                    "label": "Sold"
+                },
+                "sold_to": {
+                    "key": "field_sva_fo_sold_to",
+                    "type": "text",
+                    "label": "Sold to"
+                },
+                "horsetelex": {
+                    "key": "field_sva_fo_horsetelex",
+                    "type": "url",
+                    "label": "Horsetelex"
+                },
+                "horsetelex_of": {
+                    "key": "field_sva_fo_horsetelex_of",
+                    "type": "text",
+                    "label": "The link belongs to"
+                },
+                "meta_line": {
+                    "key": "field_sva_fo_meta_line",
+                    "type": "text",
+                    "label": "Card line"
+                },
+                "status_line": {
+                    "key": "field_sva_fo_status_line",
+                    "type": "text",
+                    "label": "Status badge"
+                },
+                "sire": {
+                    "key": "field_sva_fo_sire",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam": {
+                    "key": "field_sva_fo_dam",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "sire_sire": {
+                    "key": "field_sva_fo_sire_sire",
+                    "type": "text",
+                    "label": "Sire's sire"
+                },
+                "sire_dam": {
+                    "key": "field_sva_fo_sire_dam",
+                    "type": "text",
+                    "label": "Sire's dam"
+                },
+                "dam_sire": {
+                    "key": "field_sva_fo_dam_sire",
+                    "type": "text",
+                    "label": "Dam's sire"
+                },
+                "dam_dam": {
+                    "key": "field_sva_fo_dam_dam",
+                    "type": "text",
+                    "label": "Dam's dam"
+                },
+                "gp_1": {
+                    "key": "field_sva_fo_gp_1",
+                    "type": "text",
+                    "label": "Sire's sire's sire"
+                },
+                "gp_2": {
+                    "key": "field_sva_fo_gp_2",
+                    "type": "text",
+                    "label": "Sire's sire's dam"
+                },
+                "gp_3": {
+                    "key": "field_sva_fo_gp_3",
+                    "type": "text",
+                    "label": "Sire's dam's sire"
+                },
+                "gp_4": {
+                    "key": "field_sva_fo_gp_4",
+                    "type": "text",
+                    "label": "Sire's dam's dam"
+                },
+                "gp_5": {
+                    "key": "field_sva_fo_gp_5",
+                    "type": "text",
+                    "label": "Dam's sire's sire"
+                },
+                "gp_6": {
+                    "key": "field_sva_fo_gp_6",
+                    "type": "text",
+                    "label": "Dam's sire's dam"
+                },
+                "gp_7": {
+                    "key": "field_sva_fo_gp_7",
+                    "type": "text",
+                    "label": "Dam's dam's sire"
+                },
+                "gp_8": {
+                    "key": "field_sva_fo_gp_8",
+                    "type": "text",
+                    "label": "Dam's dam's dam"
+                },
+                "body": {
+                    "key": "field_sva_fo_body",
+                    "type": "wysiwyg",
+                    "label": "Story"
+                },
+                "gallery": {
+                    "key": "field_sva_fo_gallery",
+                    "type": "gallery",
+                    "label": "Photographs"
+                },
+                "video_1_id": {
+                    "key": "field_sva_fo_video_1_id",
+                    "type": "text",
+                    "label": "First video"
+                },
+                "videos": {
+                    "key": "field_sva_fo_videos",
+                    "type": "repeater",
+                    "label": "All videos"
+                },
+                "source": {
+                    "key": "field_sva_fo_source",
+                    "type": "text",
+                    "label": "Where this came from"
+                }
+            }
+        },
+        "group_sva_embryo": {
+            "post_types": [
+                "embryo"
+            ],
+            "title": "Embryo",
+            "fields": {
+                "sire_name": {
+                    "key": "field_sva_em_sire_name",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam_name": {
+                    "key": "field_sva_em_dam_name",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "tagline": {
+                    "key": "field_sva_em_tagline",
+                    "type": "text",
+                    "label": "Tagline"
+                },
+                "genetics": {
+                    "key": "field_sva_em_genetics",
+                    "type": "text",
+                    "label": "Breeding line"
+                },
+                "stage": {
+                    "key": "field_sva_em_stage",
+                    "type": "select",
+                    "label": "Stage"
+                },
+                "due_date": {
+                    "key": "field_sva_em_due_date",
+                    "type": "text",
+                    "label": "Due date"
+                },
+                "horsetelex": {
+                    "key": "field_sva_em_horsetelex",
+                    "type": "url",
+                    "label": "Horsetelex"
+                },
+                "horsetelex_of": {
+                    "key": "field_sva_em_horsetelex_of",
+                    "type": "text",
+                    "label": "The link belongs to"
+                },
+                "stage_badge": {
+                    "key": "field_sva_em_stage_badge",
+                    "type": "text",
+                    "label": "Stage badge"
+                },
+                "sire": {
+                    "key": "field_sva_em_sire",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam": {
+                    "key": "field_sva_em_dam",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "sire_sire": {
+                    "key": "field_sva_em_sire_sire",
+                    "type": "text",
+                    "label": "Sire's sire"
+                },
+                "sire_dam": {
+                    "key": "field_sva_em_sire_dam",
+                    "type": "text",
+                    "label": "Sire's dam"
+                },
+                "dam_sire": {
+                    "key": "field_sva_em_dam_sire",
+                    "type": "text",
+                    "label": "Dam's sire"
+                },
+                "dam_dam": {
+                    "key": "field_sva_em_dam_dam",
+                    "type": "text",
+                    "label": "Dam's dam"
+                },
+                "gp_1": {
+                    "key": "field_sva_em_gp_1",
+                    "type": "text",
+                    "label": "Sire's sire's sire"
+                },
+                "gp_2": {
+                    "key": "field_sva_em_gp_2",
+                    "type": "text",
+                    "label": "Sire's sire's dam"
+                },
+                "gp_3": {
+                    "key": "field_sva_em_gp_3",
+                    "type": "text",
+                    "label": "Sire's dam's sire"
+                },
+                "gp_4": {
+                    "key": "field_sva_em_gp_4",
+                    "type": "text",
+                    "label": "Sire's dam's dam"
+                },
+                "gp_5": {
+                    "key": "field_sva_em_gp_5",
+                    "type": "text",
+                    "label": "Dam's sire's sire"
+                },
+                "gp_6": {
+                    "key": "field_sva_em_gp_6",
+                    "type": "text",
+                    "label": "Dam's sire's dam"
+                },
+                "gp_7": {
+                    "key": "field_sva_em_gp_7",
+                    "type": "text",
+                    "label": "Dam's dam's sire"
+                },
+                "gp_8": {
+                    "key": "field_sva_em_gp_8",
+                    "type": "text",
+                    "label": "Dam's dam's dam"
+                },
+                "sire_line": {
+                    "key": "field_sva_em_sire_line",
+                    "type": "wysiwyg",
+                    "label": "Sire line"
+                },
+                "dam_line": {
+                    "key": "field_sva_em_dam_line",
+                    "type": "wysiwyg",
+                    "label": "Dam line"
+                },
+                "gallery": {
+                    "key": "field_sva_em_gallery",
+                    "type": "gallery",
+                    "label": "Photographs"
+                },
+                "source": {
+                    "key": "field_sva_em_source",
+                    "type": "text",
+                    "label": "Where this came from"
+                }
+            }
+        },
+        "group_sva_icsi_stallion": {
+            "post_types": [
+                "icsi_stallion"
+            ],
+            "title": "ICSI stallion",
+            "fields": {
+                "genetics": {
+                    "key": "field_sva_st_genetics",
+                    "type": "text",
+                    "label": "Breeding line"
+                },
+                "year_of_birth": {
+                    "key": "field_sva_st_year_of_birth",
+                    "type": "text",
+                    "label": "Year of birth"
+                },
+                "studbook": {
+                    "key": "field_sva_st_studbook",
+                    "type": "text",
+                    "label": "Studbook"
+                },
+                "availability": {
+                    "key": "field_sva_st_availability",
+                    "type": "text",
+                    "label": "Availability"
+                },
+                "crowned": {
+                    "key": "field_sva_st_crowned",
+                    "type": "true_false",
+                    "label": "Crowned"
+                },
+                "horsetelex": {
+                    "key": "field_sva_st_horsetelex",
+                    "type": "url",
+                    "label": "Horsetelex"
+                },
+                "horsetelex_of": {
+                    "key": "field_sva_st_horsetelex_of",
+                    "type": "text",
+                    "label": "The link belongs to"
+                },
+                "sire": {
+                    "key": "field_sva_st_sire",
+                    "type": "text",
+                    "label": "Sire"
+                },
+                "dam": {
+                    "key": "field_sva_st_dam",
+                    "type": "text",
+                    "label": "Dam"
+                },
+                "sire_sire": {
+                    "key": "field_sva_st_sire_sire",
+                    "type": "text",
+                    "label": "Sire's sire"
+                },
+                "sire_dam": {
+                    "key": "field_sva_st_sire_dam",
+                    "type": "text",
+                    "label": "Sire's dam"
+                },
+                "dam_sire": {
+                    "key": "field_sva_st_dam_sire",
+                    "type": "text",
+                    "label": "Dam's sire"
+                },
+                "dam_dam": {
+                    "key": "field_sva_st_dam_dam",
+                    "type": "text",
+                    "label": "Dam's dam"
+                },
+                "gp_1": {
+                    "key": "field_sva_st_gp_1",
+                    "type": "text",
+                    "label": "Sire's sire's sire"
+                },
+                "gp_2": {
+                    "key": "field_sva_st_gp_2",
+                    "type": "text",
+                    "label": "Sire's sire's dam"
+                },
+                "gp_3": {
+                    "key": "field_sva_st_gp_3",
+                    "type": "text",
+                    "label": "Sire's dam's sire"
+                },
+                "gp_4": {
+                    "key": "field_sva_st_gp_4",
+                    "type": "text",
+                    "label": "Sire's dam's dam"
+                },
+                "gp_5": {
+                    "key": "field_sva_st_gp_5",
+                    "type": "text",
+                    "label": "Dam's sire's sire"
+                },
+                "gp_6": {
+                    "key": "field_sva_st_gp_6",
+                    "type": "text",
+                    "label": "Dam's sire's dam"
+                },
+                "gp_7": {
+                    "key": "field_sva_st_gp_7",
+                    "type": "text",
+                    "label": "Dam's dam's sire"
+                },
+                "gp_8": {
+                    "key": "field_sva_st_gp_8",
+                    "type": "text",
+                    "label": "Dam's dam's dam"
+                },
+                "body": {
+                    "key": "field_sva_st_body",
+                    "type": "wysiwyg",
+                    "label": "Story"
+                },
+                "source_text": {
+                    "key": "field_sva_st_source_text",
+                    "type": "text",
+                    "label": "Sources"
+                },
+                "crosses": {
+                    "key": "field_sva_st_crosses",
+                    "type": "relationship",
+                    "label": "Bred with him"
+                },
+                "gallery": {
+                    "key": "field_sva_st_gallery",
+                    "type": "gallery",
+                    "label": "Photographs"
+                }
+            }
+        },
+        "group_sva_news_item": {
+            "post_types": [
+                "news_item"
+            ],
+            "title": "News report",
+            "fields": {
+                "eyebrow": {
+                    "key": "field_sva_nw_eyebrow",
+                    "type": "text",
+                    "label": "Eyebrow"
+                },
+                "excerpt": {
+                    "key": "field_sva_nw_excerpt",
+                    "type": "textarea",
+                    "label": "Excerpt"
+                },
+                "body": {
+                    "key": "field_sva_nw_body",
+                    "type": "wysiwyg",
+                    "label": "Body"
+                },
+                "body_it": {
+                    "key": "field_sva_nw_body_it",
+                    "type": "wysiwyg",
+                    "label": "Body, Italian"
+                },
+                "focus": {
+                    "key": "field_sva_nw_focus",
+                    "type": "text",
+                    "label": "Focus point"
+                },
+                "is_placeholder": {
+                    "key": "field_sva_nw_is_placeholder",
+                    "type": "true_false",
+                    "label": "Photograph is a stand in"
+                },
+                "title_original": {
+                    "key": "field_sva_nw_title_original",
+                    "type": "text",
+                    "label": "Their own headline"
+                },
+                "source_url": {
+                    "key": "field_sva_nw_source_url",
+                    "type": "url",
+                    "label": "Where this came from"
+                }
+            }
+        },
+        "group_sva_partner": {
+            "post_types": [
+                "partner"
+            ],
+            "title": "Partner",
+            "fields": {
+                "logo": {
+                    "key": "field_sva_pa_logo",
+                    "type": "image",
+                    "label": "Logo"
+                },
+                "website": {
+                    "key": "field_sva_pa_website",
+                    "type": "url",
+                    "label": "Website"
+                },
+                "blurb": {
+                    "key": "field_sva_pa_blurb",
+                    "type": "textarea",
+                    "label": "One line"
+                }
+            }
+        }
+    }
+}

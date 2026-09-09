@@ -1,0 +1,410 @@
+{
+ "page_settings": {
+  "system_colors": [
+   {
+    "_id": "primary",
+    "title": "Navy",
+    "color": "#0d1d36"
+   },
+   {
+    "_id": "secondary",
+    "title": "Ink",
+    "color": "#14202e"
+   },
+   {
+    "_id": "text",
+    "title": "Ink soft",
+    "color": "#4d5761"
+   },
+   {
+    "_id": "accent",
+    "title": "Gold",
+    "color": "#b59148"
+   }
+  ],
+  "custom_colors": [
+   {
+    "_id": "sva_navy_deep",
+    "title": "Navy deep",
+    "color": "#0a1526"
+   },
+   {
+    "_id": "sva_navy_soft",
+    "title": "Navy soft",
+    "color": "#2c4468"
+   },
+   {
+    "_id": "sva_base",
+    "title": "Base",
+    "color": "#faf7f2"
+   },
+   {
+    "_id": "sva_base_alt",
+    "title": "Base alt",
+    "color": "#f1ebe0"
+   },
+   {
+    "_id": "sva_gold_text",
+    "title": "Gold on light",
+    "color": "#8a6d2f"
+   },
+   {
+    "_id": "sva_gold_lift",
+    "title": "Gold lift",
+    "color": "#c9a86a"
+   },
+   {
+    "_id": "sva_white",
+    "title": "White",
+    "color": "#ffffff"
+   },
+   {
+    "_id": "sva_line",
+    "title": "Line",
+    "color": "rgba(20,32,46,.12)"
+   },
+   {
+    "_id": "sva_line_invert",
+    "title": "Line on dark",
+    "color": "rgba(255,255,255,.17)"
+   }
+  ],
+  "system_typography": [
+   {
+    "_id": "primary",
+    "title": "Heading",
+    "typography_typography": "custom",
+    "typography_font_family": "Fraunces",
+    "typography_font_weight": "400",
+    "typography_font_size": {
+     "unit": "px",
+     "size": 51,
+     "sizes": []
+    },
+    "typography_font_size_mobile": {
+     "unit": "px",
+     "size": 32,
+     "sizes": []
+    },
+    "typography_letter_spacing": {
+     "unit": "px",
+     "size": -1.02,
+     "sizes": []
+    }
+   },
+   {
+    "_id": "secondary",
+    "title": "Heading italic",
+    "typography_typography": "custom",
+    "typography_font_family": "Fraunces",
+    "typography_font_weight": "400",
+    "typography_font_size": {
+     "unit": "px",
+     "size": 51,
+     "sizes": []
+    },
+    "typography_font_size_mobile": {
+     "unit": "px",
+     "size": 32,
+     "sizes": []
+    },
+    "typography_letter_spacing": {
+     "unit": "px",
+     "size": -1.02,
+     "sizes": []
+    },
+    "typography_font_style": "italic"
+   },
+   {
+    "_id": "text",
+    "title": "Body",
+    "typography_typography": "custom",
+    "typography_font_family": "Manrope",
+    "typography_font_weight": "400",
+    "typography_font_size": {
+     "unit": "px",
+     "size": 18,
+     "sizes": []
+    },
+    "typography_font_size_mobile": {
+     "unit": "px",
+     "size": 18,
+     "sizes": []
+    },
+    "typography_letter_spacing": {
+     "unit": "px",
+     "size": 0,
+     "sizes": []
+    }
+   },
+   {
+    "_id": "accent",
+    "title": "Eyebrow",
+    "typography_typography": "custom",
+    "typography_font_family": "Manrope",
+    "typography_font_weight": "700",
+    "typography_font_size": {
+     "unit": "px",
+     "size": 11,
+     "sizes": []
+    },
+    "typography_font_size_mobile": {
+     "unit": "px",
+     "size": 11,
+     "sizes": []
+    },
+    "typography_letter_spacing": {
+     "unit": "px",
+     "size": 2.42,
+     "sizes": []
+    },
+    "typography_text_transform": "uppercase"
+   }
+  ],
+  "container_width": {
+   "unit": "px",
+   "size": 1280,
+   "sizes": []
+  },
+  "space_between_widgets": {
+   "unit": "px",
+   "size": 20,
+   "sizes": []
+  },
+  "active_breakpoints": [
+   "viewport_mobile",
+   "viewport_tablet"
+  ],
+  "viewport_tablet": 1140,
+  "viewport_mobile": 767,
+  "page_title_selector": "h1.entry-title",
+  "activeItemIndex": 1,
+  "custom_css": "/* de menubalk zweeft over de pagina; zonder deze marge landt een anker uit\n   het menu of de footer met zijn kop onder die balk */\n[id]{scroll-margin-top:104px}\n\n/* alle koppen in de schreefletter, ook binnen een widget die zijn eigen kop\n   meebrengt, zoals een loop item of de titel van een archief */\n.elementor-widget-heading .elementor-heading-title,\n.elementor-widget-theme-post-title .elementor-heading-title{\n  font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.02em}\n\n/* een kaart mag bij het aanwijzen optillen zonder dat de sectie hem afsnijdt */\n.elementor-loop-container .e-loop-item{transition:transform .3s}\n.elementor-loop-container .e-loop-item:hover{transform:translateY(-4px)}\n\n/* de rails: horizontaal scrollen met snap, en geen scrollbalk in beeld.\n   Dit is de enige plek waar het staat; de vier rails delen het. */\n.sva-rail{overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;\n  scrollbar-width:none}\n.sva-rail::-webkit-scrollbar{display:none}\n.sva-rail>*{scroll-snap-align:start}\n\n/* een lege pijl is geen pijl: uitgeschakeld leest hij als uitgeschakeld */\n.sva-arrow[disabled]{opacity:.32;cursor:default}",
+  "body_typography_typography": "custom",
+  "body_typography_font_family": "Manrope",
+  "body_typography_font_size": {
+   "unit": "px",
+   "size": 18,
+   "sizes": []
+  },
+  "body_typography_font_weight": "400",
+  "body_typography_line_height": {
+   "unit": "em",
+   "size": 1.65,
+   "sizes": []
+  },
+  "body_color": "#14202e",
+  "link_normal_color": "#8a6d2f",
+  "link_hover_color": "#0d1d36",
+  "h1_typography_typography": "custom",
+  "h1_typography_font_family": "Fraunces",
+  "h1_typography_font_weight": "400",
+  "h1_typography_font_size": {
+   "unit": "px",
+   "size": 48,
+   "sizes": []
+  },
+  "h1_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 42,
+   "sizes": []
+  },
+  "h1_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 32,
+   "sizes": []
+  },
+  "h1_typography_letter_spacing": {
+   "unit": "px",
+   "size": -0.96,
+   "sizes": []
+  },
+  "h1_typography_line_height": {
+   "unit": "em",
+   "size": 1.04,
+   "sizes": []
+  },
+  "h1_color": "#14202e",
+  "h2_typography_typography": "custom",
+  "h2_typography_font_family": "Fraunces",
+  "h2_typography_font_weight": "400",
+  "h2_typography_font_size": {
+   "unit": "px",
+   "size": 51,
+   "sizes": []
+  },
+  "h2_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 42,
+   "sizes": []
+  },
+  "h2_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 32,
+   "sizes": []
+  },
+  "h2_typography_letter_spacing": {
+   "unit": "px",
+   "size": -1.02,
+   "sizes": []
+  },
+  "h2_typography_line_height": {
+   "unit": "em",
+   "size": 1.04,
+   "sizes": []
+  },
+  "h2_color": "#14202e",
+  "h3_typography_typography": "custom",
+  "h3_typography_font_family": "Fraunces",
+  "h3_typography_font_weight": "400",
+  "h3_typography_font_size": {
+   "unit": "px",
+   "size": 21,
+   "sizes": []
+  },
+  "h3_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 19,
+   "sizes": []
+  },
+  "h3_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 18,
+   "sizes": []
+  },
+  "h3_typography_letter_spacing": {
+   "unit": "px",
+   "size": -0.42,
+   "sizes": []
+  },
+  "h3_typography_line_height": {
+   "unit": "em",
+   "size": 1.15,
+   "sizes": []
+  },
+  "h3_color": "#14202e",
+  "h4_typography_typography": "custom",
+  "h4_typography_font_family": "Fraunces",
+  "h4_typography_font_weight": "400",
+  "h4_typography_font_size": {
+   "unit": "px",
+   "size": 18,
+   "sizes": []
+  },
+  "h4_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 17,
+   "sizes": []
+  },
+  "h4_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 16,
+   "sizes": []
+  },
+  "h4_typography_letter_spacing": {
+   "unit": "px",
+   "size": -0.36,
+   "sizes": []
+  },
+  "h4_typography_line_height": {
+   "unit": "em",
+   "size": 1.15,
+   "sizes": []
+  },
+  "h4_color": "#14202e",
+  "h5_typography_typography": "custom",
+  "h5_typography_font_family": "Fraunces",
+  "h5_typography_font_weight": "400",
+  "h5_typography_font_size": {
+   "unit": "px",
+   "size": 15,
+   "sizes": []
+  },
+  "h5_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 15,
+   "sizes": []
+  },
+  "h5_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 15,
+   "sizes": []
+  },
+  "h5_typography_letter_spacing": {
+   "unit": "px",
+   "size": -0.3,
+   "sizes": []
+  },
+  "h5_typography_line_height": {
+   "unit": "em",
+   "size": 1.15,
+   "sizes": []
+  },
+  "h5_color": "#14202e",
+  "h6_typography_typography": "custom",
+  "h6_typography_font_family": "Fraunces",
+  "h6_typography_font_weight": "400",
+  "h6_typography_font_size": {
+   "unit": "px",
+   "size": 13,
+   "sizes": []
+  },
+  "h6_typography_font_size_tablet": {
+   "unit": "px",
+   "size": 13,
+   "sizes": []
+  },
+  "h6_typography_font_size_mobile": {
+   "unit": "px",
+   "size": 13,
+   "sizes": []
+  },
+  "h6_typography_letter_spacing": {
+   "unit": "px",
+   "size": -0.26,
+   "sizes": []
+  },
+  "h6_typography_line_height": {
+   "unit": "em",
+   "size": 1.15,
+   "sizes": []
+  },
+  "h6_color": "#14202e",
+  "button_typography_typography": "custom",
+  "button_typography_font_family": "Manrope",
+  "button_typography_font_size": {
+   "unit": "px",
+   "size": 12.5,
+   "sizes": []
+  },
+  "button_typography_font_weight": "700",
+  "button_typography_letter_spacing": {
+   "unit": "px",
+   "size": 1.25,
+   "sizes": []
+  },
+  "button_background_color": "#b59148",
+  "button_text_color": "#0a1526",
+  "button_hover_background_color": "#c9a86a",
+  "button_hover_text_color": "#0a1526",
+  "button_border_radius": {
+   "unit": "px",
+   "top": "999",
+   "right": "999",
+   "bottom": "999",
+   "left": "999",
+   "isLinked": true
+  },
+  "button_padding": {
+   "unit": "px",
+   "top": "12",
+   "right": "20",
+   "bottom": "12",
+   "left": "20",
+   "isLinked": false
+  }
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — Site settings",
+ "type": "kit"
+}

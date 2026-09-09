@@ -1,0 +1,2663 @@
+{
+ "content": [
+  {
+   "id": "b34c9c06",
+   "settings": {
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/hero-jump.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "A horse and rider over a fence at Stud Von Axe",
+     "source": "library"
+    },
+    "background_position": "center 32%",
+    "background_size": "cover",
+    "min_height": {
+     "unit": "px",
+     "size": 760,
+     "sizes": []
+    },
+    "min_height_mobile": {
+     "unit": "px",
+     "size": 620,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "180",
+     "right": "40",
+     "bottom": "96",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "140",
+     "right": "20",
+     "bottom": "64",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "flex_justify_content": "flex-end",
+    "position": "relative",
+    "overflow": "hidden",
+    "_element_id": "top",
+    "css_classes": "sva-hero",
+    "custom_css": "selector{filter:none}selector::before{content:'';position:absolute;inset:0;z-index:0;background:inherit;background-size:cover;background-position:center 32%;filter:brightness(1.06) contrast(1.10) saturate(1.15)}selector::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13, 29, 54,.88) 0%,rgba(13, 29, 54,.88) 4%,rgba(13, 29, 54,.69) 11%,rgba(13, 29, 54,.40) 18%,rgba(13, 29, 54,.16) 25%,rgba(13, 29, 54,0) 30%,rgba(10, 21, 38,0) 46%,rgba(10, 21, 38,.30) 52%,rgba(10, 21, 38,.66) 58%,rgba(10, 21, 38,.88) 64%,rgba(10, 21, 38,.98) 74%,rgba(10, 21, 38,1) 84%)}"
+   },
+   "elements": [
+    {
+     "id": "fe839b89",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "z_index": 2,
+      "flex_gap": {
+       "column": "0",
+       "row": "16",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "68174829",
+       "settings": {
+        "title": "Foals &middot; Embryos &middot; ICSI semen",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "a358616e",
+       "settings": {
+        "title": "Bred for the biggest <span style=\"color:#b59148\">arenas</span>",
+        "header_size": "h1",
+        "title_color": "#ffffff",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 102,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 57,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 38,
+         "sizes": []
+        },
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.54,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 0.9,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "bd6c1794",
+       "settings": {
+        "editor": "<p>Foals, embryos and ICSI semen: the crosses made in Italy, the foals raised in Belgium, sold direct to breeders worldwide.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 640px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "29e1e36b",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "1b05c8db",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "ba0e4fc7",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "34",
+         "row": "34",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "cecf4a08",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 46,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "48405c1f",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/about-owners.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "Elisabetta and Adriano of Stud Von Axe",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 26px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "7ddf5b68",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 54,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "a681f508",
+           "settings": {
+            "title": "About Stud Von Axe",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "da0ff7d2",
+           "settings": {
+            "title": "The vision behind Stud Von Axe",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 51,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_font_size_tablet": {
+             "unit": "px",
+             "size": 42,
+             "sizes": []
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 32,
+             "sizes": []
+            },
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": -1.02,
+             "sizes": []
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.04,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "e9650bbb",
+           "settings": {
+            "editor": "<p>Over the years, we have carefully developed a select group of exceptional mares from some of the world's most distinguished dam lines. Every breeding decision reflects our passion for show jumping and our commitment to producing horses of the highest quality.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "8470be64",
+           "settings": {
+            "editor": "<p>By combining proven, high performing mares with carefully chosen stallions, we strive to produce modern sport horses with the talent, athleticism and pedigree required to succeed at the highest levels of international competition.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "4776f1c7",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "flex_gap": {
+             "column": "10",
+             "row": "10",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "flex_wrap": "wrap",
+            "padding": {
+             "unit": "px",
+             "top": "6",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": [
+            {
+             "id": "56cd1cbe",
+             "settings": {
+              "text": "About the stud &rarr;",
+              "link": {
+               "url": "/about/",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "border_radius": {
+               "unit": "px",
+               "top": "999",
+               "right": "999",
+               "bottom": "999",
+               "left": "999",
+               "isLinked": true
+              },
+              "text_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "button_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "hover_animation": "float",
+              "border_border": "solid",
+              "border_width": {
+               "unit": "px",
+               "top": "1",
+               "right": "1",
+               "bottom": "1",
+               "left": "1",
+               "isLinked": true
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12.5,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.25,
+               "sizes": []
+              },
+              "button_text_color": "#14202e",
+              "background_color": "rgba(0,0,0,0)",
+              "button_background_color": "rgba(0,0,0,0)",
+              "border_color": "rgba(20,32,46,.12)",
+              "button_background_hover_color": "#0d1d36",
+              "button_hover_border_color": "#0d1d36",
+              "button_text_color_hover": "#faf7f2"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "button",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "26257f16",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "389b46fb",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "5e505d69",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "center"
+       },
+       "elements": [
+        {
+         "id": "e607d9a8",
+         "settings": {
+          "title": "Every horse we have",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "1ada9762",
+         "settings": {
+          "title": "Five ways in",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "840a6471",
+       "settings": {
+        "tabs": [
+         {
+          "_id": "sport-horses",
+          "tab_title": "Sport horses"
+         },
+         {
+          "_id": "breeding-mares",
+          "tab_title": "Breeding mares"
+         },
+         {
+          "_id": "foals",
+          "tab_title": "Foals"
+         },
+         {
+          "_id": "embryos",
+          "tab_title": "Embryos"
+         },
+         {
+          "_id": "icsi-semen",
+          "tab_title": "ICSI semen"
+         }
+        ],
+        "_element_id": "sva-tabs",
+        "tabs_title_space_between": {
+         "unit": "px",
+         "size": 22,
+         "sizes": []
+        },
+        "tabs_title_color": "#4d5761",
+        "tabs_title_color_active": "#14202e",
+        "horizontal_scroll": "enable"
+       },
+       "elements": [
+        {
+         "id": "1badddad",
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column"
+         },
+         "elements": [],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "7dc254c5",
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column"
+         },
+         "elements": [],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "b81acc6d",
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column"
+         },
+         "elements": [],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "8723a183",
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column"
+         },
+         "elements": [],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "3d14ff5c",
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column"
+         },
+         "elements": [],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": false,
+       "widgetType": "nested-tabs",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "8908e330",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#faf7f2",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "d65eaf12",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "9f8f076e",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "34",
+         "row": "34",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "27721b74",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 54,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "14",
+           "row": "14",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "bc6fff7a",
+           "settings": {
+            "title": "What else we do",
+            "header_size": "span",
+            "title_color": "#b59148",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "typography_font_weight": "700",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.42,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "bb34e604",
+           "settings": {
+            "title": "We also look on your behalf.",
+            "header_size": "h2",
+            "title_color": "#14202e",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Fraunces",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 51,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_font_size_tablet": {
+             "unit": "px",
+             "size": 42,
+             "sizes": []
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 32,
+             "sizes": []
+            },
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": -1.02,
+             "sizes": []
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.04,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "heading",
+           "elType": "widget"
+          },
+          {
+           "id": "0aa53630",
+           "settings": {
+            "editor": "<p>Our work extends beyond the horses we breed ourselves. We source and broker carefully selected sport horses and breeding mares for clients who value quality, transparency and expertise. Every search begins with understanding what the client needs, and ends with finding the right opportunity.</p>",
+            "text_color": "#4d5761",
+            "align": "left",
+            "typography_typography": "custom",
+            "typography_font_family": "Manrope",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65,
+             "sizes": []
+            }
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "text-editor",
+           "elType": "widget"
+          },
+          {
+           "id": "c507160d",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "flex_gap": {
+             "column": "10",
+             "row": "10",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "flex_wrap": "wrap",
+            "padding": {
+             "unit": "px",
+             "top": "6",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": [
+            {
+             "id": "118ce56e",
+             "settings": {
+              "text": "Tell us what you need",
+              "link": {
+               "url": "/contact/",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "border_radius": {
+               "unit": "px",
+               "top": "999",
+               "right": "999",
+               "bottom": "999",
+               "left": "999",
+               "isLinked": true
+              },
+              "text_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "button_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "hover_animation": "float",
+              "border_border": "solid",
+              "border_width": {
+               "unit": "px",
+               "top": "1",
+               "right": "1",
+               "bottom": "1",
+               "left": "1",
+               "isLinked": true
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12.5,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.25,
+               "sizes": []
+              },
+              "button_text_color": "#0a1526",
+              "background_color": "#b59148",
+              "button_background_color": "#b59148",
+              "border_color": "#b59148",
+              "button_background_hover_color": "#c9a86a",
+              "button_hover_border_color": "#c9a86a",
+              "button_text_color_hover": "#0a1526"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "button",
+             "elType": "widget"
+            },
+            {
+             "id": "4546ed7f",
+             "settings": {
+              "text": "See our mares",
+              "link": {
+               "url": "/breeding-mares/",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "border_radius": {
+               "unit": "px",
+               "top": "999",
+               "right": "999",
+               "bottom": "999",
+               "left": "999",
+               "isLinked": true
+              },
+              "text_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "button_padding": {
+               "unit": "px",
+               "top": "12",
+               "right": "20",
+               "bottom": "12",
+               "left": "20",
+               "isLinked": false
+              },
+              "hover_animation": "float",
+              "border_border": "solid",
+              "border_width": {
+               "unit": "px",
+               "top": "1",
+               "right": "1",
+               "bottom": "1",
+               "left": "1",
+               "isLinked": true
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12.5,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.25,
+               "sizes": []
+              },
+              "button_text_color": "#14202e",
+              "background_color": "rgba(0,0,0,0)",
+              "button_background_color": "rgba(0,0,0,0)",
+              "border_color": "rgba(20,32,46,.12)",
+              "button_background_hover_color": "#0d1d36",
+              "button_hover_border_color": "#0d1d36",
+              "button_text_color_hover": "#faf7f2"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "button",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "c65798f7",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 46,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "08b271b2",
+           "settings": {
+            "image": {
+             "url": "https://stud-von-axe-ten.vercel.app/assets/img/results-unguessable.jpg",
+             "id": 0,
+             "size": "",
+             "alt": "Unguessable in the ring",
+             "source": "library"
+            },
+            "image_size": "large",
+            "custom_css": "selector img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 26px; }"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "image",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "b19db03f",
+   "settings": {
+    "background_background": "gradient",
+    "background_color": "#0d1d36",
+    "background_color_b": "#0a1526",
+    "background_gradient_angle": {
+     "unit": "deg",
+     "size": 150,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "72",
+     "right": "40",
+     "bottom": "72",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "52",
+     "right": "20",
+     "bottom": "52",
+     "left": "20",
+     "isLinked": false
+    },
+    "border_radius": {
+     "unit": "px",
+     "top": "26",
+     "right": "26",
+     "bottom": "26",
+     "left": "26",
+     "isLinked": true
+    },
+    "flex_direction": "column",
+    "margin": {
+     "unit": "px",
+     "top": "0",
+     "right": "14",
+     "bottom": "0",
+     "left": "14",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "a848c332",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "unit": "px",
+       "size": "",
+       "isLinked": true
+      },
+      "flex_align_items": "center",
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "c2c9bcfb",
+       "settings": {
+        "title": "Tell us the horse you have <span style=\"color:#b59148\">in mind</span>.",
+        "header_size": "h2",
+        "title_color": "#ffffff",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "d70fe49d",
+       "settings": {
+        "editor": "<p>A dose for your own mare, a cross already made, or a foal on the ground. Say what you are after and we will tell you plainly what we have.</p>",
+        "text_color": "rgba(238,241,246,.8)",
+        "align": "center",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        },
+        "custom_css": "selector { max-width: 620px; }"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      },
+      {
+       "id": "4c0417d0",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "10",
+         "row": "10",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_wrap": "wrap",
+        "flex_justify_content": "center",
+        "padding": {
+         "unit": "px",
+         "top": "8",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "e1a543f3",
+         "settings": {
+          "text": "Get in touch",
+          "link": {
+           "url": "/contact/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#0a1526",
+          "background_color": "#b59148",
+          "button_background_color": "#b59148",
+          "border_color": "#b59148",
+          "button_background_hover_color": "#c9a86a",
+          "button_hover_border_color": "#c9a86a",
+          "button_text_color_hover": "#0a1526"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        },
+        {
+         "id": "ccc7ba62",
+         "settings": {
+          "text": "Message on WhatsApp",
+          "link": {
+           "url": "https://wa.me/393495918565",
+           "is_external": "yes",
+           "nofollow": ""
+          },
+          "border_radius": {
+           "unit": "px",
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
+          },
+          "text_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "button_padding": {
+           "unit": "px",
+           "top": "12",
+           "right": "20",
+           "bottom": "12",
+           "left": "20",
+           "isLinked": false
+          },
+          "hover_animation": "float",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": true
+          },
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 12.5,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 1.25,
+           "sizes": []
+          },
+          "button_text_color": "#ffffff",
+          "background_color": "rgba(0,0,0,0)",
+          "button_background_color": "rgba(0,0,0,0)",
+          "border_color": "rgba(255,255,255,.17)",
+          "button_background_hover_color": "#ffffff",
+          "button_hover_border_color": "#ffffff",
+          "button_text_color_hover": "#0d1d36"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "button",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "852db116",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "ebc80f4c",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "50b689ee",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "flex-start",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "left"
+       },
+       "elements": [
+        {
+         "id": "e3355b92",
+         "settings": {
+          "title": "News and results",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "41b5310c",
+         "settings": {
+          "title": "The latest from the stud.",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "f59589f4",
+         "settings": {
+          "editor": "<p>Results, stories and moments from the stud. Follow the horses we breed, develop and represent, from the sport arena to the breeding programme.</p>",
+          "text_color": "#4d5761",
+          "align": "left",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 18,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.65,
+           "sizes": []
+          },
+          "custom_css": "selector { max-width: 640px; }"
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "text-editor",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "cf1261b0",
+       "settings": {
+        "template_id": 0,
+        "_skin": "post",
+        "columns": "3",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "row_gap": {
+         "unit": "px",
+         "size": 24,
+         "sizes": []
+        },
+        "column_gap": {
+         "unit": "px",
+         "size": 24,
+         "sizes": []
+        },
+        "post_query_post_type": "news_item",
+        "post_query_posts_per_page": 6,
+        "post_query_orderby": "date",
+        "nothing_found_message": "",
+        "_element_id": "sva-news-rail"
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "loop-grid",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "a7dacc11",
+   "settings": {
+    "background_background": "gradient",
+    "background_color": "#0d1d36",
+    "background_color_b": "#0a1526",
+    "background_gradient_angle": {
+     "unit": "deg",
+     "size": 150,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column",
+    "_element_id": "contact",
+    "custom_css": "selector .elementor-field-group>label{color:rgba(238,241,245,.75)}"
+   },
+   "elements": [
+    {
+     "id": "6099cd1f",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column",
+      "flex_gap": {
+       "column": "0",
+       "row": "22",
+       "unit": "px",
+       "size": "",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "0ced2f86",
+       "settings": {
+        "title": "Get in touch",
+        "header_size": "span",
+        "title_color": "#b59148",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 11,
+         "sizes": []
+        },
+        "typography_font_weight": "700",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.42,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "5eb681c6",
+       "settings": {
+        "title": "Ask us about a horse.",
+        "header_size": "h2",
+        "title_color": "#ffffff",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Fraunces",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 51,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 42,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 32,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": -1.02,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.04,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "heading",
+       "elType": "widget"
+      },
+      {
+       "id": "1a27dc2f",
+       "settings": {
+        "editor": "<p>Write to us and we will get back to you.</p>",
+        "text_color": "rgba(238,241,245,.75)",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_family": "Manrope",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "400",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65,
+         "sizes": []
+        }
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "text-editor",
+       "elType": "widget"
+      },
+      {
+       "id": "a99b81aa",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_gap": {
+         "column": "26",
+         "row": "26",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "flex_wrap": "wrap"
+       },
+       "elements": [
+        {
+         "id": "9b5f5ef3",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 58,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "16",
+           "row": "16",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "c5ee87d5",
+           "settings": {
+            "form_name": "Contact",
+            "form_fields": [
+             {
+              "_id": "name",
+              "field_type": "text",
+              "field_label": "Your name",
+              "placeholder": "Your name",
+              "required": "true",
+              "width": "50"
+             },
+             {
+              "_id": "email",
+              "field_type": "email",
+              "field_label": "Your email",
+              "placeholder": "you@example.com",
+              "required": "true",
+              "width": "50"
+             },
+             {
+              "_id": "topic",
+              "field_type": "select",
+              "field_label": "About",
+              "field_options": "A foal\nAn embryo\nICSI semen\nA sport horse\nA breeding mare\nSomething else",
+              "required": "",
+              "width": "100"
+             },
+             {
+              "_id": "message",
+              "field_type": "textarea",
+              "field_label": "Your message",
+              "placeholder": "What would you like to know?",
+              "required": "true",
+              "width": "100",
+              "rows": 5
+             }
+            ],
+            "button_text": "Send",
+            "submit_actions": [
+             "email",
+             "email2"
+            ],
+            "email_to": "studvonaxe@gmail.com",
+            "email_subject": "Enquiry from the website",
+            "label_color": "rgba(238,241,245,.75)",
+            "field_text_color": "#ffffff",
+            "field_background_color": "rgba(255,255,255,.08)",
+            "border_color": "rgba(255,255,255,.17)",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "field_border_radius": {
+             "unit": "px",
+             "top": "12",
+             "right": "12",
+             "bottom": "12",
+             "left": "12",
+             "isLinked": true
+            },
+            "button_background_color": "#b59148",
+            "button_text_color": "#0a1526"
+           },
+           "elements": [],
+           "isInner": false,
+           "widgetType": "form",
+           "elType": "widget"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        },
+        {
+         "id": "60fb6f8e",
+         "settings": {
+          "content_width": "full",
+          "width": {
+           "unit": "%",
+           "size": 42,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "flex_direction": "column",
+          "flex_gap": {
+           "column": "10",
+           "row": "10",
+           "unit": "px",
+           "size": "",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "641ce1c5",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "https://wa.me/393495918565",
+             "is_external": "yes",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "4e12e93e",
+             "settings": {
+              "title": "WhatsApp",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "937285d2",
+             "settings": {
+              "title": "Message us",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "848de898",
+             "settings": {
+              "title": "Fastest reply",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "29ff210c",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "tel:+393495918565",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "67c85131",
+             "settings": {
+              "title": "Elisabetta",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "a3c3e8bb",
+             "settings": {
+              "title": "+39 349 591 8565",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "a61ebe2e",
+             "settings": {
+              "title": "Call or message",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "90fcd056",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "tel:+393483953433",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "14f440a4",
+             "settings": {
+              "title": "Adriano",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "a43c7959",
+             "settings": {
+              "title": "+39 348 395 3433",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "2facb625",
+             "settings": {
+              "title": "Call or message",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          },
+          {
+           "id": "15f179a9",
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+             "column": "2",
+             "row": "2",
+             "unit": "px",
+             "size": "",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "16",
+             "bottom": "14",
+             "left": "16",
+             "isLinked": false
+            },
+            "border_radius": {
+             "unit": "px",
+             "top": "18",
+             "right": "18",
+             "bottom": "18",
+             "left": "18",
+             "isLinked": true
+            },
+            "background_background": "classic",
+            "background_color": "rgba(255,255,255,.06)",
+            "border_border": "solid",
+            "border_width": {
+             "unit": "px",
+             "top": "1",
+             "right": "1",
+             "bottom": "1",
+             "left": "1",
+             "isLinked": true
+            },
+            "border_color": "rgba(255,255,255,.17)",
+            "link": {
+             "url": "mailto:studvonaxe@gmail.com",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           "elements": [
+            {
+             "id": "bc711cac",
+             "settings": {
+              "title": "By mail",
+              "header_size": "span",
+              "title_color": "#b59148",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 11,
+               "sizes": []
+              },
+              "typography_font_weight": "700",
+              "typography_text_transform": "uppercase",
+              "typography_letter_spacing": {
+               "unit": "px",
+               "size": 1.6,
+               "sizes": []
+              }
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "70622e61",
+             "settings": {
+              "title": "studvonaxe@gmail.com",
+              "header_size": "span",
+              "title_color": "#ffffff",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 15,
+               "sizes": []
+              },
+              "typography_font_weight": "600"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            },
+            {
+             "id": "913d903d",
+             "settings": {
+              "title": "We answer in four languages",
+              "header_size": "span",
+              "title_color": "rgba(238,241,245,.55)",
+              "typography_typography": "custom",
+              "typography_font_family": "Manrope",
+              "typography_font_size": {
+               "unit": "px",
+               "size": 12,
+               "sizes": []
+              },
+              "typography_font_weight": "500"
+             },
+             "elements": [],
+             "isInner": false,
+             "widgetType": "heading",
+             "elType": "widget"
+            }
+           ],
+           "isInner": true,
+           "elType": "container"
+          }
+         ],
+         "isInner": true,
+         "elType": "container"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  },
+  {
+   "id": "bd35a890",
+   "settings": {
+    "background_background": "classic",
+    "background_color": "#f1ebe0",
+    "padding": {
+     "unit": "px",
+     "top": "88",
+     "right": "40",
+     "bottom": "88",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "20",
+     "bottom": "56",
+     "left": "20",
+     "isLinked": false
+    },
+    "flex_direction": "column"
+   },
+   "elements": [
+    {
+     "id": "c3067a04",
+     "settings": {
+      "content_width": "full",
+      "width": {
+       "unit": "px",
+       "size": 1280,
+       "sizes": []
+      },
+      "margin": {
+       "unit": "px",
+       "top": "0",
+       "right": "auto",
+       "bottom": "0",
+       "left": "auto",
+       "isLinked": false
+      },
+      "flex_direction": "column"
+     },
+     "elements": [
+      {
+       "id": "ec56c072",
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "unit": "px",
+         "size": "",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "44",
+         "left": "0",
+         "isLinked": false
+        },
+        "text_align": "center"
+       },
+       "elements": [
+        {
+         "id": "0fb1f094",
+         "settings": {
+          "title": "Partners",
+          "header_size": "span",
+          "title_color": "#b59148",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Manrope",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 11,
+           "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_text_transform": "uppercase",
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": 2.42,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        },
+        {
+         "id": "20315c28",
+         "settings": {
+          "title": "The people behind us.",
+          "header_size": "h2",
+          "title_color": "#14202e",
+          "align": "center",
+          "typography_typography": "custom",
+          "typography_font_family": "Fraunces",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 51,
+           "sizes": []
+          },
+          "typography_font_weight": "400",
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 42,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "px",
+           "size": -1.02,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.04,
+           "sizes": []
+          }
+         },
+         "elements": [],
+         "isInner": false,
+         "widgetType": "heading",
+         "elType": "widget"
+        }
+       ],
+       "isInner": true,
+       "elType": "container"
+      },
+      {
+       "id": "9aa9ea4a",
+       "settings": {
+        "template_id": 0,
+        "_skin": "post",
+        "columns": "5",
+        "columns_tablet": "3",
+        "columns_mobile": "2",
+        "row_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "column_gap": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "post_query_post_type": "partner",
+        "post_query_posts_per_page": 12,
+        "post_query_orderby": "menu_order",
+        "nothing_found_message": ""
+       },
+       "elements": [],
+       "isInner": false,
+       "widgetType": "loop-grid",
+       "elType": "widget"
+      }
+     ],
+     "isInner": true,
+     "elType": "container"
+    }
+   ],
+   "isInner": false,
+   "elType": "container"
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes"
+ },
+ "version": "0.4",
+ "title": "Stud Von Axe — Home",
+ "type": "page"
+}
