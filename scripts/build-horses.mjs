@@ -1370,7 +1370,7 @@ const embryoCard = (horse, full) => {
     .filter(Boolean).join(' ').toLowerCase();
   return `<li class="ec" data-sold="${isFrozen(horse) ? 'frozen' : 'carrying'}" data-find="${esc(haystack)}">` +
     `<a class="ec__a" href="/embryos/${horse.slug}">${win}` +
-    `<span class="ec__seam"><span class="ec__stage">${esc(stageOf(horse))}</span></span>` +
+    `<span class="ec__seam"><span class="ec__stage">${stageMark(horse)}${esc(stageOf(horse))}</span></span>` +
     '<span class="ec__box">' +
       `<${full ? 'h2' : 'h3'} class="ec__name">${esc(crossSire(horse))} <em>&times;</em> ${esc(crossDam(horse))}</${full ? 'h2' : 'h3'}>` +
       `<span class="ec__line">${esc(damlineOf(horse))}</span>` +
@@ -1383,6 +1383,18 @@ const embryoCard = (horse, full) => {
    an embryo is not sold the way a foal is, and thirteen of the fifteen are
    available anyway, so the chip would say nothing. */
 const stageOf = (h) => (isFrozen(h) ? 'Frozen' : `Due ${h.year}`);
+/* A mark on the stage badge. 9 Sep, the client asked for one, and suggested
+   a snowflake for frozen.
+   Both are written with U+FE0E after them, which asks for the text shape of
+   the character rather than the colour emoji one. That matters here: this
+   badge is navy ink on gold at 9.5px, and a full colour emoji dropped into
+   it reads as a sticker rather than as part of the label. In the text shape
+   they take the badge's own colour and sit on its baseline.
+   The word beside them already says which stage it is, so both are hidden
+   from a screen reader rather than read out twice.
+   If they would rather have the colour emoji, take the two \uFE0E off. */
+const stageMark = (h) => `<span class="ec__ico" aria-hidden="true">${
+  isFrozen(h) ? '\u2744\uFE0E' : '\u23F3\uFE0E'}</span>`;
 
 /* The dam of a cross, matched to her own listing. Their spelling wobbles
    between the two places, Bergheove against Berghoeve, so the match is on
@@ -2667,13 +2679,20 @@ const written = { archives: 0, horses: 0 };
    seven of twelve mares. What is for sale should be the first thing in it
    rather than scattered through the rest.
    Stable, and it only moves the two halves past each other: inside each
-   half the order their own site gave is untouched. Not on the embryos,
-   which split on frozen and carrying rather than on sold, and not on the
-   stallions, which carry no chips at all. */
+   half the order their own site gave is untouched.
+
+   The embryos split on stage rather than on sold, and 9 Sep, the client:
+   the implanted ones first and the frozen after them, not shuffled through
+   each other. Same rule, different halves. Worth carrying into the
+   Elementor build: this is an ordering the page must impose, not something
+   the records arrive in.
+   The stallions carry no chips at all and stay as they are. */
 const availableFirst = (group, list) =>
-  (group.dir === 'embryos' || group.chips === false)
-    ? list
-    : [...list.filter((h) => !h.sold), ...list.filter((h) => h.sold)];
+  group.dir === 'embryos'
+    ? [...list.filter((h) => !isFrozen(h)), ...list.filter(isFrozen)]
+    : group.chips === false
+      ? list
+      : [...list.filter((h) => !h.sold), ...list.filter((h) => h.sold)];
 
 for (const key of Object.keys(GROUPS)) {
   const group = GROUPS[key];

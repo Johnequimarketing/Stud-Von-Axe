@@ -2409,6 +2409,11 @@
     background:var(--color-gold); color:var(--color-navy);
     font-family:var(--font-body); font-weight:700; font-size:9.5px;
     letter-spacing:.16em; text-transform:uppercase; }
+  /* The mark on the stage badge. Sized in em so it follows the label rather
+     than adding a size of its own to the scale, and nudged up a hair because
+     both glyphs sit low against uppercase letters. */
+  .ec__ico{ font-size:1.35em; line-height:1; margin-right:.42em;
+    transform:translateY(-.04em); font-family:var(--font-body); letter-spacing:0; }
   .ec__box{ flex:1 1 auto; display:flex; flex-direction:column; padding:.75rem 1.1rem 1.2rem; }
   .ec__name{ display:block; margin:0; font-family:var(--font-display); font-weight:400; font-size:1.12rem;
     line-height:1.2; color:var(--color-white); }
@@ -3557,7 +3562,7 @@
 
       
       <ul class="hz__grid ec__grid">
-          <li class="ec" data-sold="frozen" data-find="big star x cortina de jolie z big star x cornet obolensky x calato x darco x chin chin closest way to narcotique ii! frozen frozen"><a class="ec__a" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/big-star-1.jpg" alt="Big Star x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage">Frozen</span></span><span class="ec__box"><h3 class="ec__name">Big Star <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Closest way to Narcotique II!</span></span></a></li>
+          <li class="ec" data-sold="frozen" data-find="big star x cortina de jolie z big star x cornet obolensky x calato x darco x chin chin closest way to narcotique ii! frozen frozen"><a class="ec__a" href="/embryos/big-star-x-cortina-de-jolie-z"><span class="ec__win"><img src="/assets/img/horses/big-star-1.jpg" alt="Big Star x Cortina de Jolie Z" loading="lazy"><span class="ec__fade" aria-hidden="true"></span></span><span class="ec__seam"><span class="ec__stage"><span class="ec__ico" aria-hidden="true">❄︎</span>Frozen</span></span><span class="ec__box"><h3 class="ec__name">Big Star <em>&times;</em> Cortina de Jolie Z</h3><span class="ec__line">CORNET OBOLENSKY x CALATO x DARCO x CHIN CHIN</span><span class="ec__say">Closest way to Narcotique II!</span></span></a></li>
       </ul>
     </div>
   </section>

@@ -658,6 +658,15 @@ footer{margin-top:var(--space-8); padding-top:var(--space-5); border-top:1px sol
       <li class="item" data-k="e3"><input type="checkbox"><span class="what"><b>Eli can add content herself</b>, without delay
         <span class="said">"important for us to be a little bit flexible like that she can keep working on"</span>
         <span class="why">This shapes the Elementor build: reusable blocks, nothing bespoke that only we can edit. See <code>docs/elementor-build-map.md</code> in the Cielo branch.</span></span><span class="state s-todo">To do</span></li>
+      <li class="item" data-k="e3b"><input type="checkbox"><span class="what"><b>The embryo archive orders itself: implanted first, then frozen</b>
+        <span class="said">9 Sep, the client: "eerst alle implanted embryo's dan de frozen embryo's, dus niet door elkaar"</span>
+        <span class="why">This is an ordering the <b>page</b> imposes, not one the records arrive in. The static site does it in
+        <code>availableFirst()</code>, which now splits the embryos on stage the way it splits the other three archives on sold.
+        In Elementor it will not happen by itself: a loop grid sorted on a date field puts the two stages through each other,
+        because a frozen record has no due date to sort on. Build it as <b>two loops on one page</b>, each with its own filter,
+        the implanted one first, or add a numeric stage field and sort on that before the date. The filter chips must keep working
+        across both. Same point applies to the sold and available split on mares, foals and sport horses, which is already
+        the same mechanism.</span></span><span class="state s-todo">To do</span></li>
       <li class="item" data-k="e4"><input type="checkbox"><span class="what"><b>Explanation videos for Eli</b> at handover</span><span class="state s-todo">To do</span></li>
       <li class="item" data-k="e5"><input type="checkbox"><span class="what"><b>SEO setup</b>, including findability through AI, per language</span><span class="state s-part">Partly</span></li>
       <li class="item" data-k="e6"><input type="checkbox"><span class="what"><b>Staging first, then live with no downtime</b>, migrating every current horse</span><span class="state s-todo">To do</span></li>
