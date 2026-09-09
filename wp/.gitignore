@@ -1,0 +1,8 @@
+# De zips worden gebouwd, niet bewaard: python3 wp/bouw_plugin.py maakt ze
+# opnieuw en ze wegen samen 74 MB.
+uit/
+
+# En de media in de plugin zijn kopieën van assets/img, die hier al staan.
+# python3 wp/bouw_payload.py zet ze er weer neer. Ze twee keer in de
+# geschiedenis zetten verdubbelt de repo voor niets.
+stud-von-axe-importer/assets/media/
