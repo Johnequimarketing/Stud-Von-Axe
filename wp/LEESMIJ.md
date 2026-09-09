@@ -91,7 +91,7 @@ niets aan de code te veranderen, welke route je ook neemt.
 4. **Eerst "Dry run".** Die loopt de hele import langs, meldt wat hij zou doen,
    en schrijft niets. Lees die uitkomst voordat je verder gaat.
 5. Dan "Run the import". **Laat het tabblad openstaan**: het werk gaat stap voor
-   stap over AJAX, twintig records per keer, juist omdat 113 posts en 270 foto's
+   stap over AJAX, twintig records per keer, juist omdat 113 posts en 251 fotos
    in één verzoek op een gewone host tegen `max_execution_time` aanlopen.
 
 De laatste twee stappen zijn "Design images" en "Linking the crosses to their
