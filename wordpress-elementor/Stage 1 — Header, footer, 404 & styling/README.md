@@ -6,7 +6,7 @@ Set the global styles and build the three parts that appear on every page. Every
 
 ## Steps
 
-1. Check the plugins. Elementor **Pro** and the Hello Elementor theme are active on staging already. **ACF Pro is not installed yet** — install and activate it first (version 6.1 or newer; Mark has the 6.6.2 zip). Nothing from stage 2 onwards works without it.
+1. Check the plugins. Elementor **Pro**, **ACF Pro 6.6.2** and the Hello Elementor theme are all on staging already, so there is nothing to install before you start.
 2. **Elementor → Settings → Features → Flexbox Container → Active.** Without this every imported template renders as a white page and looks broken when it is not.
 3. Elementor → Tools → Import Kit, using `site-settings.json`: the colours, the two font roles, headings h1 to h6, the button styles and content width 1280.
 4. Google Fonts: **Fraunces** 300/400/500/600 plus 400 and 500 italic, and **Manrope** 400/500/600/700/800. The kit asks for them; check they actually load.

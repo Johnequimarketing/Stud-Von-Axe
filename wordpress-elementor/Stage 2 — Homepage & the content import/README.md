@@ -6,7 +6,7 @@ Run the importer so all 113 records and 209 photos are on the site, then build t
 
 ## Steps
 
-1. Plugins → Add New → Upload → `stud-von-axe-importer.zip`. Activate it. It refuses to run without ACF Pro, so make sure stage 1 is really finished.
+1. Plugins → Add New → Upload → `stud-von-axe-importer.zip`. Activate it. It checks for ACF Pro on activation and stops with a message if it is missing; on this staging it is there, so it should go straight through.
 2. Tools → **Stud Von Axe importer**. Press **Dry run** first: it writes nothing and tells you exactly what it would do. Read it, then press **Import**. Leave the tab open — it runs in steps of twenty.
 3. Check the result: 12 sport horses, 12 breeding mares, 20 foals, 30 embryos, 32 ICSI stallions, 4 news reports, 3 partners, and seven taxonomies filled in.
 4. Run it a **second time** and check that it adds nothing. That proves the stamps work and that a later re-import will not duplicate anything.

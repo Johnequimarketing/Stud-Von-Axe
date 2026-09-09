@@ -147,6 +147,14 @@ herbouw voor alle 29 sjablonen te herstellen, want ze komen uit één bibliothee
   geen vertaalplugin in enige stage. Italiaans is hun eigen taal, dus dit hoort
   aan de klant voorgelegd te worden en niet voor hen ingevuld.
 
+### Wat ik eerder verkeerd meldde
+
+Ik schreef op 9 september dat **ACF Pro niet op staging stond**. Dat klopte niet.
+Ik testte op de REST-namespace `acf/v3`, en die verschijnt alleen als ACF's eigen
+REST-API aanstaat — die staat standaard uit. ACF Pro **6.6.2** staat er wel,
+naast Elementor Pro, Rank Math Pro en Hello Elementor. Er hoeft dus niets
+geïnstalleerd te worden voordat stage 1 begint.
+
 ### Aan te leveren
 | | |
 |---|---|

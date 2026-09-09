@@ -42,9 +42,8 @@ STAGES = [
   goal="Set the global styles and build the three parts that appear on every page. Everything "
        "in the later stages is built on top of this, so it is worth getting exactly right.",
   steps=[
-    "Check the plugins. Elementor **Pro** and the Hello Elementor theme are active on staging "
-    "already. **ACF Pro is not installed yet** — install and activate it first (version 6.1 or "
-    "newer; Mark has the 6.6.2 zip). Nothing from stage 2 onwards works without it.",
+    "Check the plugins. Elementor **Pro**, **ACF Pro 6.6.2** and the Hello Elementor theme "
+    "are all on staging already, so there is nothing to install before you start.",
     FLEXBOX,
     "Elementor → Tools → Import Kit, using `site-settings.json`: the colours, the two font "
     "roles, headings h1 to h6, the button styles and content width 1280.",
@@ -91,8 +90,9 @@ STAGES = [
   goal="Run the importer so all 113 records and 209 photos are on the site, then build the "
        "homepage on top of them.",
   steps=[
-    "Plugins → Add New → Upload → `stud-von-axe-importer.zip`. Activate it. It refuses to run "
-    "without ACF Pro, so make sure stage 1 is really finished.",
+    "Plugins → Add New → Upload → `stud-von-axe-importer.zip`. Activate it. It checks for ACF "
+    "Pro on activation and stops with a message if it is missing; on this staging it is "
+    "there, so it should go straight through.",
     "Tools → **Stud Von Axe importer**. Press **Dry run** first: it writes nothing and tells you "
     "exactly what it would do. Read it, then press **Import**. Leave the tab open — it runs in "
     "steps of twenty.",
