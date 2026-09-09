@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "bed189e2",
+   "id": "e95c0acd",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -29,7 +29,7 @@
    },
    "elements": [
     {
-     "id": "9926d741",
+     "id": "97251130",
      "settings": {
       "image_size": "full",
       "custom_css": "selector{position:absolute;inset:0;z-index:0}selector img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}"
@@ -40,7 +40,7 @@
      "elType": "widget"
     },
     {
-     "id": "d776e806",
+     "id": "dd371942",
      "settings": {
       "html": "",
       "custom_css": "selector{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13, 29, 54,.7) 0%,rgba(10, 21, 38,.5) 45%,rgba(10, 21, 38,.92) 100%)}"
@@ -51,7 +51,7 @@
      "elType": "widget"
     },
     {
-     "id": "3b6a0d19",
+     "id": "957abc32",
      "settings": {
       "content_width": "full",
       "width": {
@@ -79,7 +79,7 @@
      },
      "elements": [
       {
-       "id": "e7fc8f85",
+       "id": "89eb4b38",
        "settings": {
         "title": "ICSI semen",
         "header_size": "span",
@@ -106,7 +106,7 @@
        "elType": "widget"
       },
       {
-       "id": "8d8dd2a3",
+       "id": "b07bd97e",
        "settings": {
         "header_size": "h1",
         "title_color": "#ffffff",
@@ -145,7 +145,7 @@
        "elType": "widget"
       },
       {
-       "id": "b6ffbcad",
+       "id": "9bac6937",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -159,7 +159,7 @@
         },
         "typography_font_weight": "500",
         "__dynamic__": {
-         "title": "[elementor-tag id=\"8a704d9b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_genetics%22%7D\"]"
+         "title": "[elementor-tag id=\"6dcb49e1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_genetics%22%7D\"]"
         }
        },
        "elements": [],
@@ -168,7 +168,7 @@
        "elType": "widget"
       },
       {
-       "id": "a4621816",
+       "id": "a54234e7",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -191,7 +191,7 @@
        },
        "elements": [
         {
-         "id": "762fa165",
+         "id": "65c7f9e5",
          "settings": {
           "text": "Ask about this stallion",
           "link": {
@@ -268,7 +268,7 @@
      "elType": "container"
     },
     {
-     "id": "3e5449d9",
+     "id": "236e31a7",
      "settings": {
       "content_width": "full",
       "width": {
@@ -297,7 +297,7 @@
      },
      "elements": [
       {
-       "id": "a1515257",
+       "id": "e3ab70b1",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -313,7 +313,7 @@
        },
        "elements": [
         {
-         "id": "c277ae51",
+         "id": "c65a9292",
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
@@ -370,7 +370,7 @@
          },
          "elements": [
           {
-           "id": "9eb54b79",
+           "id": "1b47a3c8",
            "settings": {
             "title": "Born",
             "header_size": "span",
@@ -396,7 +396,7 @@
            "elType": "widget"
           },
           {
-           "id": "cc3b90ec",
+           "id": "6c011a60",
            "settings": {
             "title": "",
             "header_size": "span",
@@ -410,7 +410,7 @@
             },
             "typography_font_weight": "400",
             "__dynamic__": {
-             "title": "[elementor-tag id=\"ba38f88e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_year_of_birth%22%7D\"]"
+             "title": "[elementor-tag id=\"8ac112c1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_year_of_birth%22%7D\"]"
             }
            },
            "elements": [],
@@ -423,7 +423,7 @@
          "elType": "container"
         },
         {
-         "id": "dba491fd",
+         "id": "94ef003a",
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
@@ -480,7 +480,7 @@
          },
          "elements": [
           {
-           "id": "cb670f37",
+           "id": "c1e1cd0a",
            "settings": {
             "title": "Studbook",
             "header_size": "span",
@@ -506,7 +506,7 @@
            "elType": "widget"
           },
           {
-           "id": "d174c6de",
+           "id": "37c3563f",
            "settings": {
             "title": "",
             "header_size": "span",
@@ -520,7 +520,7 @@
             },
             "typography_font_weight": "400",
             "__dynamic__": {
-             "title": "[elementor-tag id=\"8e97092a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_studbook%22%7D\"]"
+             "title": "[elementor-tag id=\"eda1e940\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_studbook%22%7D\"]"
             }
            },
            "elements": [],
@@ -533,7 +533,7 @@
          "elType": "container"
         },
         {
-         "id": "f2cff9b5",
+         "id": "f471f321",
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
@@ -590,7 +590,7 @@
          },
          "elements": [
           {
-           "id": "d2d7f619",
+           "id": "66a2a720",
            "settings": {
             "title": "Availability",
             "header_size": "span",
@@ -616,7 +616,7 @@
            "elType": "widget"
           },
           {
-           "id": "bced9272",
+           "id": "d3f37a9c",
            "settings": {
             "title": "",
             "header_size": "span",
@@ -630,7 +630,7 @@
             },
             "typography_font_weight": "400",
             "__dynamic__": {
-             "title": "[elementor-tag id=\"9e1737f8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_availability%22%7D\"]"
+             "title": "[elementor-tag id=\"f5ee4959\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_availability%22%7D\"]"
             }
            },
            "elements": [],
@@ -655,7 +655,7 @@
    "elType": "container"
   },
   {
-   "id": "0015075a",
+   "id": "064c4e44",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -679,7 +679,7 @@
    },
    "elements": [
     {
-     "id": "871e1250",
+     "id": "8181cd81",
      "settings": {
       "content_width": "full",
       "width": {
@@ -699,7 +699,7 @@
      },
      "elements": [
       {
-       "id": "f7efa32c",
+       "id": "020d9817",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -723,7 +723,7 @@
        },
        "elements": [
         {
-         "id": "aa97861d",
+         "id": "7f777c6e",
          "settings": {
           "title": "The pedigree",
           "header_size": "span",
@@ -750,7 +750,7 @@
          "elType": "widget"
         },
         {
-         "id": "d24cddea",
+         "id": "1e8d9d9f",
          "settings": {
           "title": "Three generations deep",
           "header_size": "h2",
@@ -795,7 +795,7 @@
        "elType": "container"
       },
       {
-       "id": "2a6d83bf",
+       "id": "1dacbbf0",
        "settings": {
         "content_width": "full",
         "background_background": "classic",
@@ -830,14 +830,14 @@
        },
        "elements": [
         {
-         "id": "14913e20",
+         "id": "673bbc41",
          "settings": {
           "content_width": "full",
           "custom_css": "selector{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));grid-template-rows:repeat(8,minmax(44px,auto));gap:.4rem;min-width:640px}selector>.elementor-widget{width:auto}"
          },
          "elements": [
           {
-           "id": "8c0b009b",
+           "id": "0c96a43f",
            "settings": {
             "title": "This horse",
             "header_size": "span",
@@ -856,7 +856,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"04b970ed\" name=\"post-title\" settings=\"%7B%7D\"]"
+             "title": "[elementor-tag id=\"ba15bd59\" name=\"post-title\" settings=\"%7B%7D\"]"
             },
             "custom_css": "selector{grid-column:1;grid-row:1 / span 8;background:#b59148;border-radius:10px;padding:12px 14px;display:flex;align-items:center}"
            },
@@ -866,7 +866,7 @@
            "elType": "widget"
           },
           {
-           "id": "dbad0108",
+           "id": "7829e65b",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -885,7 +885,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"588033ee\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire%22%7D\"]"
+             "title": "[elementor-tag id=\"d728a478\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire%22%7D\"]"
             },
             "custom_css": "selector{grid-column:2;grid-row:1 / span 4;background:color-mix(in srgb, #b59148 10%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -895,7 +895,7 @@
            "elType": "widget"
           },
           {
-           "id": "36937d84",
+           "id": "91999386",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -914,7 +914,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"4621bbb9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam%22%7D\"]"
+             "title": "[elementor-tag id=\"4a55b92b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam%22%7D\"]"
             },
             "custom_css": "selector{grid-column:2;grid-row:5 / span 4;background:color-mix(in srgb, #b59148 10%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -924,7 +924,7 @@
            "elType": "widget"
           },
           {
-           "id": "e0a32c71",
+           "id": "d50ffa31",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -943,7 +943,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"2be4ed95\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire_sire%22%7D\"]"
+             "title": "[elementor-tag id=\"1d846d1d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire_sire%22%7D\"]"
             },
             "custom_css": "selector{grid-column:3;grid-row:1 / span 2;background:color-mix(in srgb, #b59148 6%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -953,7 +953,7 @@
            "elType": "widget"
           },
           {
-           "id": "09a72f40",
+           "id": "0af37d42",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -972,7 +972,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"329edccb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire_dam%22%7D\"]"
+             "title": "[elementor-tag id=\"f9d9d17d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_sire_dam%22%7D\"]"
             },
             "custom_css": "selector{grid-column:3;grid-row:3 / span 2;background:color-mix(in srgb, #b59148 6%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -982,7 +982,7 @@
            "elType": "widget"
           },
           {
-           "id": "6e2180a9",
+           "id": "c9660075",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1001,7 +1001,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"6d56a3a9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam_sire%22%7D\"]"
+             "title": "[elementor-tag id=\"5eb0a8ba\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam_sire%22%7D\"]"
             },
             "custom_css": "selector{grid-column:3;grid-row:5 / span 2;background:color-mix(in srgb, #b59148 6%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1011,7 +1011,7 @@
            "elType": "widget"
           },
           {
-           "id": "87c7e34b",
+           "id": "526981f9",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1030,7 +1030,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"a0c4570f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam_dam%22%7D\"]"
+             "title": "[elementor-tag id=\"c7afc4b6\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_dam_dam%22%7D\"]"
             },
             "custom_css": "selector{grid-column:3;grid-row:7 / span 2;background:color-mix(in srgb, #b59148 6%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1040,7 +1040,7 @@
            "elType": "widget"
           },
           {
-           "id": "f469aae0",
+           "id": "dbdf5eab",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1059,7 +1059,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"95cb329f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_1%22%7D\"]"
+             "title": "[elementor-tag id=\"89d39734\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_1%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:1 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1069,7 +1069,7 @@
            "elType": "widget"
           },
           {
-           "id": "9442519f",
+           "id": "61955591",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1088,7 +1088,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"69b30f27\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_2%22%7D\"]"
+             "title": "[elementor-tag id=\"8bfba7a8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_2%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:2 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1098,7 +1098,7 @@
            "elType": "widget"
           },
           {
-           "id": "8b095a79",
+           "id": "842d2a87",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1117,7 +1117,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"87d80bcb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_3%22%7D\"]"
+             "title": "[elementor-tag id=\"113d8886\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_3%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:3 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1127,7 +1127,7 @@
            "elType": "widget"
           },
           {
-           "id": "53483a3d",
+           "id": "0afb5885",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1146,7 +1146,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"bc1c052a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_4%22%7D\"]"
+             "title": "[elementor-tag id=\"5fa269a2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_4%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:4 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1156,7 +1156,7 @@
            "elType": "widget"
           },
           {
-           "id": "8d45d3a1",
+           "id": "3530bee6",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1175,7 +1175,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"6b77eabf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_5%22%7D\"]"
+             "title": "[elementor-tag id=\"e57d97bd\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_5%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:5 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1185,7 +1185,7 @@
            "elType": "widget"
           },
           {
-           "id": "31849a6f",
+           "id": "786e3569",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1204,7 +1204,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"646bf40b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_6%22%7D\"]"
+             "title": "[elementor-tag id=\"fa2fe18a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_6%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:6 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1214,7 +1214,7 @@
            "elType": "widget"
           },
           {
-           "id": "f15a09db",
+           "id": "c574a1d8",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1233,7 +1233,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"f3d5be99\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_7%22%7D\"]"
+             "title": "[elementor-tag id=\"88145b58\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_7%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:7 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1243,7 +1243,7 @@
            "elType": "widget"
           },
           {
-           "id": "f483391d",
+           "id": "c29df8df",
            "settings": {
             "title": "To be filled in",
             "header_size": "span",
@@ -1262,7 +1262,7 @@
              "sizes": []
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"1b53b393\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_8%22%7D\"]"
+             "title": "[elementor-tag id=\"ceb1267a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gp_8%22%7D\"]"
             },
             "custom_css": "selector{grid-column:4;grid-row:8 / span 1;background:color-mix(in srgb, #b59148 3%, #ffffff);border:1px solid rgba(20,32,46,.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center}selector:has(.elementor-heading-title:not(:empty)) {}"
            },
@@ -1280,7 +1280,7 @@
        "elType": "container"
       },
       {
-       "id": "23236579",
+       "id": "833acaa4",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -1304,7 +1304,7 @@
        },
        "elements": [
         {
-         "id": "0c50c3ca",
+         "id": "bffdf5fc",
          "settings": {
           "text": "Pedigree on Horsetelex",
           "border_radius": {
@@ -1368,7 +1368,7 @@
            "sizes": []
           },
           "__dynamic__": {
-           "link": "[elementor-tag id=\"02fa9910\" name=\"acf-url\" settings=\"%7B%22key%22%3A%20%22field_sva_st_horsetelex%22%7D\"]"
+           "link": "[elementor-tag id=\"2b82d362\" name=\"acf-url\" settings=\"%7B%22key%22%3A%20%22field_sva_st_horsetelex%22%7D\"]"
           }
          },
          "elements": [],
@@ -1377,7 +1377,7 @@
          "elType": "widget"
         },
         {
-         "id": "6d1e580e",
+         "id": "d75172c2",
          "settings": {
           "title": "",
           "header_size": "span",
@@ -1392,7 +1392,7 @@
           },
           "typography_font_weight": "500",
           "__dynamic__": {
-           "title": "[elementor-tag id=\"6b9eeca6\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_horsetelex_of%22%7D\"]"
+           "title": "[elementor-tag id=\"05836c7a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_horsetelex_of%22%7D\"]"
           }
          },
          "elements": [],
@@ -1413,7 +1413,7 @@
    "elType": "container"
   },
   {
-   "id": "d95e5ebf",
+   "id": "894eaac7",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -1437,7 +1437,7 @@
    },
    "elements": [
     {
-     "id": "4e72a910",
+     "id": "7dabcd9b",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1457,7 +1457,7 @@
      },
      "elements": [
       {
-       "id": "26e2d783",
+       "id": "0c2d7736",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1481,7 +1481,7 @@
        },
        "elements": [
         {
-         "id": "f33c9ece",
+         "id": "1f1a2f7e",
          "settings": {
           "title": "The story",
           "header_size": "span",
@@ -1508,7 +1508,7 @@
          "elType": "widget"
         },
         {
-         "id": "6b33d9d1",
+         "id": "feab5c07",
          "settings": {
           "title": "About this stallion",
           "header_size": "h2",
@@ -1553,7 +1553,7 @@
        "elType": "container"
       },
       {
-       "id": "1d3111b6",
+       "id": "341578d9",
        "settings": {
         "editor": "",
         "text_color": "#4d5761",
@@ -1572,7 +1572,7 @@
         },
         "custom_css": "selector{max-width:760px}",
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"f99e8902\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_body%22%7D\"]"
+         "editor": "[elementor-tag id=\"111f796d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_body%22%7D\"]"
         }
        },
        "elements": [],
@@ -1589,7 +1589,7 @@
    "elType": "container"
   },
   {
-   "id": "56f5b721",
+   "id": "14f6d368",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -1613,7 +1613,7 @@
    },
    "elements": [
     {
-     "id": "9965b686",
+     "id": "d69fe326",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1633,7 +1633,7 @@
      },
      "elements": [
       {
-       "id": "6bd6478e",
+       "id": "20b52bc7",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1657,7 +1657,7 @@
        },
        "elements": [
         {
-         "id": "227e8ffe",
+         "id": "e38f1f31",
          "settings": {
           "title": "The crosses",
           "header_size": "span",
@@ -1684,7 +1684,7 @@
          "elType": "widget"
         },
         {
-         "id": "cc4a162d",
+         "id": "aad53189",
          "settings": {
           "title": "Embryos by this stallion",
           "header_size": "h2",
@@ -1729,7 +1729,7 @@
        "elType": "container"
       },
       {
-       "id": "eb5e3111",
+       "id": "440fc7bf",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -1766,7 +1766,7 @@
    "elType": "container"
   },
   {
-   "id": "b470b7e4",
+   "id": "37b1c57b",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -1786,11 +1786,12 @@
      "left": "20",
      "isLinked": false
     },
-    "flex_direction": "column"
+    "flex_direction": "column",
+    "css_classes": "sva-hide-if-empty"
    },
    "elements": [
     {
-     "id": "ca73715f",
+     "id": "156da96f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1810,7 +1811,7 @@
      },
      "elements": [
       {
-       "id": "3ce309a8",
+       "id": "652a303a",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -1834,7 +1835,7 @@
        },
        "elements": [
         {
-         "id": "df9830c7",
+         "id": "493fcbde",
          "settings": {
           "title": "Photographs",
           "header_size": "span",
@@ -1861,7 +1862,7 @@
          "elType": "widget"
         },
         {
-         "id": "f0e8949e",
+         "id": "b0db7384",
          "settings": {
           "title": "More of this horse",
           "header_size": "h2",
@@ -1906,7 +1907,7 @@
        "elType": "container"
       },
       {
-       "id": "d992c559",
+       "id": "7308adb2",
        "settings": {
         "gallery_layout": "grid",
         "columns": "3",
@@ -1924,7 +1925,7 @@
         "open_lightbox": "yes",
         "custom_css": "selector .e-gallery-image{border-radius:18px}",
         "__dynamic__": {
-         "gallery": "[elementor-tag id=\"4f8f9018\" name=\"acf-gallery\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gallery%22%7D\"]"
+         "gallery": "[elementor-tag id=\"5691887f\" name=\"acf-gallery\" settings=\"%7B%22key%22%3A%20%22field_sva_st_gallery%22%7D\"]"
         }
        },
        "elements": [],
@@ -1941,7 +1942,7 @@
    "elType": "container"
   },
   {
-   "id": "8d8655ab",
+   "id": "8b8829c5",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -1973,7 +1974,7 @@
    },
    "elements": [
     {
-     "id": "27b15780",
+     "id": "fa13339f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -1993,7 +1994,7 @@
      },
      "elements": [
       {
-       "id": "1b68c846",
+       "id": "4068983f",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -2017,7 +2018,7 @@
        },
        "elements": [
         {
-         "id": "b7518d19",
+         "id": "44e35038",
          "settings": {
           "title": "Ask us",
           "header_size": "span",
@@ -2044,7 +2045,7 @@
          "elType": "widget"
         },
         {
-         "id": "fee3d1c1",
+         "id": "edbe33c9",
          "settings": {
           "title": "Ask about this horse",
           "header_size": "h2",
@@ -2085,7 +2086,7 @@
          "elType": "widget"
         },
         {
-         "id": "cf2039fe",
+         "id": "8584a0a6",
          "settings": {
           "editor": "<p>Tell us what you would like to know. We answer in Italian, English, French and German.</p>",
           "text_color": "#4d5761",
@@ -2115,7 +2116,7 @@
        "elType": "container"
       },
       {
-       "id": "cd93d4cf",
+       "id": "05da852b",
        "settings": {
         "form_name": "Horse enquiry",
         "form_fields": [
@@ -2152,7 +2153,7 @@
           "width": "50",
           "field_value": "",
           "__dynamic__": {
-           "field_value": "[elementor-tag id=\"cb443987\" name=\"post-title\" settings=\"%7B%7D\"]"
+           "field_value": "[elementor-tag id=\"57b2a74e\" name=\"post-title\" settings=\"%7B%7D\"]"
           }
          },
          {
@@ -2210,7 +2211,7 @@
    "elType": "container"
   },
   {
-   "id": "43ebc4b6",
+   "id": "b0fc0778",
    "settings": {
     "background_background": "classic",
     "background_color": "#f1ebe0",
@@ -2234,7 +2235,7 @@
    },
    "elements": [
     {
-     "id": "ff53ceb3",
+     "id": "52636492",
      "settings": {
       "content_width": "full",
       "width": {
@@ -2254,7 +2255,7 @@
      },
      "elements": [
       {
-       "id": "836d123e",
+       "id": "b28ea8a7",
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
@@ -2278,7 +2279,7 @@
        },
        "elements": [
         {
-         "id": "305aa470",
+         "id": "03732654",
          "settings": {
           "title": "More",
           "header_size": "span",
@@ -2305,7 +2306,7 @@
          "elType": "widget"
         },
         {
-         "id": "adc74702",
+         "id": "980d6ad5",
          "settings": {
           "title": "More icsi semen",
           "header_size": "h2",
@@ -2350,7 +2351,7 @@
        "elType": "container"
       },
       {
-       "id": "93647513",
+       "id": "c9873527",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -2378,7 +2379,7 @@
        "elType": "widget"
       },
       {
-       "id": "607251cf",
+       "id": "0976eb96",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -2393,7 +2394,7 @@
        },
        "elements": [
         {
-         "id": "2e70f400",
+         "id": "c7f44723",
          "settings": {
           "text": "All icsi semen",
           "link": {

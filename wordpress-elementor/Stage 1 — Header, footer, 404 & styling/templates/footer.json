@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "d378e00d",
+   "id": "c77c684c",
    "settings": {
     "background_background": "classic",
     "background_color": "#0a1526",
@@ -49,7 +49,7 @@
    },
    "elements": [
     {
-     "id": "5a765ffb",
+     "id": "f36a9000",
      "settings": {
       "content_width": "full",
       "width": {
@@ -70,7 +70,7 @@
      },
      "elements": [
       {
-       "id": "9e3578c9",
+       "id": "d073afc3",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -86,7 +86,7 @@
        },
        "elements": [
         {
-         "id": "932b280b",
+         "id": "12b36c5b",
          "settings": {
           "content_width": "full",
           "width": {
@@ -110,7 +110,7 @@
          },
          "elements": [
           {
-           "id": "a832fbe1",
+           "id": "c5f26c31",
            "settings": {
             "image": {
              "url": "https://stud-von-axe-ten.vercel.app/assets/logo/logo-horizontal-ondark.webp",
@@ -142,7 +142,7 @@
          "elType": "container"
         },
         {
-         "id": "f6deb4f9",
+         "id": "0e253cdc",
          "settings": {
           "content_width": "full",
           "width": {
@@ -166,7 +166,7 @@
          },
          "elements": [
           {
-           "id": "bbfc1e62",
+           "id": "f2102900",
            "settings": {
             "title": "Navigate",
             "header_size": "h2",
@@ -192,7 +192,7 @@
            "elType": "widget"
           },
           {
-           "id": "3fc5eca4",
+           "id": "4f8499bd",
            "settings": {
             "editor": "<ul><li><a href=\"/sport-horses/\">Sport horses</a></li><li><a href=\"/breeding-mares/\">Breeding mares</a></li><li><a href=\"/foals/\">Foals</a></li><li><a href=\"/embryos/\">Embryos</a></li><li><a href=\"/icsi-semen/\">ICSI semen</a></li><li><a href=\"/about/\">About us</a></li><li><a href=\"/news/\">News</a></li><li><a href=\"/contact/\">Contact</a></li></ul>",
             "text_color": "rgba(238,241,245,.75)",
@@ -220,7 +220,7 @@
          "elType": "container"
         },
         {
-         "id": "34dc3457",
+         "id": "5b7a775a",
          "settings": {
           "content_width": "full",
           "width": {
@@ -244,7 +244,7 @@
          },
          "elements": [
           {
-           "id": "a7ed82c1",
+           "id": "5c45f4b1",
            "settings": {
             "title": "Contact",
             "header_size": "h2",
@@ -270,7 +270,7 @@
            "elType": "widget"
           },
           {
-           "id": "53264025",
+           "id": "c44dbd49",
            "settings": {
             "editor": "<ul><li><a href=\"mailto:studvonaxe@gmail.com\">studvonaxe@gmail.com</a></li><li><a href=\"tel:+393495918565\">Elisabetta &#9743; +39 349 591 8565</a></li><li><a href=\"tel:+393483953433\">Adriano &#9743; +39 348 395 3433</a></li></ul>",
             "text_color": "rgba(238,241,245,.75)",
@@ -298,7 +298,7 @@
          "elType": "container"
         },
         {
-         "id": "421f5f34",
+         "id": "6a06ca5c",
          "settings": {
           "content_width": "full",
           "width": {
@@ -322,7 +322,7 @@
          },
          "elements": [
           {
-           "id": "e23baacb",
+           "id": "05f6e4bb",
            "settings": {
             "title": "Follow",
             "header_size": "h2",
@@ -348,7 +348,7 @@
            "elType": "widget"
           },
           {
-           "id": "8c36591f",
+           "id": "9499cbc0",
            "settings": {
             "editor": "<ul><li><a href=\"https://instagram.com/studvonaxe\" target=\"_blank\" rel=\"noopener\">Instagram &#8599;</a></li><li><a href=\"https://facebook.com/StudVonAxe\" target=\"_blank\" rel=\"noopener\">Facebook &#8599;</a></li><li><a href=\"https://youtube.com/channel/UCSw5nRpEP1NTAkQHyrfJZOg\" target=\"_blank\" rel=\"noopener\">YouTube &#8599;</a></li></ul>",
             "text_color": "rgba(238,241,245,.75)",
@@ -384,7 +384,7 @@
      "elType": "container"
     },
     {
-     "id": "a7e3346b",
+     "id": "911eaff6",
      "settings": {
       "color": "rgba(255,255,255,.17)",
       "weight": {
@@ -404,7 +404,7 @@
      "elType": "widget"
     },
     {
-     "id": "12c31ccf",
+     "id": "4bdc1364",
      "settings": {
       "content_width": "full",
       "width": {
@@ -425,7 +425,7 @@
      },
      "elements": [
       {
-       "id": "1b9a1094",
+       "id": "70480540",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -441,7 +441,7 @@
        },
        "elements": [
         {
-         "id": "f4035d31",
+         "id": "d710b3c2",
          "settings": {
           "content_width": "full",
           "width": {
@@ -465,7 +465,7 @@
          },
          "elements": [
           {
-           "id": "6a3cbbb6",
+           "id": "66804475",
            "settings": {
             "editor": "<p>&#169; 2026 Von Axe. All rights reserved. <span>Made by <a href=\"https://equimarketing.com\" target=\"_blank\" rel=\"noopener\">EquiMarketing</a></span></p>",
             "text_color": "rgba(238,241,245,.75)",
@@ -488,7 +488,7 @@
          "elType": "container"
         },
         {
-         "id": "b8ffa956",
+         "id": "a2eccc5f",
          "settings": {
           "content_width": "full",
           "width": {
@@ -513,7 +513,7 @@
          },
          "elements": [
           {
-           "id": "1dccb087",
+           "id": "43e89b94",
            "settings": {
             "editor": "<p><a href=\"/privacy/\">Privacy policy</a> &nbsp; <a href=\"/terms/\">Terms and conditions</a></p>",
             "text_color": "rgba(238,241,245,.75)",
@@ -545,7 +545,7 @@
      "elType": "container"
     },
     {
-     "id": "43a785d8",
+     "id": "826b0f1f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -566,7 +566,7 @@
      },
      "elements": [
       {
-       "id": "0af50944",
+       "id": "36d50710",
        "settings": {
         "editor": "<p>Stud Von Axe SRL &middot; Via per Arni, 55032 Castelnuovo Garfagnana (LU), Italy &middot; P. IVA IT02519980466</p>",
         "text_color": "rgba(238,241,245,.55)",
@@ -590,7 +590,7 @@
      "elType": "container"
     },
     {
-     "id": "abbc54c5",
+     "id": "9b50ee98",
      "settings": {
       "content_width": "full",
       "width": {
@@ -611,7 +611,7 @@
      },
      "elements": [
       {
-       "id": "8c8cfe65",
+       "id": "acbf1a9e",
        "settings": {
         "editor": "<p><span aria-current=\"true\">English</span> &middot; <span>Italiano</span> &middot; <span>Fran&ccedil;ais</span> &middot; <span>Deutsch</span></p>",
         "text_color": "rgba(238,241,245,.42)",

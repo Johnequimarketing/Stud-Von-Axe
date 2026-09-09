@@ -1,0 +1,24 @@
+<!-- Elementor -> Custom Code -> Add New
+     Location: </body>   Conditions: Entire Site
+     ------------------------------------------------------------------ -->
+<!-- Secties die zichzelf weghalen als er niets in staat.
+
+     Niet elk paard heeft een film of losse foto's: 5 van de 20 veulens hebben
+     er een, 11 van de 12 sportpaarden. Een sectie met de kop "See the horse
+     move" en een leeg vlak eronder leest als een fout in de bouw, terwijl het
+     alleen maar een leeg veld is.
+
+     Elementor kan een sectie niet per record verbergen op een leeg ACF-veld
+     zonder plugin. Deze acht regels doen het wel: elke sectie met de klasse
+     `sva-hide-if-empty` wordt weggehaald als er geen speler en geen foto in
+     staat. Op de sjablonen zit die klasse al.
+-->
+<script>
+(function () {
+  document.querySelectorAll('.sva-hide-if-empty').forEach(function (sec) {
+    var speler = sec.querySelector('iframe, video, .elementor-wrapper a');
+    var beeld  = sec.querySelector('.e-gallery-image, .elementor-widget-gallery img');
+    if (!speler && !beeld) sec.remove();
+  });
+})();
+</script>

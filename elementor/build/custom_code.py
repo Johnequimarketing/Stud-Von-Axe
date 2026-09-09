@@ -100,58 +100,10 @@ RAILS = KOP + """<!-- De rails: nieuws, partners en "more horses".
 """
 
 
-TABS = KOP + """<!-- De vijf tabbladen op de homepagina, "Every horse we have".
-
-     De Tabs-widget doet de tabbladen. Wat hij niet doet is bij het wisselen
-     ook de foto, de zin en de twee knoppen omzetten. Vul TABS hieronder met de
-     vijf regels; de href's zijn de vijf archieven en de foto's staan al in de
-     mediabibliotheek.
-
-     Zonder JavaScript blijven het vijf gewone links naar de vijf archieven.
-     Dat is met opzet: een zoekmachine vindt ze zo nog steeds.
--->
-<script>
-(function () {
-  var TABS = {
-    'sport-horses':   { href: '/sport-horses/',   zin: 'Bred here or carefully sourced, and developed for the sport.' },
-    'breeding-mares': { href: '/breeding-mares/', zin: 'Strong maternal lines, chosen for what their families produce.' },
-    'foals':          { href: '/foals/',          zin: 'Born from proven bloodlines and raised in Belgium.' },
-    'embryos':        { href: '/embryos/',        zin: 'Frozen from our own damlines, or already carrying.' },
-    'icsi-semen':     { href: '/icsi-semen/',     zin: 'ICSI semen from selected stallions, stored at Avantea.' }
-  };
-
-  var doos = document.getElementById('sva-tabs');
-  if (!doos) return;
-  var zin = doos.querySelector('[data-sva-tab-text]');
-  var cta = doos.querySelector('[data-sva-tab-cta]');
-  var still = matchMedia('(prefers-reduced-motion: reduce)');
-
-  function verf(sleutel) {
-    var t = TABS[sleutel];
-    if (!t) return;
-    if (zin) zin.textContent = t.zin;
-    if (cta) { cta.setAttribute('href', t.href); }
-  }
-
-  doos.addEventListener('click', function (e) {
-    var tab = e.target.closest('[data-tab-index]');
-    if (!tab) return;
-    var sleutel = (tab.textContent || '').trim().toLowerCase().replace(/\\s+/g, '-');
-    if (still.matches) return verf(sleutel);
-    doos.classList.add('is-turning');
-    setTimeout(function () { verf(sleutel); doos.classList.remove('is-turning'); }, 180);
-  });
-
-  verf(Object.keys(TABS)[0]);
-})();
-</script>
-<style>
-  #sva-tabs.is-turning [data-sva-tab-text],
-  #sva-tabs.is-turning [data-sva-tab-cta] { opacity: 0; }
-  #sva-tabs [data-sva-tab-text],
-  #sva-tabs [data-sva-tab-cta] { transition: opacity .18s; }
-</style>
-"""
+# TABS is weg. De vijf tabbladen op de homepagina zijn nu vijf echte panelen
+# met een foto, een zin en een knop; Elementor's Tabs-widget wisselt ze zelf.
+# Wat hier stond vulde lege panelen met JavaScript, en een paneel dat leeg is
+# tot er een script draait, is leeg als dat script er niet is.
 
 
 TOC = KOP + """<!-- De inhoudsopgave op de privacy- en voorwaardenpagina.
@@ -196,10 +148,34 @@ TOC = KOP + """<!-- De inhoudsopgave op de privacy- en voorwaardenpagina.
 """
 
 
+LEEG = KOP + """<!-- Secties die zichzelf weghalen als er niets in staat.
+
+     Niet elk paard heeft een film of losse foto's: 5 van de 20 veulens hebben
+     er een, 11 van de 12 sportpaarden. Een sectie met de kop "See the horse
+     move" en een leeg vlak eronder leest als een fout in de bouw, terwijl het
+     alleen maar een leeg veld is.
+
+     Elementor kan een sectie niet per record verbergen op een leeg ACF-veld
+     zonder plugin. Deze acht regels doen het wel: elke sectie met de klasse
+     `sva-hide-if-empty` wordt weggehaald als er geen speler en geen foto in
+     staat. Op de sjablonen zit die klasse al.
+-->
+<script>
+(function () {
+  document.querySelectorAll('.sva-hide-if-empty').forEach(function (sec) {
+    var speler = sec.querySelector('iframe, video, .elementor-wrapper a');
+    var beeld  = sec.querySelector('.e-gallery-image, .elementor-widget-gallery img');
+    if (!speler && !beeld) sec.remove();
+  });
+})();
+</script>
+"""
+
+
 if __name__ == "__main__":
     for stage, naam, tekst in (
         ("stage-2-homepage", "custom-code-rails.txt", RAILS),
-        ("stage-2-homepage", "custom-code-tabs.txt", TABS),
+        ("stage-3-sport-horses", "custom-code-hide-empty.txt", LEEG),
         ("stage-9-about-news-legal", "custom-code-toc.txt", TOC),
     ):
         print(f"  {os.path.basename(schrijf(stage, naam, tekst))}")

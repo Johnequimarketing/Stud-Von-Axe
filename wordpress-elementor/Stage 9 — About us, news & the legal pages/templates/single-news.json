@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "fcb5d03e",
+   "id": "95366227",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -29,7 +29,7 @@
    },
    "elements": [
     {
-     "id": "71065912",
+     "id": "2e21810f",
      "settings": {
       "image_size": "full",
       "custom_css": "selector{position:absolute;inset:0;z-index:0}selector img{width:100%;height:100%;object-fit:cover}"
@@ -40,7 +40,7 @@
      "elType": "widget"
     },
     {
-     "id": "9f4884cf",
+     "id": "46dc8fca",
      "settings": {
       "html": "",
       "custom_css": "selector{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13, 29, 54,.76) 0%,rgba(10, 21, 38,.88) 100%)}"
@@ -51,7 +51,7 @@
      "elType": "widget"
     },
     {
-     "id": "0324119d",
+     "id": "7e4ec42f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -79,7 +79,7 @@
      },
      "elements": [
       {
-       "id": "4c4cc55c",
+       "id": "48d7385d",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -99,7 +99,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"3d1f857f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
+         "title": "[elementor-tag id=\"698cb7f6\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_eyebrow%22%7D\"]"
         }
        },
        "elements": [],
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "55473324",
+       "id": "89bec96c",
        "settings": {
         "header_size": "h1",
         "title_color": "#ffffff",
@@ -147,7 +147,7 @@
        "elType": "widget"
       },
       {
-       "id": "27f3e963",
+       "id": "67525e2e",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -166,7 +166,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"ea63e5b8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_excerpt%22%7D\"]"
+         "title": "[elementor-tag id=\"cabe86a3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_excerpt%22%7D\"]"
         }
        },
        "elements": [],
@@ -183,7 +183,7 @@
    "elType": "container"
   },
   {
-   "id": "31875e14",
+   "id": "14eed3b3",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -207,7 +207,7 @@
    },
    "elements": [
     {
-     "id": "c54db3b1",
+     "id": "7debea31",
      "settings": {
       "content_width": "full",
       "width": {
@@ -227,7 +227,7 @@
      },
      "elements": [
       {
-       "id": "891bfe40",
+       "id": "c2b1529b",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -248,7 +248,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"7199bb93\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_is_placeholder%22%7D\"]"
+         "title": "[elementor-tag id=\"3f42d09c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_is_placeholder%22%7D\"]"
         }
        },
        "elements": [],
@@ -257,7 +257,7 @@
        "elType": "widget"
       },
       {
-       "id": "cec32e8b",
+       "id": "5fc96fd6",
        "settings": {
         "editor": "",
         "text_color": "#14202e",
@@ -275,7 +275,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"c87c2685\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_body%22%7D\"]"
+         "editor": "[elementor-tag id=\"6e52828e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_nw_body%22%7D\"]"
         }
        },
        "elements": [],
@@ -292,7 +292,7 @@
    "elType": "container"
   },
   {
-   "id": "e6c45fbc",
+   "id": "224e52c1",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -338,7 +338,7 @@
    },
    "elements": [
     {
-     "id": "9ebeb873",
+     "id": "971e6968",
      "settings": {
       "content_width": "full",
       "width": {
@@ -366,7 +366,7 @@
      },
      "elements": [
       {
-       "id": "63940a8a",
+       "id": "98fa1717",
        "settings": {
         "title": "Want to hear it first?",
         "header_size": "h2",
@@ -407,7 +407,7 @@
        "elType": "widget"
       },
       {
-       "id": "c20824fe",
+       "id": "1f36cc14",
        "settings": {
         "editor": "<p>Ask us about a foal, a cross or a dose and we will tell you what we have.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -433,7 +433,7 @@
        "elType": "widget"
       },
       {
-       "id": "27631d16",
+       "id": "daf08458",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -457,7 +457,7 @@
        },
        "elements": [
         {
-         "id": "ad6270b7",
+         "id": "5eae6509",
          "settings": {
           "text": "Contact us",
           "link": {

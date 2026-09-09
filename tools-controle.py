@@ -147,7 +147,9 @@ def controle_bindingen():
         "due_date": "zit in stage_badge",
         "sire_name": "de titel van een kruising is al 'vader × moeder'",
         "dam_name": "de titel van een kruising is al 'vader × moeder'",
-        "videos": "de videowidget leest video_1_id, de platte spiegel ernaast",
+        "videos": "de videowidget leest video_1_url, de platte spiegel ernaast",
+        "video_1_id": "de widget leest video_1_url; dit veld blijft ernaast staan omdat "
+                      "een id is wat de klant herkent als hij een film wil wisselen",
         "source": "interne herkomstregel, niet voor de bezoeker",
         "source_text": "interne herkomstregel, niet voor de bezoeker",
         "crosses": "wordt wél gebruikt, als gerelateerde query op de hengstpagina; "

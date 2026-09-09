@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "3b4ceabc",
+   "id": "59825f5b",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -54,7 +54,7 @@
    },
    "elements": [
     {
-     "id": "7388dc90",
+     "id": "58a1b855",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "fec2ab3a",
+       "id": "d8229431",
        "settings": {
         "title": "The embryos",
         "header_size": "span",
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "59b870a0",
+       "id": "b7484aa5",
        "settings": {
         "title": "The bloodlines you want. <span style=\"color:#b59148\">The future you choose.</span>",
         "header_size": "h1",
@@ -148,7 +148,7 @@
        "elType": "widget"
       },
       {
-       "id": "42df468d",
+       "id": "5428a956",
        "settings": {
         "editor": "<p>Selected from outstanding families and proven sport horse combinations, our embryos give breeders and owners access to bloodlines with real breeding and performance potential.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +182,7 @@
    "elType": "container"
   },
   {
-   "id": "1a86d1b4",
+   "id": "4f5157bd",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +213,7 @@
    },
    "elements": [
     {
-     "id": "c9d3f085",
+     "id": "056d38be",
      "settings": {
       "content_width": "full",
       "width": {
@@ -258,34 +258,16 @@
        "isLinked": false
       },
       "_element_id": "sva-filter-bar",
-      "z_index": 3
+      "z_index": 3,
+      "custom_css": "selector input,selector select{background:rgba(255,255,255,.08);color:#ffffff;border:1px solid rgba(255,255,255,.17)}selector label{color:rgba(238,241,245,.75)}selector .e-filter-item{color:#ffffff;border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:7px 14px}selector .e-filter-item[aria-pressed=true]{background:#b59148;color:#0a1526}"
      },
      "elements": [
       {
-       "id": "f850723f",
+       "id": "52a77f00",
        "settings": {
         "placeholder": "Try a sire, a dam or a year.",
-        "button_type": "icon",
-        "input_padding": {
-         "unit": "px",
-         "top": "13",
-         "right": "16",
-         "bottom": "13",
-         "left": "16",
-         "isLinked": false
-        },
-        "input_background_color": "rgba(255,255,255,.08)",
-        "input_text_color": "#ffffff",
-        "input_border_color": "rgba(255,255,255,.17)",
-        "input_border_width": {
-         "unit": "px",
-         "top": "1",
-         "right": "1",
-         "bottom": "1",
-         "left": "1",
-         "isLinked": true
-        },
-        "input_border_radius": {
+        "query_id": "sva_embryos",
+        "border_radius": {
          "unit": "px",
          "top": "999",
          "right": "999",
@@ -293,17 +275,23 @@
          "left": "999",
          "isLinked": true
         },
-        "button_background_color": "#b59148",
-        "button_color": "#0a1526",
+        "input_padding": {
+         "unit": "px",
+         "top": "12",
+         "right": "18",
+         "bottom": "12",
+         "left": "18",
+         "isLinked": false
+        },
         "_element_id": "sva-search"
        },
        "elements": [],
        "isInner": false,
-       "widgetType": "search-form",
+       "widgetType": "search",
        "elType": "widget"
       },
       {
-       "id": "4e34e8bf",
+       "id": "833d14aa",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -319,81 +307,25 @@
        },
        "elements": [
         {
-         "id": "a285df1f",
+         "id": "e18f5d6a",
          "settings": {
-          "title": "All",
-          "header_size": "span",
-          "title_color": "#0a1526",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_embryos",
+          "taxonomy": "embryo_stage",
+          "filter_by": "taxonomy",
+          "selected_type": "checkbox_list",
+          "dropdown_placeholder": "Stage",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "70bedded",
-         "settings": {
-          "title": "Carrying",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "48af36cb",
-         "settings": {
-          "title": "Frozen",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -401,7 +333,7 @@
        "elType": "container"
       },
       {
-       "id": "9b8d2f03",
+       "id": "a4dd8906",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -417,28 +349,25 @@
        },
        "elements": [
         {
-         "id": "2c6f400e",
+         "id": "546a9186",
          "settings": {
-          "title": "Sire",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_embryos",
+          "taxonomy": "sire",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Sire",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -450,7 +379,7 @@
      "elType": "container"
     },
     {
-     "id": "31aeb992",
+     "id": "adc9e5c3",
      "settings": {
       "content_width": "full",
       "width": {
@@ -470,7 +399,7 @@
      },
      "elements": [
       {
-       "id": "d94a6828",
+       "id": "46f2aa19",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -490,7 +419,8 @@
         "post_query_post_type": "embryo",
         "post_query_posts_per_page": 48,
         "post_query_orderby": "menu_order",
-        "nothing_found_message": "Nothing matches that yet. Clear the search and try again."
+        "nothing_found_message": "Nothing matches that yet. Clear the search and try again.",
+        "post_query_query_id": "sva_embryos"
        },
        "elements": [],
        "isInner": false,
@@ -506,7 +436,7 @@
    "elType": "container"
   },
   {
-   "id": "ff5e6509",
+   "id": "3999431c",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -552,7 +482,7 @@
    },
    "elements": [
     {
-     "id": "bf9006a5",
+     "id": "7fad6d30",
      "settings": {
       "content_width": "full",
       "width": {
@@ -580,7 +510,7 @@
      },
      "elements": [
       {
-       "id": "cb19def8",
+       "id": "b1b706d0",
        "settings": {
         "title": "Ask about a <span style=\"color:#b59148\">cross</span>.",
         "header_size": "h2",
@@ -621,7 +551,7 @@
        "elType": "widget"
       },
       {
-       "id": "6e4f4e89",
+       "id": "55259bec",
        "settings": {
         "editor": "<p>Frozen or already carrying. We will tell you which stage a cross is at and what it takes to bring it home.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -647,7 +577,7 @@
        "elType": "widget"
       },
       {
-       "id": "d84d0e62",
+       "id": "1451b6d0",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -671,7 +601,7 @@
        },
        "elements": [
         {
-         "id": "1eb39b97",
+         "id": "ef042db9",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -740,7 +670,7 @@
          "elType": "widget"
         },
         {
-         "id": "5afc4d13",
+         "id": "d8473dbb",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

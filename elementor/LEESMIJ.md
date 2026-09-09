@@ -12,8 +12,8 @@ JSON. Elk getal hieronder komt uit `python3 tools-controle.py`.
 - 29 sjablonen: 1 kit, 1 header, 1 footer, 6 archieven, 7 singles, 8 loop items,
   5 pagina's
 - 356 containers en 523 widgets
-- 132 ACF-bindingen, allemaal naar een veld dat de plugin werkelijk aanmaakt
-- 4 stukjes eigen code, samen ongeveer 130 regels
+- 135 ACF-bindingen, allemaal naar een veld dat de plugin werkelijk aanmaakt
+- 3 stukjes eigen code, samen ongeveer 90 regels
 - 251 foto's verdeeld over de elf stagemappen
 - 3.845 regels: 564 bibliotheek, 170 validator, 2.292 bouwscripts, 819 gereedschap
 
@@ -26,7 +26,9 @@ Alle controles op groen:
 | Beeld op schijf en op te halen | 18 URL's, 0 kapot |
 | Beeld dat de site toont en nergens meereist | 0 |
 | Bindingen naar een veld dat niet bestaat | 0 |
-| Velden die geen sjabloon toont | 24, alle 24 met een vastgelegde reden |
+| Velden die geen sjabloon toont | 27, alle 27 met een vastgelegde reden |
+| Foto's byte voor byte gelijk aan het origineel | 251 van 251 |
+| Pagina's op de afvinklijst tegen de site | 122 tegen 122 |
 | Bestanden die een README noemt | 39, allemaal aanwezig |
 
 ---
@@ -71,6 +73,8 @@ samengesteld en als eigen veld meegestuurd:
 | `meta_line` | sportpaard, fokmerrie, veulen | `Born 2017 · Mare · KWPN · Sold to Italy`. Bij een veulen zonder het jaar, want dat staat in zijn eigen badge |
 | `status_line` | sportpaard, fokmerrie, veulen | `Available`, of `Sold to` en het land |
 | `stage_badge` | kruising | `❄︎ Frozen` of `⏳︎ Due 09/05/2027` — de emoji die de klant vroeg |
+| `photo_2` | sportpaard, fokmerrie, veulen | de tweede foto uit de galerij, als eigen beeldveld. Elementor kan het tweede item van een galerij niet aanwijzen |
+| `video_1_url` | sportpaard, fokmerrie, veulen | dezelfde film als `video_1_id`, maar als volledig YouTube-adres, want de videowidget wil een adres |
 
 De onderdelen blijven in hun eigen velden staan. Dit is een spiegel, geen
 vervanging, en allebei komen ze uit dezelfde bron zodat ze niet uiteen kunnen
@@ -89,12 +93,13 @@ wél het stamboek maar niet het jaar.
 |---|---|
 | **De kopbalk die omslaat** | Hij zit ín de hero, doorzichtig, met het witte logo, en slaat om op de onderrand van de hero — niet op een scrollafstand, want die hero's zijn niet even hoog. Vijftien regels in `custom-code-header.txt`. Twee logobestanden die overvloeien, geen filter: de merken zijn van de klant |
 | **De rails** | Nieuws, partners en "more horses". Elementor's carousel heeft geen pijl die zichzelf uitschakelt aan het eind en geen scroll-snap. `custom-code-rails.txt`, met een eigen tween omdat `scroll-behavior:smooth` door engines wordt genegeerd zodra het element niet in beeld is |
-| **De vijf tabbladen** | De Tabs-widget doet de tabbladen, `custom-code-tabs.txt` wisselt de foto, de zin en de twee knoppen. Zonder JavaScript blijven het vijf gewone links, met opzet |
 | **De inhoudsopgave** | Sticky is van Elementor, het meelopen is `custom-code-toc.txt` |
-| **De filterbalk** | Zoeken plus statuschips met tellingen plus facetselects, met zijn drieën tegelijk. Dit is het enige stuk dat **niet** gebouwd is: de plaat staat er met een vaste id (`sva-filter-bar`, `sva-chips`, `sva-facets`), de keuze tussen een filterplugin en het bestaande script is aan Mark, en die keuze geldt voor alle vijf archieven |
+| **De filterbalk** | Wél gebouwd, en wél native. `search` en `taxonomy-filter` zijn echte Elementor Pro-widgets; ze vinden de loop grid via het query_id dat ze delen. Het enige wat Elementor niet kan is de **telling áchter elke chip**, en dat is versiering. Eén onzekerheid: `selected_type: checkbox_list` tekent de chips als pillen, en die waarde is niet tegen een draaiende Elementor getoetst |
+| **De vijf tabbladen** | Vijf echte panelen met foto, zin en knop. Elementor's Tabs-widget wisselt ze zelf; hier is geen regel code voor nodig. De eerste versie had vijf lege panelen die op eigen JavaScript wachtten, en dat is teruggedraaid |
+| **Lege secties** | Niet elk paard heeft een film of losse foto's. Acht regels in `custom-code-hide-empty.txt` halen een sectie weg die leeg blijft; Elementor kan een sectie niet per record verbergen op een leeg ACF-veld |
 | **De stamboom** | Geen widget, maar wél zonder code te bouwen: vijftien containers met expliciete `grid-column` en `grid-row`. Auto-flow zette bij het vorige project een paard stilletjes een generatie te hoog toen er één vakje leeg was. Een leeg vakje leest "To be filled in" via de terugvalwaarde van het veld |
 
-Alle vier de codestukjes gaan in **Elementor → Custom Code**, niet in een
+Alle drie de codestukjes gaan in **Elementor → Custom Code**, niet in een
 plugin. Dat bewaart ze in de database van de site, zodat ze blijven staan als de
 importer straks verwijderd wordt.
 
@@ -158,6 +163,27 @@ verkochte paarden hebben er een · 44 van 106 zonder verhaaltekst · 24 van 32
 hengsten zonder jaar en stamboek · 18 van 30 kruisingen zonder eigen foto, die
 dragen die van de vader · de nieuwsberichten zonder datum, want hun eigen datums
 klopten niet.
+
+---
+
+## 6b. Wat er bij de eindaudit alsnog uitkwam
+
+Vijf dingen, gevonden door de gebouwde sjablonen naast de 28 bewezen sjablonen
+van Stoeterij te leggen. Alle vijf gerepareerd.
+
+1. **De vijf tabbladen waren leeg.** De widget stond er met vijf labels, de vijf
+   foto's reisden mee, en de panelen bevatten niets.
+2. **De drie rechtopstaande hero's reisden mee maar werden nergens gebruikt.**
+   Dat is precies de mobiele snede waar de klant om vroeg. Elementor kan per
+   apparaat een andere achtergrondfoto, dus dat is nu ingesteld.
+3. **De foto naast de naam op een paardpagina hing aan `acf-gallery`** in een
+   image-widget. Een galerij is een lijst; dat rendert niets. Nu `photo_2`.
+4. **De videowidget kreeg een id waar hij een adres wil.** Nu `video_1_url`.
+5. **Het zoekveld heette `search-form`; Elementor noemt hem `search`.** En hij
+   had het `query_id` nodig dat op de loop grid staat, en dat stond er niet.
+
+En één correctie op wat ik eerder zei: de filterbalk is grotendeels wél native.
+Ik had hem te somber ingeschat.
 
 ---
 

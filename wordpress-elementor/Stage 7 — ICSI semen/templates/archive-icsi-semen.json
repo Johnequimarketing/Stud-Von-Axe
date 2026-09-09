@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "17e26799",
+   "id": "d3cd2476",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -54,7 +54,7 @@
    },
    "elements": [
     {
-     "id": "816f23e2",
+     "id": "50ed1535",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +81,7 @@
      },
      "elements": [
       {
-       "id": "ba098fe4",
+       "id": "e6c4d444",
        "settings": {
         "title": "ICSI semen",
         "header_size": "span",
@@ -108,7 +108,7 @@
        "elType": "widget"
       },
       {
-       "id": "05006c57",
+       "id": "2fc487a1",
        "settings": {
         "title": "The best stallions. Quality semen. <span style=\"color:#b59148\">Fair prices.</span>",
         "header_size": "h1",
@@ -148,7 +148,7 @@
        "elType": "widget"
       },
       {
-       "id": "56bac961",
+       "id": "f9c891d7",
        "settings": {
         "editor": "<p>We offer ICSI semen from selected stallions, stored at Avantea and available at competitive prices, making proven genetics more accessible to breeders.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +182,7 @@
    "elType": "container"
   },
   {
-   "id": "963a369d",
+   "id": "e41abe02",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +213,7 @@
    },
    "elements": [
     {
-     "id": "30081755",
+     "id": "51c60ec0",
      "settings": {
       "content_width": "full",
       "width": {
@@ -258,34 +258,16 @@
        "isLinked": false
       },
       "_element_id": "sva-filter-bar",
-      "z_index": 3
+      "z_index": 3,
+      "custom_css": "selector input,selector select{background:rgba(255,255,255,.08);color:#ffffff;border:1px solid rgba(255,255,255,.17)}selector label{color:rgba(238,241,245,.75)}selector .e-filter-item{color:#ffffff;border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:7px 14px}selector .e-filter-item[aria-pressed=true]{background:#b59148;color:#0a1526}"
      },
      "elements": [
       {
-       "id": "a489bc13",
+       "id": "6ae33df2",
        "settings": {
         "placeholder": "Try a name or a sire.",
-        "button_type": "icon",
-        "input_padding": {
-         "unit": "px",
-         "top": "13",
-         "right": "16",
-         "bottom": "13",
-         "left": "16",
-         "isLinked": false
-        },
-        "input_background_color": "rgba(255,255,255,.08)",
-        "input_text_color": "#ffffff",
-        "input_border_color": "rgba(255,255,255,.17)",
-        "input_border_width": {
-         "unit": "px",
-         "top": "1",
-         "right": "1",
-         "bottom": "1",
-         "left": "1",
-         "isLinked": true
-        },
-        "input_border_radius": {
+        "query_id": "sva_stallions",
+        "border_radius": {
          "unit": "px",
          "top": "999",
          "right": "999",
@@ -293,17 +275,23 @@
          "left": "999",
          "isLinked": true
         },
-        "button_background_color": "#b59148",
-        "button_color": "#0a1526",
+        "input_padding": {
+         "unit": "px",
+         "top": "12",
+         "right": "18",
+         "bottom": "12",
+         "left": "18",
+         "isLinked": false
+        },
         "_element_id": "sva-search"
        },
        "elements": [],
        "isInner": false,
-       "widgetType": "search-form",
+       "widgetType": "search",
        "elType": "widget"
       },
       {
-       "id": "da33bd9a",
+       "id": "d47df02d",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -319,53 +307,47 @@
        },
        "elements": [
         {
-         "id": "507da96a",
+         "id": "24d0277a",
          "settings": {
-          "title": "Studbook",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_stallions",
+          "taxonomy": "studbook",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Studbook",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         },
         {
-         "id": "9623a3d8",
+         "id": "e7714fa7",
          "settings": {
-          "title": "Year of birth",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_stallions",
+          "taxonomy": "birth_year",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Year of birth",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -377,7 +359,7 @@
      "elType": "container"
     },
     {
-     "id": "6a924a0d",
+     "id": "20a5fc6e",
      "settings": {
       "content_width": "full",
       "width": {
@@ -397,7 +379,7 @@
      },
      "elements": [
       {
-       "id": "2ed14d6e",
+       "id": "9a64844c",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -417,7 +399,8 @@
         "post_query_post_type": "icsi_stallion",
         "post_query_posts_per_page": 48,
         "post_query_orderby": "title",
-        "nothing_found_message": "Nothing matches that yet. Clear the search and try again."
+        "nothing_found_message": "Nothing matches that yet. Clear the search and try again.",
+        "post_query_query_id": "sva_stallions"
        },
        "elements": [],
        "isInner": false,
@@ -433,7 +416,7 @@
    "elType": "container"
   },
   {
-   "id": "b46c7fa9",
+   "id": "e639695d",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -479,7 +462,7 @@
    },
    "elements": [
     {
-     "id": "fdf006d3",
+     "id": "f1570f61",
      "settings": {
       "content_width": "full",
       "width": {
@@ -507,7 +490,7 @@
      },
      "elements": [
       {
-       "id": "908df500",
+       "id": "da04d35f",
        "settings": {
         "title": "Order your ICSI <span style=\"color:#b59148\">through us</span>.",
         "header_size": "h2",
@@ -548,7 +531,7 @@
        "elType": "widget"
       },
       {
-       "id": "e5615a39",
+       "id": "fc967737",
        "settings": {
         "editor": "<p>Open a stallion and the order form asks for everything we need: you, your mare, and when you want the dose.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -574,7 +557,7 @@
        "elType": "widget"
       },
       {
-       "id": "5bf76181",
+       "id": "7fe40fe7",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -598,7 +581,7 @@
        },
        "elements": [
         {
-         "id": "9719765e",
+         "id": "0d82b703",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -667,7 +650,7 @@
          "elType": "widget"
         },
         {
-         "id": "62728bea",
+         "id": "1d97d5de",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

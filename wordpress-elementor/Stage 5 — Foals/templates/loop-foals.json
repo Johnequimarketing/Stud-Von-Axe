@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "6b2eaa6b",
+   "id": "0ad36c20",
    "settings": {
     "flex_direction": "column",
     "flex_gap": {
@@ -38,7 +38,7 @@
      "sizes": []
     },
     "__dynamic__": {
-     "link": "[elementor-tag id=\"e3aff014\" name=\"post-url\" settings=\"%7B%7D\"]"
+     "link": "[elementor-tag id=\"20503b89\" name=\"post-url\" settings=\"%7B%7D\"]"
     },
     "link": {
      "url": "#",
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "c9d1aedb",
+     "id": "36f8554e",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -69,7 +69,7 @@
      },
      "elements": [
       {
-       "id": "93cad4d3",
+       "id": "2409a356",
        "settings": {
         "image_size": "large",
         "custom_css": "selector img{aspect-ratio:1/1;object-fit:cover;object-position:50% 40%;width:100%;display:block}"
@@ -80,7 +80,7 @@
        "elType": "widget"
       },
       {
-       "id": "38c11c6a",
+       "id": "6467fa39",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -100,7 +100,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"bce9bcc0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_status_line%22%7D\"]"
+         "title": "[elementor-tag id=\"f3c535da\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_status_line%22%7D\"]"
         },
         "custom_css": "selector .elementor-heading-title{display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(10, 21, 38,.55);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);border:1px solid rgba(255,255,255,.17)}selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -114,7 +114,7 @@
      "elType": "container"
     },
     {
-     "id": "1b671829",
+     "id": "776e86dd",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -136,7 +136,7 @@
      },
      "elements": [
       {
-       "id": "467eb9f0",
+       "id": "0ff37788",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -156,7 +156,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"c00a2541\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_year_of_birth%22%7D\"]"
+         "title": "[elementor-tag id=\"52d61eb5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_year_of_birth%22%7D\"]"
         },
         "custom_css": "selector .elementor-heading-title::before{content:\"Born \"}selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -166,7 +166,7 @@
        "elType": "widget"
       },
       {
-       "id": "e06c4ca3",
+       "id": "cdae37d0",
        "settings": {
         "title": "Horse name",
         "header_size": "h2",
@@ -190,7 +190,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"be4a1edb\" name=\"post-title\" settings=\"%7B%7D\"]"
+         "title": "[elementor-tag id=\"2014f378\" name=\"post-title\" settings=\"%7B%7D\"]"
         }
        },
        "elements": [],
@@ -199,7 +199,7 @@
        "elType": "widget"
       },
       {
-       "id": "4e935586",
+       "id": "695ad088",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -223,7 +223,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"bc55197a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_genetics%22%7D\"]"
+         "title": "[elementor-tag id=\"b610538a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_genetics%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -233,7 +233,7 @@
        "elType": "widget"
       },
       {
-       "id": "35a45c57",
+       "id": "a422aef9",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -257,7 +257,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"c95a279e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_meta_line%22%7D\"]"
+         "title": "[elementor-tag id=\"10d551cf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_meta_line%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },
@@ -267,7 +267,7 @@
        "elType": "widget"
       },
       {
-       "id": "4250460b",
+       "id": "efdd97f5",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -286,7 +286,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"281e1efc\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_tagline%22%7D\"]"
+         "title": "[elementor-tag id=\"6c4f019d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_fo_tagline%22%7D\"]"
         },
         "custom_css": "selector .elementor-heading-title{display:block;padding:10px 13px;border-radius:10px;background:#b59148;color:#0a1526}selector:has(.elementor-heading-title:empty){display:none}"
        },

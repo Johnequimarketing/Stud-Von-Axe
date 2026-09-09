@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "2d11af0d",
+   "id": "815411e8",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "74ad4325",
+     "id": "3c500399",
      "settings": {
       "content_width": "full",
       "width": {
@@ -70,7 +70,7 @@
      },
      "elements": [
       {
-       "id": "1afb5d1d",
+       "id": "a5382e7f",
        "settings": {
         "title": "404",
         "header_size": "span",
@@ -97,7 +97,7 @@
        "elType": "widget"
       },
       {
-       "id": "1e0c7d75",
+       "id": "c06c42a0",
        "settings": {
         "title": "This page has left the yard",
         "header_size": "h1",
@@ -138,7 +138,7 @@
        "elType": "widget"
       },
       {
-       "id": "8b1c81de",
+       "id": "3eb24799",
        "settings": {
         "editor": "<p>The address is not one of ours, or the page has moved. The five archives below hold everything we have.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -164,7 +164,7 @@
        "elType": "widget"
       },
       {
-       "id": "e8b5867a",
+       "id": "688fd4e9",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -188,7 +188,7 @@
        },
        "elements": [
         {
-         "id": "50b9deb0",
+         "id": "e1fced8c",
          "settings": {
           "text": "Back to the homepage",
           "link": {
@@ -257,7 +257,7 @@
          "elType": "widget"
         },
         {
-         "id": "8f40fa21",
+         "id": "8bd0e23d",
          "settings": {
           "text": "Sport horses",
           "link": {
@@ -326,7 +326,7 @@
          "elType": "widget"
         },
         {
-         "id": "6860083d",
+         "id": "6424fcfd",
          "settings": {
           "text": "Breeding mares",
           "link": {
@@ -395,7 +395,7 @@
          "elType": "widget"
         },
         {
-         "id": "10afd4ae",
+         "id": "08bdc3f8",
          "settings": {
           "text": "Foals",
           "link": {
@@ -464,7 +464,7 @@
          "elType": "widget"
         },
         {
-         "id": "0462d6a3",
+         "id": "abcbab6a",
          "settings": {
           "text": "Embryos",
           "link": {
@@ -533,7 +533,7 @@
          "elType": "widget"
         },
         {
-         "id": "a6083d8e",
+         "id": "716ca9fe",
          "settings": {
           "text": "ICSI semen",
           "link": {

@@ -274,6 +274,16 @@ def paardrecord(h, videos):
         "horsetelex_of": c["telex_of"],
         "body": html(h.get("body") or []),
         "gallery": fotos,
+        # De tweede foto in een eigen veld. De pagina toont hem naast de naam
+        # terwijl de eerste de achtergrond vult, en Elementor kan het tweede
+        # item van een galerij niet aanwijzen zonder code. 37 van de 44 paarden
+        # hebben er twee of meer; wie er één heeft laat dit leeg en de pagina
+        # laat dat vlak dan weg.
+        "photo_2": fotos[1] if len(fotos) > 1 else "",
+        # De videowidget wil een adres en geen id. Beide velden reizen mee,
+        # want de tekstvorm is wat de klant herkent en de link is wat de widget
+        # leest.
+        "video_1_url": f"https://www.youtube.com/watch?v={ids[0]}" if ids else "",
         "video_1_id": ids[0] if ids else "",
         "videos": [{"youtube_id": v, "title": (videos.get(v) or {}).get("title", "")} for v in ids],
         "source": h.get("source", ""),

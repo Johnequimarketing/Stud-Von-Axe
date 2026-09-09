@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "ad012572",
+   "id": "fbf60005",
    "settings": {
     "flex_direction": "column",
     "flex_gap": {
@@ -38,7 +38,7 @@
      "sizes": []
     },
     "__dynamic__": {
-     "link": "[elementor-tag id=\"e1859fa0\" name=\"post-url\" settings=\"%7B%7D\"]"
+     "link": "[elementor-tag id=\"e4701030\" name=\"post-url\" settings=\"%7B%7D\"]"
     },
     "link": {
      "url": "#",
@@ -48,7 +48,7 @@
    },
    "elements": [
     {
-     "id": "af90e2c9",
+     "id": "2e1f7cc9",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -69,7 +69,7 @@
      },
      "elements": [
       {
-       "id": "c398867b",
+       "id": "cf6e271a",
        "settings": {
         "image_size": "large",
         "custom_css": "selector img{aspect-ratio:1/1;object-fit:cover;object-position:50% 40%;width:100%;display:block}"
@@ -84,7 +84,7 @@
      "elType": "container"
     },
     {
-     "id": "f08a8704",
+     "id": "c8d2af94",
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
@@ -106,7 +106,7 @@
      },
      "elements": [
       {
-       "id": "a729c564",
+       "id": "6439147d",
        "settings": {
         "title": "Availability on request",
         "header_size": "span",
@@ -132,7 +132,7 @@
        "elType": "widget"
       },
       {
-       "id": "5b6b6e6e",
+       "id": "6abc9c6a",
        "settings": {
         "title": "Horse name",
         "header_size": "h2",
@@ -156,7 +156,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"1536e1d3\" name=\"post-title\" settings=\"%7B%7D\"]"
+         "title": "[elementor-tag id=\"d5a808a0\" name=\"post-title\" settings=\"%7B%7D\"]"
         }
        },
        "elements": [],
@@ -165,7 +165,7 @@
        "elType": "widget"
       },
       {
-       "id": "f0435f8b",
+       "id": "81869913",
        "settings": {
         "title": "",
         "header_size": "span",
@@ -189,7 +189,7 @@
          "sizes": []
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"731ff0e2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_genetics%22%7D\"]"
+         "title": "[elementor-tag id=\"e0972131\" name=\"acf-text\" settings=\"%7B%22key%22%3A%20%22field_sva_st_genetics%22%7D\"]"
         },
         "custom_css": "selector:has(.elementor-heading-title:empty){display:none}"
        },

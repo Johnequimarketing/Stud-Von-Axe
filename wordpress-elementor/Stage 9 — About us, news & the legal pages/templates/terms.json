@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "ced0de9e",
+   "id": "d769be84",
    "settings": {
     "background_background": "classic",
     "background_color": "#0d1d36",
@@ -27,7 +27,7 @@
    },
    "elements": [
     {
-     "id": "9d97e0ff",
+     "id": "76f31ec7",
      "settings": {
       "content_width": "full",
       "width": {
@@ -54,7 +54,7 @@
      },
      "elements": [
       {
-       "id": "e64893d1",
+       "id": "04cd94b2",
        "settings": {
         "title": "Legal",
         "header_size": "span",
@@ -81,7 +81,7 @@
        "elType": "widget"
       },
       {
-       "id": "d018106c",
+       "id": "1b978551",
        "settings": {
         "title": "Terms and conditions",
         "header_size": "h1",
@@ -122,7 +122,7 @@
        "elType": "widget"
       },
       {
-       "id": "7f2386b3",
+       "id": "3141fa4b",
        "settings": {
         "editor": "<p>The terms under which we sell a horse, an embryo or a dose.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -156,7 +156,7 @@
    "elType": "container"
   },
   {
-   "id": "1c98448a",
+   "id": "95ec4959",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -180,7 +180,7 @@
    },
    "elements": [
     {
-     "id": "4c136666",
+     "id": "209d8e77",
      "settings": {
       "content_width": "full",
       "width": {
@@ -200,7 +200,7 @@
      },
      "elements": [
       {
-       "id": "0c25cf1a",
+       "id": "47811271",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -216,7 +216,7 @@
        },
        "elements": [
         {
-         "id": "f1c608b6",
+         "id": "2d0a1395",
          "settings": {
           "content_width": "full",
           "width": {
@@ -247,7 +247,7 @@
          },
          "elements": [
           {
-           "id": "aeb3449b",
+           "id": "d0fddc31",
            "settings": {
             "editor": "<p><strong>On this page</strong></p><ul data-sva-toc><li>The sections are filled in during the build, from the headings below.</li></ul>",
             "text_color": "#4d5761",
@@ -275,7 +275,7 @@
          "elType": "container"
         },
         {
-         "id": "f389d095",
+         "id": "9fb73f25",
          "settings": {
           "content_width": "full",
           "width": {
@@ -299,7 +299,7 @@
          },
          "elements": [
           {
-           "id": "e74ff669",
+           "id": "2b68ef22",
            "settings": {
             "editor": "<h2>Terms and conditions</h2><p>The text of this page comes across from the static site during the build. It is one long text with headings, so it lives in one editor rather than in fields.</p>",
             "text_color": "#14202e",

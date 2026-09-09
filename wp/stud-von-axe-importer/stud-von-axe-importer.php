@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Stud Von Axe Content Importer
  * Description:  One shot importer for Stud Von Axe: creates the seven ACF post types, the seven taxonomies and the seven field groups, then imports the sport horses, breeding mares, foals, embryos, ICSI stallions, news and partners with their photographs. Delete this plugin when it is done; everything it made stays.
- * Version:      2026.09.09.2057
+ * Version:      2026.09.09.2136
  * Requires PHP: 7.4
  * Author:       EquiMarketing
  * Author URI:   https://www.equimarketing.com
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'SVA_IMP_FILE', __FILE__ );
 define( 'SVA_IMP_DIR', plugin_dir_path( __FILE__ ) );
-define( 'SVA_IMP_VERSION', '2026.09.09.2057' );
+define( 'SVA_IMP_VERSION', '2026.09.09.2136' );
 
 /**
  * ACF Pro 6.1 is the floor, because that is the release where post types and

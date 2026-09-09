@@ -242,6 +242,16 @@
                     "type": "gallery",
                     "label": "Photographs"
                 },
+                "photo_2": {
+                    "key": "field_sva_sp_photo_2",
+                    "type": "image",
+                    "label": "Second photograph"
+                },
+                "video_1_url": {
+                    "key": "field_sva_sp_video_1_url",
+                    "type": "url",
+                    "label": "First video, as a link"
+                },
                 "video_1_id": {
                     "key": "field_sva_sp_video_1_id",
                     "type": "text",
@@ -405,6 +415,16 @@
                     "type": "gallery",
                     "label": "Photographs"
                 },
+                "photo_2": {
+                    "key": "field_sva_bm_photo_2",
+                    "type": "image",
+                    "label": "Second photograph"
+                },
+                "video_1_url": {
+                    "key": "field_sva_bm_video_1_url",
+                    "type": "url",
+                    "label": "First video, as a link"
+                },
                 "video_1_id": {
                     "key": "field_sva_bm_video_1_id",
                     "type": "text",
@@ -567,6 +587,16 @@
                     "key": "field_sva_fo_gallery",
                     "type": "gallery",
                     "label": "Photographs"
+                },
+                "photo_2": {
+                    "key": "field_sva_fo_photo_2",
+                    "type": "image",
+                    "label": "Second photograph"
+                },
+                "video_1_url": {
+                    "key": "field_sva_fo_video_1_url",
+                    "type": "url",
+                    "label": "First video, as a link"
                 },
                 "video_1_id": {
                     "key": "field_sva_fo_video_1_id",

@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "e8bb46e0",
+   "id": "42225545",
    "settings": {
     "background_background": "classic",
     "background_color": "rgba(0,0,0,0)",
@@ -39,7 +39,7 @@
    },
    "elements": [
     {
-     "id": "418d3b74",
+     "id": "68d1e974",
      "settings": {
       "content_width": "full",
       "width": {
@@ -69,7 +69,7 @@
      },
      "elements": [
       {
-       "id": "80554034",
+       "id": "c2762a97",
        "settings": {
         "content_width": "full",
         "width": {
@@ -96,7 +96,7 @@
        },
        "elements": [
         {
-         "id": "df4b184e",
+         "id": "febfc625",
          "settings": {
           "menu": "Header left",
           "layout": "horizontal",
@@ -134,7 +134,7 @@
        "elType": "container"
       },
       {
-       "id": "5eb92566",
+       "id": "fb57334d",
        "settings": {
         "content_width": "full",
         "width": {
@@ -160,7 +160,7 @@
        },
        "elements": [
         {
-         "id": "ef3ebdeb",
+         "id": "1fab139e",
          "settings": {
           "menu": "Mobile menu",
           "layout": "dropdown",
@@ -216,7 +216,7 @@
        "elType": "container"
       },
       {
-       "id": "328557c8",
+       "id": "8a9f3cd1",
        "settings": {
         "content_width": "full",
         "width": {
@@ -243,7 +243,7 @@
        },
        "elements": [
         {
-         "id": "84627dc2",
+         "id": "d85e1a8d",
          "settings": {
           "image": {
            "url": "https://stud-von-axe-ten.vercel.app/assets/logo/logo-horizontal-ondark.webp",
@@ -267,7 +267,7 @@
          "elType": "widget"
         },
         {
-         "id": "be5a4d83",
+         "id": "aa5442c4",
          "settings": {
           "image": {
            "url": "https://stud-von-axe-ten.vercel.app/assets/logo/logo-plain-onlight.png",
@@ -295,7 +295,7 @@
        "elType": "container"
       },
       {
-       "id": "e3391345",
+       "id": "e60694b3",
        "settings": {
         "content_width": "full",
         "width": {
@@ -323,7 +323,7 @@
        },
        "elements": [
         {
-         "id": "c1108cde",
+         "id": "9025bec4",
          "settings": {
           "menu": "Header right",
           "layout": "horizontal",
@@ -357,7 +357,7 @@
          "elType": "widget"
         },
         {
-         "id": "b9b27b3f",
+         "id": "d6829fdc",
          "settings": {
           "selected_icon": {
            "value": "fab fa-whatsapp",
@@ -390,7 +390,7 @@
          "elType": "widget"
         },
         {
-         "id": "727fa81c",
+         "id": "7cd880f1",
          "settings": {
           "text": "Contact us",
           "link": {

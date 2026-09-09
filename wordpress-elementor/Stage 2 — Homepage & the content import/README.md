@@ -14,7 +14,7 @@ Run the importer so all 113 records and 209 photos are on the site, then build t
 6. Pages → Add New → **Home** → Edit with Elementor → import `home.json`.
 7. Settings → Reading → Homepage displays a static page → Home.
 8. A Loop Grid arrives with **no loop item linked**. A JSON file cannot know the post ID of a loop item on this site, so open the grid, set Template to the loop item, and save. Once per grid. This is normal, not a fault. The homepage has two: the news rail and the partners rail.
-9. Elementor → Custom Code → add `custom-code-rails.txt` (the arrows on the news and partners rails) and `custom-code-tabs.txt` (the five archive tabs).
+9. Elementor → Custom Code → add `custom-code-rails.txt`, the arrows on the news rail and the partners rail.
 10. Walk the page at 1440, 768 and 390 pixels wide and compare it with the live preview.
 
 ## Worth knowing
@@ -22,7 +22,7 @@ Run the importer so all 113 records and 209 photos are on the site, then build t
 - If the plugin upload fails because the file is too large, use the pair instead: install `stud-von-axe-importer-zonder-fotos.zip` first, then unpack `stud-von-axe-importer-fotos.zip` into `wp-content/uploads/` so that a folder `stud-von-axe-media` appears. The importer looks there too.
 - The importer never deletes anything. Running it twice updates what is there and adds what is missing. It does overwrite a field you edited by hand if that field is in the import.
 - When the import is finished the plugin **may be deleted**. Everything it made stays: the post types and fields are ACF's own records, the content is ordinary posts, the photos ordinary attachments. Please try this on staging and tell Mark what you see, because the whole build rests on it.
-- The 'Every horse we have' block is five tabs that swap the photo, the sentence and **two** buttons at once. Elementor's Tabs widget does the tabs; the swapping is `custom-code-tabs.txt`. Without JavaScript the five tabs stay five ordinary links, which is on purpose — search engines still find the five archives.
+- The 'Every horse we have' block is five real tab panels, each with its own photograph, sentence and button. Elementor's Tabs widget switches them by itself; there is no code behind it. The five sentences are typed into the template because they are the client's own copy and do not live in a field.
 - The partners have a logo but **no website link and no description yet**. Those fields travel empty. Mark is asking the client for them; the loop item already has the places.
 - The `media-reference/` folder is **not** for uploading. Those photos are already in the media library, put there by the importer plugin. They are in the folder so you can check that the right photo landed in the right place. Uploading them again gives every file a `-1` twin and the templates then point at the wrong one.
 - **Elementor → Settings → Features → Flexbox Container → Active.** Without this every imported template renders as a white page and looks broken when it is not.
@@ -33,7 +33,6 @@ Run the importer so all 113 records and 209 photos are on the site, then build t
 - `loop-partner.json`
 - `loop-news-card.json`
 - `custom-code-rails.txt`
-- `custom-code-tabs.txt`
 - `stud-von-axe-importer.zip`
 - `stud-von-axe-importer-zonder-fotos.zip`
 - `stud-von-axe-importer-fotos.zip`

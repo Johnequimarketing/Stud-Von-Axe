@@ -104,8 +104,8 @@ STAGES = [
     "Pages → Add New → **Home** → Edit with Elementor → import `home.json`.",
     "Settings → Reading → Homepage displays a static page → Home.",
     LOOPLINK + " The homepage has two: the news rail and the partners rail.",
-    "Elementor → Custom Code → add `custom-code-rails.txt` (the arrows on the news and partners "
-    "rails) and `custom-code-tabs.txt` (the five archive tabs).",
+    "Elementor → Custom Code → add `custom-code-rails.txt`, the arrows on the news rail and "
+    "the partners rail.",
     "Walk the page at 1440, 768 and 390 pixels wide and compare it with the live preview.",
   ],
   notes=[
@@ -119,17 +119,17 @@ STAGES = [
     "post types and fields are ACF's own records, the content is ordinary posts, the photos "
     "ordinary attachments. Please try this on staging and tell Mark what you see, because the "
     "whole build rests on it.",
-    "The 'Every horse we have' block is five tabs that swap the photo, the sentence and **two** "
-    "buttons at once. Elementor's Tabs widget does the tabs; the swapping is "
-    "`custom-code-tabs.txt`. Without JavaScript the five tabs stay five ordinary links, which "
-    "is on purpose — search engines still find the five archives.",
+    "The 'Every horse we have' block is five real tab panels, each with its own photograph, "
+    "sentence and button. Elementor's Tabs widget switches them by itself; there is no code "
+    "behind it. The five sentences are typed into the template because they are the client's "
+    "own copy and do not live in a field.",
     "The partners have a logo but **no website link and no description yet**. Those fields "
     "travel empty. Mark is asking the client for them; the loop item already has the places.",
     NOUPLOAD,
     FLEXBOX,
   ],
   files=["home.json", "loop-partner.json", "loop-news-card.json",
-         "custom-code-rails.txt", "custom-code-tabs.txt",
+         "custom-code-rails.txt",
          "stud-von-axe-importer.zip", "stud-von-axe-importer-zonder-fotos.zip",
          "stud-von-axe-importer-fotos.zip"],
  ),
@@ -199,18 +199,34 @@ for g in GROEPEN:
         + (f", the status chips ({g['chips']})" if g["chips"] != "none" else
            " and the two selects, with no status chips")
         + (f" and the selects ({g['filters']})." if g["filters"] else ".")
-        + " See the note below — this is the one part Elementor does not do on its own.",
+        + " All three are Elementor Pro's own widgets and they are already in the template; "
+          "check that the Loop Grid and every filter carry the same query id.",
         "Open three records and compare them with the live preview: one with everything filled "
         "in, one without a photograph, and one that is sold.",
-        "Walk the archive at 1440, 768 and 390 pixels wide.",
-      ],
+        "Walk the archive at 1440, 768 and 390 pixels wide. The hero on a phone uses an "
+        "upright crop of its own where there is one, so look at that too.",
+      ] + ([
+        "Elementor \u2192 Custom Code \u2192 add `custom-code-hide-empty.txt`. Not every horse "
+        "has a film or spare photographs, and a section headed 'See the horse move' with an "
+        "empty box under it reads as a fault. These eight lines take such a section away. "
+        "Added once, works on all five single templates.",
+      ] if g["n"] == 3 else []),
       notes=g["eigen"] + [
-        "**The filter bar is not an Elementor widget.** Search plus status chips with live counts "
-        "plus facet selects, all three filtering at once, is not something Elementor Pro can do. "
-        "Mark decides before this stage starts whether we use a filter plugin "
-        "(JetSmartFilters or Search & Filter Pro) or port the existing script as Custom Code. "
-        "Whatever is chosen here is repeated on the other four archives, so do not solve it "
-        "twice differently.",
+        "**The filter bar is native, and it hangs on one thread: the query id.** The search "
+        "box, the status chips and the selects are Elementor Pro's own Search and Taxonomy "
+        "Filter widgets, and they find the Loop Grid only through the query id they share. It "
+        "is already set in the template on all four. If you rebuild the grid by hand, set it "
+        "again \u2014 a filter carrying the wrong query id sits there looking perfectly normal "
+        "and does nothing at all.",
+        "The chips are a Taxonomy Filter set to `checkbox_list`, which draws them as pills. "
+        "That value is written into the template but it is the one setting here I could not "
+        "test against a running Elementor. If they come out as a dropdown instead, it is one "
+        "click in the widget: Filter → Selected type. Tell Mark either way, because then I "
+        "know for the other four archives.",
+        "The one thing Elementor cannot do is the **count behind each chip**, the 24 in "
+        "'Sold 24'. The chips filter correctly; only the number is missing. That is "
+        "decoration and not function, and it is not worth a plugin for. Tell Mark if the "
+        "client asks after it.",
         "The pedigree is a grid of fifteen cells, built with containers and dynamic fields, not "
         "a table. An empty cell shows 'To be filled in' by itself through the field's fallback. "
         "Check that on a horse whose third generation is unknown.",
@@ -218,7 +234,8 @@ for g in GROEPEN:
         "badly, tell Mark which horse — the crop is set per horse and is easy to move.",
         NOUPLOAD,
       ],
-      files=[f"archive-{g['slug']}.json", f"loop-{g['slug']}.json", f"single-{g['slug']}.json"],
+      files=([f"archive-{g['slug']}.json", f"loop-{g['slug']}.json", f"single-{g['slug']}.json"]
+             + (["custom-code-hide-empty.txt"] if g["n"] == 3 else [])),
     ))
 
 STAGES += [

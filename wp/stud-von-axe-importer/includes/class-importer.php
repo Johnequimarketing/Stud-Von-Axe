@@ -36,7 +36,7 @@ class SVA_Imp_Importer {
 	 * getting it wrong writes file paths into the database instead of
 	 * attachment ids.
 	 */
-	const SINGLE_IMAGE = array( 'logo' );
+	const SINGLE_IMAGE = array( 'logo', 'photo_2' );
 	const GALLERIES    = array( 'gallery' );
 
 	/**

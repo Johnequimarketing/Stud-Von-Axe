@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "97fcb4ed",
+   "id": "abb68046",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -50,11 +50,20 @@
     "flex_direction": "column",
     "flex_justify_content": "flex-end",
     "_element_id": "top",
-    "css_classes": "sva-hero"
+    "css_classes": "sva-hero",
+    "background_image_mobile": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/arch-foals-tall.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_position_mobile": "center center",
+    "background_size_mobile": "cover"
    },
    "elements": [
     {
-     "id": "8b08943a",
+     "id": "3f465326",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +90,7 @@
      },
      "elements": [
       {
-       "id": "1779f9b8",
+       "id": "164a89d4",
        "settings": {
         "title": "The foals",
         "header_size": "span",
@@ -108,7 +117,7 @@
        "elType": "widget"
       },
       {
-       "id": "155d6593",
+       "id": "0bbf1cda",
        "settings": {
         "title": "Born from great bloodlines. <span style=\"color:#b59148\">Raised in Belgium.</span>",
         "header_size": "h1",
@@ -148,7 +157,7 @@
        "elType": "widget"
       },
       {
-       "id": "71b26692",
+       "id": "5a0bdc44",
        "settings": {
         "editor": "<p>Born from proven bloodlines and raised with care, our foals are selected and developed with one goal: to become the sport horses of tomorrow.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +191,7 @@
    "elType": "container"
   },
   {
-   "id": "cbb7d633",
+   "id": "cf63f744",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +222,7 @@
    },
    "elements": [
     {
-     "id": "1ae6cb1a",
+     "id": "8a8c35e5",
      "settings": {
       "content_width": "full",
       "width": {
@@ -258,34 +267,16 @@
        "isLinked": false
       },
       "_element_id": "sva-filter-bar",
-      "z_index": 3
+      "z_index": 3,
+      "custom_css": "selector input,selector select{background:rgba(255,255,255,.08);color:#ffffff;border:1px solid rgba(255,255,255,.17)}selector label{color:rgba(238,241,245,.75)}selector .e-filter-item{color:#ffffff;border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:7px 14px}selector .e-filter-item[aria-pressed=true]{background:#b59148;color:#0a1526}"
      },
      "elements": [
       {
-       "id": "0c5b8bad",
+       "id": "e59f5ee5",
        "settings": {
         "placeholder": "Try a sire, a damline, a year or a country.",
-        "button_type": "icon",
-        "input_padding": {
-         "unit": "px",
-         "top": "13",
-         "right": "16",
-         "bottom": "13",
-         "left": "16",
-         "isLinked": false
-        },
-        "input_background_color": "rgba(255,255,255,.08)",
-        "input_text_color": "#ffffff",
-        "input_border_color": "rgba(255,255,255,.17)",
-        "input_border_width": {
-         "unit": "px",
-         "top": "1",
-         "right": "1",
-         "bottom": "1",
-         "left": "1",
-         "isLinked": true
-        },
-        "input_border_radius": {
+        "query_id": "sva_foals",
+        "border_radius": {
          "unit": "px",
          "top": "999",
          "right": "999",
@@ -293,17 +284,23 @@
          "left": "999",
          "isLinked": true
         },
-        "button_background_color": "#b59148",
-        "button_color": "#0a1526",
+        "input_padding": {
+         "unit": "px",
+         "top": "12",
+         "right": "18",
+         "bottom": "12",
+         "left": "18",
+         "isLinked": false
+        },
         "_element_id": "sva-search"
        },
        "elements": [],
        "isInner": false,
-       "widgetType": "search-form",
+       "widgetType": "search",
        "elType": "widget"
       },
       {
-       "id": "d8f8acc9",
+       "id": "d0110ab4",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -319,81 +316,25 @@
        },
        "elements": [
         {
-         "id": "254ed982",
+         "id": "65371487",
          "settings": {
-          "title": "All",
-          "header_size": "span",
-          "title_color": "#0a1526",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_foals",
+          "taxonomy": "availability",
+          "filter_by": "taxonomy",
+          "selected_type": "checkbox_list",
+          "dropdown_placeholder": "Availability",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "22e88222",
-         "settings": {
-          "title": "Available",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "f57ffd11",
-         "settings": {
-          "title": "Sold",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -401,7 +342,7 @@
        "elType": "container"
       },
       {
-       "id": "0c1107a8",
+       "id": "9e8709c8",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -417,78 +358,69 @@
        },
        "elements": [
         {
-         "id": "0f983592",
+         "id": "128dc859",
          "settings": {
-          "title": "Sex",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_foals",
+          "taxonomy": "horse_sex",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Sex",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         },
         {
-         "id": "e282f904",
+         "id": "84701562",
          "settings": {
-          "title": "Year of birth",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_foals",
+          "taxonomy": "birth_year",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Year of birth",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         },
         {
-         "id": "0181b5bd",
+         "id": "ac93fe0e",
          "settings": {
-          "title": "Studbook",
-          "header_size": "span",
-          "title_color": "rgba(238,241,245,.75)",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_foals",
+          "taxonomy": "studbook",
+          "filter_by": "taxonomy",
+          "selected_type": "dropdown",
+          "dropdown_placeholder": "Studbook",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "600",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 0.4,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -500,7 +432,7 @@
      "elType": "container"
     },
     {
-     "id": "711cfe74",
+     "id": "bee095a7",
      "settings": {
       "content_width": "full",
       "width": {
@@ -520,7 +452,7 @@
      },
      "elements": [
       {
-       "id": "dbe33f0c",
+       "id": "ada57e92",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -540,7 +472,8 @@
         "post_query_post_type": "foal",
         "post_query_posts_per_page": 48,
         "post_query_orderby": "date",
-        "nothing_found_message": "Nothing matches that yet. Clear the search and try again."
+        "nothing_found_message": "Nothing matches that yet. Clear the search and try again.",
+        "post_query_query_id": "sva_foals"
        },
        "elements": [],
        "isInner": false,
@@ -556,7 +489,7 @@
    "elType": "container"
   },
   {
-   "id": "5de301db",
+   "id": "0d1c2831",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -602,7 +535,7 @@
    },
    "elements": [
     {
-     "id": "a4bc26e0",
+     "id": "93ba0d5b",
      "settings": {
       "content_width": "full",
       "width": {
@@ -630,7 +563,7 @@
      },
      "elements": [
       {
-       "id": "54cf017b",
+       "id": "13377784",
        "settings": {
         "title": "Tell us what you are <span style=\"color:#b59148\">looking for</span>.",
         "header_size": "h2",
@@ -671,7 +604,7 @@
        "elType": "widget"
       },
       {
-       "id": "76c646e9",
+       "id": "88b19d0f",
        "settings": {
         "editor": "<p>A foal on the ground, or a cross still to be made. Say what you are after and we will tell you plainly what we have.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -697,7 +630,7 @@
        "elType": "widget"
       },
       {
-       "id": "6342c2bf",
+       "id": "c0a7cd69",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -721,7 +654,7 @@
        },
        "elements": [
         {
-         "id": "c1fdc8fb",
+         "id": "aa6fd84e",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -790,7 +723,7 @@
          "elType": "widget"
         },
         {
-         "id": "786b9ecb",
+         "id": "3d13f473",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

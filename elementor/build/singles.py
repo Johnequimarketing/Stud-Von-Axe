@@ -186,8 +186,11 @@ def paardhero(post_type, terug_label, terug_url):
         cell([W("image", dict({
             "image_size": "large",
             "custom_css": (f"selector img{{border-radius:{R_LG}px;width:100%;"
-                           "aspect-ratio:4/3.4;object-fit:cover}}"),
-        }, **dyn("image", "acf-gallery", veld(post_type, "gallery"))))], 46),
+                           "aspect-ratio:4/3.4;object-fit:cover}}"
+                           # een paard met maar één foto laat dit vlak weg; de
+                           # achtergrond toont die ene al
+                           "selector:not(:has(img)){display:none}"),
+        }, **dyn("image", "acf-image", veld(post_type, "photo_2"))))], 46),
         cell([lade], 54, extra={"flex_justify_content": "center"}),
     ], gap_px=26, align="center")
 
@@ -211,18 +214,26 @@ def paardhero(post_type, terug_label, terug_url):
 
 # ───────────────────────── film, galerij, formulier, rail ────────────────────
 def films(post_type):
+    # De widget wil een volledig YouTube-adres en geen id. video_1_url is het
+    # veld dat de importer daarvoor schrijft; video_1_id staat er nog naast
+    # omdat dat is wat de klant herkent als hij het wil wijzigen.
     speler = W("video", dict({
         "video_type": "youtube",
         "show_image_overlay": "yes", "lazy_load": "yes",
         "image_overlay": img("assets/img/hero-jump.jpg", ""),
         "aspect_ratio": "169",
         "custom_css": f"selector .elementor-wrapper{{border-radius:{R_LG}px;overflow:hidden}}",
-    }, **dyn("youtube_url", "acf-text", veld(post_type, "video_1_id"))))
+    }, **dyn("youtube_url", "acf-url", veld(post_type, "video_1_url"))))
 
+    # Niet elk paard heeft een film: 5 van de 20 veulens wel, 11 van de 12
+    # sportpaarden. Een lege filmsectie leest als een fout, dus de sectie draagt
+    # een klasse waarop custom-code-hide-empty.txt hem weghaalt als er niets in
+    # staat.
     return section([wrap([
         sec_head("On film", "See the horse move"),
         speler,
-    ], gap_px=0)], bg=NAVY, extra={"background_color": NAVY})
+    ], gap_px=0)], bg=NAVY, extra={"background_color": NAVY,
+                                   "css_classes": "sva-hide-if-empty"})
 
 
 def galerij(post_type):
@@ -234,7 +245,8 @@ def galerij(post_type):
         "open_lightbox": "yes",
         "custom_css": f"selector .e-gallery-image{{border-radius:{R}px}}",
     }, **dyn("gallery", "acf-gallery", veld(post_type, "gallery"))))
-    return section([wrap([sec_head("Photographs", "More of this horse"), g], gap_px=0)], bg=BG)
+    return section([wrap([sec_head("Photographs", "More of this horse"), g], gap_px=0)],
+                   bg=BG, extra={"css_classes": "sva-hide-if-empty"})
 
 
 def verhaal(post_type, kop_tekst="In their own words"):

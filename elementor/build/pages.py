@@ -104,22 +104,59 @@ def home():
         ], 54, gap_px=14),
     ], gap_px=34, align="center")], gap_px=0)], bg=BG)
 
-    # De vijf tabbladen. De widget is Elementor's eigen; het omwisselen van
-    # beeld, zin en de twee knoppen is custom-code-tabs.txt. Zonder JavaScript
-    # blijven het vijf gewone links, en dat is met opzet: de vijf archieven
-    # blijven zo ook voor een zoekmachine vindbaar.
+    # De vijf tabbladen, "Every horse we have". Vijf echte panelen met een
+    # foto, hun eigen zin en de knop naar het archief. Elementor's Tabs-widget
+    # wisselt ze zelf; hier is geen regel code voor nodig. De eerste versie van
+    # dit sjabloon had vijf lege panelen en vertrouwde op eigen JavaScript om ze
+    # te vullen — dat is teruggedraaid, want een paneel dat leeg is tot er een
+    # script draait, is leeg als dat script er niet is.
+    #
+    # De zinnen staan hier woord voor woord zoals ze in home-tabs.js staan, dat
+    # scripts/build-horses.mjs schrijft. Geen aantallen in het paneel: die zouden
+    # in WordPress niet meetellen met de kudde.
+    TABBLADEN = [
+        ("Sport horses", "assets/img/tab-sport.jpg", "/sport-horses/",
+         "See all sport horses",
+         "Some are bred here. Others are carefully sourced and developed. What they share "
+         "is the quality, potential and attention that define every horse we choose to "
+         "represent."),
+        ("Breeding mares", "assets/img/tab-broodmare.jpg", "/breeding-mares/",
+         "See all breeding mares",
+         "Strong maternal lines are at the heart of our breeding programme. Each mare brings "
+         "proven genetics, performance and the potential to produce the horses we want to "
+         "see in the sport of tomorrow."),
+        ("Foals", "assets/img/tab-foal.jpg", "/foals/", "See all foals",
+         "Born from proven bloodlines and raised with care, our foals are selected and "
+         "developed with one goal: to become the sport horses of tomorrow."),
+        ("Embryos", "assets/img/tab-embryo.jpg", "/embryos/", "See all crosses",
+         "Selected from outstanding families and proven sport horse combinations, our "
+         "embryos give breeders and owners access to bloodlines with real breeding and "
+         "performance potential."),
+        ("ICSI semen", "assets/img/tab-stallion.jpg", "/icsi-semen/", "See all stallions",
+         "We offer ICSI semen from selected stallions, stored at Avantea and available at "
+         "competitive prices, making proven genetics more accessible to breeders."),
+    ]
+
+    def paneel(label, foto, url, knop, zin):
+        return C({"content_width": "full", "flex_direction": "row", "flex_gap": gap(26),
+                  "flex_wrap": "wrap", "flex_align_items": "center",
+                  "padding": box(22, 0, 0, 0)}, [
+            cell([tegelfoto(foto, label, ratio="3/2", radius_px=R)], 54),
+            cell([para(zin, size=17), btn("ghost", f"{knop} &rarr;", url)], 46, gap_px=16),
+        ])
+
     tabbladen = section([wrap([
         sec_head("Every horse we have", "Five ways in", align="center"),
         W("nested-tabs", {
-            "tabs": [{"_id": s.lower().replace(" ", "-"), "tab_title": s}
-                     for s in ("Sport horses", "Breeding mares", "Foals", "Embryos",
-                               "ICSI semen")],
+            "tabs": [{"_id": lbl.lower().replace(" ", "-"), "tab_title": lbl}
+                     for lbl, *_ in TABBLADEN],
             "_element_id": "sva-tabs",
             "tabs_title_space_between": sz(22),
-            "tabs_title_color": INK_SOFT, "tabs_title_color_active": INK,
+            "tabs_title_color": INK_SOFT,
+            "tabs_title_color_active": INK,
             "horizontal_scroll": "enable",
-        }, [C({"content_width": "full", "flex_direction": "column"}, [])
-            for _ in range(5)]),
+            "box_border_border": "none",
+        }, [paneel(*t) for t in TABBLADEN]),
     ], gap_px=0)], bg=BG_ALT)
 
     diensten = section([wrap([row([

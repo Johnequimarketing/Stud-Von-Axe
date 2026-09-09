@@ -1,7 +1,7 @@
 {
  "content": [
   {
-   "id": "cddab5f4",
+   "id": "dea67291",
    "settings": {
     "background_background": "classic",
     "background_image": {
@@ -50,11 +50,20 @@
     "flex_direction": "column",
     "flex_justify_content": "flex-end",
     "_element_id": "top",
-    "css_classes": "sva-hero"
+    "css_classes": "sva-hero",
+    "background_image_mobile": {
+     "url": "https://stud-von-axe-ten.vercel.app/assets/img/arch-mares-tall.jpg",
+     "id": 0,
+     "size": "",
+     "alt": "",
+     "source": "library"
+    },
+    "background_position_mobile": "center center",
+    "background_size_mobile": "cover"
    },
    "elements": [
     {
-     "id": "998e0dc1",
+     "id": "9f950c9f",
      "settings": {
       "content_width": "full",
       "width": {
@@ -81,7 +90,7 @@
      },
      "elements": [
       {
-       "id": "1bec6b81",
+       "id": "34c7d707",
        "settings": {
         "title": "The mares",
         "header_size": "span",
@@ -108,7 +117,7 @@
        "elType": "widget"
       },
       {
-       "id": "e62ea72d",
+       "id": "6568fba7",
        "settings": {
         "title": "The bloodlines behind <span style=\"color:#b59148\">what we breed</span>",
         "header_size": "h1",
@@ -148,7 +157,7 @@
        "elType": "widget"
       },
       {
-       "id": "30eedc21",
+       "id": "ab510130",
        "settings": {
         "editor": "<p>Strong maternal lines are at the heart of our breeding programme. Each mare brings proven genetics, performance and the potential to produce the horses we want to see in the sport of tomorrow.</p>",
         "text_color": "rgba(238,241,245,.75)",
@@ -182,7 +191,7 @@
    "elType": "container"
   },
   {
-   "id": "339254a6",
+   "id": "9cf9cfdf",
    "settings": {
     "background_background": "classic",
     "background_color": "#faf7f2",
@@ -213,7 +222,7 @@
    },
    "elements": [
     {
-     "id": "2d8f15e0",
+     "id": "6ca117ff",
      "settings": {
       "content_width": "full",
       "width": {
@@ -258,34 +267,16 @@
        "isLinked": false
       },
       "_element_id": "sva-filter-bar",
-      "z_index": 3
+      "z_index": 3,
+      "custom_css": "selector input,selector select{background:rgba(255,255,255,.08);color:#ffffff;border:1px solid rgba(255,255,255,.17)}selector label{color:rgba(238,241,245,.75)}selector .e-filter-item{color:#ffffff;border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:7px 14px}selector .e-filter-item[aria-pressed=true]{background:#b59148;color:#0a1526}"
      },
      "elements": [
       {
-       "id": "ed167255",
+       "id": "b5ce793e",
        "settings": {
         "placeholder": "Try a sire, a damline or a studbook.",
-        "button_type": "icon",
-        "input_padding": {
-         "unit": "px",
-         "top": "13",
-         "right": "16",
-         "bottom": "13",
-         "left": "16",
-         "isLinked": false
-        },
-        "input_background_color": "rgba(255,255,255,.08)",
-        "input_text_color": "#ffffff",
-        "input_border_color": "rgba(255,255,255,.17)",
-        "input_border_width": {
-         "unit": "px",
-         "top": "1",
-         "right": "1",
-         "bottom": "1",
-         "left": "1",
-         "isLinked": true
-        },
-        "input_border_radius": {
+        "query_id": "sva_mares",
+        "border_radius": {
          "unit": "px",
          "top": "999",
          "right": "999",
@@ -293,17 +284,23 @@
          "left": "999",
          "isLinked": true
         },
-        "button_background_color": "#b59148",
-        "button_color": "#0a1526",
+        "input_padding": {
+         "unit": "px",
+         "top": "12",
+         "right": "18",
+         "bottom": "12",
+         "left": "18",
+         "isLinked": false
+        },
         "_element_id": "sva-search"
        },
        "elements": [],
        "isInner": false,
-       "widgetType": "search-form",
+       "widgetType": "search",
        "elType": "widget"
       },
       {
-       "id": "144d3022",
+       "id": "3c42d939",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -319,81 +316,25 @@
        },
        "elements": [
         {
-         "id": "78e0edc3",
+         "id": "548b7b67",
          "settings": {
-          "title": "All",
-          "header_size": "span",
-          "title_color": "#0a1526",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
+          "query_id": "sva_mares",
+          "taxonomy": "availability",
+          "filter_by": "taxonomy",
+          "selected_type": "checkbox_list",
+          "dropdown_placeholder": "Availability",
+          "border_radius": {
            "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
+           "top": "999",
+           "right": "999",
+           "bottom": "999",
+           "left": "999",
+           "isLinked": true
           }
          },
          "elements": [],
          "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "8ecbf1f1",
-         "settings": {
-          "title": "Available",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
-         "elType": "widget"
-        },
-        {
-         "id": "9a76b3cd",
-         "settings": {
-          "title": "Sold",
-          "header_size": "span",
-          "title_color": "#ffffff",
-          "typography_typography": "custom",
-          "typography_font_family": "Manrope",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 12,
-           "sizes": []
-          },
-          "typography_font_weight": "700",
-          "typography_text_transform": "uppercase",
-          "typography_letter_spacing": {
-           "unit": "px",
-           "size": 1.0,
-           "sizes": []
-          }
-         },
-         "elements": [],
-         "isInner": false,
-         "widgetType": "heading",
+         "widgetType": "taxonomy-filter",
          "elType": "widget"
         }
        ],
@@ -405,7 +346,7 @@
      "elType": "container"
     },
     {
-     "id": "ffc228b6",
+     "id": "a4ad8069",
      "settings": {
       "content_width": "full",
       "width": {
@@ -425,7 +366,7 @@
      },
      "elements": [
       {
-       "id": "3104a71b",
+       "id": "c2c96841",
        "settings": {
         "template_id": 0,
         "_skin": "post",
@@ -445,7 +386,8 @@
         "post_query_post_type": "breeding_mare",
         "post_query_posts_per_page": 48,
         "post_query_orderby": "title",
-        "nothing_found_message": "Nothing matches that yet. Clear the search and try again."
+        "nothing_found_message": "Nothing matches that yet. Clear the search and try again.",
+        "post_query_query_id": "sva_mares"
        },
        "elements": [],
        "isInner": false,
@@ -461,7 +403,7 @@
    "elType": "container"
   },
   {
-   "id": "6ae319f3",
+   "id": "50309ee1",
    "settings": {
     "background_background": "gradient",
     "background_color": "#0d1d36",
@@ -507,7 +449,7 @@
    },
    "elements": [
     {
-     "id": "802c3a44",
+     "id": "78702fb8",
      "settings": {
       "content_width": "full",
       "width": {
@@ -535,7 +477,7 @@
      },
      "elements": [
       {
-       "id": "f086afdc",
+       "id": "b0302c7f",
        "settings": {
         "title": "Looking for a mare to <span style=\"color:#b59148\">breed from</span>?",
         "header_size": "h2",
@@ -576,7 +518,7 @@
        "elType": "widget"
       },
       {
-       "id": "2c2a69d1",
+       "id": "d5912a3a",
        "settings": {
         "editor": "<p>Tell us the line you are after. If she is not here, we will say so, and we will tell you what is coming out of the same families.</p>",
         "text_color": "rgba(238,241,246,.8)",
@@ -602,7 +544,7 @@
        "elType": "widget"
       },
       {
-       "id": "b4a91c9b",
+       "id": "53ccda19",
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
@@ -626,7 +568,7 @@
        },
        "elements": [
         {
-         "id": "8803bd08",
+         "id": "96376e66",
          "settings": {
           "text": "Contact us",
           "link": {
@@ -695,7 +637,7 @@
          "elType": "widget"
         },
         {
-         "id": "2ea175d9",
+         "id": "7f1d62a5",
          "settings": {
           "text": "Message us on WhatsApp",
           "link": {

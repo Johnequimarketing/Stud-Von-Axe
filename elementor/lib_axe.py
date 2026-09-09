@@ -498,10 +498,14 @@ def acf(setting_key, post_type, naam, soort=None):
 
 
 def loop_grid(post_type, columns=3, per_page=12, query_id=None, orderby="menu_order",
-              nothing_found="Hier staat nog niets.", extra=None):
+              nothing_found="Nothing here yet.", extra=None):
     """Een loop grid. template_id blijft 0: een JSON kan de post-id van het loop
        item op de doelsite niet kennen, dus dat wordt na de import een keer met de
-       hand gekoppeld. Dat hoort zo."""
+       hand gekoppeld. Dat hoort zo.
+
+       query_id is geen versiering: het zoekveld en elke taxonomiefilter vinden
+       de grid alleen via die naam. Zonder query_id staan de filters er wel en
+       doen ze niets, en dat is aan niets te zien."""
     s = {
         "template_id": 0,
         "_skin": "post",
@@ -520,6 +524,35 @@ def loop_grid(post_type, columns=3, per_page=12, query_id=None, orderby="menu_or
     if extra:
         s.update(extra)
     return W("loop-grid", s)
+
+
+# ───────────────────────── de filterbalk ────────────────────────────────────
+# Elementor Pro heeft hier meer voor dan ik eerst dacht: `search` en
+# `taxonomy-filter` zijn echte widgets en werken samen met een loop grid zodra
+# alle drie hetzelfde query_id dragen. Bij Stoeterij staan er zeven van in
+# productie. Wat Elementor niet heeft is de telling áchter elke chip; dat is
+# het enige stuk dat maatwerk blijft.
+
+def zoekveld(query_id, placeholder):
+    return W("search", {
+        "placeholder": placeholder,
+        "query_id": query_id,
+        "border_radius": radius(999),
+        "input_padding": box(12, 18, 12, 18),
+        "_element_id": "sva-search",
+    })
+
+
+def taxfilter(query_id, taxonomie, label, vorm="dropdown"):
+    """vorm 'dropdown' geeft een select, 'checkbox_list' geeft de chips."""
+    return W("taxonomy-filter", {
+        "query_id": query_id,
+        "taxonomy": taxonomie,
+        "filter_by": "taxonomy",
+        "selected_type": vorm,
+        "dropdown_placeholder": label,
+        "border_radius": radius(999),
+    })
 
 
 # ───────────────────────── save ──────────────────────────────────────────────

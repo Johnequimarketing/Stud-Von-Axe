@@ -289,8 +289,15 @@ class SVA_Imp_Structure {
 					'return_format' => 'array',
 					'instructions'  => 'The first photograph is also set as the featured image, which is what the card and the page hero use.',
 				) ),
+				$this->f( $p . '_photo_2', 'Second photograph', 'photo_2', 'image', array(
+					'return_format' => 'array',
+					'instructions'  => 'The second picture from the gallery, in a field of its own. The page shows it beside the name while the first one fills the background behind it. Elementor cannot pick the second item out of a gallery without code, so the importer writes it here as well. Edit the gallery, not this field.',
+				) ),
 
 				$this->tab( $p . '_tab_video', 'Video' ),
+				$this->f( $p . '_video_1_url', 'First video, as a link', 'video_1_url', 'url', array_merge( $this->w( 50 ), array(
+					'instructions' => 'The same film as the field beside it, written out as a full YouTube address. The video widget wants an address and not an id. Written by the importer.',
+				) ) ),
 				$this->f( $p . '_video_1_id', 'First video', 'video_1_id', 'text', array_merge( $this->w( 50 ), array(
 					'instructions' => 'A YouTube id, not a full link. Written from the list below, so edit the list and not this field.',
 				) ) ),
