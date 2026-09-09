@@ -18,9 +18,11 @@ blijkt pas op de server van de klant.
 """
 
 import os
+import re
 import subprocess
 import sys
 import zipfile
+from datetime import datetime
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -30,6 +32,27 @@ NAAM = "stud-von-axe-importer"
 MEDIAMAP = "stud-von-axe-media"
 GRENS_MB = 8            # de laagste cap die we bij een host zijn tegengekomen
 OVERSLAAN = {"tests", "__pycache__", ".DS_Store", ".git"}
+
+
+def versie_stempelen():
+    """Elke bouw krijgt een hoger versienummer.
+
+    WordPress vergelijkt bij het uploaden van een plugin die er al staat de
+    versie in de header met wat er geïnstalleerd is, en biedt dan "Replace
+    current with uploaded". Staat er twee keer hetzelfde nummer, dan leest dat
+    scherm alsof er niets veranderd is. Het nummer is de bouwdatum en -tijd, dus
+    het loopt vanzelf op en zegt meteen wanneer deze zip gemaakt is.
+    """
+    nu = datetime.now()
+    versie = nu.strftime("%Y.%m.%d.%H%M")
+    for pad, patroon in (
+        (PLUGIN / f"{NAAM}.php", r"(\* Version:\s+)\S+"),
+        (PLUGIN / f"{NAAM}.php", r"(define\( 'SVA_IMP_VERSION', ')[^']+"),
+    ):
+        tekst = pad.read_text(encoding="utf-8")
+        tekst = re.sub(patroon, lambda m: m.group(1) + versie, tekst, count=1)
+        pad.write_text(tekst, encoding="utf-8")
+    return versie
 
 
 def php_klopt():
@@ -83,6 +106,9 @@ def main():
     if not (PLUGIN / "data" / "payload.json").exists():
         sys.exit("data/payload.json ontbreekt. Draai eerst python3 wp/bouw_payload.py")
 
+    versie = versie_stempelen()
+    print(f"versie {versie}\n")
+
     print("php -l over elk bestand")
     if not php_klopt():
         sys.exit("er zit een PHP-fout in, er wordt niets gezipt")
@@ -90,6 +116,10 @@ def main():
     print("\nde mapping-test")
     if not test_klopt():
         sys.exit("\nde test faalt, er wordt niets gezipt")
+
+    print("\nde mediadekking")
+    if subprocess.run([sys.executable, str(HIER / "controle_media.py")]).returncode:
+        sys.exit("\ner reist beeld nergens mee, er wordt niets gezipt")
 
     UIT.mkdir(exist_ok=True)
     for oud in UIT.glob("*.zip"):

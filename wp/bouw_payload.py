@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+from html import unescape
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -65,8 +66,16 @@ try { V = loadVar('horses-videos.js'); } catch (e) {}
   const block = src.slice(src.indexOf('*/', a) + 2, b);
   if (block.length < 800) throw new Error('het gelichte blok is te klein om te kloppen');
   global.__words = new Function(block + '; return { theirWords, COUNTRY, SEX, horseName, bornYear, isFrozen };')();
+
+  const c = src.indexOf('/* telex:start');
+  const d = src.indexOf('/* telex:end */');
+  if (c < 0 || d < 0) throw new Error('kon de Horsetelex-regel niet uit build-horses.mjs lichten');
+  const tblock = src.slice(src.indexOf('*/', c) + 2, d);
+  if (tblock.length < 400) throw new Error('het gelichte telex-blok is te klein om te kloppen');
+  global.__telex = new Function('horseName', tblock + '; return { telexOf };')(global.__words.horseName);
 })();
 const { theirWords, COUNTRY, SEX, horseName, bornYear, isFrozen } = global.__words;
+const { telexOf } = global.__telex;
 
 /* De derde generatie van een hengst staat niet in semen-data.js: de bouwer
    leidt hem af uit de stambomen die hun eigen site wel publiceert. Dezelfde
@@ -123,8 +132,20 @@ const gerekend = horses.map(h => ({
   born_year: bornYear(h),
   frozen: isFrozen(h),
   country: h.country && COUNTRY[h.country] ? COUNTRY[h.country] : '',
+  /* Alleen een link die deze pagina ook zou tekenen. Twee records dragen een
+     zoekopdracht in plaats van een stamboompagina, met een HTML-entiteit erin,
+     en elf dragen de link van een ouder. */
+  telex: (() => { const t = telexOf(h); return t ? t.url : ''; })(),
+  telex_of: (() => { const t = telexOf(h); return t && !t.self ? t.of : ''; })(),
   tagline: theirWords(h.tagline || ''),
-  genetics: theirWords(h.genetics || ''),
+  /* De site zet de fokregel door horseName heen, niet alleen door theirWords:
+     hun bron schrijft hem in kapitalen en de pagina toont hem als namen. Zonder
+     dit stonden 95 fokregels in de import in kapitalen terwijl de site ze in
+     gemengd schrift toont. */
+  genetics: horseName(theirWords(h.genetics || '')),
+  /* De damline op een kruising is de fokregel min de eerste naam, precies zoals
+     damlineOf() op de site hem samenstelt. */
+  damline: horseName(theirWords((h.genetics || '').split(/\s+X\s+/i).slice(1).join(' x '))),
   ped: (() => {
     const p = h.pedigree || {}, t = p.third || [];
     const o = {
@@ -218,11 +239,12 @@ def paardrecord(h, videos):
         "height": h.get("height", ""),
         "sold": bool(h.get("sold")),
         "sold_to": c["country"],
-        "horsetelex": h.get("horsetelex", ""),
+        "horsetelex": c["telex"],
+        "horsetelex_of": c["telex_of"],
         "body": html(h.get("body") or []),
         "gallery": fotos,
         "video_1_id": ids[0] if ids else "",
-        "videos": [{"youtube_id": v} for v in ids],
+        "videos": [{"youtube_id": v, "title": (videos.get(v) or {}).get("title", "")} for v in ids],
         "source": h.get("source", ""),
     }
     velden.update(c["ped"])
@@ -258,7 +280,8 @@ def embryorecord(h, sirelijnen):
         "genetics": c["genetics"],
         "stage": "frozen" if bevroren else "carrying",
         "due_date": "" if bevroren else h.get("year", ""),
-        "horsetelex": h.get("horsetelex", ""),
+        "horsetelex": c["telex"],
+        "horsetelex_of": c["telex_of"],
         "sire_line": html([sirelijnen[vader.upper()]]) if vader.upper() in sirelijnen else "",
         "dam_line": "",
         "gallery": fotos,
@@ -292,7 +315,8 @@ def stallionrecord(h, sirelijnen):
         "studbook": h.get("studbook", ""),
         "availability": "On request",
         "crowned": bool(h.get("crowned")),
-        "horsetelex": h.get("horsetelex", ""),
+        "horsetelex": c["telex"],
+        "horsetelex_of": c["telex_of"],
         "body": html(verhaal),
         "source_text": h.get("sourceText", ""),
         "crosses": list(h.get("crosses") or []),
@@ -364,9 +388,38 @@ def partnerrecord(slug, naam, logo, volgorde):
 # De ontwerpbeelden. Geen post, alleen de bibliotheek, zodat de Elementor-bouw
 # ze kan pakken. De deelkaarten reizen met opzet niet mee: die zijn volledig
 # afgeleid en WordPress maakt zijn eigen og:image.
+# Beelden die op schijf staan maar door geen publieke pagina meer getoond worden.
+# Restanten van een eerdere bouw en van het ontwerpdocument. Ze zouden als rommel
+# in de mediabibliotheek landen, dus ze blijven eruit, met de reden erbij in
+# plaats van onthouden.
+DOOD = {
+    "hero-cortina-wide.jpg": "vervangen door arch-mares.jpg op 7 september",
+    "hero-neck-wide.jpg": "restant, nergens meer gebruikt",
+    "hero-embryos.jpg": "alleen in het ontwerpdocument",
+    "hero-foals.jpg": "alleen in het ontwerpdocument",
+    "hero-semen.jpg": "alleen in het ontwerpdocument",
+    "hero-sport.jpg": "alleen in het ontwerpdocument",
+    "horse-cortina.jpg": "alleen in het ontwerpdocument",
+    "thumb-embryos.jpg": "alleen in het ontwerpdocument",
+    "thumb-foals.jpg": "alleen in het ontwerpdocument",
+    "thumb-semen.jpg": "alleen in het ontwerpdocument",
+    "thumb-sport.jpg": "alleen in het ontwerpdocument",
+    "horse-agousha.jpg": "restant van een eerdere bouw",
+    "horse-arkhana.jpg": "restant van een eerdere bouw",
+    "horse-cabri.jpg": "restant van een eerdere bouw",
+    "horse-charina.jpg": "restant van een eerdere bouw",
+    "horse-coolrock.jpg": "restant van een eerdere bouw",
+    "horse-dourkhet.jpg": "restant van een eerdere bouw",
+    "horse-dune.jpg": "restant van een eerdere bouw",
+    "horse-unique-touch.jpg": "restant van een eerdere bouw",
+}
+
+
 def bibliotheek():
     uit = []
     for pad in sorted((ROOT / "assets" / "img").glob("*.jpg")):
+        if pad.name in DOOD:
+            continue
         uit.append(beeld(f"assets/img/{pad.name}", ""))
     for pad in sorted((ROOT / "assets" / "logo").iterdir()):
         if pad.suffix.lower() in (".png", ".webp", ".jpg"):
@@ -405,11 +458,20 @@ def controleer(payload):
                     fout(f"{groep}/{r['slug']}: {len(namen)} termen in {tax}, één verwacht")
 
 
+def _plat(s):
+    """Tags eruit, entiteiten terug, witruimte gelijk. Zo vergelijk je wat de
+    bezoeker leest en niet hoe het toevallig gecodeerd staat."""
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", s))).strip()
+
+
 # De pagina's die de statische site al gebouwd heeft, per groep.
 GERENDERD = {
     "sport_horses": "sport-horses", "breeding_mares": "breeding-mares",
     "foals": "foals", "embryos": "embryos", "stallions": "icsi-semen",
 }
+
+
+sirelijn_teksten = []
 
 
 def controleer_tegen_site(payload):
@@ -434,6 +496,39 @@ def controleer_tegen_site(payload):
                 fout(f"{groep}/{r['slug']}: de site heeft hier geen pagina van")
                 continue
             html = pagina.read_text(encoding="utf-8")
+            plat = _plat(html)
+
+            # De waarden zelf, niet alleen de stamboom. Dit ving de fokregel,
+            # die in de bron in kapitalen staat en op de pagina in gemengd
+            # schrift: 95 records mis terwijl elke andere controle groen stond.
+            for veld in ("tagline", "studbook", "height", "genetics"):
+                waarde = r["fields"].get(veld) or ""
+                if not waarde:
+                    continue
+                # Twee uitzonderingen, allebei met een reden. Een kruising toont
+                # de damline en niet de hele fokregel, en bij een hengst staat
+                # de fokregel alleen in de beschrijving voor een zoekresultaat.
+                if veld == "genetics" and groep == "embryos":
+                    continue
+                n += 1
+                if _plat(waarde) not in plat and waarde not in unescape(html):
+                    fout(f"{groep}/{r['slug']}: {veld} \"{waarde[:44]}\" staat niet zo op de pagina")
+
+            for alinea in re.findall(r"<p>(.*?)</p>", r["fields"].get("body") or ""):
+                kort = _plat(alinea)[:60]
+                if not kort:
+                    continue
+                # De vaderlijnteksten staan op de site bij de kruisingen en niet
+                # bij de hengst zelf, omdat linesSection() alleen vanaf de
+                # embryopagina geroepen wordt. In WordPress hoort die tekst wél
+                # op de hengst: hij gaat over hem. De payload draagt dus meer
+                # dan de pagina toont, en dat is de bedoeling.
+                if groep == "stallions" and kort in _plat("".join(sirelijn_teksten)):
+                    continue
+                n += 1
+                if kort not in plat:
+                    fout(f"{groep}/{r['slug']}: een alinea van het verhaal staat niet op de pagina")
+
             for veld in ("sire", "dam", "sire_sire", "sire_dam", "dam_sire", "dam_dam"):
                 naam = r["fields"].get(veld) or ""
                 if not naam:
@@ -502,6 +597,7 @@ def main():
     paarden = data["horses"]
     BEREKEND.update({r["slug"]: r for r in data["gerekend"]})
     sirelijnen = {k: v["line"] for k, v in (data["extra"].get("sires") or {}).items() if v.get("line")}
+    sirelijn_teksten.extend(sirelijnen.values())
 
     payload = {
         "generated_from": "de statische site van Stud Von Axe, gegenereerd door wp/bouw_payload.py",

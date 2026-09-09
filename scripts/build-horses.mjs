@@ -1433,6 +1433,13 @@ const damOfCross = (h) => {
    verified by hand on 7 September and still went undrawn. Dutch and Belgian
    names carry van, v/d, vd, van den, van het and 't, and which one a registry
    wrote down says nothing about which horse it is. */
+/* telex:start
+   Ook dit blok wordt door wp/bouw_payload.py gelicht: het beslist of een
+   Horsetelex-link bij dit paard hoort en dus getekend mag worden. Elf records
+   dragen een link die bij een ouder hoort en twee dragen een zoekopdracht in
+   plaats van een stamboompagina. Wat deze pagina weigert te tekenen, moet de
+   import ook niet meenemen. Niets hierin mag buiten het blok reiken behalve
+   horseName, dat al uit het words-blok komt. */
 const telexLetters = (t) => String(t || '').toLowerCase()
   .normalize('NFD').replace(/[̀-ͯ]/g, '')
   .replace(/[^a-z0-9]+/g, ' ')
@@ -1454,6 +1461,7 @@ const telexOf = (horse) => {
   if (ped.sire && telexSame(slug, ped.sire)) return { url: horse.horsetelex, self: false, of: horseName(ped.sire) };
   return null;
 };
+/* telex:end */
 
 const sireLink = (h) => (EXTRA.sires[h.name.split(/\s+X\s+/i)[0].trim()] || {}).horsetelex || '';
 const damLink  = (h) => { const d = damOfCross(h); const t = d && telexOf(d); return (t && t.self && t.url) || ''; };

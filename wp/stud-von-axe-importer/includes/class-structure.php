@@ -251,7 +251,10 @@ class SVA_Imp_Structure {
 					'instructions' => 'The country, spelled out. Empty when the horse is available.',
 				) ) ),
 				$this->f( $p . '_horsetelex', 'Horsetelex', 'horsetelex', 'url', array_merge( $this->w( 50 ), array(
-					'instructions' => 'The pedigree page. Nothing is drawn when this is empty.',
+					'instructions' => 'The pedigree page, and only when it really is this horse\'s. A link that turned out to be a parent\'s or a search page is not carried.',
+				) ) ),
+				$this->f( $p . '_horsetelex_of', 'The link belongs to', 'horsetelex_of', 'text', array_merge( $this->w( 50 ), array(
+					'instructions' => 'Empty when the link is this horse\'s own. Otherwise the name of the parent it belongs to, because twenty one of these links point at the mother and the page has to say so rather than pretend.',
 				) ) ),
 			),
 			$this->pedigree_fields( $p ),
@@ -278,7 +281,11 @@ class SVA_Imp_Structure {
 					'button_label' => 'Add a video',
 					'instructions' => 'YouTube ids. The field above mirrors the first one, because a video widget cannot read a repeater.',
 					'sub_fields'   => array(
-						$this->f( $p . '_video_id', 'YouTube id', 'youtube_id', 'text' ),
+						$this->f( $p . '_video_id', 'YouTube id', 'youtube_id', 'text', array( 'wrapper' => array( 'width' => '30' ) ) ),
+						$this->f( $p . '_video_title', 'Title', 'title', 'text', array(
+							'wrapper'      => array( 'width' => '70' ),
+							'instructions' => 'As YouTube has it. Kept so the list reads as something rather than as eleven characters.',
+						) ),
 					),
 				) ),
 
@@ -313,8 +320,12 @@ class SVA_Imp_Structure {
 					'instructions' => 'dd/mm/yyyy. Empty on a frozen embryo.',
 				) ) ),
 				$this->f( $p . '_horsetelex', 'Horsetelex', 'horsetelex', 'url', array_merge( $this->w( 34 ), array(
-					'instructions' => 'A cross carries its dam\'s pedigree link.',
+					'instructions' => 'A cross is not born, so it has no entry of its own: this is its dam\'s.',
 				) ) ),
+				$this->f( $p . '_horsetelex_of', 'The link belongs to', 'horsetelex_of', 'text', array_merge( $this->w( 50 ), array(
+					'instructions' => 'Empty when the link is this horse\'s own. Otherwise the name of the parent it belongs to, because twenty one of these links point at the mother and the page has to say so rather than pretend.',
+				) ) ),
+
 			),
 			$this->pedigree_fields( $p ),
 			array(
@@ -356,7 +367,11 @@ class SVA_Imp_Structure {
 					'ui'           => 1,
 					'instructions' => 'Three stallions carry a crown on the owners\' own card. Nobody has said what it means, so nothing is drawn for it yet.',
 				) ) ),
-				$this->f( $p . '_horsetelex', 'Horsetelex', 'horsetelex', 'url', $this->w( 100 ) ),
+				$this->f( $p . '_horsetelex', 'Horsetelex', 'horsetelex', 'url', $this->w( 50 ) ),
+				$this->f( $p . '_horsetelex_of', 'The link belongs to', 'horsetelex_of', 'text', array_merge( $this->w( 50 ), array(
+					'instructions' => 'Empty when the link is this horse\'s own. Otherwise the name of the parent it belongs to, because twenty one of these links point at the mother and the page has to say so rather than pretend.',
+				) ) ),
+
 			),
 			$this->pedigree_fields( $p ),
 			array(

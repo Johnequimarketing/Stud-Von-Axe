@@ -35,6 +35,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2243837/maralore",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/maralore-1.jpg",
@@ -45,10 +46,12 @@
     "video_1_id": "ZjqRnozs-8Y",
     "videos": [
      {
-      "youtube_id": "ZjqRnozs-8Y"
+      "youtube_id": "ZjqRnozs-8Y",
+      "title": "SOLD 🇮🇹 Maralore 2017 (Kannan x Cedric)"
      },
      {
-      "youtube_id": "sOe6xzOCm0Q"
+      "youtube_id": "sOe6xzOCm0Q",
+      "title": "SOLD 🇮🇹 Maralore 2017 (Kannan x Cedric)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -102,6 +105,7 @@
     "sold": true,
     "sold_to": "Czechia",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188792/domino-van-den-haze-z",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/domino-van-den-haze-z-1.jpg",
@@ -113,7 +117,8 @@
     "video_1_id": "0OotzOHq04A",
     "videos": [
      {
-      "youtube_id": "0OotzOHq04A"
+      "youtube_id": "0OotzOHq04A",
+      "title": "SOLD 🇨🇿 Domino van den Haze Z 2018 (Dominator 2000 Z x Cento)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -167,6 +172,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188784/diamecho-von-axe-z",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/diamecho-von-axe-z-1.jpg",
@@ -177,13 +183,16 @@
     "video_1_id": "0fpsqii0k9g",
     "videos": [
      {
-      "youtube_id": "0fpsqii0k9g"
+      "youtube_id": "0fpsqii0k9g",
+      "title": "SOLD 🇮🇹Diamecho Von Axe Z 2020 (Diamant de Semilly x Echo Van’t Spieveld x Carthago)"
      },
      {
-      "youtube_id": "wY1Z4WPc69I"
+      "youtube_id": "wY1Z4WPc69I",
+      "title": "SOLD 🇮🇹Diamecho Von Axe Z 2020 (Diamant de Semilly x Echo van’t Spieveld)"
      },
      {
-      "youtube_id": "SUSwyDzmP84"
+      "youtube_id": "SUSwyDzmP84",
+      "title": "SOLD 🇮🇹Diamecho Von Axe Z 2020(Diamant de semilly x Lady D van’t Roosakker)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -237,6 +246,7 @@
     "sold": true,
     "sold_to": "the United States",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1822803/kashillio-mb-z",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/kashillio-mb-z-1.jpg",
@@ -246,7 +256,8 @@
     "video_1_id": "OvbMJJL89Wc",
     "videos": [
      {
-      "youtube_id": "OvbMJJL89Wc"
+      "youtube_id": "OvbMJJL89Wc",
+      "title": "SOLD 🇺🇸 Kashillio MB Z 2016 (Kashmir van shuttershof x Berlin)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -300,6 +311,7 @@
     "sold": true,
     "sold_to": "Spain",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188791/contouch-sva",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/contouch-sva-1.jpg",
@@ -311,7 +323,8 @@
     "video_1_id": "E5B1fp1NdgI",
     "videos": [
      {
-      "youtube_id": "E5B1fp1NdgI"
+      "youtube_id": "E5B1fp1NdgI",
+      "title": "SOLD 🇪🇸 Contouch SVA 2015 (Conthargos x Toulon)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -365,6 +378,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188940/diabalou-sva",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/diabalou-sva-1.jpg",
@@ -376,7 +390,8 @@
     "video_1_id": "ohXC5W7D_jE",
     "videos": [
      {
-      "youtube_id": "ohXC5W7D_jE"
+      "youtube_id": "ohXC5W7D_jE",
+      "title": "SOLD 🇮🇹 Diabalou SVA 2015 (Diamant de Semilly x Balou du rouet)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -430,6 +445,7 @@
     "sold": true,
     "sold_to": "France",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1932647/gamora-o",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/gamora-o-1.jpg",
@@ -440,7 +456,8 @@
     "video_1_id": "bstQjHkK7nk",
     "videos": [
      {
-      "youtube_id": "bstQjHkK7nk"
+      "youtube_id": "bstQjHkK7nk",
+      "title": "SOLD 🇫🇷 Gamora O 2011 (Tangelo vd Zuuthoeve x Verdi)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -494,6 +511,7 @@
     "sold": true,
     "sold_to": "Slovenia",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2106023/amnesia-sva",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/amnesia-sva-1.jpg",
@@ -504,7 +522,8 @@
     "video_1_id": "nKz-7XnBuBU",
     "videos": [
      {
-      "youtube_id": "nKz-7XnBuBU"
+      "youtube_id": "nKz-7XnBuBU",
+      "title": "SOLD 🇸🇮 Amnésia SVA 2015 (Armani Code x Lando)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -558,6 +577,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1819629/filou",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/filou-1.jpg"
@@ -615,6 +635,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2087800/valkyrie",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/valkyrie-1.jpg",
@@ -624,10 +645,12 @@
     "video_1_id": "MNV2Vn3wdxI",
     "videos": [
      {
-      "youtube_id": "MNV2Vn3wdxI"
+      "youtube_id": "MNV2Vn3wdxI",
+      "title": "SOLD 🇮🇹 Valkyrie 2014 (Vivant van de Heffinck x Conthargos)"
      },
      {
-      "youtube_id": "mSzm28idZQM"
+      "youtube_id": "mSzm28idZQM",
+      "title": "SOLD 🇮🇹 Valkyrie 2014  (Vivant van de Heffinck x Conthargos)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -681,6 +704,7 @@
     "sold": true,
     "sold_to": "Germany",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188795/diacco-blue",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/diacco-blue-sva-1.jpg",
@@ -690,7 +714,8 @@
     "video_1_id": "MgMgS7oKfkc",
     "videos": [
      {
-      "youtube_id": "MgMgS7oKfkc"
+      "youtube_id": "MgMgS7oKfkc",
+      "title": "SOLD 🇩🇪 Diacco Blue SVA 2015 (Diatendro x Chacco blue)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -744,6 +769,7 @@
     "sold": true,
     "sold_to": "France",
     "horsetelex": "",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/bec-emerald-sam-1.jpg",
@@ -754,10 +780,12 @@
     "video_1_id": "8O9ctRB5cSk",
     "videos": [
      {
-      "youtube_id": "8O9ctRB5cSk"
+      "youtube_id": "8O9ctRB5cSk",
+      "title": "SOLD 🇫🇷 Bec Emerald Sam 2015 (Emerald x Darco)"
      },
      {
-      "youtube_id": "9i7nD26bCqQ"
+      "youtube_id": "9i7nD26bCqQ",
+      "title": "SOLD 🇫🇷 Bec Emerald Sam 2015 (Emerald van’t Ruytershof x Darco)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -803,7 +831,7 @@
    },
    "fields": {
     "tagline": "Direct daughter of Hiamant van't Roosakker!",
-    "genetics": "HEARTBREAKER X DIAMANT DE SEMILLY X DARCO X CHIN CHIN",
+    "genetics": "Heartbreaker x Diamant de Semilly x Darco x Chin Chin",
     "sex": "Mare",
     "year_of_birth": "2024",
     "studbook": "Zangersheide",
@@ -811,6 +839,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/3069576/hayley-vd-berghoeve-z",
+    "horsetelex_of": "",
     "body": "<p>A direct daughter of Hiamant van’t Roosakker, from one of Belgium’s most influential sport horse families.</p><p>Born in 2024, and following in the footsteps of her older sister Cabri vd Berghoeve Z, Hayley combines the exceptional influence of Heartbreaker with the proven maternal strength of the van’t Roosakker family.</p><p>Her dam has already produced several international performers, including VDL Group Elegant Hero Z and H5 Ganesh Hero Z at 1.60m, Cattouchka Hero Z at 1.55m, Quintus VDK and Sevilla vd Berghoeve Z at 1.50m, as well as Kerswin Van’t Roosakker, Gin de Pao and Kamalah Hero Z at 1.45m.</p><p>This outstanding production underlines Hiamant’s ability to consistently produce horses for the highest level of sport.</p><p>With Heartbreaker adding his legendary blood, Hayley represents a powerful combination of proven performance genetics and exceptional maternal strength.</p>",
     "gallery": [
      "assets/img/horses/hayley-vd-berghoeve-z-1.jpg"
@@ -858,7 +887,7 @@
    },
    "fields": {
     "tagline": "Direct daughter of Hiamant van't Roosakker!",
-    "genetics": "CORNET OBOLENSKY X DIAMANT DE SEMILLY X DARCO X CHIN CHIN",
+    "genetics": "Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin",
     "sex": "Mare",
     "year_of_birth": "2020",
     "studbook": "Zangersheide",
@@ -866,6 +895,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/cabri-vd-berghoeve-z-1.jpg"
@@ -915,7 +945,7 @@
    },
    "fields": {
     "tagline": "Sister to Glasgow Van't Merelsnest!",
-    "genetics": "KANNAN X DARCO X HEDJAZ",
+    "genetics": "Kannan x Darco x Hedjaz",
     "sex": "Mare",
     "year_of_birth": "2015",
     "studbook": "BWP",
@@ -923,6 +953,7 @@
     "sold": true,
     "sold_to": "Belgium",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2258345/patchina-van-t-merelsnest",
+    "horsetelex_of": "",
     "body": "<p>From one of Belgium’s most successful sport horse families, directly descending from the exceptional Wendelina van ’t Merelsnest.</p><p>Patchina combines the modern influence of Kannan with an extraordinary maternal foundation built on generations of international sport.</p><p>Her dam, Wendelina van ’t Merelsnest, was herself a successful 1.50m performer and is the full sister of the legendary Sapphire, the double Olympic gold medallist and one of the most iconic mares in modern show jumping.</p><p>The strength of this family is equally evident in its production. Wendelina produced outstanding international horses including VDL Glasgow van ’t Merelsnest at 1.65m, as well as several other offspring competing at 1.45m and 1.50m level. In total, at least seven of her offspring have reached 1.45m or higher.</p><p>With Kannan adding one of the strongest modern influences in international breeding, Patchina represents a rare combination of proven performance genetics, exceptional direct production and a close connection to one of the greatest mares in the history of the sport.</p><p>A mare from a family where international performance is not an exception, but a tradition.</p>",
     "gallery": [
      "assets/img/horses/patchina-vant-merelsnest-1.jpg",
@@ -975,7 +1006,7 @@
    },
    "fields": {
     "tagline": "Sister of Jaguar vd Berghoeve!",
-    "genetics": "COMME IL FAUT X NABAB DE REVE X JALISCO B",
+    "genetics": "Comme il Faut x Nabab de Reve x Jalisco B",
     "sex": "Mare",
     "year_of_birth": "2024",
     "studbook": "Zangersheide",
@@ -983,6 +1014,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/458397/quaranca-de-muze",
+    "horsetelex_of": "Quaranca de Muze",
     "body": "",
     "gallery": [
      "assets/img/horses/carma-vd-bergheove-z-1.jpg"
@@ -1032,7 +1064,7 @@
    },
    "fields": {
     "tagline": "Sister of the Olimpic Hardrock Z!",
-    "genetics": "HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Halifax van het Kluizebos x Carthago",
     "sex": "Mare",
     "year_of_birth": "2018",
     "studbook": "Zangersheide",
@@ -1040,6 +1072,7 @@
     "sold": true,
     "sold_to": "Brazil",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "body": "<p>A sister of the Olympic stallion Hardrock Z, from the exceptional Carte Blanche Z family.</p><p>Hypnotic JT Z is a young mare by Halifax van het Kluisbos, combining modern scope and carefulness with one of the most successful maternal lines in Europe.</p><p>She is a sister of the Olympic horse Hardrock Z and out of Carte Blanche Z, a mare that has proven herself in breeding. Carte Blanche Z is also the dam of Charlemagne JT Z 1.60m, Be the Freak JT Z 140m and Cocaine Z (owned by Zangersheide and cloned) and several other international performers.</p><p>The Carte Blanche Z line is renowned for consistently producing elite sport horses and is also one of the most sought-after families at foal and embryo auctions, with offspring and embryos of Carte Blanche and her sisters regularly achieving top prices.</p><p>With her exceptional pedigree and proven family, Hypnotic JT Z represents a rare opportunity to invest in a mare with outstanding sport and breeding potential.</p>",
     "gallery": [
      "assets/img/horses/hypnotic-jt-z-1.jpg",
@@ -1054,16 +1087,20 @@
     "video_1_id": "Iw_vgZ2hppU",
     "videos": [
      {
-      "youtube_id": "Iw_vgZ2hppU"
+      "youtube_id": "Iw_vgZ2hppU",
+      "title": "SOLD 🇧🇷Hypnotic JT Z (Halifax x Carthago) 2018"
      },
      {
-      "youtube_id": "jaNxkPYIKbQ"
+      "youtube_id": "jaNxkPYIKbQ",
+      "title": "SOLD 🇧🇷Hypnotic JT Z 2018 (Halifax van het Kluizebos x Carthago)"
      },
      {
-      "youtube_id": "30UkgIAAgzE"
+      "youtube_id": "30UkgIAAgzE",
+      "title": "SOLD 🇧🇷Hypnotic JT Z 2018 (Halifax van het Kluizebos x Carthago)"
      },
      {
-      "youtube_id": "9-Df5yEQGdk"
+      "youtube_id": "9-Df5yEQGdk",
+      "title": "SOLD 🇧🇷Hypnotic JT Z 2018 (Halifax x Carthago) first show ever"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 18:55",
@@ -1107,7 +1144,7 @@
    },
    "fields": {
     "tagline": "Closest way to Narcotique II and Qerlychin!",
-    "genetics": "CORNET OBOLESNKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Cornet Obolesnky x Calato x Darco x Chin Chin",
     "sex": "Mare",
     "year_of_birth": "2019",
     "studbook": "Zangersheide",
@@ -1115,6 +1152,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "body": "<p>One of the closest modern connections to the legendary Narcotique de Muze II and Qerly Chin family.</p><p>Cortina de Jolie Z combines Cornet Obolensky with the extraordinary maternal strength of Fuga de Muze, a daughter of Calato out of Narcotique de Muze II.</p><p>Fuga belongs to one of the most influential families in international show jumping and is the full sister of the 5* Grand Prix mare Sea Coast Ferly. She has also produced international performers including Pollux de Muze 160m, Oliver Twist de Muze 160m and Demantour de Muze 150m.</p><p>Behind her stands the legendary Narcotique de Muze II, herself a 1.60m performer and one of the most important daughters of the foundation mare Qerly Chin. This exceptional family has produced generations of international jumpers and approved stallions.</p><p>With Cornet Obolensky adding modern scope and athleticism, Cortina represents a rare combination of elite performance genetics and one of the strongest proven maternal families in the sport.</p>",
     "gallery": [
      "assets/img/horses/cortina-de-jolie-z-1.jpg",
@@ -1127,7 +1165,8 @@
     "video_1_id": "9YZGyUlrUSc",
     "videos": [
      {
-      "youtube_id": "9YZGyUlrUSc"
+      "youtube_id": "9YZGyUlrUSc",
+      "title": "Cortina de Jolie Z 2019 (Cornet Obolensky x Calato x Darco x Chin chin)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 18:47",
@@ -1171,7 +1210,7 @@
    },
    "fields": {
     "tagline": "Directly out of Gatoucha Van't Roosakker!",
-    "genetics": "AGANIX DU SEIGNEUR X DIAMANT DE SEMILLY X DARCO X CHIN CHIN",
+    "genetics": "Aganix du Seigneur x Diamant de Semilly x Darco x Chin Chin",
     "sex": "Mare",
     "year_of_birth": "2022",
     "studbook": "Zangersheide",
@@ -1179,6 +1218,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2544474/agousha-vd-berghoeve-z",
+    "horsetelex_of": "",
     "body": "<p>Directly out of Gatoucha van’t Roosakker, from one of the most influential families in modern show jumping.</p><p>Agousha is a young mare combining the blood of Aganix du Seigneur with the exceptional maternal strength of the van’t Roosakker family.</p><p>She is the full sister of international performers Attoucha at 1.60m and H5 Alana Hero Z at 1.50m, and closely related to Tinckoucha Hero Z at 1.55m and Maestro van’t Roosakker at 1.50m.</p><p>Her dam, Gatoucha van’t Roosakker, competed herself at 1.50m before becoming a broodmare. Behind her stands an exceptional producing family: her dam Atoucha produced, among others, Electra van’t Roosakker and Falco van het Roosakker, both successful at 1.60m.</p><p>With generations of proven international performers behind her, Agousha represents a rare opportunity to access one of Belgium’s deepest and most successful maternal lines.</p>",
     "gallery": [
      "assets/img/horses/agousha-vd-berghoeve-z-1.jpg"
@@ -1186,7 +1226,8 @@
     "video_1_id": "7NR0JdWEwlc",
     "videos": [
      {
-      "youtube_id": "7NR0JdWEwlc"
+      "youtube_id": "7NR0JdWEwlc",
+      "title": "Agousha vd Berghoeve Z 2022(Aganix du Seigneur x Gatoucha van’t Roosakker)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 18:43",
@@ -1232,7 +1273,7 @@
    },
    "fields": {
     "tagline": "In foal to Emerald van't Ruytershof",
-    "genetics": "CARTOON X CHACCO BLUE X LANDGOLD",
+    "genetics": "Cartoon x Chacco Blue x Landgold",
     "sex": "Mare",
     "year_of_birth": "2011",
     "studbook": "Oldenburg International",
@@ -1240,6 +1281,7 @@
     "sold": true,
     "sold_to": "Lithuania",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2025969/cartoona-blue",
+    "horsetelex_of": "",
     "body": "<p>From a proven Chacco-Blue maternal line that has already produced international performers at the highest level.</p><p>Cartoona Blue combines the influence of Cartoon with the exceptional genetics of Chacco-Blue and Landgold on the dam side.</p><p>Her dam, Altgirl, has established herself as an outstanding producer. Among her offspring is Messi 7, competing at international 1.60m level and regularly selected for CSI5 competition and the Longines Global Champions Tour* with Guido Grimaldi. Her family has also produced Contender della Dolce Vita at 1.45m, Viva’s Golden Girl PS at 1.45m and the approved stallion Mr Chacco at 1.50m.</p><p>The depth of the maternal line continues through her granddam Altgold and the proven Hannoverian family behind her, responsible for further international 1.60m performers.</p><p>With Cartoon bringing the influence of Carthago and Capitol I, combined with the exceptional modern legacy of Chacco-Blue, Cartoona Blue represents a powerful concentration of proven international show jumping genetics.</p><p>A mare from a family where performance is already firmly established, highlighted by the international career of her half-brother Messi 7 on some of the world’s most prestigious CSI5 and Global Champions Tour arenas</p>",
     "gallery": [
      "assets/img/horses/cartoona-blue-1.jpg",
@@ -1250,7 +1292,8 @@
     "video_1_id": "_7ba3QSoRHo",
     "videos": [
      {
-      "youtube_id": "_7ba3QSoRHo"
+      "youtube_id": "_7ba3QSoRHo",
+      "title": "SOLD 🇱🇹Cartoona Blue (Cartoon x Chacco blue) 6 yo"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 19:12",
@@ -1296,7 +1339,7 @@
    },
    "fields": {
     "tagline": "Out of Baraka de Muze · Narcotique II- Qerlychin.",
-    "genetics": "CATOKI X GOETHE X DARCO X CHIN CHIN",
+    "genetics": "Catoki x Goethe x Darco x Chin Chin",
     "sex": "Mare",
     "year_of_birth": "2022",
     "studbook": "BWP",
@@ -1304,6 +1347,7 @@
     "sold": true,
     "sold_to": "Ireland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/69653/baraka-de-muze",
+    "horsetelex_of": "Baraka de Muze",
     "body": "<p>This mare it’s half sister to Sterrehof’s Ushi (160 jumper). The mother Baraka de Muse it’a a direct daughter of Narcotique II, one of the best mares in the world.</p>",
     "gallery": [
      "assets/img/horses/waikiki-vd-berghoeve-1.jpg",
@@ -1354,7 +1398,7 @@
    },
    "fields": {
     "tagline": "Out of World Equestrian Games winner Liscalgot!",
-    "genetics": "HEARTBREAKER X FOR PLEASURE X TOUCHDOWN",
+    "genetics": "Heartbreaker x For Pleasure x Touchdown",
     "sex": "Mare",
     "year_of_birth": "2022",
     "studbook": "Zangersheide",
@@ -1362,6 +1406,7 @@
     "sold": true,
     "sold_to": "Ireland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2544471/heaven-vd-berghoeve-z",
+    "horsetelex_of": "",
     "body": "<p>From a direct branch of the legendary Liscalgot family, combining Heartbreaker with generations of proven championship sport genetics.</p><p>Heaven vd Berghoeve Z is by the legendary Heartbreaker and out of Calgot Pleasure, a proven international 1.60m mare by For Pleasure.</p><p>Her maternal line is headed by the exceptional Liscalgot, the World Equestrian Games winner and European Team Gold Medallist with Dermott Lennon. Liscalgot represents one of the great Irish sport horse families and has passed her exceptional qualities on through successive generations.</p><p>Calgot Pleasure has continued this tradition both in sport and breeding, producing several successful international performers, including horses competing up to 1.50m.</p><p>With Heartbreaker adding his legendary scope, reflexes and competitive mentality, Heaven represents a powerful combination of two exceptional sources of international show jumping talent.</p><p>A young mare carrying the genetics of a World Championship-winning family, with proven performance on both sides of her pedigree</p>",
     "gallery": [
      "assets/img/horses/heaven-vd-berghoeve-z-1.jpg"
@@ -1369,7 +1414,8 @@
     "video_1_id": "7hJU7fV6SUY",
     "videos": [
      {
-      "youtube_id": "7hJU7fV6SUY"
+      "youtube_id": "7hJU7fV6SUY",
+      "title": "SOLD 🇮🇪Heaven vd Berghoeve Z 2022 Heartbreaker x For Pleasure (Calgot Pleasure 160j)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 19:02",
@@ -1423,6 +1469,7 @@
     "sold": true,
     "sold_to": "the United States",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188786/unguessable-von-axe",
+    "horsetelex_of": "",
     "body": "<p>Direct daughter of the international Grand Prix mare Calleryama, from the renowned Holsteiner Stamm 6879.</p><p>Unguessable von Axe combines the modern blood of Untouchable with one of the most established maternal families in Holstein breeding.</p><p>Her dam, Calleryama, competed successfully at the highest level with Gilles Thomas, regularly performing in Global Champions Tour competitions and international classes up to 1.60m. Among her standout achievements were a fourth place in the Rolex Grand Prix of Geneva and being part of the Belgian winning team at the FEI Nations Cup Final in Barcelona.</p><p>Behind her stands the prestigious Holsteiner Stamm 6879, descending from the foundation mare Soleil. This exceptional family has produced influential horses including Corrado I, Chellano Z and Olympic mare Carlina, making it one of the most important performance families in modern Holstein breeding.</p><p>Unguessable therefore represents a rare combination of direct 1.60m performance, proven Grand Prix genetics and one of Holstein’s most influential maternal lines.</p><p>A young mare bred from a family where championship-level sport and exceptional breeding value have been proven for generations.</p>",
     "gallery": [
      "assets/img/horses/unguessable-von-axe-1.jpg",
@@ -1436,10 +1483,12 @@
     "video_1_id": "KXRcXFnesDk",
     "videos": [
      {
-      "youtube_id": "KXRcXFnesDk"
+      "youtube_id": "KXRcXFnesDk",
+      "title": "SOLD 🇺🇸Unguessable Von Axe 2018 (Untouchable x Casall)"
      },
      {
-      "youtube_id": "jZ8IUsms_34"
+      "youtube_id": "jZ8IUsms_34",
+      "title": "SOLD 🇺🇸Unguessable Von Axe 2018 (Untouchable x Casall)"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026, her text at 19:16",
@@ -1493,6 +1542,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188789/cardesse-von-axe",
+    "horsetelex_of": "",
     "body": "<p>Caracho x Corland x Capitol I</p><p>A powerful pedigree built on one of Holstein’s most influential performance families.</p><p>Cardesse Von Axe combines the modern qualities of Caracho with the proven genetics of Corland and Capitol I, descending from a remarkably productive Holstein Stamm.</p><p>Her maternal family has produced international performers at the highest level, including the legendary Cardento, successful up to 1.60m, alongside Cardenta and Carnaval, both competing at 1.50m, and Quontender at 1.40m.</p><p>A concentrated source of proven sport genetics, depth and consistency, exactly the kind of maternal line that gives real value to a breeding programme</p>",
     "gallery": [
      "assets/img/horses/cardesse-von-axe-1.jpg",
@@ -1543,7 +1593,7 @@
    },
    "fields": {
     "tagline": "One of the best stallion in the world crossed with one of the best dam lines ever!",
-    "genetics": "CHACCO BLUE X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Chacco Blue x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "Filly",
     "year_of_birth": "2026",
     "studbook": "",
@@ -1551,6 +1601,7 @@
     "sold": true,
     "sold_to": "Great Britain",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/charina-von-axe-z-1.jpg",
@@ -1600,7 +1651,7 @@
    },
    "fields": {
     "tagline": "Out of a sister of the Olympic Hardrock Z!",
-    "genetics": "COMME IL FAUT X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Comme il Faut x Halifax van het Kluizebos x Carthago",
     "sex": "Filly",
     "year_of_birth": "23/04/26",
     "studbook": "",
@@ -1608,6 +1659,7 @@
     "sold": true,
     "sold_to": "Great Britain",
     "horsetelex": "",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/comme-il-faut-x-hypnotic-jt-z-1.jpg",
@@ -1657,7 +1709,7 @@
    },
    "fields": {
     "tagline": "Out of Fuga de Muse · Narcotique II · Qerlychin!",
-    "genetics": "AGANIX SU SEIGNEUR X CORNET OBOLESNKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Aganix Su Seigneur x Cornet Obolesnky x Calato x Darco x Chin Chin",
     "sex": "Filly",
     "year_of_birth": "2026",
     "studbook": "",
@@ -1665,6 +1717,7 @@
     "sold": false,
     "sold_to": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/arkhana-von-axe-z-1.jpg",
@@ -1713,7 +1766,7 @@
    },
    "fields": {
     "tagline": "Out of Fuga de Muse · Narcotique II · Qerlychin!",
-    "genetics": "UNITED TOUCH S X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "United Touch S x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "",
     "year_of_birth": "2026",
     "studbook": "",
@@ -1721,6 +1774,7 @@
     "sold": true,
     "sold_to": "Brazil",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/unique-touch-von-axe-z-1.jpg",
@@ -1771,7 +1825,7 @@
    },
    "fields": {
     "tagline": "Usha van't Roosakker, China Touch Hero and Qerlychin in 1 match!",
-    "genetics": "DOURKHAN HERO Z X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Dourkhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "Colt",
     "year_of_birth": "07/05/25",
     "studbook": "Zangersheide",
@@ -1779,6 +1833,7 @@
     "sold": true,
     "sold_to": "the Netherlands",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/darkhan-von-axe-z-1.jpg",
@@ -1832,7 +1887,7 @@
    },
    "fields": {
     "tagline": "Directly out of a sister of Hardrock Z!",
-    "genetics": "DIAMANT DE SEMILLY X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Diamant de Semilly x Halifax van het Kluizebos x Carthago",
     "sex": "Colt",
     "year_of_birth": "28/03/2025",
     "studbook": "Zangersheide",
@@ -1840,6 +1895,7 @@
     "sold": true,
     "sold_to": "Poland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "Hypnotic JT Z",
     "body": "",
     "gallery": [
      "assets/img/horses/dune-von-axe-z-1.jpg",
@@ -1890,7 +1946,7 @@
    },
    "fields": {
     "tagline": "Out of an amazing jumping mare that already produced!",
-    "genetics": "COMILFO PLUS Z X CARTOON X CHACCO BLUE",
+    "genetics": "Comilfo Plus Z x Cartoon x Chacco Blue",
     "sex": "Filly",
     "year_of_birth": "30/04/2025",
     "studbook": "Zangersheide",
@@ -1898,6 +1954,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2025969/cartoona-blue",
+    "horsetelex_of": "Cartoona Blue",
     "body": "",
     "gallery": [
      "assets/img/horses/cara-von-axe-z-1.jpg",
@@ -1948,7 +2005,7 @@
    },
    "fields": {
     "tagline": "OUT OF HARDROCK Z'S SISTER!",
-    "genetics": "CHACCO BLUE X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Chacco Blue x Halifax van het Kluizebos x Carthago",
     "sex": "Colt",
     "year_of_birth": "14/06/2024",
     "studbook": "Zangersheide",
@@ -1956,6 +2013,7 @@
     "sold": true,
     "sold_to": "Ireland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "Hypnotic JT Z",
     "body": "",
     "gallery": [
      "assets/img/horses/coolrock-von-axe-z-1.jpg",
@@ -1964,7 +2022,8 @@
     "video_1_id": "9-Df5yEQGdk",
     "videos": [
      {
-      "youtube_id": "9-Df5yEQGdk"
+      "youtube_id": "9-Df5yEQGdk",
+      "title": "SOLD 🇧🇷Hypnotic JT Z 2018 (Halifax x Carthago) first show ever"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -2010,7 +2069,7 @@
    },
    "fields": {
     "tagline": "OUT OF HARDROCK'S SISTER!",
-    "genetics": "CUMANO X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Cumano x Halifax van het Kluizebos x Carthago",
     "sex": "Colt",
     "year_of_birth": "06/06/2024",
     "studbook": "Zangersheide",
@@ -2018,6 +2077,7 @@
     "sold": true,
     "sold_to": "Ireland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "Hypnotic JT Z",
     "body": "",
     "gallery": [
      "assets/img/horses/cumax-von-axe-z-1.jpg",
@@ -2071,7 +2131,7 @@
    },
    "fields": {
     "tagline": "OUT OF GLASGOW'S SISTER!",
-    "genetics": "COMME IL FAUT X KANNAN X DARCO",
+    "genetics": "Comme il Faut x Kannan x Darco",
     "sex": "Colt",
     "year_of_birth": "16/05/2024",
     "studbook": "Zangersheide",
@@ -2079,6 +2139,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.nl/horses/pedigree/2258345/patchina-van-t-merelsnest",
+    "horsetelex_of": "Patchina van’t Merelsnest",
     "body": "",
     "gallery": [
      "assets/img/horses/cosmopolitan-von-axe-z-1.jpg",
@@ -2131,7 +2192,7 @@
    },
    "fields": {
     "tagline": "Best stallion in the world crossed with one of the best families!",
-    "genetics": "CHACCO BLUE X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Chacco Blue x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "Colt",
     "year_of_birth": "08/04/2024",
     "studbook": "Zangersheide",
@@ -2139,6 +2200,7 @@
     "sold": true,
     "sold_to": "Argentina",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/cacao-von-axe-z-1.jpg"
@@ -2188,7 +2250,7 @@
    },
    "fields": {
     "tagline": "3 Great damlines in one match! China touch Hero x Usha van't Roosakker out of Qerlychin mare!",
-    "genetics": "DOURKHAN HERO Z X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Dourkhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "Colt",
     "year_of_birth": "13/05/2024",
     "studbook": "Zangersheide",
@@ -2196,6 +2258,7 @@
     "sold": true,
     "sold_to": "the United States",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/dourkhet-von-axe-z-1.jpg",
@@ -2250,7 +2313,7 @@
    },
    "fields": {
     "tagline": "OUT OF THE SISTER OF GLASGOW VAN'T MERELSNEST! SAPPHIRE FAMILY",
-    "genetics": "HEARTBREAKER X KANNAN X DARCO",
+    "genetics": "Heartbreaker x Kannan x Darco",
     "sex": "Colt",
     "year_of_birth": "06/03/2024",
     "studbook": "Zangersheide",
@@ -2258,6 +2321,7 @@
     "sold": true,
     "sold_to": "Great Britain",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2258345/patchina-van-t-merelsnest",
+    "horsetelex_of": "Patchina van’t Merelsnest",
     "body": "",
     "gallery": [
      "assets/img/horses/hyori-von-axe-z-1.jpg",
@@ -2312,7 +2376,7 @@
    },
    "fields": {
     "tagline": "From the sister of Hardrock Z!",
-    "genetics": "BALOU DU REVENTON X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Balou du Reventon x Halifax van het Kluizebos x Carthago",
     "sex": "Filly",
     "year_of_birth": "03/03/2023",
     "studbook": "Zangersheide",
@@ -2320,6 +2384,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2459291/bellavista-von-axe-z",
+    "horsetelex_of": "",
     "body": "<p>Hypnotic JTZ that is ¾ sister to the VDL superstar Hardrock Z combined with Balou du reventon, one of the most earning horses of the circuit! Under Darragh Kenny, he was part of the Irish team that won the 2019 FEI Nations Cup Final in Barcelona to qualifiy for the Tokyo Olympics and the pair finished runners-up in the Super Grand Prix in Prague, as well as winning two five-star Grands Prix in Chantilly and Knokke.</p><p>In total, Darragh Kenny and Balou du Reventon earned 780.000 euro in 2018 and 890.000 euro in 2019. Already in 2016, when Balou du Reventon was paired with Liubov Kochetova, the stallion collected an impressive amount of 103.000 euro. By the end of 2020, the 18-year-old Brian Moggre took over the reins of Balou du Reventon.</p><p>Speaking about the horse, Moggre said: “The biggest thing is for me to represent Ann Thompson’s horses well and Balou Du Reventon really is a superstar, so my main goal is to show everybody that Balou is very special to Ann, and it has been a lot of fun getting to know him. Riding him for the first time was a bit surreal as he is definitely not a horse I thought I would ever get the opportunity to ride! There is no telling what the extent of this horse’s career is!”</p><p>Moggre and Balou Du Reventon already prove to be a fantastic pair, since they already collect 25.500 euro in just two months in 2021! Last week, they had just one time penalty in the CSI5* 500.000 $ Grand Prix of Wellington, earning them a 9th place in the end.</p>",
     "gallery": [
      "assets/img/horses/bellavista-von-axe-z-1.jpg",
@@ -2331,7 +2396,8 @@
     "video_1_id": "T19TheTWVEk",
     "videos": [
      {
-      "youtube_id": "T19TheTWVEk"
+      "youtube_id": "T19TheTWVEk",
+      "title": "Balou du Reventon par CORNET OBOLENSKY et Brian Moggre - Victoire Coupe des Nations Aix La Chapelle"
      }
     ],
     "source": "WhatsApp, Stud Von Axe, 6 September 2026",
@@ -2375,14 +2441,15 @@
    },
    "fields": {
     "tagline": "Scope is never enough!",
-    "genetics": "DOMINATOR 2000 Z X CARTOON X CHACCO BLUE",
+    "genetics": "Dominator 2000 Z x Cartoon x Chacco Blue",
     "sex": "Filly",
     "year_of_birth": "01/05/2024",
     "studbook": "",
     "height": "",
     "sold": true,
     "sold_to": "Poland",
-    "horsetelex": "https://www.horsetelex.com/horses/search?name=CARTOONA%20BLUE&#038;page=1",
+    "horsetelex": "",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/delilah-von-axe-z-1.jpg",
@@ -2434,7 +2501,7 @@
    },
    "fields": {
     "tagline": "Fuga de Muze · Narcotique II · Qerlychin!",
-    "genetics": "BIG STAR X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Big Star x Cornet Obolensky x Calato x Darco x Chin Chin",
     "sex": "Colt",
     "year_of_birth": "02/04/2025",
     "studbook": "Zangersheide",
@@ -2442,6 +2509,7 @@
     "sold": true,
     "sold_to": "Poland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "Cortina de Jolie Z",
     "body": "",
     "gallery": [
      "assets/img/horses/baltimore-von-axe-z-1.jpg",
@@ -2495,7 +2563,7 @@
    },
    "fields": {
     "tagline": "FROM GREAT JUMPING MARE AND SPORT FAMILY!",
-    "genetics": "PEGASE VAN'T RUYTERSHOF X CARTOON X CHACCO BLUE",
+    "genetics": "Pegase van't Ruytershof x Cartoon x Chacco Blue",
     "sex": "Filly",
     "year_of_birth": "01/05/2023",
     "studbook": "Zangersheide",
@@ -2503,6 +2571,7 @@
     "sold": true,
     "sold_to": "Poland",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2316388/embryo-2022-2316388",
+    "horsetelex_of": "",
     "body": "<p>Cartoona Blue is an incredible jumping mare from a young but really good mother line. Cartoona has already some jumping offprings.</p><p>Pegase van’t Ruytershof come from the mother line of Carthina Z, mother of Emerald van’t Ruytershof and Nixon!</p>",
     "gallery": [
      "assets/img/horses/purple-rain-von-axe-z-1.jpg",
@@ -2512,10 +2581,12 @@
     "video_1_id": "0Zdqvhl1Xjo",
     "videos": [
      {
-      "youtube_id": "0Zdqvhl1Xjo"
+      "youtube_id": "0Zdqvhl1Xjo",
+      "title": "SOLD 🇵🇱 Purple Rain Von Axe Z (Pegase van’t Ruytershof x Cartoona Blue) 2023"
      },
      {
-      "youtube_id": "V33_EnR0_PA"
+      "youtube_id": "V33_EnR0_PA",
+      "title": "Pegase van 't Ruytershof  - Stallion Competition Ghent 2020"
      }
     ],
     "source": "https://www.studvonaxe.it/en/cavalli/pegase-vant-ruytershof-x-cartoon-x-chacco-blue-2/",
@@ -2559,14 +2630,15 @@
    },
    "fields": {
     "tagline": "From a great jumping mare!",
-    "genetics": "MUMBAI X CARTOON X CHACCO BLUE",
+    "genetics": "Mumbai x Cartoon x Chacco Blue",
     "sex": "Filly",
     "year_of_birth": "23/04/2022",
     "studbook": "",
     "height": "",
     "sold": true,
     "sold_to": "the United States",
-    "horsetelex": "https://www.horsetelex.com/horses/pedigree/2325226/medellin-von-axe-z",
+    "horsetelex": "",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/medillin-von-axe-z-1.jpg",
@@ -2576,10 +2648,12 @@
     "video_1_id": "ub7nuPghszE",
     "videos": [
      {
-      "youtube_id": "ub7nuPghszE"
+      "youtube_id": "ub7nuPghszE",
+      "title": "SOLD 🇺🇸 Medellín Von Axe 2022 (Mumbai x Cartoon x Chacco blue)"
      },
      {
-      "youtube_id": "0LpiA2nj8X4"
+      "youtube_id": "0LpiA2nj8X4",
+      "title": "Medellin Von Axe (Mumbai vd Moerhoeve x Cartoon)"
      }
     ],
     "source": "https://www.studvonaxe.it/en/cavalli/medillin-von-axe/",
@@ -2623,7 +2697,7 @@
    },
    "fields": {
     "tagline": "From the 3/4 sister of Hardrock Z!",
-    "genetics": "ELDORADO VD ZESHOEK X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Eldorado vd Zeshoek x Halifax van het Kluizebos x Carthago",
     "sex": "Colt",
     "year_of_birth": "20/04/2022",
     "studbook": "",
@@ -2631,6 +2705,7 @@
     "sold": true,
     "sold_to": "Belgium",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2301566/evoque-von-axe-z",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/evoque-von-axe-z-1.jpg",
@@ -2640,7 +2715,8 @@
     "video_1_id": "uUQY7a0JZDE",
     "videos": [
      {
-      "youtube_id": "uUQY7a0JZDE"
+      "youtube_id": "uUQY7a0JZDE",
+      "title": "Evoque Von Axe Z"
      }
     ],
     "source": "https://www.studvonaxe.it/en/cavalli/eldorado-van-de-zeshoek-x-halifax-van-het-kluizebos-x-carthago/",
@@ -2686,7 +2762,7 @@
    },
    "fields": {
     "tagline": "Born at the end of April!",
-    "genetics": "CONTHARGOS X CARTOON X CHACCO BLUE",
+    "genetics": "Conthargos x Cartoon x Chacco Blue",
     "sex": "Filly",
     "year_of_birth": "2021",
     "studbook": "Oldenburg",
@@ -2694,6 +2770,7 @@
     "sold": true,
     "sold_to": "Italy",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2219827/coachella-von-axe",
+    "horsetelex_of": "",
     "body": "",
     "gallery": [
      "assets/img/horses/coachella-von-axe-1.jpg",
@@ -2742,6 +2819,7 @@
     "stage": "carrying",
     "due_date": "09/05/2027",
     "horsetelex": "https://horsetelex.com/horses/pedigree/2722393/carma-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>One of the first approved sons of Elvis ter Putte. Second in the Rolex Grand Prix of Knokke with Bernardo Alves, and his first crop stood in force in the final of the Belgian championship for five year olds.</p>",
     "dam_line": "",
     "gallery": [
@@ -2784,6 +2862,7 @@
     "stage": "carrying",
     "due_date": "27/03/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2544474/agousha-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>A grey by Clinton out of Rabanna van Costersveld. European team champion and an Olympic horse with Marco Kutscher, and the sire of Cornet d'Amour, who won the World Cup Final and led the world ranking.</p>",
     "dam_line": "",
     "gallery": [
@@ -2822,10 +2901,11 @@
     "sire_name": "Dominator 2000 Z",
     "dam_name": "Hypnotic JT Z",
     "tagline": "Out of the sister of the Olympic Hardrock Z!",
-    "genetics": "DOMINATOR 2000 Z X HALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Dominator 2000 Z x Halifax van het Kluizebos x Carthago",
     "stage": "carrying",
     "due_date": "2026",
     "horsetelex": "",
+    "horsetelex_of": "",
     "sire_line": "<p>One of the most important sons of Diamant de Semilly. With Christian Ahlmann he won Global Champions Tour Grands Prix in Stockholm and Hamburg, and his dam Cephale 2000 has produced a run of licensed stallions.</p>",
     "dam_line": "",
     "gallery": [
@@ -2869,6 +2949,7 @@
     "stage": "carrying",
     "due_date": "26/03/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "dam_line": "",
     "gallery": [
@@ -2907,10 +2988,11 @@
     "sire_name": "Zandor Z",
     "dam_name": "Cabri vd Berghoeve Z",
     "tagline": "Out of a direct daughter of Hiamant van't Roosakker!",
-    "genetics": "ZANDOR Z X CORNET OBOLENSKY X DIAMANT DE SEMILLY X DARCO X CHIN CHIN",
+    "genetics": "Zandor Z x Cornet Obolensky x Diamant de Semilly x Darco x Chin Chin",
     "stage": "carrying",
     "due_date": "21/03/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>He jumped Grands Prix with Jos Lansink, Bordeaux among them twice, and stood at Zangersheide in Lanaken to the end. Zekina Z, Zeta de Hus and ZZ Top vh Schaarbroek Z all carry his name.</p>",
     "dam_line": "",
     "gallery": [
@@ -2954,6 +3036,7 @@
     "stage": "carrying",
     "due_date": "18/04/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Chacco Blue has led the WBFSH ranking of jumping sires, and his stock carried him there: Explosion W with Ben Maher, Chaqui Z with Shane Sweetnam. His dam Contara brought the thoroughbred blood that keeps his offspring quick.</p>",
     "dam_line": "",
     "gallery": [
@@ -2992,10 +3075,11 @@
     "sire_name": "Comme il Faut",
     "dam_name": "Patchina van’t Merelsnest",
     "tagline": "Out of Wendalina van't Merelsnest, full sister of SAPPHIRE!",
-    "genetics": "COMME IL FAUT X KANNAN X DARCO X HEDJAZ",
+    "genetics": "Comme il Faut x Kannan x Darco x Hedjaz",
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "",
+    "horsetelex_of": "",
     "sire_line": "<p>By Cornet Obolensky out of Ratina Z. He won at the highest level with Marcus Ehning and stood in the German team that took silver at the European Championship in Rotterdam.</p>",
     "dam_line": "",
     "gallery": [
@@ -3034,10 +3118,11 @@
     "sire_name": "Catoki",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "Fuga de muze, Narcotique II, Qerlychin!",
-    "genetics": "CATOKI X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Catoki x Cornet Obolensky x Calato x Darco x Chin Chin",
     "stage": "carrying",
     "due_date": "26/05/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>A Holsteiner by Cambridge, one of the best sons of Caletto I. He won the Grand Prix of Rastede with Gerd Sosath and went on to World Cup shows, and his son Canoso topped the Holstein licensing.</p>",
     "dam_line": "",
     "gallery": [
@@ -3076,10 +3161,11 @@
     "sire_name": "For Pleasure",
     "dam_name": "Hypnotic JT Z",
     "tagline": "Out of the sister of the Olympic Hardrock Z!",
-    "genetics": "FOR PLEASURE X HALIFAX VAN KLUIZEBOS X CARTHAGO",
+    "genetics": "For Pleasure x Halifax van Kluizebos x Carthago",
     "stage": "carrying",
     "due_date": "19/04/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Two Olympic team golds with Lars Nieberg, Atlanta and Sydney, and Hanoverian Stallion of the Year. He stayed in the sport until he was twenty, and his sons stand in studbooks across Europe.</p>",
     "dam_line": "",
     "gallery": [
@@ -3118,10 +3204,11 @@
     "sire_name": "Aganix du Seigneur Z",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "Out of Fuga de Muze · Narcotique II · Qerlychin!",
-    "genetics": "AGANIX SU SEIGNEUR X CORNET OBOLESNKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Aganix Su Seigneur x Cornet Obolesnky x Calato x Darco x Chin Chin",
     "stage": "carrying",
     "due_date": "15/04/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>By Ogano Sitte, jumping at the highest level with Jos Lansink until an injury ended his sport early. What he passes on is blood and scope, and Agana van het Gerendal Z shows it at five star level.</p>",
     "dam_line": "",
     "gallery": [
@@ -3160,10 +3247,11 @@
     "sire_name": "Catoki",
     "dam_name": "Hypnotic JT Z",
     "tagline": "Out of a sister of Hardrock Z!",
-    "genetics": "CATOKI X KALIFAX VAN HET KLUIZEBOS X CARTHAGO",
+    "genetics": "Catoki x Kalifax van het Kluizebos x Carthago",
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>A Holsteiner by Cambridge, one of the best sons of Caletto I. He won the Grand Prix of Rastede with Gerd Sosath and went on to World Cup shows, and his son Canoso topped the Holstein licensing.</p>",
     "dam_line": "",
     "gallery": [
@@ -3202,10 +3290,11 @@
     "sire_name": "United Touch S",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "Classic Touch dam line crossed with Nacotique II!",
-    "genetics": "UNITED TOUCH S X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "United Touch S x Cornet Obolensky x Calato x Darco x Chin Chin",
     "stage": "frozen",
     "due_date": "",
-    "horsetelex": "https://www.horsetelex.com/horses/search?name=CORTINA%20DE%20JOLIE%20Z&#038;page=1",
+    "horsetelex": "",
+    "horsetelex_of": "",
     "sire_line": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "dam_line": "",
     "gallery": [
@@ -3244,10 +3333,11 @@
     "sire_name": "Dourkhan Hero Z",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "3 of the best dam lines in the world crossed in one match! Chin Touch Hero x Usha van't Roosakker x Qerlychin",
-    "genetics": "DOUKHAN HERO Z X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Doukhan Hero Z x Cornet Obolensky x Calato x Darco x Chin Chin",
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Vice World Champion at seven, and his first five star Grand Prix at ten, in Hamburg with Christian Ahlmann. A young Zangersheide stallion whose first foals are already out at the World Breeding Championship.</p>",
     "dam_line": "",
     "gallery": [
@@ -3287,10 +3377,11 @@
     "sire_name": "Big Star",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "Closest way to Narcotique II!",
-    "genetics": "BIG STAR X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Big Star x Cornet Obolensky x Calato x Darco x Chin Chin",
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "",
+    "horsetelex_of": "",
     "sire_line": "<p>Nick Skelton's horse: team gold in London, individual gold in Rio. A KWPN stallion by Quick Star out of a Nimmerdor mare, and named KWPN Stallion of the Year after he left the sport.</p>",
     "dam_line": "",
     "gallery": [
@@ -3329,10 +3420,11 @@
     "sire_name": "Uricas vd Kattevennen",
     "dam_name": "Cortina de Jolie Z",
     "tagline": "Chika's way · Wodka II line crossed with Narcotique II · Qerlychin!",
-    "genetics": "URICAS VD KATTEVENNEN X CORNET OBOLENSKY X CALATO X DARCO X CHIN CHIN",
+    "genetics": "Uricas vd Kattevennen x Cornet Obolensky x Calato x Darco x Chin Chin",
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Two five star Grands Prix in one season, St Gallen and Riesenbeck, and the Olympic Games in Paris with the Dutch team. His granddam Chika's Way jumped at the highest level, and behind her stands Wodka II.</p>",
     "dam_line": "",
     "gallery": [
@@ -3375,6 +3467,7 @@
     "stage": "carrying",
     "due_date": "22/02/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2544474/agousha-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>By Cornet Obolensky out of Ratina Z. He won at the highest level with Marcus Ehning and stood in the German team that took silver at the European Championship in Rotterdam.</p>",
     "dam_line": "",
     "gallery": [
@@ -3417,6 +3510,7 @@
     "stage": "carrying",
     "due_date": "28/03/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "",
     "dam_line": "",
     "gallery": [
@@ -3459,6 +3553,7 @@
     "stage": "carrying",
     "due_date": "11/04/2027",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "dam_line": "",
     "gallery": [
@@ -3501,6 +3596,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "",
     "dam_line": "",
     "gallery": [
@@ -3543,6 +3639,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "dam_line": "",
     "gallery": [
@@ -3585,6 +3682,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>By Ogano Sitte, jumping at the highest level with Jos Lansink until an injury ended his sport early. What he passes on is blood and scope, and Agana van het Gerendal Z shows it at five star level.</p>",
     "dam_line": "",
     "gallery": [
@@ -3627,6 +3725,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>By Cornet Obolensky out of Ratina Z. He won at the highest level with Marcus Ehning and stood in the German team that took silver at the European Championship in Rotterdam.</p>",
     "dam_line": "",
     "gallery": [
@@ -3669,6 +3768,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Two Olympic team golds with Lars Nieberg, Atlanta and Sydney, and Hanoverian Stallion of the Year. He stayed in the sport until he was twenty, and his sons stand in studbooks across Europe.</p>",
     "dam_line": "",
     "gallery": [
@@ -3711,6 +3811,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2188785/hypnotic-jt-z",
+    "horsetelex_of": "",
     "sire_line": "<p>One of the most important sons of Diamant de Semilly. With Christian Ahlmann he won Global Champions Tour Grands Prix in Stockholm and Hamburg, and his dam Cephale 2000 has produced a run of licensed stallions.</p>",
     "dam_line": "",
     "gallery": [
@@ -3753,6 +3854,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "dam_line": "",
     "gallery": [
@@ -3795,6 +3897,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "<p>A Holsteiner by Cambridge, one of the best sons of Caletto I. He won the Grand Prix of Rastede with Gerd Sosath and went on to World Cup shows, and his son Canoso topped the Holstein licensing.</p>",
     "dam_line": "",
     "gallery": [
@@ -3837,6 +3940,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>Chacco Blue has led the WBFSH ranking of jumping sires, and his stock carried him there: Explosion W with Ben Maher, Chaqui Z with Shane Sweetnam. His dam Contara brought the thoroughbred blood that keeps his offspring quick.</p>",
     "dam_line": "",
     "gallery": [
@@ -3879,6 +3983,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2678380/cabri-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>He jumped Grands Prix with Jos Lansink, Bordeaux among them twice, and stood at Zangersheide in Lanaken to the end. Zekina Z, Zeta de Hus and ZZ Top vh Schaarbroek Z all carry his name.</p>",
     "dam_line": "",
     "gallery": [
@@ -3921,6 +4026,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2304785/cortina-de-jolie-z",
+    "horsetelex_of": "",
     "sire_line": "",
     "dam_line": "",
     "gallery": [
@@ -3963,6 +4069,7 @@
     "stage": "frozen",
     "due_date": "",
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2544474/agousha-vd-berghoeve-z",
+    "horsetelex_of": "",
     "sire_line": "<p>A grey by Clinton out of Rabanna van Costersveld. European team champion and an Olympic horse with Marco Kutscher, and the sire of Cornet d'Amour, who won the World Cup Final and led the world ranking.</p>",
     "dam_line": "",
     "gallery": [
@@ -4004,6 +4111,7 @@
     "availability": "On request",
     "crowned": true,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/118901/chacco-blue",
+    "horsetelex_of": "",
     "body": "<p>Chacco Blue has led the WBFSH ranking of jumping sires, and his stock carried him there: Explosion W with Ben Maher, Chaqui Z with Shane Sweetnam. His dam Contara brought the thoroughbred blood that keeps his offspring quick.</p>",
     "source_text": "World of Showjumping and The Horse Magazine, read 7 September 2026",
     "crosses": [
@@ -4048,6 +4156,7 @@
     "availability": "On request",
     "crowned": true,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/18102/cumano",
+    "horsetelex_of": "",
     "body": "<p>World Champion in Aachen with Jos Lansink, and silver at the European Championship in Mannheim the year after. A grey by Cassini I who went to the Olympic Games twice, and who left Nasa, Nenuphar'Jac and Neptune Brecourt behind him.</p>",
     "source_text": "World of Showjumping and The Horse Magazine, read 7 September 2026",
     "crosses": [
@@ -4089,6 +4198,7 @@
     "availability": "On request",
     "crowned": true,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1677488/united-touch-s",
+    "horsetelex_of": "",
     "body": "<p>Individual gold at the European Championship with Richard Vogel, five rounds and not a fence down. He comes out of the Classic Touch damline, the mare that won Olympic individual gold with Ludger Beerbaum.</p>",
     "source_text": "FEI and Rolex Grand Slam, read 7 September 2026",
     "crosses": [
@@ -4132,6 +4242,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/396837/conthargos",
+    "horsetelex_of": "",
     "body": "<p>An Oldenburg stallion by Converter I, out of Cajandra Z, a mare who has produced international jumpers of her own. His son Conthalou was champion stallion of the Oldenburg jumping studbook.</p>",
     "source_text": "Schockemohle Stud and The Horse Magazine, read 7 September 2026",
     "crosses": [
@@ -4174,6 +4285,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1761945/uricas-v-d-kattevennen",
+    "horsetelex_of": "",
     "body": "<p>Two five star Grands Prix in one season, St Gallen and Riesenbeck, and the Olympic Games in Paris with the Dutch team. His granddam Chika's Way jumped at the highest level, and behind her stands Wodka II.</p>",
     "source_text": "Harrie Smolders and Oldenburger Pferdezuchtverband, read 7 September 2026",
     "crosses": [],
@@ -4213,6 +4325,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/2859/baloubet-du-rouet",
+    "horsetelex_of": "",
     "body": "<p>Three World Cup Finals one after the other with Rodrigo Pessoa, Helsinki, Gothenburg and Las Vegas, and then individual gold at the Olympic Games in Athens. No other horse has taken the World Cup three times running.</p>",
     "source_text": "FEI and Wikipedia, read 7 September 2026",
     "crosses": [],
@@ -4252,6 +4365,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/38151/catoki",
+    "horsetelex_of": "",
     "body": "<p>A Holsteiner by Cambridge, one of the best sons of Caletto I. He won the Grand Prix of Rastede with Gerd Sosath and went on to World Cup shows, and his son Canoso topped the Holstein licensing.</p>",
     "source_text": "Breeding News for Sport Horses and Hof Sosath, read 7 September 2026",
     "crosses": [
@@ -4295,6 +4409,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/240686/big-star",
+    "horsetelex_of": "",
     "body": "<p>Nick Skelton's horse: team gold in London, individual gold in Rio. A KWPN stallion by Quick Star out of a Nimmerdor mare, and named KWPN Stallion of the Year after he left the sport.</p>",
     "source_text": "Wikipedia and World of Showjumping, read 7 September 2026",
     "crosses": [
@@ -4336,6 +4451,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/34480/cornet-obolensky",
+    "horsetelex_of": "",
     "body": "<p>A grey by Clinton out of Rabanna van Costersveld. European team champion and an Olympic horse with Marco Kutscher, and the sire of Cornet d'Amour, who won the World Cup Final and led the world ranking.</p>",
     "source_text": "The Horse Magazine and Groupe France Elevage, read 7 September 2026",
     "crosses": [
@@ -4379,6 +4495,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/33956/diamant-de-semilly",
+    "horsetelex_of": "",
     "body": "<p>Team gold for France at the World Equestrian Games in Jerez with Eric Levallois. He has topped the WBFSH ranking of jumping sires since, and his sons stand in studbooks across Europe.</p>",
     "source_text": "World of Showjumping and Holsteiner Verband, read 7 September 2026",
     "crosses": [
@@ -4422,6 +4539,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/49609/casall",
+    "horsetelex_of": "",
     "body": "<p>Rolf-Goran Bengtsson's horse for a decade. He won Global Champions Tour legs in Hamburg and Monte Carlo and the World Cup in Lyon, and took the Grand Prix of Hamburg in his last international start before retiring.</p>",
     "source_text": "Holsteiner Verband and Stall Bengtsson, read 7 September 2026",
     "crosses": [],
@@ -4461,6 +4579,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/39246/stakkato-gold",
+    "horsetelex_of": "",
     "body": "<p>Hanoverian Stallion of the Year. In one season his sons Stargold and Solid Gold took the German title and the world title for seven year olds, which no sire had managed before him.</p>",
     "source_text": "Eurodressage and Gestuet Sprehe, read 7 September 2026",
     "crosses": [],
@@ -4494,12 +4613,13 @@
     ]
    },
    "fields": {
-    "genetics": "NABAB DE REVE",
+    "genetics": "Nabab de Reve",
     "year_of_birth": "",
     "studbook": "",
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/69655/vigo-d-arsouilles",
+    "horsetelex_of": "",
     "body": "<p>World Champion in Kentucky with Philippe Le Jeune, and team bronze at the same championship. He went on to the Olympic Games in London, and his sons and daughters jump Grands Prix across Europe.</p>",
     "source_text": "World of Showjumping and The Horse Magazine, read 7 September 2026",
     "crosses": [],
@@ -4539,6 +4659,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/15154/for-pleasure",
+    "horsetelex_of": "",
     "body": "<p>Two Olympic team golds with Lars Nieberg, Atlanta and Sydney, and Hanoverian Stallion of the Year. He stayed in the sport until he was twenty, and his sons stand in studbooks across Europe.</p>",
     "source_text": "Wikipedia and Eurodressage, read 7 September 2026",
     "crosses": [
@@ -4580,6 +4701,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/285153/comme-il-faut",
+    "horsetelex_of": "",
     "body": "<p>By Cornet Obolensky out of Ratina Z. He won at the highest level with Marcus Ehning and stood in the German team that took silver at the European Championship in Rotterdam.</p>",
     "source_text": "Hippomundo and Jumper News, read 7 September 2026",
     "crosses": [
@@ -4618,12 +4740,13 @@
     ]
    },
    "fields": {
-    "genetics": "QUIDAM DE REVEL",
+    "genetics": "Quidam de Revel",
     "year_of_birth": "",
     "studbook": "",
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/13035/nabab-de-reve",
+    "horsetelex_of": "",
     "body": "<p>A son of Quidam de Revel, bred at the Haras de Reve. He is the sire of Vigo d'Arsouilles, who became World Champion in Kentucky, and his line runs deep through Belgian breeding.</p>",
     "source_text": "The Horse Magazine and Horsetelex, read 7 September 2026",
     "crosses": [],
@@ -4663,6 +4786,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1002/heartbreaker",
+    "horsetelex_of": "",
     "body": "<p>A son of Nimmerdor, Grand Prix with Peter Geerink and named KWPN Horse of the Year. What his stock inherits is the reflex and the care he showed himself, and his sons breed on.</p>",
     "source_text": "Hippomundo and KWPN, read 7 September 2026",
     "crosses": [
@@ -4706,6 +4830,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/196504/emerald-van-t-ruytershof",
+    "horsetelex_of": "",
     "body": "<p>Harrie Smolders' horse. The Global Champions Tour Grand Prix of Chantilly, the World Cup Grand Prix of Bordeaux, second in the World Cup Final, and the Olympic Games in Rio. By Diamant de Semilly out of a Carthago mare.</p>",
     "source_text": "World of Showjumping and Hippomundo, read 7 September 2026",
     "crosses": [
@@ -4747,6 +4872,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/42058/kannan-gfe",
+    "horsetelex_of": "",
     "body": "<p>A Voltaire son who took the French championship with Michel Hecart and jumped Nations Cups for France. As a sire he has stood high on the WBFSH ranking, and Quabri de l'Isle and Molly Malone V both carry his name.</p>",
     "source_text": "Hippomundo and VDL Stud, read 7 September 2026",
     "crosses": [
@@ -4788,6 +4914,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/46156/untouchable",
+    "horsetelex_of": "",
     "body": "<p>A grey KWPN stallion by Hors la Loi II out of a Heartbreaker mare, and a finalist at the World Championships for seven year olds in Lanaken. What he passes on is frame, power and an exceptional canter.</p>",
     "source_text": "Hippomundo and Elite Stallions, read 7 September 2026",
     "crosses": [
@@ -4829,6 +4956,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/30086/toulon",
+    "horsetelex_of": "",
     "body": "<p>Of all the sons of Heartbreaker, the one who has bred on best. Visconti du Telman and Vancouver de Lanlore both come from him, and he stands behind a great deal of Belgian jumping blood.</p>",
     "source_text": "The Horse Magazine and Hippomundo, read 7 September 2026",
     "crosses": [],
@@ -4868,6 +4996,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/175051/echo-van-t-spieveld",
+    "horsetelex_of": "",
     "body": "<p>A BWP approved son of Heartbreaker who came up through the Belgian young horse and stallion classes and made his international name with Niels Bruynseels. His dam Tequila van 't Spieveld has produced more than one stallion.</p>",
     "source_text": "Hippomundo and World of Showjumping, read 7 September 2026",
     "crosses": [],
@@ -4901,12 +5030,13 @@
     ]
    },
    "fields": {
-    "genetics": "TARAN DE LA POMME",
+    "genetics": "Taran de la Pomme",
     "year_of_birth": "",
     "studbook": "",
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1551442/el-torreo-de-muze",
+    "horsetelex_of": "",
     "body": "<p>One of the best young stallions in the Belgian classes at four, five, six and seven, and reserve champion of the seven year olds. Graded elite by the BWP studbook, with Vigo d'Arsouilles and Nabab de Reve close up behind him.</p>",
     "source_text": "Hippomundo and Belgian Warmblood, read 7 September 2026",
     "crosses": [],
@@ -4946,6 +5076,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1692953/mumbai",
+    "horsetelex_of": "",
     "body": "<p>By Diamant de Semilly out of Ischgl de Muze, who jumped internationally herself with Joe Clee. He reached the final of the World Championships for seven year olds with Christian Kukuk, and Ludger Beerbaum bought into him.</p>",
     "source_text": "World of Showjumping and Belgian Warmblood, read 7 September 2026",
     "crosses": [],
@@ -4987,6 +5118,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/272900/bamako-de-muze",
+    "horsetelex_of": "",
     "body": "<p>By Darco out of Fragance de Chalus, and jumped to 1.60m with Karline De Brabander. He sired Don Juan van de Donkhoeve, team silver at Tokyo with Jessica Springsteen, and Kasanova de la Pomme, champion of the 2013 BWP licensing.</p>",
     "source_text": "Anglo European Studbook, Global Equine Sires and USEF, read 7 September 2026",
     "crosses": [],
@@ -5028,6 +5160,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1543784/kasanova-de-la-pomme",
+    "horsetelex_of": "",
     "body": "<p>Champion of the 2013 BWP stallion licensing. He won the Sires of the World Grand Prix at Zangersheide in 2021 with Koen Vereecke, and jumped double clear for Belgium at the Nations Cup Final in Barcelona in 2022, the year Belgium won it.</p>",
     "source_text": "Stallion AI, Eurodressage, Equnews and Horse Sport, read 7 September 2026",
     "crosses": [],
@@ -5069,6 +5202,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/175041/elvis-ter-putte",
+    "horsetelex_of": "",
     "body": "<p>By Diamant de Semilly out of a Darco mare. Sixth at the World Championship for six year olds at Lanaken with Karline De Brabander, and the sire of Mosito van het Hellenof and of Manchester van 't Paradijs, champion of the 2015 BWP approvals.</p>",
     "source_text": "Belgian Warmblood, Select Breeders and Elite Stallions, read 7 September 2026",
     "crosses": [],
@@ -5110,6 +5244,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1692956/mosito-van-het-hellehof",
+    "horsetelex_of": "",
     "body": "<p>Second in the Rolex Grand Prix at Knokke Hippique in 2022 with Bernardo Alves, and winner of the CSI3* Grand Prix at the same meeting. Nine of his foals reached the final of the Belgian championship for five year olds in 2021. His dam also produced Kasper van het Hellehof.</p><p>One of the first approved sons of Elvis ter Putte. Second in the Rolex Grand Prix of Knokke with Bernardo Alves, and his first crop stood in force in the final of the Belgian championship for five year olds.</p>",
     "source_text": "Belgian Warmblood, Joris De Brabander and World of Showjumping, read 7 September 2026",
     "crosses": [
@@ -5153,6 +5288,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/1345/darco",
+    "horsetelex_of": "",
     "body": "<p>Sixth at the World Equestrian Games in Stockholm and seventh at the Barcelona Olympic Games with Ludo Philippaerts. He led the WBFSH ranking of jumping sires for five years running from 2007, and sired Sapphire, Winningmood and Parco.</p>",
     "source_text": "Belgian Warmblood, The Horse Magazine and rimondo, read 7 September 2026",
     "crosses": [],
@@ -5194,6 +5330,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/6944/clinton",
+    "horsetelex_of": "",
     "body": "<p>Fifth individually at the Athens Olympic Games with Dirk Demeersman, and winner of the Grand Prix of Lummen. More than fifty of his sons have been licensed, among them Cornet Obolensky, who stands on this page and behind three of their own horses.</p>",
     "source_text": "Team Nijhof, The Horse Magazine and the Holsteiner Verband, read 7 September 2026",
     "crosses": [],
@@ -5235,6 +5372,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/34784/kashmir-van-schuttershof",
+    "horsetelex_of": "",
     "body": "<p>Second in the Nations Cups of Lucerne and Rotterdam with Philippe Lejeune. He stood seventh on the WBFSH ranking of jumping sires in 2015 and again in 2020, and sired H&M All In, Olympic individual silver in Rio, and Gazelle with Kent Farrington.</p>",
     "source_text": "The Horse Magazine, Elite Stallions and Indebus, read 7 September 2026",
     "crosses": [
@@ -5278,6 +5416,7 @@
     "availability": "On request",
     "crowned": false,
     "horsetelex": "https://www.horsetelex.com/horses/pedigree/19104/tinka-s-boy",
+    "horsetelex_of": "",
     "body": "<p>Winner of the World Cup Final in Gothenburg in 2001 with Markus Fuchs, team silver at the Sydney Olympic Games and team and individual silver at the European Championship at Hickstead. He won twenty six international Grands Prix.</p>",
     "source_text": "Wikipedia, rimondo and Equnews, read 7 September 2026",
     "crosses": [],
@@ -5418,24 +5557,9 @@
   "assets/img/arch-sport.jpg",
   "assets/img/bases-yard.jpg",
   "assets/img/hero-contact.jpg",
-  "assets/img/hero-cortina-wide.jpg",
-  "assets/img/hero-embryos.jpg",
-  "assets/img/hero-foals.jpg",
   "assets/img/hero-grey-wide.jpg",
   "assets/img/hero-grey.jpg",
   "assets/img/hero-jump.jpg",
-  "assets/img/hero-neck-wide.jpg",
-  "assets/img/hero-semen.jpg",
-  "assets/img/hero-sport.jpg",
-  "assets/img/horse-agousha.jpg",
-  "assets/img/horse-arkhana.jpg",
-  "assets/img/horse-cabri.jpg",
-  "assets/img/horse-charina.jpg",
-  "assets/img/horse-coolrock.jpg",
-  "assets/img/horse-cortina.jpg",
-  "assets/img/horse-dourkhet.jpg",
-  "assets/img/horse-dune.jpg",
-  "assets/img/horse-unique-touch.jpg",
   "assets/img/intro-foal-star.jpg",
   "assets/img/news-calleryama.jpg",
   "assets/img/news-hero.jpg",
@@ -5451,10 +5575,6 @@
   "assets/img/tab-foal.jpg",
   "assets/img/tab-sport.jpg",
   "assets/img/tab-stallion.jpg",
-  "assets/img/thumb-embryos.jpg",
-  "assets/img/thumb-foals.jpg",
-  "assets/img/thumb-semen.jpg",
-  "assets/img/thumb-sport.jpg",
   "assets/logo/Middel 2hoofd icon favicon blauw.png",
   "assets/logo/Middel 3hoofd icon favicon wit .png",
   "assets/logo/Middel 5logo zonder subtekst.png",
@@ -6357,18 +6477,6 @@
    "file": "assets__img__hero-contact.jpg",
    "alt": ""
   },
-  "assets/img/hero-cortina-wide.jpg": {
-   "file": "assets__img__hero-cortina-wide.jpg",
-   "alt": ""
-  },
-  "assets/img/hero-embryos.jpg": {
-   "file": "assets__img__hero-embryos.jpg",
-   "alt": ""
-  },
-  "assets/img/hero-foals.jpg": {
-   "file": "assets__img__hero-foals.jpg",
-   "alt": ""
-  },
   "assets/img/hero-grey-wide.jpg": {
    "file": "assets__img__hero-grey-wide.jpg",
    "alt": ""
@@ -6379,54 +6487,6 @@
   },
   "assets/img/hero-jump.jpg": {
    "file": "assets__img__hero-jump.jpg",
-   "alt": ""
-  },
-  "assets/img/hero-neck-wide.jpg": {
-   "file": "assets__img__hero-neck-wide.jpg",
-   "alt": ""
-  },
-  "assets/img/hero-semen.jpg": {
-   "file": "assets__img__hero-semen.jpg",
-   "alt": ""
-  },
-  "assets/img/hero-sport.jpg": {
-   "file": "assets__img__hero-sport.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-agousha.jpg": {
-   "file": "assets__img__horse-agousha.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-arkhana.jpg": {
-   "file": "assets__img__horse-arkhana.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-cabri.jpg": {
-   "file": "assets__img__horse-cabri.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-charina.jpg": {
-   "file": "assets__img__horse-charina.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-coolrock.jpg": {
-   "file": "assets__img__horse-coolrock.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-cortina.jpg": {
-   "file": "assets__img__horse-cortina.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-dourkhet.jpg": {
-   "file": "assets__img__horse-dourkhet.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-dune.jpg": {
-   "file": "assets__img__horse-dune.jpg",
-   "alt": ""
-  },
-  "assets/img/horse-unique-touch.jpg": {
-   "file": "assets__img__horse-unique-touch.jpg",
    "alt": ""
   },
   "assets/img/intro-foal-star.jpg": {
@@ -6471,22 +6531,6 @@
   },
   "assets/img/tab-stallion.jpg": {
    "file": "assets__img__tab-stallion.jpg",
-   "alt": ""
-  },
-  "assets/img/thumb-embryos.jpg": {
-   "file": "assets__img__thumb-embryos.jpg",
-   "alt": ""
-  },
-  "assets/img/thumb-foals.jpg": {
-   "file": "assets__img__thumb-foals.jpg",
-   "alt": ""
-  },
-  "assets/img/thumb-semen.jpg": {
-   "file": "assets__img__thumb-semen.jpg",
-   "alt": ""
-  },
-  "assets/img/thumb-sport.jpg": {
-   "file": "assets__img__thumb-sport.jpg",
    "alt": ""
   },
   "assets/logo/Middel 2hoofd icon favicon blauw.png": {

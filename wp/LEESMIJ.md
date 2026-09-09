@@ -34,8 +34,8 @@ De zips komen in `wp/uit/`.
 | Taxonomieën | 7 |
 | Veldgroepen | 7, samen 144 velden |
 | Posts | 113 |
-| Foto's | 270, samen 36,7 MB |
-| Controles | 1146, allemaal groen |
+| Foto's | 251, samen 33,2 MB |
+| Controles | 1151, allemaal groen |
 
 De posts:
 
@@ -53,19 +53,21 @@ De termen die de import aanmaakt: availability 2, embryo_stage 2, horse_sex 4,
 studbook 8, birth_year 15, sold_to 15, sire 63. Niets hoeft voorgezaaid: termen
 worden bij eerste gebruik gemaakt.
 
-Van de 270 foto's zijn er 205 van een paard, een kruising of een partner, en 65
+Van de 251 foto's zijn er 205 van een paard, een kruising of een partner, en 46
 ontwerpbeelden (hero's, archiefkoppen, tabbeelden, het logo) die in de
 mediabibliotheek landen zonder aan een post te hangen, zodat de Elementor-bouw
-ze kan pakken.
+ze kan pakken. Negentien beelden die wel op schijf staan reizen bewust niet mee:
+restanten van een eerdere bouw en beelden die alleen in het ontwerpdocument
+staan. Die staan met de reden erbij in `DOOD` in de generator.
 
 ---
 
 ## Welke zip
 
 ```
-stud-von-axe-importer.zip                 37 MB   alles, als de host het aanneemt
-stud-von-axe-importer-zonder-fotos.zip    45 KB   de code en de payload
-stud-von-axe-importer-fotos.zip           37 MB   de foto's
+stud-von-axe-importer.zip                 33 MB   alles, als de host het aanneemt
+stud-von-axe-importer-zonder-fotos.zip    46 KB   de code en de payload
+stud-von-axe-importer-fotos.zip           33 MB   de foto's
 ```
 
 Probeer de hele zip. Weigert de host hem, dan:
@@ -95,6 +97,33 @@ niets aan de code te veranderen, welke route je ook neemt.
 De laatste twee stappen zijn "Design images" en "Linking the crosses to their
 sires". Die tweede moet als laatste, want een hengst wijst naar wat er met hem
 gefokt is en die posts moeten er dan al zijn.
+
+---
+
+## Een nieuwe versie uploaden
+
+Twee dingen die niets met elkaar te maken hebben, en die allebei niet dubbelen.
+
+**De plugin opnieuw uploaden.** Elke bouw stempelt een versienummer uit de
+bouwdatum, bijvoorbeeld `2026.09.09.2010`, dus een nieuwe zip is altijd
+zichtbaar nieuwer. Upload hem via **Plugins → Nieuwe plugin → Plugin uploaden**.
+WordPress ziet dat er al een plugin met die map staat, laat de twee versies
+naast elkaar zien, en biedt **"Replace current with uploaded"**. Klik dat. Er
+komt geen tweede plugin bij.
+
+Je hoeft de oude dus niet eerst te verwijderen. Doe je dat toch, dan is dat ook
+niet erg: verwijderen haalt alleen de plugin weg en laat de inhoud staan.
+
+**De import opnieuw draaien.** Dat dubbelt evenmin, en dat is met opzet zo
+gebouwd. Elke post draagt een stempel `_sva_slug` en elke foto een `_sva_src`,
+en dat is waar een tweede draai op zoekt: gevonden betekent bijwerken, niet
+gevonden betekent aanmaken. De post types en de veldgroepen worden op hun ACF
+sleutel gevonden. De test controleert dit ook echt: een tweede draai voegt nul
+posts toe, en dat is een van de 1151 controles.
+
+Wat een tweede draai wél doet: de velden overschrijven die de payload draagt.
+Wat jij in een leeg veld hebt gezet blijft staan, en een post die je hernoemd
+hebt houdt zijn URL.
 
 ---
 
@@ -196,15 +225,15 @@ misten.
    veldsleutels, en niemand draagt twee termen waar er één hoort.
    *Ziet niet:* een veld dat helemaal niet bestaat.
 2. **De mapping-test**, `php wp/stud-von-axe-importer/tests/test-mapping.php`:
-   1146 controles. Aantallen per groep, `post_content` overal leeg, geen post
+   1151 controles. Aantallen per groep, `post_content` overal leeg, geen post
    type met de editor aan, alle zeven types zichtbaar voor de REST API, elk
    gedeclareerd veld ook echt geschreven, beeldvelden met ids en geen paden,
    veertien stamboomcellen op elk paard, en een tweede draai die nul posts
    toevoegt.
    *Ziet niet:* of jouw ACF-versie de definities accepteert, en of het uploaden
    op jouw host werkt.
-3. **De kruiscontrole tegen de gerenderde site**: 599 stamboomcellen en 106
-   titels worden teruggelezen uit de gebouwde HTML. Dit ving de eerste versie
+3. **De kruiscontrole tegen de gerenderde site**: 867 stamboomcellen, waarden en
+   alinea's plus 106 titels worden teruggelezen uit de gebouwde HTML. Dit ving de eerste versie
    van de generator, die "Van’t Roosakker" schreef waar de site "van't
    Roosakker" toont. 137 cellen, en alle andere controles stonden op groen.
    *Ziet niet:* een veld dat nergens gerenderd wordt.
