@@ -863,6 +863,12 @@ ${extraScript}
    dash. The middot is what the rest of the site already uses between horse
    names, so the line reads the same and the punctuation is ours. Nothing
    else about their text is touched, spelling and capitals included. */
+/* words:start
+   Everything between these two markers is pure: helpers and tables that turn
+   the owners' own fields into the words this site prints. wp/bouw_payload.py
+   lifts the block verbatim, the way shell.mjs lifts the header and the foot,
+   so the WordPress import spells a horse's name the same way this page does.
+   Nothing in here may reach for anything outside the block. */
 const theirWords = (text) => (text || '')
   .replace(/\s+[–—-]\s*/g, ' \u00b7 ')     /* Fuga de Muze - Narcotique II  */
   .replace(/\s+\u00b7\s*$/, '');           /* and one that ends on a dash   */
@@ -961,6 +967,7 @@ const horseName = (name) => {
       .replace(/([’'])([a-z])(?=[a-z])/g, (m, p, c) => p + c.toUpperCase());
   }).join(' ');
 };
+/* words:end */
 
 /* The sire is the first name in their Genetics line. The line itself is
    shown in full on the horse's own page; a card has room for one name. */
