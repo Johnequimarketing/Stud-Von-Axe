@@ -498,24 +498,38 @@
      Measuring before the webfont lands reads 20px narrower, which is how
      this line first ended up at 1240. */
   @media (max-width: 1340px){
+    /* 10 Sep, John's design: the drawer is a plate like the bar above it,
+       not a flat band. Same width (it is positioned on .hd__row, which is
+       already the plate held off the edges), the plate radius, a shadow,
+       and rows tall enough for a thumb with a hairline between each pair.
+       The current page's rule is gold, the way its name is underlined in
+       gold on the bar; the last row carries no rule, the plate ends there.
+       Contact us is the last row, a drawer-only copy of the bar's pill. */
     .primary-nav{
       position:absolute; left:0; right:0;
-      /* opens just below the hairline rule, so the rule stays visible */
-      top:calc(100% + 1.15rem + 1px);
+      top:calc(100% + .6rem);
       background:var(--color-base);
       flex-direction:column; align-items:flex-start;
-      padding:1.4rem var(--gutter) 1.8rem;
-      border-bottom:1px solid var(--color-line);
+      padding:.35rem clamp(1.2rem, 4vw, 1.8rem);
+      border-radius:var(--plate-radius);
+      box-shadow:0 24px 60px -30px rgba(var(--veil-rgb), .55);
       transform:translateY(-8px);
       opacity:0; visibility:hidden; pointer-events:none;
       transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
     }
     .primary-nav.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
-    .primary-nav a{
-      padding:.6rem 0; width:100%; font-size:17.5px;
+    .primary-nav a,
+    .hd:not(.is-pinned) .primary-nav a{
+      padding:1.15rem 0; width:100%; font-size:17.5px;
       color:var(--color-ink); border-bottom:1px solid var(--color-line);
+      /* The over-the-photograph shadow must not follow the names into the
+         drawer: the second selector matches the shadow rule's weight so
+         this one wins. On ivory it read as a halo. */
+      text-shadow:none;
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
+    .primary-nav a:last-child{ border-bottom-color:transparent; }
+    .primary-nav a[aria-current="page"]{ color:var(--color-ink); border-bottom-color:var(--color-gold); }
     /* Rows, not a run: each one already carries a rule under it. */
     .primary-nav a + a::before{ content:none; }
     .nav-toggle{ display:grid; }
@@ -2286,6 +2300,7 @@
           <a href="/foals" class="hd__drawerOnly">Foals</a>
           <a href="/embryos" class="hd__drawerOnly">Embryos</a>
           <a href="/icsi-semen" class="hd__drawerOnly">ICSI semen</a>
+          <a href="/contact" aria-current="page" class="hd__drawerOnly">Contact us</a>
         </nav>
       </div>
 
