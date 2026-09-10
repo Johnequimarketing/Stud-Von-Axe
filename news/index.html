@@ -528,8 +528,10 @@
       text-shadow:none;
     }
     .primary-nav a:hover{ color:var(--color-navy); border-color:var(--color-line); }
-    .primary-nav a:last-child{ border-bottom-color:transparent; }
-    .primary-nav a[aria-current="page"]{ color:var(--color-ink); border-bottom-color:var(--color-gold); }
+    /* Weighted with .hd to match the shadow rule above, or its border
+       would win and these two would never show. */
+    .hd .primary-nav a:last-child{ border-bottom-color:transparent; }
+    .hd .primary-nav a[aria-current="page"]{ color:var(--color-ink); border-bottom-color:var(--color-gold); }
     /* Rows, not a run: each one already carries a rule under it. */
     .primary-nav a + a::before{ content:none; }
     .nav-toggle{ display:grid; }
