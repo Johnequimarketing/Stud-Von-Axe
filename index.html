@@ -167,9 +167,11 @@
        purpose: that difference is what makes them cross. The bar has a
        fixed height so the taller plate overflows it instead of stretching
        it, which it would otherwise do, being the tallest item in the row. */
-    --hd-top:   clamp(10px, 1.6vh, 22px);
+    /* 10 Sep, from Mark's main: the bar sits low enough that the taller
+       plate below never clips at the top of the screen. */
+    --hd-top:   max(clamp(10px, 1.6vh, 22px), calc((var(--hd-plate) - var(--hd-bar)) / 2 + 8px));
     --hd-bar:   clamp(52px, 6vh, 62px);
-    --hd-plate: clamp(84px, 9.4vh, 100px); /* 3 Sep: taller, so the bigger mark fits inside it */
+    --hd-plate: clamp(96px, 10.6vh, 112px); /* 10 Sep, Mark's main: taller again, the plate reads as a plate */
     --tray-radius: 34px;
     --tray-pad: clamp(14px, 1.5vw, 22px);
   }
@@ -387,7 +389,10 @@
   /* Both marks in one cell, so the plate is sized by the artwork and the
      two can cross fade without either one moving. */
   .brand img{
-    grid-area:1 / 1; display:block; width:clamp(150px, 13.5vw, 196px); height:auto;
+    grid-area:1 / 1; display:block; width:clamp(150px, 13.5vw, 196px);
+    /* Fitted inside the plate rather than free height, so the two marks,
+       which are not the same proportion, sit identically. */
+    height:calc(var(--hd-plate) - 12px); object-fit:contain;
     transition:opacity .25s var(--ease);
   }
   .brand__onlight{ opacity:0; }
@@ -606,6 +611,15 @@
        not room for a centred mark and both controls; the row simply spreads
        out instead and the mark sits a little left of centre. */
     .hd__start, .hd__end{ flex:0 1 auto; }
+  }
+  /* 10 Sep, matched to Mark's main. On a phone the Contact pill comes off
+     the bar: it is the last row of the drawer, and beside the mark it
+     walked into it. With only the burger and WhatsApp left, the mark can be
+     centred outright, on the row rather than by equal shares. */
+  @media (max-width: 560px){
+    .hd .btn-sm{ display:none; }
+    .hd__row{ position:relative; }
+    .brand{ position:absolute; left:50%; transform:translateX(-50%); }
   }
 
   /* ============================================================
